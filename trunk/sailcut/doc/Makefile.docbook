@@ -1,0 +1,32 @@
+doc_srcdir := $(top_srcdir)/doc
+
+# XML DocBook output
+ 
+%.html: %.docbook $(FIGS:.fig=.png)
+	$(XSLTPROC) -o $@ $(doc_srcdir)/sailcut-html.xsl $<
+
+%.tex: %.docbook 
+	$(XSLTPROC) -o $@ $(doc_srcdir)/sailcut-tex.xsl $<
+
+%.fo: %.docbook
+	$(XSLTPROC) -o $@ $(doc_srcdir)/sailcut-pdf.xsl $<
+
+%.pdf: %.tex $(FIGS:.fig=.pdf)
+	$(PDFLATEX) $<
+
+#%.pdf: %.fo $(FIGS:.fig=.svg)
+#	fop -fo $< -pdf $@
+
+# XFig graphics conversions
+
+%.eps: %.fig
+	$(FIG2DEV) -L eps -m 0.5 $^ $@
+
+%.pdf: %.fig
+	$(FIG2DEV) -L pdf -m 0.5 $^ $@
+
+%.png: %.fig
+	$(FIG2DEV) -L png -S2 $^ $@
+
+%.svg: %.fig
+	$(FIG2DEV) -L svg $^ $@
