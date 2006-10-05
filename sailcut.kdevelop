@@ -11,7 +11,7 @@
     <absoluteprojectpath>false</absoluteprojectpath>
     <description/>
     <secondaryLanguages/>
-    <versioncontrol>kdevcvsservice</versioncontrol>
+    <versioncontrol>kdevsubversion</versioncontrol>
   </general>
   <kdevautoproject>
     <general>
