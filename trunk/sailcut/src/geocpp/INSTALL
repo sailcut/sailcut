@@ -1,9 +1,0 @@
-GeoCpp is meant to be compiled as part of a program which uses it. 
-
-However, a test program and its associated Makefile have been included to give
-you an idea of the available functionalities.  To compile this, on a GNU 
-system simply type :
-
-make -f Makefile.test
-
-This will produce an executable called geotest.
