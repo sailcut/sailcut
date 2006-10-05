@@ -228,7 +228,7 @@ void test_space(void)
     cout << " " << endl;
 }
 
-int main(int argc, char *argv[])
+int main()
 {
 #ifdef DEBUG
     mcheck(0);
