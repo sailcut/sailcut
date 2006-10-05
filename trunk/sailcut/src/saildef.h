@@ -1,7 +1,6 @@
 /*
  * Copyright (C) 1993-2006 Robert & Jeremy Laine
- *
- * $Id: saildef.h,v 1.66 2006/09/30 18:40:33 sailcuter Exp $
+ * See AUTHORS file for a full list of contributors.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

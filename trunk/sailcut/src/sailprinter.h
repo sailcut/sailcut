@@ -1,7 +1,6 @@
 /*
  * Copyright (C) 1993-2006 Robert & Jeremy Laine
- *
- * $Id: sailprinter.h,v 1.7 2006/01/25 21:54:02 jeremy_laine Exp $
+ * See AUTHORS file for a full list of contributors.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,8 +29,6 @@ class QPrinter;
 
 
 /** A class for printing sails or sail data.
- *
- * @version $Id: sailprinter.h,v 1.7 2006/01/25 21:54:02 jeremy_laine Exp $
  */
 class CSailPrinter : public QObject
 {

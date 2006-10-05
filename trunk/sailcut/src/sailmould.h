@@ -1,7 +1,6 @@
 /*
  * Copyright (C) 1993-2006 Robert & Jeremy Laine
- * 
- * $Id: sailmould.h,v 1.30 2006/08/24 08:12:20 sailcuter Exp $
+ * See AUTHORS file for a full list of contributors.
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

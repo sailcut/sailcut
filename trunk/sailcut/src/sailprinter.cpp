@@ -1,7 +1,6 @@
 /*
  * Copyright (C) 1993-2006 Robert & Jeremy Laine
- *
- * $Id: sailprinter.cpp,v 1.13 2006/04/11 20:38:28 sailcuter Exp $
+ * See AUTHORS file for a full list of contributors.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

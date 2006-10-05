@@ -2,8 +2,6 @@
  * Copyright (C) 1993-2006 Robert & Jeremy Laine
  * See AUTHORS file for a full list of contributors.
  *
- * $Id: widgetprofile.cpp,v 1.25 2006/09/29 07:53:51 jeremy_laine Exp $
- *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or

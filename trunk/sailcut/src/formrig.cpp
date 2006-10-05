@@ -1,7 +1,6 @@
 /*
  * Copyright (C) 1993-2006 Robert & Jeremy Laine
- * 
- * $Id: formrig.cpp,v 1.16 2006/01/25 21:54:00 jeremy_laine Exp $
+ * See AUTHORS file for a full list of contributors.
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
