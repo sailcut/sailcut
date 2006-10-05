@@ -1,7 +1,6 @@
 /*
  * Copyright (C) 1993-2006 Robert & Jeremy Laine
- *
- * $Id: widgetprofile.h,v 1.17 2006/09/29 07:53:51 jeremy_laine Exp $
+ * See AUTHORS file for a full list of contributors.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

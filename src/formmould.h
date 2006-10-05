@@ -1,8 +1,6 @@
 /*
- * Copyright (C) 1993-2006 Robert & Jeremy Lainé
+ * Copyright (C) 1993-2006 Robert & Jeremy Laine
  * See AUTHORS file for a full list of contributors.
- * 
- * $Id: formmould.h,v 1.18 2006/01/25 21:54:00 jeremy_laine Exp $
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
