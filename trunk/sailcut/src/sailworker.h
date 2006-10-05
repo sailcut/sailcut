@@ -24,7 +24,7 @@
 #include "sail.h"
 #include "saildef.h"
 
-#include "geocpp/vect_geom.h"
+#include "geocpp/geometry.h"
 #include "sailcalc.h"
 
 // forward declarations

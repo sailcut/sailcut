@@ -22,7 +22,7 @@
 #define SAILPAINTER_H
 
 #include <QPainter>
-#include "geocpp/vect_geom.h"
+#include "geocpp/geometry.h"
 
 class CSail;
 class CSide;

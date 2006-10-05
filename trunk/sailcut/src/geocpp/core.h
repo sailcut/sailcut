@@ -1,8 +1,5 @@
 /*
- * Copyright (C) 2002-2004 Jeremy Lainé
- * See AUTHORS file for a full list of contributors.
- * 
- * $Id: core.h,v 1.17 2004/10/26 19:30:53 jeremy_laine Exp $
+ * Copyright (C) 2002-2006 Jeremy Laine
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
