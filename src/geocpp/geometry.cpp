@@ -1,8 +1,5 @@
 /*
- * Copyright (C) 2002-2004 Jeremy Lainé
- * See AUTHORS file for a full list of contributors.
- * 
- * $Id: vect_geom.cpp,v 1.16 2006/10/03 11:45:17 jeremy_laine Exp $
+ * Copyright (C) 2002-2006 Jeremy Laine
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,7 +16,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#include "vect_geom.h"
+#include "geometry.h"
 #include "matrix.h"
 #include "subspace.h"
 

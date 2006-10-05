@@ -1,7 +1,5 @@
 /*
- * Copyright (C) 2002-2006 Jeremy Lain� * See AUTHORS file for a full list of contributors.
- * 
- * $Id: vect_real.h,v 1.20 2006/10/03 11:42:18 jeremy_laine Exp $
+ * Copyright (C) 2002-2006 Jeremy Laine
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,8 +16,8 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef GEOCPP_VECT_REAL_H
-#define GEOCPP_VECT_REAL_H
+#ifndef GEOCPP_VECTOR_H
+#define GEOCPP_VECTOR_H
 
 #include "core.h"
 #include <iostream>

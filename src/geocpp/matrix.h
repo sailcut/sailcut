@@ -1,8 +1,5 @@
 /*
- * Copyright (C) 2002-2004 Jeremy Lainé
- * See AUTHORS file for a full list of contributors.
- * 
- * $Id: matrix.h,v 1.16 2004/10/26 19:30:53 jeremy_laine Exp $
+ * Copyright (C) 2002-2006 Jeremy Laine
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,7 +19,7 @@
 #ifndef GEOCPP_MATRIX_H
 #define GEOCPP_MATRIX_H
 
-#include "vect_real.h"
+#include "vector.h"
 enum soltype_t { NONE, ONE, INF };
 
 class CSubSpace;

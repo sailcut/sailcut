@@ -24,7 +24,7 @@
 #include <vector>
 #include <QString>
 
-#include "geocpp/vect_geom.h"
+#include "geocpp/geometry.h"
 #include "geocpp/subspace.h"
 #include "geocpp/matrix.h"
 

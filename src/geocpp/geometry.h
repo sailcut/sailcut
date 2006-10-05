@@ -1,7 +1,5 @@
 /*
- * Copyright (C) 2002-2004 Jeremy Lain� * See AUTHORS file for a full list of contributors.
- * 
- * $Id: vect_geom.h,v 1.21 2006/10/03 11:45:17 jeremy_laine Exp $
+ * Copyright (C) 2002-2006 Jeremy Laine
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,10 +16,10 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef GEOCPP_VECT_GEOM_H
-#define GEOCPP_VECT_GEOM_H
+#ifndef GEOCPP_GEOMETRY_H
+#define GEOCPP_GEOMETRY_H
 
-#include "vect_real.h"
+#include "vector.h"
 
 class CMatrix;
 class CSubSpace;

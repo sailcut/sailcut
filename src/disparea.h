@@ -21,7 +21,7 @@
 #ifndef DISPAREA_H
 #define DISPAREA_H
 
-#include "geocpp/vect_geom.h"
+#include "geocpp/geometry.h"
 
 
 /** A generic display area
