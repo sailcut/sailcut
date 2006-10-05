@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<svg width="33.3578" height="33.74">
+  <defs> 
+    <marker id="ArrowEnd" viewBox="0 0 10 10" refX="0" refY="5" 
+     markerUnits="strokeWidth" 
+     markerWidth="4" 
+     markerHeight="3" 
+     orient="auto"> 
+        <path d="M 0 0 L 10 5 L 0 10 z" /> 
+    </marker>
+    <marker id="ArrowStart" viewBox="0 0 10 10" refX="10" refY="5" 
+     markerUnits="strokeWidth" 
+     markerWidth="4" 
+     markerHeight="3" 
+     orient="auto"> 
+        <path d="M 10 0 L 0 5 L 10 10 z" /> 
+    </marker> </defs>
+<g>
+<g>
+<g>
+<defs><linearGradient id="1" x1="10.9807" y1="11.0204" x2="20.9593" y2="1.20958" gradientUnits="userSpaceOnUse">
+<stop offset="0" style="stop-color:#ebebeb"/>
+<stop offset="0.378285" style="stop-color:#ffffff"/>
+<stop offset="1" style="stop-color:#ffffff"/>
+</linearGradient>
+</defs><path style="stroke:#000066; stroke-width:0.23999999999999999; stroke-linejoin:round; fill:url(#1)" d="M 18.92 0.119995L 19.65 5.90002C 18.85 9.83002 15.66 11.07 12.29 12.11L 18.12 0.900024L 18.92 0.119995z"/>
+<defs><linearGradient id="2" x1="7.65834" y1="20.0239" x2="20.4816" y2="7.41617" gradientUnits="userSpaceOnUse">
+<stop offset="0" style="stop-color:#cdcdcd"/>
+<stop offset="0.762294" style="stop-color:#ffffff"/>
+<stop offset="1" style="stop-color:#ffffff"/>
+</linearGradient>
+</defs><path style="stroke:#000066; stroke-width:0.23999999999999999; stroke-linejoin:round; fill:url(#2)" d="M 19.71 7.27002L 20.1 12.39C 18.59 18.25 13.36 19.27 8.03999 20.17L 12.32 13.37C 15.91 12.44 18.98 11.01 19.71 7.27002z"/>
+<defs><linearGradient id="3" x1="4.39256" y1="28.0421" x2="19.8574" y2="12.838" gradientUnits="userSpaceOnUse">
+<stop offset="0" style="stop-color:#b1b1b1"/>
+<stop offset="0.991613" style="stop-color:#ffffff"/>
+<stop offset="1" style="stop-color:#ffffff"/>
+</linearGradient>
+</defs><path style="stroke:#000066; stroke-width:0.23999999999999999; stroke-linejoin:round; fill:url(#3)" d="M 20.27 13.52L 20.29 18.75C 16.83 25.48 10.32 26.27 3.95999 27.36L 8.15999 21.19C 14.51 20.31 19.24 18.26 20.27 13.52z"/>
+<defs><linearGradient id="4" x1="1.54159" y1="35.308" x2="18.7884" y2="18.352" gradientUnits="userSpaceOnUse">
+<stop offset="0" style="stop-color:#999999"/>
+<stop offset="0.00701637" style="stop-color:#999999"/>
+<stop offset="1" style="stop-color:#efefef"/>
+</linearGradient>
+</defs><path style="stroke:#000066; stroke-width:0.23999999999999999; stroke-linejoin:round; fill:url(#4)" d="M 20.21 20.04L 19.54 25.44C 16.13 31.06 8.45999 32.66 0.119995 33.62L 3.81 28.5C 12.28 27.4 18.32 24.91 20.21 20.04z"/>
+</g>
+<g>
+<defs><linearGradient id="5" x1="26.0093" y1="7.31892" x2="18.3407" y2="16.3511" gradientUnits="userSpaceOnUse">
+<stop offset="0" style="stop-color:#ffffff"/>
+<stop offset="0.487342" style="stop-color:#ffffff"/>
+<stop offset="1" style="stop-color:#d9d9d9"/>
+</linearGradient>
+</defs><path style="stroke:#000066; stroke-width:0.23999999999999999; fill:url(#5)" d="M 20.93 7.65002L 23.66 10.9C 23.61 13.87 22 14.79 20.7 16.02C 20.91 13.53 20.94 10.9301 20.69 8.18005L 20.93 7.65002z"/>
+<defs><linearGradient id="6" x1="28.6111" y1="10.7613" x2="18.5789" y2="22.5787" gradientUnits="userSpaceOnUse">
+<stop offset="0" style="stop-color:#ffffff"/>
+<stop offset="0.308578" style="stop-color:#ffffff"/>
+<stop offset="1" style="stop-color:#bdbdbd"/>
+</linearGradient>
+</defs><path style="stroke:#000066; stroke-width:0.23999999999999999; fill:url(#6)" d="M 24.36 11.4901L 26.73 14.39C 26.67 18.5 23.5 20.12 20.46 21.85C 20.77 20.2 21.08 18.44 21.39 16.6C 22.93 15.29 24.42 13.95 24.36 11.4901z"/>
+<defs><linearGradient id="7" x1="31.0116" y1="13.783" x2="18.5284" y2="28.487" gradientUnits="userSpaceOnUse">
+<stop offset="0" style="stop-color:#ffffff"/>
+<stop offset="0.210089" style="stop-color:#ffffff"/>
+<stop offset="1" style="stop-color:#a1a1a1"/>
+</linearGradient>
+</defs><path style="stroke:#000066; stroke-width:0.23999999999999999; fill:url(#7)" d="M 27.43 15.08L 29.8 18.07C 29.02 23.46 24.13 25.1 19.74 27.19C 20.35 25.65 20.85 24.1 21.16 22.55C 24.52 20.82 27.45 18.83 27.43 15.08z"/>
+<defs><linearGradient id="8" x1="32.4596" y1="16.8398" x2="18.8004" y2="32.9303" gradientUnits="userSpaceOnUse">
+<stop offset="0" style="stop-color:#ffffff"/>
+<stop offset="0.128446" style="stop-color:#ffffff"/>
+<stop offset="0.916051" style="stop-color:#999999"/>
+<stop offset="1" style="stop-color:#999999"/>
+</linearGradient>
+</defs><path style="stroke:#000066; stroke-width:0.23999999999999999; fill:url(#8)" d="M 30.38 18.86L 32.1 21.1C 30.41 26.82 25.09 29.15 19.16 30.91L 20.32 27.98C 26.46 25.4 30.28 22.4301 30.38 18.86z"/>
+</g>
+</g>
+</g>
+</svg>

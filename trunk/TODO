@@ -1,0 +1,9 @@
+$Id: TODO,v 1.16 2005/12/17 17:56:48 sailcuter Exp $
+
+* Put a very light background blue color in all drawing panes of
+  the Mould window
+* need to rework the forward intersection routine to avoid problems 
+  near end of luff curve
+
+EOF
+

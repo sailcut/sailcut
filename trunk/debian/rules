@@ -1,0 +1,15 @@
+#!/usr/bin/make -f
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/autotools.mk
+
+DEB_CONFIGURE_EXTRA_FLAGS := --prefix=/usr
+DEB_DH_INSTALL_SOURCEDIR := $(DEB_DESTDIR)
+
+# set defaults to zero
+DEB_INSTALL_CHANGELOGS_ALL =
+DEB_INSTALL_DOCS_ALL =
+
+# for the "sailcut" package only 
+DEB_INSTALL_CHANGELOGS_sailcut = ChangeLog
+DEB_INSTALL_DOCS_sailcut = AUTHORS
+DEB_INSTALL_MANPAGES_sailcut = debian/sailcut.1

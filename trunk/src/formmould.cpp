@@ -1,0 +1,100 @@
+/*
+ * Copyright (C) 1993-2006 Robert & Jeremy Laine
+ * See AUTHORS file for a full list of contributors.
+ * 
+ * $Id: formmould.cpp,v 1.31 2006/01/25 21:54:00 jeremy_laine Exp $
+ * 
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ */
+
+#include "formmould.h"
+#include "widgetprofile.h"
+#include "widgetprofilevert.h"
+#include "sailmould.h"
+
+#include <QLabel>
+#include <QFrame>
+#include <QLayout>
+#include <QPushButton>
+#include <QSlider>
+#include <QSpinBox>
+
+
+/** The constructor.
+ *
+ * @param parent the parent dialog
+ * @param mouldptr pointer to the CSailMould
+ */
+CFormMould::CFormMould( QWidget *parent, CSailMould *mouldptr )
+        : QDialog(parent)
+{
+    setModal(true);
+    setWindowTitle( tr( "Sail mould" ) );
+
+    // we store the pointer to the CSailMould so we can update it when
+    // the user clicks OK
+    sailmould = mouldptr;
+
+    setSizeGripEnabled( TRUE );
+    QGridLayout* CFormMouldLayout = new QGridLayout( this );
+
+    // Add the buttons at the bottom of the screen
+    QHBoxLayout* buttonsLayout = new QHBoxLayout();
+
+    buttonHelp = new QPushButton( tr("&Help"), this );
+    buttonsLayout->addWidget( buttonHelp );
+    buttonsLayout->addItem( new QSpacerItem( 20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum ) );
+
+    buttonOk = new QPushButton( tr("&OK"), this );
+    buttonOk->setDefault( TRUE );
+    buttonsLayout->addWidget( buttonOk );
+
+    buttonCancel = new QPushButton( tr("&Cancel"), this );
+    buttonsLayout->addWidget( buttonCancel );
+
+    CFormMouldLayout->addLayout( buttonsLayout, 1, 1 );
+
+    // add vertical repartition
+    widgetVert = new CWidgetProfileVert( this, sailmould, tr("Vertical repartition") );
+
+    CFormMouldLayout->addWidget( widgetVert, 0, 0 );
+
+    // add 3 profile areas and bind them to their respective profiles
+    QFrame* frmProfile = new QFrame( this );
+    frmProfile->setFrameShape( QFrame::NoFrame );
+    frmProfile->setFrameShadow( QFrame::Raised );
+    QGridLayout* frmProfileLayout = new QGridLayout( frmProfile );
+    CFormMouldLayout->addWidget( frmProfile, 0, 1 );
+
+    prfTop = new CWidgetProfile( frmProfile, &sailmould->profile[2], tr("Top profile"), widgetVert );
+    prfMiddle = new CWidgetProfile( frmProfile, &sailmould->profile[1], tr("Middle profile"), widgetVert );
+    prfBottom = new CWidgetProfile( frmProfile, &sailmould->profile[0], tr("Bottom profile"), widgetVert );
+
+    frmProfileLayout->addWidget( prfTop, 0, 0 );
+    frmProfileLayout->addWidget( prfMiddle, 1, 0 );
+    frmProfileLayout->addWidget( prfBottom, 2, 0 );
+
+    // init
+    //languageChange();
+    resize( QSize(487, 555).expandedTo(minimumSizeHint()) );
+
+    // setting the range for profile spin boxes is done in widgetprofile.cpp
+    prfBottom->spinDepth->setMinimum( 0 );
+
+    // signals and slots connections
+    connect( buttonOk, SIGNAL( clicked() ), this, SLOT( accept() ) );
+    connect( buttonCancel, SIGNAL( clicked() ), this, SLOT( reject() ) );
+}
+

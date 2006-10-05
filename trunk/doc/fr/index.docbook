@@ -1,0 +1,554 @@
+<?xml version='1.0'?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<article lang="fr">
+
+<articleinfo>
+
+<title>Manuel de Sailcut CAD</title>
+
+<authorgroup>
+
+<author><firstname>Robert</firstname><surname>Lainé</surname></author>
+
+<author><firstname>Jeremy</firstname><surname>Lainé</surname></author>
+
+</authorgroup>
+
+<pubdate>Sailcut CAD 1.2.3 - 18 septembre 2006</pubdate>
+
+</articleinfo>
+
+<sect1 id="s.introduction">
+
+<title>Introduction</title>
+
+<para>Ce manuel est en cours de rédaction.</para>
+
+<sect2>
+
+<title>A propos de Sailcut CAD</title>
+
+<para>Sailcut is est un logiciel de tracé de voiles et de développement à plat des laizes. Les voiles peuvent être à 3 cotés ou à 4 cotés pour les gréements anciens par exemple.</para>
+
+<para>La première version de Sailcut a été développée en 1978 et utilisée par Robert Lainé sur son 1/4 ton IOR &quot;Flying Sheep III&quot;. Sailcut est disponible sur la toile Internet depuis 1994 et est utilisé par beaucoup de professionels et amateurs maîtres voiliers, pour des bateaux de course, de croisière ou maquettes navigantes.</para>
+
+<para>Sailcut utilise une définition mathématique de la surface des voiles qui garantie que le profil de la voile sera lisse et aérodynamique.</para>
+
+</sect2>
+
+<sect2>
+
+<title>Information technique sur le code</title>
+
+<para>Sailcut CAD est écrit dans le but d&apos;être portable. Le code est donc du C++ qui utilise la librairie Qt de Trolltech pour l&apos;interface graphique. Sailcut CAD utilise OpenGL pour tous les affichages 3D. Sailcut se compile et tourne sur GNU/Linux, Microsoft Windows et MacOS/X.</para>
+
+</sect2>
+
+</sect1>
+
+<sect1 id="s.install">
+
+<title>Installation</title>
+
+<sect2>
+
+<title>Ou obtenir Sailcut CAD?</title>
+
+<para>Vous pouvez télécharger la dernière version de Sailcut CAD depuis la page du projet à <ulink url="http://sourceforge.net/projects/sailcut/"/>. Sailcut CAD est disponible sous forme binaire (compilé pour vous) et code source.</para>
+
+<para>Si vous êtes un utilisateur de Windows, n&apos;oubliez pas de télécharger et installer les fichiers &quot;Qt4 runtime for Win32&quot;.</para>
+
+</sect2>
+
+<sect2>
+
+<title>Contraintes pour compiler</title>
+
+<sect3>
+
+<title>Notes pour MacOS/X</title>
+
+<para>TODO</para>
+
+</sect3>
+
+<sect3>
+
+<title>Notes pour Microsoft Windows</title>
+
+<para>TODO</para>
+
+</sect3>
+
+</sect2>
+
+<sect2>
+
+<title>Compilation et installation</title>
+
+<sect3>
+
+<title>Procédure</title>
+
+<para>TODO</para>
+
+</sect3>
+
+<sect3>
+
+<title>Notes pour Windows</title>
+
+<para>Quand vous installez le fichier exécutable to Sailcut pour Windows, n&apos;oubliez pas d&apos;installer aussi les DLLs &quot;Qt 4 runtime for Win32&quot; dans le même dossier ou dans le dossier C:\Systems32.</para>
+
+<para>TODO</para>
+
+</sect3>
+
+<sect3>
+
+<title>Notes pour MacOS/X</title>
+
+<para>TODO</para>
+
+</sect3>
+
+</sect2>
+
+</sect1>
+
+<sect1 id="s.using">
+
+<title>Utilisation de Sailcut CAD</title>
+
+<sect2>
+
+<title>Notes sur l&apos;utilisation de fichier de versions précédentes</title>
+
+<para>A partir de la version 0.6.5 Sailcut CAD utilise des extensions de nom de fichier distincts au lieu de l&apos;extension générique &quot;.xml&quot;. Si vous souhaitez réutiliser des fichiers de données de voile de ce type vous devez renommer les renommer avec l&apos;extension &quot;.saildef&quot;. Vous pourrez alors récupérer les données dimensionelles de la voile mais pas le moule que vous devrez redéfinir avant de sauvegarder les données.</para>
+
+</sect2>
+
+<sect2>
+
+<title>Préférences utilisateur</title>
+
+<sect3>
+
+<title>Fichier des préférences</title>
+
+<para>Vos préférences sount enregistrées dans le fichier &quot;.sailcutrc&quot;. Sur les plateformes Unix ce fichier est placé dans votre répertoire &quot;Home&quot;. Sous Windows ce fichier il est généralement dans &quot;C:\&quot;.</para>
+
+</sect3>
+
+<sect3>
+
+<title>Internationalisation</title>
+
+<para>A partir de la version 0.0.5, Sailcut CAD est internationalisé. La traduction des interfaces utilisateur est disponibles dans plusieurs languages. Au démarrage Sailcut utilise la langue correspondante à vos paramètres locaux. Vous pouvez changer la langue en utilisant le menu Vue &gt;Langue.</para>
+
+</sect3>
+
+</sect2>
+
+</sect1>
+
+<sect1 id="s.creating">
+
+<title>Créer une voile</title>
+
+<para>Au lancement Sailcut CAD vous présente une voile par défaut. En haut de la fenêtre vous trouverez une série de menus déroulant. Le menu Fichier est utilisé pour le chargement d&apos;une voile existante, la sauvegarde des données et paramètres de la voile et l&apos;export des panneaux développés.</para>
+
+<para>Vous pouvez changer les dimensions de la voile à partir du menu déroulant Vue-&gt;Dimensions.</para>
+
+<para>Vous pouvez modifier le profil de la voile à partir du menu déroulant Vue-&gt;Moule.</para>
+
+<para>Vous pouvez visualiser plusieurs voiles sur le même gréement à partir du menu déroulant Vue-&gt;Gréement.</para>
+
+<sect2>
+
+<title>Dimensions de la voile (menu Vue-&gt;Dimensions)</title>
+
+<para>Le programme est concu pour traiter les voiles triangulaires et quadrangulaires. Une voile triangulaire peut être vue comme une voile quadrangulaire dont le coté haut est très petit. La surface de la voile est générée à partir d&apos;un jeu d&apos;équations qui défini le profil de la voile à toutes les hauteurs. Ces profils reposent sur les bords de la voile qui sont eux même définis par leur longueur et le rond de ces bords, ainsi que par le vrillage de la voile. L&apos;écran &quot;Dimensions&quot; est partagé en zones regroupant les divers paramètres de la voile.</para>
+
+<para>Utilisez le bouton &quot;Calcul&quot; pour calculer et afficher des données auxiliaire. Cette opération peut changer la couleur de certaines zones de saisie. Si la couleur est rouge c&apos;est que la valeur est trop forte et jaune si elle est trop faible et la valeur elle même sera changée pour être à la limite acceptable.</para>
+
+<para>Lorsque vous avez fini d&apos;entrer les données pressez le bouton OK pour afficher la voile en 3D.</para>
+
+</sect2>
+
+<sect2>
+
+<title>Moule de la voile (menu Vue-&gt;Moule)</title>
+
+<para>La profondeur et la forme de la voile peut être saisie par trois profiles situés au niveau de la bordure, au milieu (la position verticale du creux maximum peut être ajustée) et en haut de la voile. </para>
+
+<para>La position du creux maximum de chaque profile est indiqué en dessous de la valeur du creux. Cette position dépend des coefficients de forme du guindant et de la chute, elle est exprimé par rapport à la corde de ce profile. Par exemple: 0.34 veut dire que le creux maximum du profile est situé à 34% de la corde en partant du guindant.</para>
+
+<para>La forme du profile coté guidant et coté chute peuvent être modifiés seulement pour les profiles mileiu et haut. La bordure est toujours un arc de cercle.</para>
+
+<para>Sous les coefficients de forme du guidant et de la chute, les valeurs correspondantes de l&apos;angle d&apos;entrée et de sortie du profile sont affichées en degrés. Ces angles sont rapportés à la corde du profile. Pour obtenir l&apos;angle d&apos;entrée ou de sortie du profile par rapport à l&apos;axe du bateau il faut y ajouter l&apos;angle de vrillage du profile et l&apos;angle de tire de la voile.</para>
+
+<para>La position verticale du creux maximum de la voile peut être ajusté par le curseur vertical situé à la droite du panneau vertical.</para>
+
+<para>Afin d&apos;éviter que le haut de la voile ne se referme trop quand le vent augmente, il est recommandé de donner un coefficient de forme du guindant qui augmente avec la hauteur du profile et que par contre, le coefficient de forme de la chute diminue avec la hauteur du profile.</para>
+
+</sect2>
+
+<sect2>
+
+<title>Vue du Gréement (menu Vue-&gt;Gréement)</title>
+
+<para>Cette fenêtre permet de visualiser plusieurs voiles sur le même gréement. </para>
+<para>TODO</para>
+
+</sect2>
+
+<sect2>
+
+<title>Controle des vues</title>
+
+<para>Il est possible de faire un zoom, déplacer (pan) ou tourner les voiles dans une zone d'affichage graphique:</para>
+
+<itemizedlist>
+
+<listitem>
+
+<para><emphasis>Rotation</emphasis> : Vous pouvez tourner la voile en azimuth et élévation avec les curseurs situés au bord du panneau d&apos;affichage.</para>
+
+</listitem>
+
+<listitem>
+
+<para><emphasis>Pan</emphasis> : Cliquez sur un point de la voile pour le dépacer au centre de la zone d&apos;affichage graphique.</para>
+
+</listitem>
+
+<listitem>
+
+<para><emphasis>Zoom</emphasis>: Utilisez les touches CTRL + pour agrandir la vue et CTRL - pour la réduire. Vous pouvez aussi utiliser la molette de la souris pour ces fonctions de zoom avant et arrière.</para>
+
+</listitem>
+
+</itemizedlist>
+
+</sect2>
+
+<sect2>
+
+<title>Développement des laizes</title>
+
+<para>Le développement de la voile s&apos;affiche en cliquant sur l&apos;onglet &quot;Développement&quot; de la fenêtre principale de Sailcut CAD. Les fonctions de controle de la vue sont les mêmes que pour la vue 3D. Les lignes bleues représentent les ligne de tracé des laizes et les ligne rouges les lignes de découpe prenant en compte les marges de couture.</para>
+
+<para>Vous pouvez exporter les points qui définissent les lignes de tracé et de découpe des laizes aux formats suivants:</para>
+
+<itemizedlist>
+
+<listitem>
+
+<para>Carlson Design plotter (.sp4) avec Fichier-&gt;Export developpement-&gt; Carlson plotter </para>
+
+</listitem>
+
+<listitem>
+
+<para>AutoCAD DXF avec Fichier-&gt;Export developpement-&gt; DXF </para>
+
+</listitem>
+
+<listitem>
+
+<para>XML de toutes les laizes avec Fichier-&gt;Export developpement-&gt; XML sail (voir <xref linkend="s.format_xml_sail"/> pour les détails du format du fichier) </para>
+
+</listitem>
+
+<listitem>
+
+<para>Texte au format ASCII de toutes les laizes avec Fichier-&gt;Export developpement-&gt; TXT voile (voir <xref linkend="s.format_text_flat"/> pour les détails du format du fichier) </para>
+
+</listitem>
+
+</itemizedlist>
+
+</sect2>
+
+<sect2>
+
+<title>Charger / sauver les voiles</title>
+
+<para>Dès que vous avez créé une voile, vous pouvez la sauvegarder dans un fichier (Fichier-&gt;Sauver or Fichier-&gt;Sauver en) puis la recharger (Fichier-&gt;Ouvrir) la prochaine fois que vous voulez la re-travailler. Les dimensions de la voile et la forme du moule sont sauvegardés simultanément. Ceci permet de recharger une voile et reutiliser son moule même si les dimensions de la voile sont changées.</para>
+
+<para>Sailcut CAD cré des fichier XML pour sauvegarder les voiles. Ces fichiers peuvent être lus avec n'importe quel éditeur de texte.</para>
+
+</sect2>
+
+<sect2>
+
+<title>Exporter les voiles 3D</title>
+
+<para>En plus d'exporter les fichiers des caractéristiques des voiles comme ci-dessus, il est possible d'exporter les points 3D situés sur les bords et les coutures de la voile. Ceci peut être fait dans les formats suivants:</para>
+
+<itemizedlist>
+
+<listitem>
+
+<para>AutoCAD DXF avec Fichier-&gt;Export 3D sail-&gt; DXF </para>
+
+</listitem>
+
+<listitem>
+
+<para>AutoCAD DXF avec Fichier-&gt;Export 3D sail-&gt; DXF BLOCKS</para>
+
+</listitem>
+
+<listitem>
+
+<para>XML avec Fichier-&gt;Export 3D sail-&gt; voile XML (voir <xref linkend="s.format_xml_sail"/> pour les détails du format du fichier)</para>
+
+</listitem>
+
+<listitem>
+
+<para>Texte ASCII ordinaire avec Fichier-&gt;Export 3D sail-&gt; voile TXT (voir <xref linkend="s.format_text_sail"/> pour les détails du format du fichier)</para>
+
+</listitem>
+
+</itemizedlist>
+
+</sect2>
+
+<sect2>
+
+<title>Imprimer les données et dessins</title>
+
+<para>Le menu Fichier offre plusieurs possibilités d'impression:</para>
+
+<itemizedlist>
+
+<listitem>
+
+<para>Fichier-&gt;Imprimer-&gt;donnés, imprimera les cacartéristiques de la voile </para>
+
+</listitem>
+
+<listitem>
+
+<para>Fichier-&gt;Imprimer-&gt;dessin, imprimera un dessin de la voile complète </para>
+
+</listitem>
+
+<listitem>
+
+<para>Fichier-&gt;Imprimer-&gt;developpement, imprimera le dessin d'une laize développée par page avec les coordonnées des points clés sur les bords. La définition des coordonnées des points clés est donnée dans <xref linkend="fig.develop_panel_drawing"/>. Les coordonnées  X,Y sont référencées au coin en bas à gauche du rectangle qui enveloppe la ligne de coupe de la laize. Les coordonnées dX,dY sont référencées à la ligne droite qui joint les extrémités du bord concerné. Le point dX = 0 (origine) est à l&apos;extrémité gauche du bord et les points avec des valeurs dY positives sont situés à gauche de la ligne droite joignant l&apos;origine (dX = 0) à l'autre extrémité du bord concerné en partant de l&apos;origine du bord. </para>
+
+</listitem>
+
+</itemizedlist>
+
+<para>Le facteur d&apos;échelle d'impression est tel que le dessin de la voile et de la laize la plus grande logent sur une page. Pour imprimer les laizes à échelle 1 ou autre, il est préferrable d'exporter la voile au format DXF et d'utiliser un logicile de CAO pour piloter l'impression. </para>
+
+<para>
+
+<figure id="fig.develop_panel_drawing">
+
+<title>Dessin des laizes développées </title>
+
+<mediaobject>
+<imageobject role="html"> 
+<imagedata fileref="develop_panel_drawing.png" format="PNG"/>
+</imageobject>
+<imageobject role="pdf"> 
+<imagedata fileref="develop_panel_drawing.pdf" format="PDF"/>
+</imageobject> 
+</mediaobject> 
+
+</figure>
+
+</para>
+
+</sect2>
+
+</sect1>
+
+<sect1 id="s.surface">
+
+<title>Modélisation de la surface des voiles dans Sailcut</title>
+
+<para>Papier présenté par Robert Lainé au 2ème Workshop Science Voile IRENAV à Brest, France, le 21 mai 2004</para>
+
+<sect2>
+
+<title>Historique</title>
+
+<para>Le logiciel de coupe de voile Sailcut a été développé initialement en 1978 en Basic sur un calculateur disposant d&apos;un écran avec une ligne de texte, une petite imprimante à 32 colonnes et seulement 1.6 ko de mémoire vive. D&apos;où la nécessité de faire simple pour modéliser la surface des voiles que je fabriquais et utilisais sur mon ¼ ton IOR.</para>
+
+<para>Ce cycle court &quot;conception=&gt;fabrication=&gt;utilisation=&gt;correction&quot; sans contrainte commerciale d&apos;adaptation aux habitudes de travail des voileries m&apos;a permis de converger rapidement sur une modélisation compacte et robuste de la surface des voiles. Plus tard l&apos;utilisation de Sailcut par des voileries a contribué à l&apos;ajout d&apos;interfaces graphiques au noyau Sailcut mais ceci est une autre histoire... Depuis 1993 la version Visual Basic de Sailcut est disponible sur Internet à <ulink url="http://www.sailcut.com/"/> et depuis 2003, le code source de Sailcut récrit en C++ est disponible à <ulink url="http://sailcut.sourceforge.net/"/>. Pour des raisons de protection de la propriété intellectuelle, le nom Sailcut est déposé mais l&apos;auteur maintient l&apos;accès libre et gratuit au logiciel Sailcut.</para>
+
+</sect2>
+
+<sect2>
+
+<title>Problématique de la définition de la surface d&apos;une voile</title>
+
+<para>Une voile est une surface complexe que les voileries définissaient historiquement par des notions telles que le creux à différentes hauteurs et la position du creux maximum sur la corde locale. Cette manière de définir la voile par des points de contrôle permet de faire facilement une corrélation visuelle entre le modèle et la voile réelle sur le bateau. Malheureusement par quelques points peuvent passer un grand nombre de surfaces plus ou moins bosselées. Ensuite des notions telles que la pente au bord d&apos;attaque et au bord de fuite furent introduites pour améliorer le contrôle du maître voilier sur la forme du profil de la voile. Ces méthodes menaient à des calculs d&apos;interpolation assez lourds pour trouver le creux en tous points d&apos;une voile, calculs dépassant la capacité des calculateurs personnels d&apos;antan.</para>
+
+<para>Dès le début de mes activités sportives en voile, je me suis intéressé à l&apos;aérodynamique de la voile. La lecture du livre &quot;Theory of wings sections&quot; m&apos;a convaincu que ce qui comptait le plus dans la qualité d&apos;un profil était la répartition de la courbure le long du profil. La définition d&apos;un profil par son creux maximum, la position du creux et des segments de fonctions quadratiques ou cubiques me semblait suspecte. Plutôt que de chercher à reproduire des voiles existantes, j&apos;ai cherché à produire une loi de courbure raisonnablement aérodynamique sur toute la surface de la voile. La première approche a été de modéliser directement la courbure mais cela nécessitait de traiter simultanément les dérivées premières et secondes en tous points et donc trop de calculs pour mon petit ordinateur. Navigant à l&apos;époque en mer du Nord dans des conditions assez musclées pour mon ¼ ton, un de mes objectifs était d&apos;obtenir une forme de profil ayant un pic de pression avancé pour combattre la tendance du creux à reculer quand le vent augmente. J&apos;ai finalement choisi une équation définissant la dérivée seconde du profil et me donnant une évolution continue de celle-ci et contrôlée par seulement deux paramètres.</para>
+
+<para>Le système de coordonnées choisi est tel que le plan X-Y contient le point d&apos;amure, le point d&apos;écoute et la tête du guindant. L&apos;axe X est horizontal du point d&apos;amure vers le point d&apos;écoute, l&apos;axe Y est vertical vers le haut et l&apos;axe Z transverse au plan X-Y. Les profils sont définis comme l&apos;intersection de la surface de la voile avec un plan horizontal Y-Z. Le Z d&apos;un point d&apos;un profil donné est donc une fonction de l&apos;abscisse X normalisée par rapport à la longueur de la corde locale comme montré dans <xref linkend="fig.coordinates_system"/>.</para>
+
+<para>
+
+<figure id="fig.coordinates_system">
+
+<title>Système de coordonnées de Sailcut</title>
+
+<mediaobject>
+<imageobject role="html">
+<imagedata fileref="coordinates_system.png" format="PNG"/>
+</imageobject>
+<imageobject role="pdf">
+<imagedata fileref="coordinates_system.pdf" format="PDF"/>
+</imageobject>
+</mediaobject>
+
+</figure>
+
+</para>
+
+<para>L&apos;équation retenue pour décrire la dérivée seconde du profil est:</para>
+
+<programlisting>Z&apos;&apos; = K * ( -A * (1 - X)^AV - AR * X)</programlisting> <para>Ce qui donne par intégration la pente du profil :</para>
+
+<programlisting>Z&apos; = K * ( A * (1 - X)^(AV + 1) / (AV +1) - AR/2 * X^2 + C )</programlisting> <para>Et enfin le profil après une seconde intégration :</para>
+
+<programlisting>Z = K * ( -A * (1 - X)^(AV + 2) / (( AV + 2) * (AV +1)) - AR/6 * X^3 + C * X + B )</programlisting> <para>Pour satisfaire les conditions (X=0, Z=0) et (X=1, Z=0) on prend :</para>
+
+<programlisting>B = A / ((AV + 2) * (AV + 1))
+C = AR / 6 - B</programlisting> <para>Le maximum de Z est trouvé quand Z&apos; = 0, ce qui permet ensuite de calculer K pour que ce Z maximum soit celui souhaité (creux du profil).</para>
+
+<para>Les coefficients AV et AR donnent une mesure de la courbure au bord d&apos;attaque et au bord de fuite. Avec le creux maximum, ces deux coefficients suffisent pour décrire le profil de la voile à toutes les hauteurs.</para>
+
+<para>Le coefficient A définit différentes familles de profils avec un bord d&apos;attaque plus ou moins rond. En pratique A = 1 donne de bons profils pour toutes les voiles navigant dans des conditions de vent moyen ou faible. Personnellement je préfère avoir un bord d&apos;attaque plus plein et j&apos;utilise A = 1 + AV / 4. Ce coefficient est celui utilisé dans le code de Sailcut et il donne des voiles polyvalentes.</para>
+
+<para>Le tableau ci dessous donne un exemple de profil obtenu avec la formulation ci dessus.</para>
+
+<programlisting>AV = 5.00
+AR = 0.02
+K = 2.94
+A = 2.25
+B = 0.054
+C =-0.050
+curvature = z&quot; / (1+ z&apos;*z&apos;)^3/2</programlisting> <para>
+
+<informaltable>
+
+<tgroup cols="5" colsep="1" rowsep="1">
+
+<colspec align="center" colname="col0"/> <colspec align="center" colname="col1"/> <colspec align="center" colname="col2"/> <colspec align="center" colname="col3"/> <colspec align="center" colname="col4"/> <tbody>
+
+<row><entry align="center" valign="top"><para>x</para></entry><entry align="center" valign="top"><para>z&quot;</para></entry> <entry align="center" valign="top"><para>z&apos;</para></entry> <entry align="center" valign="top"><para>z</para></entry> <entry align="center" valign="top"><para>curvature</para></entry></row>
+
+<row><entry align="center" valign="top"><para>0.0</para></entry> <entry align="center" valign="top"><para>-6.615</para></entry> <entry align="center" valign="top"><para>0.955</para></entry> <entry align="center" valign="top"><para>0.00</para></entry> <entry align="center" valign="top"><para>-2.503</para></entry></row>
+
+<row><entry align="center" valign="top"><para>0.1</para></entry> <entry align="center" valign="top"><para>-3.912</para></entry> <entry align="center" valign="top"><para>0.438</para></entry> <entry align="center" valign="top"><para>0.0674</para></entry> <entry align="center" valign="top"><para>-3.007</para></entry></row>
+
+<row><entry align="center" valign="top"><para>0.2</para></entry> <entry align="center" valign="top"><para>-2.179</para></entry> <entry align="center" valign="top"><para>0.140</para></entry> <entry align="center" valign="top"><para>0.0949</para></entry> <entry align="center" valign="top"><para>-2.117</para></entry></row>
+
+<row><entry align="center" valign="top"><para>0.3</para></entry> <entry align="center" valign="top"><para>-1.129</para></entry> <entry align="center" valign="top"><para>-0.021</para></entry> <entry align="center" valign="top"><para>0.100</para></entry> <entry align="center" valign="top"><para>-1.129</para></entry></row>
+
+<row><entry align="center" valign="top"><para>0.4</para></entry> <entry align="center" valign="top"><para>-0.538</para></entry> <entry align="center" valign="top"><para>-0.101</para></entry> <entry align="center" valign="top"><para>0.0934</para></entry> <entry align="center" valign="top"><para>-0.530</para></entry></row>
+
+<row><entry align="center" valign="top"><para>0.5</para></entry> <entry align="center" valign="top"><para>-0.236</para></entry> <entry align="center" valign="top"><para>-0.138</para></entry> <entry align="center" valign="top"><para>0.0812</para></entry> <entry align="center" valign="top"><para>-0.230</para></entry></row>
+
+<row><entry align="center" valign="top"><para>0.6</para></entry> <entry align="center" valign="top"><para>-0.103</para></entry> <entry align="center" valign="top"><para>-0.154</para></entry> <entry align="center" valign="top"><para>0.0665</para></entry> <entry align="center" valign="top"><para>-0.099</para></entry></row>
+
+<row><entry align="center" valign="top"><para>0.7</para></entry> <entry align="center" valign="top"><para>-0.057</para></entry> <entry align="center" valign="top"><para>-0.161</para></entry> <entry align="center" valign="top"><para>0.0507</para></entry> <entry align="center" valign="top"><para>-0.055</para></entry></row>
+
+<row><entry align="center" valign="top"><para>0.8</para></entry> <entry align="center" valign="top"><para>-0.049</para></entry> <entry align="center" valign="top"><para>-0.166</para></entry> <entry align="center" valign="top"><para>0.0343</para></entry> <entry align="center" valign="top"><para>-0.047</para></entry></row>
+
+<row><entry align="center" valign="top"><para>0.9</para></entry> <entry align="center" valign="top"><para>-0.053</para></entry> <entry align="center" valign="top"><para>-0.172</para></entry> <entry align="center" valign="top"><para>0.0174</para></entry> <entry align="center" valign="top"><para>-0.051</para></entry></row>
+
+<row><entry align="center" valign="top"><para>1.0</para></entry> <entry align="center" valign="top"><para>-0.059</para></entry> <entry align="center" valign="top"><para>-0.177</para></entry> <entry align="center" valign="top"><para>0.00</para></entry> <entry align="center" valign="top"><para>-0.056</para></entry></row>
+
+</tbody>
+
+</tgroup>
+
+</informaltable>
+
+</para>
+
+<para>Ayant défini une formulation simple pour les profils, il suffit de faire varier les valeurs du creux et des coefficients AV et AR en fonction de la hauteur du profil dans la voile. Pour la bordure qui est un arc de cercle, les coefficients AV et AR sont nuls et seul le creux est défini par l&apos;utilisateur. Un profil dit de creux maximum est positionné autour de la ½ hauteur de la voile et les valeurs de AV et AR sont ajustées par l&apos;utilisateur pour obtenir la forme désirée. Le profil haut de la voile est défini de la même manière. Pour tout autre profil intermédiaire la valeur du creux est interpolée par une fonction parabolique et la valeur des coefficients AV et AR est interpolée linéairement entre celles des profils de référence.</para>
+
+<para>Au total on utilise 3 valeurs de creux, la position verticale du creux maximum, et 2 paires de coefficients (AV,AR) pour définir le moule de la voile.</para>
+
+<para>Notez que dans le logiciel Sailcut, la valeur affichée pour le coefficiend de forme du guidant est directement le coefficient AV alors que pour la chute la valeur affichée est 50 fois le coefficient AV des équations ci-dessus, ceci afin que les utilisateurs travaillent avec des chiffres plus simples que des valeurs à la deuxième ou troisième décimales.</para>
+
+<sect3>
+
+<title>Autres aspects de la modélisation</title>
+
+<para>Le moule ci dessus ne suffit pas pour faire une vraie voile. En effet les bords d&apos;une voile sont rarement droits et de plus la voile présente un certain vrillage des profils entre le haut et le bas. Pour définir la forme des bords j&apos;utilise maintenant une formulation avec un point représentant le rond maximum du bord, c&apos;est à dire l&apos;écart maximum du bord réel par rapport à la ligne droite joignant les coins adjacents, et deux arcs de parabole qui joignent le point de rond maximum aux coins de la voile. Les profils s&apos;appuient sur ces bords de la voile. Le vrillage de la voile est obtenu par une rotation des profils autour de leur extrémité coté guindant. L&apos;angle de rotation est proportionnel à la hauteur du profil.</para>
+
+<para>Il est à noter que cette méthode de modélisation de la surface des voiles permet de construire une voile ayant une forme sans bosses ou méplats, ni possibilité d&apos;inversion de cambrure des profils, ceci avec peu de paramètres et des calculs simples. La méthode est applicable aussi bien aux voiles triangulaires qu&apos;aux voiles à quatre cotés et Sailcut est utilisé régulièrement pour des vieux gréements.</para>
+
+</sect3>
+
+</sect2>
+
+</sect1>
+
+<sect1 id="s.moreinfo">
+
+<title>Plus d'informations sur Sailcut CAD</title>
+
+<para>TODO</para>
+
+</sect1>
+
+<sect1 id="s.formats">
+
+<title>Formats de fichiers de Sailcut CAD</title>
+
+<sect2 id="s.format_text_flat">
+
+<title>Text representation of developed sail</title>
+
+<para>TODO</para>
+
+</sect2>
+
+<sect2 id="s.format_text_sail">
+
+<title>Text representation of 3D sail</title>
+
+<para>TODO</para>
+
+</sect2>
+
+<sect2 id="s.format_xml_sail">
+
+<title>XML representation of a sail</title>
+
+</sect2>
+
+</sect1>
+
+<sect1 id="s.copyright">
+
+<title>Copyright</title>
+
+<para>Copyright (C) 1993-2006 Robert &amp; Jeremy Lainé.</para>
+
+<para>Sailcut est une marque déposée par Robert Lainé.</para>
+
+<para>Ce logiciel est libre; vous pouvez le redistribuer et le modifier selon les termes de la licence GNU General Public Licence telle que publiée par la Free Software Fondation version 2 ou autre version plus récente. Voyez <ulink url="http://www.fsf.org/"/> pour les termes de cette licence.</para>
+
+<para>Ce logiciel est distribué avec l&apos;éspoir qu&apos;il vous soit utile mais SANS AUCUNE GARANTIE même implicite quand son utilisation. Voyez les termes de la licence GNU pour plus de détail.</para>
+
+<para>Vous devriez avoir une copie de la licence GNU General Public Licence avec ce logiciel, si ce n&apos;est pas le cas demandez la à Free Software Fondation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.</para>
+
+<remark>Les auteurs apprécieraient que les publications sur des voiles conçues avec Sailcut comportent une reconnaissance de leur travail. Merci par avance.</remark> </sect1>
+
+</article>
+
