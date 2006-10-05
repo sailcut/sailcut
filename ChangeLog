@@ -1,0 +1,133 @@
+Sailcut CAD 1.2.3
+  * added - position of max depth, entry and exit angles in mould screen
+  * improved - extend range of sails dimensions and round limits
+
+Sailcut CAD 1.2.2
+ * improved - better layout of coordinates in print developed panels
+ * fixed - fix bug on Jib tack height 
+
+Sailcut CAD 1.2.1
+ * improved - increased range of luff and leech shape factor
+ * fixed - fix bug reported by Rob Harms and cleaned up add hems code
+ * added - add a deck to the sail display
+ * improved - make printing of sail drawing consistent with viewer
+ * fixed - fix the display of the 'language' menu entries
+ * fixed - vertical slider of mould inverted
+ * added - add draft French and Spanish versions of the Handbook
+
+Sailcut CAD 1.2.0
+ * added - key points coordinates in printout of developed panels
+           similar to Sailcut4
+ * added - a drawing describing the radial cut layout in handbook
+ * added - a descrition of developed panel drawing in handbook
+ * added - a description of TXT file formats in the Handbook
+ * improved - switch to Qt version 4
+ * improved - better handling of non-ASCII characters
+ * improved - use icon for Sailcut CAD window
+ * fixed - correct "Open recent" characterset issue report by Miguel
+ * fixed - correct bug with radial luff gore number
+
+Sailcut CAD 1.1.1
+ * fixed - correct VC++ project files in source distribution
+ * improved - update Dutch translation (thanks Stephan)
+ * improved - update Norwegian translation (thanks Rolf)
+ * improved - update Danish translation (thanks Lasse)
+ * improved - update Portuguese translation (thanks Miguel)
+ * improved - update Russian translation (thanks Slava)
+ * added - document compilation instructions for MacOS/X
+ * added - icons for Sailcut CAD and its files (thanks Stephan)
+
+Sailcut CAD 1.1
+ * added - Russian translation (thanks Slava)
+ * added - wing style of sail for kites (half a kite is displayed)
+ * added - various sail width data displayed when pressing "Compute" button
+ * improved - add support for per-language Handbook
+ * improved - auto-redimension profile views in mould window
+ * added - Danish translation (thanks Peo)
+
+Sailcut CAD 1.0
+ * added - printing of sail data sheet
+ * added - print of developed sail
+ * added - Portugese translation (thanks Miguel)
+ * improved - updated translations
+
+Sailcut CAD 0.8.0
+ * improved - better checks on input data
+ * added - radial cut code 
+ * added - calculation of sail area and of diagonal head-clew
+
+Sailcut CAD 0.7.0
+ * improved - use a tabbed view in the main window
+ * added - wireframe view even when OpenGL is enabled
+ * added - Carlson plotter export of developed panels
+ * added - preliminary rig viewer
+ * added - user preferences are stored to file
+ * added - most recently used file list
+ * improved - different file extension for each file type
+ * added - labels for the sail panels
+ * fixed - compiles with Qt 3.3
+
+Sailcut CAD 0.6.1
+ * added checks on sail dimensions
+ * improved sail mould equations for racing users
+ * fixed compilation/linking problems reported by Torsten Eberhardt
+ * fixed compilation issues on MacOS/X
+ * added Norwegian translation (takk Stein)
+ * added German translation (danke Heinz)
+ * improved the Sailcut CAD Handbook with explanatory figures
+ * added m4 routine to find lrelease and lupdate
+
+Sailcut CAD 0.6.0
+ * seam width is now operational
+ * added facility for hem width around sail edges
+   the leech hem width is twice the hem width on other sides
+ * development screen shows the above material allowance
+ * DXF of developed panel show draw line in blue and cut line in red
+ * cross, twist, horizontal, vertical and mitre cut are all working
+ * added Dutch translation (bedankt Stephan!)
+ * added Italian translation (thanks to Massimo)
+
+Sailcut CAD 0.5.5
+ * big performance gains (4x for sail creation)
+ * internationalisation support
+ * added horizontal layout
+ * added DXF export
+ * added viewer for the Handbook
+
+Sailcut CAD 0.5.0
+ * updated admin/* (KDE build system)
+ * added export of developped panels to file
+ * added plaintext export of sails
+ * added basic twist foot layout
+ * finished mould view
+ * fixed various GUI glitchs (overlapping widgets)
+ * fixed some some GCC warnings
+ * fixed some bugs in the gaff area
+
+Sailcut CAD 0.4.0
+ * added flat panel development
+ * added doxygen comments to the code
+
+Sailcut CAD 0.3.10
+ * added twist to the surface of the sail
+ * added zoom in/out buttons
+ * added OpenGL shading
+
+Sailcut CAD 0.3.9
+ * added pan and zoom
+ * added OpenGL rendering support
+ * fixed "breaks" in the depth calculations
+ * all panels now follow the curved sides of the sail
+
+Sailcut CAD 0.3.8
+ * depth calculation for the sail points
+ * sail mould gets saved and read from file
+
+Sailcut CAD 0.3.6
+ * XML file input/output of sail definition
+ * XML output of sail points
+ * updated docs
+
+Sailcut CAD 0.3
+ * simple flat cross-cut layout
+

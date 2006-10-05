@@ -1,0 +1,43 @@
+##### Win32 distribution generation #####
+
+UNIX2DOS = unix2dos
+MINGW = i586-mingw32msvc
+STRIP = $(MINGW)-strip
+QTDIR=/usr/local/$(MINGW)/qt4
+
+VERSION := $(shell cat configure.in | grep AM_INIT_AUTOMAKE | sed -e 's/.*,\([0-9a-zA-Z\.]*\).*/\1/')
+BIN_DOCS = README README.win32 COPYING ChangeLog
+
+win32_configure= ../configure
+win32_builddir = win32-build
+win32_distdir = sailcut-$(VERSION)_win32
+
+win32-dist: win32-bin win32-clean
+
+win32-build-stamp:
+	mkdir -p $(win32_builddir)
+	cd $(win32_builddir) && \
+	  $(win32_configure) \
+	    --host=$(MINGW) \
+	    --with-qt-dir=$(QTDIR) \
+	    --with-datadir=data \
+	    --with-docdir=doc
+	make -C $(win32_builddir)
+	touch $@
+
+win32-bin: win32-build-stamp
+	@echo; echo "## Building win32 binary package ##"; echo
+	rm -rf $(win32_distdir) $(win32_distdir).zip
+	mkdir -p $(win32_distdir)
+	for i in $(BIN_DOCS); do \
+	  cp $$i $(win32_distdir); \
+	  $(UNIX2DOS) $(win32_distdir)/$$i; \
+	done
+	make -C $(win32_builddir) DESTDIR=$(shell pwd)/$(win32_distdir)/ bindir=. pixmapsdir=icons install
+	$(STRIP) $(win32_distdir)/sailcut.exe
+	zip -r $(win32_distdir).zip $(win32_distdir)
+
+win32-clean:
+	rm -rf $(win32_distdir) $(win32_builddir) win32-build-stamp
+	
+.PHONY: win32-dist win32-clean win32-bin

@@ -1,0 +1,647 @@
+#LyX 1.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 221
+\textclass article
+\language french
+\inputencoding auto
+\fontscheme pslatex
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+
+\layout Title
+
+Algèbre linéaire pour Sailcut CAD
+\layout Standard
+
+Les caractères en gras comme 
+\begin_inset Formula $\mathbf{AB}$
+\end_inset 
+
+ ou 
+\begin_inset Formula $\mathbf{x}$
+\end_inset 
+
+ représentent des vecteurs ou des points tel que 
+\series bold 
+p1
+\series default 
+.
+\layout Section
+
+CSubSpace (des sous-espaces vectoriels de l'espace)
+\layout Standard
+
+Ces sous-espaces peuvent être définis soit par une base de vecteurs, soit
+ par des équations.
+ La base de vecteurs semble etre ce qui est le plus facile à imaginer.
+ Cependant, il y a une interprétation tout à fait géométrique des équations
+ dy type : 
+\layout Standard
+
+a*x + b*y + c*z = 0
+\layout Standard
+
+Le vecteur (a,b,c) et le vecteur (x,y,z) doivent avoir un produit scalaire
+ nul, ce qui signifie tout simplement que (a,b,c) et (x,y,z) sont orthogonaux.
+ Ainsi, donner les équations (indépendantes) qui définissent un sous-espace
+ (droite, plan, etc..), c'est simplement donner une base de vecteurs qui sont
+ orthogonaux à ce sous-espace.
+\layout Subsection
+
+Opérations vectorielles élémentaires
+\layout Standard
+
+Si on a deux vecteurs 
+\series bold 
+v1
+\series default 
+ et 
+\series bold 
+v2
+\series default 
+ et deux points 
+\series bold 
+p1
+\series default 
+ et 
+\series bold 
+p2
+\series default 
+: 
+\layout Itemize
+
+
+\series bold 
+v1
+\series default 
+.norm() donne la norme (longueur) du vecteur 
+\series bold 
+v1
+\series default 
+ 
+\layout Itemize
+
+CVector3d(
+\series bold 
+v1
+\series default 
+).unit(); donne le vecteur unitaire du vecteur 
+\series bold 
+v1
+\layout Itemize
+
+CVector3d(
+\series bold 
+p2
+\series default 
+-
+\series bold 
+p1
+\series default 
+).norm() donne la distance du point 
+\series bold 
+p1
+\series default 
+ au point 
+\series bold 
+p2
+\layout Itemize
+
+Produit scalaire de 2 vecteurs s'écrit
+\series bold 
+ v1
+\series default 
+ * 
+\series bold 
+v2
+\series default 
+ = |
+\series bold 
+v1
+\series default 
+| * |
+\series bold 
+v2
+\series default 
+|*cos(
+\series bold 
+v1
+\series default 
+,
+\series bold 
+v2
+\series default 
+)
+\layout Subsection
+
+Déplacement de points
+\layout Itemize
+
+point 
+\series bold 
+p2
+\series default 
+ défini comme étant le point 
+\series bold 
+p1
+\series default 
+ avec une translation d'un vecteur 
+\series bold 
+v1
+\series default 
+ : 
+\layout Quotation
+
+
+\series bold 
+p2
+\series default 
+ = 
+\series bold 
+p1
+\series default 
+ + 
+\series bold 
+v
+\series default 
+1; 
+\layout Itemize
+
+point 
+\series bold 
+p2
+\series default 
+ défini comme étant le point 
+\series bold 
+p1
+\series default 
+ translaté de 
+\series bold 
+d
+\series default 
+ selon le vecteur unitaire 
+\series bold 
+x
+\series default 
+ :
+\layout Quotation
+
+
+\series bold 
+p2 
+\series default 
+=
+\series bold 
+ p1 
+\series default 
++
+\series bold 
+ x*d
+\series default 
+;
+\layout Itemize
+
+déplacer le point 
+\series bold 
+p1
+\series default 
+ de la distance 
+\series bold 
+d
+\series default 
+ dans la direction 
+\series bold 
+p1
+\series default 
+=>
+\series bold 
+p2
+\series default 
+ :
+\layout Quotation
+
+
+\series bold 
+p1
+\series default 
+ = 
+\series bold 
+p1
+\series default 
+ + CVector3d(
+\series bold 
+p2
+\series default 
+-
+\series bold 
+p1
+\series default 
+).unit() * 
+\series bold 
+d;
+\series default 
+ 
+\layout Section
+
+Distance d'un point à une droite
+\layout Subsection
+
+Démonstration
+\layout Standard
+
+Soit 
+\begin_inset Formula $\mathcal{D}$
+\end_inset 
+
+ la droite engendrée par le vecteur directeur unitaire 
+\begin_inset Formula $\mathbf{u}$
+\end_inset 
+
+ et passant par le point 
+\begin_inset Formula $B$
+\end_inset 
+
+ et soit 
+\begin_inset Formula $A$
+\end_inset 
+
+ un autre point.
+ Soit 
+\begin_inset Formula $H$
+\end_inset 
+
+ la projection orthogonale de 
+\begin_inset Formula $A$
+\end_inset 
+
+ sur 
+\begin_inset Formula $\mathcal{D}$
+\end_inset 
+
+.
+ On cherche à connaitre la distance du point 
+\begin_inset Formula $A$
+\end_inset 
+
+ à la droite 
+\begin_inset Formula $\mathcal{D}$
+\end_inset 
+
+ que l'on notera 
+\begin_inset Formula $d(A,\mathcal{D})$
+\end_inset 
+
+.
+\layout Standard
+
+D'après le théorème de Pythagore 
+\begin_inset Formula \[
+\left\Vert \mathbf{AB}\right\Vert ^{2}=\left\Vert \mathbf{AH}\right\Vert ^{2}+\left\Vert \mathbf{HB}\right\Vert ^{2}\]
+
+\end_inset 
+
+ ce qu'on peut également écrire
+\begin_inset Formula \[
+\left\Vert \mathbf{AH}\right\Vert ^{2}=\left\Vert \mathbf{AB}\right\Vert ^{2}-\left\Vert \mathbf{HB}\right\Vert ^{2}\]
+
+\end_inset 
+
+
+\layout Standard
+
+
+\begin_inset Formula $\left\Vert \mathbf{AH}\right\Vert ^{2}$
+\end_inset 
+
+ est le carré de la distance cherchée soit 
+\begin_inset Formula $d(A,\mathcal{D})^{2}$
+\end_inset 
+
+.
+ De plus, 
+\begin_inset Formula $\mathbf{HB}$
+\end_inset 
+
+représente la projection de 
+\begin_inset Formula $\mathbf{AB}$
+\end_inset 
+
+sur le vecteur 
+\begin_inset Formula $\mathbf{u}$
+\end_inset 
+
+ de telle sorte que 
+\begin_inset Formula \[
+\left\Vert \mathbf{HB}\right\Vert ^{2}=(\mathbf{\mathbf{AB}}.\mathbf{u})^{2}\]
+
+\end_inset 
+
+d'où
+\layout Standard
+
+
+\begin_inset Formula \[
+d(A,\mathcal{D})=\sqrt{\left\Vert \mathbf{AB}\right\Vert ^{2}-(\mathbf{AB}.\mathbf{u})^{2}}\]
+
+\end_inset 
+
+
+\layout Standard
+
+Si on dispose non pas d'un vecteur directeur unitaire mais d'un vecteur
+ directeur 
+\begin_inset Formula $\mathbf{x}$
+\end_inset 
+
+ de norme arbitraire non nulle, on peut écrire
+\layout Standard
+
+
+\begin_inset Formula \[
+d(A,\mathcal{D})=\sqrt{\left\Vert \mathbf{AB}\right\Vert ^{2}-\left(\frac{\mathbf{AB}.\mathbf{x}}{\left\Vert x\right\Vert }\right)^{2}}\]
+
+\end_inset 
+
+
+\layout Subsection
+
+Exemple de code utilisant GeoCpp
+\layout Quote
+
+
+\family typewriter 
+CPoint3d A(1,9,0);
+\newline 
+CPoint3d B(0,0,0);
+\newline 
+CVector3d x(2,1,0);
+\newline 
+CVector3d AB = CVector3d(B - A);
+\newline 
+
+\newline 
+// build unit vector
+\newline 
+CVector3d u = x.unit();
+\newline 
+
+\newline 
+// calculate distance
+\newline 
+real d = sqrt( (AB * AB) - (AB * u) * (AB * u) );
+\newline 
+
+\newline 
+// result is 7.602631
+\layout Section
+
+Rotations
+\layout Subsection
+
+rotation de vecteurs
+\layout Standard
+
+Le vecteur 
+\series bold 
+d
+\series default 
+ selon l'axe X se défini par : 
+\layout Quotation
+
+CVector3d 
+\series bold 
+v
+\series default 
+(d,0,0);
+\layout Paragraph
+
+
+\series medium 
+Pour faire tourner le vecteur 
+\series default 
+v
+\series medium 
+ de l'angle AA autour de l'axe 
+\series default 
+z
+\series medium 
+ (l'axe numéro "2") : 
+\layout Quotation
+
+
+\series bold 
+v
+\series medium 
+ = CMatrix::rot3d(2,AA) * 
+\series bold 
+v
+\series medium 
+;
+\layout Standard
+
+Le point 
+\series bold 
+p2
+\series default 
+ qui est à l'extrémité du vecteur 
+\series bold 
+v1
+\series default 
+ dont l'origine est 
+\series bold 
+p2
+\series default 
+ s'écrit alors : 
+\layout Quotation
+
+
+\series bold 
+p2
+\series default 
+ = 
+\series bold 
+p1
+\series default 
+ + 
+\series bold 
+v1
+\series default 
+;
+\layout Standard
+
+Si on n'a pas besoin de 
+\series bold 
+v
+\series default 
+ dans d'autres calculs, on fait tout en une ligne: 
+\layout Quotation
+
+
+\series bold 
+p2
+\series default 
+ = 
+\series bold 
+p1
+\series default 
+ + CMatrix::rot3d(2,AA) * CVector3d(d,0,0);
+\layout Subsection
+
+Matrice de rotation
+\layout Standard
+
+Pour définir la matrice en question connaissant l'angle de rotation ALPHA
+ autour de Z (axe 2): 
+\layout Quotation
+
+CMatrix m = CMatrix::rot3d(2,ALPHA);
+\layout Standard
+
+voir à http://dev.jerryweb.org/doxygen/sailcut/classCMatrix.html#d2
+\layout Subsection
+
+déplacement dans une direction perpendiculaire à un vecteur
+\layout Standard
+
+Le point 
+\series bold 
+p2
+\series default 
+ qui est le déplacement de l'extrémité 
+\series bold 
+p2
+\series default 
+ du vecteur 
+\series bold 
+v1
+\series default 
+ d'une valeur 
+\series bold 
+d
+\series default 
+ perpendiculaire (+PI/2) au vecteur 
+\series bold 
+v1
+\series default 
+.
+ On parle d'une rotation dans le plan du vecteur, après avoir vérifié que
+ 
+\series bold 
+v1
+\series default 
+ n'est pas le vecteur nul: 
+\layout Quotation
+
+
+\series bold 
+p2
+\series default 
+ = 
+\series bold 
+p2
+\series default 
+ 
+\series bold 
++ CMatrix::rot3d(2,PI/2) * v1 *(d/v1.norm());
+\layout Subsection
+
+Rotation d'un panneau
+\layout Standard
+
+Utiliser la fonction rotate pour tourner un panneau developpé : 
+\layout Quotation
+
+
+\series bold 
+flatpanel = flatpanel.rotate( ton_point, ta_matrice)
+\layout Section
+
+Intersection de 2 droites
+\layout Standard
+
+On connaît 2 droites définies par les points 
+\series bold 
+(L1,L2)
+\series default 
+ et 
+\series bold 
+(P1,P2)
+\series default 
+ et on cherche le point d'intersection de la droite 
+\series bold 
+(P1,P2)
+\series default 
+ avec la parallèle à 
+\series bold 
+(L1,L2)
+\series default 
+ située à la distance 
+\series bold 
+d1
+\series default 
+ de 
+\series bold 
+(L1,L2)
+\series default 
+ : 
+\layout Standard
+
+La solution ci-dessous est complètement générique, elle ne suppose pas que
+ le point P1 est sur (L1,L2).  On reprend le point 
+\series bold 
+p1b
+\series default 
+ calculé ci-dessus : 
+\layout Quote
+
+CSubSpace pp(p1b, CVector3d(p2-p1).matrix(), GEOCPP_FROM_BASE);
+\layout Quote
+
+CSubSpace ll(l1, CVector3d(l2-l1).matrix(), GEOCPP_FROM_BASE); 
+\layout Quote
+
+CSubSpace p = pp.intersect(ll); 
+\layout Standard
+
+Voilà..
+ il ne reste qu'à vérifier que la dimension de "p" est bien 0 (un point)
+ avec 
+\layout Quote
+
+p.getdim(); 
+\layout Standard
+
+et si c'est le cas, on extrait le point avec 
+\layout Quote
+
+p.getp();
+\layout Section
+
+Sites intéressants
+\layout Itemize
+
+Démonstration pratique du produit scalaire 
+\newline 
+
+\begin_inset LatexCommand \htmlurl{http://homeomath.imingo.net/scalaire.htm}
+
+\end_inset 
+
+
+\the_end

@@ -1,0 +1,79 @@
+# Original Author was Kalle@kde.org
+# I lifted it in some mater. (Stephan Kulow)
+# I used much code from Janos Farkas
+
+dnl Process this file with autoconf to produce a configure script.
+
+AC_INIT(acinclude.m4) dnl a source file from your sub dir
+
+dnl This is so we can use kde-common
+AC_CONFIG_AUX_DIR(admin)
+
+dnl This ksh/zsh feature conflicts with `cd blah ; pwd`
+unset CDPATH
+
+dnl Checking host/target/build systems, for make, install etc.
+AC_CANONICAL_SYSTEM 
+dnl Perform program name transformation
+AC_ARG_PROGRAM
+
+dnl Automake doc recommends to do this only here. (Janos)
+AM_INIT_AUTOMAKE(sailcut,1.2.3)
+
+dnl KDE_SET_PREFIX
+
+AC_PREFIX_DEFAULT(/usr/local)
+if test "x$prefix" = "xNONE"; then
+  prefix=$ac_default_prefix
+  ac_configure_args="$ac_configure_args --prefix $prefix"
+fi
+
+dnl generate the config header
+AM_CONFIG_HEADER(config.h) dnl at the distribution this done
+
+dnl Checks for programs.
+AC_PROG_CXX
+AC_ENABLE_SHARED(yes)
+AC_ENABLE_STATIC(no)
+AC_PROG_LIBTOOL
+AC_CHECK_PROG(FIG2DEV, fig2dev, fig2dev)
+AC_CHECK_PROG(PNGTOICO, png2ico, png2ico)
+AC_CHECK_PROG(PNGTOPNM, pngtopnm, pngtopnm)
+AC_CHECK_PROG(PPMTOXPM, ppmtoxpm, pngtoxpm)
+AC_CHECK_PROG(SODIPODI, sodipodi, sodipodi)
+AC_CHECK_PROG(XSLTPROC, xsltproc, xsltproc)
+AC_CHECK_PROG(PDFLATEX, pdflatex, pdflatex)
+
+dnl Enable exceptions support, make compiler verbose
+CXXFLAGS="$CXXFLAGS $USE_EXCEPTIONS -W -Wall" 
+
+dnl Check Qt stuff
+JWB_CHECK_QT(,AC_MSG_ERROR([Qt was not found!]))
+JWB_HAVE_QTXML(,AC_MSG_ERROR([QtXml was not found!]))
+
+dnl Check OpenGL support
+JWB_HAVE_QTOPENGL
+
+dnl Check data and documentation directories
+JWB_CHECK_DATADIR(sailcut)
+JWB_CHECK_DOCDIR(sailcut)
+
+dnl Disable console on Win32
+case "$host" in 
+  *-mingw32* )
+    LDFLAGS="-mwindows $LDFLAGS"
+    ;;
+esac
+
+dnl Produce output
+AC_CONFIG_FILES([ Doxyfile ])
+AC_CONFIG_FILES([ Makefile ])
+AC_CONFIG_FILES([ doc/Makefile ])
+AC_CONFIG_FILES([ doc/en/Makefile ])
+AC_CONFIG_FILES([ doc/es/Makefile ])
+AC_CONFIG_FILES([ doc/fr/Makefile ])
+AC_CONFIG_FILES([ icons/Makefile ])
+AC_CONFIG_FILES([ src/Makefile ])
+AC_CONFIG_FILES([ src/geocpp/Makefile ])
+AC_CONFIG_FILES([ src/ts/Makefile ])
+AC_OUTPUT
