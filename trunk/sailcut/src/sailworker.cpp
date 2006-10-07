@@ -1615,7 +1615,12 @@ CSail CSailWorker::LayoutRadial( CSail &flatsail, CSail &dispsail ) const
     CSubSpace seamH[10];   // corresponding seam lines
     CSubSpace seamSP;  // a seam line
 
-    for ( h=0; h<nbSections; h++)  // one more horizontal line than nbSections
+    h = 0;
+    luffH[h] = tack;
+    leechH[h] = clew;
+    seamH[h] = foot;
+
+    for ( h=1; h<nbSections; h++)  
     {
         pt1 = tack + luffV * (real(h) / nbSections );
         pt2 = clew + leechV * (real(h) / nbSections );
@@ -1624,7 +1629,7 @@ CSail CSailWorker::LayoutRadial( CSail &flatsail, CSail &dispsail ) const
         seamH[h] = CSubSpace3d::line(luffH[h], CVector3d( leechH[h] - luffH[h] ));
     }
 
-    h= nbSections;
+    h = nbSections; // one more horizontal line than nbSections
     luffH[h] = head;
     leechH[h] = peak;
     seamH[h] = gaff;
@@ -1661,8 +1666,8 @@ CSail CSailWorker::LayoutRadial( CSail &flatsail, CSail &dispsail ) const
     }
 
     h = 0;
-    luffCatenary[h] = tack + CVector3d(1,0,0);
-    leechCatenary[h] = clew + CVector3d(-1,0,0);
+    luffCatenary[h] = tack; // + CVector3d(1,0,0);
+    leechCatenary[h] = clew; // + CVector3d(-1,0,0);
 
     /** Now we cut the radial panels
     *  Panels are oriented with lower and upper edge on vertical catenary
@@ -2608,8 +2613,7 @@ CSail CSailWorker::LayoutTriRadial( CSail &flatsail, CSail &dispsail ) const
     }
     ///
     return sail;
-} ///////////// end layout triradial cut /////////  NOT USED /////////////////////
-
+} ///////////// end layout triradial cut /////////  NOT USED ////////////
 
 /** Creates a mitre cut sail.
  *
