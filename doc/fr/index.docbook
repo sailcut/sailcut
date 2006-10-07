@@ -176,7 +176,7 @@
 
 <title>Notes sur l&apos;utilisation de fichier de versions précédentes</title>
 
-<para>A partir de la version 0.6.5 Sailcut CAD utilise des extensions de nom de fichier distincts au lieu de l&apos;extension générique &quot;.xml&quot;. Si vous souhaitez réutiliser des fichiers de données de voile de ce type vous devez renommer les renommer avec l&apos;extension &quot;.saildef&quot;. Vous pourrez alors récupérer les données dimensionelles de la voile mais pas le moule que vous devrez redéfinir avant de sauvegarder les données.</para>
+<para>A partir de la version 0.6.5 Sailcut CAD utilise des extensions de nom de fichier distincts au lieu de l&apos;extension générique &quot;.xml&quot;. Si vous souhaitez réutiliser des fichiers de données de voile de ce type vous devez les renommer avec l&apos;extension &quot;.saildef&quot;. Vous pourrez alors récupérer les données dimensionelles de la voile mais pas le moule que vous devrez redéfinir avant de sauvegarder les données.</para>
 
 </sect2>
 
@@ -216,7 +216,7 @@
 
 <para>Vous pouvez visualiser plusieurs voiles sur le même gréement à partir du menu déroulant Vue-&gt;Gréement.</para>
 
-<para>
+<sect2>
 
 <title>Définition de la voile (menu Vue-&gt;Dimensions)</title>
 
@@ -224,17 +224,17 @@
 
 <para>Le programme est concu pour traiter les voiles triangulaires et quadrangulaires. Une voile triangulaire peut être vue comme une voile quadrangulaire dont le coté haut est très petit.</para>
 
-<para>La surface de la voile est générée à partir d&apos;un jeu d&apos;équations qui défini le profil de la voile à toutes les hauteurs. Ces profils reposent sur les bords de la voile qui sont eux même définis par leur longueur et le rond de ces bords, ainsi que par le vrillage de la voile. L&apos;écran &quot;Dimensions&quot; est partagé en zones regroupant les divers paramètres de la voile.</para>
+<para>La surface de la voile est générée à partir d&apos;un jeu d&apos;équations qui défini le profil de la voile à toutes les hauteurs. Ces profils reposent sur les bords de la voile qui sont eux même définis par leur longueur et le rond de ces bords, ainsi que par le vrillage de la voile. La fenêtre <emphasis>&quot;Définition de la voile&quot;</emphasis> est constituée de boites regroupant les divers paramètres de la voile.</para>
 
-<para>Utilisez le bouton <emphasis>Calculer</emphasis> pour calculer et afficher des données auxiliaire et en particulier la largeur de la voile aux points spécifiés par la règle IRC. Cette opération peut aussi changer la couleur de certaines zones de saisie. La couleur est rouge c&apos; si la valeur est trop forte et jaune si elle est trop faible. La valeur elle même sera changée pour être à la limite acceptable.</para>
+<para>Utilisez le bouton <emphasis>&quot;Calculer&quot;</emphasis> pour calculer et afficher des données auxiliaire et en particulier la largeur de la voile aux points spécifiés par la règle IRC. Cette opération peut aussi changer la couleur de certaines zones de saisie. La couleur est rouge c&apos; si la valeur est trop forte et jaune si elle est trop faible. La valeur elle même sera changée pour être à la limite acceptable.</para>
 
-<para>Lorsque vous avez fini d&apos;entrer les données pressez le bouton <emphasis>OK</emphasis>pour afficher la voile en 3D.</para>
+<para>Lorsque vous avez fini d&apos;entrer les données pressez le bouton <emphasis>&quot;OK&quot;</emphasis>pour afficher la voile en 3D.</para>
 
 <sect3>
 
 <title>Boite &quot;Géométrie du gréement&quot;</title>
 
-<para>La première étape est de choisir le type de voile sur laquelle vous voulez travailler et d'entrer les dimensions du gréement et du pont du bateau (voir <xref linkend="fig.sailplan"/> pour les définitions).</para>
+<para>La première étape est de choisir le type de voile sur laquelle vous voulez travailler et d'entrer les dimensions du gréement et du pont du bateau.</para>
 
 <para>Choisissez le type de voile en appuyant sur le bouton radio correspondant:</para>
 
@@ -242,19 +242,19 @@
 
 <listitem>
 
-<para><emphasis>Grand-voile</emphasis> pour toute voile montée sur un mât</para>
+<para><emphasis>&quot;Grand-voile&quot;</emphasis> pour toute voile montée sur un mât</para>
 
 </listitem>
 
 <listitem>
 
-<para><emphasis>Foc</emphasis> pour toute voile montée sur un étais fixe ou mobile</para>
+<para><emphasis>&quot;Foc&quot;</emphasis> pour toute voile montée sur un étais fixe ou mobile</para>
 
 </listitem>
 
 <listitem>
 
-<para><emphasis>Aile</emphasis> pour toute voile cerf-volant ou planneur symétrique par rapport à la bordure</para>
+<para><emphasis>&quot;Aile&quot;</emphasis> pour toute voile cerf-volant ou planneur symétrique par rapport à la bordure</para>
 
 </listitem>
 
@@ -301,7 +301,7 @@
 
 <para>Une valeur positive du rond de guindant, bordure, chute ou vergue fait que le bord de la voile est à l'extérieur de la ligne droite joignant les coins correspondants.</para>
 
-<para>Un rond négatif revient à &quot;creuser&quot; le bord de la voile.</para>
+<para>Un rond négatif revient à creuser le bord de la voile.</para>
 
 <para>Laposition du rond est exprimé en pourcentage de la longueur du bord correspondant, mesuré en partant du coin gauche ou bas de ce bord.</para>
 
@@ -330,7 +330,7 @@
 
 <para>Selon la forme de la voile, la longueur réelle d'un bord de la voile finie telle que mesurée sur le plancher, peut être légèrement plus grande que celle entrée. Par exemple, pour une longueur de bordure entrée de 3600 mm, si le creux de la bordure est nul, ce sera aussi la distance à plat entre point d'amure et d'écoute. Si le creux de la voile au niveau de la bordure est de 10%, alors la distance à plat entre point d'amure et d'écoute sera 2.7% plus grande que la longueur entrée.</para>
 
-<para>Après avoir entré les dimensions de la voile, vous pouvez cliquer sur le bouton <emphasis>Calculer</emphasis> pour obtenir des informations supplémentaires, tel que les coordonnées des coins de la voile, la distance perpendiculaire LP mesurée du point d'écoute au guindant anisi que les largeurs de la voile selon la règle de jauge IRC.</para>
+<para>Après avoir entré les dimensions de la voile, vous pouvez cliquer sur le bouton <emphasis>&quot;Calculer&quot;</emphasis> pour obtenir des informations supplémentaires, tel que les coordonnées des coins de la voile, la distance perpendiculaire LP mesurée du point d'écoute au guindant anisi que les largeurs de la voile selon la règle de jauge IRC.</para>
 
 <para>Les coordonnées X-Y des coins de la voile sont utiles pour ajuster rapidement le plan de la voile. Si par exemple vous voyez que le point d'écoute est trop haut ou trop bas par rapport au point d'amure (valeur de Y), vous pouvez corriger cela en ajoutant ou retranchant la différence à la longueur de la chute.</para>
 </sect3>
@@ -339,43 +339,45 @@
 
 <title>Boite &quot;Coupe&quot;</title>
 
-<para>Cliquez sur le bouton radio correspondant à la coupe de voile désirée. L'arrangement des laizes n'affecte pas la forme de la voile qui est définie par ses dimensions et son moule. Sauf pour la coupe radiale, le nombre de panneaux est déterminé automatiquement par la largeur du tissus et la largeur de couture entrés dans la boite &quot;Tissus&quot;.</para>
+<para>Cliquez sur le bouton radio correspondant à la coupe de voile désirée. L'arrangement des laizes n'affecte pas la forme de la voile qui est définie par ses dimensions et son moule.</para>
+
+<para>Sauf pour la coupe radiale, le nombre de panneaux est déterminé automatiquement par la largeur du tissus et la largeur de couture entrés dans la boite <emphasis>&quot;Tissus&quot;</emphasis>.</para>
 
 <itemizedlist>
 
 <listitem>
 
-<para>La coupe la plus courante est la <emphasis>Coupe transversale</emphasis>. Les laizes sont positionnées perpendiculairement à la ligne droite joignat le point d'écoute au pic de la voile.</para>
+<para>La coupe la plus courante est la <emphasis>&quot;Coupe transversale&quot;</emphasis>. Les laizes sont positionnées perpendiculairement à la ligne droite joignat le point d'écoute au pic de la voile.</para>
 
 </listitem>
 
 <listitem>
 
-<para>La <emphasis>Coupe twist</emphasis> est similaire à la coupe transversale sauf que les laizes du bas sont réorientées pour ne pas couper la bordure de la voile.</para>
+<para>La <emphasis>&quot;Coupe twist&quot;</emphasis> est similaire à la coupe transversale sauf que les laizes du bas sont réorientées pour ne pas couper la bordure de la voile.</para>
 
 </listitem>
 
 <listitem>
 
-<para>La <emphasis>Coupe horizontale</emphasis> positionne les laizes horizontalement. Cette option peut être utilisée pour visualiser la forme de la voile et pour sortir des fichiers de points 3D positionés dans des plans horzontaux pour être utilisés par des outils de calcul d'écoulement de l'air.</para>
+<para>La <emphasis>&quot;Coupe horizontale&quot;</emphasis> positionne les laizes horizontalement. Cette option peut être utilisée pour visualiser la forme de la voile et pour sortir des fichiers de points 3D positionés dans des plans horizontaux pour être utilisés par des outils de calcul d'écoulement de l'air.</para>
 
 </listitem>
 
 <listitem>
 
-<para>La <emphasis>Coupe verticale</emphasis> positionne les laizes parallélement à la chute. C'est la coupe classique des grand-voiles de vieux gréements.</para>
+<para>La <emphasis>&quot;Coupe verticale&quot;</emphasis> positionne les laizes parallélement à la chute. C'est la coupe classique des grand-voiles de vieux gréements.</para>
 
 </listitem>
 
 <listitem>
 
-<para>La <emphasis>Coupe mître</emphasis> est classiquement utilisée pour les génoas de vieux gréements. La voile est divisée en deux par une ligne joignant le point d'écoute au milieu du guindant. Les laizes sont placées perpendiculairement à la bordure dans la moitié inférieure et perpendiculairement à la chute dans la moitiée supérieure.</para>
+<para>La <emphasis>&quot;Coupe mître&quot;</emphasis> est classiquement utilisée pour les génoas de vieux gréements. La voile est divisée en deux par une ligne joignant le point d'écoute au milieu du guindant. Les laizes sont placées perpendiculairement à la bordure dans la moitié inférieure et perpendiculairement à la chute dans la moitiée supérieure.</para>
 
 </listitem>
 
 <listitem>
 
-<para>La <emphasis>Coupe radiale</emphasis> est surtout utilisée en compétition avec les laizes orientées selon les directions de contrainte maximum. Avant d'utiliser cette coupe radiale il est important de bien comprendre la définition du nombre de sections, du nombre de fuseaux radiaux et du guindant (voir <xref linkend="fig.head_gores_definition"/>).</para>
+<para>La <emphasis>&quot;Coupe radiale&quot;</emphasis> est surtout utilisée en compétition avec les laizes orientées selon les directions de contrainte maximum. Avant d'utiliser cette coupe radiale il est important de bien comprendre la définition du nombre de sections, du nombre de fuseaux radiaux et du guindant (voir <xref linkend="fig.head_gores_definition"/>).</para>
 
 </listitem>
 
@@ -406,7 +408,7 @@
 
 <title>Boite &quot;Forme&quot;</title>
 
-<para>Vous entrez içi le creux de la voile à trois hauteurs dans la voile: à la bordure, au milieu (la position exacte est définie dans le moule de la voile) et en haut de la voile. Ces valeurs se retrouvent dans la fenêtre &quot;Moule de la voile&quot;.</para>
+<para>Vous entrez içi le creux de la voile à trois hauteurs dans la voile: à la bordure, au milieu (la position exacte est définie dans le moule de la voile) et en haut de la voile. Ces valeurs se retrouvent dans la fenêtre <emphasis>&quot;Moule de la voile&quot;</emphasis>.</para>
 
 <para>L'angle de vrillage exprimé en degrés est l'ouverture du haut de la voile par rapport à la bordure. Le vrillage est essentiel pour tenir compte de la différence de direction du vent apparent entre le bas de la voile et le haut. Quelque fois le vrillage des focs ou génoas est déterminé par le besoin de passer la chute en dehors des barres de flèche. Pour une grand-voile à vergue, le vrillage est aussi déterminé par la capacité du gréement à tenir la tension de la chute. Ceci fait que le vrillage de ces gréements est plus important que pour un gréement Bermudien. Dans tous les cas il est important d'entre un angle de vrillage qui reflète la réalité de la forme de la voile sur le bateau dans les conditions de vent attendues.</para>
 
@@ -420,7 +422,7 @@
 
 <para>Entrez içi la largeur du tissus utilisé, la largeur de couture nécessaire pour assembler les laizes et les réservations de tissus pour faire les ourlets de chute et des autres bords de la voile.</para>
 
-<para>La figure <xref linkend="fig.sail_seams"/> donne la position des réservations pour couture et ourlets. Sailcut CAD va calculer la position des coutures pour que les laizes utilisent au maximum la largeur du tissus (sauf pour la coupe radiale).</para>
+<para>La figure <xref linkend="fig.sail_seams"/> donne la position des réservations pour couture et ourlets. Sailcut CAD va calculer la position des coutures pour que les laizes utilisent au maximum la largeur du tissus, sauf dans la coupe radiale ou la largeur des laizes dépend du nombre de fuseaux.</para>
 
 <para>
 
@@ -488,7 +490,7 @@
 
 <listitem>
 
-<para><emphasis>Pan</emphasis> : Cliquez sur un point de la voile pour le dépacer au centre de la zone d&apos;affichage graphique.</para>
+<para><emphasis>Déplacement</emphasis> : Cliquez sur un point de la voile pour le placer au centre de la zone d&apos;affichage graphique.</para>
 
 </listitem>
 
@@ -506,7 +508,7 @@
 
 <title>Développement des laizes</title>
 
-<para>Le développement de la voile s&apos;affiche en cliquant sur l&apos;onglet &quot;Développement&quot; de la fenêtre principale de Sailcut CAD. Les fonctions de controle de la vue sont les mêmes que pour la vue 3D. Les lignes bleues représentent les ligne de tracé des laizes et les ligne rouges les lignes de découpe prenant en compte les marges de couture.</para>
+<para>Le développement de la voile s&apos;affiche en cliquant sur l&apos;onglet <emphasis>&quot;Développement&quot;</emphasis> de la fenêtre principale de Sailcut CAD. Les fonctions de controle de la vue sont les mêmes que pour la vue 3D. Les lignes bleues représentent les ligne de tracé des laizes et les ligne rouges les lignes de découpe prenant en compte les marges de couture.</para>
 
 <para>Vous pouvez exporter les points qui définissent les lignes de tracé et de découpe des laizes aux formats suivants:</para>
 
@@ -817,7 +819,9 @@ curvature = z&quot; / (1+ z&apos;*z&apos;)^3/2</programlisting> <para>
 
 <para>Vous devriez avoir une copie de la licence GNU General Public Licence avec ce logiciel, si ce n&apos;est pas le cas demandez la à Free Software Fondation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.</para>
 
-<remark>Les auteurs apprécieraient que les publications sur des voiles conçues avec Sailcut comportent une reconnaissance de leur travail. Merci par avance.</remark> </sect1>
+<remark>Les auteurs apprécieraient que les publications sur des voiles conçues avec Sailcut comportent une reconnaissance de leur travail. Merci par avance.</remark> 
+
+</sect1>
 
 </article>
 

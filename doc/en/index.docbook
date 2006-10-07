@@ -221,13 +221,13 @@
 
 <para>You can use the <emphasis>&quot;Compute&quot;</emphasis> button to compute and display ancillary data like IRC width. This can result in some text box color being changed. Red color indicate that the value exceed the upper limit and yellow indicate that it is below the lower limit. The value itself will be changed to the acceptable limit.</para>
 
-<para>When you have finished entering the dimensions, press <emphasis>OK</emphasis>emphasis> to display the sail in 3D. </para>
+<para>When you have finished entering the dimensions, press <emphasis>&quot;OK&quot;</emphasis>emphasis> to display the sail in 3D. </para>
 
 <sect3>
 
 <title>&quot;Rig geometry&quot; box </title>
 
-<para>The first step is to select the type of sail you are going to work on, and enter the data defining the rig geometry and sail plan (see <xref linkend="fig.sailplan"/> for sail plan definition).</para>
+<para>The first step is to select the type of sail you are going to work on, and enter the data defining the rig geometry and sail plan.</para>
 
 <para>Select the type of sail by pressing the corresponding Radio Button:</para>
 
@@ -333,43 +333,45 @@
 
 <title>&quot;Layout&quot; box</title>
 
-<para>Click on the radio button corresponding to the desired layout of the sail. The layout of the panels does not affect the shape of the sail which is defined by its dimensions and its mould. Except for the Radial cut layout, the number of panels is determined by the cloth width and seam width entered in the &quot;Cloth&quot; box.</para>
+<para>Click on the radio button corresponding to the desired layout of the sail. The layout of the panels does not affect the shape of the sail which is defined by its dimensions and its mould. </para>
+
+<para>Except for the Radial cut layout, the number of panels is determined by the cloth width and seam width entered in the <emphasis>&quot;Cloth&quot;</emphasis> box.</para>
 
 <itemizedlist>
 
 <listitem>
 
-<para>The most commonly used layout is the &quot;Crosscut&quot;. The panels are laid perpendicular to the straight line joining the peak to the clew of the sail.</para>
+<para>The most commonly used layout is the <emphasis>&quot;Crosscut&quot;</emphasis>. The panels are laid perpendicular to the straight line joining the peak to the clew of the sail.</para>
 
 </listitem>
 
 <listitem>
 
-<para>The &quot;Twist foot&quot; layout is similar to the cross cut except that the lower panels are rotated such that they do not intersect the foot of the sail.</para>
+<para>The <emphasis>&quot;Twist foot&quot;</emphasis> layout is similar to the cross cut except that the lower panels are rotated such that they do not intersect the foot of the sail.</para>
 
 </listitem>
 
 <listitem>
 
-<para>The &quot;Horizontal cut&quot; layout lay the seams in the horizontal plane. This option can be used to visualise the profile of the sail at various levels and to output files with the 3D coordinates of the sails for use by CFD tools.</para>
+<para>The <emphasis>&quot;Horizontal cut&quot;</emphasis> layout lay the seams in the horizontal plane. This option can be used to visualise the profile of the sail at various levels and to output files with the 3D coordinates of the sails for use by CFD tools.</para>
 
 </listitem>
 
 <listitem>
 
-<para>The &quot;Vertical cut&quot; layout places the panels parrallel to the straight line joining the peak to the clew of the sail. This is the favorite layout for the old timer&apos;s main sail.</para>
+<para>The <emphasis>&quot;Vertical cut&quot;</emphasis> layout places the panels parrallel to the straight line joining the peak to the clew of the sail. This is the favorite layout for the old timer&apos;s main sail.</para>
 
 </listitem>
 
 <listitem>
 
-<para>The &quot;Mitre cut&quot; layout is the favorite for the old timer&apos;s genoa. The sail is divided in two parts by a line joining the clew to the mid point on the luff and the panels organised to be perpendicular to the foot in the lower part of the sail and perpendicular to the leech in its upper part.</para>
+<para>The <emphasis>&quot;Mitre cut&quot;</emphasis> layout is the favorite for the old timer&apos;s genoa. The sail is divided in two parts by a line joining the clew to the mid point on the luff and the panels organised to be perpendicular to the foot in the lower part of the sail and perpendicular to the leech in its upper part.</para>
 
 </listitem>
 
 <listitem>
 
-<para>The &quot;Radial cut&quot; is used mostly for competition as the cloth is mostly aligned with the directions of maximum strain. When using the Radial cut option it is important to understand the definition of the number of sections, number of radial gores and number of luff gores (see <xref linkend="fig.head_gores_definition"/>).</para>
+<para>The <emphasis>&quot;Radial cut&quot;</emphasis> is used mostly for competition as the cloth is mostly aligned with the directions of maximum strain. When using the Radial cut option it is important to understand the definition of the number of sections, number of radial gores and number of luff gores (see <xref linkend="fig.head_gores_definition"/>).</para>
 
 </listitem>
 
@@ -404,7 +406,7 @@
 
 <para>The twist angle is the angle expressed in degrees by which the top of the sail is rotated with respect to the foot. The twist is globally determined by the amount by which the apparent wind at the top of the mast is rotated with respect to the apparent wind at deck level. For a jib the twist is sometime driven by the need to have the upper part of the leech sufficiently open to clear the spreaders. For a mainsail the twist is also driven by the ability of the rig to carry the tension in the leech, in particular a gaff rig will have more twist in its main sail than a Bermuda rig. It is important that the twist angle entered in Sailcut reflects the reality of the shape of the leech when sailing in an average wind.</para>
 
-<para>The sheeting angle value is the actual sheeting angle measured from the boat centerline when the sail is set on the boat. For a jib the minimum value is 5 degrees. The value is of importance to ensure that the sail is properly positioned when displayed in the &quot;rig viewer&quot;. You can then visualise for example the slot between a jib and the main sail as set when sailing.</para>
+<para>The sheeting angle value is the actual sheeting angle measured from the boat centerline when the sail is set on the boat. For a jib the minimum value is 5 degrees. The value is of importance to ensure that the sail is properly positioned when displayed in the <emphasis>&quot;rig viewer&quot;</emphasis>. You can then visualise for example the slot between a jib and the main sail as set on the boat.</para>
 
 </sect3>
 
@@ -414,7 +416,7 @@
 
 <para>Enter there the width of cloth used, the width of the seams between adjacent panels, the width of material to be added to the leech to make the leech hem and the width of material for the other edges hems.</para>
 
-<para><xref linkend="fig.sail_seams"/> describes the location of the various hems and seam width. Sailcut will compute the panels such that they fit within the declared cloth width including the seam and hems width as appropriate.</para>
+<para><xref linkend="fig.sail_seams"/> describes the location of the various hems and seam width. Sailcut will compute the panels such that they fit within the declared cloth width including the seam and hems width as appropriate, except for a radial cut sail for which the width of each panels is computed from the number of radial panels entered.</para>
 
 <para>
 
