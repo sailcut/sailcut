@@ -14,7 +14,7 @@
 
 </authorgroup>
 
-<pubdate>Sailcut CAD 1.2.3 - 18 September 2006</pubdate>
+<pubdate>Sailcut CAD 1.2.3 - 7 October 2006</pubdate>
 
 </articleinfo>
 
@@ -136,8 +136,12 @@
 
 <para>To compile Sailcut CAD on your system, launch MSYS to get a command prompt, then type the following in the base directory of the Sailcut distribution:</para>
 
-<programlisting>% ./configure
-% make</programlisting> <para>When installing the Sailcut executable file on Windows, do not forget to also install the DLLs &quot;Qt4 runtime for Win32&quot; in the same directory or in the C:\System32 directory.</para>
+<programlisting>
+% ./configure
+% make
+</programlisting> 
+
+<para>When installing the Sailcut executable file on Windows, do not forget to also install the DLLs &quot;Qt4 runtime for Win32&quot; in the same directory or in the C:\System32 directory.</para>
 
 </sect3>
 
@@ -147,9 +151,13 @@
 
 <para>Sailcut CAD is known to compile and run when using the Fink package manager. In order to compile and install Sailcut CAD, type the following in the base directory of the Sailcut distribution:</para>
 
-<programlisting>% ./configure --with-qt-includes=/sw/include/qt
+<programlisting>
+% ./configure --with-qt-includes=/sw/include/qt
 % make
-% make install</programlisting> </sect3>
+% make install
+</programlisting> 
+
+</sect3>
 
 </sect2>
 
@@ -209,11 +217,11 @@
 
 <para>The program is tailored to design either triangular or quadrangular boat sails. A classical triangular sail is essentially a quadrangular sail with a very small top edge.</para>
 
-<para>The surface of the sail is generated from a single set of equations defining the profile of the sail at all levels. The profiles rest on the edges of the sails which are defined by their length and the amount of round (also called roach) in each side and the twist of the sail. The &quot;Dimensions&quot; window is divided into a number of boxes which group the parameters defining the sail.</para>
+<para>The surface of the sail is generated from a single set of equations defining the profile of the sail at all levels. The profiles rest on the edges of the sails which are defined by their length and the amount of round (also called roach) in each side and the twist of the sail. The <emphasis>&quot;Definition&quot;</emphasis> window is divided into a number of boxes which group the parameters defining the sail.</para>
 
-<para>You can use the &quot;Compute&quot; button to compute and display ancillary data. This can result in some text box color bein changed. If the color is red then the value exceed the upper limit and if yellow it is below the lower limit and the value itself will be changed to the accptable limit.</para>
+<para>You can use the <emphasis>&quot;Compute&quot;</emphasis> button to compute and display ancillary data like IRC width. This can result in some text box color being changed. Red color indicate that the value exceed the upper limit and yellow indicate that it is below the lower limit. The value itself will be changed to the acceptable limit.</para>
 
-<para>When you have finished entering the dimensions, press OK to display the sail in 3D. </para>
+<para>When you have finished entering the dimensions, press <emphasis>OK</emphasis>emphasis> to display the sail in 3D. </para>
 
 <sect3>
 
@@ -270,13 +278,21 @@
 
 <sect3>
 
+<title>&quot;Sail identifier&quot; box </title>
+
+<para>You enter there a text describing the sail you are working on (maximum 40 characters spaces included).</para>
+
+</sect3>
+
+<sect3>
+
 <title>&quot;Sail dimensions&quot; box</title>
 
 <para>This is where the dimensions of the sail are entered.</para>
 
-<para>On a main sail the minimum value for the gaff length (headboard) is constrained to 5 mm. Value smaller than that will default back to 5 mm. The gaff angle is constrained to values such that the angle between the gaff and the straight leech is at most 90 degrees.</para>
+<para>On a main sail the minimum value for the gaff length (headboard) is constrained to 5 mm. Value smaller than that will default back to 5 mm. The gaff angle is constrained to 90 degrees maximum between the gaff and the luff.</para>
 
-<para>Positive round (roach) of the luff, foot, leech and gaff extend the sail outside of the straight line.</para>
+<para>Positive round (roach) of the luff, foot, leech and gaff extend the sail outside of the straight edge line.</para>
 
 <para>Negative round is equivalent to hollowing that edge of the sail.</para>
 
