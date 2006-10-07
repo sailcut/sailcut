@@ -1656,18 +1656,18 @@ CSail CSailWorker::LayoutRadial( CSail &flatsail, CSail &dispsail ) const
     // other points on both catenaries
     for ( h = nbSections-1 ; h > 0 ; h--)
     {
-        pt0 = tack + footV*( real(h) / real(nbSections) )*( real(ngLuff) / real(nbGores) );
+        pt0 = tack + footV*(real(h) / real(nbSections))*(real(ngLuff) / real(nbGores));
         seamSP = CSubSpace3d::line(luffCatenary[h+1], CVector3d(pt0 - luffCatenary[h+1]));
         luffCatenary[h] = seamH[h].intersect(seamSP).getp();
 
-        pt0 = clew - footV*( real(h) / real(nbSections) )*( real(nbGores-ngLuff) / real(nbGores) );
+        pt0 = clew - footV*(real(h) / real(nbSections))*(real(nbGores-ngLuff) / real(nbGores));
         seamSP = CSubSpace3d::line(leechCatenary[h+1], CVector3d(pt0 - leechCatenary[h+1]));
         leechCatenary[h] = seamH[h].intersect(seamSP).getp();
     }
 
     h = 0;
-    luffCatenary[h] = tack; // + CVector3d(1,0,0);
-    leechCatenary[h] = clew; // + CVector3d(-1,0,0);
+    luffCatenary[h] = tack;
+    leechCatenary[h] = clew;
 
     /** Now we cut the radial panels
     *  Panels are oriented with lower and upper edge on vertical catenary
