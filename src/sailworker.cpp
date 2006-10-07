@@ -1665,14 +1665,15 @@ CSail CSailWorker::LayoutRadial( CSail &flatsail, CSail &dispsail ) const
     leechCatenary[h] = clew + CVector3d(-1,0,0);
 
     /** Now we cut the radial panels
-    *  panels are oriented with lower and upper edge on vertical catenary
-    *  bottom side is on luff side and top side is on leech side
-    *  left side is at the top of each section
-    *  p1 p2 are the end point of bottom side with p1 = top of section
+    *  Panels are oriented with lower and upper edge on vertical catenary
+    *  Bottom side is on luff side and top side is on leech side
+    *  Left side is at the top of each section
+    *  p1 p2 are the end point of bottom side with p1 = top of horizontal section
     */
     npanel = 0;
     ng1 = 0;  // initialise number of central panels
 
+    /** Sweeping the sail from the top section downward to the foot */
     for (h = nbSections; h>0; h--)
     { // sweeping from top section downward
         nps[h] = 0;  // counter of panels in current section
@@ -1818,7 +1819,7 @@ CSail CSailWorker::LayoutRadial( CSail &flatsail, CSail &dispsail ) const
                 npanel++;
             }
         }
-        else  // middle panels of bottom section h = 1
+	else  // h = 1 middle panels of bottom section 
         {
             // luff side central
             for ( j = 1 ; j <= ng1 / 2 ; j++)
@@ -2103,7 +2104,7 @@ CSail CSailWorker::LayoutRadial( CSail &flatsail, CSail &dispsail ) const
 
 
 
-/** Creates a triradial cut sail.  ////// not used
+/** Creates a triradial cut sail.  //////// NOT USED //////////
  *
  * @param flatsail the CSail object that will hold the developed sail
  * @param dispsail the CSail object that will hold the display
@@ -2607,7 +2608,7 @@ CSail CSailWorker::LayoutTriRadial( CSail &flatsail, CSail &dispsail ) const
     }
     ///
     return sail;
-} ///////////// end layout triradial cut ///////////////////////////////////
+} ///////////// end layout triradial cut /////////  NOT USED /////////////////////
 
 
 /** Creates a mitre cut sail.
@@ -2616,7 +2617,7 @@ CSail CSailWorker::LayoutTriRadial( CSail &flatsail, CSail &dispsail ) const
  * @param dispsail the CSail object that will hold the display
  *                 version of the developed sail
  * @return CSail
- * @author Robert Laine
+ * @author Robert Laine alias Sailcuter
  */
 CSail CSailWorker::LayoutMitre( CSail &flatsail, CSail &dispsail ) const
 {
