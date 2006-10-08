@@ -35,12 +35,10 @@ class CSailMould;
  */
 class CFormMould : public QDialog
 {
+    Q_OBJECT
+
 public:
     CFormMould( QWidget* , CSailMould* );
-    /** The destructor */
-    ~CFormMould()
-    {}
-    ;
 
 protected:
     /** the CSailMould */

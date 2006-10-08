@@ -88,6 +88,7 @@ BUILT_SOURCES = \
 	formdef.moc.cpp \
 	formhelp.moc.cpp \
 	formmain.moc.cpp \
+	formmould.moc.cpp \
 	formrig.moc.cpp \
 	rigdef-panel.moc.cpp \
 	sailviewer.moc.cpp \
