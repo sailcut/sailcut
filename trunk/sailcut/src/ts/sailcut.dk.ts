@@ -427,55 +427,55 @@ stævn</translation>
     </message>
     <message>
         <source>Sailcut data sheet</source>
-        <translation>Sailcut data side</translation>
+        <translation type="obsolete">Sailcut data side</translation>
     </message>
     <message>
         <source>Sail type</source>
-        <translation>Sejl type</translation>
+        <translation type="obsolete">Sejl type</translation>
     </message>
     <message>
         <source>Mainsail</source>
-        <translation>Storsejl</translation>
+        <translation type="obsolete">Storsejl</translation>
     </message>
     <message>
         <source>Jib</source>
-        <translation>Fok</translation>
+        <translation type="obsolete">Fok</translation>
     </message>
     <message>
         <source>Sail layout</source>
-        <translation>Sejl layout</translation>
+        <translation type="obsolete">Sejl layout</translation>
     </message>
     <message>
         <source>Cross Cut</source>
-        <translation>Cross Cut</translation>
+        <translation type="obsolete">Cross Cut</translation>
     </message>
     <message>
         <source>Horizontal Cut</source>
-        <translation>Horisontal Cut</translation>
+        <translation type="obsolete">Horisontal Cut</translation>
     </message>
     <message>
         <source>Radial Cut</source>
-        <translation>Radial Cut</translation>
+        <translation type="obsolete">Radial Cut</translation>
     </message>
     <message>
         <source>Twist Foot Cut</source>
-        <translation>Twistet Foot Cut</translation>
+        <translation type="obsolete">Twistet Foot Cut</translation>
     </message>
     <message>
         <source>Vertical Cut</source>
-        <translation>Vertikal Cut</translation>
+        <translation type="obsolete">Vertikal Cut</translation>
     </message>
     <message>
         <source>Mitre Cut</source>
-        <translation>Mitre Cut</translation>
+        <translation type="obsolete">Mitre Cut</translation>
     </message>
     <message>
         <source> sections,   </source>
-        <translation>sektioner</translation>
+        <translation type="obsolete">sektioner</translation>
     </message>
     <message>
         <source> head gores,   </source>
-        <translation>hoved kiler</translation>
+        <translation type="obsolete">hoved kiler</translation>
     </message>
     <message>
         <source> luff gore.</source>
@@ -483,151 +483,151 @@ stævn</translation>
     </message>
     <message>
         <source>Rig </source>
-        <translation>Rig</translation>
+        <translation type="obsolete">Rig</translation>
     </message>
     <message>
         <source>Boat LOA</source>
-        <translation>Bådens LOA</translation>
+        <translation type="obsolete">Bådens LOA</translation>
     </message>
     <message>
         <source>Fore triangle hoist I</source>
-        <translation>Forstags længde I mål</translation>
+        <translation type="obsolete">Forstags længde I mål</translation>
     </message>
     <message>
         <source>Fore triangle base J</source>
-        <translation>Afstand fra forstævn til mast, J mål</translation>
+        <translation type="obsolete">Afstand fra forstævn til mast, J mål</translation>
     </message>
     <message>
         <source>Tack position X</source>
-        <translation>Halsbarm position X</translation>
+        <translation type="obsolete">Halsbarm position X</translation>
     </message>
     <message>
         <source>Tack height Y</source>
-        <translation>Halsbarm højde Y</translation>
+        <translation type="obsolete">Halsbarm højde Y</translation>
     </message>
     <message>
         <source>Sail dimensions</source>
-        <translation>Sejl dimensioner</translation>
+        <translation type="obsolete">Sejl dimensioner</translation>
     </message>
     <message>
         <source>Luff length</source>
-        <translation>Forli længde</translation>
+        <translation type="obsolete">Forli længde</translation>
     </message>
     <message>
         <source>Mast/Luff rake</source>
-        <translation>Maste/Forli hældning</translation>
+        <translation type="obsolete">Maste/Forli hældning</translation>
     </message>
     <message>
         <source>Gaff angle wrt luff</source>
-        <translation>Gaffel vinkel fra forli</translation>
+        <translation type="obsolete">Gaffel vinkel fra forli</translation>
     </message>
     <message>
         <source>Gaff length</source>
-        <translation>Gaffel længde</translation>
+        <translation type="obsolete">Gaffel længde</translation>
     </message>
     <message>
         <source>Foot length</source>
-        <translation>Sejlfod længde</translation>
+        <translation type="obsolete">Sejlfod længde</translation>
     </message>
     <message>
         <source>Leech length</source>
-        <translation>Bagli længde</translation>
+        <translation type="obsolete">Bagli længde</translation>
     </message>
     <message>
         <source>Shape of edges</source>
-        <translation>Kanternes form</translation>
+        <translation type="obsolete">Kanternes form</translation>
     </message>
     <message>
         <source>Luff round</source>
-        <translation>Forli runding</translation>
+        <translation type="obsolete">Forli runding</translation>
     </message>
     <message>
         <source>Gaff round</source>
-        <translation>Gaffel runding</translation>
+        <translation type="obsolete">Gaffel runding</translation>
     </message>
     <message>
         <source>Leech round</source>
-        <translation>Bagli runding</translation>
+        <translation type="obsolete">Bagli runding</translation>
     </message>
     <message>
         <source>Foot round</source>
-        <translation>Sejlfod runding</translation>
+        <translation type="obsolete">Sejlfod runding</translation>
     </message>
     <message>
         <source>Luff round position</source>
-        <translation>Forli rundings position</translation>
+        <translation type="obsolete">Forli rundings position</translation>
     </message>
     <message>
         <source>Gaff round position</source>
-        <translation>Position af Gaffel runding</translation>
+        <translation type="obsolete">Position af Gaffel runding</translation>
     </message>
     <message>
         <source>Leech round position</source>
-        <translation>Bagli rundings position</translation>
+        <translation type="obsolete">Bagli rundings position</translation>
     </message>
     <message>
         <source>Foot round position</source>
-        <translation>Sejlfods rundings position</translation>
+        <translation type="obsolete">Sejlfods rundings position</translation>
     </message>
     <message>
         <source>Sail settings</source>
-        <translation>Sejl egenskaber</translation>
+        <translation type="obsolete">Sejl egenskaber</translation>
     </message>
     <message>
         <source>Twist angle</source>
-        <translation>Tvist vinkel</translation>
+        <translation type="obsolete">Tvist vinkel</translation>
     </message>
     <message>
         <source>Sheeting angle</source>
-        <translation>Lag vinkel</translation>
+        <translation type="obsolete">Lag vinkel</translation>
     </message>
     <message>
         <source>Cloth seams and hems</source>
-        <translation>Sømme og kantninger</translation>
+        <translation type="obsolete">Sømme og kantninger</translation>
     </message>
     <message>
         <source>Cloth width</source>
-        <translation>Tekstil bredde</translation>
+        <translation type="obsolete">Tekstil bredde</translation>
     </message>
     <message>
         <source>Seams width</source>
-        <translation>Sømbredde</translation>
+        <translation type="obsolete">Sømbredde</translation>
     </message>
     <message>
         <source>Leech hem width</source>
-        <translation>Bredde på bagli søm</translation>
+        <translation type="obsolete">Bredde på bagli søm</translation>
     </message>
     <message>
         <source>Other hem width</source>
-        <translation>Andre søm bredde</translation>
+        <translation type="obsolete">Andre søm bredde</translation>
     </message>
     <message>
         <source>Sail mould</source>
-        <translation>Sejl form</translation>
+        <translation type="obsolete">Sejl form</translation>
     </message>
     <message>
         <source>Luff factor</source>
-        <translation>Forli faktor</translation>
+        <translation type="obsolete">Forli faktor</translation>
     </message>
     <message>
         <source>Depth</source>
-        <translation>Dybde</translation>
+        <translation type="obsolete">Dybde</translation>
     </message>
     <message>
         <source>Leech factor</source>
-        <translation>Bagli faktor</translation>
+        <translation type="obsolete">Bagli faktor</translation>
     </message>
     <message>
         <source>Top profile</source>
-        <translation>Top profil</translation>
+        <translation type="obsolete">Top profil</translation>
     </message>
     <message>
         <source>Mid profile at h = </source>
-        <translation>Midter profil ved h =</translation>
+        <translation type="obsolete">Midter profil ved h =</translation>
     </message>
     <message>
         <source>Bottom profile</source>
-        <translation>Nederste profil</translation>
+        <translation type="obsolete">Nederste profil</translation>
     </message>
     <message>
         <source>error</source>
@@ -655,15 +655,15 @@ stævn</translation>
     </message>
     <message>
         <source>Wing</source>
-        <translation>Vinge</translation>
+        <translation type="obsolete">Vinge</translation>
     </message>
     <message>
         <source> luff gores.</source>
-        <translation>forli kiler.</translation>
+        <translation type="obsolete">forli kiler.</translation>
     </message>
     <message>
         <source>deg</source>
-        <translation>grd</translation>
+        <translation type="obsolete">grd</translation>
     </message>
     <message>
         <source>to &amp;Hand-plotting format</source>
@@ -803,6 +803,221 @@ stævn</translation>
     </message>
 </context>
 <context>
+    <name>CSailPrinter</name>
+    <message>
+        <source>Sailcut data sheet</source>
+        <translation>Sailcut data side</translation>
+    </message>
+    <message>
+        <source>Mainsail</source>
+        <translation>Storsejl</translation>
+    </message>
+    <message>
+        <source>Jib</source>
+        <translation>Fok</translation>
+    </message>
+    <message>
+        <source>Wing</source>
+        <translation>Vinge</translation>
+    </message>
+    <message>
+        <source>deg</source>
+        <translation>grd</translation>
+    </message>
+    <message>
+        <source>Sail type</source>
+        <translation>Sejl type</translation>
+    </message>
+    <message>
+        <source>Cross Cut</source>
+        <translation>Cross Cut</translation>
+    </message>
+    <message>
+        <source>Horizontal Cut</source>
+        <translation>Horisontal Cut</translation>
+    </message>
+    <message>
+        <source>Radial Cut</source>
+        <translation>Radial Cut</translation>
+    </message>
+    <message>
+        <source>sections</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>head gores</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>luff gores</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Twist Foot Cut</source>
+        <translation>Twistet Foot Cut</translation>
+    </message>
+    <message>
+        <source>Vertical Cut</source>
+        <translation>Vertikal Cut</translation>
+    </message>
+    <message>
+        <source>Mitre Cut</source>
+        <translation>Mitre Cut</translation>
+    </message>
+    <message>
+        <source>Sail layout</source>
+        <translation>Sejl layout</translation>
+    </message>
+    <message>
+        <source>Rig</source>
+        <translation>Rig</translation>
+    </message>
+    <message>
+        <source>Boat LOA</source>
+        <translation>Bådens LOA</translation>
+    </message>
+    <message>
+        <source>Mast/Luff rake</source>
+        <translation>Maste/Forli hældning</translation>
+    </message>
+    <message>
+        <source>Tack position X</source>
+        <translation>Halsbarm position X</translation>
+    </message>
+    <message>
+        <source>Tack height Y</source>
+        <translation>Halsbarm højde Y</translation>
+    </message>
+    <message>
+        <source>Fore triangle hoist I</source>
+        <translation>Forstags længde I mål</translation>
+    </message>
+    <message>
+        <source>Fore triangle base J</source>
+        <translation>Afstand fra forstævn til mast, J mål</translation>
+    </message>
+    <message>
+        <source>Sail dimensions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Luff length</source>
+        <translation>Forli længde</translation>
+    </message>
+    <message>
+        <source>Foot length</source>
+        <translation>Sejlfod længde</translation>
+    </message>
+    <message>
+        <source>Leech length</source>
+        <translation>Bagli længde</translation>
+    </message>
+    <message>
+        <source>Gaff length</source>
+        <translation>Gaffel længde</translation>
+    </message>
+    <message>
+        <source>Gaff angle wrt luff</source>
+        <translation>Gaffel vinkel fra forli</translation>
+    </message>
+    <message>
+        <source>Shape of edges</source>
+        <translation>Kanternes form</translation>
+    </message>
+    <message>
+        <source>Luff round</source>
+        <translation>Forli runding</translation>
+    </message>
+    <message>
+        <source>Luff round position</source>
+        <translation>Forli rundings position</translation>
+    </message>
+    <message>
+        <source>Foot round</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Foot round position</source>
+        <translation>Sejlfods rundings position</translation>
+    </message>
+    <message>
+        <source>Leech round</source>
+        <translation>Bagli runding</translation>
+    </message>
+    <message>
+        <source>Leech round position</source>
+        <translation>Bagli rundings position</translation>
+    </message>
+    <message>
+        <source>Gaff round</source>
+        <translation>Gaffel runding</translation>
+    </message>
+    <message>
+        <source>Gaff round position</source>
+        <translation>Position af Gaffel runding</translation>
+    </message>
+    <message>
+        <source>Sail settings</source>
+        <translation>Sejl egenskaber</translation>
+    </message>
+    <message>
+        <source>Twist angle</source>
+        <translation>Tvist vinkel</translation>
+    </message>
+    <message>
+        <source>Sheeting angle</source>
+        <translation>Lag vinkel</translation>
+    </message>
+    <message>
+        <source>Cloth seams and hems</source>
+        <translation>Sømme og kantninger</translation>
+    </message>
+    <message>
+        <source>Cloth width</source>
+        <translation>Tekstil bredde</translation>
+    </message>
+    <message>
+        <source>Seams width</source>
+        <translation>Sømbredde</translation>
+    </message>
+    <message>
+        <source>Leech hem width</source>
+        <translation>Bredde på bagli søm</translation>
+    </message>
+    <message>
+        <source>Other hem width</source>
+        <translation>Andre søm bredde</translation>
+    </message>
+    <message>
+        <source>Sail mould</source>
+        <translation>Sejl form</translation>
+    </message>
+    <message>
+        <source>Luff factor</source>
+        <translation>Forli faktor</translation>
+    </message>
+    <message>
+        <source>Depth</source>
+        <translation>Dybde</translation>
+    </message>
+    <message>
+        <source>Leech factor</source>
+        <translation>Bagli faktor</translation>
+    </message>
+    <message>
+        <source>Top profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mid profile at h = </source>
+        <translation>Midter profil ved h =</translation>
+    </message>
+    <message>
+        <source>Bottom profile</source>
+        <translation>Nederste profil</translation>
+    </message>
+</context>
+<context>
     <name>CSailViewerPanel</name>
     <message>
         <source>Display parameters</source>
@@ -858,6 +1073,14 @@ stævn</translation>
     <message>
         <source>Leech shape</source>
         <translation>Bagli form</translation>
+    </message>
+    <message>
+        <source>degrees</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>cord</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

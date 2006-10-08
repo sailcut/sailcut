@@ -435,211 +435,211 @@
     </message>
     <message>
         <source>Sailcut data sheet</source>
-        <translation>Таблица данных Sailcut</translation>
+        <translation type="obsolete">Таблица данных Sailcut</translation>
     </message>
     <message>
         <source>Sail type</source>
-        <translation>Тип паруса</translation>
+        <translation type="obsolete">Тип паруса</translation>
     </message>
     <message>
         <source>Mainsail</source>
-        <translation>Грот</translation>
+        <translation type="obsolete">Грот</translation>
     </message>
     <message>
         <source>Jib</source>
-        <translation>Стаксель</translation>
+        <translation type="obsolete">Стаксель</translation>
     </message>
     <message>
         <source>Wing</source>
-        <translation>Крыло</translation>
+        <translation type="obsolete">Крыло</translation>
     </message>
     <message>
         <source>Sail layout</source>
-        <translation>Макет паруса</translation>
+        <translation type="obsolete">Макет паруса</translation>
     </message>
     <message>
         <source>Cross Cut</source>
-        <translation>Поперечный крой</translation>
+        <translation type="obsolete">Поперечный крой</translation>
     </message>
     <message>
         <source>Horizontal Cut</source>
-        <translation>Горизонтальный крой</translation>
+        <translation type="obsolete">Горизонтальный крой</translation>
     </message>
     <message>
         <source>Radial Cut</source>
-        <translation>Радиальный крой</translation>
+        <translation type="obsolete">Радиальный крой</translation>
     </message>
     <message>
         <source>Twist Foot Cut</source>
-        <translation>Поперечный крой , параллельный краю нижней шкаторины</translation>
+        <translation type="obsolete">Поперечный крой , параллельный краю нижней шкаторины</translation>
     </message>
     <message>
         <source>Vertical Cut</source>
-        <translation>Вертикальный крой</translation>
+        <translation type="obsolete">Вертикальный крой</translation>
     </message>
     <message>
         <source>Mitre Cut</source>
-        <translation>Крой под  45 градусов</translation>
+        <translation type="obsolete">Крой под  45 градусов</translation>
     </message>
     <message>
         <source> sections,   </source>
-        <translation>Секции</translation>
+        <translation type="obsolete">Секции</translation>
     </message>
     <message>
         <source> head gores,   </source>
-        <translation>Клинья верхней части паруса</translation>
+        <translation type="obsolete">Клинья верхней части паруса</translation>
     </message>
     <message>
         <source> luff gores.</source>
-        <translation>Клинья передней шкаторины</translation>
+        <translation type="obsolete">Клинья передней шкаторины</translation>
     </message>
     <message>
         <source>Rig </source>
-        <translation>Парусное вооружение</translation>
+        <translation type="obsolete">Парусное вооружение</translation>
     </message>
     <message>
         <source>Boat LOA</source>
-        <translation>Габаритный размер лодки</translation>
+        <translation type="obsolete">Габаритный размер лодки</translation>
     </message>
     <message>
         <source>Fore triangle hoist I</source>
-        <translation>Высота  крепления штага на мачте от палубы, величина L</translation>
+        <translation type="obsolete">Высота  крепления штага на мачте от палубы, величина L</translation>
     </message>
     <message>
         <source>Fore triangle base J</source>
-        <translation>Проекция штага на палубу, величина J</translation>
+        <translation type="obsolete">Проекция штага на палубу, величина J</translation>
     </message>
     <message>
         <source>Tack position X</source>
-        <translation>Положение галсового угла X</translation>
+        <translation type="obsolete">Положение галсового угла X</translation>
     </message>
     <message>
         <source>Tack height Y</source>
-        <translation>Высота галсового угла Y</translation>
+        <translation type="obsolete">Высота галсового угла Y</translation>
     </message>
     <message>
         <source>Sail dimensions</source>
-        <translation>Размеры паруса</translation>
+        <translation type="obsolete">Размеры паруса</translation>
     </message>
     <message>
         <source>Luff length</source>
-        <translation>Длина передней шкаторины</translation>
+        <translation type="obsolete">Длина передней шкаторины</translation>
     </message>
     <message>
         <source>Mast/Luff rake</source>
-        <translation>Наклон мачты/штага</translation>
+        <translation type="obsolete">Наклон мачты/штага</translation>
     </message>
     <message>
         <source>Gaff angle wrt luff</source>
-        <translation>Угол наклона верхней шкаторины гафеля относительно передней шкаторины</translation>
+        <translation type="obsolete">Угол наклона верхней шкаторины гафеля относительно передней шкаторины</translation>
     </message>
     <message>
         <source>Gaff length</source>
-        <translation>Длина верхней шкаторины гафеля</translation>
+        <translation type="obsolete">Длина верхней шкаторины гафеля</translation>
     </message>
     <message>
         <source>Foot length</source>
-        <translation>Длина нижней шкаторины</translation>
+        <translation type="obsolete">Длина нижней шкаторины</translation>
     </message>
     <message>
         <source>Leech length</source>
-        <translation>Длина задней шкаторины</translation>
+        <translation type="obsolete">Длина задней шкаторины</translation>
     </message>
     <message>
         <source>Shape of edges</source>
-        <translation>Форма краев</translation>
+        <translation type="obsolete">Форма краев</translation>
     </message>
     <message>
         <source>Luff round</source>
-        <translation>Выпуклость передней шкаторины</translation>
+        <translation type="obsolete">Выпуклость передней шкаторины</translation>
     </message>
     <message>
         <source>Gaff round</source>
-        <translation>Выпуклость верхней шкаторины гафеля</translation>
+        <translation type="obsolete">Выпуклость верхней шкаторины гафеля</translation>
     </message>
     <message>
         <source>Leech round</source>
-        <translation>Выпуклость задней шкаторины</translation>
+        <translation type="obsolete">Выпуклость задней шкаторины</translation>
     </message>
     <message>
         <source>Foot round</source>
-        <translation>Выпуклость нижней шкаторины</translation>
+        <translation type="obsolete">Выпуклость нижней шкаторины</translation>
     </message>
     <message>
         <source>Luff round position</source>
-        <translation>Положение выпуклости передней шкаторины</translation>
+        <translation type="obsolete">Положение выпуклости передней шкаторины</translation>
     </message>
     <message>
         <source>Gaff round position</source>
-        <translation>Положение выпуклости верхней шкаторины гафеля</translation>
+        <translation type="obsolete">Положение выпуклости верхней шкаторины гафеля</translation>
     </message>
     <message>
         <source>Leech round position</source>
-        <translation>Положение выпуклости задней шкаторины</translation>
+        <translation type="obsolete">Положение выпуклости задней шкаторины</translation>
     </message>
     <message>
         <source>Foot round position</source>
-        <translation>Положение выпуклости нижней шкаторины</translation>
+        <translation type="obsolete">Положение выпуклости нижней шкаторины</translation>
     </message>
     <message>
         <source>Sail settings</source>
-        <translation>Настройки паруса</translation>
+        <translation type="obsolete">Настройки паруса</translation>
     </message>
     <message>
         <source>Twist angle</source>
-        <translation>Угол твиста относительно ДП</translation>
+        <translation type="obsolete">Угол твиста относительно ДП</translation>
     </message>
     <message>
         <source>Sheeting angle</source>
-        <translation>Угол между диаметральной плоскостью лодки и линией, соединяющей галсовый и шкотовый углы паруса</translation>
+        <translation type="obsolete">Угол между диаметральной плоскостью лодки и линией, соединяющей галсовый и шкотовый углы паруса</translation>
     </message>
     <message>
         <source>Cloth seams and hems</source>
-        <translation>Ширина швов ткани и подгиба</translation>
+        <translation type="obsolete">Ширина швов ткани и подгиба</translation>
     </message>
     <message>
         <source>Cloth width</source>
-        <translation>Ширина ткани</translation>
+        <translation type="obsolete">Ширина ткани</translation>
     </message>
     <message>
         <source>Seams width</source>
-        <translation>Ширина шва</translation>
+        <translation type="obsolete">Ширина шва</translation>
     </message>
     <message>
         <source>Leech hem width</source>
-        <translation>Ширина подгиба задней шкаторины</translation>
+        <translation type="obsolete">Ширина подгиба задней шкаторины</translation>
     </message>
     <message>
         <source>Other hem width</source>
-        <translation>Ширина других подгибов</translation>
+        <translation type="obsolete">Ширина других подгибов</translation>
     </message>
     <message>
         <source>Sail mould</source>
-        <translation>Профиль паруса</translation>
+        <translation type="obsolete">Профиль паруса</translation>
     </message>
     <message>
         <source>Luff factor</source>
-        <translation>Фактор передней шкаторины</translation>
+        <translation type="obsolete">Фактор передней шкаторины</translation>
     </message>
     <message>
         <source>Depth</source>
-        <translation>Глубина</translation>
+        <translation type="obsolete">Глубина</translation>
     </message>
     <message>
         <source>Leech factor</source>
-        <translation>Фактор задней шкаторины</translation>
+        <translation type="obsolete">Фактор задней шкаторины</translation>
     </message>
     <message>
         <source>Top profile</source>
-        <translation>профиль верхней части</translation>
+        <translation type="obsolete">профиль верхней части</translation>
     </message>
     <message>
         <source>Mid profile at h = </source>
-        <translation>Профиль средней части на h=</translation>
+        <translation type="obsolete">Профиль средней части на h=</translation>
     </message>
     <message>
         <source>Bottom profile</source>
-        <translation>Профиль нижней части</translation>
+        <translation type="obsolete">Профиль нижней части</translation>
     </message>
     <message>
         <source>error</source>
@@ -667,7 +667,7 @@
     </message>
     <message>
         <source>deg</source>
-        <translation>градус</translation>
+        <translation type="obsolete">градус</translation>
     </message>
     <message>
         <source>to &amp;Hand-plotting format</source>
@@ -807,6 +807,221 @@
     </message>
 </context>
 <context>
+    <name>CSailPrinter</name>
+    <message>
+        <source>Sailcut data sheet</source>
+        <translation>Таблица данных Sailcut</translation>
+    </message>
+    <message>
+        <source>Mainsail</source>
+        <translation>Грот</translation>
+    </message>
+    <message>
+        <source>Jib</source>
+        <translation>Стаксель</translation>
+    </message>
+    <message>
+        <source>Wing</source>
+        <translation>Крыло</translation>
+    </message>
+    <message>
+        <source>deg</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sail type</source>
+        <translation>Тип паруса</translation>
+    </message>
+    <message>
+        <source>Cross Cut</source>
+        <translation>Поперечный крой</translation>
+    </message>
+    <message>
+        <source>Horizontal Cut</source>
+        <translation>Горизонтальный крой</translation>
+    </message>
+    <message>
+        <source>Radial Cut</source>
+        <translation>Радиальный крой</translation>
+    </message>
+    <message>
+        <source>sections</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>head gores</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>luff gores</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Twist Foot Cut</source>
+        <translation>Поперечный крой , параллельный краю нижней шкаторины</translation>
+    </message>
+    <message>
+        <source>Vertical Cut</source>
+        <translation>Вертикальный крой</translation>
+    </message>
+    <message>
+        <source>Mitre Cut</source>
+        <translation>Крой под  45 градусов</translation>
+    </message>
+    <message>
+        <source>Sail layout</source>
+        <translation>Макет паруса</translation>
+    </message>
+    <message>
+        <source>Rig</source>
+        <translation>Парусное вооружение</translation>
+    </message>
+    <message>
+        <source>Boat LOA</source>
+        <translation>Габаритный размер лодки</translation>
+    </message>
+    <message>
+        <source>Mast/Luff rake</source>
+        <translation>Наклон мачты/штага</translation>
+    </message>
+    <message>
+        <source>Tack position X</source>
+        <translation>Положение галсового угла X</translation>
+    </message>
+    <message>
+        <source>Tack height Y</source>
+        <translation>Высота галсового угла Y</translation>
+    </message>
+    <message>
+        <source>Fore triangle hoist I</source>
+        <translation>Высота  крепления штага на мачте от палубы, величина L</translation>
+    </message>
+    <message>
+        <source>Fore triangle base J</source>
+        <translation>Проекция штага на палубу, величина J</translation>
+    </message>
+    <message>
+        <source>Sail dimensions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Luff length</source>
+        <translation>Длина передней шкаторины</translation>
+    </message>
+    <message>
+        <source>Foot length</source>
+        <translation>Длина нижней шкаторины</translation>
+    </message>
+    <message>
+        <source>Leech length</source>
+        <translation>Длина задней шкаторины</translation>
+    </message>
+    <message>
+        <source>Gaff length</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Gaff angle wrt luff</source>
+        <translation>Угол наклона верхней шкаторины гафеля относительно передней шкаторины</translation>
+    </message>
+    <message>
+        <source>Shape of edges</source>
+        <translation>Форма краев</translation>
+    </message>
+    <message>
+        <source>Luff round</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Luff round position</source>
+        <translation>Положение выпуклости передней шкаторины</translation>
+    </message>
+    <message>
+        <source>Foot round</source>
+        <translation>Выпуклость нижней шкаторины</translation>
+    </message>
+    <message>
+        <source>Foot round position</source>
+        <translation>Положение выпуклости нижней шкаторины</translation>
+    </message>
+    <message>
+        <source>Leech round</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Leech round position</source>
+        <translation>Положение выпуклости задней шкаторины</translation>
+    </message>
+    <message>
+        <source>Gaff round</source>
+        <translation>Выпуклость верхней шкаторины гафеля</translation>
+    </message>
+    <message>
+        <source>Gaff round position</source>
+        <translation>Положение выпуклости верхней шкаторины гафеля</translation>
+    </message>
+    <message>
+        <source>Sail settings</source>
+        <translation>Настройки паруса</translation>
+    </message>
+    <message>
+        <source>Twist angle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sheeting angle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cloth seams and hems</source>
+        <translation>Ширина швов ткани и подгиба</translation>
+    </message>
+    <message>
+        <source>Cloth width</source>
+        <translation>Ширина ткани</translation>
+    </message>
+    <message>
+        <source>Seams width</source>
+        <translation>Ширина шва</translation>
+    </message>
+    <message>
+        <source>Leech hem width</source>
+        <translation>Ширина подгиба задней шкаторины</translation>
+    </message>
+    <message>
+        <source>Other hem width</source>
+        <translation>Ширина других подгибов</translation>
+    </message>
+    <message>
+        <source>Sail mould</source>
+        <translation>Профиль паруса</translation>
+    </message>
+    <message>
+        <source>Luff factor</source>
+        <translation>Фактор передней шкаторины</translation>
+    </message>
+    <message>
+        <source>Depth</source>
+        <translation>Глубина</translation>
+    </message>
+    <message>
+        <source>Leech factor</source>
+        <translation>Фактор задней шкаторины</translation>
+    </message>
+    <message>
+        <source>Top profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mid profile at h = </source>
+        <translation>Профиль средней части на h=</translation>
+    </message>
+    <message>
+        <source>Bottom profile</source>
+        <translation>Профиль нижней части</translation>
+    </message>
+</context>
+<context>
     <name>CSailViewerPanel</name>
     <message>
         <source>Display parameters</source>
@@ -862,6 +1077,14 @@
     <message>
         <source>Leech shape</source>
         <translation>Форма задней шкаторины</translation>
+    </message>
+    <message>
+        <source>degrees</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>cord</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
