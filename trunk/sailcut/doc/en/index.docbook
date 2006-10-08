@@ -14,7 +14,7 @@
 
 </authorgroup>
 
-<pubdate>Sailcut CAD 1.2.3 - 8 October 2006</pubdate>
+<pubdate>Sailcut CAD 1.2.3 - 8 October 2006 </pubdate>
 
 </articleinfo>
 
@@ -515,31 +515,31 @@
 
 <para>The developed sail is display by clicking on the &quot;Development&quot; tab from Sailcut CAD&apos;s main window. This presents you with a view of the developed (flat) panels of the sail. The view controls are the same as those of the main window. The blue line represents the edge of the finished panel (draw line) and the red line represents the outer edge taking into account the seam and hems width allowance (cut line).</para>
 
-<para>You can export the points which define the edges of the developed panels with the draw and cut lines to the following file formats:</para>
+<para>You can export the points which define the edges of the developed panels with the draw line and the cut line to the following file formats:</para>
 
 <itemizedlist>
 
 <listitem>
 
-<para>Carlson Design plotter (.sp4) using File-&gt;Export development-&gt;to Carlson plotter</para>
+<para>Carlson Design plotter (.sp4) using <emphasis>File-&gt;Export development-&gt;to Carlson plotter</emphasis></para>
 
 </listitem>
 
 <listitem>
 
-<para>AutoCAD DXF using File-&gt;Export development-&gt;to DXF</para>
+<para>AutoCAD DXF using <emphasis>File-&gt;Export development-&gt;to DXF</emphasis></para>
 
 </listitem>
 
 <listitem>
 
-<para>XML dump of the points using File-&gt;Export development-&gt;to XML sail (see <xref linkend="s.format_xml_sail"/> for file format details)</para>
+<para>XML dump of the points using <emphasis>File-&gt;Export development-&gt;to XML sail</emphasis> (see <xref linkend="s.format_xml_sail"/> for file format details)</para>
 
 </listitem>
 
 <listitem>
 
-<para>plain ASCII text dump of the points using File-&gt;Export development-&gt;to TXT sail (see <xref linkend="s.format_text_flat"/> for file format details)</para>
+<para>plain ASCII text dump of the points using <emphasis>File-&gt;Export development-&gt;to TXT sail</emphasis> (see <xref linkend="s.format_text_flat"/> for file format details)</para>
 
 </listitem>
 
@@ -551,7 +551,9 @@
 
 <title>Loading / saving sails</title>
 
-<para>Once you have customised you sail, you can save it to a file (File-&gt;Save or File-&gt;Save As) and load it (File-&gt;Open) next time you want to work on it. Both the sail&apos;s dimensions and the parameters of the mould are saved simultanously. This feature allows you to reload a sail and reuse its mould even if you change the dimensions to fit a new rig.</para>
+<para>Once you have customised you sail, you can save it to a file by using the menu <emphasis>File-&gt;Save</emphasis> or <emphasis>File-&gt;Save As</emphasis>. You can reload it by using the menu <emphasis>File-&gt;Open</emphasis> next time you want to work on it. </para>
+
+<para>Both the sail&apos;s dimensions and the parameters of the mould are saved simultanously. This feature allows you to reload a sail and reuse its mould even if you change the dimensions of the sail to fit a new rig.</para>
 
 <para>Sailcut CAD uses XML files to store the sail data. These files are plain text so they can easily be viewed using your favourite text editor.</para>
 
@@ -561,31 +563,25 @@
 
 <title>Exporting 3D sails</title>
 
-<para>On top of Sailcut CAD&apos;s native file format it is possible to export the points of the edges of the panels that make up a sail. You export the three dimensional sail to the following file formats:</para>
+<para>In addition to Sailcut CAD&apos;s native file format, it is possible to export all the 3D points located on the edges and seams of the panels that make up a sail. You can export the three dimensional sail to the following file formats:</para>
 
 <itemizedlist>
 
 <listitem>
 
-<para>AutoCAD DXF using File-&gt;Export 3D sail-&gt;to DXF</para>
+<para>AutoCAD DXF file using <emphasis>File-&gt;Export 3D sail-&gt;to DXF</emphasis></para>
 
 </listitem>
 
 <listitem>
 
-<para>AutoCAD DXF using File-&gt;Export 3D sail-&gt;to DXF BLOCKS</para>
+<para>XML dump of the points using <emphasis>File-&gt;Export 3D sail-&gt;to XML sail</emphasis> (see <xref linkend="s.format_xml_sail"/> for file format details)</para>
 
 </listitem>
 
 <listitem>
 
-<para>XML dump of the points using File-&gt;Export 3D sail-&gt;to XML sail (see <xref linkend="s.format_xml_sail"/> for file format details)</para>
-
-</listitem>
-
-<listitem>
-
-<para>plain ASCII text dump of the points using File-&gt;Export 3D sail-&gt;to TXT sail (see <xref linkend="s.format_text_sail"/> for file format details)</para>
+<para>Plain ASCII text dump of the points using <emphasis>File-&gt;Export 3D sail-&gt;to TXT sail</emphasis> (see <xref linkend="s.format_text_sail"/> for file format details)</para>
 
 </listitem>
 
@@ -603,19 +599,19 @@
 
 <listitem>
 
-<para>File-&gt;Print-&gt;data, will print the data of the sail,</para>
+<para><emphasis>File-&gt;Print-&gt;data</emphasis> will print the data of the sail,</para>
 
 </listitem>
 
 <listitem>
 
-<para>File-&gt;Print-&gt;drawing, will print a drawing of the complete sail,</para>
+<para><emphasis>File-&gt;Print-&gt;drawing</emphasis> will print a drawing of the complete sail,</para>
 
 </listitem>
 
 <listitem>
 
-<para>File-&gt;Print-&gt;develop, will print all the developed panels with key points coordinates (1 panel per page). The definition of the developed panel key points coordinates is given in <xref linkend="fig.develop_panel_drawing"/>. The X,Y coordinates are absolute coordinates referenced to the lower left corner of the box enveloping the contour of the CUT line of the panel (edge of cloth). The dX,dY coordinates are relative to the straight line joining the end of the corresponding edge and it should be remembered that the origin of dX is at the left end of the edge and positive value of dY indicate that the point is left of the straight line joining the origin to the end points of the edge.</para>
+<para><emphasis>File-&gt;Print-&gt;develop</emphasis> will print all the developed panels with key points coordinates (1 panel per page). The definition of the developed panel key points coordinates is given in <xref linkend="fig.develop_panel_drawing"/>. The X,Y coordinates are absolute coordinates referenced to the lower left corner of the box enveloping the contour of the CUT line of the panel (edge of cloth). The dX,dY coordinates are relative to the straight line joining the end of the corresponding edge and it should be remembered that the origin of dX is at the left end of the edge and positive value of dY indicate that the point is left of the straight line joining the origin to the end points of the edge.</para>
 
 </listitem>
 
