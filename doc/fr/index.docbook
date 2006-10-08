@@ -127,11 +127,9 @@
 
 <para>La procédure pour compiler and installer Sailcut CAD est en trois étapes : lancer le script <emphasis>configure</emphasis>, compiler puis installer. En ligne de commande, vous devez taper les commandes suivantes à partir du répertoire qui contient la coe source de Sailcut CAD:</para>
 
-<programlisting>
-% ./configure
+<programlisting>% ./configure
 % make
-% make install
-</programlisting> 
+% make install</programlisting> 
 
 </sect3>
 
@@ -141,10 +139,8 @@
 
 <para>Pour compiler Sailcut CAD sur votre système, lancez <emphasis>MSYS</emphasis>emphasis> pour avoir une console de commande, puis tapez les commandes suivantes depuis le repertoire racine de la distribution Sailcut:</para>
 
-<programlisting>
-% ./configure
-% make
-</programlisting> 
+<programlisting>% ./configure
+% make</programlisting> 
 
 <para>Quand vous installez le fichier exécutable to Sailcut pour Windows, n&apos;oubliez pas d&apos;installer aussi les DLLs &quot;Qt 4 runtime for Win32&quot; dans le même dossier ou dans le dossier <emphasis>C:\Systems32.</emphasis>emphasis></para>
 
@@ -154,13 +150,11 @@
 
 <title>Notes pour MacOS/X</title>
 
-<para>Sailcut CAD se compile and tourne avec le <emphasis>Fink package manager</emphasis>. Pour compiler et installer Sailcut CAD, taper the commandes suivantes depuis le répertoire racine de la distribution Sailcut:</para>
+<para>Sailcut CAD se compile et tourne avec le <emphasis>Fink package manager</emphasis>. Pour compiler et installer Sailcut CAD, taper the commandes suivantes depuis le répertoire racine de la distribution Sailcut:</para>
 
-<programlisting>
-% ./configure --with-qt-includes=/sw/include/qt
+<programlisting>% ./configure --with-qt-includes=/sw/include/qt
 % make
-% make install
-</programlisting>
+% make install</programlisting>
 
 </sect3>
 
