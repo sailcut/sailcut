@@ -442,215 +442,211 @@
     </message>
     <message>
         <source>Sailcut data sheet</source>
-        <translation>Sailcut - Datenblatt</translation>
+        <translation type="obsolete">Sailcut - Datenblatt</translation>
     </message>
     <message>
         <source>Sail type</source>
-        <translation>Segeltyp</translation>
+        <translation type="obsolete">Segeltyp</translation>
     </message>
     <message>
         <source>Mainsail</source>
-        <translation>Großsegel</translation>
+        <translation type="obsolete">Großsegel</translation>
     </message>
     <message>
         <source>Jib</source>
-        <translation>Fock</translation>
+        <translation type="obsolete">Fock</translation>
     </message>
     <message>
         <source>Sail layout</source>
-        <translation>Segelschnitt</translation>
+        <translation type="obsolete">Segelschnitt</translation>
     </message>
     <message>
         <source>Cross Cut</source>
-        <translation>Kreuzschnitt</translation>
+        <translation type="obsolete">Kreuzschnitt</translation>
     </message>
     <message>
         <source>Horizontal Cut</source>
-        <translation>Horizontalschnitt</translation>
+        <translation type="obsolete">Horizontalschnitt</translation>
     </message>
     <message>
         <source>Radial Cut</source>
-        <translation>Radialschnitt</translation>
+        <translation type="obsolete">Radialschnitt</translation>
     </message>
     <message>
         <source>Twist Foot Cut</source>
-        <translation>Twist-Foot Schnitt</translation>
+        <translation type="obsolete">Twist-Foot Schnitt</translation>
     </message>
     <message>
         <source>Vertical Cut</source>
-        <translation>Vertikalschnitt</translation>
+        <translation type="obsolete">Vertikalschnitt</translation>
     </message>
     <message>
         <source>Mitre Cut</source>
-        <translation>Gehrungsschnitt</translation>
+        <translation type="obsolete">Gehrungsschnitt</translation>
     </message>
     <message>
         <source> sections,   </source>
-        <translation> Segmente,   </translation>
+        <translation type="obsolete"> Segmente,   </translation>
     </message>
     <message>
         <source>Rig </source>
-        <translation>Rigg </translation>
+        <translation type="obsolete">Rigg </translation>
     </message>
     <message>
         <source>Boat LOA</source>
-        <translation>Bootslänge LüA</translation>
+        <translation type="obsolete">Bootslänge LüA</translation>
     </message>
     <message>
         <source>Fore triangle hoist I</source>
-        <translation>Höhe I des Vorsegeldreiecks</translation>
+        <translation type="obsolete">Höhe I des Vorsegeldreiecks</translation>
     </message>
     <message>
         <source>Fore triangle base J</source>
-        <translation>Basis J des Vorsegeldreiecks</translation>
+        <translation type="obsolete">Basis J des Vorsegeldreiecks</translation>
     </message>
     <message>
         <source>Tack position X</source>
-        <translation>Segelhalsposition X</translation>
+        <translation type="obsolete">Segelhalsposition X</translation>
     </message>
     <message>
         <source>Tack height Y</source>
-        <translation>Segelhalshöhe Y</translation>
+        <translation type="obsolete">Segelhalshöhe Y</translation>
     </message>
     <message>
         <source>Sail dimensions</source>
-        <translation>Segelabmessungen</translation>
+        <translation type="obsolete">Segelabmessungen</translation>
     </message>
     <message>
         <source>Luff length</source>
-        <translation>Länge des Vorlieks</translation>
+        <translation type="obsolete">Länge des Vorlieks</translation>
     </message>
     <message>
         <source>Gaff angle wrt luff</source>
-        <translation>Gaffelwinkel relativ zum Vorliek</translation>
+        <translation type="obsolete">Gaffelwinkel relativ zum Vorliek</translation>
     </message>
     <message>
         <source>Gaff length</source>
-        <translation>Länge der Gaffel</translation>
+        <translation type="obsolete">Länge der Gaffel</translation>
     </message>
     <message>
         <source>Foot length</source>
-        <translation>Länge des Unterlieks</translation>
+        <translation type="obsolete">Länge des Unterlieks</translation>
     </message>
     <message>
         <source>Leech length</source>
-        <translation>Länge des Achterlieks</translation>
-    </message>
-    <message>
-        <source>Shape of edges</source>
-        <translation></translation>
+        <translation type="obsolete">Länge des Achterlieks</translation>
     </message>
     <message>
         <source>Luff round</source>
-        <translation>Vorliek-Bogen</translation>
+        <translation type="obsolete">Vorliek-Bogen</translation>
     </message>
     <message>
         <source>Gaff round</source>
-        <translation>Gaffel-Bogen</translation>
+        <translation type="obsolete">Gaffel-Bogen</translation>
     </message>
     <message>
         <source>Leech round</source>
-        <translation>Achterliek-Bogen</translation>
+        <translation type="obsolete">Achterliek-Bogen</translation>
     </message>
     <message>
         <source>Foot round</source>
-        <translation>Unterliek-Bogen</translation>
+        <translation type="obsolete">Unterliek-Bogen</translation>
     </message>
     <message>
         <source>Luff round position</source>
-        <translation>Position des Vorliekbogens</translation>
+        <translation type="obsolete">Position des Vorliekbogens</translation>
     </message>
     <message>
         <source>Gaff round position</source>
-        <translation>Position des Gaffelbogens</translation>
+        <translation type="obsolete">Position des Gaffelbogens</translation>
     </message>
     <message>
         <source>Leech round position</source>
-        <translation>Position des Achterliekbogens</translation>
+        <translation type="obsolete">Position des Achterliekbogens</translation>
     </message>
     <message>
         <source>Foot round position</source>
-        <translation>Position des Unterliekbogens</translation>
+        <translation type="obsolete">Position des Unterliekbogens</translation>
     </message>
     <message>
         <source>Sail settings</source>
-        <translation>Eigenschaften des Segels</translation>
+        <translation type="obsolete">Eigenschaften des Segels</translation>
     </message>
     <message>
         <source>Twist angle</source>
-        <translation>Verwindungswinkel</translation>
+        <translation type="obsolete">Verwindungswinkel</translation>
     </message>
     <message>
         <source>Sheeting angle</source>
-        <translation>Winkel der Segelbahn</translation>
+        <translation type="obsolete">Winkel der Segelbahn</translation>
     </message>
     <message>
         <source>Cloth seams and hems</source>
-        <translation>Bahnennähte und Säume</translation>
+        <translation type="obsolete">Bahnennähte und Säume</translation>
     </message>
     <message>
         <source>Cloth width</source>
-        <translation>Bahnbreite</translation>
+        <translation type="obsolete">Bahnbreite</translation>
     </message>
     <message>
         <source>Seams width</source>
-        <translation>Nahtbreite</translation>
+        <translation type="obsolete">Nahtbreite</translation>
     </message>
     <message>
         <source>Leech hem width</source>
-        <translation>Breite des Achterlieksaumes</translation>
+        <translation type="obsolete">Breite des Achterlieksaumes</translation>
     </message>
     <message>
         <source>Other hem width</source>
-        <translation>andere Saumbreiten</translation>
+        <translation type="obsolete">andere Saumbreiten</translation>
     </message>
     <message>
         <source>Sail mould</source>
-        <translation>Segelform</translation>
+        <translation type="obsolete">Segelform</translation>
     </message>
     <message>
         <source>Luff factor</source>
-        <translation>Vorliegsfaktor</translation>
+        <translation type="obsolete">Vorliegsfaktor</translation>
     </message>
     <message>
         <source>Depth</source>
-        <translation>Tiefe</translation>
+        <translation type="obsolete">Tiefe</translation>
     </message>
     <message>
         <source>Leech factor</source>
-        <translation>Achterlieksfaktor</translation>
+        <translation type="obsolete">Achterlieksfaktor</translation>
     </message>
     <message>
         <source>Top profile</source>
-        <translation>Oberes Profil</translation>
+        <translation type="obsolete">Oberes Profil</translation>
     </message>
     <message>
         <source>Mid profile at h = </source>
-        <translation>Mittleres Profil bei Höhe h =</translation>
+        <translation type="obsolete">Mittleres Profil bei Höhe h =</translation>
     </message>
     <message>
         <source>Bottom profile</source>
-        <translation>Unteres Profil</translation>
+        <translation type="obsolete">Unteres Profil</translation>
     </message>
     <message>
         <source>Mast/Luff rake</source>
-        <translation>Neigung der Mastspur</translation>
+        <translation type="obsolete">Neigung der Mastspur</translation>
     </message>
     <message>
         <source> head gores,   </source>
-        <translation>Radialkeile im Kopfabschnitt </translation>
+        <translation type="obsolete">Radialkeile im Kopfabschnitt </translation>
     </message>
     <message>
         <source>Wing</source>
-        <translation>Tragfläche</translation>
+        <translation type="obsolete">Tragfläche</translation>
     </message>
     <message>
         <source> luff gores.</source>
-        <translation>Radialkeile beginnend am Kopf und endend am Segelhals.</translation>
+        <translation type="obsolete">Radialkeile beginnend am Kopf und endend am Segelhals.</translation>
     </message>
     <message>
         <source>deg</source>
-        <translation>°</translation>
+        <translation type="obsolete">°</translation>
     </message>
     <message>
         <source>Export &amp;development</source>
@@ -794,6 +790,221 @@
     </message>
 </context>
 <context>
+    <name>CSailPrinter</name>
+    <message>
+        <source>Sailcut data sheet</source>
+        <translation>Sailcut Datenblatt</translation>
+    </message>
+    <message>
+        <source>Mainsail</source>
+        <translation>Großsegel</translation>
+    </message>
+    <message>
+        <source>Jib</source>
+        <translation>Fock</translation>
+    </message>
+    <message>
+        <source>Wing</source>
+        <translation>Tragfläche</translation>
+    </message>
+    <message>
+        <source>deg</source>
+        <translation>°</translation>
+    </message>
+    <message>
+        <source>Sail type</source>
+        <translation>Segeltyp</translation>
+    </message>
+    <message>
+        <source>Cross Cut</source>
+        <translation>Kreuzschnitt</translation>
+    </message>
+    <message>
+        <source>Horizontal Cut</source>
+        <translation>Horizontalschnitt</translation>
+    </message>
+    <message>
+        <source>Radial Cut</source>
+        <translation>Radialschnitt</translation>
+    </message>
+    <message>
+        <source>sections</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>head gores</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>luff gores</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Twist Foot Cut</source>
+        <translation>Twist-Foot Schnitt</translation>
+    </message>
+    <message>
+        <source>Vertical Cut</source>
+        <translation>Vertikalschnitt</translation>
+    </message>
+    <message>
+        <source>Mitre Cut</source>
+        <translation>Gehrungsschnitt</translation>
+    </message>
+    <message>
+        <source>Sail layout</source>
+        <translation>Segelschnitt</translation>
+    </message>
+    <message>
+        <source>Rig</source>
+        <translation>Rigg </translation>
+    </message>
+    <message>
+        <source>Boat LOA</source>
+        <translation>Bootslänge LüA</translation>
+    </message>
+    <message>
+        <source>Mast/Luff rake</source>
+        <translation>Neigung der Mastspur</translation>
+    </message>
+    <message>
+        <source>Tack position X</source>
+        <translation>Segelhalsposition X</translation>
+    </message>
+    <message>
+        <source>Tack height Y</source>
+        <translation>Segelhalshöhe Y</translation>
+    </message>
+    <message>
+        <source>Fore triangle hoist I</source>
+        <translation>Höhe I des Vorsegeldreiecks</translation>
+    </message>
+    <message>
+        <source>Fore triangle base J</source>
+        <translation>Basis J des Vorsegeldreiecks</translation>
+    </message>
+    <message>
+        <source>Sail dimensions</source>
+        <translation>Segelabmessungen</translation>
+    </message>
+    <message>
+        <source>Luff length</source>
+        <translation>Länge des Vorlieks</translation>
+    </message>
+    <message>
+        <source>Foot length</source>
+        <translation>Länge des Unterlieks</translation>
+    </message>
+    <message>
+        <source>Leech length</source>
+        <translation>Länge des Achterlieks</translation>
+    </message>
+    <message>
+        <source>Gaff length</source>
+        <translation>Länge der Gaffel</translation>
+    </message>
+    <message>
+        <source>Gaff angle wrt luff</source>
+        <translation>Gaffelwinkel relativ zum Vorliek</translation>
+    </message>
+    <message>
+        <source>Shape of edges</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Luff round</source>
+        <translation>Vorliek-Bogen</translation>
+    </message>
+    <message>
+        <source>Luff round position</source>
+        <translation>Position des Vorliekbogens</translation>
+    </message>
+    <message>
+        <source>Foot round</source>
+        <translation>Unterliek-Bogen</translation>
+    </message>
+    <message>
+        <source>Foot round position</source>
+        <translation>Position des Unterliekbogens</translation>
+    </message>
+    <message>
+        <source>Leech round</source>
+        <translation>Achterliek-Bogen</translation>
+    </message>
+    <message>
+        <source>Leech round position</source>
+        <translation>Position des Achterliekbogens</translation>
+    </message>
+    <message>
+        <source>Gaff round</source>
+        <translation>Gaffel-Bogen</translation>
+    </message>
+    <message>
+        <source>Gaff round position</source>
+        <translation>Position des Gaffelbogens</translation>
+    </message>
+    <message>
+        <source>Sail settings</source>
+        <translation>Eigenschaften des Segels</translation>
+    </message>
+    <message>
+        <source>Twist angle</source>
+        <translation>Verwindungswinkel</translation>
+    </message>
+    <message>
+        <source>Sheeting angle</source>
+        <translation>Winkel der Segelbahn</translation>
+    </message>
+    <message>
+        <source>Cloth seams and hems</source>
+        <translation>Bahnennähte und Säume</translation>
+    </message>
+    <message>
+        <source>Cloth width</source>
+        <translation>Bahnbreite</translation>
+    </message>
+    <message>
+        <source>Seams width</source>
+        <translation>Nahtbreite</translation>
+    </message>
+    <message>
+        <source>Leech hem width</source>
+        <translation>Breite des Achterlieksaumes</translation>
+    </message>
+    <message>
+        <source>Other hem width</source>
+        <translation>andere Saumbreiten</translation>
+    </message>
+    <message>
+        <source>Sail mould</source>
+        <translation>Segelform</translation>
+    </message>
+    <message>
+        <source>Luff factor</source>
+        <translation>Vorliegsfaktor</translation>
+    </message>
+    <message>
+        <source>Depth</source>
+        <translation>Tiefe</translation>
+    </message>
+    <message>
+        <source>Leech factor</source>
+        <translation>Achterlieksfaktor</translation>
+    </message>
+    <message>
+        <source>Top profile</source>
+        <translation>Oberes Profil</translation>
+    </message>
+    <message>
+        <source>Mid profile at h = </source>
+        <translation>Mittleres Profil bei Höhe h =</translation>
+    </message>
+    <message>
+        <source>Bottom profile</source>
+        <translation>Unteres Profil</translation>
+    </message>
+</context>
+<context>
     <name>CSailViewerPanel</name>
     <message>
         <source>Display parameters</source>
@@ -849,6 +1060,14 @@
     <message>
         <source>Leech shape</source>
         <translation>Achterliekform</translation>
+    </message>
+    <message>
+        <source>degrees</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>cord</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

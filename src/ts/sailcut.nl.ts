@@ -27,7 +27,7 @@
         <source>Sailcut</source>
         <translation type="obsolete">Sailcut</translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <source>Sail corners coordinates</source>
         <translation>Zeilhoek coördinaten</translation>
     </message>
@@ -404,7 +404,7 @@
         <source>development</source>
         <translation>banen</translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <source>created new sail</source>
         <translation>nieuw zeil gecreëerd</translation>
     </message>
@@ -450,51 +450,51 @@
     </message>
     <message>
         <source>Sailcut data sheet</source>
-        <translation>Sailcut data sheet</translation>
+        <translation type="obsolete">Sailcut data sheet</translation>
     </message>
     <message>
         <source>Sail type</source>
-        <translation>Zeil type</translation>
+        <translation type="obsolete">Zeil type</translation>
     </message>
     <message>
         <source>Mainsail</source>
-        <translation>Grootzeil</translation>
+        <translation type="obsolete">Grootzeil</translation>
     </message>
     <message>
         <source>Jib</source>
-        <translation>Fok</translation>
+        <translation type="obsolete">Fok</translation>
     </message>
     <message>
         <source>Sail layout</source>
-        <translation>Zeilontwerp</translation>
+        <translation type="obsolete">Zeilontwerp</translation>
     </message>
     <message>
         <source>Cross Cut</source>
-        <translation>Schuin gesneden</translation>
+        <translation type="obsolete">Schuin gesneden</translation>
     </message>
     <message>
         <source>Horizontal Cut</source>
-        <translation>Horizontaal gesneden</translation>
+        <translation type="obsolete">Horizontaal gesneden</translation>
     </message>
     <message>
         <source>Radial Cut</source>
-        <translation>Radiaal gesneden</translation>
+        <translation type="obsolete">Radiaal gesneden</translation>
     </message>
     <message>
         <source>Twist Foot Cut</source>
-        <translation>Gedraaid Onderlijk</translation>
+        <translation type="obsolete">Gedraaid Onderlijk</translation>
     </message>
     <message>
         <source>Vertical Cut</source>
-        <translation>Verticaal gesneden</translation>
+        <translation type="obsolete">Verticaal gesneden</translation>
     </message>
     <message>
         <source>Mitre Cut</source>
-        <translation>Verstek gesneden</translation>
+        <translation type="obsolete">Verstek gesneden</translation>
     </message>
     <message>
         <source> sections,   </source>
-        <translation> secties,   </translation>
+        <translation type="obsolete"> secties,   </translation>
     </message>
     <message>
         <source> head gores.</source>
@@ -502,35 +502,35 @@
     </message>
     <message>
         <source>Rig </source>
-        <translation>Tuigage </translation>
+        <translation type="obsolete">Tuigage </translation>
     </message>
     <message>
         <source>Boat LOA</source>
-        <translation>Scheepslengte LOA</translation>
+        <translation type="obsolete">Scheepslengte LOA</translation>
     </message>
     <message>
         <source>Fore triangle hoist I</source>
-        <translation>Voordriehoek hoogte I</translation>
+        <translation type="obsolete">Voordriehoek hoogte I</translation>
     </message>
     <message>
         <source>Fore triangle base J</source>
-        <translation>Voordriehoek basis J</translation>
+        <translation type="obsolete">Voordriehoek basis J</translation>
     </message>
     <message>
         <source>Tack position X</source>
-        <translation>Halshoek positie X</translation>
+        <translation type="obsolete">Halshoek positie X</translation>
     </message>
     <message>
         <source>Tack height Y</source>
-        <translation>Halshoek hoogte Y</translation>
+        <translation type="obsolete">Halshoek hoogte Y</translation>
     </message>
     <message>
         <source>Sail dimensions</source>
-        <translation>Zeil afmetingen</translation>
+        <translation type="obsolete">Zeil afmetingen</translation>
     </message>
     <message>
         <source>Luff length</source>
-        <translation>Voorlijk lengte</translation>
+        <translation type="obsolete">Voorlijk lengte</translation>
     </message>
     <message>
         <source>Mast rake</source>
@@ -538,123 +538,123 @@
     </message>
     <message>
         <source>Gaff angle wrt luff</source>
-        <translation>Gaffel-mast hoek</translation>
+        <translation type="obsolete">Gaffel-mast hoek</translation>
     </message>
     <message>
         <source>Gaff length</source>
-        <translation>Gaffel lengte</translation>
+        <translation type="obsolete">Gaffel lengte</translation>
     </message>
     <message>
         <source>Foot length</source>
-        <translation>Onderlijk lengte</translation>
+        <translation type="obsolete">Onderlijk lengte</translation>
     </message>
     <message>
         <source>Leech length</source>
-        <translation>Achterlijk lengte</translation>
+        <translation type="obsolete">Achterlijk lengte</translation>
     </message>
     <message>
         <source>Shape of edges</source>
-        <translation>Vorm van de randen</translation>
+        <translation type="obsolete">Vorm van de randen</translation>
     </message>
     <message>
         <source>Luff round</source>
-        <translation>Voorlijk ronding</translation>
+        <translation type="obsolete">Voorlijk ronding</translation>
     </message>
     <message>
         <source>Gaff round</source>
-        <translation>Gaffel ronding</translation>
+        <translation type="obsolete">Gaffel ronding</translation>
     </message>
     <message>
         <source>Leech round</source>
-        <translation>Achterlijk ronding</translation>
+        <translation type="obsolete">Achterlijk ronding</translation>
     </message>
     <message>
         <source>Foot round</source>
-        <translation>Onderlijk ronding</translation>
+        <translation type="obsolete">Onderlijk ronding</translation>
     </message>
     <message>
         <source>Luff round position</source>
-        <translation>Voorlijk ronding positie</translation>
+        <translation type="obsolete">Voorlijk ronding positie</translation>
     </message>
     <message>
         <source>Gaff round position</source>
-        <translation>Gaffel ronding positie</translation>
+        <translation type="obsolete">Gaffel ronding positie</translation>
     </message>
     <message>
         <source>Leech round position</source>
-        <translation>Achterlijk ronding positie</translation>
+        <translation type="obsolete">Achterlijk ronding positie</translation>
     </message>
     <message>
         <source>Foot round position</source>
-        <translation>Onderlijk ronding positie</translation>
+        <translation type="obsolete">Onderlijk ronding positie</translation>
     </message>
     <message>
         <source>Sail settings</source>
-        <translation>Zeil instellingen</translation>
+        <translation type="obsolete">Zeil instellingen</translation>
     </message>
     <message>
         <source>Twist angle</source>
-        <translation>Twist hoek</translation>
+        <translation type="obsolete">Twist hoek</translation>
     </message>
     <message>
         <source>Sheeting angle</source>
-        <translation>Schootlijn hoek</translation>
+        <translation type="obsolete">Schootlijn hoek</translation>
     </message>
     <message>
         <source>Cloth seams and hems</source>
-        <translation>Doek naden en zomen</translation>
+        <translation type="obsolete">Doek naden en zomen</translation>
     </message>
     <message>
         <source>Cloth width</source>
-        <translation>Baan breedte</translation>
+        <translation type="obsolete">Baan breedte</translation>
     </message>
     <message>
         <source>Seams width</source>
-        <translation>Naad breedte</translation>
+        <translation type="obsolete">Naad breedte</translation>
     </message>
     <message>
         <source>Leech hem width</source>
-        <translation>Achterlijk zoom breedte</translation>
+        <translation type="obsolete">Achterlijk zoom breedte</translation>
     </message>
     <message>
         <source>Other hem width</source>
-        <translation>Overige zoom breedte</translation>
+        <translation type="obsolete">Overige zoom breedte</translation>
     </message>
     <message>
         <source>Sail mould</source>
-        <translation>Zeilvorm</translation>
+        <translation type="obsolete">Zeilvorm</translation>
     </message>
     <message>
         <source>Luff factor</source>
-        <translation>Voorlijk factor</translation>
+        <translation type="obsolete">Voorlijk factor</translation>
     </message>
     <message>
         <source>Depth</source>
-        <translation>Diepte</translation>
+        <translation type="obsolete">Diepte</translation>
     </message>
     <message>
         <source>Leech factor</source>
-        <translation>Achterlijk factor</translation>
+        <translation type="obsolete">Achterlijk factor</translation>
     </message>
     <message>
         <source>Top profile</source>
-        <translation>Top profiel</translation>
+        <translation type="obsolete">Top profiel</translation>
     </message>
     <message>
         <source>Mid profile at h = </source>
-        <translation>Midden profiel bij h = </translation>
+        <translation type="obsolete">Midden profiel bij h = </translation>
     </message>
     <message>
         <source>Bottom profile</source>
-        <translation>Onderlijk profiel</translation>
+        <translation type="obsolete">Onderlijk profiel</translation>
     </message>
     <message>
         <source>Mast/Luff rake</source>
-        <translation>Mast/Voorlijk helling</translation>
+        <translation type="obsolete">Mast/Voorlijk helling</translation>
     </message>
     <message>
         <source> head gores,   </source>
-        <translation> hoofd banen,   </translation>
+        <translation type="obsolete"> hoofd banen,   </translation>
     </message>
     <message>
         <source> luff gore.</source>
@@ -662,15 +662,15 @@
     </message>
     <message>
         <source>Wing</source>
-        <translation>Vleugel</translation>
+        <translation type="obsolete">Vleugel</translation>
     </message>
     <message>
         <source> luff gores.</source>
-        <translation> voorlijk banen.</translation>
+        <translation type="obsolete"> voorlijk banen.</translation>
     </message>
     <message>
         <source>deg</source>
-        <translation>gr</translation>
+        <translation type="obsolete">gr</translation>
     </message>
     <message>
         <source>to &amp;Hand-plotting format</source>
@@ -810,6 +810,221 @@
     </message>
 </context>
 <context>
+    <name>CSailPrinter</name>
+    <message>
+        <source>Sailcut data sheet</source>
+        <translation>Sailcut data sheet</translation>
+    </message>
+    <message>
+        <source>Mainsail</source>
+        <translation>Grootzeil</translation>
+    </message>
+    <message>
+        <source>Jib</source>
+        <translation>Fok</translation>
+    </message>
+    <message>
+        <source>Wing</source>
+        <translation>Vleugel</translation>
+    </message>
+    <message>
+        <source>deg</source>
+        <translation>gr</translation>
+    </message>
+    <message>
+        <source>Sail type</source>
+        <translation>Zeil type</translation>
+    </message>
+    <message>
+        <source>Cross Cut</source>
+        <translation>Schuin gesneden</translation>
+    </message>
+    <message>
+        <source>Horizontal Cut</source>
+        <translation>Horizontaal gesneden</translation>
+    </message>
+    <message>
+        <source>Radial Cut</source>
+        <translation>Radiaal gesneden</translation>
+    </message>
+    <message>
+        <source>sections</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>head gores</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>luff gores</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Twist Foot Cut</source>
+        <translation>Gedraaid onderlijk</translation>
+    </message>
+    <message>
+        <source>Vertical Cut</source>
+        <translation>Verticaal gesneden</translation>
+    </message>
+    <message>
+        <source>Mitre Cut</source>
+        <translation>Verstek gesneden</translation>
+    </message>
+    <message>
+        <source>Sail layout</source>
+        <translation>Zeilontwerp</translation>
+    </message>
+    <message>
+        <source>Rig</source>
+        <translation>Tuigage</translation>
+    </message>
+    <message>
+        <source>Boat LOA</source>
+        <translation>Scheepslengte LOA</translation>
+    </message>
+    <message>
+        <source>Mast/Luff rake</source>
+        <translation>Mast/Voorlijk helling</translation>
+    </message>
+    <message>
+        <source>Tack position X</source>
+        <translation>Halshoek positie X</translation>
+    </message>
+    <message>
+        <source>Tack height Y</source>
+        <translation>Halshoek hoogte Y</translation>
+    </message>
+    <message>
+        <source>Fore triangle hoist I</source>
+        <translation>Voordriehoek hoogte I</translation>
+    </message>
+    <message>
+        <source>Fore triangle base J</source>
+        <translation>Voordriehoek basis J</translation>
+    </message>
+    <message>
+        <source>Sail dimensions</source>
+        <translation>Zeil afmetingen</translation>
+    </message>
+    <message>
+        <source>Luff length</source>
+        <translation>Voorlijk lengte</translation>
+    </message>
+    <message>
+        <source>Foot length</source>
+        <translation>Onderlijk lengte</translation>
+    </message>
+    <message>
+        <source>Leech length</source>
+        <translation>Achterlijk lengte</translation>
+    </message>
+    <message>
+        <source>Gaff length</source>
+        <translation>Gaffel lengte</translation>
+    </message>
+    <message>
+        <source>Gaff angle wrt luff</source>
+        <translation>Gaffel-mast hoek</translation>
+    </message>
+    <message>
+        <source>Shape of edges</source>
+        <translation>Vorm van de randen</translation>
+    </message>
+    <message>
+        <source>Luff round</source>
+        <translation>Voorlijk ronding</translation>
+    </message>
+    <message>
+        <source>Luff round position</source>
+        <translation>Voorlijk ronding positie</translation>
+    </message>
+    <message>
+        <source>Foot round</source>
+        <translation>Onderlijk ronding</translation>
+    </message>
+    <message>
+        <source>Foot round position</source>
+        <translation>Onderlijk ronding positie</translation>
+    </message>
+    <message>
+        <source>Leech round</source>
+        <translation>Achterlijk ronding</translation>
+    </message>
+    <message>
+        <source>Leech round position</source>
+        <translation>Achterlijk ronding positie</translation>
+    </message>
+    <message>
+        <source>Gaff round</source>
+        <translation>Gaffel ronding</translation>
+    </message>
+    <message>
+        <source>Gaff round position</source>
+        <translation>Gaffel ronding positie</translation>
+    </message>
+    <message>
+        <source>Sail settings</source>
+        <translation>Zeil instellingen</translation>
+    </message>
+    <message>
+        <source>Twist angle</source>
+        <translation>Twist hoek</translation>
+    </message>
+    <message>
+        <source>Sheeting angle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cloth seams and hems</source>
+        <translation>Doek naden en zomen</translation>
+    </message>
+    <message>
+        <source>Cloth width</source>
+        <translation>Baan breedte</translation>
+    </message>
+    <message>
+        <source>Seams width</source>
+        <translation>Naad breedte</translation>
+    </message>
+    <message>
+        <source>Leech hem width</source>
+        <translation>Achterlijk zoom breedte</translation>
+    </message>
+    <message>
+        <source>Other hem width</source>
+        <translation>Overige zoom breedte</translation>
+    </message>
+    <message>
+        <source>Sail mould</source>
+        <translation>Zeilvorm</translation>
+    </message>
+    <message>
+        <source>Luff factor</source>
+        <translation>Voorlijk factor</translation>
+    </message>
+    <message>
+        <source>Depth</source>
+        <translation>Diepte</translation>
+    </message>
+    <message>
+        <source>Leech factor</source>
+        <translation>Achterlijk factor</translation>
+    </message>
+    <message>
+        <source>Top profile</source>
+        <translation>Top profiel</translation>
+    </message>
+    <message>
+        <source>Mid profile at h = </source>
+        <translation>Midden profiel bij h = </translation>
+    </message>
+    <message>
+        <source>Bottom profile</source>
+        <translation>Onderlijk profiel</translation>
+    </message>
+</context>
+<context>
     <name>CSailViewerPanel</name>
     <message>
         <source>Display parameters</source>
@@ -865,6 +1080,14 @@
     <message>
         <source>Leech shape</source>
         <translation>Achterlijk vorm</translation>
+    </message>
+    <message>
+        <source>degrees</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>cord</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

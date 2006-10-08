@@ -838,6 +838,14 @@
         <source>Leech shape</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>degrees</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>cord</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>XmlReaderTempl</name>

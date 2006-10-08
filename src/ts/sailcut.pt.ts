@@ -29,27 +29,27 @@
     </message>
     <message>
         <source>Sail corners coordinates</source>
-        <translation type="unfinished">Coordenadas dos punhos da vela</translation>
+        <translation>Coordenadas dos punhos da vela</translation>
     </message>
     <message>
         <source>tack</source>
-        <translation type="unfinished">amura</translation>
+        <translation>amura</translation>
     </message>
     <message>
         <source>clew</source>
-        <translation type="unfinished">escota</translation>
+        <translation>escota</translation>
     </message>
     <message>
         <source>head</source>
-        <translation type="unfinished">gurutil</translation>
+        <translation>gurutil</translation>
     </message>
     <message>
         <source>peak</source>
-        <translation type="unfinished">pena</translation>
+        <translation>pena</translation>
     </message>
     <message>
         <source>IRC width measurements</source>
-        <translation type="unfinished">Larguras IRC</translation>
+        <translation>Larguras IRC</translation>
     </message>
 </context>
 <context>
@@ -426,51 +426,51 @@
     </message>
     <message>
         <source>Sailcut data sheet</source>
-        <translation>Folha de dados do Sailcut</translation>
+        <translation type="obsolete">Folha de dados do Sailcut</translation>
     </message>
     <message>
         <source>Sail type</source>
-        <translation>Tipo de vela</translation>
+        <translation type="obsolete">Tipo de vela</translation>
     </message>
     <message>
         <source>Mainsail</source>
-        <translation>Vela Grande</translation>
+        <translation type="obsolete">Vela Grande</translation>
     </message>
     <message>
         <source>Jib</source>
-        <translation>Vela de Estai</translation>
+        <translation type="obsolete">Vela de Estai</translation>
     </message>
     <message>
         <source>Sail layout</source>
-        <translation>Formato da vela</translation>
+        <translation type="obsolete">Formato da vela</translation>
     </message>
     <message>
         <source>Cross Cut</source>
-        <translation>Corte Transversal</translation>
+        <translation type="obsolete">Corte Transversal</translation>
     </message>
     <message>
         <source>Horizontal Cut</source>
-        <translation>Corte Horizontal</translation>
+        <translation type="obsolete">Corte Horizontal</translation>
     </message>
     <message>
         <source>Radial Cut</source>
-        <translation>Corte Radial</translation>
+        <translation type="obsolete">Corte Radial</translation>
     </message>
     <message>
         <source>Twist Foot Cut</source>
-        <translation>Corte &quot;Twist foot&quot;</translation>
+        <translation type="obsolete">Corte &quot;Twist foot&quot;</translation>
     </message>
     <message>
         <source>Vertical Cut</source>
-        <translation>Corte Vertical</translation>
+        <translation type="obsolete">Corte Vertical</translation>
     </message>
     <message>
         <source>Mitre Cut</source>
-        <translation>Corte de Meia Esquadria</translation>
+        <translation type="obsolete">Corte de Meia Esquadria</translation>
     </message>
     <message>
         <source> sections,   </source>
-        <translation> secções,   </translation>
+        <translation type="obsolete"> secções,   </translation>
     </message>
     <message>
         <source> head gores.</source>
@@ -478,35 +478,35 @@
     </message>
     <message>
         <source>Rig </source>
-        <translation>Aparelho </translation>
+        <translation type="obsolete">Aparelho </translation>
     </message>
     <message>
         <source>Boat LOA</source>
-        <translation>Comprimento do barco fora-a-fora - LOA</translation>
+        <translation type="obsolete">Comprimento do barco fora-a-fora - LOA</translation>
     </message>
     <message>
         <source>Fore triangle hoist I</source>
-        <translation>Altura do triângulo de vante - I</translation>
+        <translation type="obsolete">Altura do triângulo de vante - I</translation>
     </message>
     <message>
         <source>Fore triangle base J</source>
-        <translation>Base do triângulo de vante - J</translation>
+        <translation type="obsolete">Base do triângulo de vante - J</translation>
     </message>
     <message>
         <source>Tack position X</source>
-        <translation>Posição do punho da amura X</translation>
+        <translation type="obsolete">Posição do punho da amura X</translation>
     </message>
     <message>
         <source>Tack height Y</source>
-        <translation>Altura do punho da amura Y</translation>
+        <translation type="obsolete">Altura do punho da amura Y</translation>
     </message>
     <message>
         <source>Sail dimensions</source>
-        <translation>Dimensões da vela</translation>
+        <translation type="obsolete">Dimensões da vela</translation>
     </message>
     <message>
         <source>Luff length</source>
-        <translation>Comprimento da testa</translation>
+        <translation type="obsolete">Comprimento da testa</translation>
     </message>
     <message>
         <source>Mast rake</source>
@@ -514,115 +514,115 @@
     </message>
     <message>
         <source>Gaff angle wrt luff</source>
-        <translation>Âgulo da gurutil wrt testa</translation>
+        <translation type="obsolete">Âgulo da gurutil wrt testa</translation>
     </message>
     <message>
         <source>Gaff length</source>
-        <translation>Comprimento do gurutil</translation>
+        <translation type="obsolete">Comprimento do gurutil</translation>
     </message>
     <message>
         <source>Foot length</source>
-        <translation>Comprimento da esteira</translation>
+        <translation type="obsolete">Comprimento da esteira</translation>
     </message>
     <message>
         <source>Leech length</source>
-        <translation>Comprimento da valuma</translation>
+        <translation type="obsolete">Comprimento da valuma</translation>
     </message>
     <message>
         <source>Shape of edges</source>
-        <translation>Forma das extremidades</translation>
+        <translation type="obsolete">Forma das extremidades</translation>
     </message>
     <message>
         <source>Luff round</source>
-        <translation>Curva da testa</translation>
+        <translation type="obsolete">Curva da testa</translation>
     </message>
     <message>
         <source>Gaff round</source>
-        <translation>Curva da gurutil</translation>
+        <translation type="obsolete">Curva da gurutil</translation>
     </message>
     <message>
         <source>Leech round</source>
-        <translation>Curva da valuma</translation>
+        <translation type="obsolete">Curva da valuma</translation>
     </message>
     <message>
         <source>Foot round</source>
-        <translation>Curva da esteira</translation>
+        <translation type="obsolete">Curva da esteira</translation>
     </message>
     <message>
         <source>Luff round position</source>
-        <translation>Posição da curva da testa</translation>
+        <translation type="obsolete">Posição da curva da testa</translation>
     </message>
     <message>
         <source>Gaff round position</source>
-        <translation>Posição da curva do gurutil</translation>
+        <translation type="obsolete">Posição da curva do gurutil</translation>
     </message>
     <message>
         <source>Leech round position</source>
-        <translation>Posição da curva da valuma</translation>
+        <translation type="obsolete">Posição da curva da valuma</translation>
     </message>
     <message>
         <source>Foot round position</source>
-        <translation>Posição da curva da esteira</translation>
+        <translation type="obsolete">Posição da curva da esteira</translation>
     </message>
     <message>
         <source>Sail settings</source>
-        <translation>Afinações da vela</translation>
+        <translation type="obsolete">Afinações da vela</translation>
     </message>
     <message>
         <source>Twist angle</source>
-        <translation>Âgulo de torção</translation>
+        <translation type="obsolete">Âgulo de torção</translation>
     </message>
     <message>
         <source>Sheeting angle</source>
-        <translation>Âgulo de escota</translation>
+        <translation type="obsolete">Âgulo de escota</translation>
     </message>
     <message>
         <source>Cloth seams and hems</source>
-        <translation>Costuras e baínhas do tecido</translation>
+        <translation type="obsolete">Costuras e baínhas do tecido</translation>
     </message>
     <message>
         <source>Cloth width</source>
-        <translation>Largura do tecido</translation>
+        <translation type="obsolete">Largura do tecido</translation>
     </message>
     <message>
         <source>Seams width</source>
-        <translation>Largura das costuras</translation>
+        <translation type="obsolete">Largura das costuras</translation>
     </message>
     <message>
         <source>Leech hem width</source>
-        <translation>Largura da baínha da valuma</translation>
+        <translation type="obsolete">Largura da baínha da valuma</translation>
     </message>
     <message>
         <source>Other hem width</source>
-        <translation>Largura de outras baínhas</translation>
+        <translation type="obsolete">Largura de outras baínhas</translation>
     </message>
     <message>
         <source>Sail mould</source>
-        <translation>Molde da vela</translation>
+        <translation type="obsolete">Molde da vela</translation>
     </message>
     <message>
         <source>Luff factor</source>
-        <translation>Factor da testa</translation>
+        <translation type="obsolete">Factor da testa</translation>
     </message>
     <message>
         <source>Depth</source>
-        <translation>Profundidade</translation>
+        <translation type="obsolete">Profundidade</translation>
     </message>
     <message>
         <source>Leech factor</source>
-        <translation>Factor da valuma</translation>
+        <translation type="obsolete">Factor da valuma</translation>
     </message>
     <message>
         <source>Top profile</source>
-        <translation>Perfil do topo</translation>
+        <translation type="obsolete">Perfil do topo</translation>
     </message>
     <message>
         <source>Mid profile at h = </source>
-        <translation>Perfil do meio em h = </translation>
+        <translation type="obsolete">Perfil do meio em h = </translation>
     </message>
     <message>
         <source>Bottom profile</source>
-        <translation>Perfil da base</translation>
+        <translation type="obsolete">Perfil da base</translation>
     </message>
     <message>
         <source>error</source>
@@ -650,27 +650,27 @@
     </message>
     <message>
         <source> head gores,   </source>
-        <translation>Radiais da pena,</translation>
+        <translation type="obsolete">Radiais da pena,</translation>
     </message>
     <message>
         <source>Mast/Luff rake</source>
-        <translation>Caimento mastro/testa</translation>
+        <translation type="obsolete">Caimento mastro/testa</translation>
     </message>
     <message>
         <source>Wing</source>
-        <translation>Asa</translation>
+        <translation type="obsolete">Asa</translation>
     </message>
     <message>
         <source> luff gores.</source>
-        <translation>Radiais da testa.</translation>
+        <translation type="obsolete">Radiais da testa.</translation>
     </message>
     <message>
         <source>deg</source>
-        <translation>graus</translation>
+        <translation type="obsolete">graus</translation>
     </message>
     <message>
         <source>to &amp;Hand-plotting format</source>
-        <translation type="unfinished">para formato de Traçar à &amp;mão</translation>
+        <translation>para formato de Traçar à &amp;mão</translation>
     </message>
 </context>
 <context>
@@ -806,6 +806,221 @@
     </message>
 </context>
 <context>
+    <name>CSailPrinter</name>
+    <message>
+        <source>Sailcut data sheet</source>
+        <translation>Folha de dados do Sailcut</translation>
+    </message>
+    <message>
+        <source>Mainsail</source>
+        <translation>Vela Grande</translation>
+    </message>
+    <message>
+        <source>Jib</source>
+        <translation>Vela de estai</translation>
+    </message>
+    <message>
+        <source>Wing</source>
+        <translation>Asa</translation>
+    </message>
+    <message>
+        <source>deg</source>
+        <translation>graus</translation>
+    </message>
+    <message>
+        <source>Sail type</source>
+        <translation>Tipo de vela</translation>
+    </message>
+    <message>
+        <source>Cross Cut</source>
+        <translation>Corte transversal</translation>
+    </message>
+    <message>
+        <source>Horizontal Cut</source>
+        <translation>Corte horizontal</translation>
+    </message>
+    <message>
+        <source>Radial Cut</source>
+        <translation>Corte radial</translation>
+    </message>
+    <message>
+        <source>sections</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>head gores</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>luff gores</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Twist Foot Cut</source>
+        <translation>Corte &quot;Twist foot&quot;</translation>
+    </message>
+    <message>
+        <source>Vertical Cut</source>
+        <translation>Corte Vertical</translation>
+    </message>
+    <message>
+        <source>Mitre Cut</source>
+        <translation>Corte de Meia Esquadria</translation>
+    </message>
+    <message>
+        <source>Sail layout</source>
+        <translation>Formato da vela</translation>
+    </message>
+    <message>
+        <source>Rig</source>
+        <translation>Aparelho</translation>
+    </message>
+    <message>
+        <source>Boat LOA</source>
+        <translation>Comprimento do barco fora-a-fora - LOA</translation>
+    </message>
+    <message>
+        <source>Mast/Luff rake</source>
+        <translation>Caimento mastro/testa</translation>
+    </message>
+    <message>
+        <source>Tack position X</source>
+        <translation>Posição do punho da amura X</translation>
+    </message>
+    <message>
+        <source>Tack height Y</source>
+        <translation>Altura do punho da amura Y</translation>
+    </message>
+    <message>
+        <source>Fore triangle hoist I</source>
+        <translation>Altura do triângulo de vante - I</translation>
+    </message>
+    <message>
+        <source>Fore triangle base J</source>
+        <translation>Base do triângulo de vante - J</translation>
+    </message>
+    <message>
+        <source>Sail dimensions</source>
+        <translation>Dimensões da vela</translation>
+    </message>
+    <message>
+        <source>Luff length</source>
+        <translation>Comprimento da testa</translation>
+    </message>
+    <message>
+        <source>Foot length</source>
+        <translation>Comprimento da esteira</translation>
+    </message>
+    <message>
+        <source>Leech length</source>
+        <translation>Comprimento da valuma</translation>
+    </message>
+    <message>
+        <source>Gaff length</source>
+        <translation>Comprimento do gurutil</translation>
+    </message>
+    <message>
+        <source>Gaff angle wrt luff</source>
+        <translation>Âgulo da gurutil wrt testa</translation>
+    </message>
+    <message>
+        <source>Shape of edges</source>
+        <translation>Forma das extremidades</translation>
+    </message>
+    <message>
+        <source>Luff round</source>
+        <translation>Curva da testa</translation>
+    </message>
+    <message>
+        <source>Luff round position</source>
+        <translation>Posição da curva da testa</translation>
+    </message>
+    <message>
+        <source>Foot round</source>
+        <translation>Curva da esteira</translation>
+    </message>
+    <message>
+        <source>Foot round position</source>
+        <translation>Posição da curva da esteira</translation>
+    </message>
+    <message>
+        <source>Leech round</source>
+        <translation>Curva da valuma</translation>
+    </message>
+    <message>
+        <source>Leech round position</source>
+        <translation>Posição da curva da valuma</translation>
+    </message>
+    <message>
+        <source>Gaff round</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Gaff round position</source>
+        <translation>Posição da curva do gurutil</translation>
+    </message>
+    <message>
+        <source>Sail settings</source>
+        <translation>Afinações da vela</translation>
+    </message>
+    <message>
+        <source>Twist angle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sheeting angle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cloth seams and hems</source>
+        <translation>Costuras e baínhas do tecido</translation>
+    </message>
+    <message>
+        <source>Cloth width</source>
+        <translation>Largura do tecido</translation>
+    </message>
+    <message>
+        <source>Seams width</source>
+        <translation>Largura das costuras</translation>
+    </message>
+    <message>
+        <source>Leech hem width</source>
+        <translation>Largura da baínha da valuma</translation>
+    </message>
+    <message>
+        <source>Other hem width</source>
+        <translation>Largura de outras baínhas</translation>
+    </message>
+    <message>
+        <source>Sail mould</source>
+        <translation>Molde da vela</translation>
+    </message>
+    <message>
+        <source>Luff factor</source>
+        <translation>Factor da testa</translation>
+    </message>
+    <message>
+        <source>Depth</source>
+        <translation>Profundidade</translation>
+    </message>
+    <message>
+        <source>Leech factor</source>
+        <translation>Factor da valuma</translation>
+    </message>
+    <message>
+        <source>Top profile</source>
+        <translation>Perfil do topo</translation>
+    </message>
+    <message>
+        <source>Mid profile at h = </source>
+        <translation>Perfil do meio em h = </translation>
+    </message>
+    <message>
+        <source>Bottom profile</source>
+        <translation>Perfil da base</translation>
+    </message>
+</context>
+<context>
     <name>CSailViewerPanel</name>
     <message>
         <source>Display parameters</source>
@@ -862,6 +1077,14 @@
         <source>Leech shape</source>
         <translation>Forma da valuma</translation>
     </message>
+    <message>
+        <source>degrees</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>cord</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>XmlReaderTempl</name>
@@ -871,7 +1094,7 @@
     </message>
     <message>
         <source>There was an error reading from the selected file.</source>
-        <translation type="unfinished">Houve um erro ao ler do ficheiro seleccionado.</translation>
+        <translation>Houve um erro ao ler do ficheiro seleccionado.</translation>
     </message>
 </context>
 </TS>

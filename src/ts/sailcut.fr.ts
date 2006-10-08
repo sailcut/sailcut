@@ -446,51 +446,51 @@
     </message>
     <message>
         <source>Sailcut data sheet</source>
-        <translation>Données Sailcut</translation>
+        <translation type="obsolete">Données Sailcut</translation>
     </message>
     <message>
         <source>Sail type</source>
-        <translation>Type de voile</translation>
+        <translation type="obsolete">Type de voile</translation>
     </message>
     <message>
         <source>Mainsail</source>
-        <translation>Grand-voile</translation>
+        <translation type="obsolete">Grand-voile</translation>
     </message>
     <message>
         <source>Jib</source>
-        <translation>Foc</translation>
+        <translation type="obsolete">Foc</translation>
     </message>
     <message>
         <source>Sail layout</source>
-        <translation>Type de coupe</translation>
+        <translation type="obsolete">Type de coupe</translation>
     </message>
     <message>
         <source>Cross Cut</source>
-        <translation>Coupe transverse</translation>
+        <translation type="obsolete">Coupe transverse</translation>
     </message>
     <message>
         <source>Horizontal Cut</source>
-        <translation>Coupe horizontale</translation>
+        <translation type="obsolete">Coupe horizontale</translation>
     </message>
     <message>
         <source>Radial Cut</source>
-        <translation>Coupe radiale</translation>
+        <translation type="obsolete">Coupe radiale</translation>
     </message>
     <message>
         <source>Twist Foot Cut</source>
-        <translation>Coupe twist Foot</translation>
+        <translation type="obsolete">Coupe twist Foot</translation>
     </message>
     <message>
         <source>Vertical Cut</source>
-        <translation>Coupe verticale</translation>
+        <translation type="obsolete">Coupe verticale</translation>
     </message>
     <message>
         <source>Mitre Cut</source>
-        <translation>Coupe à mitre</translation>
+        <translation type="obsolete">Coupe à mitre</translation>
     </message>
     <message>
         <source> sections,   </source>
-        <translation>sections,    </translation>
+        <translation type="obsolete">sections,    </translation>
     </message>
     <message>
         <source> head gores.</source>
@@ -498,35 +498,35 @@
     </message>
     <message>
         <source>Rig </source>
-        <translation>Gréement</translation>
+        <translation type="obsolete">Gréement</translation>
     </message>
     <message>
         <source>Boat LOA</source>
-        <translation>Longueur du bateau</translation>
+        <translation type="obsolete">Longueur du bateau</translation>
     </message>
     <message>
         <source>Fore triangle hoist I</source>
-        <translation>Hauteur I du triangle avant</translation>
+        <translation type="obsolete">Hauteur I du triangle avant</translation>
     </message>
     <message>
         <source>Fore triangle base J</source>
-        <translation>Base J du triangle avant</translation>
+        <translation type="obsolete">Base J du triangle avant</translation>
     </message>
     <message>
         <source>Tack position X</source>
-        <translation>Position X de l&apos;amure</translation>
+        <translation type="obsolete">Position X de l&apos;amure</translation>
     </message>
     <message>
         <source>Tack height Y</source>
-        <translation>Hauteur Y de l&apos;amure</translation>
+        <translation type="obsolete">Hauteur Y de l&apos;amure</translation>
     </message>
     <message>
         <source>Sail dimensions</source>
-        <translation>Dimensions de la voile</translation>
+        <translation type="obsolete">Dimensions de la voile</translation>
     </message>
     <message>
         <source>Luff length</source>
-        <translation>Longueur guindant</translation>
+        <translation type="obsolete">Longueur guindant</translation>
     </message>
     <message>
         <source>Mast rake</source>
@@ -534,115 +534,115 @@
     </message>
     <message>
         <source>Gaff angle wrt luff</source>
-        <translation>Angle vergue / guindant</translation>
+        <translation type="obsolete">Angle vergue / guindant</translation>
     </message>
     <message>
         <source>Gaff length</source>
-        <translation>Longueur vergue</translation>
+        <translation type="obsolete">Longueur vergue</translation>
     </message>
     <message>
         <source>Foot length</source>
-        <translation>Longueur bordure</translation>
+        <translation type="obsolete">Longueur bordure</translation>
     </message>
     <message>
         <source>Leech length</source>
-        <translation>Longueur chute</translation>
+        <translation type="obsolete">Longueur chute</translation>
     </message>
     <message>
         <source>Shape of edges</source>
-        <translation>Forme des bords</translation>
+        <translation type="obsolete">Forme des bords</translation>
     </message>
     <message>
         <source>Luff round</source>
-        <translation>Rond du guindant</translation>
+        <translation type="obsolete">Rond du guindant</translation>
     </message>
     <message>
         <source>Gaff round</source>
-        <translation>Rond de la vergue</translation>
+        <translation type="obsolete">Rond de la vergue</translation>
     </message>
     <message>
         <source>Leech round</source>
-        <translation>Rond de la chute</translation>
+        <translation type="obsolete">Rond de la chute</translation>
     </message>
     <message>
         <source>Foot round</source>
-        <translation>Rond de la bordure</translation>
+        <translation type="obsolete">Rond de la bordure</translation>
     </message>
     <message>
         <source>Luff round position</source>
-        <translation>Position du rond de guindant</translation>
+        <translation type="obsolete">Position du rond de guindant</translation>
     </message>
     <message>
         <source>Gaff round position</source>
-        <translation>Position du rond de la gaffe</translation>
+        <translation type="obsolete">Position du rond de la gaffe</translation>
     </message>
     <message>
         <source>Leech round position</source>
-        <translation>Position du rond de chute</translation>
+        <translation type="obsolete">Position du rond de chute</translation>
     </message>
     <message>
         <source>Foot round position</source>
-        <translation>Position du rond de bordure</translation>
+        <translation type="obsolete">Position du rond de bordure</translation>
     </message>
     <message>
         <source>Sail settings</source>
-        <translation>Réglage de la voile</translation>
+        <translation type="obsolete">Réglage de la voile</translation>
     </message>
     <message>
         <source>Twist angle</source>
-        <translation>Angle de vrillage</translation>
+        <translation type="obsolete">Angle de vrillage</translation>
     </message>
     <message>
         <source>Sheeting angle</source>
-        <translation>Angle d&apos;ouverture</translation>
+        <translation type="obsolete">Angle d&apos;ouverture</translation>
     </message>
     <message>
         <source>Cloth seams and hems</source>
-        <translation>Tissu, coutures et ourlets</translation>
+        <translation type="obsolete">Tissu, coutures et ourlets</translation>
     </message>
     <message>
         <source>Cloth width</source>
-        <translation>Largeur du tissu</translation>
+        <translation type="obsolete">Largeur du tissu</translation>
     </message>
     <message>
         <source>Seams width</source>
-        <translation>Largeur des coutures</translation>
+        <translation type="obsolete">Largeur des coutures</translation>
     </message>
     <message>
         <source>Leech hem width</source>
-        <translation>Largeur pour ourlet chute</translation>
+        <translation type="obsolete">Largeur pour ourlet chute</translation>
     </message>
     <message>
         <source>Other hem width</source>
-        <translation>Largeur pour autres ourlets</translation>
+        <translation type="obsolete">Largeur pour autres ourlets</translation>
     </message>
     <message>
         <source>Sail mould</source>
-        <translation>Moule de voile</translation>
+        <translation type="obsolete">Moule de voile</translation>
     </message>
     <message>
         <source>Luff factor</source>
-        <translation>Forme guindant</translation>
+        <translation type="obsolete">Forme guindant</translation>
     </message>
     <message>
         <source>Depth</source>
-        <translation>Creux</translation>
+        <translation type="obsolete">Creux</translation>
     </message>
     <message>
         <source>Leech factor</source>
-        <translation>Forme chute</translation>
+        <translation type="obsolete">Forme chute</translation>
     </message>
     <message>
         <source>Top profile</source>
-        <translation>Profil supérieur</translation>
+        <translation type="obsolete">Profil supérieur</translation>
     </message>
     <message>
         <source>Mid profile at h = </source>
-        <translation>Profil médian à h =</translation>
+        <translation type="obsolete">Profil médian à h =</translation>
     </message>
     <message>
         <source>Bottom profile</source>
-        <translation>Profil inférieur</translation>
+        <translation type="obsolete">Profil inférieur</translation>
     </message>
     <message>
         <source>Language</source>
@@ -650,11 +650,11 @@
     </message>
     <message>
         <source>Mast/Luff rake</source>
-        <translation>Quête du mât / guidant</translation>
+        <translation type="obsolete">Quête du mât / guidant</translation>
     </message>
     <message>
         <source> head gores,   </source>
-        <translation>fuseaux de tête,</translation>
+        <translation type="obsolete">fuseaux de tête,</translation>
     </message>
     <message>
         <source> luff gore.</source>
@@ -662,11 +662,11 @@
     </message>
     <message>
         <source>Wing</source>
-        <translation>Aile</translation>
+        <translation type="obsolete">Aile</translation>
     </message>
     <message>
         <source> luff gores.</source>
-        <translation>fuseaux de guindant.</translation>
+        <translation type="obsolete">fuseaux de guindant.</translation>
     </message>
     <message>
         <source>E&amp;xport &amp;development</source>
@@ -678,7 +678,7 @@
     </message>
     <message>
         <source>deg</source>
-        <translation>deg</translation>
+        <translation type="obsolete">deg</translation>
     </message>
     <message>
         <source>to &amp;Hand-plotting format</source>
@@ -818,6 +818,221 @@
     </message>
 </context>
 <context>
+    <name>CSailPrinter</name>
+    <message>
+        <source>Sailcut data sheet</source>
+        <translation>Données Sailcut</translation>
+    </message>
+    <message>
+        <source>Mainsail</source>
+        <translation>Grand-voile</translation>
+    </message>
+    <message>
+        <source>Jib</source>
+        <translation>Foc</translation>
+    </message>
+    <message>
+        <source>Wing</source>
+        <translation>Aile</translation>
+    </message>
+    <message>
+        <source>deg</source>
+        <translation>deg</translation>
+    </message>
+    <message>
+        <source>Sail type</source>
+        <translation>Type de voile</translation>
+    </message>
+    <message>
+        <source>Cross Cut</source>
+        <translation>Coupe transverse</translation>
+    </message>
+    <message>
+        <source>Horizontal Cut</source>
+        <translation>Coupe horizontale</translation>
+    </message>
+    <message>
+        <source>Radial Cut</source>
+        <translation>Coupe radiale</translation>
+    </message>
+    <message>
+        <source>sections</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>head gores</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>luff gores</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Twist Foot Cut</source>
+        <translation>Coupe twist foot</translation>
+    </message>
+    <message>
+        <source>Vertical Cut</source>
+        <translation>Coupe verticale</translation>
+    </message>
+    <message>
+        <source>Mitre Cut</source>
+        <translation>Coupe à mitre</translation>
+    </message>
+    <message>
+        <source>Sail layout</source>
+        <translation>Type de coupe</translation>
+    </message>
+    <message>
+        <source>Rig</source>
+        <translation>Gréement</translation>
+    </message>
+    <message>
+        <source>Boat LOA</source>
+        <translation>Longueur du bateau</translation>
+    </message>
+    <message>
+        <source>Mast/Luff rake</source>
+        <translation>Quête du mât / guidant</translation>
+    </message>
+    <message>
+        <source>Tack position X</source>
+        <translation>Position X de l&apos;amure</translation>
+    </message>
+    <message>
+        <source>Tack height Y</source>
+        <translation>Hauteur Y de l&apos;amure</translation>
+    </message>
+    <message>
+        <source>Fore triangle hoist I</source>
+        <translation>Hauteur I du triangle avant</translation>
+    </message>
+    <message>
+        <source>Fore triangle base J</source>
+        <translation>Base J du triangle avant</translation>
+    </message>
+    <message>
+        <source>Sail dimensions</source>
+        <translation>Dimensions de la voile</translation>
+    </message>
+    <message>
+        <source>Luff length</source>
+        <translation>Longueur guindant</translation>
+    </message>
+    <message>
+        <source>Foot length</source>
+        <translation>Longueur bordure</translation>
+    </message>
+    <message>
+        <source>Leech length</source>
+        <translation>Longueur chute</translation>
+    </message>
+    <message>
+        <source>Gaff length</source>
+        <translation>Longueur vergue</translation>
+    </message>
+    <message>
+        <source>Gaff angle wrt luff</source>
+        <translation>Angle vergue / guindant</translation>
+    </message>
+    <message>
+        <source>Shape of edges</source>
+        <translation>Forme des bords</translation>
+    </message>
+    <message>
+        <source>Luff round</source>
+        <translation>Rond du guindant</translation>
+    </message>
+    <message>
+        <source>Luff round position</source>
+        <translation>Position du rond de guindant</translation>
+    </message>
+    <message>
+        <source>Foot round</source>
+        <translation>Rond de la bordure</translation>
+    </message>
+    <message>
+        <source>Foot round position</source>
+        <translation>Position du rond de bordure</translation>
+    </message>
+    <message>
+        <source>Leech round</source>
+        <translation>Rond de la chute</translation>
+    </message>
+    <message>
+        <source>Leech round position</source>
+        <translation>Position du rond de chute</translation>
+    </message>
+    <message>
+        <source>Gaff round</source>
+        <translation>Rond de la vergue</translation>
+    </message>
+    <message>
+        <source>Gaff round position</source>
+        <translation>Position du rond de la gaffe</translation>
+    </message>
+    <message>
+        <source>Sail settings</source>
+        <translation>Réglage de la voile</translation>
+    </message>
+    <message>
+        <source>Twist angle</source>
+        <translation>Angle de vrillage</translation>
+    </message>
+    <message>
+        <source>Sheeting angle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cloth seams and hems</source>
+        <translation>Tissu, coutures et ourlets</translation>
+    </message>
+    <message>
+        <source>Cloth width</source>
+        <translation>Largeur du tissu</translation>
+    </message>
+    <message>
+        <source>Seams width</source>
+        <translation>Largeur des coutures</translation>
+    </message>
+    <message>
+        <source>Leech hem width</source>
+        <translation>Largeur pour ourlet chute</translation>
+    </message>
+    <message>
+        <source>Other hem width</source>
+        <translation>Largeur pour autres ourlets</translation>
+    </message>
+    <message>
+        <source>Sail mould</source>
+        <translation>Moule de voile</translation>
+    </message>
+    <message>
+        <source>Luff factor</source>
+        <translation>Forme guindant</translation>
+    </message>
+    <message>
+        <source>Depth</source>
+        <translation>Creux</translation>
+    </message>
+    <message>
+        <source>Leech factor</source>
+        <translation>Forme chute</translation>
+    </message>
+    <message>
+        <source>Top profile</source>
+        <translation>Profil supérieur</translation>
+    </message>
+    <message>
+        <source>Mid profile at h = </source>
+        <translation>Profil médian à h =</translation>
+    </message>
+    <message>
+        <source>Bottom profile</source>
+        <translation>Profil inférieur</translation>
+    </message>
+</context>
+<context>
     <name>CSailViewerPanel</name>
     <message>
         <source>Display parameters</source>
@@ -873,6 +1088,14 @@
     <message>
         <source>Leech shape</source>
         <translation>Forme chute</translation>
+    </message>
+    <message>
+        <source>degrees</source>
+        <translation>degrés</translation>
+    </message>
+    <message>
+        <source>cord</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
