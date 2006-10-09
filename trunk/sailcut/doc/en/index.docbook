@@ -445,7 +445,9 @@
 
 <sect2>
 
-<title>Mould dialog screen (View-&gt;Mould menu)</title>
+<title>Mould dialog screen</title>
+
+<para>You can access the mould dialog from the <guimenuitem>Mould</guimenuitem> entry of the <guimenu>View</guimenu> menu.</para>
 
 <para>The depth and the shape of the sail can be entered at three levels located at the bottom (foot) the middle (sail&apos;s maximum depth height can be adjusted) and at the top of the sail.</para>
 
@@ -463,9 +465,9 @@
 
 <sect2>
 
-<title>Rig viewer (View-&gt;Rig menu)</title>
+<title>Rig viewer</title>
 
-<para>This viewer is used to display several sails on the same rig.</para>
+<para>This viewer is used to display several sails on the same rig. It is accessed via the <guimenuitem>Rig</guimenuitem> entry of the main screen's <guimenu>View</guimenu> menu.</para>
 
 <para>The <guimenuitem>New</guimenuitem> entry of the <guimenu>File</guimenu> menu is used to purge the viewer.</para>
 
@@ -551,7 +553,7 @@
 
 <sect2>
 
-<title>Loading / saving sails</title>
+<title>Loading and saving sails</title>
 
 <para>Once you have customised your sail, you can save it to a file by using the <guimenuitem>Save</guimenuitem> or <guimenuitem>Save As</guimenuitem> entries in the <guimenu>File</guimenu>. You can reload it by using the <guimenuitem>Open</guimenuitem> entry of the <guimenu>File</guimenu> next time you want to work on it.</para>
 
