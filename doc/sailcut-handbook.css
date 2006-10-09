@@ -1,0 +1,11 @@
+body {
+  background: white none;
+  color: black;
+  font-family: sans-serif;
+}
+
+.guimenu, .guimenuitem, .guisubmenu, .guilabel, .guibutton {
+  background-color: #edf8ff;
+  color: inherit;
+}
+
