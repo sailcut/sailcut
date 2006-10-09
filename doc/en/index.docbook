@@ -227,7 +227,7 @@
 
 <sect3>
 
-<title>Rig geometry box</title>
+<title>Rig geometry</title>
 
 <para>The first step is to select the type of sail you are going to work on, and enter the data defining the rig geometry and sail plan.</para>
 
@@ -280,7 +280,7 @@
 
 <sect3>
 
-<title>Sail identifier box</title>
+<title>Sail identifier</title>
 
 <para>You enter there a text describing the sail you are working on (maximum 40 characters spaces included).</para>
 
@@ -288,7 +288,7 @@
 
 <sect3>
 
-<title>Sail dimensions box</title>
+<title>Sail dimensions</title>
 
 <para>This is where the dimensions of the sail are entered.</para>
 
@@ -333,7 +333,7 @@
 
 <sect3>
 
-<title>Layout box</title>
+<title>Layout</title>
 
 <para>Click on the radio button corresponding to the desired layout of the sail. The layout of the panels does not affect the shape of the sail which is defined by its dimensions and its mould. </para>
 
@@ -402,7 +402,7 @@
 
 <sect3>
 
-<title>Sail shape box</title>
+<title>Sail shape</title>
 
 <para>You enter there the depth of the sail at 3 levels, near the foot, in the middle of the sail(the exact position being defined in the mould screen) and near the top of the sail.</para>
 
@@ -414,7 +414,7 @@
 
 <sect3>
 
-<title>Cloth box</title>
+<title>Cloth</title>
 
 <para>Enter there the width of cloth used, the width of the seams between adjacent panels, the width of material to be added to the leech to make the leech hem and the width of material for the other edges hems.</para>
 
