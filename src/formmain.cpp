@@ -67,7 +67,7 @@ CFormMain::CFormMain(CSailApp *myApp, QWidget *parent)
     // locate Handbook
     app->loadTranslation(prefs->language);
     handbook = app->findHandbook(prefs->language);
-    qDebug("handbook : %s", (const char*)handbook.toLocal8Bit());
+    qDebug("handbook : %s", (const char*)handbook.toString().toLocal8Bit());
 
     // create status bar
     statusbar = new QStatusBar(this);

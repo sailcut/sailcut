@@ -22,6 +22,7 @@
 
 #include <QMainWindow>
 #include <QMessageBox>
+#include <QUrl>
 
 #include "sailcalc.h"
 
@@ -100,7 +101,7 @@ protected slots:
     // member variables
 protected:
     /** the location of the Sailcut Handbook */
-    QString handbook;
+    QUrl handbook;
 
     /** the application */
     CSailApp *app;
