@@ -21,6 +21,7 @@
 #include <QFile>
 #include <QDir>
 #include <QTranslator>
+#include <QUrl>
 #include "sailreader-xml.h"
 #include "sailwriter-xml.h"
 
@@ -47,7 +48,7 @@ CSailApp::CSailApp(int argc, char* argv[]) :
 /**
  * Tries to locate the Sailcut Handbook.
  */
-QString CSailApp::findHandbook(const QString locale)
+QUrl CSailApp::findHandbook(const QString locale)
 {
     QString handbook;
     QStringList locales(locale);
@@ -66,11 +67,11 @@ QString CSailApp::findHandbook(const QString locale)
         {
             handbook = docdirs.at(d) + QDir::separator() + locales.at(i) + QDir::separator() + "index.html";
             if (QFile::exists(handbook))
-                return handbook;
+                return QUrl::fromLocalFile(QFileInfo(handbook).absoluteFilePath());
         }
     }
 
-    return "";
+    return QUrl();
 }
 
 

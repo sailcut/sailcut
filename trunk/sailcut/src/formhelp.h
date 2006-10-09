@@ -23,6 +23,7 @@
 #include <qdialog.h>
 
 class QTextBrowser;
+class QUrl;
 class CPrefs;
 
 /** Dialog to display the Sailcut Handbook.
@@ -32,7 +33,7 @@ class CFormHelp : public QDialog
     Q_OBJECT
 
 public:
-    CFormHelp(QWidget *parent, CPrefs *pref, const QString& handbook);
+    CFormHelp(QWidget *parent, CPrefs *pref, const QUrl& handbook);
 
 protected:
     void closeEvent( QCloseEvent * e);

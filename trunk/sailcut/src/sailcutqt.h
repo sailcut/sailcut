@@ -24,6 +24,7 @@
 #include "prefs.h"
 
 class QTranslator;
+class QUrl;
 
 /**
  *  Class representing a Sailcut application.
@@ -33,7 +34,7 @@ class CSailApp : public QApplication
 public:
     CSailApp(int argc, char* argv[]);
 
-    static QString findHandbook(const QString locale);
+    static QUrl findHandbook(const QString locale);
     void loadTranslation(const QString locale);
     void readPrefs();
     void writePrefs();

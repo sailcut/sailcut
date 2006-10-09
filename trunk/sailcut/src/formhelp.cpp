@@ -33,7 +33,7 @@
  * @param pref the user's preferences
  * @param handbook start page 
  */
-CFormHelp::CFormHelp(QWidget *parent, CPrefs *pref, const QString& handbook)
+CFormHelp::CFormHelp(QWidget *parent, CPrefs *pref, const QUrl& handbook)
         : QDialog(parent), prefs(pref)
 {
     setModal(true);
@@ -43,10 +43,7 @@ CFormHelp::CFormHelp(QWidget *parent, CPrefs *pref, const QString& handbook)
     QGridLayout* layout = new  QGridLayout(this);
     layout->addWidget(browser, 0, 0);
 
-    QString hDir = QFileInfo(handbook).absolutePath();
-    QString hFile = QFileInfo(handbook).fileName();
-    browser->setSearchPaths(QStringList(hDir));
-    browser->setSource(QString(hFile));
+    browser->setSource(handbook);
 
     languageChange();
     resize( QSize(prefs->helpWindowWidth,prefs->helpWindowHeight).expandedTo(minimumSizeHint()) );
