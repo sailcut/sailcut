@@ -190,7 +190,7 @@
 
 <title>Internationalisation</title>
 
-<para>A partir de la version 0.6.5, Sailcut CAD est internationalisé. La traduction des interfaces utilisateur est disponibles dans plusieurs languages. Au démarrage Sailcut utilise la langue correspondante à vos paramètres locaux. Vous pouvez changer la langue en utilisant le sous-menu <guisubmenu>Langue</submenu> du menu <guimenu>Vue</guimenu>.</para>
+<para>A partir de la version 0.6.5, Sailcut CAD est internationalisé. La traduction des interfaces utilisateur est disponibles dans plusieurs languages. Au démarrage Sailcut utilise la langue correspondante à vos paramètres locaux. Vous pouvez changer la langue en utilisant le sous-menu <guisubmenu>Langue</guisubmenu> du menu <guimenu>Vue</guimenu>.</para>
 
 </sect3>
 
