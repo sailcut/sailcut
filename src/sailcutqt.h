@@ -23,6 +23,12 @@
 #include <QApplication>
 #include "prefs.h"
 
+#if QT_VERSION >= 0x040200
+#define HAVE_QDESKTOPSERVICES
+#else
+#undef HAVE_QDESKTOPSERVICES
+#endif
+
 class QTranslator;
 class QUrl;
 

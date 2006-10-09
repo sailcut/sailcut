@@ -51,6 +51,9 @@
 #include <QPainter>
 #include <QPrintDialog>
 #include <QPrinter>
+#ifdef HAVE_QDESKTOPSERVICES
+#include <QDesktopServices>
+#endif
 
 
 /**
@@ -536,6 +539,10 @@ void CFormMain::slotHandbook()
     //qDebug("handbook : %s", (const char*)handbook.toLocal8Bit());
     if ( !handbook.isEmpty() )
     {
+#ifdef HAVE_QDESKTOPSERVICES
+        if (QDesktopServices::openUrl(handbook))
+            return;
+#endif
         CFormHelp(this , prefs , handbook).exec();
     }
 }
