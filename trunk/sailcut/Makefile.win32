@@ -3,7 +3,7 @@
 UNIX2DOS = unix2dos
 MINGW = i586-mingw32msvc
 STRIP = $(MINGW)-strip
-QTDIR=/usr/local/$(MINGW)/qt4
+QTDIR=/usr/$(MINGW)/share/qt4
 
 VERSION := $(shell cat configure.in | grep AM_INIT_AUTOMAKE | sed -e 's/.*,\([0-9a-zA-Z\.]*\).*/\1/')
 BIN_DOCS = README README.win32 COPYING ChangeLog
@@ -11,6 +11,10 @@ BIN_DOCS = README README.win32 COPYING ChangeLog
 win32_configure= ../configure
 win32_builddir = win32-build
 win32_distdir = sailcut-$(VERSION)_win32
+
+qt_win32_version = $(shell cat $(QTDIR)/src/corelib/global/qglobal.h | grep QT_VERSION_STR | sed -e 's/.*\"\(.*\)\"/\1/')
+qt_win32_distdir = qt-win-opensource-runtime-$(qt_win32_version)
+qt_win32_libs = mingwm10.dll QtCore4.dll QtGui4.dll QtOpenGL4.dll QtXml4.dll
 
 win32-dist: win32-bin win32-clean
 
@@ -39,5 +43,10 @@ win32-bin: win32-build-stamp
 
 win32-clean:
 	rm -rf $(win32_distdir) $(win32_builddir) win32-build-stamp
-	
-.PHONY: win32-dist win32-clean win32-bin
+
+qt-win32-bin:
+	@echo; echo "## Building win32 Qt runtime package ##"; echo
+	rm -rf $(qt_win32_distdir).zip
+	cd $(QTDIR)/bin && zip $(CURDIR)/$(qt_win32_distdir).zip $(qt_win32_libs)
+
+.PHONY: win32-dist win32-clean win32-bin qt-win32-bin
