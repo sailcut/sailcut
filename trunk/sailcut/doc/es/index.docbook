@@ -2,911 +2,901 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
 <article lang="es">
 
-  <articleinfo>
+<articleinfo>
 
-    <title>Manual de Usuario del Sailcut CAD</title>
+<title>Manual de Usuario del Sailcut CAD</title>
 
-    <authorgroup>
+<authorgroup>
 
-      <author><firstname>Robert</firstname><surname>Lainé</surname></author>
+<author><firstname>Robert</firstname><surname>Lainé</surname></author>
 
-      <author><firstname>Jeremy</firstname><surname>Lainé</surname></author>
+<author><firstname>Jeremy</firstname><surname>Lainé</surname></author>
 
-      <othercredit><firstname>Joan</firstname><surname>Gelpi</surname><contrib>Translation</contrib></othercredit>
-    </authorgroup>
+<othercredit><firstname>Joan</firstname><surname>Gelpi</surname><contrib>Translation</contrib></othercredit>
+</authorgroup>
 
-    <pubdate>Sailcut CAD 1.2.3 - 18 Septembre 2006</pubdate>
+<pubdate>Sailcut CAD 1.2.3 - 18 Septembre 2006</pubdate>
 
-  </articleinfo>
+</articleinfo>
 
-  <sect1 id="s.introduction">
+<sect1 id="s.introduction">
 
-    <title>Introducción</title>
+<title>Introducción</title>
 
-    <sect2>
+<sect2>
 
-      <title>Sobre el Sailcut CAD</title>
+<title>Sobre el Sailcut CAD</title>
 
-      <para>Sailcut es un software para el diseño de velas desarrollado 
-      para paños planos. El Sailcut se puede usar tanto para velas de 
-      cuatro lados tipo cangreja como para mayores y foques Marconi de 
-      tres lados.</para>
+<para>Sailcut es un software para el diseño de velas desarrollado 
+para paños planos. El Sailcut se puede usar tanto para velas de 
+cuatro lados tipo cangreja como para mayores y foques Marconi de 
+tres lados.</para>
 
-      <para>La primera versión del Sailcut fue desarrollada en 1978 y 
-      usada por Robert Lainé para fabricar las velas de su barco 
-      &quot;Flying Sheep III&quot;, un ¼ Ton IOR. Sailcut ha estado 
-      disponible en la web desde 1994 y es utilizado por muchos 
-      fabricantes de velas, tanto amateurs como profesionales, para 
-      cruceros, regatas y recientemente para barcos de 
-      radiocontrol.</para>
+<para>La primera versión del Sailcut fue desarrollada en 1978 y 
+usada por Robert Lainé para fabricar las velas de su barco 
+&quot;Flying Sheep III&quot;, un ¼ Ton IOR. Sailcut ha estado 
+disponible en la web desde 1994 y es utilizado por muchos 
+fabricantes de velas, tanto amateurs como profesionales, para 
+cruceros, regatas y recientemente para barcos de 
+radiocontrol.</para>
 
-      <para>Sailcut se basa en una única definición matemática para la 
-      superfície vélica que asegura un perfil aerodinámico y 
-      uniforme.</para>
+<para>Sailcut se basa en una única definición matemática para la 
+superfície vélica que asegura un perfil aerodinámico y 
+uniforme.</para>
 
-    </sect2>
+</sect2>
 
-    <sect2>
+<sect2>
 
-      <title>Información técnica sobre el programa</title>
+<title>Información técnica sobre el programa</title>
 
-      <para>Sailcut CAD se ha escrito con la intención que sea 
-      transportable. El programa fuente es el C++ utilizando la 
-      librería Qt de Trolltech para los gráficos y el OpenGL para la 
-      visualización en 3D de las velas. Sailcut CAD se puede compilar y 
-      funcionar bajo GNU/Linux, Microsoft Windows y MacOSX.</para>
+<para>Sailcut CAD se ha escrito con la intención que sea 
+transportable. El programa fuente es el C++ utilizando la 
+librería Qt de Trolltech para los gráficos y el OpenGL para la 
+visualización en 3D de las velas. Sailcut CAD se puede compilar y 
+funcionar bajo GNU/Linux, Microsoft Windows y MacOSX.</para>
 
-    </sect2>
+</sect2>
 
-  </sect1>
+</sect1>
 
-  <sect1 id="s.install">
+<sect1 id="s.install">
 
-    <title>Instalación</title>
+<title>Instalación</title>
 
-    <sect2>
+<sect2>
 
-      <title>¿Cómo obtener el Sailcut CAD?</title>
+<title>¿Cómo obtener el Sailcut CAD?</title>
 
-      <para>Se puede descargar la última versión del Sailcut CAD desde 
-      la página principal en 
-      <ulink url="http://sailcut.sourceforge.net/"/>. También está 
-      disponible en binario (compilado) y en código fuente.</para>
+<para>Se puede descargar la última versión del Sailcut CAD desde 
+la página principal en 
+<ulink url="http://sailcut.sourceforge.net/"/>. También está 
+disponible en binario (compilado) y en código fuente.</para>
 
-    </sect2>
+</sect2>
 
-    <sect2>
+<sect2>
 
-      <title>Requerimientos de compilación</title>
+<title>Requerimientos de compilación</title>
 
-      <para>Sailcut se puede compilar con una gran variedad de sistemas 
-      que admitan el compilador C++ y las herramientas QT4 de 
-      Trolltech. Para hacer uso del Sailcut CAD en formato 3D se debe 
-      contar con el OpenGL en nuestro sistema.</para>
+<para>Sailcut se puede compilar con una gran variedad de sistemas 
+que admitan el compilador C++ y las herramientas QT4 de 
+Trolltech. Para hacer uso del Sailcut CAD en formato 3D se debe 
+contar con el OpenGL en nuestro sistema.</para>
 
-      <sect3>
+<sect3>
 
-        <title>Notas para MacOS/X</title>
+<title>Notas para MacOS/X</title>
 
-        <para>En los sistemas operativos bajo MacOSX, debemos instalar 
-        también el paquete Fink el cual está disponible en 
-        <ulink url="http://fink.sourceforge.net/"/>.</para>
+<para>En los sistemas operativos bajo MacOSX, debemos instalar 
+también el paquete Fink el cual está disponible en 
+<ulink url="http://fink.sourceforge.net/"/>.</para>
 
-      </sect3>
+</sect3>
 
-      <sect3>
+<sect3>
 
-        <title>Notas para Microsoft Windows</title>
+<title>Notas para Microsoft Windows</title>
 
-        <para>En primer lugar, se necesintan varias herramientas de 
-        compilación de Mingo que pueden descargarse desde 
-        <ulink url="http://www.mingw.org/"/>. Hay que descargar e 
-        instalar los siguientes programas:</para>
+<para>En primer lugar, se necesintan varias herramientas de 
+compilación de Mingo que pueden descargarse desde 
+<ulink url="http://www.mingw.org/"/>. Hay que descargar e 
+instalar los siguientes programas:</para>
 
-        <itemizedlist>
+<itemizedlist>
 
-          <listitem>
+<listitem>
 
-            <para>MinGW : MinGW-4.1.0.exe</para>
+<para>MinGW : MinGW-4.1.0.exe</para>
 
-          </listitem>
+</listitem>
 
-          <listitem>
+<listitem>
 
-            <para>MSYS : MSYS-1.0.10.exe</para>
+<para>MSYS : MSYS-1.0.10.exe</para>
 
-          </listitem>
+</listitem>
 
-          <listitem>
+<listitem>
 
-            <para>MSYS Developer Tool Kit : msysDTK-1.0.1.exe</para>
+<para>MSYS Developer Tool Kit : msysDTK-1.0.1.exe</para>
 
-          </listitem>
+</listitem>
 
-        </itemizedlist>
+</itemizedlist>
 
-        <para>Después debemos descargar e instalar el Qt4.0 Opensource 
-        para Windows desde la página de Trolltech: 
-        <ulink url="http://www.trolltech.com/"/>.</para>
+<para>Después debemos descargar e instalar el Qt4.0 Opensource 
+para Windows desde la página de Trolltech: 
+<ulink url="http://www.trolltech.com/"/>.</para>
 
-        <itemizedlist>
+<itemizedlist>
 
-          <listitem>
+<listitem>
 
-            <para>Qt4 : qt-win-opensource-desktop-4.0.0-mingw.exe</para>
+<para>Qt4 : qt-win-opensource-desktop-4.0.0-mingw.exe</para>
 
-          </listitem>
+</listitem>
 
-        </itemizedlist>
+</itemizedlist>
 
-      </sect3>
+</sect3>
 
-    </sect2>
+</sect2>
 
-    <sect2>
+<sect2>
 
-      <title>Compilación e instalación</title>
+<title>Compilación e instalación</title>
 
-      <sect3>
+<sect3>
 
-        <title>Procedimiento</title>
+<title>Procedimiento</title>
 
-        <para>El procedimiento para compilar e instalar el Sailcut CAD 
-        implica tres pasos: arrancar la configuración de escritura, 
-        compilar e instalar. Debemos teclear en el directorio que 
-        contenga el código fuente del Sailcut CAD lo siguente:</para>
+<para>El procedimiento para compilar e instalar el Sailcut CAD 
+implica tres pasos: arrancar la configuración de escritura, 
+compilar e instalar. Debemos teclear en el directorio que 
+contenga el código fuente del Sailcut CAD lo siguente:</para>
 
-        <programlisting>% ./configure
+<programlisting>% ./configure
 % make
 % make install</programlisting>
-      </sect3>
+</sect3>
 
-      <sect3>
+<sect3>
 
-        <title>Notas para Windows</title>
+<title>Notas para Windows</title>
 
-        <para>Para compilar Sailcut CAD en nuestro sistema, debemos 
-        lanzar MSYS para obtener el símbolo de sistema y en el 
-        directorio de Sailcut teclear:</para>
+<para>Para compilar Sailcut CAD en nuestro sistema, debemos 
+lanzar MSYS para obtener el símbolo de sistema y en el 
+directorio de Sailcut teclear:</para>
 
-        <programlisting>% ./configure
+<programlisting>% ./configure
 % make</programlisting>
-      </sect3>
+</sect3>
 
-      <sect3>
+<sect3>
 
-        <title>Notas para MacOS/X</title>
+<title>Notas para MacOS/X</title>
 
-        <para>Sailcut CAD se puede compilar y arrancar usando el 
-        paquete Fink. Para ello debemos teclear en el directorio raíz 
-        del Sailcut:</para>
+<para>Sailcut CAD se puede compilar y arrancar usando el 
+paquete Fink. Para ello debemos teclear en el directorio raíz 
+del Sailcut:</para>
 
-        <programlisting>% ./configure --with-qt-includes=/sw/include/qt
+<programlisting>% ./configure --with-qt-includes=/sw/include/qt
 % make
 % make install</programlisting>
-      </sect3>
+</sect3>
 
-    </sect2>
+</sect2>
 
-  </sect1>
+</sect1>
 
-  <sect1 id="s.using">
+<sect1 id="s.using">
 
-    <title>Usando el Sailcut CAD</title>
+<title>Usando el Sailcut CAD</title>
 
-    <sect2>
+<sect2>
 
-      <title>Últimas notas</title>
+<title>Últimas notas</title>
 
-      <para>Al igual que la versión 0.6.5, el Sailcut CAD usa 
-      diferentes extensiones para cada tipo de archivo instalado en 
-      lugar de los finales con extensión &quot;.xml&quot;. Si deseamos 
-      abrir nuestras velas creadas con la versión anterior del Sailcut 
-      CAD debemos renombrar el archivo de definición de vela así como 
-      las extensiones con &quot;.saildef&quot;. Al abrir el archivo 
-      resultante, todos los archivos se conservarán excepto los datos 
-      para el molde.</para>
+<para>Al igual que la versión 0.6.5, el Sailcut CAD usa 
+diferentes extensiones para cada tipo de archivo instalado en 
+lugar de los finales con extensión &quot;.xml&quot;. Si deseamos 
+abrir nuestras velas creadas con la versión anterior del Sailcut 
+CAD debemos renombrar el archivo de definición de vela así como 
+las extensiones con &quot;.saildef&quot;. Al abrir el archivo 
+resultante, todos los archivos se conservarán excepto los datos 
+para el molde.</para>
 
-    </sect2>
+</sect2>
 
-    <sect2>
+<sect2>
 
-      <title>Preferencias de usuario</title>
+<title>Preferencias de usuario</title>
 
-      <sect3>
+<sect3>
 
-        <title>Preferencias de archivo</title>
+<title>Preferencias de archivo</title>
 
-        <para>Las preferencias se almacenan en un archivo llamado 
-        &quot;.sailcutrc&quot;. Bajo UNIX este archivo se localiza en 
-        el directorio raíz y en Windows está en &quot;C:\&quot;.</para>
+<para>Las preferencias se almacenan en un archivo llamado 
+&quot;.sailcutrc&quot;. Bajo UNIX este archivo se localiza en 
+el directorio raíz y en Windows está en &quot;C:\&quot;.</para>
 
-      </sect3>
+</sect3>
 
-      <sect3>
+<sect3>
 
-        <title>Internacionalización</title>
+<title>Internacionalización</title>
 
-        <para>Como en la versión 0.5.5, el Sailcut CAD tiene soporte 
-        para la internacionalización. Al arrancar el programa, podemos 
-        seleccionar el idioma que nos interese en el menu 
-        Ver-&gt;Idioma.</para>
+<para>Como en la versión 0.5.5, el Sailcut CAD tiene soporte 
+para la internacionalización. Al arrancar el programa, podemos 
+seleccionar el idioma que nos interese en el menu 
+Ver-&gt;Idioma.</para>
 
-      </sect3>
+</sect3>
 
-    </sect2>
+</sect2>
 
-  </sect1>
+</sect1>
 
-  <sect1 id="s.creating">
+<sect1 id="s.creating">
 
-    <title>Crear una vela</title>
+<title>Crear una vela</title>
 
-    <para>Cuando iniciamos Sailcut CAD, se presenta una vela por 
-    defecto y en la parte superior de la ventana encontraremos menús 
-    desplegables. El menú ARCHIVO se usa para cargar una vela 
-    existente, GUARDAR los parámetros de la vela y EXPORTAR los paneles 
-    desarrollados.</para>
+<para>Cuando iniciamos Sailcut CAD, se presenta una vela por 
+defecto y en la parte superior de la ventana encontraremos menús 
+desplegables. El menú ARCHIVO se usa para cargar una vela 
+existente, GUARDAR los parámetros de la vela y EXPORTAR los paneles 
+desarrollados.</para>
 
-    <para>Se puede modificar las dimensiones de la vela utilizando el 
-    menú Ver-&gt;Dimensiones.</para>
+<para>Se puede modificar las dimensiones de la vela utilizando el 
+menú Ver-&gt;Dimensiones.</para>
 
-    <para>Con el menú Ver-&gt;Molde podremos modificar el perfil de la 
-    vela.</para>
+<para>Con el menú Ver-&gt;Molde podremos modificar el perfil de la 
+vela.</para>
 
-    <para>Y en el menú Ver-&gt;Aparejo visualizaremos varias velas con 
-    diferentes aparejos.</para>
+<para>Y en el menú Ver-&gt;Aparejo visualizaremos varias velas con 
+diferentes aparejos.</para>
 
-    <sect2>
+<sect2>
 
-      <title>Pantalla Dimensiones (menú Ver-&gt;Dimensiones)</title>
+<title>Pantalla Dimensiones (menú Ver-&gt;Dimensiones)</title>
 
-      <para>El programa permite diseñar tanto una vela triangular como 
-      cuadrangular. La clásica vela Marconi se diseña esencialmente 
-      igual que una Cangreja pero con un pequeño puño de driza.</para>
+<para>El programa permite diseñar tanto una vela triangular como 
+cuadrangular. La clásica vela Marconi se diseña esencialmente 
+igual que una Cangreja pero con un pequeño puño de driza.</para>
 
-      <para>La superficie de la vela se genera desde unas sencillas 
-      ecuaciones que definen el perfil en todas las alturas. Dichos 
-      perfiles se basan en los extremos de las velas que han sido 
-      definidos por la longitud y alunamiento en cada lado y por el 
-      twist de la vela. En la ventana &quot;Dimensión&quot; hallaremos 
-      los parámetros que definen la vela.</para>
+<para>La superficie de la vela se genera desde unas sencillas 
+ecuaciones que definen el perfil en todas las alturas. Dichos 
+perfiles se basan en los extremos de las velas que han sido 
+definidos por la longitud y alunamiento en cada lado y por el 
+twist de la vela. En la ventana &quot;Dimensión&quot; hallaremos 
+los parámetros que definen la vela.</para>
 
-      <para>Al pulsar el botón &quot;Calcular&quot; el programa evalúa 
-      y visualiza los datos auxiliares. Estos datos aparecen en 
-      pestañas de color y que pueden modificarse. Si el color es rojo, 
-      significa que el valor excede del límite superior; si es amarillo 
-      indica que está por debajo del límite aceptable y debe 
-      cambiarse.</para>
+<para>Al pulsar el botón &quot;Calcular&quot; el programa evalúa 
+y visualiza los datos auxiliares. Estos datos aparecen en 
+pestañas de color y que pueden modificarse. Si el color es rojo, 
+significa que el valor excede del límite superior; si es amarillo 
+indica que está por debajo del límite aceptable y debe 
+cambiarse.</para>
 
-      <para>Una vez finalizada la entrada de datos de dimensiones, 
-      pulsamos OK para visualizar la vela en formato 3D.</para>
+<para>Una vez finalizada la entrada de datos de dimensiones, 
+pulsamos OK para visualizar la vela en formato 3D.</para>
 
-      <sect3>
+<sect3>
 
-        <title>Pestaña &quot;Geometría del Aparejo&quot;</title>
+<title>Pestaña &quot;Geometría del Aparejo&quot;</title>
 
-        <para>El primer paso es seleccionar el tipo de vela con la que 
-        vamos a trabajar y entrar los datos que definen la geometría 
-        del aparejo y el plano vélico (ver la Figura 1.)</para>
+<para>El primer paso es seleccionar el tipo de vela con la que 
+vamos a trabajar y entrar los datos que definen la geometría 
+del aparejo y el plano vélico (ver la Figura 1.)</para>
 
-        <para>Seleccionar el tipo de vela marcando bulón deseado:</para>
+<para>Seleccionar el tipo de vela marcando bulón deseado:</para>
 
-        <itemizedlist>
+<itemizedlist>
 
-          <listitem>
+<listitem>
 
-            <para>FOQUE para cualquier vela de proa,</para>
+<para>FOQUE para cualquier vela de proa,</para>
 
-          </listitem>
+</listitem>
 
-          <listitem>
+<listitem>
 
-            <para>MAYOR para cualquier vela envergada en el 
-            mástil,</para>
+<para>MAYOR para cualquier vela envergada en el 
+mástil,</para>
 
-          </listitem>
+</listitem>
 
-          <listitem>
+<listitem>
 
-            <para>ALA para cualquier tipo de cometa simétrica.</para>
+<para>ALA para cualquier tipo de cometa simétrica.</para>
 
-          </listitem>
+</listitem>
 
-        </itemizedlist>
+</itemizedlist>
 
-        <para>The rig data are used for displaying the sails in their 
-        proper relative position with the &quot;rig viewer&quot;.</para>
+<para>The rig data are used for displaying the sails in their 
+proper relative position with the &quot;rig viewer&quot;.</para>
 
-        <para>
+<para>
 
-          <figure id="fig.sailplan">
+<figure id="fig.sailplan">
 
-            <title>Sailcut plan definition</title>
+<title>Sailcut plan definition</title>
 
-            <mediaobject><imageobject role="html">
-            <imagedata fileref="sailplan.png"
-             format="PNG"/></imageobject><imageobject role="pdf">
-            <imagedata fileref="sailplan.pdf"
-             format="PDF"/></imageobject></mediaobject>
-          </figure>
+<mediaobject>
+<imageobject><imagedata fileref="sailplan"/></imageobject>
+</mediaobject>
+</figure>
 
-        </para>
+</para>
 
-      </sect3>
+</sect3>
 
-      <sect3>
+<sect3>
 
-        <title>Pestaña &quot;Dimensiones de la vela&quot;</title>
+<title>Pestaña &quot;Dimensiones de la vela&quot;</title>
 
-        <para>Aquí es donde se introducen las dimensiones de la 
-        vela.</para>
+<para>Aquí es donde se introducen las dimensiones de la 
+vela.</para>
 
-        <para>En una vela mayor, el valor mínimo para la longitud de la 
-        percha (galleta del puño de driza) es de 5mm. Cualquier valor 
-        inferior dará siempre por defecto 5mm. El ángulo de percha 
-        viene definido como el ángulo entre el mástil y la baluma que 
-        puede ser hasta 90 grados.</para>
+<para>En una vela mayor, el valor mínimo para la longitud de la 
+percha (galleta del puño de driza) es de 5mm. Cualquier valor 
+inferior dará siempre por defecto 5mm. El ángulo de percha 
+viene definido como el ángulo entre el mástil y la baluma que 
+puede ser hasta 90 grados.</para>
 
-        <para>El alunamiento del pujamen, la baluma y la percha 
-        extiende la vela más allá de su línea recta.</para>
+<para>El alunamiento del pujamen, la baluma y la percha 
+extiende la vela más allá de su línea recta.</para>
 
-        <para>El alunamiento negativo equivaldrá a un hueco en la parte 
-        exterior de la vela.</para>
+<para>El alunamiento negativo equivaldrá a un hueco en la parte 
+exterior de la vela.</para>
 
-        <para>La posición del alunamiento se expresa en porcentaje en 
-        el correspondiente lado de la vela calculado desde la parte más 
-        baja o más externa del lado.</para>
+<para>La posición del alunamiento se expresa en porcentaje en 
+el correspondiente lado de la vela calculado desde la parte más 
+baja o más externa del lado.</para>
 
-        <para>
+<para>
 
-          <figure id="fig.sail_edges">
+<figure id="fig.sail_edges">
 
-            <title>Sailcut edges definition</title>
+<title>Sailcut edges definition</title>
 
-            <mediaobject><imageobject role="html">
-            <imagedata fileref="sail_edges.png"
-             format="PNG"/></imageobject><imageobject role="pdf">
-            <imagedata fileref="sail_edges.pdf"
-             format="PDF"/></imageobject></mediaobject>
-          </figure>
+<mediaobject>
+<imageobject><imagedata fileref="sail_edges"/></imageobject>
+</mediaobject>
+</figure>
 
-        </para>
+</para>
 
-        <para>Dimensions and angles defining the sail plan are 
-        expressed in millimetre and degrees.</para>
+<para>Dimensions and angles defining the sail plan are 
+expressed in millimetre and degrees.</para>
 
-        <para>Length of the sail sides and diagonal are the 3D straight 
-        line distance between the corners of the sail.</para>
+<para>Length of the sail sides and diagonal are the 3D straight 
+line distance between the corners of the sail.</para>
 
-        <para>The actual length on the finished sail lais on the floor 
-        can be slightly longer depending on the shape of the sail. For 
-        example, the foot length entered in the screen below is 3600 
-        mm. If the foot camber is null then that will be the actual 
-        distance between clew and tack (straight foot) of the finished 
-        sail. If a 10% camber is entered for the foot depth, then the 
-        actual foot will be the length of the arc which has 10% camber, 
-        that is 2.7% longer than the straight line foot length.</para>
+<para>The actual length on the finished sail lais on the floor 
+can be slightly longer depending on the shape of the sail. For 
+example, the foot length entered in the screen below is 3600 
+mm. If the foot camber is null then that will be the actual 
+distance between clew and tack (straight foot) of the finished 
+sail. If a 10% camber is entered for the foot depth, then the 
+actual foot will be the length of the arc which has 10% camber, 
+that is 2.7% longer than the straight line foot length.</para>
 
-        <para>Having entered the sail main dimensions you can press on 
-        the &quot;Compute&quot; button to obtain additional 
-        informations on the sail, like the X-Y coordinates of the 
-        corners of the sail, the perpendicular length LP measured from 
-        the clew to the luff as well as IRC racing rules width.</para>
+<para>Having entered the sail main dimensions you can press on 
+the &quot;Compute&quot; button to obtain additional 
+informations on the sail, like the X-Y coordinates of the 
+corners of the sail, the perpendicular length LP measured from 
+the clew to the luff as well as IRC racing rules width.</para>
 
-        <para>The X-Y coordinates of the sail corners are usefull to 
-        quickly adjust the data entered. For example if you find that 
-        the clew height (Y) is way below or above the height of the 
-        tack when you would like it to be leveled, then you can 
-        substract or add the difference to the leech length.</para>
+<para>The X-Y coordinates of the sail corners are usefull to 
+quickly adjust the data entered. For example if you find that 
+the clew height (Y) is way below or above the height of the 
+tack when you would like it to be leveled, then you can 
+substract or add the difference to the leech length.</para>
 
-      </sect3>
+</sect3>
 
-      <sect3>
+<sect3>
 
-        <title>&quot;Layout&quot; box</title>
+<title>&quot;Layout&quot; box</title>
 
-        <para>Click on the radio button corresponding to the desired 
-        layout of the sail. The layout of the panels does not affect 
-        the shape of the sail which is defined by its dimensions and 
-        its mould. Except for the Radial cut layout, the number of 
-        panels is determined by the cloth width and seam width entered 
-        in the &quot;Cloth&quot; box.</para>
+<para>Click on the radio button corresponding to the desired 
+layout of the sail. The layout of the panels does not affect 
+the shape of the sail which is defined by its dimensions and 
+its mould. Except for the Radial cut layout, the number of 
+panels is determined by the cloth width and seam width entered 
+in the &quot;Cloth&quot; box.</para>
 
-        <itemizedlist>
+<itemizedlist>
 
-          <listitem>
+<listitem>
 
-            <para>The most commonly used layout is the 
-            &quot;Crosscut&quot;. The panels are laid perpendicular to 
-            the straight line joining the peak to the clew of the 
-            sail.</para>
+<para>The most commonly used layout is the 
+&quot;Crosscut&quot;. The panels are laid perpendicular to 
+the straight line joining the peak to the clew of the 
+sail.</para>
 
-          </listitem>
+</listitem>
 
-          <listitem>
+<listitem>
 
-            <para>The &quot;Twist foot&quot; layout is similar to the 
-            cross cut except that the lower panels are rotated such 
-            that they do not intersect the foot of the sail.</para>
+<para>The &quot;Twist foot&quot; layout is similar to the 
+cross cut except that the lower panels are rotated such 
+that they do not intersect the foot of the sail.</para>
 
-          </listitem>
+</listitem>
 
-          <listitem>
+<listitem>
 
-            <para>The &quot;Horizontal cut&quot; layout lay the seams 
-            in the horizontal plane. This option can be used to 
-            visualise the profile of the sail at various levels and to 
-            output files with the 3D coordinates of the sails for use 
-            by CFD tools.</para>
+<para>The &quot;Horizontal cut&quot; layout lay the seams 
+in the horizontal plane. This option can be used to 
+visualise the profile of the sail at various levels and to 
+output files with the 3D coordinates of the sails for use 
+by CFD tools.</para>
 
-          </listitem>
+</listitem>
 
-          <listitem>
+<listitem>
 
-            <para>The &quot;Vertical cut&quot; layout places the panels 
-            parrallel to the straight line joining the peak to the clew 
-            of the sail. This is the favorite layout for the old 
-            timer&apos;s main sail.</para>
+<para>The &quot;Vertical cut&quot; layout places the panels 
+parrallel to the straight line joining the peak to the clew 
+of the sail. This is the favorite layout for the old 
+timer&apos;s main sail.</para>
 
-          </listitem>
+</listitem>
 
-          <listitem>
+<listitem>
 
-            <para>The &quot;Mitre cut&quot; layout is the favorite for 
-            the old timer&apos;s genoa. The sail is divided in two 
-            parts by a line joining the clew to the mid point on the 
-            luff and the panels organised to be perpendicular to the 
-            foot in the lower part of the sail and perpendicular to the 
-            leech in its upper part.</para>
+<para>The &quot;Mitre cut&quot; layout is the favorite for 
+the old timer&apos;s genoa. The sail is divided in two 
+parts by a line joining the clew to the mid point on the 
+luff and the panels organised to be perpendicular to the 
+foot in the lower part of the sail and perpendicular to the 
+leech in its upper part.</para>
 
-          </listitem>
+</listitem>
 
-          <listitem>
+<listitem>
 
-            <para>The &quot;Radial cut&quot; is used mostly for 
-            competition as the cloth is mostly aligned with the 
-            directions of maximum strain. When using the Radial cut 
-            option it is important to understand the definition of the 
-            number of sections, number of radial gores and number of 
-            luff gores (see figure below).</para>
+<para>The &quot;Radial cut&quot; is used mostly for 
+competition as the cloth is mostly aligned with the 
+directions of maximum strain. When using the Radial cut 
+option it is important to understand the definition of the 
+number of sections, number of radial gores and number of 
+luff gores (see figure below).</para>
 
-          </listitem>
+</listitem>
 
-        </itemizedlist>
+</itemizedlist>
 
-        <para>
+<para>
 
-          <figure id="fig.head_gores_definition">
+<figure id="fig.head_gores_definition">
 
-            <title>Radial cut gores definition</title>
+<title>Radial cut gores definition</title>
 
-            <mediaobject><imageobject role="html">
-            <imagedata fileref="head_gores_definition.png"
-             format="PNG"/></imageobject><imageobject role="pdf">
-            <imagedata fileref="head_gores_definition.pdf"
-             format="PDF"/></imageobject></mediaobject>
-          </figure>
+<mediaobject>
+<imageobject><imagedata fileref="head_gores_definition"/></imageobject>
+</mediaobject>
+</figure>
 
-        </para>
+</para>
 
-      </sect3>
+</sect3>
 
-      <sect3>
+<sect3>
 
-        <title>&quot;Sail shape&quot; box</title>
+<title>&quot;Sail shape&quot; box</title>
 
-        <para>You enter there the depth of the sail at 3 levels, near 
-        the foot, in the middle of the sail(the exact position being 
-        defined in the mould screen) and near the top of the 
-        sail.</para>
+<para>You enter there the depth of the sail at 3 levels, near 
+the foot, in the middle of the sail(the exact position being 
+defined in the mould screen) and near the top of the 
+sail.</para>
 
-        <para>The twist angle is the angle expressed in degrees by 
-        which the top of the sail is rotated with respect to the foot. 
-        The twist is globally determined by the amount by which the 
-        apparent wind at the top of the mast is rotated with respect to 
-        the apparent wind at deck level. For a jib the twist is 
-        sometime driven by the need to have the upper part of the leech 
-        sufficiently open to clear the spreaders. For a mainsail the 
-        twist is also driven by the ability of the rig to carry the 
-        tension in the leech, in particular a gaff rig will have more 
-        twist in its main sail than a Bermuda rig. It is important that 
-        the twist angle entered in Sailcut reflects the reality of the 
-        shape of the leech when sailing in an average wind.</para>
+<para>The twist angle is the angle expressed in degrees by 
+which the top of the sail is rotated with respect to the foot. 
+The twist is globally determined by the amount by which the 
+apparent wind at the top of the mast is rotated with respect to 
+the apparent wind at deck level. For a jib the twist is 
+sometime driven by the need to have the upper part of the leech 
+sufficiently open to clear the spreaders. For a mainsail the 
+twist is also driven by the ability of the rig to carry the 
+tension in the leech, in particular a gaff rig will have more 
+twist in its main sail than a Bermuda rig. It is important that 
+the twist angle entered in Sailcut reflects the reality of the 
+shape of the leech when sailing in an average wind.</para>
 
-        <para>The sheeting angle value is the actual sheeting angle 
-        measured from the boat centerline when the sail is set on the 
-        boat. For a jib the minimum value is 5 degrees. The value is of 
-        importance to ensure that the sail is properly positioned when 
-        displayed in the &quot;rig viewer&quot;. You can then visualise 
-        for example the slot between a jib and the main sail as set 
-        when sailing.</para>
+<para>The sheeting angle value is the actual sheeting angle 
+measured from the boat centerline when the sail is set on the 
+boat. For a jib the minimum value is 5 degrees. The value is of 
+importance to ensure that the sail is properly positioned when 
+displayed in the &quot;rig viewer&quot;. You can then visualise 
+for example the slot between a jib and the main sail as set 
+when sailing.</para>
 
-      </sect3>
+</sect3>
 
-      <sect3>
+<sect3>
 
-        <title>&quot;Cloth&quot; box</title>
+<title>&quot;Cloth&quot; box</title>
 
-        <para>Enter there the width of cloth used, the width of the 
-        seams between adjacent panels, the width of material to be 
-        added to the leech to make the leech hem and the width of 
-        material for the other edges hems.</para>
+<para>Enter there the width of cloth used, the width of the 
+seams between adjacent panels, the width of material to be 
+added to the leech to make the leech hem and the width of 
+material for the other edges hems.</para>
 
-        <para>The figure below describes de location of the various 
-        hems and seam width.</para>
+<para>The figure below describes de location of the various 
+hems and seam width.</para>
 
-        <para>Sailcut will compute the panels such that they fit within 
-        the declared cloth width including the seam and hems width as 
-        appropriate.</para>
+<para>Sailcut will compute the panels such that they fit within 
+the declared cloth width including the seam and hems width as 
+appropriate.</para>
 
-        <para>
+<para>
 
-          <figure id="fig.sail_seams">
+<figure id="fig.sail_seams">
 
-            <title>Sailcut seams and hems definition</title>
+<title>Sailcut seams and hems definition</title>
 
-            <mediaobject><imageobject role="html">
-            <imagedata fileref="sail_seams.png"
-             format="PNG"/></imageobject><imageobject role="pdf">
-            <imagedata fileref="sail_seams.pdf"
-             format="PDF"/></imageobject></mediaobject>
-          </figure>
+<mediaobject>
+<imageobject><imagedata fileref="sail_seams"/></imageobject>
+</mediaobject>
+</figure>
 
-        </para>
+</para>
 
-      </sect3>
+</sect3>
 
-    </sect2>
+</sect2>
 
-    <sect2>
+<sect2>
 
-      <title>Mould dialog screen (View-&gt;Mould menu)</title>
+<title>Mould dialog screen (View-&gt;Mould menu)</title>
 
-      <para>The depth of the sail can be entered at three levels 
-      located at the bottom (foot) the middle (maximum depth level) and 
-      near the top.</para>
+<para>The depth of the sail can be entered at three levels 
+located at the bottom (foot) the middle (maximum depth level) and 
+near the top.</para>
 
-      <para>The vertical position of the maximum depth profile is 
-      controlled by the vertical slide bar to the right of the left 
-      vertical frame.</para>
+<para>The vertical position of the maximum depth profile is 
+controlled by the vertical slide bar to the right of the left 
+vertical frame.</para>
 
-      <para>The luff shape and the leech shape can be adjusted for the 
-      Top profile and Middle profile only. The foot profile is always 
-      an arc of circle.</para>
+<para>The luff shape and the leech shape can be adjusted for the 
+Top profile and Middle profile only. The foot profile is always 
+an arc of circle.</para>
 
-      <para>In order to avoid that the leech makes a hook in the upper 
-      part of the sail when the wind increases it is recommended that 
-      the Top profile luff shape value be higher than that of the 
-      middle profile and that the leech shape value at the top be lower 
-      than the middle value.</para>
+<para>In order to avoid that the leech makes a hook in the upper 
+part of the sail when the wind increases it is recommended that 
+the Top profile luff shape value be higher than that of the 
+middle profile and that the leech shape value at the top be lower 
+than the middle value.</para>
 
-    </sect2>
+</sect2>
 
-    <sect2>
+<sect2>
 
-      <title>Rig viewer (View-&gt;Rig menu)</title>
+<title>Rig viewer (View-&gt;Rig menu)</title>
 
-      <para>This viewer is used to display several sails on the same 
-      rig.</para>
+<para>This viewer is used to display several sails on the same 
+rig.</para>
 
-      <para>The File-&gt;Add sail menu entry is used to purge the 
-      viewer.</para>
+<para>The File-&gt;Add sail menu entry is used to purge the 
+viewer.</para>
 
-      <para>The File-&gt;Add sail menu entry is used to add sails 
-      already created and saved with Sailcut.</para>
+<para>The File-&gt;Add sail menu entry is used to add sails 
+already created and saved with Sailcut.</para>
 
-      <para>Once a sail is added to the rig viewer the sail information 
-      frame appears below and it is possible to translate the sail in 
-      the 3 directions by adding X-Y-Z displacement values. If you have 
-      misplaced a sail use the Reload button to recover the initial 
-      sail. You can also use the Remove button to eliminate a sail. 2 
-      slides allows you to ratate the rig in azimuth and elevation and 
-      view the ig from any vantage point.</para>
+<para>Once a sail is added to the rig viewer the sail information 
+frame appears below and it is possible to translate the sail in 
+the 3 directions by adding X-Y-Z displacement values. If you have 
+misplaced a sail use the Reload button to recover the initial 
+sail. You can also use the Remove button to eliminate a sail. 2 
+slides allows you to ratate the rig in azimuth and elevation and 
+view the ig from any vantage point.</para>
 
-      <para>The File-&gt;Save menu entry is used to save a rig with a 
-      combination of sails.</para>
+<para>The File-&gt;Save menu entry is used to save a rig with a 
+combination of sails.</para>
 
-      <para>Rigs which have been saved can be later opened as an entity 
-      with File-&gt;Open menu entry.</para>
+<para>Rigs which have been saved can be later opened as an entity 
+with File-&gt;Open menu entry.</para>
 
-      <para>Note that the rig viewer window must be closed to allow you 
-      to return to the main screen of Sailcut.</para>
+<para>Note that the rig viewer window must be closed to allow you 
+to return to the main screen of Sailcut.</para>
 
-    </sect2>
+</sect2>
 
-    <sect2>
+<sect2>
 
-      <title>View controls</title>
+<title>View controls</title>
 
-      <para>It is possible to zoom, pan and rotate the sail in the view 
-      window:</para>
+<para>It is possible to zoom, pan and rotate the sail in the view 
+window:</para>
 
-      <itemizedlist>
+<itemizedlist>
 
-        <listitem>
+<listitem>
 
-          <para><emphasis>rotation</emphasis> : you can control the 
-          rotation that is applied to the sail by using the elevation 
-          and azimuth sliders.</para>
+<para><emphasis>rotation</emphasis> : you can control the 
+rotation that is applied to the sail by using the elevation 
+and azimuth sliders.</para>
 
-        </listitem>
+</listitem>
 
-        <listitem>
+<listitem>
 
-          <para><emphasis>pan</emphasis> : click on a point with the 
-          left mouse to center the view on that point.</para>
+<para><emphasis>pan</emphasis> : click on a point with the 
+left mouse to center the view on that point.</para>
 
-        </listitem>
+</listitem>
 
-        <listitem>
+<listitem>
 
-          <para><emphasis>zoom</emphasis> : to zoom in press CTRL and + 
-          and to zoom out press CTRL and -. You can also use the zoom 
-          buttons in the view controls or your mouse wheel to zoom in 
-          and out.</para>
+<para><emphasis>zoom</emphasis> : to zoom in press CTRL and + 
+and to zoom out press CTRL and -. You can also use the zoom 
+buttons in the view controls or your mouse wheel to zoom in 
+and out.</para>
 
-        </listitem>
+</listitem>
 
-      </itemizedlist>
+</itemizedlist>
 
-    </sect2>
+</sect2>
 
-    <sect2>
+<sect2>
 
-      <title>Sail panels development</title>
+<title>Sail panels development</title>
 
-      <para>The developed sail is display by clicking on the 
-      &quot;Development&quot; tab from Sailcut CAD&apos;s main window. 
-      This presents you with a view of the developed (flat) panels of 
-      the sail. The view controls are the same as those of the main 
-      window. The blue line represents the edge of the finished panel 
-      (draw line) and the red line represents the outer edge taking 
-      into account the seam and hems width allowance (cut line).</para>
+<para>The developed sail is display by clicking on the 
+&quot;Development&quot; tab from Sailcut CAD&apos;s main window. 
+This presents you with a view of the developed (flat) panels of 
+the sail. The view controls are the same as those of the main 
+window. The blue line represents the edge of the finished panel 
+(draw line) and the red line represents the outer edge taking 
+into account the seam and hems width allowance (cut line).</para>
 
-      <para>You can export the points which define the edges of the 
-      developed panels with the draw and cut lines to the following 
-      file formats:</para>
+<para>You can export the points which define the edges of the 
+developed panels with the draw and cut lines to the following 
+file formats:</para>
 
-      <itemizedlist>
+<itemizedlist>
 
-        <listitem>
+<listitem>
 
-          <para>Carlson Design plotter (.sp4) using File-&gt;Export 
-          development-&gt;to Carlson plotter</para>
+<para>Carlson Design plotter (.sp4) using File-&gt;Export 
+development-&gt;to Carlson plotter</para>
 
-        </listitem>
+</listitem>
 
-        <listitem>
+<listitem>
 
-          <para>AutoCAD DXF using File-&gt;Export development-&gt;to 
-          DXF</para>
+<para>AutoCAD DXF using File-&gt;Export development-&gt;to 
+DXF</para>
 
-        </listitem>
+</listitem>
 
-        <listitem>
+<listitem>
 
-          <para>XML dump of the points using File-&gt;Export 
-          development-&gt;to XML sail (see 
-          <xref linkend="s.format_xml_sail"/> for file format 
-          details)</para>
+<para>XML dump of the points using File-&gt;Export 
+development-&gt;to XML sail (see 
+<xref linkend="s.format_xml_sail"/> for file format 
+details)</para>
 
-        </listitem>
+</listitem>
 
-        <listitem>
+<listitem>
 
-          <para>plain text dump of the points using File-&gt;Export 
-          development-&gt;to TXT sail (see 
-          <xref linkend="s.format_text_flat"/> for file format 
-          details)</para>
+<para>plain text dump of the points using File-&gt;Export 
+development-&gt;to TXT sail (see 
+<xref linkend="s.format_text_flat"/> for file format 
+details)</para>
 
-        </listitem>
+</listitem>
 
-      </itemizedlist>
+</itemizedlist>
 
-    </sect2>
+</sect2>
 
-    <sect2>
+<sect2>
 
-      <title>Loading / saving sails</title>
+<title>Loading / saving sails</title>
 
-      <para>Once you have customised you sail, you can save it to a 
-      file (File-&gt;Save or File-&gt;Save As) and load it 
-      (File-&gt;Open) next time you want to work on it. Both the 
-      sail&apos;s dimensions and the parameters of the mould are 
-      saved.</para>
+<para>Once you have customised you sail, you can save it to a 
+file (File-&gt;Save or File-&gt;Save As) and load it 
+(File-&gt;Open) next time you want to work on it. Both the 
+sail&apos;s dimensions and the parameters of the mould are 
+saved.</para>
 
-      <para>Sailcut CAD uses XML files to store the sail data. These 
-      files are plain text so they can easily be viewed using your 
-      favourite text editor.</para>
+<para>Sailcut CAD uses XML files to store the sail data. These 
+files are plain text so they can easily be viewed using your 
+favourite text editor.</para>
 
-    </sect2>
+</sect2>
 
-    <sect2>
+<sect2>
 
-      <title>Exporting 3D sails</title>
+<title>Exporting 3D sails</title>
 
-      <para>On top of Sailcut CAD&apos;s native file format it is 
-      possible to export the points of the edges of the panels that 
-      make up a sail. You export the three dimensional sail to the 
-      following file formats:</para>
+<para>On top of Sailcut CAD&apos;s native file format it is 
+possible to export the points of the edges of the panels that 
+make up a sail. You export the three dimensional sail to the 
+following file formats:</para>
 
-      <itemizedlist>
+<itemizedlist>
 
-        <listitem>
+<listitem>
 
-          <para>AutoCAD DXF using File-&gt;Export 3D sail-&gt;to 
-          DXF</para>
+<para>AutoCAD DXF using File-&gt;Export 3D sail-&gt;to 
+DXF</para>
 
-        </listitem>
+</listitem>
 
-        <listitem>
+<listitem>
 
-          <para>AutoCAD DXF using File-&gt;Export 3D sail-&gt;to DXF 
-          BLOCKS</para>
+<para>AutoCAD DXF using File-&gt;Export 3D sail-&gt;to DXF 
+BLOCKS</para>
 
-        </listitem>
+</listitem>
 
-        <listitem>
+<listitem>
 
-          <para>XML dump of the points using File-&gt;Export 3D 
-          sail-&gt;to XML sail (see <xref linkend="s.format_xml_sail"/> 
-          for file format details)</para>
+<para>XML dump of the points using File-&gt;Export 3D 
+sail-&gt;to XML sail (see <xref linkend="s.format_xml_sail"/> 
+for file format details)</para>
 
-        </listitem>
+</listitem>
 
-        <listitem>
+<listitem>
 
-          <para>plain text dump of the points using File-&gt;Export 3D 
-          sail-&gt;to TXT sail (see <xref linkend="s.format_text_sail"/> 
-          for file format details)</para>
+<para>plain text dump of the points using File-&gt;Export 3D 
+sail-&gt;to TXT sail (see <xref linkend="s.format_text_sail"/> 
+for file format details)</para>
 
-        </listitem>
+</listitem>
 
-      </itemizedlist>
+</itemizedlist>
 
-    </sect2>
+</sect2>
 
-    <sect2>
+<sect2>
 
-      <title>Printing data and drawings</title>
+<title>Printing data and drawings</title>
 
-      <para>The File menu offers various printout possibilities:</para>
+<para>The File menu offers various printout possibilities:</para>
 
-      <itemizedlist>
+<itemizedlist>
 
-        <listitem>
+<listitem>
 
-          <para>File-&gt;Print-&gt;data, will print the data of the 
-          sail,</para>
+<para>File-&gt;Print-&gt;data, will print the data of the 
+sail,</para>
 
-        </listitem>
+</listitem>
 
-        <listitem>
+<listitem>
 
-          <para>File-&gt;Print-&gt;drawing, will print a drawing of the 
-          complete sail,</para>
+<para>File-&gt;Print-&gt;drawing, will print a drawing of the 
+complete sail,</para>
 
-        </listitem>
+</listitem>
 
-        <listitem>
+<listitem>
 
-          <para>File-&gt;Print-&gt;develop, will print all the 
-          developed panels with key points coordinates (1 panel per 
-          page). The definition of the developed panel key points 
-          coordinates is given in the figure below. The X,Y coordinates 
-          are absolute coordinates referenced to the lower left corner 
-          of the box enveloping the contour of the CUT line of the 
-          panel (edge of cloth). The dX,dY coordinates are relative to 
-          the straight line joining the end of the corresponding edge 
-          and it should be remembered that the origin of dX is at the 
-          left end of the edge and positive value of dY indicate that 
-          the point is left of the straight line joining the origin to 
-          the end points of the edge.</para>
+<para>File-&gt;Print-&gt;develop, will print all the 
+developed panels with key points coordinates (1 panel per 
+page). The definition of the developed panel key points 
+coordinates is given in the figure below. The X,Y coordinates 
+are absolute coordinates referenced to the lower left corner 
+of the box enveloping the contour of the CUT line of the 
+panel (edge of cloth). The dX,dY coordinates are relative to 
+the straight line joining the end of the corresponding edge 
+and it should be remembered that the origin of dX is at the 
+left end of the edge and positive value of dY indicate that 
+the point is left of the straight line joining the origin to 
+the end points of the edge.</para>
 
-        </listitem>
+</listitem>
 
-      </itemizedlist>
+</itemizedlist>
 
-      <para>The printout scaling is such that the sail drawing and the 
-      largest developed panel automatically fit in one page. For 
-      printing panels to a precise scale it is preferable to export the 
-      developed sail in a DXF file and use a CAD package to print the 
-      panels.</para>
+<para>The printout scaling is such that the sail drawing and the 
+largest developed panel automatically fit in one page. For 
+printing panels to a precise scale it is preferable to export the 
+developed sail in a DXF file and use a CAD package to print the 
+panels.</para>
 
-      <para>
+<para>
 
-        <figure id="fig.develop_panel_drawing">
+<figure id="fig.develop_panel_drawing">
 
-          <title>Developed panels drawing</title>
+<title>Developed panels drawing</title>
 
-          <mediaobject><imageobject role="html">
-          <imagedata fileref="develop_panel_drawing.png"
-           format="PNG"/></imageobject><imageobject role="pdf">
-          <imagedata fileref="develop_panel_drawing.pdf"
-           format="PDF"/></imageobject></mediaobject>
-        </figure>
+<mediaobject>
+<imageobject><imagedata fileref="develop_panel_drawing"/></imageobject>
+</mediaobject>
+</figure>
 
-      </para>
+</para>
 
-    </sect2>
+</sect2>
 
-  </sect1>
+</sect1>
 
-  <sect1 id="s.surface">
+<sect1 id="s.surface">
 
-    <title>Sails surface formulation in Sailcut</title>
+<title>Sails surface formulation in Sailcut</title>
 
-    <para>TODO</para>
+<para>TODO</para>
 
-  </sect1>
+</sect1>
 
-  <sect1 id="s.moreinfo">
+<sect1 id="s.moreinfo">
 
-    <title>Where can I find more information about Sailcut CAD?</title>
+<title>Where can I find more information about Sailcut CAD?</title>
 
-    <para>TODO</para>
+<para>TODO</para>
 
-  </sect1>
+</sect1>
 
-  <sect1 id="s.formats">
+<sect1 id="s.formats">
 
-    <title>File formats used by Sailcut CAD</title>
+<title>File formats used by Sailcut CAD</title>
 
-    <sect2 id="s.format_text_flat">
+<sect2 id="s.format_text_flat">
 
-      <title>Text representation of developed sail</title>
+<title>Text representation of developed sail</title>
 
-      <para>TODO</para>
+<para>TODO</para>
 
-    </sect2>
+</sect2>
 
-    <sect2 id="s.format_text_sail">
+<sect2 id="s.format_text_sail">
 
-      <title>Text representation of 3D sail</title>
+<title>Text representation of 3D sail</title>
 
-      <para>TODO</para>
+<para>TODO</para>
 
-    </sect2>
+</sect2>
 
-    <sect2 id="s.format_xml_sail">
+<sect2 id="s.format_xml_sail">
 
-      <title>XML representation of a sail</title>
+<title>XML representation of a sail</title>
 
-      <para>TODO</para>
+<para>TODO</para>
 
-    </sect2>
+</sect2>
 
-  </sect1>
+</sect1>
 
-  <sect1 id="s.copyright">
+<sect1 id="s.copyright">
 
-    <title>Copyright</title>
+<title>Copyright</title>
 
-    <para>Copyright (C) 1993-2006 Robert &amp; Jeremy Lainé.</para>
+<para>Copyright (C) 1993-2006 Robert &amp; Jeremy Lainé.</para>
 
-    <para>Sailcut is a Registered Trademark of Robert Lainé.</para>
+<para>Sailcut is a Registered Trademark of Robert Lainé.</para>
 
-    <para>This program is free software; you can redistribute it and/or 
-    modify it under the terms of the GNU General Public License as 
-    published by the Free Software Foundation; either version 2 of the 
-    License, or (at your option) any later version. See 
-    <ulink url="http://www.fsf.org/"/> for the licence terms and 
-    details.</para>
+<para>This program is free software; you can redistribute it and/or 
+modify it under the terms of the GNU General Public License as 
+published by the Free Software Foundation; either version 2 of the 
+License, or (at your option) any later version. See 
+<ulink url="http://www.fsf.org/"/> for the licence terms and 
+details.</para>
 
-    <para>This program is distributed in the hope that it will be 
-    useful, but WITHOUT ANY WARRANTY; without even the implied warranty 
-    of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
-    General Public License for more details.</para>
+<para>This program is distributed in the hope that it will be 
+useful, but WITHOUT ANY WARRANTY; without even the implied warranty 
+of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
+General Public License for more details.</para>
 
-    <para>You should have received a copy of the GNU General Public 
-    License along with this program; if not, write to the Free Software 
-    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.</para>
+<para>You should have received a copy of the GNU General Public 
+License along with this program; if not, write to the Free Software 
+Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.</para>
 
-    <remark><emphasis>The authors would appreciate that publications on 
-    sails designed with Sailcut include some acknowledgement of their 
-    work.</emphasis></remark>
-  </sect1>
+<remark><emphasis>The authors would appreciate that publications on 
+sails designed with Sailcut include some acknowledgement of their 
+work.</emphasis></remark>
+</sect1>
 
 </article>
 
