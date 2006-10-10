@@ -42,7 +42,7 @@ AC_CHECK_PROG(PNGTOPNM, pngtopnm, pngtopnm)
 AC_CHECK_PROG(PPMTOXPM, ppmtoxpm, pngtoxpm)
 AC_CHECK_PROG(SODIPODI, sodipodi, sodipodi)
 AC_CHECK_PROG(XSLTPROC, xsltproc, xsltproc)
-AC_CHECK_PROG(PDFLATEX, pdflatex, pdflatex)
+AC_CHECK_PROG(DBLATEX, dblatex, dblatex)
 
 dnl Enable exceptions support, make compiler verbose
 CXXFLAGS="$CXXFLAGS $USE_EXCEPTIONS -W -Wall" 
