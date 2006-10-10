@@ -263,12 +263,7 @@
 <title>Définition du plan des voiles dans Sailcut</title>
 
 <mediaobject>
-<imageobject role="html">
-<imagedata fileref="sailplan.png" format="PNG"/>
-</imageobject>
-<imageobject role="pdf">
-<imagedata fileref="sailplan.pdf" format="PDF"/>
-</imageobject>
+<imageobject><imagedata fileref="sailplan"/></imageobject>
 </mediaobject>
 
 </figure>
@@ -306,12 +301,7 @@
 <title>Définition des bords des laizes dans Sailcut</title>
 
 <mediaobject>
-<imageobject role="html">
-<imagedata fileref="sail_edges.png" format="PNG"/>
-</imageobject>
-<imageobject role="pdf">
-<imagedata fileref="sail_edges.pdf" format="PDF"/>
-</imageobject>
+<imageobject><imagedata fileref="sail_edges"/></imageobject>
 </mediaobject>
 
 </figure>
@@ -384,12 +374,7 @@
 <title>Définition des fuseaux radiaux dans Sailcut</title>
 
 <mediaobject>
-<imageobject role="html">
-<imagedata fileref="head_gores_definition.png" format="PNG"/>
-</imageobject>
-<imageobject role="pdf">
-<imagedata fileref="head_gores_definition.pdf" format="PDF"/>
-</imageobject>
+<imageobject><imagedata fileref="head_gores_definition"/></imageobject>
 </mediaobject>
 
 </figure>
@@ -425,12 +410,7 @@
 <title>Définition des coutures et ourlets dans Sailcut</title>
 
 <mediaobject>
-<imageobject role="html">
-<imagedata fileref="sail_seams.png" format="PNG"/>
-</imageobject>
-<imageobject role="pdf">
-<imagedata fileref="sail_seams.pdf" format="PDF"/>
-</imageobject>
+<imageobject><imagedata fileref="sail_seams"/></imageobject>
 </mediaobject>
 
 </figure>
@@ -621,12 +601,7 @@
 <title>Dessin des laizes développées </title>
 
 <mediaobject>
-<imageobject role="html"> 
-<imagedata fileref="develop_panel_drawing.png" format="PNG"/>
-</imageobject>
-<imageobject role="pdf"> 
-<imagedata fileref="develop_panel_drawing.pdf" format="PDF"/>
-</imageobject> 
+<imageobject><imagedata fileref="develop_panel_drawing"/></imageobject>
 </mediaobject> 
 
 </figure>
@@ -670,12 +645,7 @@
 <title>Système de coordonnées de Sailcut</title>
 
 <mediaobject>
-<imageobject role="html">
-<imagedata fileref="coordinates_system.png" format="PNG"/>
-</imageobject>
-<imageobject role="pdf">
-<imagedata fileref="coordinates_system.pdf" format="PDF"/>
-</imageobject>
+<imageobject><imagedata fileref="coordinates_system"/></imageobject>
 </mediaobject>
 
 </figure>
