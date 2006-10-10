@@ -3,7 +3,7 @@ Section: graphics
 Priority: optional
 Maintainer: Jeremy Lainé <jeremy.laine@m4x.org> 
 Standards-Version: 3.7.2
-Build-Depends: cdbs, debhelper (>= 5), libqt4-dev
+Build-Depends: cdbs, debhelper (>= 5), libqt4-dev (>= 4.2.0)
 
 Package: sailcut
 Architecture: any
