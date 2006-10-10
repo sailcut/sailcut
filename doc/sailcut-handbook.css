@@ -4,8 +4,27 @@ body {
   font-family: sans-serif;
 }
 
-.guimenu, .guimenuitem, .guisubmenu, .guilabel, .guibutton {
-  background-color: #edf8ff;
-  color: inherit;
+.guimenu, .guimenuitem, .guisubmenu {
+  font-weight: bold;
+  border: 1px rgb(96,152,255);
+  border-style: none none dotted none;
 }
 
+.guilabel {
+  font-weight: bold;
+}
+
+.guibutton {
+  font-weight: bold;
+  background-color: rgb(232,232,232);
+  color: inherit;
+  padding-left: 0.2em; 
+  padding-right: 0.2em; 
+  border: 1px solid;
+}
+
+.programlisting {
+   border: 1px solid rgb(64,128,144);
+   background-color: rgb(240,248,255);
+   padding: 10px;
+}
