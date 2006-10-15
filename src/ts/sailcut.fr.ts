@@ -1,4 +1,5 @@
-<!DOCTYPE TS><TS>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS><TS version="1.1" language="en_GB">
 <context>
     <name>CFileIO</name>
     <message>
@@ -236,7 +237,7 @@
     </message>
     <message>
         <source>Sheeting angle</source>
-        <translation>Ouverture</translation>
+        <translation>Ouverture de la voile</translation>
     </message>
     <message encoding="UTF-8">
         <source>m²</source>
@@ -857,15 +858,15 @@
     </message>
     <message>
         <source>sections</source>
-        <translation type="unfinished"></translation>
+        <translation>sections</translation>
     </message>
     <message>
         <source>head gores</source>
-        <translation type="unfinished"></translation>
+        <translation>fuseaux de tête</translation>
     </message>
     <message>
         <source>luff gores</source>
-        <translation type="unfinished"></translation>
+        <translation>fuseaux de guindant</translation>
     </message>
     <message>
         <source>Twist Foot Cut</source>
@@ -981,7 +982,7 @@
     </message>
     <message>
         <source>Sheeting angle</source>
-        <translation type="unfinished"></translation>
+        <translation>Ouverture de la voile</translation>
     </message>
     <message>
         <source>Cloth seams and hems</source>
@@ -1095,7 +1096,7 @@
     </message>
     <message>
         <source>cord</source>
-        <translation type="unfinished"></translation>
+        <translation>corde</translation>
     </message>
 </context>
 <context>
