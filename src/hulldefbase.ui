@@ -1,0 +1,500 @@
+<ui version="4.0" >
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>682</width>
+    <height>504</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Dialog</string>
+  </property>
+  <widget class="QWidget" name="layoutWidget" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>460</y>
+     <width>663</width>
+     <height>33</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" >
+    <property name="margin" >
+     <number>0</number>
+    </property>
+    <property name="spacing" >
+     <number>6</number>
+    </property>
+    <item>
+     <spacer>
+      <property name="orientation" >
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" >
+       <size>
+        <width>131</width>
+        <height>31</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <widget class="QPushButton" name="okButton" >
+      <property name="text" >
+       <string>OK</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="cancelButton" >
+      <property name="text" >
+       <string>Cancel</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_2" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>641</width>
+     <height>131</height>
+    </rect>
+   </property>
+   <property name="title" >
+    <string>Side Planks</string>
+   </property>
+   <widget class="QLabel" name="label_21" >
+    <property name="geometry" >
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>58</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="sizePolicy" >
+     <sizepolicy>
+      <hsizetype>5</hsizetype>
+      <vsizetype>0</vsizetype>
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="text" >
+     <string>TextLabel</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_22" >
+    <property name="geometry" >
+     <rect>
+      <x>20</x>
+      <y>50</y>
+      <width>58</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="sizePolicy" >
+     <sizepolicy>
+      <hsizetype>5</hsizetype>
+      <vsizetype>0</vsizetype>
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="text" >
+     <string>TextLabel</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>160</y>
+     <width>630</width>
+     <height>259</height>
+    </rect>
+   </property>
+   <property name="sizePolicy" >
+    <sizepolicy>
+     <hsizetype>5</hsizetype>
+     <vsizetype>1</vsizetype>
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="title" >
+    <string>Bottom</string>
+   </property>
+   <layout class="QGridLayout" >
+    <property name="margin" >
+     <number>9</number>
+    </property>
+    <property name="spacing" >
+     <number>6</number>
+    </property>
+    <item rowspan="6" row="2" column="3" >
+     <widget class="Line" name="line" >
+      <property name="orientation" >
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+    </item>
+    <item rowspan="2" row="6" column="5" >
+     <spacer>
+      <property name="orientation" >
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" >
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="7" column="2" >
+     <widget class="QLineEdit" name="lineEdit_6" >
+      <property name="sizePolicy" >
+       <sizepolicy>
+        <hsizetype>0</hsizetype>
+        <vsizetype>0</vsizetype>
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="0" >
+     <widget class="QLabel" name="label_6" >
+      <property name="sizePolicy" >
+       <sizepolicy>
+        <hsizetype>5</hsizetype>
+        <vsizetype>0</vsizetype>
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text" >
+       <string>Bottom sweep angle</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="2" >
+     <widget class="QLineEdit" name="lineEdit_5" >
+      <property name="sizePolicy" >
+       <sizepolicy>
+        <hsizetype>0</hsizetype>
+        <vsizetype>0</vsizetype>
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="0" colspan="2" >
+     <widget class="QLabel" name="label_5" >
+      <property name="sizePolicy" >
+       <sizepolicy>
+        <hsizetype>5</hsizetype>
+        <vsizetype>0</vsizetype>
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text" >
+       <string>Bottom dead rise angle</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0" >
+     <widget class="QLabel" name="label_1" >
+      <property name="sizePolicy" >
+       <sizepolicy>
+        <hsizetype>5</hsizetype>
+        <vsizetype>0</vsizetype>
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text" >
+       <string>Length of chine 1</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1" colspan="2" >
+     <widget class="QLineEdit" name="lineEdit_1" >
+      <property name="minimumSize" >
+       <size>
+        <width>80</width>
+        <height>22</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="4" >
+     <widget class="QLabel" name="label_7" >
+      <property name="sizePolicy" >
+       <sizepolicy>
+        <hsizetype>5</hsizetype>
+        <vsizetype>0</vsizetype>
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text" >
+       <string>Forward height</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1" colspan="2" >
+     <widget class="QLineEdit" name="lineEdit_2" />
+    </item>
+    <item row="3" column="0" >
+     <widget class="QLabel" name="label_2" >
+      <property name="sizePolicy" >
+       <sizepolicy>
+        <hsizetype>5</hsizetype>
+        <vsizetype>0</vsizetype>
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text" >
+       <string>Maximum width position</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1" colspan="2" >
+     <widget class="QLineEdit" name="lineEdit_3" />
+    </item>
+    <item row="4" column="0" >
+     <widget class="QLabel" name="label_3" >
+      <property name="sizePolicy" >
+       <sizepolicy>
+        <hsizetype>5</hsizetype>
+        <vsizetype>0</vsizetype>
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text" >
+       <string>Maximum width</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1" colspan="2" >
+     <widget class="QLineEdit" name="lineEdit_4" />
+    </item>
+    <item row="5" column="0" >
+     <widget class="QLabel" name="label_4" >
+      <property name="sizePolicy" >
+       <sizepolicy>
+        <hsizetype>5</hsizetype>
+        <vsizetype>0</vsizetype>
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text" >
+       <string>Transom width</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="4" >
+     <widget class="QLabel" name="label_8" >
+      <property name="sizePolicy" >
+       <sizepolicy>
+        <hsizetype>5</hsizetype>
+        <vsizetype>0</vsizetype>
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text" >
+       <string>Forward shape</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="5" >
+     <widget class="QLineEdit" name="lineEdit_8" >
+      <property name="sizePolicy" >
+       <sizepolicy>
+        <hsizetype>0</hsizetype>
+        <vsizetype>0</vsizetype>
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="5" >
+     <widget class="QLineEdit" name="lineEdit_9" >
+      <property name="sizePolicy" >
+       <sizepolicy>
+        <hsizetype>0</hsizetype>
+        <vsizetype>0</vsizetype>
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="5" >
+     <widget class="QLineEdit" name="lineEdit_7" >
+      <property name="sizePolicy" >
+       <sizepolicy>
+        <hsizetype>0</hsizetype>
+        <vsizetype>0</vsizetype>
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize" >
+       <size>
+        <width>50</width>
+        <height>22</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="5" >
+     <widget class="QLineEdit" name="lineEdit_10" >
+      <property name="sizePolicy" >
+       <sizepolicy>
+        <hsizetype>0</hsizetype>
+        <vsizetype>0</vsizetype>
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="4" >
+     <widget class="QLabel" name="label_10" >
+      <property name="sizePolicy" >
+       <sizepolicy>
+        <hsizetype>5</hsizetype>
+        <vsizetype>0</vsizetype>
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text" >
+       <string>Aft shape</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="4" >
+     <widget class="QLabel" name="label_9" >
+      <property name="sizePolicy" >
+       <sizepolicy>
+        <hsizetype>5</hsizetype>
+        <vsizetype>0</vsizetype>
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text" >
+       <string>Transom height</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0" colspan="3" >
+     <widget class="QLabel" name="label" >
+      <property name="sizePolicy" >
+       <sizepolicy>
+        <hsizetype>5</hsizetype>
+        <vsizetype>0</vsizetype>
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font" >
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text" >
+       <string>All dimensions are in millimeters and degrees</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="5" >
+     <widget class="QLineEdit" name="lineEdit" >
+      <property name="minimumSize" >
+       <size>
+        <width>150</width>
+        <height>22</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="4" >
+     <widget class="QLabel" name="labelname" >
+      <property name="sizePolicy" >
+       <sizepolicy>
+        <hsizetype>5</hsizetype>
+        <vsizetype>0</vsizetype>
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text" >
+       <string>Hull name</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" colspan="6" >
+     <widget class="Line" name="line_3" >
+      <property name="orientation" >
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>okButton</sender>
+   <signal>clicked()</signal>
+   <receiver>Dialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>278</x>
+     <y>253</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>96</x>
+     <y>254</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cancelButton</sender>
+   <signal>clicked()</signal>
+   <receiver>Dialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>369</x>
+     <y>253</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>179</x>
+     <y>282</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
