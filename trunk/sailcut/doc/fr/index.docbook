@@ -182,7 +182,7 @@
 
 <title>Fichier des préférences</title>
 
-<para>Vos préférences sount enregistrées dans le fichier <filename>.sailcutrc</filename>. Sur les plateformes Unix ce fichier est placé dans votre répertoire <filename>HOME</filename>. Sous Windows ce fichier est généralement dans <filename>C:\</filename>.</para>
+<para>Vos préférences sount enregistrées dans le fichier <filename>.sailcutrc</filename>. Sur les plateformes Unix ce fichier est placé dans votre répertoire <filename>HOME</filename>. Sous Windows ce fichier se trouve généralement dans le répertoire <filename>Documents and Settings\UTILISATEUR</filename>.</para>
 
 </sect3>
 
