@@ -112,6 +112,25 @@ CRect3d CRect3d::operator* (const real r) const
 }
 
 
+/** Return the minimum rectangle containing the current rectangle
+ *  and the one given as an argument.
+ *
+ * @param rect
+ */
+CRect3d CRect3d::join(const CRect3d& rect) const
+{
+    CRect3d ret = *this;
+    for( unsigned int j = 0; j < 3; j++)
+    {
+        if (rect.min[j] < ret.min[j])
+            ret.min[j] = rect.min[j];
+        if (rect.max[j] > ret.max[j])
+            ret.max[j] = rect.max[j];
+    }
+    return ret;
+}
+
+
 /***************************************
  
                  2D/3D subspaces

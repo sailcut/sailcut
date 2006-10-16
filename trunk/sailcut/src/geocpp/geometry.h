@@ -152,6 +152,7 @@ public:
     {
         return max.y()-min.y();
     };
+    CRect3d join(const CRect3d& rect) const;
 
     /** lower-left corner */
     CPoint3d min;
