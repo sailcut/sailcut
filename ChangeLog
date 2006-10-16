@@ -2,6 +2,7 @@ Sailcut CAD 1.2.4
  * fixed - remove offset at tack and clew in radial cut
  * improved - add a stylesheet for the Sailcut CAD Handbook
  * improved - when possible, use default browser to view the Handbook
+ * added - the Windows version of Sailcut CAD comes with an installer
 
 Sailcut CAD 1.2.3
   * added - position of max depth, entry and exit angles in mould screen
