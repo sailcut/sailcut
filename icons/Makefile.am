@@ -1,24 +1,22 @@
-TMPFILE = sailcut.tmp.png
-
-GENPIXMAPS = sailcut.png sailcut-file.png
-
 pixmapsdir = $(prefix)/share/pixmaps
-dist_pixmaps_DATA = sailcut.svg sailcut-file.svg sailcut.xpm sailcut.ico $(GENPIXMAPS)
+dist_pixmaps_DATA = sailcut.xpm
+
+dist_noinst_DATA = sailcut-32x32.ico sailcut-file-32x32.ico
 
 %.ico: %.png
 	$(PNGTOICO) $@ $<
 
-%.png: %.svg
-	$(SODIPODI) -z --file=$< --export-png=$@ --export-width=64 --export-height=64
+%-32x32.png: %.svg
+	$(SODIPODI) -z --file=$< --export-png=$@ --export-width=32 --export-height=32
 
-sailcut.xpm: sailcut.svg
-	$(SODIPODI) -z --file=$< --export-png=$(TMPFILE) --export-width=32 --export-height=32
-	if [ -f $(TMPFILE) ]; then \
-	  $(PNGTOPNM) $(TMPFILE) | $(PPMTOXPM) -name sailcut_xpm > $@; \
-	  sed -i -e 's/\"   c #000000\"/\"   c None\"/' $@; \
-	  sed -i -e 's/static char/static const char/' $@; \
-	  rm -f $(TMPFILE); \
-	fi
+%-64x64.png: %.svg
+	$(SODIPODI) -z --file=$< --export-png=$@ --export-width=32 --export-height=32
 
-EXTRA_DIST = sailcut-file-alt.svg $(dist_pixmaps_DATA)
-MAINTAINERCLEANFILES = $(GENPIXMAPS)
+sailcut.xpm: sailcut-32x32.png
+	$(PNGTOPNM) $< | $(PPMTOXPM) -name sailcut_xpm > $@.tmp
+	sed -i -e 's/\"   c #000000\"/\"   c None\"/' $@.tmp
+	sed -i -e 's/static char/static const char/' $@.tmp
+	mv -f $@.tmp $@
+
+EXTRA_DIST = sailcut.svg sailcut-file.svg sailcut-file-alt.svg
+MAINTAINERCLEANFILES = $(dist_pixmaps_DATA) $(dist_noinst_DATA)
