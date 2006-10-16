@@ -100,7 +100,7 @@ protected slots:
 
     // member variables
 protected:
-    /** the location of the Sailcut Handbook */
+    /** the location of the Sailcut CAD Handbook */
     QUrl handbook;
 
     /** the application */

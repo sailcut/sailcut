@@ -24,10 +24,6 @@
 <context>
     <name>CFormDef</name>
     <message>
-        <source>Sailcut</source>
-        <translation type="obsolete">Sailcut</translation>
-    </message>
-    <message>
         <source>Sail corners coordinates</source>
         <translation>Sejllhjørne koordinator</translation>
     </message>
@@ -374,16 +370,16 @@ stævn</translation>
         <translation>Sprog</translation>
     </message>
     <message>
-        <source>Sailcut &amp;Handbook</source>
-        <translation>Sailcut &amp;Håndbog</translation>
+        <source>Sailcut CAD &amp;Handbook</source>
+        <translation>Sailcut CAD &amp;Håndbog</translation>
     </message>
     <message>
         <source>About &amp;Qt</source>
         <translation>Om &amp;Qt</translation>
     </message>
     <message>
-        <source>About &amp;Sailcut</source>
-        <translation>Om &amp;Sailcut</translation>
+        <source>About &amp;Sailcut CAD</source>
+        <translation>Om &amp;Sailcut CAD</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -418,16 +414,12 @@ stævn</translation>
         <translation>udviklet nyt sejl</translation>
     </message>
     <message>
-        <source>About Sailcut</source>
-        <translation>Om Sailcut</translation>
+        <source>About Sailcut CAD</source>
+        <translation>Om Sailcut CAD</translation>
     </message>
     <message>
         <source>error loading &apos;%1&apos;</source>
         <translation>Fejl i åbning &apos;%1&apos;</translation>
-    </message>
-    <message>
-        <source>Sailcut data sheet</source>
-        <translation type="obsolete">Sailcut data side</translation>
     </message>
     <message>
         <source>Sail type</source>
@@ -805,8 +797,8 @@ stævn</translation>
 <context>
     <name>CSailPrinter</name>
     <message>
-        <source>Sailcut data sheet</source>
-        <translation>Sailcut data side</translation>
+        <source>Sailcut CAD data sheet</source>
+        <translation>Sailcut CAD data side</translation>
     </message>
     <message>
         <source>Mainsail</source>

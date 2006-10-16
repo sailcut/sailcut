@@ -26,7 +26,7 @@ class QTextBrowser;
 class QUrl;
 class CPrefs;
 
-/** Dialog to display the Sailcut Handbook.
+/** Dialog to display the Sailcut CAD Handbook.
   */
 class CFormHelp : public QDialog
 {

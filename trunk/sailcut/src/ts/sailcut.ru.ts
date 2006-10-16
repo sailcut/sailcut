@@ -26,10 +26,6 @@
 <context>
     <name>CFormDef</name>
     <message>
-        <source>Sailcut</source>
-        <translation type="obsolete">Раскрой паруса</translation>
-    </message>
-    <message>
         <source>Sail corners coordinates</source>
         <translation>Координаты углов паруса</translation>
     </message>
@@ -382,16 +378,16 @@
         <translation>Язык</translation>
     </message>
     <message>
-        <source>Sailcut &amp;Handbook</source>
-        <translation>Справочник по Sailcut</translation>
+        <source>Sailcut CAD &amp;Handbook</source>
+        <translation>Справочник по Sailcut CAD</translation>
     </message>
     <message>
         <source>About &amp;Qt</source>
         <translation>О программе Qt</translation>
     </message>
     <message>
-        <source>About &amp;Sailcut</source>
-        <translation>о программе Sailcut</translation>
+        <source>About &amp;Sailcut CAD</source>
+        <translation>о программе Sailcut CAD</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -426,16 +422,12 @@
         <translation>Создан новый парус</translation>
     </message>
     <message>
-        <source>About Sailcut</source>
-        <translation>О программе Sailcut</translation>
+        <source>About Sailcut CAD</source>
+        <translation>О программе Sailcut CAD</translation>
     </message>
     <message>
         <source>error loading &apos;%1&apos;</source>
         <translation>Ошибка загрузки &apos;%1&apos;</translation>
-    </message>
-    <message>
-        <source>Sailcut data sheet</source>
-        <translation type="obsolete">Таблица данных Sailcut</translation>
     </message>
     <message>
         <source>Sail type</source>
@@ -809,8 +801,8 @@
 <context>
     <name>CSailPrinter</name>
     <message>
-        <source>Sailcut data sheet</source>
-        <translation>Таблица данных Sailcut</translation>
+        <source>Sailcut CAD data sheet</source>
+        <translation>Таблица данных Sailcut CAD</translation>
     </message>
     <message>
         <source>Mainsail</source>

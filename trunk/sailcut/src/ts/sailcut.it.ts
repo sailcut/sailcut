@@ -24,10 +24,6 @@
 <context>
     <name>CFormDef</name>
     <message>
-        <source>Sailcut</source>
-        <translation type="obsolete">Sailcut</translation>
-    </message>
-    <message>
         <source>Sail corners coordinates</source>
         <translation type="unfinished"></translation>
     </message>
@@ -353,8 +349,8 @@
         <translation>&amp;Aiuto</translation>
     </message>
     <message>
-        <source>About Sailcut</source>
-        <translation>A proposito di Sailcut</translation>
+        <source>About Sailcut CAD</source>
+        <translation>A proposito di Sailcut CAD</translation>
     </message>
     <message>
         <source>error</source>
@@ -369,8 +365,8 @@
         <translation>A proposito di &amp;Qt</translation>
     </message>
     <message>
-        <source>About &amp;Sailcut</source>
-        <translation>A proposito di &amp;Sailcut</translation>
+        <source>About &amp;Sailcut CAD</source>
+        <translation>A proposito di &amp;Sailcut CAD</translation>
     </message>
     <message>
         <source>Language</source>
@@ -393,8 +389,8 @@
         <translation>Esporta &amp;svilupppo</translation>
     </message>
     <message>
-        <source>Sailcut &amp;Handbook</source>
-        <translation>Manuale &amp;Sailcut</translation>
+        <source>Sailcut CAD &amp;Handbook</source>
+        <translation>Manuale &amp;Sailcut CAD</translation>
     </message>
     <message>
         <source>shaded view</source>
@@ -451,10 +447,6 @@
     <message>
         <source>&amp;Print</source>
         <translation>&amp;Stampa</translation>
-    </message>
-    <message>
-        <source>Sailcut data sheet</source>
-        <translation type="obsolete">Scheda dati Sailcut</translation>
     </message>
     <message>
         <source>Sail type</source>
@@ -804,8 +796,8 @@
 <context>
     <name>CSailPrinter</name>
     <message>
-        <source>Sailcut data sheet</source>
-        <translation>Scheda dati Sailcut</translation>
+        <source>Sailcut CAD data sheet</source>
+        <translation>Scheda dati Sailcut CAD</translation>
     </message>
     <message>
         <source>Mainsail</source>

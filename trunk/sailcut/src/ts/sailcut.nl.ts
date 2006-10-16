@@ -30,11 +30,6 @@
     <name>CFormDef</name>
     <message>
         <location filename="" line="0"/>
-        <source>Sailcut</source>
-        <translation type="obsolete">Sailcut</translation>
-    </message>
-    <message>
-        <location filename="" line="0"/>
         <source>Sail corners coordinates</source>
         <translation>Zeilhoek coördinaten</translation>
     </message>
@@ -429,8 +424,8 @@
     </message>
     <message>
         <location filename="" line="0"/>
-        <source>About &amp;Sailcut</source>
-        <translation>Over &amp;Sailcut</translation>
+        <source>About &amp;Sailcut CAD</source>
+        <translation>Over &amp;Sailcut CAD</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -449,8 +444,8 @@
     </message>
     <message>
         <location filename="" line="0"/>
-        <source>About Sailcut</source>
-        <translation>Over Sailcut</translation>
+        <source>About Sailcut CAD</source>
+        <translation>Over Sailcut CAD</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -484,8 +479,8 @@
     </message>
     <message>
         <location filename="" line="0"/>
-        <source>Sailcut &amp;Handbook</source>
-        <translation>Sailcut &amp;Handboek</translation>
+        <source>Sailcut CAD &amp;Handbook</source>
+        <translation>Sailcut CAD &amp;Handboek</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -556,11 +551,6 @@
         <location filename="" line="0"/>
         <source>&amp;Print</source>
         <translation>&amp;Print</translation>
-    </message>
-    <message>
-        <location filename="" line="0"/>
-        <source>Sailcut data sheet</source>
-        <translation type="obsolete">Sailcut data sheet</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -1009,8 +999,8 @@
     <name>CSailPrinter</name>
     <message>
         <location filename="" line="0"/>
-        <source>Sailcut data sheet</source>
-        <translation>Sailcut data sheet</translation>
+        <source>Sailcut CAD data sheet</source>
+        <translation>Sailcut CAD data sheet</translation>
     </message>
     <message>
         <location filename="" line="0"/>
