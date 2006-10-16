@@ -44,8 +44,6 @@ protected:
     /** the CSailMould */
     CSailMould *sailmould;
 
-    /** Help button */
-    QPushButton* buttonHelp;
     /** OK button */
     QPushButton* buttonOk;
     /** Cancel button */
