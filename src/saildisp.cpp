@@ -41,7 +41,7 @@ CSailDisp::CSailDisp()
  */
 void CSailDisp::calcSailDisp()
 {
-    sailDisp = sailBase.rotate( sailBase.boundingRect().center(), m);
+    sailDisp = sailBase.rotate( rectBase.center(), m);
 }
 
 
@@ -51,7 +51,7 @@ void CSailDisp::resetZoomCenter()
 {
     center=CPoint3d(0,0,0);
     zoom = 0.8;
-    calcLRect(m_vRect, sailBase.boundingRect());
+    calcLRect(m_vRect, rectBase);
 }
 
 
@@ -87,7 +87,7 @@ void CSailDisp::setAngle( real azimuth, real elevation )
 void CSailDisp::setCenter( CPoint3d newCenter )
 {
     center = newCenter;
-    m_lRect = calcLRect(m_vRect, sailBase.boundingRect());
+    m_lRect = calcLRect(m_vRect, rectBase);
 }
 
 
@@ -96,10 +96,10 @@ void CSailDisp::setCenter( CPoint3d newCenter )
  */
 void CSailDisp::setSail( const CSail &sail )
 {
-    sailBase = sail;
-    sailBase = sailBase + CVector3d( -sailBase.boundingRect().center() );
+    sailBase = sail + CVector3d( -sail.boundingRect().center() );
+    rectBase = sailBase.boundingRect();
     calcSailDisp();
-    m_lRect = calcLRect(m_vRect, sailBase.boundingRect());
+    m_lRect = calcLRect(m_vRect, rectBase);
 }
 
 
@@ -109,7 +109,7 @@ void CSailDisp::setVRect(const int width, const int height)
 {
     m_vRect.min=CPoint3d(0,0,0);
     m_vRect.max=CPoint3d(width,height);
-    m_lRect = calcLRect(m_vRect, sailBase.boundingRect());
+    m_lRect = calcLRect(m_vRect, rectBase);
 }
 
 
@@ -120,7 +120,7 @@ void CSailDisp::setVRect(const int width, const int height)
 void CSailDisp::setZoom(real newZoom)
 {
     zoom = newZoom;
-    m_lRect = calcLRect(m_vRect, sailBase.boundingRect());
+    m_lRect = calcLRect(m_vRect, rectBase);
 }
 
 /** Zooms IN by a factor 2.
