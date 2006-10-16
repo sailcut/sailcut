@@ -313,7 +313,7 @@
     </message>
     <message>
         <location filename="" line="0"/>
-        <source>Sail ID </source>
+        <source>Sail ID</source>
         <translation>Segel ID</translation>
     </message>
     <message>

@@ -164,10 +164,10 @@
     </message>
     <message>
         <source>Sail-ID</source>
-        <translation type="obsolete">Идентификатор ID </translation>
+        <translation type="obsolete">Идентификатор ID</translation>
     </message>
     <message>
-        <source>Sail ID </source>
+        <source>Sail ID</source>
         <translation>Идентификатор ID текстового описания паруса</translation>
     </message>
     <message>

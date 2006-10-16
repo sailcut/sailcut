@@ -123,7 +123,7 @@
        </spacer>
       </item>
       <item row="0" column="8" >
-       <widget class="QLabel" name="lbl12" >
+       <widget class="QLabel" name="lblLuffRoundPos" >
         <property name="text" >
          <string>Round position</string>
         </property>
@@ -144,14 +144,14 @@
        </widget>
       </item>
       <item row="0" column="0" >
-       <widget class="QLabel" name="lbl10" >
+       <widget class="QLabel" name="lblLuffLen" >
         <property name="text" >
          <string>Luff length</string>
         </property>
        </widget>
       </item>
       <item row="1" column="0" >
-       <widget class="QLabel" name="lbl20" >
+       <widget class="QLabel" name="lblFootLen" >
         <property name="text" >
          <string>Foot length</string>
         </property>
@@ -165,7 +165,7 @@
        </widget>
       </item>
       <item row="2" column="0" >
-       <widget class="QLabel" name="lbl30" >
+       <widget class="QLabel" name="lblLeechLen" >
         <property name="text" >
          <string>Leech length</string>
         </property>
@@ -186,35 +186,35 @@
        </widget>
       </item>
       <item row="2" column="8" >
-       <widget class="QLabel" name="lbl32" >
+       <widget class="QLabel" name="lblLeechRoundPos" >
         <property name="text" >
          <string>Round position</string>
         </property>
        </widget>
       </item>
       <item row="3" column="0" >
-       <widget class="QLabel" name="lbl40" >
+       <widget class="QLabel" name="lblGaffLen" >
         <property name="text" >
          <string>Gaff length</string>
         </property>
        </widget>
       </item>
       <item row="2" column="4" >
-       <widget class="QLabel" name="lbl31" >
+       <widget class="QLabel" name="lblLeechRound" >
         <property name="text" >
          <string>Leech round</string>
         </property>
        </widget>
       </item>
       <item row="0" column="4" >
-       <widget class="QLabel" name="lbl11" >
+       <widget class="QLabel" name="lblLuffRound" >
         <property name="text" >
          <string>Luff round</string>
         </property>
        </widget>
       </item>
       <item row="1" column="4" >
-       <widget class="QLabel" name="lbl21" >
+       <widget class="QLabel" name="lblFootRound" >
         <property name="text" >
          <string>Foot round</string>
         </property>
@@ -298,14 +298,14 @@
        </widget>
       </item>
       <item row="3" column="4" >
-       <widget class="QLabel" name="lbl41" >
+       <widget class="QLabel" name="lblGaffRound" >
         <property name="text" >
          <string>Gaff round</string>
         </property>
        </widget>
       </item>
       <item row="3" column="8" >
-       <widget class="QLabel" name="lbl42" >
+       <widget class="QLabel" name="lblGaffAngle" >
         <property name="text" >
          <string>Gaff angle from luff</string>
         </property>
@@ -484,12 +484,6 @@
       </item>
       <item row="1" column="3" >
        <widget class="QLineEdit" name="txtSections" >
-        <property name="minimumSize" >
-         <size>
-          <width>22</width>
-          <height>0</height>
-         </size>
-        </property>
         <property name="alignment" >
          <set>Qt::AlignHCenter</set>
         </property>
@@ -584,12 +578,6 @@
       </item>
       <item row="0" column="1" >
        <widget class="QLineEdit" name="txtTopDepth" >
-        <property name="minimumSize" >
-         <size>
-          <width>22</width>
-          <height>0</height>
-         </size>
-        </property>
         <property name="alignment" >
          <set>Qt::AlignHCenter</set>
         </property>
@@ -617,21 +605,21 @@
        </widget>
       </item>
       <item row="0" column="0" >
-       <widget class="QLabel" name="lbl50" >
+       <widget class="QLabel" name="lblTopDepth" >
         <property name="text" >
          <string>Top depth</string>
         </property>
        </widget>
       </item>
       <item row="1" column="0" >
-       <widget class="QLabel" name="lbl51" >
+       <widget class="QLabel" name="lblMidDepth" >
         <property name="text" >
          <string>Mid depth</string>
         </property>
        </widget>
       </item>
       <item row="2" column="0" >
-       <widget class="QLabel" name="lbl52" >
+       <widget class="QLabel" name="lblFootDepth" >
         <property name="text" >
          <string>Foot depth</string>
         </property>
@@ -652,14 +640,14 @@
        </widget>
       </item>
       <item row="3" column="0" >
-       <widget class="QLabel" name="TextLabel4" >
+       <widget class="QLabel" name="lblTwistAngle" >
         <property name="text" >
          <string>Twist angle</string>
         </property>
        </widget>
       </item>
       <item row="4" column="0" >
-       <widget class="QLabel" name="TextLabel5" >
+       <widget class="QLabel" name="lblSheetAngle" >
         <property name="text" >
          <string>Sheeting angle</string>
         </property>
@@ -723,7 +711,7 @@
        </widget>
       </item>
       <item row="0" column="0" >
-       <widget class="QLabel" name="lbl60" >
+       <widget class="QLabel" name="lblClothWidth" >
         <property name="text" >
          <string>Cloth width</string>
         </property>
@@ -737,14 +725,14 @@
        </widget>
       </item>
       <item row="2" column="0" >
-       <widget class="QLabel" name="lbl62" >
+       <widget class="QLabel" name="lblLeechHemWidth" >
         <property name="text" >
          <string>Leech hem</string>
         </property>
        </widget>
       </item>
       <item row="3" column="0" >
-       <widget class="QLabel" name="lbl63" >
+       <widget class="QLabel" name="lblHemsWidth" >
         <property name="text" >
          <string>Other hems</string>
         </property>
@@ -758,7 +746,7 @@
        </widget>
       </item>
       <item row="1" column="0" >
-       <widget class="QLabel" name="lbl61" >
+       <widget class="QLabel" name="lblSeamWidth" >
         <property name="text" >
          <string>Seam width</string>
         </property>
@@ -773,12 +761,6 @@
       </item>
       <item row="0" column="1" >
        <widget class="QLineEdit" name="txtClothWidth" >
-        <property name="minimumSize" >
-         <size>
-          <width>60</width>
-          <height>0</height>
-         </size>
-        </property>
         <property name="alignment" >
          <set>Qt::AlignHCenter</set>
         </property>
@@ -807,9 +789,9 @@
        </widget>
       </item>
       <item row="0" column="0" >
-       <widget class="QLabel" name="lbl7" >
+       <widget class="QLabel" name="lblSailID" >
         <property name="text" >
-         <string>Sail ID </string>
+         <string>Sail ID</string>
         </property>
         <property name="alignment" >
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -847,12 +829,6 @@
       </item>
       <item row="0" column="10" >
        <widget class="QLineEdit" name="txtRake" >
-        <property name="minimumSize" >
-         <size>
-          <width>60</width>
-          <height>0</height>
-         </size>
-        </property>
         <property name="alignment" >
          <set>Qt::AlignHCenter</set>
         </property>
@@ -911,12 +887,6 @@
       </item>
       <item row="0" column="6" >
        <widget class="QLineEdit" name="txtLOA" >
-        <property name="minimumSize" >
-         <size>
-          <width>60</width>
-          <height>0</height>
-         </size>
-        </property>
         <property name="alignment" >
          <set>Qt::AlignHCenter</set>
         </property>
@@ -930,14 +900,7 @@
        </widget>
       </item>
       <item row="2" column="2" >
-       <widget class="QLineEdit" name="txtDihedral" >
-        <property name="minimumSize" >
-         <size>
-          <width>30</width>
-          <height>0</height>
-         </size>
-        </property>
-       </widget>
+       <widget class="QLineEdit" name="txtDihedral" />
       </item>
       <item row="2" column="0" >
        <widget class="QRadioButton" name="radioWing" >
@@ -1017,7 +980,7 @@
        </widget>
       </item>
       <item row="1" column="9" >
-       <widget class="QLabel" name="lbl2" >
+       <widget class="QLabel" name="lblTackHeight" >
         <property name="text" >
          <string>Tack height</string>
         </property>

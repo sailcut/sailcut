@@ -248,7 +248,7 @@ stævn</translation>
         <translation>Bådlængde LOA</translation>
     </message>
     <message>
-        <source>Sail ID </source>
+        <source>Sail ID</source>
         <translation>Sejl ID</translation>
     </message>
     <message>

@@ -223,7 +223,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Sail ID </source>
+        <source>Sail ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
