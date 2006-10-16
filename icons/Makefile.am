@@ -5,10 +5,10 @@ GENPIXMAPS = sailcut.png sailcut-file.png
 pixmapsdir = $(prefix)/share/pixmaps
 dist_pixmaps_DATA = sailcut.svg sailcut-file.svg sailcut.xpm sailcut.ico $(GENPIXMAPS)
 
-sailcut.png: sailcut.svg
-	$(SODIPODI) -z --file=$< --export-png=$@ --export-width=64 --export-height=64
+%.ico: %.png
+	$(PNGTOICO) $@ $<
 
-sailcut-file.png: sailcut-file.svg
+%.png: %.svg
 	$(SODIPODI) -z --file=$< --export-png=$@ --export-width=64 --export-height=64
 
 sailcut.xpm: sailcut.svg
@@ -20,5 +20,5 @@ sailcut.xpm: sailcut.svg
 	  rm -f $(TMPFILE); \
 	fi
 
-EXTRA_DIST = sailcut-file-alt.svg sailcut.rc resource.h $(dist_pixmaps_DATA)
+EXTRA_DIST = sailcut-file-alt.svg $(dist_pixmaps_DATA)
 MAINTAINERCLEANFILES = $(GENPIXMAPS)
