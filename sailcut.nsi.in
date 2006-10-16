@@ -52,14 +52,14 @@ SectionEnd
 
 Section "Start Menu Shortcuts" SecShortcut
   CreateDirectory "$SMPROGRAMS\Sailcut CAD"
-  CreateShortCut "$SMPROGRAMS\Sailcut CAD\Sailcut CAD.lnk" "$INSTDIR\sailcut.exe" "" "$INSTDIR\icons\sailcut-32x32.ico"
+  CreateShortCut "$SMPROGRAMS\Sailcut CAD\Sailcut CAD.lnk" "$INSTDIR\sailcut.exe" "" "$INSTDIR\icons\sailcut.ico"
   CreateShortCut "$SMPROGRAMS\Sailcut CAD\Uninstall.lnk" "$INSTDIR\uninstall.exe"
 SectionEnd
 
 Section "Register File Types" SecFileType
   WriteRegStr HKCR "SailcutCAD.SailDef" "" "Sailcut CAD Sail definition"
   WriteRegStr HKCR "SailcutCAD.SailDef\shell\open\command" "" '"$INSTDIR\sailcut.exe" "%1"'
-  WriteRegStr HKCR "SailcutCAD.SailDef\DefaultIcon" "" "$INSTDIR\icons\sailcut-file-32x32.ico"
+  WriteRegStr HKCR "SailcutCAD.SailDef\DefaultIcon" "" "$INSTDIR\icons\sailcut-file.ico"
   WriteRegStr HKCR ".saildef" "" "SailcutCAD.SailDef"
 SectionEnd
 

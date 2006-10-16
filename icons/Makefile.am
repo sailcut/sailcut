@@ -1,16 +1,19 @@
 pixmapsdir = $(prefix)/share/pixmaps
 dist_pixmaps_DATA = sailcut.xpm
 
-dist_noinst_DATA = sailcut-32x32.ico sailcut-file-32x32.ico
+dist_noinst_DATA = sailcut.ico sailcut-file.ico
 
-%.ico: %.png
-	$(PNGTOICO) $@ $<
+%.ico: %-48x48.png %-32x32.png %-16x16.png
+	$(PNGTOICO) $@ $+
+
+%-16x16.png: %.svg
+	$(SODIPODI) -z --file=$< --export-png=$@ --export-width=16 --export-height=16
 
 %-32x32.png: %.svg
 	$(SODIPODI) -z --file=$< --export-png=$@ --export-width=32 --export-height=32
 
-%-64x64.png: %.svg
-	$(SODIPODI) -z --file=$< --export-png=$@ --export-width=32 --export-height=32
+%-48x48.png: %.svg
+	$(SODIPODI) -z --file=$< --export-png=$@ --export-width=48 --export-height=48
 
 sailcut.xpm: sailcut-32x32.png
 	$(PNGTOPNM) $< | $(PPMTOXPM) -name sailcut_xpm > $@.tmp
