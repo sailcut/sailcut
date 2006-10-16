@@ -252,7 +252,7 @@
         <translation>Calculer</translation>
     </message>
     <message>
-        <source>Sail ID </source>
+        <source>Sail ID</source>
         <translation>Identification de la voile</translation>
     </message>
     <message>

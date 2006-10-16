@@ -251,7 +251,7 @@
         <translation>Beregn</translation>
     </message>
     <message>
-        <source>Sail ID </source>
+        <source>Sail ID</source>
         <translation>Seil ID</translation>
     </message>
     <message>

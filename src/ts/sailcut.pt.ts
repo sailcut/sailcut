@@ -243,7 +243,7 @@
         <translation>Comprimento do barco fora-a-fora - LOA</translation>
     </message>
     <message>
-        <source>Sail ID </source>
+        <source>Sail ID</source>
         <translation>ID da vela</translation>
     </message>
     <message>

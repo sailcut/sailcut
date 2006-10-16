@@ -251,7 +251,7 @@
         <translation>Calcola</translation>
     </message>
     <message>
-        <source>Sail ID </source>
+        <source>Sail ID</source>
         <translation>Nome della vela</translation>
     </message>
     <message>
