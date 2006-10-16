@@ -1,22 +1,21 @@
 ##### Win32 distribution generation #####
 
+MAKENSIS = makensis
 UNIX2DOS = unix2dos
 MINGW = i586-mingw32msvc
 STRIP = $(MINGW)-strip
 QTDIR=/usr/$(MINGW)/share/qt4
 
 VERSION := $(shell cat configure.in | grep AM_INIT_AUTOMAKE | sed -e 's/.*,\([0-9a-zA-Z\.]*\).*/\1/')
-BIN_DOCS = README README.win32 COPYING ChangeLog
+BIN_DOCS = README COPYING ChangeLog
 
 win32_configure= ../configure
 win32_builddir = win32-build
 win32_distdir = sailcut-$(VERSION)_win32
+win32_qtlibs = mingwm10.dll QtCore4.dll QtGui4.dll QtOpenGL4.dll QtXml4.dll
+win32_nsi = sailcut-installer.nsi
 
-qt_win32_version = $(shell cat $(QTDIR)/src/corelib/global/qglobal.h | grep QT_VERSION_STR | sed -e 's/.*\"\(.*\)\"/\1/')
-qt_win32_distdir = qt-win-opensource-runtime-$(qt_win32_version)
-qt_win32_libs = mingwm10.dll QtCore4.dll QtGui4.dll QtOpenGL4.dll QtXml4.dll
-
-win32-dist: win32-bin win32-clean
+win32-dist: win32-zip win32-installer win32-clean
 
 win32-build-stamp:
 	mkdir -p $(win32_builddir)
@@ -29,24 +28,28 @@ win32-build-stamp:
 	make -C $(win32_builddir)
 	touch $@
 
-win32-bin: win32-build-stamp
-	@echo; echo "## Building win32 binary package ##"; echo
-	rm -rf $(win32_distdir) $(win32_distdir).zip
+win32-install-stamp: win32-build-stamp
+	rm -rf $(win32_distdir)
 	mkdir -p $(win32_distdir)
 	for i in $(BIN_DOCS); do \
 	  cp $$i $(win32_distdir); \
 	  $(UNIX2DOS) $(win32_distdir)/$$i; \
 	done
-	make -C $(win32_builddir) DESTDIR=$(shell pwd)/$(win32_distdir)/ bindir=. pixmapsdir=icons install
+	make -C $(win32_builddir) DESTDIR=$(CURDIR)/$(win32_distdir)/ bindir=. pixmapsdir=icons install
+	cp -f $(win32_builddir)/icons/*.ico $(win32_distdir)/icons
 	$(STRIP) $(win32_distdir)/sailcut.exe
+	cp -f $(addprefix $(QTDIR)/bin/,$(win32_qtlibs)) $(win32_distdir)
+
+win32-installer: win32-install-stamp
+	@echo; echo "## Building win32 installer ##"; echo
+	cd $(win32_distdir) && $(MAKENSIS) -NOCD $(CURDIR)/$(win32_builddir)/$(win32_nsi)
+
+win32-zip: win32-install-stamp
+	@echo; echo "## Building win32 zip ##"; echo
+	rm -f $(win32_distdir).zip
 	zip -r $(win32_distdir).zip $(win32_distdir)
 
 win32-clean:
-	rm -rf $(win32_distdir) $(win32_builddir) win32-build-stamp
+	rm -rf $(win32_distdir) $(win32_builddir) win32-build-stamp win32-install-stamp
 
-qt-win32-bin:
-	@echo; echo "## Building win32 Qt runtime package ##"; echo
-	rm -rf $(qt_win32_distdir).zip
-	cd $(QTDIR)/bin && zip $(CURDIR)/$(qt_win32_distdir).zip $(qt_win32_libs)
-
-.PHONY: win32-dist win32-clean win32-bin qt-win32-bin
+.PHONY: win32-dist win32-clean win32-zip win32-installer

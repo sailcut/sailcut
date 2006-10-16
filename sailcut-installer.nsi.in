@@ -1,0 +1,89 @@
+;Sailcut CAD Installer
+
+!define PRODUCT_NAME "Sailcut CAD"
+!define PRODUCT_VERSION "@VERSION@"
+!define PRODUCT_DIR_REGKEY "Software\Sailcut CAD"
+
+Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
+OutFile "..\sailcut-${PRODUCT_VERSION}-win32-installer.exe"
+
+SetCompressor lzma
+
+InstallDir "$PROGRAMFILES\Sailcut CAD"
+InstallDirRegKey HKCU "${PRODUCT_DIR_REGKEY}" ""
+
+!include "MUI.nsh"
+!define MUI_ABORTWARNING
+
+!insertmacro MUI_PAGE_LICENSE "COPYING"
+!insertmacro MUI_PAGE_COMPONENTS
+!insertmacro MUI_PAGE_DIRECTORY
+!insertmacro MUI_PAGE_INSTFILES
+!define MUI_FINISHPAGE_RUN "$INSTDIR\sailcut.exe"
+!define MUI_FINISHPAGE_LINK "Visit the Sailcut CAD website"
+!define MUI_FINISHPAGE_LINK_LOCATION "http://sailcut.sourceforge.net/"
+!insertmacro MUI_PAGE_FINISH
+  
+!insertmacro MUI_UNPAGE_CONFIRM
+!insertmacro MUI_UNPAGE_INSTFILES
+  
+!insertmacro MUI_LANGUAGE "English"
+
+Section "Sailcut CAD" SecSailcut
+  SectionIn RO
+
+  SetOutPath "$INSTDIR"
+  WriteRegStr HKCU "${PRODUCT_DIR_REGKEY}" "InstallLocation" $INSTDIR
+  
+  File sailcut.exe
+  File *.dll
+  File ChangeLog
+  File COPYING
+  File README
+  File /r data
+  File /r icons
+  
+  WriteUninstaller "$INSTDIR\uninstall.exe"
+SectionEnd
+
+Section "Documentation" SecHandbook
+  File /r doc
+SectionEnd
+
+Section "Start Menu Shortcuts" SecShortcut
+  CreateDirectory "$SMPROGRAMS\Sailcut CAD"
+  CreateShortCut "$SMPROGRAMS\Sailcut CAD\Sailcut CAD.lnk" "$INSTDIR\sailcut.exe" "" "$INSTDIR\icons\sailcut-32x32.ico"
+  CreateShortCut "$SMPROGRAMS\Sailcut CAD\Uninstall.lnk" "$INSTDIR\uninstall.exe"
+SectionEnd
+
+Section "Register File Types" SecFileType
+  WriteRegStr HKCR "SailcutCAD.SailDef" "" "Sailcut CAD Sail definition"
+  WriteRegStr HKCR "SailcutCAD.SailDef\shell\open\command" "" '"$INSTDIR\sailcut.exe" "%1"'
+  WriteRegStr HKCR "SailcutCAD.SailDef\DefaultIcon" "" "$INSTDIR\icons\sailcut-file-32x32.ico"
+  WriteRegStr HKCR ".saildef" "" "SailcutCAD.SailDef"
+SectionEnd
+
+!insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
+  !insertmacro MUI_DESCRIPTION_TEXT ${SecSailcut} "Installs Sailcut CAD."
+  !insertmacro MUI_DESCRIPTION_TEXT ${SecHandbook} "Installs the Sailcut CAD HandBook."
+  !insertmacro MUI_DESCRIPTION_TEXT ${SecShortcut} "Adds icons to your start menu for easy access."
+  !insertmacro MUI_DESCRIPTION_TEXT ${SecFileType} "Register Sailcut CAD file types."
+!insertmacro MUI_FUNCTION_DESCRIPTION_END
+
+Section "Uninstall"
+  Delete "$INSTDIR\sailcut.exe"
+  Delete "$INSTDIR\*.dll"
+  Delete "$INSTDIR\ChangeLog"
+  Delete "$INSTDIR\COPYING"
+  Delete "$INSTDIR\README"
+  RMDir /r "$INSTDIR\data"
+  RMDir /r "$INSTDIR\icons"
+  RMDir /r "$INSTDIR\doc"
+  Delete "$INSTDIR\uninstall.exe"
+
+  RMDir "$INSTDIR"
+
+  DeleteRegKey HKCR "SailcutCAD.SailDef"
+  DeleteRegKey HKCR ".saildef"
+  DeleteRegKey HKCU "${PRODUCT_DIR_REGKEY}"
+SectionEnd
