@@ -68,6 +68,7 @@ esac
 dnl Produce output
 AC_CONFIG_FILES([ Doxyfile ])
 AC_CONFIG_FILES([ Makefile ])
+AC_CONFIG_FILES([ sailcut-installer.nsi ])
 AC_CONFIG_FILES([ doc/Makefile ])
 AC_CONFIG_FILES([ doc/en/Makefile ])
 AC_CONFIG_FILES([ doc/es/Makefile ])
