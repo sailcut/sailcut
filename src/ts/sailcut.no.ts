@@ -33,7 +33,7 @@
     </message>
     <message>
         <source>tack</source>
-        <translation type="unfinished"></translation>
+        <translation>høyde</translation>
     </message>
     <message>
         <source>clew</source>
@@ -41,7 +41,7 @@
     </message>
     <message>
         <source>head</source>
-        <translation type="unfinished"></translation>
+        <translation>topp</translation>
     </message>
     <message>
         <source>peak</source>
@@ -821,7 +821,7 @@
     </message>
     <message>
         <source>deg</source>
-        <translation type="unfinished"></translation>
+        <translation>grad</translation>
     </message>
     <message>
         <source>Sail type</source>
@@ -841,15 +841,15 @@
     </message>
     <message>
         <source>sections</source>
-        <translation type="unfinished"></translation>
+        <translation>baner</translation>
     </message>
     <message>
         <source>head gores</source>
-        <translation type="unfinished"></translation>
+        <translation>topp baner</translation>
     </message>
     <message>
         <source>luff gores</source>
-        <translation type="unfinished"></translation>
+        <translation>forlik baner</translation>
     </message>
     <message>
         <source>Twist Foot Cut</source>

@@ -619,7 +619,7 @@ stævn</translation>
     </message>
     <message>
         <source>Top profile</source>
-        <translation type="obsolete">Top profil</translation>
+        <translation type="obsolete">Øverste profil</translation>
     </message>
     <message>
         <source>Mid profile at h = </source>
@@ -842,15 +842,15 @@ stævn</translation>
     </message>
     <message>
         <source>sections</source>
-        <translation type="unfinished"></translation>
+        <translation>sektioner</translation>
     </message>
     <message>
         <source>head gores</source>
-        <translation type="unfinished"></translation>
+        <translation>hoved kiler</translation>
     </message>
     <message>
         <source>luff gores</source>
-        <translation type="unfinished"></translation>
+        <translation>forli kiler</translation>
     </message>
     <message>
         <source>Twist Foot Cut</source>
@@ -898,7 +898,7 @@ stævn</translation>
     </message>
     <message>
         <source>Sail dimensions</source>
-        <translation type="unfinished"></translation>
+        <translation>Sejl dimension</translation>
     </message>
     <message>
         <source>Luff length</source>
@@ -934,7 +934,7 @@ stævn</translation>
     </message>
     <message>
         <source>Foot round</source>
-        <translation type="unfinished"></translation>
+        <translation>Fodrunding</translation>
     </message>
     <message>
         <source>Foot round position</source>
@@ -1006,7 +1006,7 @@ stævn</translation>
     </message>
     <message>
         <source>Top profile</source>
-        <translation type="unfinished"></translation>
+        <translation>Øverste profil</translation>
     </message>
     <message>
         <source>Mid profile at h = </source>
@@ -1076,7 +1076,7 @@ stævn</translation>
     </message>
     <message>
         <source>degrees</source>
-        <translation type="unfinished"></translation>
+        <translation>grader</translation>
     </message>
     <message>
         <source>cord</source>
