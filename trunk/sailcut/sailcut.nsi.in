@@ -33,7 +33,7 @@ Section "Sailcut CAD" SecSailcut
   SectionIn RO
 
   SetOutPath "$INSTDIR"
-  WriteRegStr HKCU "${PRODUCT_DIR_REGKEY}" "InstallLocation" $INSTDIR
+  WriteRegStr HKCU "${PRODUCT_DIR_REGKEY}" "" $INSTDIR
   
   File sailcut.exe
   File *.dll
