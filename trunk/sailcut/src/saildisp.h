@@ -83,6 +83,8 @@ protected:
     CRect3d m_lRect;
     /** Viewport rectangle, in device coordinates */
     CRect3d m_vRect;
+    /** Bounding rectangle of the unrotated sail */
+    CRect3d rectBase;
 };
 
 

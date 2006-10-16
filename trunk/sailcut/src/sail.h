@@ -35,20 +35,13 @@ public:
     /** the sail's panels */
     vector<CPanel> panel;
 
-    /** has the sail changed */
-    bool changed;
-
     /** title of the sail */
     QString sailID;
-
-protected:
-    /** bounding rectangle containing the whole sail */
-    CRect3d _boundingrect;
 
     // member functions
 public:
     /** rectangle containing a panel. */
-    CRect3d boundingRect();
+    CRect3d boundingRect() const;
 
     /** accessor for the number of panels. */
     unsigned int nbpanels() const

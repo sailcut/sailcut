@@ -2073,7 +2073,6 @@ CSail CSailWorker::LayoutRadial( CSail &flatsail, CSail &dispsail ) const
     /** preparing the displays version of the developed sail */
     dispsail = flatsail;
     j = 0, h = nbSections, k = 0;
-    CRect3d pRect = dispsail.panel[j].boundingRect();
     v = CVector3d(0,0,0);
     xp = 0;
     xm = 0;
@@ -2094,7 +2093,7 @@ CSail CSailWorker::LayoutRadial( CSail &flatsail, CSail &dispsail ) const
         // translation v to stack panel above previous panel
         dispsail.panel[j] = dispsail.panel[j] + v;
 
-        pRect = dispsail.panel[j].boundingRect();
+        CRect3d pRect = dispsail.panel[j].boundingRect();
         ym = pRect.height();
         v.y() += ym+ 2*seamW +20; // adding offset to separate next panel vertically
 
@@ -2581,7 +2580,6 @@ CSail CSailWorker::LayoutTriRadial( CSail &flatsail, CSail &dispsail ) const
     /** preparing the displays version of the developed sail */
     dispsail = flatsail;
     j=0, h=nbSections, k=0;
-    CRect3d pRect = dispsail.panel[j].boundingRect();
     v = CVector3d(0,0,0);
     xp = 0;
     xm = 0;
@@ -2602,7 +2600,7 @@ CSail CSailWorker::LayoutTriRadial( CSail &flatsail, CSail &dispsail ) const
         // translation v to stack panel above previous panel
         dispsail.panel[j] = dispsail.panel[j] + v;
 
-        pRect = dispsail.panel[j].boundingRect();
+        CRect3d pRect = dispsail.panel[j].boundingRect();
         ym = pRect.height();
         v.y() += ym+ 2*seamW +20; // adding offset to separate next panel vertically
 

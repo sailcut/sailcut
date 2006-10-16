@@ -29,8 +29,6 @@
  */
 CSail::CSail( unsigned int nbpanels /* = 0 */)
 {
-    changed = true;
-
     panel.resize(nbpanels);
 }
 
@@ -39,7 +37,6 @@ CSail::CSail( unsigned int nbpanels /* = 0 */)
  */
 CSail::CSail( const CSail& s )
 {
-    changed = true;
     panel = s.panel;
     sailID = s.sailID;
 }
@@ -49,7 +46,6 @@ CSail::CSail( const CSail& s )
  */
 CSail::CSail( const CPanel& p )
 {
-    changed = true;
     panel.resize(1);
     panel[0] = p;
 }
@@ -57,33 +53,19 @@ CSail::CSail( const CPanel& p )
 
 /** Returns the smallest 3D box that contains the sail.
  */
-CRect3d CSail::boundingRect()
+CRect3d CSail::boundingRect() const
 {
-    CRect3d rect_temp;
+    CRect3d rect;
 
     if ( panel.size() == 0 )
-        return rect_temp;
+        return rect;
 
-    if (changed == true)
+    rect = panel[0].boundingRect();
+    for( unsigned int i = 1; i < panel.size(); i++)
     {
-        // we only recalculate the bounding rectangle if the 'changed' flag is set to true
-        // to save useless calculations
-        _boundingrect = panel[0].boundingRect();
-        for( unsigned int i = 1; i < panel.size(); i++)
-        {
-            rect_temp = panel[i].boundingRect();
-            for( unsigned int j = 0; j < 3; j++)
-            {
-                if (rect_temp.min[j] < _boundingrect.min[j])
-                    _boundingrect.min[j] = rect_temp.min[j];
-                if (rect_temp.max[j] > _boundingrect.max[j])
-                    _boundingrect.max[j] = rect_temp.max[j];
-            }
-        }
-        changed = false;
+        rect = rect.join(panel[i].boundingRect());
     }
-
-    return _boundingrect;
+    return rect;
 }
 
 
@@ -100,6 +82,7 @@ void CSail::placeLabels()
         panel[i].placeLabel();
     }
 }
+
 
 /** Positions each of the plotted Sail's panels' label.
      The font size is default 5 mm
@@ -144,9 +127,6 @@ CSail& CSail::operator=(const CSail& s)
 
     panel = s.panel;
     sailID = s.sailID;
-
-    // set 'changed' attribute to true
-    changed = true;
 
     return *this;
 }
