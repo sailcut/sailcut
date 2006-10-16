@@ -1,4 +1,5 @@
-<!DOCTYPE TS><TS>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS><TS version="1.1" language="en_GB">
 <context>
     <name>CFileIO</name>
     <message>
@@ -837,15 +838,15 @@
     </message>
     <message>
         <source>sections</source>
-        <translation type="unfinished"></translation>
+        <translation> secções </translation>
     </message>
     <message>
         <source>head gores</source>
-        <translation type="unfinished"></translation>
+        <translation>radiais do topo</translation>
     </message>
     <message>
         <source>luff gores</source>
-        <translation type="unfinished"></translation>
+        <translation>radiais da testa</translation>
     </message>
     <message>
         <source>Twist Foot Cut</source>
@@ -945,7 +946,7 @@
     </message>
     <message>
         <source>Gaff round</source>
-        <translation type="unfinished"></translation>
+        <translation>Curva da gurutil</translation>
     </message>
     <message>
         <source>Gaff round position</source>
@@ -957,11 +958,11 @@
     </message>
     <message>
         <source>Twist angle</source>
-        <translation type="unfinished"></translation>
+        <translation>Ângulo de torção</translation>
     </message>
     <message>
         <source>Sheeting angle</source>
-        <translation type="unfinished"></translation>
+        <translation>Ângulo de escota</translation>
     </message>
     <message>
         <source>Cloth seams and hems</source>
@@ -1071,11 +1072,11 @@
     </message>
     <message>
         <source>degrees</source>
-        <translation type="unfinished"></translation>
+        <translation>graus</translation>
     </message>
     <message>
         <source>cord</source>
-        <translation type="unfinished"></translation>
+        <translation>corda</translation>
     </message>
 </context>
 <context>
