@@ -107,14 +107,12 @@ void CSail::plotLabels()
  */
 CSail CSail::rotate( const CPoint3d &p, const CMatrix &m ) const
 {
-    CSail s(panel.size());
-
+    CSail ret = *this;
     for (unsigned int i = 0; i < panel.size(); i++ )
     {
-        s.panel[i] = panel[i].rotate(p,m);
+        ret.panel[i] = panel[i].rotate(p,m);
     }
-
-    return s;
+    return ret;
 }
 
 
@@ -136,10 +134,10 @@ CSail& CSail::operator=(const CSail& s)
  */
 CSail CSail::operator+(const CVector3d& transl) const
 {
-    CSail ret=*this;
-    for (unsigned int i=0; i < panel.size(); i++)
+    CSail ret = *this;
+    for (unsigned int i = 0; i < panel.size(); i++)
     {
-        ret.panel[i]=ret.panel[i]+transl;
+        ret.panel[i] = ret.panel[i] + transl;
     }
     return ret;
 }
