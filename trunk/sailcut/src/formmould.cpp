@@ -51,8 +51,6 @@ CFormMould::CFormMould( QWidget *parent, CSailMould *mouldptr )
     // Add the buttons at the bottom of the screen
     QHBoxLayout* buttonsLayout = new QHBoxLayout();
 
-    buttonHelp = new QPushButton( tr("&Help"), this );
-    buttonsLayout->addWidget( buttonHelp );
     buttonsLayout->addItem( new QSpacerItem( 20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum ) );
 
     buttonOk = new QPushButton( tr("&OK"), this );
