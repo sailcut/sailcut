@@ -39,7 +39,7 @@ AC_PROG_LIBTOOL
 AC_CHECK_PROG(FIG2DEV, fig2dev, fig2dev)
 AC_CHECK_PROG(PNGTOICO, png2ico, png2ico)
 AC_CHECK_PROG(PNGTOPNM, pngtopnm, pngtopnm)
-AC_CHECK_PROG(PPMTOXPM, ppmtoxpm, pngtoxpm)
+AC_CHECK_PROG(PPMTOXPM, ppmtoxpm, ppmtoxpm)
 AC_CHECK_PROG(SODIPODI, sodipodi, sodipodi)
 AC_CHECK_PROG(XSLTPROC, xsltproc, xsltproc)
 AC_CHECK_PROG(DBLATEX, dblatex, dblatex)
