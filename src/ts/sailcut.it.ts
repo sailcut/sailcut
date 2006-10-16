@@ -1,4 +1,5 @@
-<!DOCTYPE TS><TS>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS><TS version="1.1" language="en_GB">
 <context>
     <name>CFileIO</name>
     <message>
@@ -25,11 +26,11 @@
     <name>CFormDef</name>
     <message>
         <source>Sail corners coordinates</source>
-        <translation type="unfinished"></translation>
+        <translation>Vela circonda coordinate</translation>
     </message>
     <message>
         <source>tack</source>
-        <translation type="unfinished"></translation>
+        <translation>chiodino</translation>
     </message>
     <message>
         <source>clew</source>
@@ -37,15 +38,15 @@
     </message>
     <message>
         <source>head</source>
-        <translation type="unfinished"></translation>
+        <translation>testa</translation>
     </message>
     <message>
         <source>peak</source>
-        <translation type="unfinished"></translation>
+        <translation>vetta</translation>
     </message>
     <message>
         <source>IRC width measurements</source>
-        <translation type="unfinished"></translation>
+        <translation>IRC misure di ampiezza</translation>
     </message>
 </context>
 <context>
@@ -358,7 +359,7 @@
     </message>
     <message>
         <source>There was an error writing to the selected file</source>
-        <translation>Errore di scrittura sul file selezionato.</translation>
+        <translation>Errore di scrittura sul file selezionato</translation>
     </message>
     <message>
         <source>About &amp;Qt</source>
@@ -1067,11 +1068,11 @@
     </message>
     <message>
         <source>degrees</source>
-        <translation type="unfinished"></translation>
+        <translation>gradi</translation>
     </message>
     <message>
         <source>cord</source>
-        <translation type="unfinished"></translation>
+        <translation>corda</translation>
     </message>
 </context>
 <context>
