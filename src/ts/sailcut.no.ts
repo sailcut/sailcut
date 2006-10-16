@@ -24,10 +24,6 @@
 <context>
     <name>CFormDef</name>
     <message>
-        <source>Sailcut</source>
-        <translation type="obsolete">Sailcut</translation>
-    </message>
-    <message>
         <source>Sail corners coordinates</source>
         <translation type="unfinished"></translation>
     </message>
@@ -349,8 +345,8 @@
         <translation>&amp;Hjelp</translation>
     </message>
     <message>
-        <source>About Sailcut</source>
-        <translation>Informasjon om Sailcut</translation>
+        <source>About Sailcut CAD</source>
+        <translation>Informasjon om Sailcut CAD</translation>
     </message>
     <message>
         <source>error</source>
@@ -365,8 +361,8 @@
         <translation>Informasjon om Qt</translation>
     </message>
     <message>
-        <source>About &amp;Sailcut</source>
-        <translation>Informasjon om Sailcut</translation>
+        <source>About &amp;Sailcut CAD</source>
+        <translation>Informasjon om Sailcut CAD</translation>
     </message>
     <message>
         <source>Language</source>
@@ -389,8 +385,8 @@
         <translation>Eksporter &amp;utvikling</translation>
     </message>
     <message>
-        <source>Sailcut &amp;Handbook</source>
-        <translation>Sailcut &amp;Håndbok</translation>
+        <source>Sailcut CAD &amp;Handbook</source>
+        <translation>Sailcut &amp;Håndbok CAD</translation>
     </message>
     <message>
         <source>shaded view</source>
@@ -447,10 +443,6 @@
     <message>
         <source>&amp;Print</source>
         <translation>&amp;Skriv ut</translation>
-    </message>
-    <message>
-        <source>Sailcut data sheet</source>
-        <translation type="obsolete">Kuttliste</translation>
     </message>
     <message>
         <source>Sail type</source>
@@ -804,8 +796,8 @@
 <context>
     <name>CSailPrinter</name>
     <message>
-        <source>Sailcut data sheet</source>
-        <translation>Kuttliste</translation>
+        <source>Sailcut CAD data sheet</source>
+        <translation>Sailcut CAD kuttliste</translation>
     </message>
     <message>
         <source>Mainsail</source>

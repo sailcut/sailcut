@@ -24,10 +24,6 @@
 <context>
     <name>CFormDef</name>
     <message>
-        <source>Sailcut</source>
-        <translation type="obsolete">Sailcut</translation>
-    </message>
-    <message>
         <source>Sail corners coordinates</source>
         <translation>Coordenadas dos punhos da vela</translation>
     </message>
@@ -373,16 +369,16 @@
         <translation>Linguagem</translation>
     </message>
     <message>
-        <source>Sailcut &amp;Handbook</source>
-        <translation>&amp;Manual do Sailcut</translation>
+        <source>Sailcut CAD &amp;Handbook</source>
+        <translation>&amp;Manual do Sailcut CAD</translation>
     </message>
     <message>
         <source>About &amp;Qt</source>
         <translation>Acerca de &amp;Qt</translation>
     </message>
     <message>
-        <source>About &amp;Sailcut</source>
-        <translation>Acerca de &amp;Sailcut</translation>
+        <source>About &amp;Sailcut CAD</source>
+        <translation>Acerca de &amp;Sailcut CAD</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -417,16 +413,12 @@
         <translation>criada nova vela</translation>
     </message>
     <message>
-        <source>About Sailcut</source>
-        <translation>Acerca do Sailcut</translation>
+        <source>About Sailcut CAD</source>
+        <translation>Acerca do Sailcut CAD</translation>
     </message>
     <message>
         <source>error loading &apos;%1&apos;</source>
         <translation>erro ao carregar &apos;%1&apos;</translation>
-    </message>
-    <message>
-        <source>Sailcut data sheet</source>
-        <translation type="obsolete">Folha de dados do Sailcut</translation>
     </message>
     <message>
         <source>Sail type</source>
@@ -808,8 +800,8 @@
 <context>
     <name>CSailPrinter</name>
     <message>
-        <source>Sailcut data sheet</source>
-        <translation>Folha de dados do Sailcut</translation>
+        <source>Sailcut CAD data sheet</source>
+        <translation>Folha de dados do Sailcut CAD</translation>
     </message>
     <message>
         <source>Mainsail</source>

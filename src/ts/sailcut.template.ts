@@ -381,7 +381,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Sailcut &amp;Handbook</source>
+        <source>Sailcut CAD &amp;Handbook</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -389,7 +389,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>About &amp;Sailcut</source>
+        <source>About &amp;Sailcut CAD</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -409,7 +409,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>About Sailcut</source>
+        <source>About Sailcut CAD</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -569,7 +569,7 @@
 <context>
     <name>CSailPrinter</name>
     <message>
-        <source>Sailcut data sheet</source>
+        <source>Sailcut CAD data sheet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

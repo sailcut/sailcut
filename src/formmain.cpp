@@ -182,9 +182,9 @@ void CFormMain::languageChange()
 
     // Help menu
     menuHelp->setTitle( tr("&Help") );
-    actionHandbook->setText( tr("Sailcut &Handbook") );
+    actionHandbook->setText( tr("Sailcut CAD &Handbook") );
     actionAboutQt->setText( tr("About &Qt") );
-    actionAbout->setText( tr("About &Sailcut") );
+    actionAbout->setText( tr("About &Sailcut CAD") );
 
     // send changeLanguage to the tabs
     for (unsigned int i = 0; i < panel.size(); i++)
@@ -387,11 +387,11 @@ void CFormMain::show(const QString newname)
 
 
 /**
- * Displays the "About Sailcut" dialog box
+ * Displays the "About Sailcut CAD" dialog box
  */
 void CFormMain::slotAbout()
 {
-    QMessageBox::about( this, tr("About Sailcut"),
+    QMessageBox::about( this, tr("About Sailcut CAD"),
 
                         "<h2>Sailcut CAD"
 #ifdef VERSION
