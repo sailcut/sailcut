@@ -34,7 +34,7 @@ Section "Sailcut CAD" SecSailcut
 
   SetOutPath "$INSTDIR"
   WriteRegStr HKCU "${PRODUCT_DIR_REGKEY}" "" $INSTDIR
-  
+
   File sailcut.exe
   File *.dll
   File ChangeLog
@@ -42,7 +42,7 @@ Section "Sailcut CAD" SecSailcut
   File README
   File /r data
   File /r icons
-  
+
   WriteUninstaller "$INSTDIR\uninstall.exe"
 SectionEnd
 
@@ -71,6 +71,12 @@ SectionEnd
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 Section "Uninstall"
+  DeleteRegKey HKCR "SailcutCAD.SailDef"
+  DeleteRegKey HKCR ".saildef"
+  DeleteRegKey HKCU "${PRODUCT_DIR_REGKEY}"
+
+  RMDir /r "$SMPROGRAMS\Sailcut CAD"
+
   Delete "$INSTDIR\sailcut.exe"
   Delete "$INSTDIR\*.dll"
   Delete "$INSTDIR\ChangeLog"
@@ -80,10 +86,5 @@ Section "Uninstall"
   RMDir /r "$INSTDIR\icons"
   RMDir /r "$INSTDIR\doc"
   Delete "$INSTDIR\uninstall.exe"
-
   RMDir "$INSTDIR"
-
-  DeleteRegKey HKCR "SailcutCAD.SailDef"
-  DeleteRegKey HKCR ".saildef"
-  DeleteRegKey HKCU "${PRODUCT_DIR_REGKEY}"
 SectionEnd
