@@ -183,7 +183,7 @@
 
 <title>Preferences file</title>
 
-<para>Your preferences are stored in a file called <filename>.sailcutrc</filename>. On UNIX-like platforms, this file is located in your <filename>HOME</filename> directory. On Windows this file is located in <filename>C:\</filename>.</para>
+<para>Your preferences are stored in a file called <filename>.sailcutrc</filename>. On UNIX-like platforms, this file is located in your <filename>HOME</filename> directory. On Windows this file is located in your <filename>Documents and Settings\USER</filename> directory.</para>
 
 </sect3>
 

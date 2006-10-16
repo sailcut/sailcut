@@ -218,8 +218,8 @@ para el molde.</para>
 <title>Preferencias de archivo</title>
 
 <para>Las preferencias se almacenan en un archivo llamado 
-&quot;.sailcutrc&quot;. Bajo UNIX este archivo se localiza en 
-el directorio raíz y en Windows está en &quot;C:\&quot;.</para>
+<filename>.sailcutrc</filename>. Bajo UNIX este archivo se localiza en 
+el directorio raíz y en Windows está en <filename>Documents and Settings\USUARIO</filename>.</para>
 
 </sect3>
 
