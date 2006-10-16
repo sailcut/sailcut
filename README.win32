@@ -1,7 +1,7 @@
 Sailcut CAD - Windows notes
 ---------------------------
 
-To run, Sailcut requires the TrollTech Qt 4.1.0 opensource runtime libraries.
+To run, Sailcut requires the TrollTech Qt 4.2.0 opensource runtime libraries.
 You can download the necessary files from Sailcut's homepage on Sourceforge :
 
 http://sourceforge.net/projects/sailcut/
