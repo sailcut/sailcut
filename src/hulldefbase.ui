@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>641</width>
-    <height>643</height>
+    <width>644</width>
+    <height>674</height>
    </rect>
   </property>
   <property name="minimumSize" >
@@ -28,8 +28,14 @@
    </property>
    <item row="1" column="0" >
     <widget class="QTabWidget" name="tabWidget" >
+     <property name="font" >
+      <font>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
      <property name="currentIndex" >
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tab" >
       <attribute name="title" >
@@ -43,9 +49,9 @@
         <number>6</number>
        </property>
        <item row="1" column="0" >
-        <widget class="QGroupBox" name="groupBox_2" >
+        <widget class="QGroupBox" name="groupBox_3" >
          <property name="title" >
-          <string>Planking</string>
+          <string>Deck</string>
          </property>
          <layout class="QGridLayout" >
           <property name="margin" >
@@ -54,18 +60,8 @@
           <property name="spacing" >
            <number>6</number>
           </property>
-          <item row="0" column="3" >
-           <widget class="QSpinBox" name="spinBox_21" />
-          </item>
-          <item row="0" column="2" >
-           <widget class="QLabel" name="label_21" >
-            <property name="text" >
-             <string>top plank angle</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1" >
-           <widget class="QSpinBox" name="spinBox_20" >
+          <item row="0" column="7" >
+           <widget class="QSpinBox" name="spinBox_33" >
             <property name="sizePolicy" >
              <sizepolicy>
               <hsizetype>0</hsizetype>
@@ -81,49 +77,11 @@
              </size>
             </property>
             <property name="maximum" >
-             <number>6</number>
-            </property>
-            <property name="minimum" >
-             <number>1</number>
+             <number>15</number>
             </property>
            </widget>
           </item>
-          <item row="0" column="0" >
-           <widget class="QLabel" name="label_20" >
-            <property name="text" >
-             <string>Number of planks</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item row="0" column="0" >
-        <widget class="QGroupBox" name="groupBox_3" >
-         <property name="title" >
-          <string>Deck</string>
-         </property>
-         <layout class="QGridLayout" >
-          <property name="margin" >
-           <number>9</number>
-          </property>
-          <property name="spacing" >
-           <number>6</number>
-          </property>
-          <item row="0" column="1" >
-           <widget class="QLineEdit" name="lineEdit_31" />
-          </item>
-          <item row="0" column="2" >
-           <widget class="QLabel" name="label_32" >
-            <property name="text" >
-             <string>Aft height</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="3" >
-           <widget class="QLineEdit" name="lineEdit_32" />
-          </item>
-          <item row="0" column="4" >
+          <item row="0" column="6" >
            <widget class="QLabel" name="label_33" >
             <property name="text" >
              <string>Side slope</string>
@@ -131,7 +89,49 @@
            </widget>
           </item>
           <item row="0" column="5" >
-           <widget class="QSpinBox" name="spinBox_33" />
+           <spacer>
+            <property name="orientation" >
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType" >
+             <enum>QSizePolicy::MinimumExpanding</enum>
+            </property>
+            <property name="sizeHint" >
+             <size>
+              <width>41</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="0" column="4" >
+           <widget class="QLineEdit" name="lineEdit_32" />
+          </item>
+          <item row="0" column="3" >
+           <widget class="QLabel" name="label_32" >
+            <property name="text" >
+             <string>Aft height</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2" >
+           <spacer>
+            <property name="orientation" >
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType" >
+             <enum>QSizePolicy::MinimumExpanding</enum>
+            </property>
+            <property name="sizeHint" >
+             <size>
+              <width>31</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="0" column="1" >
+           <widget class="QLineEdit" name="lineEdit_31" />
           </item>
           <item row="0" column="0" >
            <widget class="QLabel" name="label_31" >
@@ -143,20 +143,115 @@
          </layout>
         </widget>
        </item>
-       <item row="3" column="0" >
-        <spacer>
-         <property name="orientation" >
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" >
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
        <item row="2" column="0" >
+        <widget class="QGroupBox" name="groupBox_2" >
+         <property name="title" >
+          <string>Planking</string>
+         </property>
+         <layout class="QGridLayout" >
+          <property name="margin" >
+           <number>9</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item row="0" column="2" >
+           <spacer>
+            <property name="orientation" >
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType" >
+             <enum>QSizePolicy::MinimumExpanding</enum>
+            </property>
+            <property name="sizeHint" >
+             <size>
+              <width>31</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="0" column="5" >
+           <spacer>
+            <property name="orientation" >
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType" >
+             <enum>QSizePolicy::MinimumExpanding</enum>
+            </property>
+            <property name="sizeHint" >
+             <size>
+              <width>31</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="0" column="1" >
+           <widget class="QSpinBox" name="spinBox_20" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>50</width>
+              <height>22</height>
+             </size>
+            </property>
+            <property name="maximum" >
+             <number>6</number>
+            </property>
+            <property name="minimum" >
+             <number>1</number>
+            </property>
+            <property name="value" >
+             <number>3</number>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" >
+           <widget class="QLabel" name="label_20" >
+            <property name="text" >
+             <string>Number of planks</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="3" >
+           <widget class="QLabel" name="label_21" >
+            <property name="text" >
+             <string>top plank angle</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="6" >
+           <widget class="QCheckBox" name="checkBox" >
+            <property name="text" >
+             <string>Auto planking</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="4" >
+           <widget class="QSpinBox" name="spinBox_21" >
+            <property name="minimumSize" >
+             <size>
+              <width>60</width>
+              <height>22</height>
+             </size>
+            </property>
+            <property name="minimum" >
+             <number>45</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="3" column="0" >
         <widget class="QGroupBox" name="groupBox_1" >
          <property name="sizePolicy" >
           <sizepolicy>
@@ -176,8 +271,8 @@
           <property name="spacing" >
            <number>6</number>
           </property>
-          <item row="0" column="0" >
-           <widget class="QFrame" name="frame_5" >
+          <item row="0" column="1" >
+           <widget class="QFrame" name="frame_3" >
             <property name="frameShape" >
              <enum>QFrame::StyledPanel</enum>
             </property>
@@ -191,18 +286,90 @@
              <property name="spacing" >
               <number>6</number>
              </property>
-             <item row="0" column="1" >
-              <widget class="QLineEdit" name="lineEdit" >
+             <item row="2" column="1" >
+              <widget class="QSpinBox" name="spinBox_3" >
+               <property name="sizePolicy" >
+                <sizepolicy>
+                 <hsizetype>0</hsizetype>
+                 <vsizetype>0</vsizetype>
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="minimumSize" >
                 <size>
-                 <width>150</width>
+                 <width>50</width>
                  <height>22</height>
                 </size>
                </property>
+               <property name="maximum" >
+                <number>9</number>
+               </property>
               </widget>
              </item>
-             <item row="0" column="0" >
-              <widget class="QLabel" name="labelname" >
+             <item row="0" column="2" >
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeType" >
+                <enum>QSizePolicy::MinimumExpanding</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item row="0" column="1" >
+              <widget class="QSpinBox" name="spinBox_1" >
+               <property name="sizePolicy" >
+                <sizepolicy>
+                 <hsizetype>0</hsizetype>
+                 <vsizetype>0</vsizetype>
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize" >
+                <size>
+                 <width>50</width>
+                 <height>22</height>
+                </size>
+               </property>
+               <property name="maximum" >
+                <number>9</number>
+               </property>
+               <property name="minimum" >
+                <number>1</number>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1" >
+              <widget class="QSpinBox" name="spinBox_2" >
+               <property name="sizePolicy" >
+                <sizepolicy>
+                 <hsizetype>0</hsizetype>
+                 <vsizetype>0</vsizetype>
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize" >
+                <size>
+                 <width>50</width>
+                 <height>22</height>
+                </size>
+               </property>
+               <property name="maximum" >
+                <number>9</number>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0" >
+              <widget class="QLabel" name="label_13" >
                <property name="sizePolicy" >
                 <sizepolicy>
                  <hsizetype>5</hsizetype>
@@ -212,14 +379,192 @@
                 </sizepolicy>
                </property>
                <property name="text" >
-                <string>Hull name</string>
+                <string>Aft shape</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0" >
+              <widget class="QLabel" name="label_12" >
+               <property name="sizePolicy" >
+                <sizepolicy>
+                 <hsizetype>5</hsizetype>
+                 <vsizetype>0</vsizetype>
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text" >
+                <string>Middle shape</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0" >
+              <widget class="QLabel" name="label_11" >
+               <property name="sizePolicy" >
+                <sizepolicy>
+                 <hsizetype>5</hsizetype>
+                 <vsizetype>0</vsizetype>
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text" >
+                <string>Forward shape</string>
                </property>
               </widget>
              </item>
             </layout>
            </widget>
           </item>
-          <item rowspan="2" row="1" column="0" >
+          <item row="1" column="1" >
+           <widget class="QFrame" name="frame" >
+            <property name="frameShape" >
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow" >
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QGridLayout" >
+             <property name="margin" >
+              <number>9</number>
+             </property>
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <item row="2" column="1" >
+              <widget class="QSpinBox" name="spinBox_4" >
+               <property name="sizePolicy" >
+                <sizepolicy>
+                 <hsizetype>0</hsizetype>
+                 <vsizetype>0</vsizetype>
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize" >
+                <size>
+                 <width>60</width>
+                 <height>22</height>
+                </size>
+               </property>
+               <property name="maximum" >
+                <number>5</number>
+               </property>
+               <property name="minimum" >
+                <number>-5</number>
+               </property>
+               <property name="value" >
+                <number>0</number>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1" >
+              <widget class="QSpinBox" name="spinBox_5" >
+               <property name="sizePolicy" >
+                <sizepolicy>
+                 <hsizetype>0</hsizetype>
+                 <vsizetype>0</vsizetype>
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize" >
+                <size>
+                 <width>60</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximum" >
+                <number>60</number>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0" >
+              <widget class="QLabel" name="label_14" >
+               <property name="sizePolicy" >
+                <sizepolicy>
+                 <hsizetype>5</hsizetype>
+                 <vsizetype>0</vsizetype>
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text" >
+                <string>Aft S- shape</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0" >
+              <widget class="QLabel" name="label_5" >
+               <property name="sizePolicy" >
+                <sizepolicy>
+                 <hsizetype>5</hsizetype>
+                 <vsizetype>0</vsizetype>
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text" >
+                <string>Bottom dead rise angle</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0" >
+              <widget class="QLabel" name="label_6" >
+               <property name="sizePolicy" >
+                <sizepolicy>
+                 <hsizetype>5</hsizetype>
+                 <vsizetype>0</vsizetype>
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text" >
+                <string>Bottom sweep angle</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1" >
+              <widget class="QSpinBox" name="spinBox" >
+               <property name="sizePolicy" >
+                <sizepolicy>
+                 <hsizetype>0</hsizetype>
+                 <vsizetype>0</vsizetype>
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize" >
+                <size>
+                 <width>60</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximum" >
+                <number>30</number>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="2" >
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeType" >
+                <enum>QSizePolicy::MinimumExpanding</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="0" column="0" >
            <widget class="QFrame" name="frame_2" >
             <property name="frameShape" >
              <enum>QFrame::StyledPanel</enum>
@@ -244,8 +589,40 @@
                </property>
               </widget>
              </item>
+             <item row="3" column="0" >
+              <widget class="QLabel" name="label_4" >
+               <property name="sizePolicy" >
+                <sizepolicy>
+                 <hsizetype>5</hsizetype>
+                 <vsizetype>0</vsizetype>
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text" >
+                <string>Transom width</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1" >
+              <widget class="QLineEdit" name="lineEdit_4" >
+               <property name="minimumSize" >
+                <size>
+                 <width>80</width>
+                 <height>22</height>
+                </size>
+               </property>
+              </widget>
+             </item>
              <item row="1" column="1" >
-              <widget class="QLineEdit" name="lineEdit_2" />
+              <widget class="QLineEdit" name="lineEdit_2" >
+               <property name="minimumSize" >
+                <size>
+                 <width>80</width>
+                 <height>22</height>
+                </size>
+               </property>
+              </widget>
              </item>
              <item row="0" column="0" >
               <widget class="QLabel" name="label_1" >
@@ -258,22 +635,17 @@
                 </sizepolicy>
                </property>
                <property name="text" >
-                <string>Length of chine 1</string>
+                <string>Chine 1 Length</string>
                </property>
               </widget>
              </item>
-             <item row="1" column="0" >
-              <widget class="QLabel" name="label_2" >
-               <property name="sizePolicy" >
-                <sizepolicy>
-                 <hsizetype>5</hsizetype>
-                 <vsizetype>0</vsizetype>
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="text" >
-                <string>Maximum width position</string>
+             <item row="2" column="1" >
+              <widget class="QLineEdit" name="lineEdit_3" >
+               <property name="minimumSize" >
+                <size>
+                 <width>80</width>
+                 <height>22</height>
+                </size>
                </property>
               </widget>
              </item>
@@ -292,86 +664,8 @@
                </property>
               </widget>
              </item>
-             <item row="2" column="1" >
-              <widget class="QLineEdit" name="lineEdit_3" />
-             </item>
-             <item row="3" column="1" >
-              <widget class="QLineEdit" name="lineEdit_4" />
-             </item>
-             <item row="3" column="0" >
-              <widget class="QLabel" name="label_4" >
-               <property name="sizePolicy" >
-                <sizepolicy>
-                 <hsizetype>5</hsizetype>
-                 <vsizetype>0</vsizetype>
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="text" >
-                <string>Transom width</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item row="3" column="0" >
-           <widget class="QFrame" name="frame" >
-            <property name="frameShape" >
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow" >
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QGridLayout" >
-             <property name="margin" >
-              <number>9</number>
-             </property>
-             <property name="spacing" >
-              <number>6</number>
-             </property>
-             <item row="0" column="0" >
-              <widget class="QLabel" name="label_5" >
-               <property name="sizePolicy" >
-                <sizepolicy>
-                 <hsizetype>5</hsizetype>
-                 <vsizetype>0</vsizetype>
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="text" >
-                <string>Bottom dead rise angle</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="1" >
-              <widget class="QLineEdit" name="lineEdit_5" >
-               <property name="sizePolicy" >
-                <sizepolicy>
-                 <hsizetype>0</hsizetype>
-                 <vsizetype>0</vsizetype>
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="1" >
-              <widget class="QLineEdit" name="lineEdit_6" >
-               <property name="sizePolicy" >
-                <sizepolicy>
-                 <hsizetype>0</hsizetype>
-                 <vsizetype>0</vsizetype>
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-              </widget>
-             </item>
              <item row="1" column="0" >
-              <widget class="QLabel" name="label_6" >
+              <widget class="QLabel" name="label_2" >
                <property name="sizePolicy" >
                 <sizepolicy>
                  <hsizetype>5</hsizetype>
@@ -381,164 +675,14 @@
                 </sizepolicy>
                </property>
                <property name="text" >
-                <string>Bottom sweep angle</string>
+                <string>Maximum width position</string>
                </property>
               </widget>
              </item>
             </layout>
            </widget>
           </item>
-          <item rowspan="2" row="2" column="1" >
-           <widget class="QFrame" name="frame_3" >
-            <property name="frameShape" >
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow" >
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QGridLayout" >
-             <property name="margin" >
-              <number>9</number>
-             </property>
-             <property name="spacing" >
-              <number>6</number>
-             </property>
-             <item row="0" column="1" >
-              <widget class="QSpinBox" name="spinBox_1" >
-               <property name="sizePolicy" >
-                <sizepolicy>
-                 <hsizetype>0</hsizetype>
-                 <vsizetype>0</vsizetype>
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="minimumSize" >
-                <size>
-                 <width>50</width>
-                 <height>0</height>
-                </size>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="1" >
-              <widget class="QSpinBox" name="spinBox_2" >
-               <property name="sizePolicy" >
-                <sizepolicy>
-                 <hsizetype>0</hsizetype>
-                 <vsizetype>0</vsizetype>
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="minimumSize" >
-                <size>
-                 <width>50</width>
-                 <height>0</height>
-                </size>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="1" >
-              <widget class="QSpinBox" name="spinBox_3" >
-               <property name="sizePolicy" >
-                <sizepolicy>
-                 <hsizetype>0</hsizetype>
-                 <vsizetype>0</vsizetype>
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="minimumSize" >
-                <size>
-                 <width>50</width>
-                 <height>0</height>
-                </size>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="1" >
-              <widget class="QSpinBox" name="spinBox_4" >
-               <property name="sizePolicy" >
-                <sizepolicy>
-                 <hsizetype>0</hsizetype>
-                 <vsizetype>0</vsizetype>
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="minimumSize" >
-                <size>
-                 <width>50</width>
-                 <height>0</height>
-                </size>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="0" >
-              <widget class="QLabel" name="label_11" >
-               <property name="sizePolicy" >
-                <sizepolicy>
-                 <hsizetype>5</hsizetype>
-                 <vsizetype>0</vsizetype>
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="text" >
-                <string>Forward shape</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="0" >
-              <widget class="QLabel" name="label_12" >
-               <property name="sizePolicy" >
-                <sizepolicy>
-                 <hsizetype>5</hsizetype>
-                 <vsizetype>0</vsizetype>
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="text" >
-                <string>Middle shape</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="0" >
-              <widget class="QLabel" name="label_13" >
-               <property name="sizePolicy" >
-                <sizepolicy>
-                 <hsizetype>5</hsizetype>
-                 <vsizetype>0</vsizetype>
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="text" >
-                <string>Aft shape</string>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="0" >
-              <widget class="QLabel" name="label_14" >
-               <property name="sizePolicy" >
-                <sizepolicy>
-                 <hsizetype>5</hsizetype>
-                 <vsizetype>0</vsizetype>
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="text" >
-                <string>Aft S- shape</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item rowspan="2" row="0" column="1" >
+          <item row="1" column="0" >
            <widget class="QFrame" name="frame_4" >
             <property name="frameShape" >
              <enum>QFrame::StyledPanel</enum>
@@ -611,6 +755,12 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="minimumSize" >
+                <size>
+                 <width>50</width>
+                 <height>22</height>
+                </size>
+               </property>
               </widget>
              </item>
              <item row="2" column="0" >
@@ -638,6 +788,12 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="minimumSize" >
+                <size>
+                 <width>50</width>
+                 <height>22</height>
+                </size>
+               </property>
               </widget>
              </item>
             </layout>
@@ -646,11 +802,70 @@
          </layout>
         </widget>
        </item>
+       <item row="0" column="0" >
+        <widget class="QFrame" name="frame_5" >
+         <property name="frameShape" >
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow" >
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QGridLayout" >
+          <property name="margin" >
+           <number>9</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item row="0" column="1" >
+           <widget class="QLineEdit" name="lineEdit" >
+            <property name="minimumSize" >
+             <size>
+              <width>150</width>
+              <height>22</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" >
+           <widget class="QLabel" name="labelname" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>5</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text" >
+             <string>Hull name</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="4" column="0" >
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType" >
+          <enum>QSizePolicy::MinimumExpanding</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="tab_2" >
       <attribute name="title" >
-       <string>Planks</string>
+       <string>Side Planks</string>
       </attribute>
       <layout class="QGridLayout" >
        <property name="margin" >
@@ -659,579 +874,7 @@
        <property name="spacing" >
         <number>6</number>
        </property>
-       <item row="4" column="0" >
-        <widget class="QGroupBox" name="gBoxPlank_1" >
-         <property name="title" >
-          <string>Plank 1</string>
-         </property>
-         <layout class="QGridLayout" >
-          <property name="margin" >
-           <number>9</number>
-          </property>
-          <property name="spacing" >
-           <number>6</number>
-          </property>
-          <item row="0" column="4" >
-           <widget class="QLabel" name="label_24" >
-            <property name="text" >
-             <string>Chine angle</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="3" >
-           <widget class="QLabel" name="label_23" >
-            <property name="text" >
-             <string>Sweep angle</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="2" >
-           <widget class="QLabel" name="label_22" >
-            <property name="text" >
-             <string>Plank angle</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1" >
-           <widget class="QLabel" name="label_21" >
-            <property name="text" >
-             <string>Aft height</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="0" >
-           <widget class="QLabel" name="label_20" >
-            <property name="text" >
-             <string>Forward height</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0" >
-           <widget class="QSpinBox" name="spinBox_1_1" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>0</hsizetype>
-              <vsizetype>0</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize" >
-             <size>
-              <width>110</width>
-              <height>25</height>
-             </size>
-            </property>
-            <property name="maximum" >
-             <number>100</number>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="4" >
-           <widget class="QSpinBox" name="spinBox_1_5" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>0</hsizetype>
-              <vsizetype>0</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize" >
-             <size>
-              <width>60</width>
-              <height>25</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="3" >
-           <widget class="QSpinBox" name="spinBox_1_4" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>0</hsizetype>
-              <vsizetype>0</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize" >
-             <size>
-              <width>60</width>
-              <height>25</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="2" >
-           <widget class="QSpinBox" name="spinBox_1_3" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>0</hsizetype>
-              <vsizetype>0</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize" >
-             <size>
-              <width>60</width>
-              <height>25</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1" >
-           <widget class="QSpinBox" name="spinBox_1_2" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>0</hsizetype>
-              <vsizetype>0</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize" >
-             <size>
-              <width>110</width>
-              <height>25</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item row="3" column="0" >
-        <widget class="QGroupBox" name="gBoxPlank_2" >
-         <property name="title" >
-          <string>Plank 2</string>
-         </property>
-         <layout class="QGridLayout" >
-          <property name="margin" >
-           <number>9</number>
-          </property>
-          <property name="spacing" >
-           <number>6</number>
-          </property>
-          <item row="0" column="4" >
-           <widget class="QLabel" name="label_25" >
-            <property name="text" >
-             <string>Chine angle</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="3" >
-           <widget class="QLabel" name="label_26" >
-            <property name="text" >
-             <string>Sweep angle</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="2" >
-           <widget class="QLabel" name="label_27" >
-            <property name="text" >
-             <string>Plank angle</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1" >
-           <widget class="QLabel" name="label_28" >
-            <property name="text" >
-             <string>Aft height</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="0" >
-           <widget class="QLabel" name="label_29" >
-            <property name="text" >
-             <string>Forward height</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0" >
-           <widget class="QSpinBox" name="spinBox_1_6" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>0</hsizetype>
-              <vsizetype>0</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize" >
-             <size>
-              <width>110</width>
-              <height>25</height>
-             </size>
-            </property>
-            <property name="maximum" >
-             <number>100</number>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="4" >
-           <widget class="QSpinBox" name="spinBox_1_7" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>0</hsizetype>
-              <vsizetype>0</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize" >
-             <size>
-              <width>60</width>
-              <height>25</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="3" >
-           <widget class="QSpinBox" name="spinBox_1_8" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>0</hsizetype>
-              <vsizetype>0</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize" >
-             <size>
-              <width>60</width>
-              <height>25</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="2" >
-           <widget class="QSpinBox" name="spinBox_1_9" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>0</hsizetype>
-              <vsizetype>0</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize" >
-             <size>
-              <width>60</width>
-              <height>25</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1" >
-           <widget class="QSpinBox" name="spinBox_1_10" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>0</hsizetype>
-              <vsizetype>0</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize" >
-             <size>
-              <width>110</width>
-              <height>25</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item row="2" column="0" >
-        <widget class="QGroupBox" name="gBoxPlank_3" >
-         <property name="title" >
-          <string>Plank 3</string>
-         </property>
-         <layout class="QGridLayout" >
-          <property name="margin" >
-           <number>9</number>
-          </property>
-          <property name="spacing" >
-           <number>6</number>
-          </property>
-          <item row="0" column="4" >
-           <widget class="QLabel" name="label_35" >
-            <property name="text" >
-             <string>Chine angle</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="3" >
-           <widget class="QLabel" name="label_36" >
-            <property name="text" >
-             <string>Sweep angle</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="2" >
-           <widget class="QLabel" name="label_37" >
-            <property name="text" >
-             <string>Plank angle</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1" >
-           <widget class="QLabel" name="label_38" >
-            <property name="text" >
-             <string>Aft height</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="0" >
-           <widget class="QLabel" name="label_39" >
-            <property name="text" >
-             <string>Forward height</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0" >
-           <widget class="QSpinBox" name="spinBox_1_11" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>0</hsizetype>
-              <vsizetype>0</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize" >
-             <size>
-              <width>110</width>
-              <height>25</height>
-             </size>
-            </property>
-            <property name="maximum" >
-             <number>100</number>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="4" >
-           <widget class="QSpinBox" name="spinBox_1_12" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>0</hsizetype>
-              <vsizetype>0</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize" >
-             <size>
-              <width>60</width>
-              <height>25</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="3" >
-           <widget class="QSpinBox" name="spinBox_1_13" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>0</hsizetype>
-              <vsizetype>0</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize" >
-             <size>
-              <width>60</width>
-              <height>25</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="2" >
-           <widget class="QSpinBox" name="spinBox_1_14" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>0</hsizetype>
-              <vsizetype>0</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize" >
-             <size>
-              <width>60</width>
-              <height>25</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1" >
-           <widget class="QSpinBox" name="spinBox_1_15" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>0</hsizetype>
-              <vsizetype>0</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize" >
-             <size>
-              <width>110</width>
-              <height>25</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
        <item row="1" column="0" >
-        <widget class="QGroupBox" name="gBoxPlank_4" >
-         <property name="title" >
-          <string>Plank 4</string>
-         </property>
-         <layout class="QGridLayout" >
-          <property name="margin" >
-           <number>9</number>
-          </property>
-          <property name="spacing" >
-           <number>6</number>
-          </property>
-          <item row="0" column="4" >
-           <widget class="QLabel" name="label_40" >
-            <property name="text" >
-             <string>Chine angle</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="3" >
-           <widget class="QLabel" name="label_41" >
-            <property name="text" >
-             <string>Sweep angle</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="2" >
-           <widget class="QLabel" name="label_42" >
-            <property name="text" >
-             <string>Plank angle</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1" >
-           <widget class="QLabel" name="label_43" >
-            <property name="text" >
-             <string>Aft height</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="0" >
-           <widget class="QLabel" name="label_44" >
-            <property name="text" >
-             <string>Forward height</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0" >
-           <widget class="QSpinBox" name="spinBox_1_16" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>0</hsizetype>
-              <vsizetype>0</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize" >
-             <size>
-              <width>110</width>
-              <height>25</height>
-             </size>
-            </property>
-            <property name="maximum" >
-             <number>100</number>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="4" >
-           <widget class="QSpinBox" name="spinBox_1_17" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>0</hsizetype>
-              <vsizetype>0</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize" >
-             <size>
-              <width>60</width>
-              <height>25</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="3" >
-           <widget class="QSpinBox" name="spinBox_1_18" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>0</hsizetype>
-              <vsizetype>0</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize" >
-             <size>
-              <width>60</width>
-              <height>25</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="2" >
-           <widget class="QSpinBox" name="spinBox_1_19" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>0</hsizetype>
-              <vsizetype>0</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize" >
-             <size>
-              <width>60</width>
-              <height>25</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1" >
-           <widget class="QSpinBox" name="spinBox_1_20" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>0</hsizetype>
-              <vsizetype>0</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize" >
-             <size>
-              <width>110</width>
-              <height>25</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item row="0" column="0" >
         <widget class="QGroupBox" name="gBoxPlank_5" >
          <property name="title" >
           <string>Plank 5</string>
@@ -1291,7 +934,7 @@
             <property name="minimumSize" >
              <size>
               <width>110</width>
-              <height>25</height>
+              <height>22</height>
              </size>
             </property>
             <property name="maximum" >
@@ -1312,7 +955,7 @@
             <property name="minimumSize" >
              <size>
               <width>60</width>
-              <height>25</height>
+              <height>22</height>
              </size>
             </property>
            </widget>
@@ -1330,7 +973,7 @@
             <property name="minimumSize" >
              <size>
               <width>60</width>
-              <height>25</height>
+              <height>22</height>
              </size>
             </property>
            </widget>
@@ -1348,7 +991,7 @@
             <property name="minimumSize" >
              <size>
               <width>60</width>
-              <height>25</height>
+              <height>22</height>
              </size>
             </property>
            </widget>
@@ -1366,7 +1009,722 @@
             <property name="minimumSize" >
              <size>
               <width>110</width>
-              <height>25</height>
+              <height>22</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="2" column="0" >
+        <widget class="QGroupBox" name="gBoxPlank_4" >
+         <property name="title" >
+          <string>Plank 4</string>
+         </property>
+         <layout class="QGridLayout" >
+          <property name="margin" >
+           <number>9</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item row="0" column="4" >
+           <widget class="QLabel" name="label_40" >
+            <property name="text" >
+             <string>Chine angle</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="3" >
+           <widget class="QLabel" name="label_41" >
+            <property name="text" >
+             <string>Sweep angle</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2" >
+           <widget class="QLabel" name="label_42" >
+            <property name="text" >
+             <string>Plank angle</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1" >
+           <widget class="QLabel" name="label_43" >
+            <property name="text" >
+             <string>Aft height</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" >
+           <widget class="QLabel" name="label_44" >
+            <property name="text" >
+             <string>Forward height</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" >
+           <widget class="QSpinBox" name="spinBox_1_16" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>110</width>
+              <height>22</height>
+             </size>
+            </property>
+            <property name="maximum" >
+             <number>100</number>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="4" >
+           <widget class="QSpinBox" name="spinBox_1_17" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>60</width>
+              <height>22</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="3" >
+           <widget class="QSpinBox" name="spinBox_1_18" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>60</width>
+              <height>22</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2" >
+           <widget class="QSpinBox" name="spinBox_1_19" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>60</width>
+              <height>22</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1" >
+           <widget class="QSpinBox" name="spinBox_1_20" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>110</width>
+              <height>22</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="3" column="0" >
+        <widget class="QGroupBox" name="gBoxPlank_3" >
+         <property name="title" >
+          <string>Plank 3</string>
+         </property>
+         <layout class="QGridLayout" >
+          <property name="margin" >
+           <number>9</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item row="0" column="4" >
+           <widget class="QLabel" name="label_35" >
+            <property name="text" >
+             <string>Chine angle</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="3" >
+           <widget class="QLabel" name="label_36" >
+            <property name="text" >
+             <string>Sweep angle</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2" >
+           <widget class="QLabel" name="label_37" >
+            <property name="text" >
+             <string>Plank angle</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1" >
+           <widget class="QLabel" name="label_38" >
+            <property name="text" >
+             <string>Aft height</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" >
+           <widget class="QLabel" name="label_39" >
+            <property name="text" >
+             <string>Forward height</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" >
+           <widget class="QSpinBox" name="spinBox_1_11" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>110</width>
+              <height>22</height>
+             </size>
+            </property>
+            <property name="maximum" >
+             <number>100</number>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="4" >
+           <widget class="QSpinBox" name="spinBox_1_12" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>60</width>
+              <height>22</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="3" >
+           <widget class="QSpinBox" name="spinBox_1_13" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>60</width>
+              <height>22</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2" >
+           <widget class="QSpinBox" name="spinBox_1_14" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>60</width>
+              <height>22</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1" >
+           <widget class="QSpinBox" name="spinBox_1_15" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>110</width>
+              <height>22</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="4" column="0" >
+        <widget class="QGroupBox" name="gBoxPlank_2" >
+         <property name="title" >
+          <string>Plank 2</string>
+         </property>
+         <layout class="QGridLayout" >
+          <property name="margin" >
+           <number>9</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item row="0" column="4" >
+           <widget class="QLabel" name="label_25" >
+            <property name="text" >
+             <string>Chine angle</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="3" >
+           <widget class="QLabel" name="label_26" >
+            <property name="text" >
+             <string>Sweep angle</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2" >
+           <widget class="QLabel" name="label_27" >
+            <property name="text" >
+             <string>Plank angle</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1" >
+           <widget class="QLabel" name="label_28" >
+            <property name="text" >
+             <string>Aft height</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" >
+           <widget class="QLabel" name="label_29" >
+            <property name="text" >
+             <string>Forward height</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" >
+           <widget class="QSpinBox" name="spinBox_1_6" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>110</width>
+              <height>22</height>
+             </size>
+            </property>
+            <property name="maximum" >
+             <number>100</number>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="4" >
+           <widget class="QSpinBox" name="spinBox_1_7" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>60</width>
+              <height>22</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="3" >
+           <widget class="QSpinBox" name="spinBox_1_8" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>60</width>
+              <height>21</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2" >
+           <widget class="QSpinBox" name="spinBox_1_9" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>60</width>
+              <height>22</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1" >
+           <widget class="QSpinBox" name="spinBox_1_10" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>110</width>
+              <height>22</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="5" column="0" >
+        <widget class="QGroupBox" name="gBoxPlank_1" >
+         <property name="title" >
+          <string>Plank 1</string>
+         </property>
+         <layout class="QGridLayout" >
+          <property name="margin" >
+           <number>9</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item row="0" column="4" >
+           <widget class="QLabel" name="label_24" >
+            <property name="text" >
+             <string>Chine angle</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="3" >
+           <widget class="QLabel" name="label_23" >
+            <property name="text" >
+             <string>Sweep angle</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2" >
+           <widget class="QLabel" name="label_22" >
+            <property name="text" >
+             <string>Plank angle</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1" >
+           <widget class="QLabel" name="label_21" >
+            <property name="text" >
+             <string>Aft height</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" >
+           <widget class="QLabel" name="label_20" >
+            <property name="text" >
+             <string>Forward height</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" >
+           <widget class="QSpinBox" name="spinBox_1_1" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>110</width>
+              <height>22</height>
+             </size>
+            </property>
+            <property name="maximum" >
+             <number>100</number>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="4" >
+           <widget class="QSpinBox" name="spinBox_1_5" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>60</width>
+              <height>22</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="3" >
+           <widget class="QSpinBox" name="spinBox_1_4" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>60</width>
+              <height>22</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2" >
+           <widget class="QSpinBox" name="spinBox_1_3" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>60</width>
+              <height>22</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1" >
+           <widget class="QSpinBox" name="spinBox_1_2" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>110</width>
+              <height>22</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="0" column="0" >
+        <widget class="QGroupBox" name="gBoxPlank_6" >
+         <property name="title" >
+          <string>Plank 6</string>
+         </property>
+         <layout class="QGridLayout" >
+          <property name="margin" >
+           <number>9</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item row="0" column="4" >
+           <widget class="QLabel" name="label_50" >
+            <property name="text" >
+             <string>Chine angle</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="3" >
+           <widget class="QLabel" name="label_51" >
+            <property name="text" >
+             <string>Sweep angle</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2" >
+           <widget class="QLabel" name="label_52" >
+            <property name="text" >
+             <string>Plank angle</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1" >
+           <widget class="QLabel" name="label_53" >
+            <property name="text" >
+             <string>Aft height</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" >
+           <widget class="QLabel" name="label_54" >
+            <property name="text" >
+             <string>Forward height</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" >
+           <widget class="QSpinBox" name="spinBox_1_26" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>110</width>
+              <height>22</height>
+             </size>
+            </property>
+            <property name="maximum" >
+             <number>100</number>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="4" >
+           <widget class="QSpinBox" name="spinBox_1_27" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>60</width>
+              <height>22</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="3" >
+           <widget class="QSpinBox" name="spinBox_1_28" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>60</width>
+              <height>22</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2" >
+           <widget class="QSpinBox" name="spinBox_1_29" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>60</width>
+              <height>22</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1" >
+           <widget class="QSpinBox" name="spinBox_1_30" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>110</width>
+              <height>22</height>
              </size>
             </property>
            </widget>
@@ -1376,27 +1734,6 @@
        </item>
       </layout>
      </widget>
-    </widget>
-   </item>
-   <item row="0" column="0" >
-    <widget class="QLabel" name="label" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>5</hsizetype>
-       <vsizetype>0</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="font" >
-      <font>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text" >
-      <string>All dimensions are in millimeters and angles in degrees</string>
-     </property>
     </widget>
    </item>
    <item row="2" column="0" >
@@ -1436,9 +1773,29 @@
      </item>
     </layout>
    </item>
+   <item row="0" column="0" >
+    <widget class="QLabel" name="label" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>5</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="font" >
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text" >
+      <string>All dimensions are in millimeters and angles in degrees</string>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
- <includes/>
  <resources/>
  <connections>
   <connection>
