@@ -18,7 +18,6 @@
  */
 
 #include "filewriter.h"
-#include <iostream>
 #include <QMessageBox>
 #include "geocpp/core.h"
 

@@ -18,7 +18,6 @@
  */
 
 #include "fileio.h"
-#include <iostream>
 #include <QFileDialog>
 
 using namespace std;
