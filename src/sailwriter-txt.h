@@ -35,8 +35,7 @@ protected :
 public:
     /** The constructor.
      *
-     * @param obj the object to write
-     * @param name the object's name
+     * @param sail the sail to write
      */
     CSailTxtWriter(const CSail &sail)
             : CFileWriter(".txt","Text files"), _sail(sail)
