@@ -15,7 +15,7 @@ dist_noinst_DATA = sailcut.ico sailcut-file.ico
 %-48x48.png: %.svg
 	$(SODIPODI) -z --file=$< --export-png=$@ --export-width=48 --export-height=48
 
-sailcut.xpm: sailcut-32x32.png
+sailcut-new.xpm: sailcut-32x32.png
 	$(PNGTOPNM) $< | $(PPMTOXPM) -name sailcut_xpm > $@.tmp
 	sed -i -e 's/\"   c #000000\"/\"   c None\"/' $@.tmp
 	sed -i -e 's/static char/static const char/' $@.tmp
