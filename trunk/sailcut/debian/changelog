@@ -3,7 +3,7 @@ sailcut (1.2.4-1) unstable; urgency=low
   * New upstream release
   * Declare versioned Build-Depends on libqt4-dev >= 4.2.0
 
- -- Jeremy Lainé <jeremy.laine@m4x.org>  Tue, 10 Oct 2006 14:17:00 +0200
+ -- Jeremy Lainé <jeremy.laine@m4x.org>  Tue, 17 Oct 2006 17:14:28 +0200
 
 sailcut (1.2.3-1) unstable; urgency=low
 
