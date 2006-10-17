@@ -4,7 +4,7 @@ dist_pixmaps_DATA = sailcut.xpm
 dist_noinst_DATA = sailcut.ico sailcut-file.ico
 
 %.ico: %-48x48.png %-32x32.png %-16x16.png
-	$(PNGTOICO) $@ $+
+	$(ICOTOOL) -c -o $@ $+
 
 %-16x16.png: %.svg
 	$(SODIPODI) -z --file=$< --export-png=$@ --export-width=16 --export-height=16
