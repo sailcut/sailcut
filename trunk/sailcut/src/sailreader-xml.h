@@ -50,11 +50,6 @@ public:
     {}
     ;
 
-    /** The destructor. */
-    virtual ~XmlReaderTempl()
-    {}
-    ;
-
     /** Display a dialog then read file.
      *
      * @param dest the object we read to

@@ -51,11 +51,6 @@ public:
     {}
     ;
 
-    /** The destructor. */
-    virtual ~XmlWriterTempl()
-    {}
-    ;
-
     /** Write object to XML format.
      *
      * @param filename the file to write to
