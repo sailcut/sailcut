@@ -220,7 +220,7 @@
 
 <para>Utilisez le bouton <guibutton>Calculer</guibutton> pour calculer et afficher des données auxiliaire et en particulier la largeur de la voile aux points spécifiés par la règle IRC. Cette opération peut aussi changer la couleur de certaines zones de saisie. La couleur est rouge c&apos; si la valeur est trop forte et jaune si elle est trop faible. La valeur elle même sera changée pour être à la limite acceptable.</para>
 
-<para>Lorsque vous avez fini d&apos;entrer les données pressez le bouton <guibutton>OK</guibutton>pour afficher la voile en 3D.</para>
+<para>Lorsque vous avez fini d&apos;entrer les données pressez le bouton <guibutton>OK</guibutton> pour afficher la voile en 3D.</para>
 
 <sect3>
 
@@ -783,7 +783,7 @@ curvature = z&quot; / (1+ z&apos;*z&apos;)^3/2</programlisting> <para>
 
 <para>Vous devriez avoir une copie de la licence GNU General Public Licence avec ce logiciel, si ce n&apos;est pas le cas demandez la à Free Software Fondation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.</para>
 
-<remark>Les auteurs apprécieraient que les publications sur des voiles conçues avec Sailcut comportent une reconnaissance de leur travail. Merci par avance.</remark> 
+<para><emphasis>Les auteurs apprécieraient que les publications sur des voiles conçues avec Sailcut comportent une reconnaissance de leur travail. Merci par avance.</emphasis></para> 
 
 </sect1>
 

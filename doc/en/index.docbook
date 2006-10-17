@@ -1018,7 +1018,9 @@ curvature = z&quot; / (1+ z&apos;*z&apos;)^3/2</programlisting> <para>
 
 <para>You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.</para>
 
-<remark><emphasis>The authors would appreciate that publications on sails designed with Sailcut include some acknowledgement of their work.</emphasis></remark> </sect1>
+<para><emphasis>The authors would appreciate that publications on sails designed with Sailcut include some acknowledgement of their work.</emphasis></para>
+
+</sect1>
 
 </article>
 
