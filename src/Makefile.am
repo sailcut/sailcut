@@ -75,6 +75,7 @@ CPP_FILES = \
 	sailwriter-carlson.cpp \
 	sailwriter-dxf.cpp \
 	sailwriter-hand.cpp \
+	sailwriter-txt.cpp \
 	widgetprofile.cpp \
 	widgetprofilevert.cpp
 

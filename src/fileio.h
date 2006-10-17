@@ -36,11 +36,10 @@ class CFileIO : public QObject
 public:
     /** The constructor.
      *
-     * @param name the object's name
      * @param ext the file extension
      * @param desc description of the file type
      */
-    CFileIO(const QString &name, const QString &ext, const QString &desc) : _name(name), _ext(ext), _desc(desc)
+    CFileIO(const QString &ext, const QString &desc) : _ext(ext), _desc(desc)
     {}
     ;
 
@@ -48,8 +47,6 @@ public:
     virtual QString showDialogRead(const QString &filename) const;
 
 protected:
-    /** the object's name */
-    QString _name;
     /** file extension */
     QString _ext;
     /** description of the file type */

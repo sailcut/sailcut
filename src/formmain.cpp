@@ -509,7 +509,7 @@ void CFormMain::slotExportFlatDXFBlocks()
  */
 void CFormMain::slotExportFlatHand()
 {
-    CSailWriterHand(flatsail).writeDialog();
+    CSailHandWriter(flatsail).writeDialog();
 }
 
 

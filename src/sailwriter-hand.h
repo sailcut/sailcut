@@ -26,13 +26,19 @@
 /** This class allows you to write a developed sail by using
  *  the deviation of the edge from the straight line instead
  *  of using absolute coordinates to a TXT file.
- *
- *  @see CSailWriterHand
  */
-class CSailWriterHand : public TxtWriterTempl<CSail>
+class CSailHandWriter : public CSailTxtWriter
 {
 public:
-    CSailWriterHand(const CSail &sail);
+    /** The constructor.
+     *
+     * @param sail the sail to write
+     */
+    CSailHandWriter(const CSail &sail)
+            : CSailTxtWriter(sail)
+    {}
+    ;
+
     virtual void write(const QString &filename);
 };
 

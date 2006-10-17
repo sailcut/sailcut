@@ -17,34 +17,23 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef TXTWRITER_H
-#define TXTWRITER_H
-
-#include "filewriter.h"
-#include "sail.h"
+#include "sailwriter-txt.h"
+#include <fstream>
+#include <QFile>
 
 
-/** A class used to output a CSail to a TXT file.
+/** Write sail to TXT format.
+ *
+ * @param filename the file to write to
  */
-class CSailTxtWriter : public CFileWriter
+void CSailTxtWriter::write(const QString &filename)
 {
-protected :
-    /** the sail to write */
-    CSail _sail;
+    ofstream myOut;
+    myOut.open(QFile::encodeName(filename), ios::out);
+    if (!myOut.is_open())
+        throw CException("CSailTxtWriter::write : unable to write to specified file");
+    myOut << string(_sail.sailID.toLocal8Bit()) << endl;
+    myOut << _sail;
+    myOut.close();
+}
 
-public:
-    /** The constructor.
-     *
-     * @param obj the object to write
-     * @param name the object's name
-     */
-    CSailTxtWriter(const CSail &sail)
-            : CFileWriter(".txt","Text files"), _sail(sail)
-    {}
-    ;
-
-    virtual void write(const QString &filename);
-};
-
-
-#endif

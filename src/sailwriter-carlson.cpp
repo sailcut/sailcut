@@ -27,7 +27,7 @@
  * @param sail the sail to write
  */
 CSailCarlsonWriter::CSailCarlsonWriter(const CSail &sail)
-        : CFileWriter(sail.sailID,".sp4","Carlson plotter files"), _sail(sail)
+        : CFileWriter(".sp4","Carlson plotter files"), _sail(sail)
 {}
 
 /** Write the draw message
