@@ -41,7 +41,7 @@ public:
      * @param sail the sail to write
      */
     CSailDxfWriter(const CSail &sail)
-            : CFileWriter(sail.sailID, ".dxf", "DXF files"), _sail(sail)
+            : CFileWriter(".dxf", "DXF files"), _sail(sail)
     {}
     ;
 

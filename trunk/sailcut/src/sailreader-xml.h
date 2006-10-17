@@ -33,6 +33,10 @@
 template <class objtype>
 class XmlReaderTempl : public CFileIO
 {
+protected:
+    /** the object's name */
+    QString _name;
+
 public:
     /** The constructor.
      *
@@ -42,7 +46,7 @@ public:
      */
     XmlReaderTempl(const QString &name, const QString ext = ".xml",
                    const QString desc = "XML files")
-            : CFileIO(name, ext, desc)
+            : CFileIO(ext, desc), _name(name)
     {}
     ;
 

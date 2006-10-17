@@ -30,12 +30,11 @@ class CFileWriter : public CFileIO
 public:
     /** The constructor.
      *
-     * @param name the object's name
      * @param ext the file extension
      * @param desc description of the file type
      */
-    CFileWriter(const QString &name, const QString &ext, const QString &desc)
-            : CFileIO(name, ext, desc)
+    CFileWriter(const QString &ext, const QString &desc)
+            : CFileIO(ext, desc)
     {}
     ;
 

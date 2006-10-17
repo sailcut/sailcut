@@ -32,6 +32,8 @@ template <class objtype>
 class XmlWriterTempl : public CFileWriter
 {
 protected :
+    /** the object's name */
+    QString _name;
     /** the object to write */
     objtype _obj;
 
@@ -45,7 +47,7 @@ public:
      */
     XmlWriterTempl(const objtype &obj, const QString &name,
                    const QString ext = ".xml", const QString desc = "XML files")
-            : CFileWriter(name, ext, desc), _obj(obj)
+            : CFileWriter(ext, desc), _name(name), _obj(obj)
     {}
     ;
 
