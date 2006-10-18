@@ -166,12 +166,12 @@ CSail CSailWorker::makeSail( CSail &flatsail , CSail &dispsail) const
 }
 
 
-/** Creates the deck panel.
+/** Creates the deck.
  *
- * @return CPanel
+ * @return CSail
  * @author Robert Laine
  */
-CPanel CSailWorker::makeDeck() const
+CSail CSailWorker::makeDeck() const
 {
     CPanel deck;
 
@@ -223,7 +223,9 @@ CPanel CSailWorker::makeDeck() const
         deck.right.point[j] = deck.right.point[j] + CMatrix::rot3d(1,-PI/2)*v1.unit()*d1;
     }
 
-    return deck;
+    CSail deckobj(deck);
+    deckobj.type = HULL;
+    return deckobj;
 }
 
 /** Creates a cross cut or horizontal cut sail.

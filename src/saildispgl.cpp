@@ -95,13 +95,15 @@ void CSailDispGL::draw( const CSail &sail )
 {
     for( unsigned int i = 0; i < sail.nbpanels(); i++ )
     {
-        if ( i < sail.nbpanels()-1 )
-        {   // alternate light yellow / yellow panels
-            glColor3f(.9, .9, 0.4 + 0.4*(i % 2));
+        if ( sail.type == HULL )
+        {
+            //  grey
+            glColor3f(.4, .5, .5);
         }
         else
-        {   //  grey
-            glColor3f(.4, .5, .5);
+        {
+            // alternate light yellow / yellow panels
+            glColor3f(.9, .9, 0.4 + 0.4*(i % 2));
         }
 
         draw( sail.panel[i] );

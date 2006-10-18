@@ -94,18 +94,22 @@ void CSailDisp::setCenter( CPoint3d newCenter )
 }
 
 
-/** Sets the sail that is to be displayed.
- *  and center it.
+/** Sets the objects that are to be displayed.
+ *  and center the view.
  */
-void CSailDisp::setSail( const CSail &sail )
+void CSailDisp::setObjects( const vector<CSail> &objs )
 {
-    baseObjects.clear();
-    baseObjects.push_back(sail);
+    baseObjects = objs;
 
-    baseRect = CRect3d();
-    for (unsigned int i = 0; i < baseObjects.size(); i++)
+    if (baseObjects.size() > 0)
     {
-        baseRect = baseRect.join(baseObjects[i].boundingRect());
+        baseRect = baseObjects[0].boundingRect();
+        for (unsigned int i = i; i < baseObjects.size(); i++)
+        {
+            baseRect = baseRect.join(baseObjects[i].boundingRect());
+        }
+    } else {
+        baseRect = CRect3d();
     }
     center = baseRect.center();
 

@@ -37,7 +37,7 @@ class CSailViewerPanel : public QWidget
 public:
     CSailViewerPanel(QWidget *parent, const enumViewMode viewMode, bool show_sliders, bool show_labeling = true);
 
-    void setSail(const CSail& sail);
+    void setObjects(const vector<CSail> &sail);
     void keyPressEvent ( QKeyEvent * e );
 
     // slots
