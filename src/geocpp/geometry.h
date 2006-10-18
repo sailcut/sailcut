@@ -132,6 +132,16 @@ public:
     CRect3d()
     {}
     ;
+    
+    /** Construct a new 3D box given its corners.
+     * 
+     * @param pmin
+     * @param pmax
+     */
+    CRect3d(const CPoint3d &pmin, const CPoint3d &pmax)
+        : min(pmin), max(pmax)
+    {}
+    ;
 
     // operators
     CRect3d operator+ (const CVector3d &transl) const;
