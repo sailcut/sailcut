@@ -105,10 +105,9 @@ void CSailDisp::setSail( const CSail &sail )
 
 /** Set the size of the viewing rectangle.
  */
-void CSailDisp::setVRect(const int width, const int height)
+void CSailDisp::setViewRect( const CRect3d &rect )
 {
-    m_vRect.min=CPoint3d(0,0,0);
-    m_vRect.max=CPoint3d(width,height);
+    m_vRect = rect;
     m_lRect = calcLRect(m_vRect, rectBase);
 }
 
@@ -122,6 +121,7 @@ void CSailDisp::setZoom(real newZoom)
     zoom = newZoom;
     m_lRect = calcLRect(m_vRect, rectBase);
 }
+
 
 /** Zooms IN by a factor 2.
  */

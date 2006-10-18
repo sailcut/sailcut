@@ -23,7 +23,9 @@
 
 #include "sailcalc.h"
 #include "saildef.h"
-#include "saildisp.h"
+#include "sail.h"
+#include "disparea.h"
+
 
 /** Construct a new CSailPrinter.
  *
@@ -325,19 +327,14 @@ void CSailPrinter::printSailDevel(const CSail &flatsail)
     unsigned int npt;
 
     real dx=0, dy=0;
+    
+    // center the sail
+    CSail printSail = flatsail + CVector3d( -flatsail.boundingRect().center() );
 
-    // set the viewport
-    CSailDisp disp;
-    disp.setSail(flatsail);
-    QRect vRect = painter.viewport();
-    disp.setVRect(vRect.width(), vRect.height());
-    disp.setZoom(0.8);
-
-    /*
-        real scale = real(painter.device()->heightMM()) / 50;
-        unsigned int fontsz1 = int(10*scale);
-        painter.setFont(QFont ("times", fontsz1));
-    */
+    // calculate logical rectangle
+    real zoom = 0.8;
+    CDispArea disparea(zoom);
+    CRect3d logicalRect = disparea.calcLRect(painter.viewRect(), printSail.boundingRect());
 
     // print the panels out one by one
     for (unsigned int i = 0; i < flatsail.panel.size(); i++)
@@ -347,10 +344,10 @@ void CSailPrinter::printSailDevel(const CSail &flatsail)
             newPage();
         }
         // set coordinate system to match the logical viewport
-        painter.setWindow(disp.getLRect() );
-        painter.setFontSize(10, disp.getZoom() );
+        painter.setWindow(logicalRect);
+        painter.setFontSize(10, zoom);
 
-        CPanel currentPanel = disp.getSail().panel[i];
+        CPanel currentPanel = printSail.panel[i];
         CRect3d rp = currentPanel.boundingRect();
         painter.draw(currentPanel);
 
@@ -440,17 +437,18 @@ void CSailPrinter::printSailDevel(const CSail &flatsail)
  */
 void CSailPrinter::printSailDrawing(const CSail &sail)
 {
-    // set the viewport
-    CSailDisp disp;
-    disp.setSail(sail);
-    QRect vRect = painter.viewport();
-    disp.setVRect(vRect.width(), vRect.height());
-    disp.setZoom(0.80);
+    // center the sail
+    CSail printSail = sail + CVector3d( -sail.boundingRect().center() );
 
+    // calculate logical rectangle
+    real zoom = 0.8;
+    CDispArea disparea(zoom);
+    CRect3d logicalRect = disparea.calcLRect(painter.viewRect(), printSail.boundingRect());
+    
     // set coordinate system to match the logical viewport
-    painter.setWindow(disp.getLRect());
-    painter.setFontSize(10, disp.getZoom());
+    painter.setWindow(logicalRect);
+    painter.setFontSize(10, zoom);
 
-    painter.draw(disp.getSail());
-    painter.drawLabels(disp.getSail());
+    painter.draw(printSail);
+    painter.drawLabels(printSail);
 }

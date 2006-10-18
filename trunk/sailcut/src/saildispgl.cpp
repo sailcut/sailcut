@@ -182,7 +182,7 @@ void CSailDispGL::paintGL()
 void CSailDispGL::resizeGL( int w, int h )
 {
     glViewport( 0, 0, (GLint)w, (GLint)h );
-    setVRect(w,h);
+    setViewRect( CRect3d(CPoint3d(0,0,0), CPoint3d(w,h,0)) );
 }
 
 
