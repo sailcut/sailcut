@@ -100,7 +100,7 @@ void CSailDisp::setCenter( CPoint3d newCenter )
 void CSailDisp::setSail( const CSail &sail )
 {
     baseObjects.clear();
-    baseObjects.push_back(sail + CVector3d( -sail.boundingRect().center() ));
+    baseObjects.push_back(sail);
     
     baseRect = CRect3d();
     for (unsigned int i = 0; i < baseObjects.size(); i++)

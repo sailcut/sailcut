@@ -48,15 +48,17 @@ CRect3d CDispArea::calcLRect(const CRect3d& viewRect, const CRect3d& objRect)
     // so we set the logical viewport accordingly
     if (objAspect > viewAspect)
     {
+        real extrah = 0.5 * objRect.height() * (objAspect/viewAspect - 1);
         // we are limited by the width of the window, grow logical viewport's height
-        lRect.min = CVector3d(objRect.min.x(),objRect.min.y()*(objAspect/viewAspect),0);
-        lRect.max = CVector3d(objRect.max.x(),objRect.max.y()*(objAspect/viewAspect),0);
+        lRect.min = CVector3d(objRect.min.x(), objRect.min.y() - extrah, 0);
+        lRect.max = CVector3d(objRect.max.x(), objRect.max.y() + extrah, 0);
     }
     else
     {
+        real extraw = 0.5 * objRect.width() * (viewAspect/objAspect - 1);
         // we are limited by the height of the window, grow logical viewport's width
-        lRect.min = CVector3d(objRect.min.x()*(viewAspect/objAspect),objRect.min.y(),0);
-        lRect.max = CVector3d(objRect.max.x()*(viewAspect/objAspect),objRect.max.y(),0);
+        lRect.min = CVector3d(objRect.min.x() - extraw, objRect.min.y(), 0);
+        lRect.max = CVector3d(objRect.max.x() + extraw, objRect.max.y(), 0);
     }
 
     /*
@@ -66,7 +68,7 @@ CRect3d CDispArea::calcLRect(const CRect3d& viewRect, const CRect3d& objRect)
         cout << "lRect w: "<< lRect.width() << ", h: " << lRect.height() << endl;
         cout << "zoom : " << zoom << endl;
     */
-    lRect = lRect*(1/zoom)+center;
+    lRect = (lRect+center)*(1/zoom);
 
     /*
         cout << "lRect w: " << lRect.width() << ", h: " << lRect.height() << endl;
