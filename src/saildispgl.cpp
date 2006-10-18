@@ -165,7 +165,7 @@ void CSailDispGL::paintGL()
 
     // set coordinate system to match the logical viewport
     glLoadIdentity();
-    CRect3d lRect = getLRect();
+    CRect3d lRect = getLogicalRect();
     real zs = real(2) / sqrt(lRect.width()*lRect.width() + lRect.height()*lRect.height());
     glScaled(real(2) / lRect.width(),real(2) / lRect.height(),zs);
     glTranslated(-center.x(),-center.y(),-center.z());
