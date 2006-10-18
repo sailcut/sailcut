@@ -73,12 +73,15 @@ void CSailDispLabel::paintEvent( QPaintEvent * )
     painter.setFontSize(10, zoom);
 
     // draw the sail
-    painter.draw(sailDisp);
-
-    // optionally draw labels
-    if (drawLabels)
+    for (unsigned int i = 0; i < dispObjects.size(); i++)
     {
-        painter.drawLabels(sailDisp);
+        painter.draw(dispObjects[i]);
+
+        // optionally draw labels
+        if (drawLabels)
+        {
+            painter.drawLabels(dispObjects[i]);
+        }
     }
     painter.end();
 }

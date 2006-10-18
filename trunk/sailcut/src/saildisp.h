@@ -64,11 +64,11 @@ public:
     bool drawLabels;
 
 private:
-    virtual void calcSailDisp();
+    void calcDispObjects();
 
 protected:
     /** Rotated copy of the sail */
-    CSail sailDisp;
+    vector<CSail> dispObjects;
 
 private:    
     /** Rotation matrix for the view */
@@ -80,7 +80,7 @@ private:
     /** Bounding rectangle of the unrotated sail */
     CRect3d baseRect;
     /** Unrotated copy of the sail */
-    CSail sailBase;
+    vector<CSail> baseObjects;
 };
 
 
