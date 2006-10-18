@@ -31,17 +31,20 @@ CSailDisp::CSailDisp()
 {
     // initialise data
     m = CMatrix::id(3);
-    //setSail(sail);
     drawLabels = false;
-    zoom=0.8;
+    zoom = 0.8;
 }
 
 
 /** Rotates local copy of the sail by a given azimuth and elevation.
  */
-void CSailDisp::calcSailDisp()
+void CSailDisp::calcDispObjects()
 {
-    sailDisp = sailBase.rotate( baseRect.center(), m);
+    dispObjects.resize(baseObjects.size());
+    for (unsigned int i = 0; i < baseObjects.size(); i++)
+    {
+        dispObjects[i] = baseObjects[i].rotate( baseRect.center(), m );
+    }
 }
 
 
@@ -76,7 +79,7 @@ CPoint3d CSailDisp::screenToLogical( const int x, const int y ) const
 void CSailDisp::setAngle( real azimuth, real elevation )
 {
     m = CMatrix::rot3d(0, PI/180*elevation) * CMatrix::rot3d(1, PI/180*azimuth);
-    calcSailDisp();
+    calcDispObjects();
 }
 
 
@@ -96,9 +99,15 @@ void CSailDisp::setCenter( CPoint3d newCenter )
  */
 void CSailDisp::setSail( const CSail &sail )
 {
-    sailBase = sail + CVector3d( -sail.boundingRect().center() );
-    baseRect = sailBase.boundingRect();
-    calcSailDisp();
+    baseObjects.clear();
+    baseObjects.push_back(sail + CVector3d( -sail.boundingRect().center() ));
+    
+    baseRect = CRect3d();
+    for (unsigned int i = 0; i < baseObjects.size(); i++)
+    {
+        baseRect = baseRect.join(baseObjects[i].boundingRect());
+    }
+    calcDispObjects();
     logicalRect = calcLRect(viewRect, baseRect);
 }
 

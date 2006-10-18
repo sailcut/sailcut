@@ -170,7 +170,10 @@ void CSailDispGL::paintGL()
     glScaled(real(2) / lRect.width(),real(2) / lRect.height(),zs);
     glTranslated(-center.x(),-center.y(),-center.z());
 
-    draw( sailDisp );
+    for (unsigned int i = 0; i < dispObjects.size(); i++)
+    {
+        draw( dispObjects[i] );
+    }
 }
 
 
