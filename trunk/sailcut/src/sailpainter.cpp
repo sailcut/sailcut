@@ -174,10 +174,7 @@ CVector3d CSailPainter::textSize(const QStringList &lst)
  */
 CRect3d CSailPainter::viewRect() const
 {
-    CRect3d rect;
-    rect.min = CPoint3d(0,0,0);
-    rect.max = CPoint3d(viewport().width(), viewport().height());
-    return rect;
+    return CRect3d(CPoint3d(0,0,0), CPoint3d(viewport().width(), viewport().height()));
 }
 
 
