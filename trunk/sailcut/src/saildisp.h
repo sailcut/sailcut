@@ -41,9 +41,9 @@ public:
     ;
 
     /** Acessor for the logical viewport rectangle */
-    virtual const CRect3d& getLRect()
+    virtual const CRect3d& getLogicalRect() const
     {
-        return m_lRect;
+        return logicalRect;
     };
 
     /** Redraw the view. */
@@ -74,11 +74,11 @@ private:
     /** Rotation matrix for the view */
     CMatrix m;
     /** Viewport rectangle, in logical coordinates */
-    CRect3d m_lRect;
+    CRect3d logicalRect;
     /** Viewport rectangle, in device coordinates */
-    CRect3d m_vRect;
+    CRect3d viewRect;
     /** Bounding rectangle of the unrotated sail */
-    CRect3d rectBase;
+    CRect3d baseRect;
     /** Unrotated copy of the sail */
     CSail sailBase;
 };

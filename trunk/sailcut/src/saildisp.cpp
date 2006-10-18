@@ -41,7 +41,7 @@ CSailDisp::CSailDisp()
  */
 void CSailDisp::calcSailDisp()
 {
-    sailDisp = sailBase.rotate( rectBase.center(), m);
+    sailDisp = sailBase.rotate( baseRect.center(), m);
 }
 
 
@@ -51,7 +51,7 @@ void CSailDisp::resetZoomCenter()
 {
     center=CPoint3d(0,0,0);
     zoom = 0.8;
-    calcLRect(m_vRect, rectBase);
+    calcLRect(viewRect, baseRect);
 }
 
 
@@ -60,11 +60,11 @@ void CSailDisp::resetZoomCenter()
 CPoint3d CSailDisp::screenToLogical( const int x, const int y ) const
 {
     // avoid division by zero
-    if ((m_vRect.width()==0)||(m_vRect.height()==0))
+    if ((viewRect.width()==0)||(viewRect.height()==0))
         return center;
 
-    return center + CVector3d( m_lRect.width() * ( real(x) / m_vRect.width() - 0.5 ),
-                               m_lRect.height() * ( 0.5 - real(y) / m_vRect.height() ), 0);
+    return center + CVector3d( logicalRect.width() * ( real(x) / viewRect.width() - 0.5 ),
+                               logicalRect.height() * ( 0.5 - real(y) / viewRect.height() ), 0);
 }
 
 
@@ -87,7 +87,7 @@ void CSailDisp::setAngle( real azimuth, real elevation )
 void CSailDisp::setCenter( CPoint3d newCenter )
 {
     center = newCenter;
-    m_lRect = calcLRect(m_vRect, rectBase);
+    logicalRect = calcLRect(viewRect, baseRect);
 }
 
 
@@ -97,9 +97,9 @@ void CSailDisp::setCenter( CPoint3d newCenter )
 void CSailDisp::setSail( const CSail &sail )
 {
     sailBase = sail + CVector3d( -sail.boundingRect().center() );
-    rectBase = sailBase.boundingRect();
+    baseRect = sailBase.boundingRect();
     calcSailDisp();
-    m_lRect = calcLRect(m_vRect, rectBase);
+    logicalRect = calcLRect(viewRect, baseRect);
 }
 
 
@@ -107,8 +107,8 @@ void CSailDisp::setSail( const CSail &sail )
  */
 void CSailDisp::setViewRect( const CRect3d &rect )
 {
-    m_vRect = rect;
-    m_lRect = calcLRect(m_vRect, rectBase);
+    viewRect = rect;
+    logicalRect = calcLRect(viewRect, baseRect);
 }
 
 
@@ -119,7 +119,7 @@ void CSailDisp::setViewRect( const CRect3d &rect )
 void CSailDisp::setZoom(real newZoom)
 {
     zoom = newZoom;
-    m_lRect = calcLRect(m_vRect, rectBase);
+    logicalRect = calcLRect(viewRect, baseRect);
 }
 
 
