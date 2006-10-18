@@ -60,7 +60,7 @@ public:
     virtual void setAngle( real azimuth, real elevation );
     virtual void setCenter( CPoint3d newCenter );
     virtual void setSail( const CSail &sail );
-    virtual void setVRect(const int width, const int height);
+    virtual void setViewRect( const CRect3d &rect );
     virtual void setZoom(real newZoom);
     virtual void zoomIn();
     virtual void zoomOut();
@@ -72,19 +72,20 @@ private:
     virtual void calcSailDisp();
 
 protected:
-    // member variables
-    /** Rotation matrix for the view */
-    CMatrix m;
-    /** Unrotated copy of the sail */
-    CSail sailBase;
     /** Rotated copy of the sail */
     CSail sailDisp;
+
+private:    
+    /** Rotation matrix for the view */
+    CMatrix m;
     /** Viewport rectangle, in logical coordinates */
     CRect3d m_lRect;
     /** Viewport rectangle, in device coordinates */
     CRect3d m_vRect;
     /** Bounding rectangle of the unrotated sail */
     CRect3d rectBase;
+    /** Unrotated copy of the sail */
+    CSail sailBase;
 };
 
 
