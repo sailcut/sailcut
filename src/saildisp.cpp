@@ -52,9 +52,9 @@ void CSailDisp::calcDispObjects()
  */
 void CSailDisp::resetZoomCenter()
 {
-    center=CPoint3d(0,0,0);
+    center = baseRect.center();
     zoom = 0.8;
-    calcLRect(viewRect, baseRect);
+    logicalRect = calcLRect(viewRect, baseRect);
 }
 
 
@@ -101,12 +101,14 @@ void CSailDisp::setSail( const CSail &sail )
 {
     baseObjects.clear();
     baseObjects.push_back(sail);
-    
+
     baseRect = CRect3d();
     for (unsigned int i = 0; i < baseObjects.size(); i++)
     {
         baseRect = baseRect.join(baseObjects[i].boundingRect());
     }
+    center = baseRect.center();
+
     calcDispObjects();
     logicalRect = calcLRect(viewRect, baseRect);
 }

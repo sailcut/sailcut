@@ -68,7 +68,7 @@ CRect3d CDispArea::calcLRect(const CRect3d& viewRect, const CRect3d& objRect)
         cout << "lRect w: "<< lRect.width() << ", h: " << lRect.height() << endl;
         cout << "zoom : " << zoom << endl;
     */
-    lRect = (lRect+center)*(1/zoom);
+    lRect = (lRect+(center - lRect.center()))*(1/zoom);
 
     /*
         cout << "lRect w: " << lRect.width() << ", h: " << lRect.height() << endl;
