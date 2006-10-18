@@ -21,7 +21,7 @@
 #define SAILVIEWER_H
 
 #include <QWidget>
-#include "geocpp/core.h"
+#include "sail.h"
 
 class QSlider;
 class QLabel;
@@ -42,7 +42,7 @@ class CSailViewer : public QWidget
 public:
     CSailViewer(QWidget *parent, enumViewMode viewMode, bool show_sliders = true);
 
-    void setSail( const CSail &sail );
+    void setObjects( const vector<CSail> &objs );
     void keyPressEvent ( QKeyEvent * e );
 
 protected slots:

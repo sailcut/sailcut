@@ -39,6 +39,7 @@ CSail::CSail( const CSail& s )
 {
     panel = s.panel;
     sailID = s.sailID;
+    type = s.type;
 }
 
 
@@ -125,6 +126,7 @@ CSail& CSail::operator=(const CSail& s)
 
     panel = s.panel;
     sailID = s.sailID;
+    type = s.type;
 
     return *this;
 }

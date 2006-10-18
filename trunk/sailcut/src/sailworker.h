@@ -50,7 +50,7 @@ public:
     real SailLP( );
 
     // create a panel representing the deck
-    CPanel makeDeck() const;
+    CSail makeDeck() const;
     CSail makeSail() const;
     CSail makeSail(CSail &flatsail, CSail &dispsail) const;
 

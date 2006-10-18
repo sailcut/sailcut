@@ -109,13 +109,13 @@ void CSailViewer::keyPressEvent ( QKeyEvent * e )
 }
 
 
-/** Changes the current sail.
+/** Changes the displayed objects.
  *
- * @param sail the new sail to be displayed
+ * @param objs the new objects to be displayed
  */
-void CSailViewer::setSail(const CSail& sail)
+void CSailViewer::setObjects(const vector<CSail> &objs)
 {
-    lblDraw->setSail(sail);
+    lblDraw->setObjects(objs);
     lblDraw->redraw();
 }
 

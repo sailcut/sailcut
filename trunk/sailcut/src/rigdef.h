@@ -53,7 +53,7 @@ class CRigDef
 public:
     CRigDef();
 
-    CSail makeViewSail() const;
+    vector<CSail> makeViewSail() const;
 
     /** the collection of sails that makes up the rig */
     vector<CRigSail> rigsail;

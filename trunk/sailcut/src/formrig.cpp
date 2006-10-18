@@ -116,7 +116,7 @@ void CFormRig::makeMenuMru()
 void CFormRig::setRigDef(const CRigDef &newdef)
 {
     rigdef = newdef;
-    viewer->setSail(rigdef.makeViewSail());
+    viewer->setObjects(rigdef.makeViewSail());
     defpanel->setRigDef(rigdef);
 }
 
@@ -308,5 +308,5 @@ void CFormRig::slotSaveAs()
 void CFormRig::slotUpdate(const CRigDef& newdef)
 {
     rigdef = newdef;
-    viewer->setSail(rigdef.makeViewSail());
+    viewer->setObjects(rigdef.makeViewSail());
 }

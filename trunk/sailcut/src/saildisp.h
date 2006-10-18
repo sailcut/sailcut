@@ -54,7 +54,7 @@ public:
     virtual CPoint3d screenToLogical( const int x, const int y ) const;
     virtual void setAngle( real azimuth, real elevation );
     virtual void setCenter( CPoint3d newCenter );
-    virtual void setSail( const CSail &sail );
+    virtual void setObjects( const vector<CSail> &objs );
     virtual void setViewRect( const CRect3d &rect );
     virtual void setZoom(real newZoom);
     virtual void zoomIn();

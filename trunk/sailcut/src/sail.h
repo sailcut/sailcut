@@ -22,6 +22,7 @@
 
 #include "panel.h"
 
+enum enumBoatObjType { SAIL, HULL };
 
 /** This class holds a 3D or developed sail.
  */
@@ -37,6 +38,9 @@ public:
 
     /** title of the sail */
     QString sailID;
+
+    /** type of boat object */
+    enumBoatObjType type;
 
     // member functions
 public:
