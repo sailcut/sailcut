@@ -99,15 +99,16 @@ CRect3d CRect3d::operator+ (const CVector3d &transl) const
 }
 
 
-/** Expand/shrink box by a coefficient.
+/** Expand/shrink box by a coefficient, keeping the same center.
  *
  * @param r coefficient
  */
 CRect3d CRect3d::operator* (const real r) const
 {
     CRect3d ret;
-    ret.min = min*r;
-    ret.max = max*r;
+    CVector3d off = (r-1) * 0.5 * (max - min);
+    ret.min = min - off;
+    ret.max = max + off;
     return ret;
 }
 

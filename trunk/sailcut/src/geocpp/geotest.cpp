@@ -41,6 +41,25 @@ void test_point(void)
     cout << " " << endl;
 }
 
+
+void test_rect(void)
+{
+    CRect3d r(CPoint3d(-2, -2, -2), CPoint3d(1, 1, 1));
+    cout << "r.min\t " << r.min << endl;
+    cout << "r.max\t " << r.max << endl;
+    cout << "r.center()\t" << r.center() << endl;
+    cout << "r2 = r * 3" << endl;
+    CRect3d r2 = r * 3;
+    cout << "r2.min\t " << r2.min << endl;
+    cout << "r2.max\t " << r2.max << endl;
+    cout << "r2.center()\t" << r2.center() << endl;
+    if (r.center() != r2.center())
+    {
+        cout << "ERROR : r.center() != r2.center()" << endl;
+    }
+}
+
+
 void test_vect(void)
 {
     cout << "----- Vector operations -----" << endl;
@@ -240,7 +259,8 @@ int main()
         cout << "---   Using GeoCpp library by Jeremy Laine   ---" << endl;
         cout << "(see AUTHORS file for full list of contributors)" << endl;
         cout << " " << endl;
-
+        
+        test_rect();
         test_point();
         test_vect();
         test_matrix();
