@@ -33,13 +33,6 @@ public:
     CDispArea(real izoom = 0.8);
 
     CRect3d calcLRect(const CRect3d &viewRect, const CRect3d &objRect);
-    /** Get the current zoom factor. */
-    real getZoom()
-    {
-        return zoom;
-    }
-
-
 
 protected:
     /** The center of the viewing area, in logical coordinates */
