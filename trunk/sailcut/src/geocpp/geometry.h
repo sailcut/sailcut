@@ -148,7 +148,7 @@ public:
     CRect3d operator* (const real r) const;
 
     /** Return the box's center. */
-    CPoint3d center()
+    CPoint3d center() const
     {
         return 0.5 * (min + max);
     };
