@@ -40,11 +40,6 @@ public:
     {}
     ;
 
-    /** Accessor for the sail. */
-    virtual const CSail& getSail()
-    {
-        return sailBase;
-    };
     /** Acessor for the logical viewport rectangle */
     virtual const CRect3d& getLRect()
     {
