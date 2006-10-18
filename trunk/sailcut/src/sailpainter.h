@@ -54,7 +54,9 @@ public:
 
     void setFontSize(const real size, const real zoom);
     void setWindow(const CRect3d& lRect);
+
     CVector3d textSize(const QStringList &lst);
+    CRect3d viewRect() const;
 };
 
 #endif
