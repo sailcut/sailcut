@@ -18,8 +18,6 @@
  */
 
 #include "sailworker.h"
-// TODO : remove saildoc.h when debugging is finished
-#include "saildoc.h"
 
 #define MAX_PANELS 210
 
