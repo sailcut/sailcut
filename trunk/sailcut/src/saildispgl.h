@@ -38,7 +38,7 @@ public:
 protected:
     void clear();
     void draw( const CPanel &panel );
-    void draw( const CSail &sail );
+    void draw( const CPanelGroup &sail );
     void initializeGL();
     void mousePressEvent ( QMouseEvent * );
     void paintGL();

@@ -91,7 +91,7 @@ void CSailDispGL::draw( const CPanel &panel )
  *
  * @param sail
  */
-void CSailDispGL::draw( const CSail &sail )
+void CSailDispGL::draw( const CPanelGroup &sail )
 {
     for( unsigned int i = 0; i < sail.panel.size(); i++ )
     {
