@@ -443,6 +443,8 @@ void CSailDoc::get
         (e, g.title, "title");
     get
         (e, g.panel, "panel");
+    get
+        (e, g.child, "child");
 }
 
 
@@ -794,6 +796,7 @@ void CSailDoc::put( QDomNode &parent, const CPanelGroup &g, const QString &name 
 
     put(e, g.title, "title");
     put(e, g.panel, "panel");
+    put(e, g.child, "child");
 }
 
 
