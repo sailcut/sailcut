@@ -23,7 +23,7 @@
     </message>
 </context>
 <context>
-    <name>CFormDef</name>
+    <name>CFormSailDef</name>
     <message>
         <source>Sail corners coordinates</source>
         <translation>Coordenadas dos punhos da vela</translation>
@@ -50,7 +50,7 @@
     </message>
 </context>
 <context>
-    <name>CFormDefBase</name>
+    <name>CFormSailDefBase</name>
     <message>
         <source>Sail definition</source>
         <translation>Definição da vela</translation>
