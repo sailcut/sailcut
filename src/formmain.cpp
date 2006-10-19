@@ -51,6 +51,7 @@
 #include <QPainter>
 #include <QPrintDialog>
 #include <QPrinter>
+#include <QSignalMapper>
 #include <QWorkspace>
 #ifdef HAVE_QDESKTOPSERVICES
 #include <QDesktopServices>
@@ -73,6 +74,9 @@ CFormMain::CFormMain(CSailApp *myApp, QWidget *parent)
     handbook = app->findHandbook(prefs->language);
     qDebug("handbook : %s", (const char*)handbook.toString().toLocal8Bit());
 
+    // create main widget
+    setupMainWidget();
+
     // create status bar
     statusbar = new QStatusBar(this);
     setStatusBar(statusbar);
@@ -80,17 +84,26 @@ CFormMain::CFormMain(CSailApp *myApp, QWidget *parent)
     // create menu bar
     setupMenuBar();
 
-    // create main widget
-    setupMainWidget();
-
     // set language
     languageChange();
 
     // set icon
     setWindowIcon( QPixmap( (const char **)sailcut_xpm ) );
 
+    // update menus
+    slotUpdateMenus();
+
     // resize to prefered size
     resize( QSize(prefs->mainWindowWidth,prefs->mainWindowHeight).expandedTo(minimumSizeHint()) );
+}
+
+
+/**
+ * Returns the active document window.
+ */
+CFormDocument* CFormMain::activeChild()
+{
+    return qobject_cast<CFormDocument *>(workspace->activeWindow());
 }
 
 
@@ -102,15 +115,6 @@ void CFormMain::closeEvent(QCloseEvent *e)
     prefs->mainWindowHeight = height();
     prefs->mainWindowWidth = width();
     QMainWindow::closeEvent(e);
-}
-
-
-/**
- * We received a keypress, we pass it down to the visible tab.
- */
-void CFormMain::keyPressEvent ( QKeyEvent * e )
-{
-    //panel[tabs->currentIndex()]->keyPressEvent(e);
 }
 
 
@@ -139,11 +143,14 @@ void CFormMain::languageChange()
 
     menuFile->setTitle( tr("&File") );
 
-    actionNew->setText( tr("&New") );
+    menuFileNew->setTitle( tr("&New") );
+    actionNewSail->setText( tr("Sail") );
+    actionNewRig->setText( tr("Rig") );
     actionOpen->setText( tr("&Open") );
     menuRecent->setTitle( tr("Open &recent") );
     actionSave->setText( tr("&Save") );
     actionSaveAs->setText( tr("Save &As") );
+    actionClose->setText( tr("&Close") );
 
     actionQuit->setText( tr("&Quit") );
 
@@ -184,6 +191,11 @@ void CFormMain::setupMainWidget()
 {
     workspace = new QWorkspace();
     setCentralWidget(workspace);
+    connect(workspace, SIGNAL(windowActivated(QWidget *)),
+            this, SLOT(slotUpdateMenus()));
+    windowMapper = new QSignalMapper(this);
+    connect(windowMapper, SIGNAL(mapped(QWidget *)),
+            workspace, SLOT(setActiveWindow(QWidget *)));    
 }
 
 
@@ -194,7 +206,11 @@ void CFormMain::setupMenuBar()
 {
     // File menu
     menuFile = menuBar()->addMenu("");
-    actionNew = menuFile->addAction("", this, SLOT( slotNew() ) );
+
+    menuFileNew = menuFile->addMenu("");
+    actionNewSail = menuFileNew->addAction("", this, SLOT( slotNewSail() ) );
+    actionNewRig = menuFileNew->addAction("", this, SLOT( slotNewRig() ) );
+    
     actionOpen = menuFile->addAction("", this, SLOT( slotOpen() ) );
 
     menuRecent = menuFile->addMenu("");
@@ -203,6 +219,7 @@ void CFormMain::setupMenuBar()
 
     actionSave = menuFile->addAction("", this, SLOT( slotSave() ) );
     actionSaveAs = menuFile->addAction("", this, SLOT( slotSaveAs() ) );
+    actionClose = menuFile->addAction( "", workspace, SLOT( closeActiveWindow() ) );
 
     menuFile->addSeparator();
 
@@ -350,16 +367,24 @@ void CFormMain::slotLanguage()
 
 
 /**
- * Creates a new sail
+ * Creates a new rig
  */
-void CFormMain::slotNew()
+void CFormMain::slotNewRig()
 {
-    filename = "";
-//    setSailDef(CSailDef());
-    CFormSail *wnd = new CFormSail(app);
+    CFormRig *wnd = new CFormRig(prefs);
     workspace->addWindow(wnd);
     wnd->show();
-    statusbar->showMessage( tr("created new sail") );
+}
+
+
+/**
+ * Creates a new sail
+ */
+void CFormMain::slotNewSail()
+{
+    CFormSail *wnd = new CFormSail(prefs);
+    workspace->addWindow(wnd);
+    wnd->show();
 }
 
 
@@ -412,23 +437,10 @@ void CFormMain::slotOpenRecent()
  */
 void CFormMain::slotSave()
 {
-    /*
-    if ( filename.isEmpty() )
+    if (activeChild()->save())
     {
-        slotSaveAs();
-        return;
+        statusBar()->showMessage("save");
     }
-
-    // try writing to file, catch exception
-    try
-    {
-        CSailDefXmlWriter(saildef , "saildef").write(filename);
-        fileAccess(tr("wrote '%1'").arg(filename),filename);
-    }
-    catch (CException e)
-    {
-        QMessageBox::information( this, tr("error"), tr("There was an error writing to the selected file") );
-    }*/
 }
 
 
@@ -437,13 +449,21 @@ void CFormMain::slotSave()
  */
 void CFormMain::slotSaveAs()
 {
-    /*
-    QString newname = CSailDefXmlWriter(saildef , "saildef").writeDialog(filename);
-
-    if ( !newname.isNull() )
+    if (activeChild()->saveAs())
     {
-        filename = newname;
-        fileAccess(tr("wrote '%1'").arg(filename), filename);
-    }*/
+        statusBar()->showMessage("save as");
+    }
+}
+
+
+/**
+ * Refresh the available menus.
+ */
+void CFormMain::slotUpdateMenus()
+{
+    bool hasChild = (activeChild() != 0);
+    actionSave->setEnabled(hasChild);    
+    actionSaveAs->setEnabled(hasChild);    
+    actionClose->setEnabled(hasChild);    
 }
 

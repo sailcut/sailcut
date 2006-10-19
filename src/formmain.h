@@ -24,25 +24,16 @@
 #include <QMessageBox>
 #include <QUrl>
 
-#include "sailcalc.h"
-
-#include "panelgroup.h"
-#include "hulldef.h"
-#include "saildef.h"
-
 // forward definitions
-class QApplication;
 class QMenuBar;
-class QGridLayout;
 class QMenu;
 class QStatusBar;
-class QTabWidget;
-class QTranslator;
 class QWorkspace;
-class CSailViewerPanel;
+class QSignalMapper;
+
 class CPrefs;
 class CSailApp;
-
+class CFormDocument;
 
 /** The main dialog of the Sailcut application.
  */
@@ -58,12 +49,13 @@ public:
 
 protected:
     void closeEvent( QCloseEvent * e);
-    void keyPressEvent ( QKeyEvent * e );
     void makeMenuMru();
     void fileAccess(QString event, QString file);
 
+private:
     void setupMenuBar();
     void setupMainWidget();
+    CFormDocument *activeChild();
 
     // slots
 protected slots:
@@ -73,7 +65,8 @@ protected slots:
     virtual void slotAbout();
     virtual void slotAboutQt();
 
-    virtual void slotNew();
+    virtual void slotNewRig();
+    virtual void slotNewSail();
     virtual void slotOpen();
     virtual void slotOpenRecent();
     virtual void slotSave();
@@ -82,29 +75,33 @@ protected slots:
     virtual void slotHandbook();
 
     virtual void slotLanguage();
+    virtual void slotUpdateMenus();
 
     // member variables
 protected:
     /** the workspace */
     QWorkspace *workspace;
+
+    /** signal mapper */
+    QSignalMapper *windowMapper;
     
     /** the location of the Sailcut CAD Handbook */
     QUrl handbook;
 
     /** the application */
     CSailApp *app;
+    
     /** the user preferences */
     CPrefs *prefs;
 
     /** the status bar */
     QStatusBar* statusbar;
 
-    /** the current filename */
-    QString filename;
-
     // menus and action
     /** the File menu */
     QMenu *menuFile;
+    /** the New submenu */
+    QMenu *menuFileNew;
     /** the Help menu */
     QMenu *menuHelp;
     /** the Language menu */
@@ -119,14 +116,18 @@ protected:
     QAction *actionAboutQt;
     /** display the handbook */
     QAction *actionHandbook;
+    /** create a new rig */
+    QAction *actionNewRig;
     /** create a new sail */
-    QAction *actionNew;
+    QAction *actionNewSail;
     /** open an existing sail definition */
     QAction *actionOpen;
     /** sail the sail definition to a file */
     QAction *actionSave;
     /** prompt for a filename then write the sail definition to a file */
     QAction *actionSaveAs;
+    /** close the active document */
+    QAction *actionClose;
     /** view sail definition */
     QAction *actionViewDef;
     /** view sail mould */

@@ -22,39 +22,39 @@
 
 #include <QMainWindow>
 #include <QMessageBox>
-#include <QUrl>
 
 #include "sailcalc.h"
 
+#include "formdocument.h"
 #include "panelgroup.h"
 #include "hulldef.h"
 #include "saildef.h"
 
 // forward definitions
-class QApplication;
 class QMenuBar;
 class QGridLayout;
 class QMenu;
 class QStatusBar;
 class QTabWidget;
-class QTranslator;
 class CSailViewerPanel;
 class CPrefs;
-class CSailApp;
 
 
-/** The main dialog of the Sailcut application.
+/** Dialog holding a sail.
  */
-class CFormSail : public QMainWindow
+class CFormSail : public CFormDocument
 {
     Q_OBJECT
 
 public:
     // construction, destruction
-    CFormSail(CSailApp *myApp, QWidget *parent = 0);
+    CFormSail(CPrefs *myPrefs);
 
     void show(const QString newname = QString::null);
     void setSailDef(const CSailDef newdef);
+
+    virtual bool save();
+    virtual bool saveAs();
 
 protected:
     void closeEvent( QCloseEvent * e);
@@ -83,8 +83,6 @@ protected slots:
     virtual void slotMould();
     virtual void slotOpen();
     virtual void slotOpenRecent();
-    virtual void slotSave();
-    virtual void slotSaveAs();
 
     virtual void slotPrintData();
     virtual void slotPrintDwg();
@@ -92,10 +90,6 @@ protected slots:
 
     // member variables
 protected:
-    /** the application */
-    CSailApp *app;
-    /** the user preferences */
-    CPrefs *prefs;
 
     /** the widgets of each view */
     vector<CSailViewerPanel *> panel;
@@ -116,8 +110,6 @@ protected:
     CPanelGroup flatsail;
     /** the display version of the flat sail */
     CPanelGroup dispsail;
-    /** the current filename */
-    QString filename;
 
     // menus and action
     /** the File menu */
@@ -136,10 +128,6 @@ protected:
 
     /** open an existing sail definition */
     QAction *actionOpen;
-    /** sail the sail definition to a file */
-    QAction *actionSave;
-    /** prompt for a filename then write the sail definition to a file */
-    QAction *actionSaveAs;
     /** export 3D sail to DXF */
     QAction *actionExport3dDXF;
     /** export 3D sail to text */
@@ -170,8 +158,6 @@ protected:
     QAction *actionViewMould;
     /** view sail definition */
     QAction *actionViewPatch;
-    /** quit */
-    QAction *actionQuit;
 };
 
 #endif
