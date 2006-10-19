@@ -16,6 +16,7 @@ HEADER_FILES =  \
 	formmain.h \
 	formmould.h \
 	formrig.h \
+	formsail.h \
 	hulldef.h \
 	hullworker.h \
 	panel.h \
@@ -56,6 +57,7 @@ CPP_FILES = \
 	formmain.cpp \
 	formmould.cpp \
 	formrig.cpp \
+	formsail.cpp \
 	hulldef.cpp \
 	hullworker.cpp \
 	main.cpp \
@@ -99,6 +101,7 @@ BUILT_SOURCES = \
 	formmain.moc.cpp \
 	formmould.moc.cpp \
 	formrig.moc.cpp \
+	formsail.moc.cpp \
 	rigdef-panel.moc.cpp \
 	sailviewer.moc.cpp \
 	sailviewer-panel.moc.cpp \

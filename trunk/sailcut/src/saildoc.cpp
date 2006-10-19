@@ -570,6 +570,10 @@ void CSailDoc::get
             (e, p.sailWindowHeight, "sailWindowHeight");
         get
             (e, p.sailWindowWidth, "sailWindowWidth");
+        get
+            (e, p.mainWindowHeight, "mainWindowHeight");
+        get
+            (e, p.mainWindowWidth, "mainWindowWidth");
     }
     catch (CException e)
     {
@@ -895,6 +899,8 @@ void CSailDoc::put( QDomNode &parent, const CPrefs& p, const QString& name)
     put(e, p.rigWindowWidth, "rigWindowWidth");
     put(e, p.sailWindowHeight, "sailWindowHeight");
     put(e, p.sailWindowWidth, "sailWindowWidth");
+    put(e, p.mainWindowHeight, "mainWindowHeight");
+    put(e, p.mainWindowWidth, "mainWindowWidth");
 }
 
 

@@ -57,6 +57,11 @@ public:
     int helpWindowWidth;
     /** The height of the help window */
     int helpWindowHeight;
+    
+    /** The width of the main window */
+    int mainWindowWidth;
+    /** The height of the main window */
+    int mainWindowHeight;
 
     /** The width of the rig window */
     int rigWindowWidth;
@@ -67,6 +72,7 @@ public:
     int sailWindowWidth;
     /** The height of the sail window */
     int sailWindowHeight;
+
     /** The preferred language. */
     QString language;
 };
