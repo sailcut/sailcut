@@ -93,7 +93,8 @@ void CSailDispGL::draw( const CPanel &panel )
  */
 void CSailDispGL::draw( const CPanelGroup &sail )
 {
-    for( unsigned int i = 0; i < sail.panel.size(); i++ )
+    unsigned int i;
+    for( i = 0; i < sail.panel.size(); i++ )
     {
         if ( sail.type == HULL )
         {
@@ -108,6 +109,8 @@ void CSailDispGL::draw( const CPanelGroup &sail )
 
         draw( sail.panel[i] );
     }
+    for( i = 0; i < sail.child.size(); i++ )
+        draw( sail.child[i] );
 }
 
 
@@ -172,10 +175,7 @@ void CSailDispGL::paintGL()
     glScaled(real(2) / lRect.width(),real(2) / lRect.height(),zs);
     glTranslated(-center.x(),-center.y(),-center.z());
 
-    for (unsigned int i = 0; i < dispObjects.size(); i++)
-    {
-        draw( dispObjects[i] );
-    }
+    draw( dispObject );
 }
 
 

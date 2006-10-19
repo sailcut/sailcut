@@ -34,12 +34,15 @@ public:
     CPanelGroup( const CPanelGroup& );
     CPanelGroup( const CPanel& );
 
-    /** the panels in this group */
-    vector<CPanel> panel;
-
     /** title of this panel group */
     QString title;
 
+    /** the panels in this group */
+    vector<CPanel> panel;
+
+    /** children of this group */
+    vector<CPanelGroup> child;
+    
     /** type of boat object */
     enumBoatObjType type;
 

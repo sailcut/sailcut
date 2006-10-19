@@ -53,7 +53,7 @@ class CRigDef
 public:
     CRigDef();
 
-    vector<CPanelGroup> makeViewSail() const;
+    CPanelGroup makeViewSail() const;
 
     /** the collection of sails that makes up the rig */
     vector<CRigSail> rigsail;

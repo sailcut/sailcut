@@ -25,7 +25,7 @@
 #include "disparea.h"
 
 
-/** A generic display area for a sail.
+/** A generic display area for a panel group.
  *
  * @see CSailDispLabel
  * @see CSailDispGL
@@ -54,7 +54,7 @@ public:
     virtual CPoint3d screenToLogical( const int x, const int y ) const;
     virtual void setAngle( real azimuth, real elevation );
     virtual void setCenter( CPoint3d newCenter );
-    virtual void setObjects( const vector<CPanelGroup> &objs );
+    virtual void setObject( const CPanelGroup &objs );
     virtual void setViewRect( const CRect3d &rect );
     virtual void setZoom(real newZoom);
     virtual void zoomIn();
@@ -64,11 +64,11 @@ public:
     bool drawLabels;
 
 private:
-    void calcDispObjects();
+    void calcDispObject();
 
 protected:
     /** Rotated copy of the objects */
-    vector<CPanelGroup> dispObjects;
+    CPanelGroup dispObject;
 
 private:    
     /** Rotation matrix for the view */
@@ -77,10 +77,10 @@ private:
     CRect3d logicalRect;
     /** Viewport rectangle, in device coordinates */
     CRect3d viewRect;
-    /** Bounding rectangle of the unrotated objects */
+    /** Bounding rectangle of the unrotated object */
     CRect3d baseRect;
-    /** Unrotated copy of the objectsl */
-    vector<CPanelGroup> baseObjects;
+    /** Unrotated copy of the object */
+    CPanelGroup baseObject;
 };
 
 
