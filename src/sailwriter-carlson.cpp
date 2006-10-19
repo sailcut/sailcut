@@ -111,7 +111,7 @@ void CSailCarlsonWriter::write(const QString &filename)
     _myOut << "Sailcut Carlson plotter development: Test1" << CRLF;
 
     unsigned int pn = 0;
-    for (pn = 0; pn < _sail.nbpanels(); pn++)
+    for (pn = 0; pn < _sail.panel.size(); pn++)
         writePanel(pn);
 
     writeEOF();

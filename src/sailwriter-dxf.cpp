@@ -152,7 +152,7 @@ void CSailDxfWriter2d::write(const QString &filename)
     writeAtom(70, "16");
 
     unsigned int pn = 0;
-    for ( pn = 0; pn < _sail.nbpanels(); pn++)
+    for ( pn = 0; pn < _sail.panel.size(); pn++)
     {
         //writeAtom(999,_sail.panel[pn].label.name);
         writeAtom( 0, "LAYER");
@@ -173,7 +173,7 @@ void CSailDxfWriter2d::write(const QString &filename)
     writeAtom( 2, "ENTITIES");
 
     // loop over panels ////////
-    for ( pn = 0; pn < _sail.nbpanels(); pn++)
+    for ( pn = 0; pn < _sail.panel.size(); pn++)
         writePanel(pn);
 
     writeAtom( 0, "ENDSEC");
@@ -210,7 +210,7 @@ void CSailDxfWriter2dBlocks::write(const QString &filename)
     writeAtom(70, "16");
 
     unsigned int pn = 0;
-    for ( pn = 0; pn < _sail.nbpanels(); pn++)
+    for ( pn = 0; pn < _sail.panel.size(); pn++)
     {
         //writeAtom(999,_sail.panel[pn].label.name);
         writeAtom( 0, "LAYER");
@@ -232,7 +232,7 @@ void CSailDxfWriter2dBlocks::write(const QString &filename)
     //writeAtom( 2, "ENTITIES");
 
     // loop over panels ////////
-    for ( pn = 0; pn < _sail.nbpanels(); pn++)
+    for ( pn = 0; pn < _sail.panel.size(); pn++)
     {
         writeAtom( 0, "BLOCK");
         writeAtom( 100, "AcDbEntity");
@@ -425,7 +425,7 @@ void CSailDxfWriter3d::write(const QString &filename)
     writeAtom( 0, "TABLE");
     writeAtom( 2, "LAYER");
     writeAtom(70, "6");
-    for (unsigned int pn = 0; pn < _sail.nbpanels(); pn++)
+    for (unsigned int pn = 0; pn < _sail.panel.size(); pn++)
     {
         //writeAtom(999,_sail.panel[pn].label.name);
         writeAtom( 0, "LAYER");
@@ -449,7 +449,7 @@ void CSailDxfWriter3d::write(const QString &filename)
     writeAtom( 2, "ENTITIES");
 
     // loop over panels ////////
-    for (unsigned int i = 0; i < _sail.nbpanels(); i++)
+    for (unsigned int i = 0; i < _sail.panel.size(); i++)
         writePanel(i);
 
     writeAtom( 0, "ENDSEC");

@@ -24,7 +24,7 @@
 
 enum enumBoatObjType { SAIL, HULL };
 
-/** This class holds a 3D or developed sail.
+/** This class holds a collection of panels.
  */
 class CSail
 {
@@ -33,32 +33,26 @@ public:
     CSail( const CSail& );
     CSail( const CPanel& );
 
-    /** the sail's panels */
+    /** the panels in this group */
     vector<CPanel> panel;
 
-    /** title of the sail */
-    QString sailID;
+    /** title of this panel group */
+    QString title;
 
     /** type of boat object */
     enumBoatObjType type;
 
     // member functions
 public:
-    /** rectangle containing a panel. */
+    /** rectangle containing all panels */
     CRect3d boundingRect() const;
 
-    /** accessor for the number of panels. */
-    unsigned int nbpanels() const
-    {
-        return panel.size();
-    };
-
-    /** function to place the labels on a displayed sail */
+    /** function to place the labels on a displayed panel group */
     void placeLabels();
-    /** function to place the labels on a plotted sail */
+    /** function to place the labels on a plotted panel group */
     void plotLabels();
 
-    /** function for rotating a panel. */
+    /** function for rotating all panels */
     CSail rotate( const CPoint3d &, const CMatrix & ) const;
 
     // operators

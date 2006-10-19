@@ -148,7 +148,7 @@ void CRigSailWidget::setRigSail(const CRigSail& newsail)
 {
     rigsail = newsail;
     lblFile->setText( rigsail.filename );
-    txtName->setText( rigsail.sailID );
+    txtName->setText( rigsail.title );
     wdgOrigin->setVector( rigsail.origin );
 }
 
@@ -192,7 +192,7 @@ void CRigSailWidget::slotRemove()
  */
 void CRigSailWidget::slotUpdate()
 {
-    rigsail.sailID = txtName->text();
+    rigsail.title = txtName->text();
     rigsail.origin = wdgOrigin->getVector();
     signalUpdate(rigsail);
 }
@@ -248,7 +248,7 @@ void CRigDefPanel::setRigDef(const CRigDef& newdef)
         connect(sailwidget[i], SIGNAL(signalRemove()), this, SLOT(slotRemove()));
         connect(sailwidget[i], SIGNAL(signalUpdate(const CRigSail&)), this, SLOT(slotUpdate(const CRigSail&)));
 
-        tabs->addTab(sailwidget[i], rigdef.rigsail[i].sailID);
+        tabs->addTab(sailwidget[i], rigdef.rigsail[i].title);
     }
 
     if (sailwidget.size() > 0)
@@ -282,7 +282,7 @@ void CRigDefPanel::slotUpdate(const CRigSail& newsail)
     int tabIndex = tabs->currentIndex();
 
     rigdef.rigsail[tabIndex] = newsail;
-    tabs->setTabText(tabIndex, rigdef.rigsail[tabIndex].sailID);
+    tabs->setTabText(tabIndex, rigdef.rigsail[tabIndex].title);
     signalUpdate(rigdef);
 }
 
