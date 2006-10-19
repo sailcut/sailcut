@@ -150,13 +150,13 @@ void CSailViewerPanel::languageChange()
 
 
 /**
- * Change the displayed objects.
+ * Change the displayed object.
  *
- * @param objs the new objects to display
+ * @param obj the new object to display
  */
-void CSailViewerPanel::setObjects(const vector<CPanelGroup> &objs)
+void CSailViewerPanel::setObject(const CPanelGroup &obj)
 {
-    sailDisp->setObjects(objs);
+    sailDisp->setObject(obj);
 }
 
 

@@ -109,13 +109,13 @@ void CSailViewer::keyPressEvent ( QKeyEvent * e )
 }
 
 
-/** Changes the displayed objects.
+/** Changes the displayed object.
  *
- * @param objs the new objects to be displayed
+ * @param obj the new object to be displayed
  */
-void CSailViewer::setObjects(const vector<CPanelGroup> &objs)
+void CSailViewer::setObject(const CPanelGroup &obj)
 {
-    lblDraw->setObjects(objs);
+    lblDraw->setObject(obj);
     lblDraw->redraw();
 }
 

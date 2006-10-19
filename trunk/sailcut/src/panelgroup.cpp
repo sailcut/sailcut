@@ -31,8 +31,9 @@ CPanelGroup::CPanelGroup( unsigned int nbpanels /* = 0 */)
  */
 CPanelGroup::CPanelGroup( const CPanelGroup& s )
 {
-    panel = s.panel;
     title = s.title;
+    panel = s.panel;
+    child = s.child;
     type = s.type;
 }
 
@@ -51,14 +52,26 @@ CPanelGroup::CPanelGroup( const CPanel& p )
 CRect3d CPanelGroup::boundingRect() const
 {
     CRect3d rect;
+    bool rect_filled = 0;
+    unsigned int i;
 
-    if ( panel.size() == 0 )
-        return rect;
-
-    rect = panel[0].boundingRect();
-    for( unsigned int i = 1; i < panel.size(); i++)
+    if ( panel.size() > 0 )
     {
-        rect = rect.join(panel[i].boundingRect());
+        rect = panel[0].boundingRect();
+        for( i = 1; i < panel.size(); i++ )
+            rect = rect.join( panel[i].boundingRect() );
+        rect_filled = 1;
+    }
+
+    if ( child.size() > 0 )
+    {
+        if (rect_filled)
+            rect = rect.join( child[0].boundingRect() );
+        else
+            rect = child[0].boundingRect();
+        
+        for( i = 1; i < child.size(); i++ )
+            rect = rect.join( child[i].boundingRect() );
     }
     return rect;
 }
@@ -102,11 +115,12 @@ void CPanelGroup::plotLabels()
  */
 CPanelGroup CPanelGroup::rotate( const CPoint3d &p, const CMatrix &m ) const
 {
+    unsigned int i;
     CPanelGroup ret = *this;
-    for (unsigned int i = 0; i < panel.size(); i++ )
-    {
+    for (i = 0; i < panel.size(); i++ )
         ret.panel[i] = panel[i].rotate(p,m);
-    }
+    for (i = 0; i < child.size(); i++ )
+        ret.child[i] = child[i].rotate(p,m);
     return ret;
 }
 
@@ -118,8 +132,9 @@ CPanelGroup& CPanelGroup::operator=(const CPanelGroup& s)
     if (&s == this)
         return *this;
 
-    panel = s.panel;
     title = s.title;
+    panel = s.panel;
+    child = s.child;
     type = s.type;
 
     return *this;
@@ -130,11 +145,12 @@ CPanelGroup& CPanelGroup::operator=(const CPanelGroup& s)
  */
 CPanelGroup CPanelGroup::operator+(const CVector3d& transl) const
 {
+    unsigned int i;
     CPanelGroup ret = *this;
-    for (unsigned int i = 0; i < panel.size(); i++)
-    {
+    for (i = 0; i < panel.size(); i++)
         ret.panel[i] = ret.panel[i] + transl;
-    }
+    for (i = 0; i < child.size(); i++)
+        ret.child[i] = ret.child[i] + transl;
     return ret;
 }
 
@@ -143,10 +159,16 @@ CPanelGroup CPanelGroup::operator+(const CVector3d& transl) const
  */
 ostream& operator<<(ostream &o, const CPanelGroup &s)
 {
-    for(unsigned int i = 0; i < s.panel.size(); i++)
+    unsigned int i;
+    for(i = 0; i < s.panel.size(); i++)
     {
         o << "===== CPanel : " << i << " ====" << endl;
         o << s.panel[i] << endl;
+    }
+    for(i = 0; i < s.child.size(); i++)
+    {
+        o << "===== child CPanelGroup : " << i << " ====" << endl;
+        o << s.child[i] << endl;
     }
     return o;
 }

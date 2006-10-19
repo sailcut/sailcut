@@ -27,14 +27,12 @@ CRigDef::CRigDef()
 
 /** Produce the combined sail made up of all the panels
  */
-vector<CPanelGroup> CRigDef::makeViewSail() const
+CPanelGroup CRigDef::makeViewSail() const
 {
-    vector<CPanelGroup> output;
+    CPanelGroup output;
 
     for (unsigned int i = 0; i < rigsail.size(); i++)
-    {
-        output.push_back(rigsail[i] + rigsail[i].origin);
-    }
+        output.child.push_back(rigsail[i] + rigsail[i].origin);
 
     return output;
 }

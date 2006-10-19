@@ -42,7 +42,7 @@ class CSailViewer : public QWidget
 public:
     CSailViewer(QWidget *parent, enumViewMode viewMode, bool show_sliders = true);
 
-    void setObjects( const vector<CPanelGroup> &objs );
+    void setObject( const CPanelGroup &obj );
     void keyPressEvent ( QKeyEvent * e );
 
 protected slots:

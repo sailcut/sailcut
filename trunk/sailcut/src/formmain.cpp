@@ -228,23 +228,23 @@ void CFormMain::setSailDef(const CSailDef newdef)
     saildef = newdef;
     sail = CSailWorker(saildef).makeSail(flatsail,dispsail);
 
-    vector<CPanelGroup> objs_3d, objs_flat;
-    objs_3d.push_back(sail);
-    objs_flat.push_back(dispsail);
+    CPanelGroup obj_3d, obj_flat;
+    obj_3d.child.push_back(sail);
+    obj_flat.child.push_back(dispsail);
 
     // generate the deck panel and add it to the 3D sail for display
     if (saildef.sailType != WING)
     {
         CPanelGroup deck = CSailWorker(saildef).makeDeck();
-        objs_3d.push_back(deck);
+        obj_3d.child.push_back(deck);
     }
 
-    panel[0]->setObjects(objs_3d);
+    panel[0]->setObject(obj_3d);
 #ifdef HAVE_GL
-    panel[1]->setObjects(objs_3d);
-    panel[2]->setObjects(objs_flat);
+    panel[1]->setObject(obj_3d);
+    panel[2]->setObject(obj_flat);
 #else
-    panel[1]->setObjects(objs_flat);
+    panel[1]->setObject(obj_flat);
 #endif
 }
 

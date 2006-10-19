@@ -73,8 +73,11 @@ void CSailPainter::draw(const CPanelLabel &label)
  */
 void CSailPainter::draw(const CPanelGroup &sail)
 {
-    for( unsigned int i = 0; i < sail.panel.size(); i++ )
+    unsigned int i;
+    for( i = 0; i < sail.panel.size(); i++ )
         draw(sail.panel[i]);
+    for( i = 0; i < sail.child.size(); i++ )
+        draw(sail.child[i]);
 }
 
 
@@ -117,8 +120,11 @@ void CSailPainter::drawTextCentered(const CPoint3d &p, const QStringList &lst)
  */
 void CSailPainter::drawLabels(const CPanelGroup &sail)
 {
-    for ( unsigned int i = 0; i < sail.panel.size(); i++ )
+    unsigned int i;
+    for ( i = 0; i < sail.panel.size(); i++ )
         draw(sail.panel[i].label);
+    for ( i = 0; i < sail.child.size(); i++ )
+        drawLabels(sail.child[i]);
 }
 
 
