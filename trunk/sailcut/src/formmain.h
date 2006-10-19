@@ -27,6 +27,7 @@
 #include "sailcalc.h"
 
 #include "panelgroup.h"
+#include "hulldef.h"
 #include "saildef.h"
 
 // forward definitions
@@ -116,8 +117,11 @@ protected:
     /** the status bar */
     QStatusBar* statusbar;
 
+    /** the definition of the current hull */
+    CHullDef hulldef;
     /** the definition of the current sail */
     CSailDef saildef;
+    
     /** the sail */
     CPanelGroup sail;
     /** the developped sail */

@@ -166,68 +166,6 @@ CPanelGroup CSailWorker::makeSail( CPanelGroup &flatsail , CPanelGroup &dispsail
 }
 
 
-/** Creates the deck.
- *
- * @return CPanelGroup
- * @author Robert Laine
- */
-CPanelGroup CSailWorker::makeDeck() const
-{
-    CPanel deck;
-
-    unsigned int j = 0;
-    real d1 = 0;
-    real mid = 1;
-
-    CPoint3d p1(0, 0, LOA/100);
-    CPoint3d p2(LOA, 0, LOA/10);
-    CVector3d v1(1, 1, 1);
-
-    unsigned int npl = deck.right.nbpoints();   // number of right/left points
-    unsigned int npb = deck.bottom.nbpoints(); // number of bottom/top points
-
-    /** Start laying deck edge */
-    deck.top.fill(p1, p2);
-    v1 = CVector3d(p2 - p1);
-    mid = (npb-1)/2;
-    for ( j = 1 ; j < npb-1 ; j++)
-    {
-        d1 = -(1- ((real(j) - mid) / mid) * ((real(j) - mid) / mid)) * LOA / 8;
-        deck.top.point[j] = deck.top.point[j] + CMatrix::rot3d(1, PI/2)*v1.unit()*d1;
-    }
-
-    /** make panel lower edge symetrical of upper edge */
-    for ( j = 0 ; j < npb ; j++)
-    {
-        deck.bottom.point[j] = deck.top.point[j];
-        deck.bottom.point[j].z() = -deck.bottom.point[j].z();
-    }
-
-    /** make stem */
-    deck.left.fill(deck.bottom.point[0], deck.top.point[0]);
-    v1 = CVector3d ( deck.top.point[0] -deck.bottom.point[0]);
-    mid = (npl -1) / 2;
-    for ( j = 1 ; j < npl-1 ; j++)
-    {
-        d1 = -(1- ((real(j) - mid) / mid)* ((real(j) - mid) / mid)) * 0.3 * v1.norm();
-        deck.left.point[j] = deck.left.point[j] + CMatrix::rot3d(1,PI/2)*v1.unit()*d1;
-    }
-
-    /** make stern */
-    deck.right.fill(deck.bottom.point[npb-1], deck.top.point[npb-1]);
-    v1 = CVector3d ( deck.top.point[npb-1] - deck.bottom.point[npb-1]);
-    mid = (npl - 1) / 2;
-    for ( j = 1 ; j < npl-1 ; j++)
-    {
-        d1 = -(1- ((real(j) - mid) / mid) * ((real(j) - mid) / mid)) * 0.1 * v1.norm();
-        deck.right.point[j] = deck.right.point[j] + CMatrix::rot3d(1,-PI/2)*v1.unit()*d1;
-    }
-
-    CPanelGroup deckobj(deck);
-    deckobj.type = HULL;
-    return deckobj;
-}
-
 /** Creates a cross cut or horizontal cut sail.
  *
  * @param flatsail the CPanelGroup object that will hold the developed sail

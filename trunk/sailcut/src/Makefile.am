@@ -16,11 +16,13 @@ HEADER_FILES =  \
 	formmain.h \
 	formmould.h \
 	formrig.h \
+	hulldef.h \
+	hullworker.h \
 	panel.h \
+	panelgroup.h \
 	prefs.h \
 	rigdef.h \
 	rigdef-panel.h \
-	panelgroup.h \
 	sailcalc.h \
 	sailcutqt.h \
 	saildef.h \
@@ -53,12 +55,14 @@ CPP_FILES = \
 	formmain.cpp \
 	formmould.cpp \
 	formrig.cpp \
+	hulldef.cpp \
+	hullworker.cpp \
 	main.cpp \
 	panel.cpp \
+	panelgroup.cpp \
 	prefs.cpp \
 	rigdef.cpp \
 	rigdef-panel.cpp \
-	panelgroup.cpp \
 	sailcalc.cpp \
 	sailcutqt.cpp \
 	saildef.cpp \
