@@ -50,6 +50,7 @@ CPP_FILES = \
 	disparea.cpp \
 	fileio.cpp \
 	filewriter.cpp \
+	formhulldef.cpp \
 	formsaildef.cpp \
 	formhelp.cpp \
 	formmain.cpp \
@@ -84,10 +85,13 @@ CPP_FILES = \
 	widgetprofilevert.cpp
 
 # the Qt UI files
-UI_FILES = formsaildefbase.ui
+UI_FILES = formhulldefbase.ui formsaildefbase.ui
 
 # generated source files
 BUILT_SOURCES = \
+	formhulldefbase.h \
+	formhulldefbase.cpp \
+	formhulldef.moc.cpp \
 	formsaildefbase.h \
 	formsaildefbase.cpp \
 	formsaildef.moc.cpp \
