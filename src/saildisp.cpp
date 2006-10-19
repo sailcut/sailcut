@@ -104,7 +104,7 @@ void CSailDisp::setObjects( const vector<CSail> &objs )
     if (baseObjects.size() > 0)
     {
         baseRect = baseObjects[0].boundingRect();
-        for (unsigned int i = i; i < baseObjects.size(); i++)
+        for (unsigned int i = 1; i < baseObjects.size(); i++)
         {
             baseRect = baseRect.join(baseObjects[i].boundingRect());
         }
