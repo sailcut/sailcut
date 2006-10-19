@@ -27,6 +27,7 @@
 #include "formmould.h"
 #include "formrig.h"
 
+#include "hullworker.h"
 #include "sailcutqt.h"
 #include "saildisp.h"
 #include "saildoc.h"
@@ -232,11 +233,11 @@ void CFormMain::setSailDef(const CSailDef newdef)
     obj_3d.child.push_back(sail);
     obj_flat.child.push_back(dispsail);
 
-    // generate the deck panel and add it to the 3D sail for display
+    // generate the hull
     if (saildef.sailType != WING)
     {
-        CPanelGroup deck = CSailWorker(saildef).makeDeck();
-        obj_3d.child.push_back(deck);
+        CPanelGroup hull = CHullWorker(hulldef).makeHull();
+        obj_3d.child.push_back(hull);
     }
 
     panel[0]->setObject(obj_3d);

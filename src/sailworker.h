@@ -49,8 +49,6 @@ public:
     real LuffLength( const real &h );
     real SailLP( );
 
-    // create a panel representing the deck
-    CPanelGroup makeDeck() const;
     CPanelGroup makeSail() const;
     CPanelGroup makeSail(CPanelGroup &flatsail, CPanelGroup &dispsail) const;
 
