@@ -17,22 +17,22 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef FORMDEF_H
-#define FORMDEF_H
+#ifndef FORMSAILDEF_H
+#define FORMSAILDEF_H
 
-#include "formdefbase.h"
+#include "formsaildefbase.h"
 #include "saildef.h"
 
 
 /** The sail definition dialog, where the user enters
  *  the parameters of the sail.
  */
-class CFormDef : public QDialog, private Ui::CFormDefBase
+class CFormSailDef : public QDialog, private Ui::CFormSailDefBase
 {
     Q_OBJECT
 
 public:
-    CFormDef( QWidget *, CSailDef* );
+    CFormSailDef( QWidget *, CSailDef* );
 
     bool check();
     void compute();

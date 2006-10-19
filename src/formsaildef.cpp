@@ -17,7 +17,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#include "formdef.h"
+#include "formsaildef.h"
 #include <QLabel>
 #include <QMessageBox>
 #include <QRadioButton>
@@ -33,7 +33,7 @@
  * @param parent the parent window
  * @param sailptr pointer to the CSailDef
  */
-CFormDef::CFormDef( QWidget* parent, CSailDef * sailptr )
+CFormSailDef::CFormSailDef( QWidget* parent, CSailDef * sailptr )
         : QDialog(parent)
 {
     setupUi(this);
@@ -121,7 +121,7 @@ CFormDef::CFormDef( QWidget* parent, CSailDef * sailptr )
 // member functions
 
 /** Compute and Display ancillary data of the sail computation*/
-void CFormDef::compute()
+void CFormSailDef::compute()
 {
     CSailWorker worker(*saildef);
     lblSailArea->setText ( QString::number( worker.Area() ) );
@@ -130,7 +130,7 @@ void CFormDef::compute()
 
 
 /** Returns the sail cut from the form. */
-enumSailCut CFormDef::getSailCut()
+enumSailCut CFormSailDef::getSailCut()
 {
     if ( radioHorizontal->isChecked() )
         return HORIZONTAL;
@@ -149,7 +149,7 @@ enumSailCut CFormDef::getSailCut()
 
 
 /** Returns the sail type from the form. */
-enumSailType CFormDef::getSailType()
+enumSailType CFormSailDef::getSailType()
 {
     if ( radioJib->isChecked() )
         return JIB;
@@ -164,7 +164,7 @@ enumSailType CFormDef::getSailType()
 /** Enables or disables appropriate controls depending
  *  on the sail cut.
  */
-void CFormDef::setSailCut( enumSailCut cut )
+void CFormSailDef::setSailCut( enumSailCut cut )
 {
     switch ( cut )
     {
@@ -193,7 +193,7 @@ void CFormDef::setSailCut( enumSailCut cut )
 /** Enables or disables appropriate controls depending
  *  on the sail type.
  */
-void CFormDef::setSailType( enumSailType type )
+void CFormSailDef::setSailType( enumSailType type )
 {
     switch ( type )
     {
@@ -279,7 +279,7 @@ void CFormDef::setSailType( enumSailType type )
 /** Saves the parameters entered by the user in the CSailDef.
  *  slot connected to OK button
  */
-void CFormDef::accept()
+void CFormSailDef::accept()
 {
     // return data if everything is OK. /////////////////////////
     if (check() ==true)
@@ -290,7 +290,7 @@ void CFormDef::accept()
 /** Check all dimensions entered in order
  *  to make sure that the sail is possible and reasonable
  */
-bool CFormDef::check()
+bool CFormSailDef::check()
 {
     long L1=1, L2=1;
     real A1=0, A2=0;
@@ -1060,7 +1060,7 @@ bool CFormDef::check()
 /** Used to enable/disable appropriate controls when the user
  *  changes the sail cut.
  **/
-void CFormDef::slotSailCut()
+void CFormSailDef::slotSailCut()
 {
     setSailCut( getSailCut() );
 }
@@ -1071,7 +1071,7 @@ void CFormDef::slotSailCut()
  *  compute and display ancillary data
  *  slot connected to Compute button
  */
-void CFormDef::slotCompute()
+void CFormSailDef::slotCompute()
 {
     // ckeck data
     check();
@@ -1114,7 +1114,7 @@ void CFormDef::slotCompute()
 
 /** display data in a message box
  */
-void CFormDef::displayData(QString &txt0, QString &txt1, QString &txt2, QString &txt3, QString &txt4 )
+void CFormSailDef::displayData(QString &txt0, QString &txt1, QString &txt2, QString &txt3, QString &txt4 )
 {
     QMessageBox* mb = new QMessageBox();
     mb->setIcon(QMessageBox::NoIcon);
@@ -1129,7 +1129,7 @@ void CFormDef::displayData(QString &txt0, QString &txt1, QString &txt2, QString 
 /** Used to enable/disable appropriate controls when the user
  *  changes the sail type.
  **/
-void CFormDef::slotSailType()
+void CFormSailDef::slotSailType()
 {
     setSailType( getSailType() );
 }

@@ -2,8 +2,8 @@
  <author></author>
  <comment></comment>
  <exportmacro></exportmacro>
- <class>CFormDefBase</class>
- <widget class="QDialog" name="CFormDefBase" >
+ <class>CFormSailDefBase</class>
+ <widget class="QDialog" name="CFormSailDefBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>

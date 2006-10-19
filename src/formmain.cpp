@@ -22,7 +22,7 @@
 #endif
 
 #include "formmain.h"
-#include "formdef.h"
+#include "formsaildef.h"
 #include "formhelp.h"
 #include "formmould.h"
 #include "formrig.h"
@@ -437,14 +437,14 @@ void CFormMain::slotAboutQt()
 
 
 /**
- * Displays the sail CFormDef sail definition dialog.
+ * Displays the sail CFormSailDef sail definition dialog.
  */
 void CFormMain::slotDef()
-{  // we pass the CFormDef a pointer to a copy of the sail definition so
+{  // we pass the CFormSailDef a pointer to a copy of the sail definition so
     // that it can update it if necessary
     CSailDef saildefcopy = saildef;
 
-    if ( CFormDef(this , &saildefcopy).exec() )
+    if ( CFormSailDef(this , &saildefcopy).exec() )
     {
         // we returned from the dialog with an 'OK',
         setSailDef(saildefcopy);

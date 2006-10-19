@@ -27,7 +27,7 @@
     </message>
 </context>
 <context>
-    <name>CFormDef</name>
+    <name>CFormSailDef</name>
     <message>
         <location filename="" line="0"/>
         <source>Sail corners coordinates</source>
@@ -60,7 +60,7 @@
     </message>
 </context>
 <context>
-    <name>CFormDefBase</name>
+    <name>CFormSailDefBase</name>
     <message>
         <location filename="" line="0"/>
         <source>Sail definition</source>
