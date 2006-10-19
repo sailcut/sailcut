@@ -17,21 +17,22 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef SAIL_H
-#define SAIL_H
+#ifndef PANELGROUP_H
+#define PANELGROUP_H
 
 #include "panel.h"
 
 enum enumBoatObjType { SAIL, HULL };
 
-/** This class holds a collection of panels.
+/** This class holds a collection of panels, for instance to represent
+ *  a 3D or a developed sail.
  */
-class CSail
+class CPanelGroup
 {
 public:
-    CSail( unsigned int = 0 );
-    CSail( const CSail& );
-    CSail( const CPanel& );
+    CPanelGroup( unsigned int = 0 );
+    CPanelGroup( const CPanelGroup& );
+    CPanelGroup( const CPanel& );
 
     /** the panels in this group */
     vector<CPanel> panel;
@@ -53,16 +54,16 @@ public:
     void plotLabels();
 
     /** function for rotating all panels */
-    CSail rotate( const CPoint3d &, const CMatrix & ) const;
+    CPanelGroup rotate( const CPoint3d &, const CMatrix & ) const;
 
     // operators
-    CSail& operator=( const CSail &);
-    CSail operator+ (const CVector3d &) const;
-    friend ostream& operator<< (ostream &, const CSail &);
+    CPanelGroup& operator=( const CPanelGroup &);
+    CPanelGroup operator+ (const CVector3d &) const;
+    friend ostream& operator<< (ostream &, const CPanelGroup &);
 };
 
 
 // global functions
-ostream& operator<< (ostream &, const CSail &);
+ostream& operator<< (ostream &, const CPanelGroup &);
 
 #endif

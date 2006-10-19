@@ -21,11 +21,11 @@
 #define SAILVIEWER_H
 
 #include <QWidget>
-#include "sail.h"
+#include "panelgroup.h"
 
 class QSlider;
 class QLabel;
-class CSail;
+class CPanelGroup;
 class CSailDisp;
 class QGridLayout;
 
@@ -42,7 +42,7 @@ class CSailViewer : public QWidget
 public:
     CSailViewer(QWidget *parent, enumViewMode viewMode, bool show_sliders = true);
 
-    void setObjects( const vector<CSail> &objs );
+    void setObjects( const vector<CPanelGroup> &objs );
     void keyPressEvent ( QKeyEvent * e );
 
 protected slots:

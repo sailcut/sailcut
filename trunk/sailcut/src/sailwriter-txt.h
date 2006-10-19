@@ -21,23 +21,23 @@
 #define TXTWRITER_H
 
 #include "filewriter.h"
-#include "sail.h"
+#include "panelgroup.h"
 
 
-/** A class used to output a CSail to a TXT file.
+/** A class used to output a CPanelGroup to a TXT file.
  */
 class CSailTxtWriter : public CFileWriter
 {
 protected :
     /** the sail to write */
-    CSail _sail;
+    CPanelGroup _sail;
 
 public:
     /** The constructor.
      *
      * @param sail the sail to write
      */
-    CSailTxtWriter(const CSail &sail)
+    CSailTxtWriter(const CPanelGroup &sail)
             : CFileWriter(".txt","Text files"), _sail(sail)
     {}
     ;

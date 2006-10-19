@@ -26,7 +26,7 @@
 
 #include "sailcalc.h"
 
-#include "sail.h"
+#include "panelgroup.h"
 #include "saildef.h"
 
 // forward definitions
@@ -119,11 +119,11 @@ protected:
     /** the definition of the current sail */
     CSailDef saildef;
     /** the sail */
-    CSail sail;
+    CPanelGroup sail;
     /** the developped sail */
-    CSail flatsail;
+    CPanelGroup flatsail;
     /** the display version of the flat sail */
-    CSail dispsail;
+    CPanelGroup dispsail;
     /** the current filename */
     QString filename;
 

@@ -20,21 +20,21 @@
 #ifndef SAILWORKER_H
 #define SAILWORKER_H
 
-#include "sail.h"
+#include "panelgroup.h"
 #include "saildef.h"
 
 #include "geocpp/geometry.h"
 #include "sailcalc.h"
 
 // forward declarations
-class CSail;
+class CPanelGroup;
 class CSeam;
 
 
 /** The CSailWorker class does all the sail-related calculations. It is used to create
  * the sail from its definition.
  *
- * @see CSailDef, CSail
+ * @see CSailDef, CPanelGroup
  */
 class CSailWorker : public CSailDef
 {
@@ -50,9 +50,9 @@ public:
     real SailLP( );
 
     // create a panel representing the deck
-    CSail makeDeck() const;
-    CSail makeSail() const;
-    CSail makeSail(CSail &flatsail, CSail &dispsail) const;
+    CPanelGroup makeDeck() const;
+    CPanelGroup makeSail() const;
+    CPanelGroup makeSail(CPanelGroup &flatsail, CPanelGroup &dispsail) const;
 
     /** position of tack point */
     CPoint3d tack;
@@ -65,13 +65,13 @@ public:
 
 protected:
     /** layout of sail's panels */
-    CSail Layout0( CSail &flatsail, CSail &dispsail ) const; // CROSS
-    CSail LayoutTwist( CSail &flatsail, CSail &dispsail ) const; // TWIST
-    CSail LayoutVertical( CSail &flatsail, CSail &dispsail ) const; // VERTICAL
-    CSail LayoutRadial( CSail &flatsail, CSail &dispsail ) const;// RADIAL
-    CSail LayoutMitre( CSail &flatsail, CSail &dispsail ) const; // MITRE
-    CSail LayoutTriRadial( CSail &flatsail, CSail &dispsail ) const; // TRIRADIAL
-    CSail LayoutWing( CSail &flatsail, CSail &dispsail ) const; // WING
+    CPanelGroup Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; // CROSS
+    CPanelGroup LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; // TWIST
+    CPanelGroup LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; // VERTICAL
+    CPanelGroup LayoutRadial( CPanelGroup &flatsail, CPanelGroup &dispsail ) const;// RADIAL
+    CPanelGroup LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; // MITRE
+    CPanelGroup LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; // TRIRADIAL
+    CPanelGroup LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; // WING
 
     /** intersections with edges */
     CPoint3d FwdIntersect( const CPoint3d &p1 ) const;

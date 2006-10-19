@@ -18,7 +18,7 @@
  */
 
 #include "sailviewer-panel.h"
-#include "sail.h"
+#include "panelgroup.h"
 
 #include <QGroupBox>
 #include <QLabel>
@@ -154,7 +154,7 @@ void CSailViewerPanel::languageChange()
  *
  * @param objs the new objects to display
  */
-void CSailViewerPanel::setObjects(const vector<CSail> &objs)
+void CSailViewerPanel::setObjects(const vector<CPanelGroup> &objs)
 {
     sailDisp->setObjects(objs);
 }

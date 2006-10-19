@@ -25,7 +25,7 @@
 /** This class allows you to write sailcut objects to
  *  an XML file.
  *
- *  @see CSailXmlWriter
+ *  @see CPanelGroupXmlWriter
  *  @see CSailDefXmlWriter
  */
 template <class objtype>
@@ -64,8 +64,8 @@ public:
 };
 
 
-/** A class used to output a CSail to an XML file. */
-class CSailXmlWriter : public XmlWriterTempl<CSail>
+/** A class used to output a CPanelGroup to an XML file. */
+class CPanelGroupXmlWriter : public XmlWriterTempl<CPanelGroup>
 {
 public:
     /** The constructor.
@@ -73,8 +73,8 @@ public:
      * @param sail the sail to write
      * @param name the sail's name
      */
-    CSailXmlWriter(const CSail &sail, const QString &name)
-            : XmlWriterTempl<CSail>(sail, name, ".sail3d", "3D sails")
+    CPanelGroupXmlWriter(const CPanelGroup &sail, const QString &name)
+            : XmlWriterTempl<CPanelGroup>(sail, name, ".panel3d", "3D sails or hulls")
     {}
     ;
 };

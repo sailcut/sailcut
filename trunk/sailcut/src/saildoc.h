@@ -21,7 +21,7 @@
 #define SAILDOC_H
 
 #include <QDomDocument>
-#include "sail.h"
+#include "panelgroup.h"
 #include "saildef.h"
 #include "rigdef.h"
 #include "prefs.h"
@@ -69,7 +69,7 @@ public:
     void get
         (const QDomNode &parent, CRigSail &s, const QString &name );
     void get
-        (const QDomNode &parent, CSail &s, const QString &name );
+        (const QDomNode &parent, CPanelGroup &g, const QString &name );
     void get
         (const QDomNode &parent, CProfile &p, const QString &name );
     void get
@@ -114,7 +114,7 @@ public:
     void put(QDomNode &parent, const CSailDef &d, const QString &name="" );
     void put(QDomNode &parent, const CSide &s, const QString &name="" );
     void put(QDomNode &parent, const CPanel &p, const QString &name="" );
-    void put(QDomNode &parent, const CSail &s, const QString &name="" );
+    void put(QDomNode &parent, const CPanelGroup &g, const QString &name="" );
     void put(QDomNode &parent, const CProfile &p, const QString &name="" );
     void put(QDomNode &parent, const CSailMould &m, const QString &name="" );
     void put(QDomNode &parent, const CPrefs &p, const QString &name="" );

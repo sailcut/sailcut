@@ -228,14 +228,14 @@ void CFormMain::setSailDef(const CSailDef newdef)
     saildef = newdef;
     sail = CSailWorker(saildef).makeSail(flatsail,dispsail);
 
-    vector<CSail> objs_3d, objs_flat;
+    vector<CPanelGroup> objs_3d, objs_flat;
     objs_3d.push_back(sail);
     objs_flat.push_back(dispsail);
 
     // generate the deck panel and add it to the 3D sail for display
     if (saildef.sailType != WING)
     {
-        CSail deck = CSailWorker(saildef).makeDeck();
+        CPanelGroup deck = CSailWorker(saildef).makeDeck();
         objs_3d.push_back(deck);
     }
 
@@ -474,7 +474,7 @@ void CFormMain::slotExportTXT()
  */
 void CFormMain::slotExportXML()
 {
-    CSailXmlWriter(sail, "sail").writeDialog();
+    CPanelGroupXmlWriter(sail, "sail").writeDialog();
 }
 
 
@@ -528,7 +528,7 @@ void CFormMain::slotExportFlatTXT()
  */
 void CFormMain::slotExportFlatXML()
 {
-    CSailXmlWriter(flatsail,"sail").writeDialog();
+    CPanelGroupXmlWriter(flatsail,"sail").writeDialog();
 }
 
 

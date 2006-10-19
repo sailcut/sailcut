@@ -126,7 +126,7 @@ void CSailDxfWriter::writeVertex(CPoint3d pt, unsigned int layer)
 ***********************************/
 
 
-/** Writes a CSail to a simple 2D DXF file.
+/** Writes a CPanelGroup to a simple 2D DXF file.
  *
  * @param filename the file to write to
  */
@@ -184,7 +184,7 @@ void CSailDxfWriter2d::write(const QString &filename)
 }
 
 
-/** Writes a CSail to a 2D DXF file with one block per panel.
+/** Writes a CPanelGroup to a 2D DXF file with one block per panel.
  *
  * @param filename the file to write to
  */
@@ -401,7 +401,7 @@ void CSailDxfWriter2d::writePanel(unsigned int panel)
 ***********************************/
 
 
-/** Writes a 3D CSail to a 3D DXF file.
+/** Writes a 3D CPanelGroup to a 3D DXF file.
  *
  * @param filename the file to write to
  */

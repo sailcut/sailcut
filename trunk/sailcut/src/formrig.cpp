@@ -172,7 +172,7 @@ void CFormRig::setupMenuBar()
 void CFormRig::slotAddSail()
 {
     CRigSail rigsail;
-    QString newname = CSailXmlReader("sail").readDialog((CSail&)rigsail,"");
+    QString newname = CPanelGroupXmlReader("sail").readDialog((CPanelGroup&)rigsail,"");
 
     if (!newname.isNull())
     {
@@ -196,7 +196,7 @@ void CFormRig::slotAddSailDef()
     if (!newname.isNull())
     {
         CRigSail rigsail;
-        (CSail&)rigsail = CSailWorker(saildef).makeSail();
+        (CPanelGroup&)rigsail = CSailWorker(saildef).makeSail();
         rigsail.type = SAILDEF;
         rigsail.filename = newname;
         rigdef.rigsail.push_back(rigsail);

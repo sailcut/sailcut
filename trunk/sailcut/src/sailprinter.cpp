@@ -23,7 +23,7 @@
 
 #include "sailcalc.h"
 #include "saildef.h"
-#include "sail.h"
+#include "panelgroup.h"
 #include "disparea.h"
 
 
@@ -322,14 +322,14 @@ void CSailPrinter::printDelta(const CPoint3d &pDisp, const CVector3d &vValue, re
  *
  * @param flatsail
  */
-void CSailPrinter::printSailDevel(const CSail &flatsail)
+void CSailPrinter::printSailDevel(const CPanelGroup &flatsail)
 {
     unsigned int npt;
 
     real dx=0, dy=0;
     
     // center the sail
-    CSail printSail = flatsail + CVector3d( -flatsail.boundingRect().center() );
+    CPanelGroup printSail = flatsail + CVector3d( -flatsail.boundingRect().center() );
 
     // calculate logical rectangle
     real zoom = 0.8;
@@ -435,10 +435,10 @@ void CSailPrinter::printSailDevel(const CSail &flatsail)
  *
  * @param sail
  */
-void CSailPrinter::printSailDrawing(const CSail &sail)
+void CSailPrinter::printSailDrawing(const CPanelGroup &sail)
 {
     // center the sail
-    CSail printSail = sail + CVector3d( -sail.boundingRect().center() );
+    CPanelGroup printSail = sail + CVector3d( -sail.boundingRect().center() );
 
     // calculate logical rectangle
     real zoom = 0.8;

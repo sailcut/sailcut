@@ -20,7 +20,6 @@
 #ifndef SAILWRITER_HAND_H
 #define SAILWRITER_HAND_H
 
-#include "sail.h"
 #include "sailwriter-txt.h"
 
 /** This class allows you to write a developed sail by using
@@ -34,7 +33,7 @@ public:
      *
      * @param sail the sail to write
      */
-    CSailHandWriter(const CSail &sail)
+    CSailHandWriter(const CPanelGroup &sail)
             : CSailTxtWriter(sail)
     {}
     ;

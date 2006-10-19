@@ -23,10 +23,10 @@
 #include <QPainter>
 #include "geocpp/geometry.h"
 
-class CSail;
 class CSide;
 class CPanel;
 class CPanelLabel;
+class CPanelGroup;
 
 /** A sail painter
  *
@@ -45,12 +45,12 @@ public:
 
     void draw(const CSide &side);
     void draw(const CPanel &panel);
-    void draw(const CSail &sail);
+    void draw(const CPanelGroup &sail);
     void draw(const CPanelLabel &label);
     void drawCross(const CPoint3d &p, const real size);
     void drawTextCentered(const CPoint3d &p, const QString &str);
     void drawTextCentered(const CPoint3d &p, const QStringList &lst);
-    void drawLabels(const CSail &sail);
+    void drawLabels(const CPanelGroup &sail);
 
     void setFontSize(const real size, const real zoom);
     void setWindow(const CRect3d& lRect);

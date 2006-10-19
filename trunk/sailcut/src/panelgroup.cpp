@@ -17,25 +17,19 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#include "sail.h"
+#include "panelgroup.h"
 
-/*****************************************************************************
- 
-                              CSail class
- 
-*****************************************************************************/
-
-/** Constructs a sail with the specified number of panels.
+/** Constructs a panel group with the specified number of panels.
  */
-CSail::CSail( unsigned int nbpanels /* = 0 */)
+CPanelGroup::CPanelGroup( unsigned int nbpanels /* = 0 */)
 {
     panel.resize(nbpanels);
 }
 
 
-/** Copy constructor
+/** Copy constructor.
  */
-CSail::CSail( const CSail& s )
+CPanelGroup::CPanelGroup( const CPanelGroup& s )
 {
     panel = s.panel;
     title = s.title;
@@ -43,18 +37,18 @@ CSail::CSail( const CSail& s )
 }
 
 
-/** Construct a sail from a single panel
+/** Construct a panel group from a single panel.
  */
-CSail::CSail( const CPanel& p )
+CPanelGroup::CPanelGroup( const CPanel& p )
 {
     panel.resize(1);
     panel[0] = p;
 }
 
 
-/** Returns the smallest 3D box that contains the sail.
+/** Returns the smallest 3D box that contains all the panels.
  */
-CRect3d CSail::boundingRect() const
+CRect3d CPanelGroup::boundingRect() const
 {
     CRect3d rect;
 
@@ -73,7 +67,7 @@ CRect3d CSail::boundingRect() const
 /** Positions each of the display Sail's panels' label.
      The font size is defined in void CSailDispLabel::drawLabels()
  */
-void CSail::placeLabels()
+void CPanelGroup::placeLabels()
 {
     for (unsigned int i = 0; i < panel.size(); i++)
     {
@@ -88,7 +82,7 @@ void CSail::placeLabels()
 /** Positions each of the plotted Sail's panels' label.
      The font size is default 5 mm
  */
-void CSail::plotLabels()
+void CPanelGroup::plotLabels()
 {
     for (unsigned int i = 0; i < panel.size(); i++)
     {
@@ -106,9 +100,9 @@ void CSail::plotLabels()
 
 /** Rotates a sail around a point.
  */
-CSail CSail::rotate( const CPoint3d &p, const CMatrix &m ) const
+CPanelGroup CPanelGroup::rotate( const CPoint3d &p, const CMatrix &m ) const
 {
-    CSail ret = *this;
+    CPanelGroup ret = *this;
     for (unsigned int i = 0; i < panel.size(); i++ )
     {
         ret.panel[i] = panel[i].rotate(p,m);
@@ -119,7 +113,7 @@ CSail CSail::rotate( const CPoint3d &p, const CMatrix &m ) const
 
 /** Performs an assignment.
  */
-CSail& CSail::operator=(const CSail& s)
+CPanelGroup& CPanelGroup::operator=(const CPanelGroup& s)
 {
     if (&s == this)
         return *this;
@@ -134,9 +128,9 @@ CSail& CSail::operator=(const CSail& s)
 
 /** Performs a 3D translation of the sail by a given vector.
  */
-CSail CSail::operator+(const CVector3d& transl) const
+CPanelGroup CPanelGroup::operator+(const CVector3d& transl) const
 {
-    CSail ret = *this;
+    CPanelGroup ret = *this;
     for (unsigned int i = 0; i < panel.size(); i++)
     {
         ret.panel[i] = ret.panel[i] + transl;
@@ -145,15 +139,9 @@ CSail CSail::operator+(const CVector3d& transl) const
 }
 
 
-/*********************************************
- 
-            Global functions
- 
- *********************************************/
-
-/** Outputs a CSail  to a stream.
+/** Outputs a CPanelGroup to a stream.
  */
-ostream& operator<<(ostream &o, const CSail &s)
+ostream& operator<<(ostream &o, const CPanelGroup &s)
 {
     for(unsigned int i = 0; i < s.panel.size(); i++)
     {
@@ -162,3 +150,5 @@ ostream& operator<<(ostream &o, const CSail &s)
     }
     return o;
 }
+
+
