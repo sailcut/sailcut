@@ -93,7 +93,7 @@ void CSailDispGL::draw( const CPanel &panel )
  */
 void CSailDispGL::draw( const CSail &sail )
 {
-    for( unsigned int i = 0; i < sail.nbpanels(); i++ )
+    for( unsigned int i = 0; i < sail.panel.size(); i++ )
     {
         if ( sail.type == HULL )
         {

@@ -38,7 +38,7 @@ CSail::CSail( unsigned int nbpanels /* = 0 */)
 CSail::CSail( const CSail& s )
 {
     panel = s.panel;
-    sailID = s.sailID;
+    title = s.title;
     type = s.type;
 }
 
@@ -125,7 +125,7 @@ CSail& CSail::operator=(const CSail& s)
         return *this;
 
     panel = s.panel;
-    sailID = s.sailID;
+    title = s.title;
     type = s.type;
 
     return *this;
@@ -155,7 +155,7 @@ CSail CSail::operator+(const CVector3d& transl) const
  */
 ostream& operator<<(ostream &o, const CSail &s)
 {
-    for(unsigned int i=0; i<s.nbpanels(); i++)
+    for(unsigned int i = 0; i < s.panel.size(); i++)
     {
         o << "===== CPanel : " << i << " ====" << endl;
         o << s.panel[i] << endl;

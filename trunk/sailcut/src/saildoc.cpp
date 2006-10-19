@@ -440,7 +440,7 @@ void CSailDoc::get
 {
     QDomElement e = findElement( parent, "CSail", name);
     get
-        (e, s.sailID, "sailID");
+        (e, s.title, "title");
     get
         (e, s.panel, "panel");
 }
@@ -792,7 +792,7 @@ void CSailDoc::put( QDomNode &parent, const CSail &s, const QString &name )
     QDomElement e = createElement("CSail",name);
     parent.appendChild(e);
 
-    put(e, s.sailID, "sailID");
+    put(e, s.title, "title");
     put(e, s.panel, "panel");
 }
 

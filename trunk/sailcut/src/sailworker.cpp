@@ -158,9 +158,9 @@ CSail CSailWorker::makeSail( CSail &flatsail , CSail &dispsail) const
     flatsail.plotLabels();
 
     // assign the sail names
-    output.sailID = sailID + " (3D)";
-    dispsail.sailID = sailID + " (3D)";
-    flatsail.sailID = sailID + " (flat)";
+    output.title = sailID + " (3D)";
+    dispsail.title = sailID + " (3D)";
+    flatsail.title = sailID + " (flat)";
 
     return output;
 }
