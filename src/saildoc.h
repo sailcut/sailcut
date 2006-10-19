@@ -22,6 +22,7 @@
 
 #include <QDomDocument>
 #include "panelgroup.h"
+#include "hulldef.h"
 #include "saildef.h"
 #include "rigdef.h"
 #include "prefs.h"
@@ -58,6 +59,8 @@ public:
         (const QDomNode &parent, enumSailType &t, const QString &name );
     void get
         (const QDomNode &parent, enumRigSailType &t, const QString &name );
+    void get
+        (const QDomNode &parent, CHullDef &d, const QString &name );
     void get
         (const QDomNode &parent, CSailDef &d, const QString &name );
     void get
@@ -111,6 +114,7 @@ public:
     void put(QDomNode &parent, const enumSailType &t, const QString &name="" );
     void put(QDomNode &parent, const CRigDef &d, const QString &name="" );
     void put(QDomNode &parent, const CRigSail &s, const QString &name="" );
+    void put(QDomNode &parent, const CHullDef &d, const QString &name="" );
     void put(QDomNode &parent, const CSailDef &d, const QString &name="" );
     void put(QDomNode &parent, const CSide &s, const QString &name="" );
     void put(QDomNode &parent, const CPanel &p, const QString &name="" );

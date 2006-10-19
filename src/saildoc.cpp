@@ -256,6 +256,23 @@ void CSailDoc::get
         t = SAIL3D;
 }
 
+/** Reads a CHullDef hulll definition from an XML document.
+ *
+ * @param parent the parent node
+ * @param d the hull definition
+ * @param name the name of the hull definition
+ */
+void CSailDoc::get
+    ( const QDomNode &parent, CHullDef &d, const QString &name )
+{
+    QDomElement e = findElement( parent, "CHullDef", name);
+
+    get
+        (e, d.hullID,"hullID" );
+    get
+        (e, d.LOA,"LOA");
+}
+
 
 /** Reads a CSailDef sail definition from an XML document.
  *  NEW members are added at the end of the list
@@ -675,6 +692,18 @@ void CSailDoc::put( QDomNode &parent, const enumSailType &t, const QString &name
     }
     QDomElement e = createElement("enumSailType",name,value);
     parent.appendChild(e);
+}
+
+
+/** Puts a CHullDef hull definition to an XML document.
+ */
+void CSailDoc::put( QDomNode &parent, const CHullDef &d, const QString &name )
+{
+    QDomElement e = createElement("CHullDef",name);
+    parent.appendChild(e);
+
+    put(e, d.hullID, "hullID"); 
+    put(e, d.LOA, "LOA");
 }
 
 

@@ -79,6 +79,23 @@ public:
     ;
 };
 
+
+/** A class used to output a CHullDef to an XML file. */
+class CHullDefXmlWriter : public XmlWriterTempl<CHullDef>
+{
+public:
+    /** The constructor.
+     *
+     * @param hulldef the CHullDef to write
+     * @param name the CHullDef's name
+     */
+    CHullDefXmlWriter(const CHullDef &hulldef, const QString &name)
+            : XmlWriterTempl<CHullDef>(hulldef, name, ".hulldef", "Hull definitions")
+    {}
+    ;
+};
+
+
 /** A class used to output a CSailDef to an XML file. */
 class CSailDefXmlWriter : public XmlWriterTempl<CSailDef>
 {
@@ -94,6 +111,7 @@ public:
     ;
 };
 
+
 /** A class used to output a CRigDef to an XML file. */
 class CRigDefXmlWriter : public XmlWriterTempl<CRigDef>
 {
@@ -108,6 +126,7 @@ public:
     {}
     ;
 };
+
 
 /** A class used to output a CPrefs to an XML file. */
 typedef XmlWriterTempl<CPrefs> CPrefsXmlWriter;
