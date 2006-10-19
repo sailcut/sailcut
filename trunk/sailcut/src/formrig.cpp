@@ -32,17 +32,16 @@
 /**
  * The constructor.
  *
- * @param myApp the Sailcut application
- * @param parent the parent widget
+ * @param prefs the user preferences
  */
-CFormRig::CFormRig(CSailApp *myApp, QWidget *parent)
-        : QMainWindow(parent), prefs(&myApp->prefs)
+CFormRig::CFormRig(CPrefs *myPrefs)
+        : CFormDocument(myPrefs)
 {
-    // create menu bar
-    setupMenuBar();
-
     // create main widget
     setupMainWidget();
+    
+    // create menu bar
+    setupMenuBar();
 
     // set language
     languageChange();
@@ -85,9 +84,6 @@ void CFormRig::languageChange()
 
     actionOpen->setText( tr("&Open") );
     menuRecent->setTitle( tr("Open &recent") );
-    actionSave->setText( tr("&Save") );
-    actionSaveAs->setText( tr("Save &As") );
-    actionClose->setText( tr("&Close") );
 
     defpanel->languageChange();
     viewer->languageChange();
@@ -156,11 +152,6 @@ void CFormRig::setupMenuBar()
 
     actionOpen = menuFile->addAction( "", this, SLOT( slotOpen() ) );
     menuRecent = menuFile->addMenu( "" );
-    menuFile->addSeparator();
-    actionSave = menuFile->addAction( "", this, SLOT( slotSave() ) );
-    actionSaveAs = menuFile->addAction( "", this, SLOT( slotSaveAs() ) );
-    menuFile->addSeparator();
-    actionClose = menuFile->addAction( "", this, SLOT( close() ) );
 
     makeMenuMru();
 }
@@ -262,12 +253,11 @@ void CFormRig::slotOpenRecent()
 /**
  * The file menu's Save item was clicked.
  */
-void CFormRig::slotSave()
+bool CFormRig::save()
 {
     if ( filename.isEmpty() )
     {
-        slotSaveAs();
-        return;
+        return saveAs();
     }
 
     // try writing to file, catch exception
@@ -276,18 +266,20 @@ void CFormRig::slotSave()
         CRigDefXmlWriter(rigdef,"rigdef").write(filename);
         prefs->mruRigdef.touchEntry(filename);
         makeMenuMru();
+        return true;
     }
     catch (CException e)
     {
         QMessageBox::information(this, tr("error"), tr("There was an error writing to the selected file"));
     }
+    return false;
 }
 
 
 /**
  * The file menu's Save As item was clicked.
  */
-void CFormRig::slotSaveAs()
+bool CFormRig::saveAs()
 {
     QString newname = CRigDefXmlWriter(rigdef,"rigdef").writeDialog(filename);
 
@@ -296,7 +288,9 @@ void CFormRig::slotSaveAs()
         filename = newname;
         prefs->mruRigdef.touchEntry(filename);
         makeMenuMru();
+        return true;
     }
+    return false;
 }
 
 

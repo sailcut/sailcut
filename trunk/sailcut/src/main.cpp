@@ -19,6 +19,7 @@
 
 #include "sailcutqt.h"
 #include "formmain.h"
+#include "geocpp/core.h"
 
 /**
  * Sailcut CAD's main routine.

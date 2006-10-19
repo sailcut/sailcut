@@ -11,12 +11,14 @@ HEADER_FILES =  \
 	disparea.h \
 	fileio.h \
 	filewriter.h \
-	formsaildef.h \
+	formdocument.h \
 	formhelp.h \
+	formhulldef.h \
 	formmain.h \
 	formmould.h \
 	formrig.h \
 	formsail.h \
+	formsaildef.h \
 	hulldef.h \
 	hullworker.h \
 	panel.h \
@@ -51,13 +53,14 @@ CPP_FILES = \
 	disparea.cpp \
 	fileio.cpp \
 	filewriter.cpp \
-	formhulldef.cpp \
-	formsaildef.cpp \
+	formdocument.cpp \
 	formhelp.cpp \
+	formhulldef.cpp \
 	formmain.cpp \
 	formmould.cpp \
 	formrig.cpp \
 	formsail.cpp \
+	formsaildef.cpp \
 	hulldef.cpp \
 	hullworker.cpp \
 	main.cpp \
@@ -91,17 +94,18 @@ UI_FILES = formhulldefbase.ui formsaildefbase.ui
 
 # generated source files
 BUILT_SOURCES = \
+	formdocument.moc.cpp \
+	formhelp.moc.cpp \
 	formhulldefbase.h \
 	formhulldefbase.cpp \
 	formhulldef.moc.cpp \
-	formsaildefbase.h \
-	formsaildefbase.cpp \
-	formsaildef.moc.cpp \
-	formhelp.moc.cpp \
 	formmain.moc.cpp \
 	formmould.moc.cpp \
 	formrig.moc.cpp \
 	formsail.moc.cpp \
+	formsaildefbase.h \
+	formsaildefbase.cpp \
+	formsaildef.moc.cpp \
 	rigdef-panel.moc.cpp \
 	sailviewer.moc.cpp \
 	sailviewer-panel.moc.cpp \

@@ -40,8 +40,6 @@
 #include "sailwriter-xml.h"
 #include "sailviewer-panel.h"
 
-#include "../icons/sailcut.xpm"
-
 #include <QDir>
 #include <QLayout>
 #include <QMenuBar>
@@ -55,16 +53,12 @@
 /**
  * Constructs Sailcut CAD's main window.
  *
- * @param myApp the Sailcut application
  * @param parent the parent widget
  */
-CFormSail::CFormSail(CSailApp *myApp, QWidget *parent)
-        : QMainWindow(parent), app(myApp), prefs(&myApp->prefs)
+CFormSail::CFormSail(CPrefs *myPrefs)
+        : CFormDocument(myPrefs)
 {
     setMinimumSize( QSize( 300, 220 ) );
-
-    // locate Handbook
-    app->loadTranslation(prefs->language);
 
     // create status bar
     statusbar = new QStatusBar(this);
@@ -78,9 +72,6 @@ CFormSail::CFormSail(CSailApp *myApp, QWidget *parent)
 
     // set language
     languageChange();
-
-    // set icon
-    setWindowIcon( QPixmap( (const char **)sailcut_xpm ) );
 
     // resize to prefered size
     resize( QSize(prefs->sailWindowWidth,prefs->sailWindowHeight).expandedTo(minimumSizeHint()) );
@@ -134,8 +125,6 @@ void CFormSail::languageChange()
 
     actionOpen->setText( tr("&Open") );
     menuRecent->setTitle( tr("Open &recent") );
-    actionSave->setText( tr("&Save") );
-    actionSaveAs->setText( tr("Save &As") );
 
     // print submenu
     menuPrint->setTitle( tr("&Print") );
@@ -157,8 +146,6 @@ void CFormSail::languageChange()
     actionExportFlatHand->setText( tr("to &Hand-plotting format") );
     actionExportFlatTXT->setText( tr("to &TXT sail") );
     actionExportFlatXML->setText( tr("to &XML sail") );
-
-    actionQuit->setText( tr("&Quit") );
 
 
     // View menu
@@ -254,9 +241,6 @@ void CFormSail::setupMenuBar()
     menuFile->addSeparator();
 
 
-    actionSave = menuFile->addAction("", this, SLOT( slotSave() ) );
-    actionSaveAs = menuFile->addAction("", this, SLOT( slotSaveAs() ) );
-
     // export 3d submenu
     menuExport3d = menuFile->addMenu("");
     actionExport3dDXF = menuExport3d->addAction("", this, SLOT( slotExportDXF() ) );
@@ -271,10 +255,6 @@ void CFormSail::setupMenuBar()
     actionExportFlatHand = menuExportFlat->addAction("", this, SLOT( slotExportFlatHand() ) );
     actionExportFlatTXT = menuExportFlat->addAction("", this, SLOT( slotExportFlatTXT() ) );
     actionExportFlatXML = menuExportFlat->addAction("", this, SLOT( slotExportFlatXML() ) );
-
-    menuFile->addSeparator();
-
-    actionQuit = menuFile->addAction( "", this, SLOT( close() ) );
 
     // View menu
 
@@ -577,12 +557,11 @@ void CFormSail::slotPrintDwg()
 /**
  * Saves the current sail definition to an XML file.
  */
-void CFormSail::slotSave()
+bool CFormSail::save()
 {
     if ( filename.isEmpty() )
     {
-        slotSaveAs();
-        return;
+        return saveAs();
     }
 
     // try writing to file, catch exception
@@ -590,18 +569,20 @@ void CFormSail::slotSave()
     {
         CSailDefXmlWriter(saildef , "saildef").write(filename);
         fileAccess(tr("wrote '%1'").arg(filename),filename);
+        return true;
     }
     catch (CException e)
     {
         QMessageBox::information( this, tr("error"), tr("There was an error writing to the selected file") );
     }
+    return false;
 }
 
 
 /**
  * Opens a dialog to select the XML to which the sail definition should be saved.
  */
-void CFormSail::slotSaveAs()
+bool CFormSail::saveAs()
 {
     QString newname = CSailDefXmlWriter(saildef , "saildef").writeDialog(filename);
 
@@ -609,6 +590,8 @@ void CFormSail::slotSaveAs()
     {
         filename = newname;
         fileAccess(tr("wrote '%1'").arg(filename), filename);
+        return true;
     }
+    return false;
 }
 

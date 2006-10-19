@@ -20,7 +20,7 @@
 #ifndef FORMRIG_H
 #define FORMRIG_H
 
-#include <QMainWindow>
+#include "formdocument.h"
 #include "rigdef.h"
 
 class QAction;
@@ -28,18 +28,20 @@ class QMenu;
 class CSailViewerPanel;
 class CRigDefPanel;
 class CPrefs;
-class CSailApp;
 
 
 /** A form allowing the user to assemble several sails into a rig.
  */
-class CFormRig : public QMainWindow
+class CFormRig : public CFormDocument
 {
     Q_OBJECT
 
 public:
     // construction, destruction
-    CFormRig(CSailApp *myApp, QWidget *parent = 0);
+    CFormRig(CPrefs *myPrefs);
+
+    virtual bool save();
+    virtual bool saveAs();
 
 protected:
     void closeEvent( QCloseEvent * e);
@@ -55,21 +57,15 @@ protected slots:
     virtual void slotNew();
     virtual void slotOpen();
     virtual void slotOpenRecent();
-    virtual void slotSave();
-    virtual void slotSaveAs();
     virtual void slotUpdate(const CRigDef& newdef);
 
 protected:
-    /** The user's preferences. */
-    CPrefs *prefs;
     /** An area to view the rig. */
     CSailViewerPanel *viewer;
     /** A panel with one tab per sail in the current rig.  */
     CRigDefPanel *defpanel;
     /** The rig definition. */
     CRigDef rigdef;
-    /** The current filename. */
-    QString filename;
 
     /** The File menu. */
     QMenu *menuFile;
@@ -86,12 +82,6 @@ protected:
     QAction *actionAddSail;
     /** read a rig from file */
     QAction *actionOpen;
-    /** save rig to file */
-    QAction *actionSave;
-    /** prompt user for a filename and save rig to file */
-    QAction *actionSaveAs;
-    /** close the rig viewer */
-    QAction *actionClose;
 
 };
 
