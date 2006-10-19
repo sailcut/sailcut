@@ -20,7 +20,7 @@
 #ifndef SAILDISP_H
 #define SAILDISP_H
 
-#include "sail.h"
+#include "panelgroup.h"
 #include "geocpp/matrix.h"
 #include "disparea.h"
 
@@ -54,7 +54,7 @@ public:
     virtual CPoint3d screenToLogical( const int x, const int y ) const;
     virtual void setAngle( real azimuth, real elevation );
     virtual void setCenter( CPoint3d newCenter );
-    virtual void setObjects( const vector<CSail> &objs );
+    virtual void setObjects( const vector<CPanelGroup> &objs );
     virtual void setViewRect( const CRect3d &rect );
     virtual void setZoom(real newZoom);
     virtual void zoomIn();
@@ -67,8 +67,8 @@ private:
     void calcDispObjects();
 
 protected:
-    /** Rotated copy of the sail */
-    vector<CSail> dispObjects;
+    /** Rotated copy of the objects */
+    vector<CPanelGroup> dispObjects;
 
 private:    
     /** Rotation matrix for the view */
@@ -77,10 +77,10 @@ private:
     CRect3d logicalRect;
     /** Viewport rectangle, in device coordinates */
     CRect3d viewRect;
-    /** Bounding rectangle of the unrotated sail */
+    /** Bounding rectangle of the unrotated objects */
     CRect3d baseRect;
-    /** Unrotated copy of the sail */
-    vector<CSail> baseObjects;
+    /** Unrotated copy of the objectsl */
+    vector<CPanelGroup> baseObjects;
 };
 
 

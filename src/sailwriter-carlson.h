@@ -21,7 +21,7 @@
 #define SAILWRITER_CARLSON_H
 
 #include "filewriter.h"
-#include "sail.h"
+#include "panelgroup.h"
 #include <fstream>
 
 /** A class for writing to Carlson files.
@@ -30,12 +30,12 @@ class CSailCarlsonWriter : public CFileWriter
 {
 protected:
     /** the sail we want to write to a file. */
-    CSail _sail;
+    CPanelGroup _sail;
     /** the output stream */
     ofstream _myOut;
 
 public:
-    CSailCarlsonWriter(const CSail &sail);
+    CSailCarlsonWriter(const CPanelGroup &sail);
 
     void write(const QString &filename);
     void writePanel(unsigned int panel);

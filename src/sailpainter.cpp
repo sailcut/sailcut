@@ -18,7 +18,7 @@
  */
 
 #include "sailpainter.h"
-#include "sail.h"
+#include "panelgroup.h"
 
 /** Draws a side of a sail.
  */
@@ -71,7 +71,7 @@ void CSailPainter::draw(const CPanelLabel &label)
 
 /** Draws a complete sail.
  */
-void CSailPainter::draw(const CSail &sail)
+void CSailPainter::draw(const CPanelGroup &sail)
 {
     for( unsigned int i = 0; i < sail.panel.size(); i++ )
         draw(sail.panel[i]);
@@ -115,7 +115,7 @@ void CSailPainter::drawTextCentered(const CPoint3d &p, const QStringList &lst)
 
 /** Draw all the sail's panel labels.
  */
-void CSailPainter::drawLabels(const CSail &sail)
+void CSailPainter::drawLabels(const CPanelGroup &sail)
 {
     for ( unsigned int i = 0; i < sail.panel.size(); i++ )
         draw(sail.panel[i].label);

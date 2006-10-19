@@ -429,20 +429,20 @@ void CSailDoc::get
 }
 
 
-/** Reads a CSail sail from an XML document.
+/** Reads a CPanelGroup from an XML document.
  *
  * @param parent the parent node
- * @param s the sail
- * @param name the name of the sail
+ * @param g the panel group
+ * @param name the name of the panel group
  */
 void CSailDoc::get
-    ( const QDomNode &parent, CSail &s, const QString &name )
+    ( const QDomNode &parent, CPanelGroup &g, const QString &name )
 {
-    QDomElement e = findElement( parent, "CSail", name);
+    QDomElement e = findElement( parent, "CPanelGroup", name);
     get
-        (e, s.title, "title");
+        (e, g.title, "title");
     get
-        (e, s.panel, "panel");
+        (e, g.panel, "panel");
 }
 
 
@@ -494,7 +494,7 @@ void CSailDoc::get
 {
     QDomElement e = findElement( parent, "CRigSail", name);
     get
-        (e, (CSail&)s, "sail");
+        (e, (CPanelGroup&)s, "sail");
     get
         (e, s.type, "type");
     get
@@ -785,15 +785,15 @@ void CSailDoc::put( QDomNode &parent, const CPanel &p, const QString &name )
 }
 
 
-/** Puts a CSsail sail to an XML document.
+/** Puts a CPanelGroup to an XML document.
  */
-void CSailDoc::put( QDomNode &parent, const CSail &s, const QString &name )
+void CSailDoc::put( QDomNode &parent, const CPanelGroup &g, const QString &name )
 {
-    QDomElement e = createElement("CSail",name);
+    QDomElement e = createElement("CPanelGroup",name);
     parent.appendChild(e);
 
-    put(e, s.title, "title");
-    put(e, s.panel, "panel");
+    put(e, g.title, "title");
+    put(e, g.panel, "panel");
 }
 
 
@@ -831,7 +831,7 @@ void CSailDoc::put( QDomNode &parent, const CRigSail &s, const QString &name )
     put(e, s.filename, "filename");
     put(e, s.type, "type");
     put(e, s.origin, "origin");
-    put(e, (CSail&)s, "sail");
+    put(e, (CPanelGroup&)s, "sail");
 }
 
 

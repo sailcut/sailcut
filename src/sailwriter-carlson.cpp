@@ -26,7 +26,7 @@
 /** The constructor.
  * @param sail the sail to write
  */
-CSailCarlsonWriter::CSailCarlsonWriter(const CSail &sail)
+CSailCarlsonWriter::CSailCarlsonWriter(const CPanelGroup &sail)
         : CFileWriter(".sp4","Carlson plotter files"), _sail(sail)
 {}
 

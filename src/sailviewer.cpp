@@ -113,7 +113,7 @@ void CSailViewer::keyPressEvent ( QKeyEvent * e )
  *
  * @param objs the new objects to be displayed
  */
-void CSailViewer::setObjects(const vector<CSail> &objs)
+void CSailViewer::setObjects(const vector<CPanelGroup> &objs)
 {
     lblDraw->setObjects(objs);
     lblDraw->redraw();

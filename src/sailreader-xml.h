@@ -27,7 +27,7 @@
 /** This class allows you to read sailcut objects from
  *  an XML file.
  *
- *  @see CSailXmlReader
+ *  @see CPanelGroupXmlReader
  *  @see CSailDefXmlReader
  */
 template <class objtype>
@@ -90,16 +90,16 @@ public:
 
 // some typedefs
 
-/** A class used to read a CSail sail from an XML file. */
-class CSailXmlReader : public XmlReaderTempl<CSail>
+/** A class used to read a CPanelGroup from an XML file. */
+class CPanelGroupXmlReader : public XmlReaderTempl<CPanelGroup>
 {
 public:
     /** The constructor.
      *
      * @param name the sail's name
      */
-    CSailXmlReader(const QString &name)
-            : XmlReaderTempl<CSail>(name, ".sail3d", "3D sails")
+    CPanelGroupXmlReader(const QString &name)
+            : XmlReaderTempl<CPanelGroup>(name, ".panel3d", "3D sails or hulls")
     {}
     ;
 };

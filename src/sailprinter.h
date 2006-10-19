@@ -22,7 +22,7 @@
 
 #include "sailpainter.h"
 
-class CSail;
+class CPanelGroup;
 class CSailDef;
 class QPaintDevice;
 class QPrinter;
@@ -42,8 +42,8 @@ public:
     real printDataSection(const QString title);
     real printDataLine(const QString title, const QString data0 = "", const QString data1 = "", const QString data2 = "");
     void printSailData(const CSailDef &saildef);
-    void printSailDevel(const CSail &flatsail);
-    void printSailDrawing(const CSail &sail);
+    void printSailDevel(const CPanelGroup &flatsail);
+    void printSailDrawing(const CPanelGroup &sail);
     void printArrowLabel(const CPoint3d &pDisp, const QStringList &lst, const real angle);
     void printCoord(const CPoint3d &pDisp, const CPoint3d &pValue, const real angle);
     void printDelta(const CPoint3d &pDisp, const CVector3d &vValue, const real angle);

@@ -97,7 +97,7 @@ void CSailDisp::setCenter( CPoint3d newCenter )
 /** Sets the objects that are to be displayed.
  *  and center the view.
  */
-void CSailDisp::setObjects( const vector<CSail> &objs )
+void CSailDisp::setObjects( const vector<CPanelGroup> &objs )
 {
     baseObjects = objs;
 

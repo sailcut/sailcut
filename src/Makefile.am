@@ -20,7 +20,7 @@ HEADER_FILES =  \
 	prefs.h \
 	rigdef.h \
 	rigdef-panel.h \
-	sail.h \
+	panelgroup.h \
 	sailcalc.h \
 	sailcutqt.h \
 	saildef.h \
@@ -58,7 +58,7 @@ CPP_FILES = \
 	prefs.cpp \
 	rigdef.cpp \
 	rigdef-panel.cpp \
-	sail.cpp \
+	panelgroup.cpp \
 	sailcalc.cpp \
 	sailcutqt.cpp \
 	saildef.cpp \

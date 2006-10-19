@@ -107,9 +107,9 @@ CSailWorker::CSailWorker(const CSailDef &s) : CSailDef(s)
 
 /** Make a Sail from its definition.
  */
-CSail CSailWorker::makeSail() const
+CPanelGroup CSailWorker::makeSail() const
 {
-    CSail flatsail, dispsail;
+    CPanelGroup flatsail, dispsail;
     return makeSail(flatsail,dispsail);
 }
 
@@ -118,9 +118,9 @@ CSail CSailWorker::makeSail() const
  *  This the main routine of all the layout work
  *  The output is a 3D sail, its display and its development
  */
-CSail CSailWorker::makeSail( CSail &flatsail , CSail &dispsail) const
+CPanelGroup CSailWorker::makeSail( CPanelGroup &flatsail , CPanelGroup &dispsail) const
 {
-    CSail output;
+    CPanelGroup output;
 
     switch (sailType )
     {
@@ -168,10 +168,10 @@ CSail CSailWorker::makeSail( CSail &flatsail , CSail &dispsail) const
 
 /** Creates the deck.
  *
- * @return CSail
+ * @return CPanelGroup
  * @author Robert Laine
  */
-CSail CSailWorker::makeDeck() const
+CPanelGroup CSailWorker::makeDeck() const
 {
     CPanel deck;
 
@@ -223,20 +223,20 @@ CSail CSailWorker::makeDeck() const
         deck.right.point[j] = deck.right.point[j] + CMatrix::rot3d(1,-PI/2)*v1.unit()*d1;
     }
 
-    CSail deckobj(deck);
+    CPanelGroup deckobj(deck);
     deckobj.type = HULL;
     return deckobj;
 }
 
 /** Creates a cross cut or horizontal cut sail.
  *
- * @param flatsail the CSail object that will hold the developed sail
- * @param dispsail the CSail object that will hold the display
+ * @param flatsail the CPanelGroup object that will hold the developed sail
+ * @param dispsail the CPanelGroup object that will hold the display
  *                 version of the developed sail
- * @return CSail
+ * @return CPanelGroup
  * @author Robert Laine
  */
-CSail CSailWorker::Layout0( CSail &flatsail, CSail &dispsail ) const
+CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail ) const
 {
     /*  First create arrays p1 and p2 of points at the end of each seams
     *   located on the straight edge of the sail (no round)
@@ -244,8 +244,8 @@ CSail CSailWorker::Layout0( CSail &flatsail, CSail &dispsail ) const
     CPoint3d p1[MAX_PANELS], p2[MAX_PANELS];
 
     /* Create two temporary sails lay and the corresponding dev */
-    CSail lay(MAX_PANELS); // 3D sail
-    CSail dev(MAX_PANELS); // developed sail
+    CPanelGroup lay(MAX_PANELS); // 3D sail
+    CPanelGroup dev(MAX_PANELS); // developed sail
 
     /* create number of panels */
     unsigned int npanel = 1;
@@ -563,13 +563,13 @@ CSail CSailWorker::Layout0( CSail &flatsail, CSail &dispsail ) const
         throw CException("CSailDef::Layout0 : got to MAX_PANELS without reaching head, do increase cloth width ");
 
     /** copying the sails for display */
-    CSail sail(npanel);
+    CPanelGroup sail(npanel);
 
     for( j = 0 ; j < npanel ; j ++)
         sail.panel[j] = lay.panel[j];
 
     /** copying the developed sail */
-    flatsail = CSail(npanel);
+    flatsail = CPanelGroup(npanel);
 
     for ( j = 0 ; j < npanel ; j++)
     {
@@ -604,13 +604,13 @@ CSail CSailWorker::Layout0( CSail &flatsail, CSail &dispsail ) const
 
 /** Creates a twist foot cut sail.
  *
- * @param flatsail the CSail object that will hold the developed sail
- * @param dispsail the CSail object that will hold the display
+ * @param flatsail the CPanelGroup object that will hold the developed sail
+ * @param dispsail the CPanelGroup object that will hold the display
  *                 version of the developed sail
- * @return CSail
+ * @return CPanelGroup
  * @author Robert Laine
  */
-CSail CSailWorker::LayoutTwist( CSail &flatsail, CSail &dispsail ) const
+CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsail ) const
 {
     /*  First create arrays p1 and p2 of points at the end of each seams
      *   located on the straight edge of the sail (no round)
@@ -618,8 +618,8 @@ CSail CSailWorker::LayoutTwist( CSail &flatsail, CSail &dispsail ) const
     CPoint3d p1[MAX_PANELS], p2[MAX_PANELS];
 
     /* Create two temporary sails lay and the corresponding dev */
-    CSail lay(MAX_PANELS); // 3D sail
-    CSail dev(MAX_PANELS); // developed sail
+    CPanelGroup lay(MAX_PANELS); // 3D sail
+    CPanelGroup dev(MAX_PANELS); // developed sail
 
     /* create number of panels */
     unsigned int npanel = 1;
@@ -887,12 +887,12 @@ CSail CSailWorker::LayoutTwist( CSail &flatsail, CSail &dispsail ) const
         throw CException("CSailDef::Layout1 : got to MAX_PANELS without reaching head, do increase cloth width ");
 
     /** copying the sails for display **** */
-    CSail sail(npanel);
+    CPanelGroup sail(npanel);
     for( j = 0; j < npanel; j ++)
         sail.panel[j] = lay.panel[j];
 
     /** copying the developed sail */
-    flatsail = CSail(npanel);
+    flatsail = CPanelGroup(npanel);
 
     for (j=0; j < npanel; j++)
         flatsail.panel[j] = dev.panel[j];
@@ -925,13 +925,13 @@ CSail CSailWorker::LayoutTwist( CSail &flatsail, CSail &dispsail ) const
 
 /** Creates a VERTICAL cut sail.
  *
- * @param flatsail the CSail object that will hold the developed sail
- * @param dispsail the CSail object that will hold the display
+ * @param flatsail the CPanelGroup object that will hold the developed sail
+ * @param dispsail the CPanelGroup object that will hold the display
  *                 version of the developed sail
- * @return CSail
+ * @return CPanelGroup
  * @author Robert Laine
  */
-CSail CSailWorker::LayoutVertical( CSail &flatsail, CSail &dispsail ) const
+CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dispsail ) const
 {
     /*  First create arrays p1 and p2 of points at the end of each seams
     *   located on the straight edge of the sail (no round)
@@ -939,8 +939,8 @@ CSail CSailWorker::LayoutVertical( CSail &flatsail, CSail &dispsail ) const
     CPoint3d p1[MAX_PANELS], p2[MAX_PANELS];
 
     /* Create two temporary sails lay and the corresponding dev */
-    CSail lay(MAX_PANELS); // 3D sail
-    CSail dev(MAX_PANELS); // developed sail
+    CPanelGroup lay(MAX_PANELS); // 3D sail
+    CPanelGroup dev(MAX_PANELS); // developed sail
 
     /* create number of panels */
     unsigned int npanel=1;
@@ -1147,12 +1147,12 @@ CSail CSailWorker::LayoutVertical( CSail &flatsail, CSail &dispsail ) const
         throw CException("CSailDef::Layout3 : got to MAX_PANELS without reaching tack, do increase cloth width ");
 
     /* copying the sails for display */
-    CSail sail(npanel);
+    CPanelGroup sail(npanel);
     for( j = 0; j < npanel; j ++)
         sail.panel[j] = lay.panel[j];
 
     /** copying the developed sail into flatsail */
-    flatsail = CSail(npanel);
+    flatsail = CPanelGroup(npanel);
 
     for (j=0; j < npanel; j++)
         flatsail.panel[j] = dev.panel[j];
@@ -1179,13 +1179,13 @@ CSail CSailWorker::LayoutVertical( CSail &flatsail, CSail &dispsail ) const
 
 /** Creates a WING horizontal cut sail.
  *
- * @param flatsail the CSail object that will hold the developed sail
- * @param dispsail the CSail object that will hold the display
+ * @param flatsail the CPanelGroup object that will hold the developed sail
+ * @param dispsail the CPanelGroup object that will hold the display
  *                 version of the developed sail
- * @return CSail
+ * @return CPanelGroup
  * @author Robert Laine
  */
-CSail CSailWorker::LayoutWing( CSail &flatsail, CSail &dispsail ) const
+CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsail ) const
 {
     /*  First create arrays p1 and p2 of points at the end of each seams
     *   located on the straight edge of the sail (no round)
@@ -1193,8 +1193,8 @@ CSail CSailWorker::LayoutWing( CSail &flatsail, CSail &dispsail ) const
     CPoint3d p1[MAX_PANELS], p2[MAX_PANELS];
 
     /* Create two temporary sails lay and the corresponding dev */
-    CSail lay(MAX_PANELS); // 3D sail
-    CSail dev(MAX_PANELS); // developed sail
+    CPanelGroup lay(MAX_PANELS); // 3D sail
+    CPanelGroup dev(MAX_PANELS); // developed sail
 
     /* create number of panels */
     unsigned int npanel=1, np=1;
@@ -1521,13 +1521,13 @@ CSail CSailWorker::LayoutWing( CSail &flatsail, CSail &dispsail ) const
     }
 
     /** copying the sails for display */
-    CSail sail( 2 * npanel +1);
+    CPanelGroup sail( 2 * npanel +1);
 
     for( j = 0 ; j < npanel ; j ++)
         sail.panel[j] = lay.panel[j];
 
     /** copying the developed sail */
-    flatsail = CSail( 2 * npanel +1);
+    flatsail = CPanelGroup( 2 * npanel +1);
 
     for ( j = 0 ; j < npanel ; j++)
     {
@@ -1563,13 +1563,13 @@ CSail CSailWorker::LayoutWing( CSail &flatsail, CSail &dispsail ) const
 
 /** Creates a radial cut sail.
  *
- * @param flatsail the CSail object that will hold the developed sail
- * @param dispsail the CSail object that will hold the display
+ * @param flatsail the CPanelGroup object that will hold the developed sail
+ * @param dispsail the CPanelGroup object that will hold the display
  *                 version of the developed sail
- * @return CSail
+ * @return CPanelGroup
  * @author Robert Laine
  */
-CSail CSailWorker::LayoutRadial( CSail &flatsail, CSail &dispsail ) const
+CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &dispsail ) const
 {
     unsigned int h = 0, j = 0, k = 0, a = 1, b = 1;
     unsigned int ngLuff = nbLuffGores;  // limit of luff gores
@@ -1580,8 +1580,8 @@ CSail CSailWorker::LayoutRadial( CSail &flatsail, CSail &dispsail ) const
     CPoint3d pt0, pt1, pt2, pt3, pt4, ptCentre, ptFoot;  // points
 
     /* Create two temporary sails lay and the corresponding dev */
-    CSail lay(MAX_PANELS); // 3D sail
-    CSail dev(MAX_PANELS); // developed sail
+    CPanelGroup lay(MAX_PANELS); // 3D sail
+    CPanelGroup dev(MAX_PANELS); // developed sail
 
     /* create number of panels */
     unsigned int npanel = 1;
@@ -2062,12 +2062,12 @@ CSail CSailWorker::LayoutRadial( CSail &flatsail, CSail &dispsail ) const
     }
 
     /** copying 3d lay into 3d sail */
-    CSail sail(npanel);
+    CPanelGroup sail(npanel);
     for( j = 0 ; j < npanel ; j ++)
         sail.panel[j] = lay.panel[j];
 
     /** copying from temporary developed sail into flatsail */
-    flatsail = CSail(npanel);
+    flatsail = CPanelGroup(npanel);
 
     for (j=0 ; j < npanel ; j++)
         flatsail.panel[j] = dev.panel[j];
@@ -2112,13 +2112,13 @@ CSail CSailWorker::LayoutRadial( CSail &flatsail, CSail &dispsail ) const
 
 /** Creates a triradial cut sail.  //////// NOT USED //////////
  *
- * @param flatsail the CSail object that will hold the developed sail
- * @param dispsail the CSail object that will hold the display
+ * @param flatsail the CPanelGroup object that will hold the developed sail
+ * @param dispsail the CPanelGroup object that will hold the display
  *                 version of the developed sail
- * @return CSail
+ * @return CPanelGroup
  * @author Robert Laine
  */
-CSail CSailWorker::LayoutTriRadial( CSail &flatsail, CSail &dispsail ) const
+CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &dispsail ) const
 {
     unsigned int h=0, j=0, k=0, a=1, b=1;
     unsigned int ngLuff = nbGores/2;  // limit of luff gores
@@ -2129,8 +2129,8 @@ CSail CSailWorker::LayoutTriRadial( CSail &flatsail, CSail &dispsail ) const
     CPoint3d pt0, pt1, pt2, pt3, pt4, ptCentre, ptFoot;  // points
 
     /* Create two temporary sails lay and the corresponding dev */
-    CSail lay(MAX_PANELS); // 3D sail
-    CSail dev(MAX_PANELS); // developed sail
+    CPanelGroup lay(MAX_PANELS); // 3D sail
+    CPanelGroup dev(MAX_PANELS); // developed sail
 
     /* create number of panels */
     unsigned int npanel=1;
@@ -2569,12 +2569,12 @@ CSail CSailWorker::LayoutTriRadial( CSail &flatsail, CSail &dispsail ) const
     }
 
     /** copying 3d sail lay into sail */
-    CSail sail(npanel);
+    CPanelGroup sail(npanel);
     for( j = 0; j < npanel; j ++)
         sail.panel[j] = lay.panel[j];
 
     /** copy from temporary developed sail into flatsail */
-    flatsail = CSail(npanel);
+    flatsail = CPanelGroup(npanel);
 
     for (j=0; j < npanel; j++)
         flatsail.panel[j] = dev.panel[j];
@@ -2617,13 +2617,13 @@ CSail CSailWorker::LayoutTriRadial( CSail &flatsail, CSail &dispsail ) const
 
 /** Creates a mitre cut sail.
  *
- * @param flatsail the CSail object that will hold the developed sail
- * @param dispsail the CSail object that will hold the display
+ * @param flatsail the CPanelGroup object that will hold the developed sail
+ * @param dispsail the CPanelGroup object that will hold the display
  *                 version of the developed sail
- * @return CSail
+ * @return CPanelGroup
  * @author Robert Laine alias Sailcuter
  */
-CSail CSailWorker::LayoutMitre( CSail &flatsail, CSail &dispsail ) const
+CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsail ) const
 {
     /*  First create arrays p1 and p2 of points at the end of each seams
      *   located on the straight edge of the sail (no round)
@@ -2631,8 +2631,8 @@ CSail CSailWorker::LayoutMitre( CSail &flatsail, CSail &dispsail ) const
     CPoint3d p1[MAX_PANELS], p2[MAX_PANELS];
 
     /* Create two temporary sails lay and the corresponding dev */
-    CSail lay(MAX_PANELS); // 3D sail
-    CSail dev(MAX_PANELS); // developed sail
+    CPanelGroup lay(MAX_PANELS); // 3D sail
+    CPanelGroup dev(MAX_PANELS); // developed sail
 
     /* create number of panels */
     unsigned int npanelFoot=1, npanel=1;
@@ -3062,12 +3062,12 @@ CSail CSailWorker::LayoutMitre( CSail &flatsail, CSail &dispsail ) const
         throw CException("CSailDef::Layout5 : panelling leech got to MAX_PANELS without reaching head, do increase cloth width ");
 
     /** copying the sails for display */
-    CSail sail(npanel);
+    CPanelGroup sail(npanel);
     for( j = 0; j < npanel; j ++)
         sail.panel[j] = lay.panel[j];
 
     /** copying the developed sail into flatsail */
-    flatsail = CSail(npanel);
+    flatsail = CPanelGroup(npanel);
 
     for (j=0; j < npanel; j++)
         flatsail.panel[j] = dev.panel[j];

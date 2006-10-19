@@ -20,7 +20,7 @@
 #ifndef RIGDEF_H
 #define RIGDEF_H
 
-#include "sail.h"
+#include "panelgroup.h"
 
 typedef enum { SAILDEF, SAIL3D } enumRigSailType;
 
@@ -31,7 +31,7 @@ typedef enum { SAILDEF, SAIL3D } enumRigSailType;
  * @see CSail
  * @see CRigDef
  */
-class CRigSail : public CSail
+class CRigSail : public CPanelGroup
 {
 public:
     /** the type of file this sail was read from (sail definition or 3D sail) */
@@ -53,7 +53,7 @@ class CRigDef
 public:
     CRigDef();
 
-    vector<CSail> makeViewSail() const;
+    vector<CPanelGroup> makeViewSail() const;
 
     /** the collection of sails that makes up the rig */
     vector<CRigSail> rigsail;

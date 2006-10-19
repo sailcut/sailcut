@@ -21,7 +21,7 @@
 #define SAILWRITER_DXF_H
 
 #include "filewriter.h"
-#include "sail.h"
+#include "panelgroup.h"
 #include <iostream>
 #include <fstream>
 
@@ -31,7 +31,7 @@ class CSailDxfWriter : public CFileWriter
 {
 protected:
     /** the sail to write */
-    CSail _sail;
+    CPanelGroup _sail;
     /** the output stream */
     ofstream _out;
 
@@ -40,7 +40,7 @@ public:
      *
      * @param sail the sail to write
      */
-    CSailDxfWriter(const CSail &sail)
+    CSailDxfWriter(const CPanelGroup &sail)
             : CFileWriter(".dxf", "DXF files"), _sail(sail)
     {}
     ;
@@ -53,7 +53,7 @@ public:
 };
 
 
-/** A class used to write a CSail to a simple 2D DXF file.
+/** A class used to write a CPanelGroup to a simple 2D DXF file.
  */
 class CSailDxfWriter2d : public CSailDxfWriter
 {
@@ -62,7 +62,7 @@ public:
      *
      * @param sail the sail to write
      */
-    CSailDxfWriter2d(const CSail &sail)
+    CSailDxfWriter2d(const CPanelGroup &sail)
             : CSailDxfWriter(sail)
     {}
     ;
@@ -72,7 +72,7 @@ public:
 };
 
 
-/** A class used to write a CSail to a 2D DXF file with one block per panel.
+/** A class used to write a CPanelGroup to a 2D DXF file with one block per panel.
  */
 class CSailDxfWriter2dBlocks : public CSailDxfWriter2d
 {
@@ -81,7 +81,7 @@ public:
      *
      * @param sail the sail to write
      */
-    CSailDxfWriter2dBlocks(const CSail &sail)
+    CSailDxfWriter2dBlocks(const CPanelGroup &sail)
             : CSailDxfWriter2d(sail)
     {}
     ;
@@ -91,7 +91,7 @@ public:
 
 
 
-/** A class used to write a CSail to a 3D DXF file.
+/** A class used to write a CPanelGroup to a 3D DXF file.
  */
 class CSailDxfWriter3d : public CSailDxfWriter
 {
@@ -100,7 +100,7 @@ public:
      *
      * @param sail the sail to write
      */
-    CSailDxfWriter3d(const CSail &sail)
+    CSailDxfWriter3d(const CPanelGroup &sail)
             : CSailDxfWriter(sail)
     {}
     ;
