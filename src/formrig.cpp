@@ -74,7 +74,7 @@ void CFormRig::closeEvent(QCloseEvent *e)
  */
 void CFormRig::languageChange()
 {
-    setWindowTitle( "Sailcut CAD - " + tr("Rig") );
+    setWindowTitle( tr("Rig") );
 
     /* File menu */
     menuFile->setTitle( tr("&File") );
