@@ -104,6 +104,22 @@ public:
     ;
 };
 
+
+/** A class used to read a CHullDef hull definition from an XML file. */
+class CHullDefXmlReader : public XmlReaderTempl<CHullDef>
+{
+public:
+    /** The constructor.
+     *
+     * @param name the hull definition's name
+     */
+    CHullDefXmlReader(const QString &name)
+            : XmlReaderTempl<CHullDef>(name, ".hulldef", "Hull definitions")
+    {}
+    ;
+};
+
+
 /** A class used to read a CSailDef sail definition from an XML file. */
 class CSailDefXmlReader : public XmlReaderTempl<CSailDef>
 {
@@ -117,6 +133,7 @@ public:
     {}
     ;
 };
+
 
 /** A class used to read a CRigDef rig definition from an XML file. */
 class CRigDefXmlReader : public XmlReaderTempl<CRigDef>
@@ -132,7 +149,8 @@ public:
     ;
 };
 
+
 /** A class used to read a CPrefs set of preferences from an XML file. */
 typedef XmlReaderTempl<CPrefs> CPrefsXmlReader;
-//
+
 #endif
