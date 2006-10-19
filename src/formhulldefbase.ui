@@ -1,7 +1,7 @@
 <ui version="4.0" >
  <author>sailcuter</author>
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog" >
+ <class>CFormHullDefBase</class>
+ <widget class="QDialog" name="CFormHullDefBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>
@@ -818,7 +818,7 @@
            <number>6</number>
           </property>
           <item row="0" column="1" >
-           <widget class="QLineEdit" name="lineEdit" >
+           <widget class="QLineEdit" name="txtHullID" >
             <property name="minimumSize" >
              <size>
               <width>150</width>
@@ -1758,14 +1758,14 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="okButton" >
+      <widget class="QPushButton" name="btnOK" >
        <property name="text" >
         <string>OK</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="cancelButton" >
+      <widget class="QPushButton" name="btnCancel" >
        <property name="text" >
         <string>Cancel</string>
        </property>
@@ -1797,38 +1797,4 @@
   </layout>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>okButton</sender>
-   <signal>clicked()</signal>
-   <receiver>Dialog</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>278</x>
-     <y>253</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>96</x>
-     <y>254</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>cancelButton</sender>
-   <signal>clicked()</signal>
-   <receiver>Dialog</receiver>
-   <slot>reject()</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>369</x>
-     <y>253</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>179</x>
-     <y>282</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
 </ui>
