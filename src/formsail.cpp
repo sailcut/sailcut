@@ -25,11 +25,6 @@
 #include "formsaildef.h"
 #include "formmould.h"
 
-#include "hullworker.h"
-#include "sailcutqt.h"
-#include "saildisp.h"
-#include "saildoc.h"
-#include "sailpainter.h"
 #include "sailprinter.h"
 #include "sailworker.h"
 #include "sailwriter-carlson.h"
@@ -38,19 +33,17 @@
 #include "sailwriter-txt.h"
 #include "sailviewer-panel.h"
 
-#include <QDir>
 #include <QLayout>
-#include <QMenuBar>
+#include <QMenu>
 #include <QTabWidget>
-#include <QPainter>
 #include <QPrintDialog>
 #include <QPrinter>
 
 
 /**
- * Constructs Sailcut CAD's main window.
+ * Constructs a window to display a sail.
  *
- * @param parent the parent widget
+ * @param prefs the user preferences
  */
 CFormSail::CFormSail(CPrefs *myPrefs)
         : CFormDocumentTmpl<CSailDef, CSailDefXmlWriter> (myPrefs)
@@ -156,23 +149,12 @@ void CFormSail::setDef(const CSailDef& newdef)
     def = newdef;
     sail = CSailWorker(def).makeSail(flatsail,dispsail);
 
-    CPanelGroup obj_3d, obj_flat;
-    obj_3d.child.push_back(sail);
-    obj_flat.child.push_back(dispsail);
-
-    // generate the hull
-    if (def.sailType != WING)
-    {
-        CPanelGroup hull = CHullWorker(hulldef).makeHull();
-        obj_3d.child.push_back(hull);
-    }
-
-    panel[0]->setObject(obj_3d);
+    panel[0]->setObject(sail);
 #ifdef HAVE_GL
-    panel[1]->setObject(obj_3d);
-    panel[2]->setObject(obj_flat);
+    panel[1]->setObject(sail);
+    panel[2]->setObject(dispsail);
 #else
-    panel[1]->setObject(obj_flat);
+    panel[1]->setObject(dispsail);
 #endif
 }
 

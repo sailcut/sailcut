@@ -12,6 +12,7 @@ HEADER_FILES =  \
 	filewriter.h \
 	formdocument.h \
 	formhelp.h \
+	formhull.h \
 	formhulldef.h \
 	formmain.h \
 	formmould.h \
@@ -50,8 +51,8 @@ HEADER_FILES =  \
 # the C++ source files
 CPP_FILES = \
 	disparea.cpp \
-	formdocument.cpp \
 	formhelp.cpp \
+	formhull.cpp \
 	formhulldef.cpp \
 	formmain.cpp \
 	formmould.cpp \
@@ -91,8 +92,8 @@ UI_FILES = formhulldefbase.ui formsaildefbase.ui
 
 # generated source files
 BUILT_SOURCES = \
-	formdocument.moc.cpp \
 	formhelp.moc.cpp \
+	formhull.moc.cpp \
 	formhulldefbase.h \
 	formhulldefbase.cpp \
 	formhulldef.moc.cpp \

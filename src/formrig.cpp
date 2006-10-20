@@ -21,6 +21,7 @@
 #include "sailcutqt.h"
 #include "sailviewer-panel.h"
 #include "rigdef-panel.h"
+#include "hullworker.h"
 #include "sailworker.h"
 #include "sailwriter-xml.h"
 
@@ -75,9 +76,10 @@ void CFormRig::languageChange()
     setWindowTitle( tr("Rig") );
 
     /* File menu */
-    menuAdd->setTitle( tr("&Add sail") );
-    actionAddSailDef->setText( tr("sail &definition") );
-    actionAddSail->setText( tr("3D &sail") );
+    menuAdd->setTitle( tr("&Add") );
+    actionAddSailDef->setText( tr("&sail definition") );
+    actionAddHullDef->setText( tr("&hull definition") );
+    actionAddPanelGroup->setText( tr("3D &panels") );
 
     defpanel->languageChange();
     viewer->languageChange();
@@ -123,22 +125,44 @@ void CFormRig::setupMenuBar()
 {
     menuAdd = new QMenu(this);
     actionAddSailDef = menuAdd->addAction( "", this, SLOT( slotAddSailDef() ) );
-    actionAddSail = menuAdd->addAction( tr("3D &sail"), this, SLOT( slotAddSail() ) );
+    actionAddHullDef = menuAdd->addAction( "", this, SLOT( slotAddHullDef() ) );
+    actionAddPanelGroup = menuAdd->addAction( tr("3D &sail"), this, SLOT( slotAddPanelGroup() ) );
     extraFileMenus.push_back(menuAdd);
 }
 
 
 /**
- * The file menu's "Add->3d sail item" was clicked.
+ * The file menu's "Add->Panels" item was clicked.
  */
-void CFormRig::slotAddSail()
+void CFormRig::slotAddPanelGroup()
 {
     CRigSail rigsail;
     QString newname = CPanelGroupXmlWriter().readDialog((CPanelGroup&)rigsail,"");
 
     if (!newname.isNull())
     {
-        rigsail.type = SAIL3D;
+        rigsail.type = PANELGROUP;
+        rigsail.filename = newname;
+        def.rigsail.push_back(rigsail);
+        setDef(def);
+    }
+
+}
+
+
+/**
+ * The file menu's "Add->Hull definition" item was clicked.
+ */
+void CFormRig::slotAddHullDef()
+{
+    CHullDef hulldef;
+    QString newname = CHullDefXmlWriter().readDialog(hulldef,"");
+
+    if (!newname.isNull())
+    {
+        CRigSail rigsail;
+        (CPanelGroup&)rigsail = CHullWorker(hulldef).makeHull();
+        rigsail.type = HULLDEF;
         rigsail.filename = newname;
         def.rigsail.push_back(rigsail);
         setDef(def);

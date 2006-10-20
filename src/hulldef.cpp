@@ -38,10 +38,8 @@ CHullDef::CHullDef()
 CHullDef & CHullDef::operator=( const CHullDef &copy )
 {
     if (&copy == this)
-    {
-        CException e("CHullDef::operator= : self-assignment!");
-        throw(e);
-    }
+        return *this;
+    
     hullID = copy.hullID;
     LOA = copy.LOA;
     return *this;
