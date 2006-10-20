@@ -104,7 +104,6 @@ void CFormHull::setDef(const CHullDef& newdef)
 {
     def = newdef;
     CPanelGroup obj_3d = CHullWorker(def).makeHull();
-    cout << obj_3d << endl;
 
     panel[0]->setObject(obj_3d);
 #ifdef HAVE_GL
