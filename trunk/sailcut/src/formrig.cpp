@@ -104,17 +104,14 @@ void CFormRig::setDef(const CRigDef &newdef)
  */
 void CFormRig::setupMainWidget()
 {
-    QWidget *mainwidget = new QWidget(this);
-    viewer = new CSailViewerPanel(mainwidget, WIREFRAME, true, false);
-    defpanel = new CRigDefPanel(mainwidget);
+    viewer = new CSailViewerPanel(this, WIREFRAME, true, false);
+    defpanel = new CRigDefPanel(this);
 
-    QGridLayout *layout = new QGridLayout( mainwidget );
+    QGridLayout *layout = new QGridLayout(this);
     layout->addWidget(viewer, 0, 0);
     layout->setRowStretch(0, 2);
     layout->addWidget(defpanel, 1, 0);
     layout->setRowStretch(1, 1);
-
-    setCentralWidget(mainwidget);
 }
 
 
