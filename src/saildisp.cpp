@@ -97,6 +97,12 @@ void CSailDisp::setObject( const CPanelGroup &obj )
 {
     baseObject = obj;
     baseRect = baseObject.boundingRect();
+
+    // handle case where the bounding rectangle is flat
+    if (baseRect.height() == 0)
+        baseRect.max.y() += 1;
+    if (baseRect.width() == 0)
+        baseRect.max.x() += 1;
     center = baseRect.center();
 
     calcDispObject();
