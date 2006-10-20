@@ -165,7 +165,7 @@ void CFormRig::slotAddSail()
 void CFormRig::slotAddSailDef()
 {
     CSailDef saildef;
-    QString newname = CSailDefXmlReader("saildef").readDialog(saildef,"");
+    QString newname = CSailDefXmlReader().readDialog(saildef,"");
 
     if (!newname.isNull())
     {
@@ -195,7 +195,7 @@ void CFormRig::slotNew()
 void CFormRig::slotOpen()
 {
     CRigDef newdef;
-    QString newname = CRigDefXmlReader("rigdef").readDialog(newdef,filename);
+    QString newname = CRigDefXmlReader().readDialog(newdef,filename);
 
     if (!newname.isNull())
     {
@@ -219,7 +219,7 @@ bool CFormRig::save()
     // try writing to file, catch exception
     try
     {
-        CRigDefXmlWriter(rigdef,"rigdef").write(filename);
+        CRigDefXmlWriter(rigdef).write(filename);
         prefs->mruRigdef.touchEntry(filename);
         return true;
     }
@@ -236,7 +236,7 @@ bool CFormRig::save()
  */
 bool CFormRig::saveAs()
 {
-    QString newname = CRigDefXmlWriter(rigdef,"rigdef").writeDialog(filename);
+    QString newname = CRigDefXmlWriter(rigdef).writeDialog(filename);
 
     if (!newname.isNull())
     {
