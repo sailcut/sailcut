@@ -62,7 +62,18 @@ void CFormRig::closeEvent(QCloseEvent *e)
 {
     prefs->rigWindowHeight = height();
     prefs->rigWindowWidth = width();
-    QMainWindow::closeEvent(e);
+    CFormDocument::closeEvent(e);
+}
+
+
+/**
+ * Returns extra items for the file menu.
+ */
+vector<QMenu*> CFormRig::getFileMenu()
+{
+    vector<QMenu *> menu;
+    menu.push_back(menuAdd);
+    return menu;
 }
 
 
@@ -75,7 +86,6 @@ void CFormRig::languageChange()
     setWindowTitle( tr("Rig") );
 
     /* File menu */
-    menuFile->setTitle( tr("&File") );
     menuAdd->setTitle( tr("&Add sail") );
     actionAddSailDef->setText( tr("sail &definition") );
     actionAddSail->setText( tr("3D &sail") );
@@ -122,10 +132,7 @@ void CFormRig::setupMainWidget()
  */
 void CFormRig::setupMenuBar()
 {
-    /* create blank menu bar */
-    menuFile = menuBar()->addMenu( "" );
-
-    menuAdd = menuFile->addMenu( "" );
+    menuAdd = new QMenu(this);
     actionAddSailDef = menuAdd->addAction( "", this, SLOT( slotAddSailDef() ) );
     actionAddSail = menuAdd->addAction( tr("3D &sail"), this, SLOT( slotAddSail() ) );
 }

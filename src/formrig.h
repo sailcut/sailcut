@@ -38,6 +38,7 @@ class CFormRig : public CFormDocumentTmpl<CRigDef, CRigDefXmlWriter>
 
 public:
     CFormRig(CPrefs *myPrefs);
+    virtual vector<QMenu*> getFileMenu();
 
 protected:
     void closeEvent( QCloseEvent * e);
@@ -57,8 +58,6 @@ protected:
     /** A panel with one tab per sail in the current rig.  */
     CRigDefPanel *defpanel;
 
-    /** The File menu. */
-    QMenu *menuFile;
     /** The Add menu. */
     QMenu *menuAdd;
 

@@ -78,7 +78,7 @@ void CFormSail::closeEvent(QCloseEvent *e)
 {
     prefs->sailWindowHeight = height();
     prefs->sailWindowWidth = width();
-    QMainWindow::closeEvent(e);
+    CFormDocument::closeEvent(e);
 }
 
 
@@ -98,8 +98,6 @@ void CFormSail::keyPressEvent ( QKeyEvent * e )
 void CFormSail::languageChange()
 {
     setWindowTitle( "Sail" );
-
-    menuFile->setTitle( tr("&File") );
 
     // print submenu
     menuPrint->setTitle( tr("&Print") );
@@ -181,29 +179,37 @@ void CFormSail::setDef(const CSailDef& newdef)
 
 
 /**
+ * Returns extra items for the file menu.
+ */
+vector<QMenu*> CFormSail::getFileMenu()
+{
+    vector<QMenu *> menu;
+    menu.push_back(menuPrint);
+    menu.push_back(menuExport3d);
+    menu.push_back(menuExportFlat);
+    return menu;
+}
+
+
+/**
  * Creates the menu bar
  */
 void CFormSail::setupMenuBar()
 {
-    // File menu
-    menuFile = menuBar()->addMenu("");
-
     // print submenu
-    menuPrint = menuFile->addMenu("");
+    menuPrint = new QMenu(this);
     actionPrintData = menuPrint->addAction("", this, SLOT( slotPrintData() ));
     actionPrintDwg = menuPrint->addAction("", this, SLOT( slotPrintDwg() ));
     actionPrintDev = menuPrint->addAction("", this, SLOT( slotPrintDev() ));
 
-    menuFile->addSeparator();
-
     // export 3d submenu
-    menuExport3d = menuFile->addMenu("");
+    menuExport3d = new QMenu(this);
     actionExport3dDXF = menuExport3d->addAction("", this, SLOT( slotExportDXF() ) );
     actionExport3dTXT = menuExport3d->addAction("", this, SLOT( slotExportTXT() ) );
     actionExport3dXML = menuExport3d->addAction("", this, SLOT( slotExportXML() ) );
 
     // export flat submenu
-    menuExportFlat = menuFile->addMenu("");
+    menuExportFlat = new QMenu(this); //menuFile->addMenu("");
     actionExportFlatCarlson = menuExportFlat->addAction("", this, SLOT( slotExportFlatCarlson() ) );
     actionExportFlatDXF = menuExportFlat->addAction("", this, SLOT( slotExportFlatDXF() ) );
     //actionExportFlatDXFBlocks = menuExportFlat->addAction("", this, SLOT( slotExportFlatDXFBlocks() ) );
@@ -213,7 +219,7 @@ void CFormSail::setupMenuBar()
 
     // View menu
 
-    menuView = menuBar()->addMenu("");
+    menuView = new QMenu(this);
     actionViewDef = menuView->addAction( "", this, SLOT( slotDef() ) );
     actionViewMould = menuView->addAction( "", this, SLOT ( slotMould() ) );
     // TODO : enable the following action when the patch viewer is ready
@@ -227,7 +233,12 @@ void CFormSail::setupMenuBar()
  */
 void CFormSail::setupMainWidget()
 {
-    tabs = new QTabWidget(this);
+    QWidget *mainwidget = new QWidget(this);
+    
+    QGridLayout *layout = new QGridLayout( mainwidget );
+    
+    tabs = new QTabWidget(mainwidget);
+    layout->addWidget(tabs);
 
     CSailViewerPanel *tmp;
 
@@ -247,7 +258,7 @@ void CFormSail::setupMainWidget()
         tabs->addTab(panel[i],"");
     }
 
-    setCentralWidget(tabs);
+    setCentralWidget(mainwidget);
 }
 
 
