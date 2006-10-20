@@ -105,6 +105,8 @@ protected:
     QMenu *menuFileNew;
     /** the Help menu */
     QMenu *menuHelp;
+    /** the View menu */
+    QMenu *menuView;
     /** the Language menu */
     QMenu *menuLanguage;
 
@@ -142,7 +144,10 @@ protected:
     /** quit */
     QAction *actionQuit;
 
-    vector<QAction*> fileChildActions;
+    /** extra actions for the file menu */
+    vector<QAction*> childFileActions;
+    /** extra actions for the view menu */
+    vector<QAction*> childViewActions;
 };
 
 #endif

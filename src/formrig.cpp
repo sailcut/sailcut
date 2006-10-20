@@ -67,17 +67,6 @@ void CFormRig::closeEvent(QCloseEvent *e)
 
 
 /**
- * Returns extra items for the file menu.
- */
-vector<QMenu*> CFormRig::getFileMenu()
-{
-    vector<QMenu *> menu;
-    menu.push_back(menuAdd);
-    return menu;
-}
-
-
-/**
  * Sets the strings of the subwidgets using the current
  * language.
  */
@@ -135,6 +124,7 @@ void CFormRig::setupMenuBar()
     menuAdd = new QMenu(this);
     actionAddSailDef = menuAdd->addAction( "", this, SLOT( slotAddSailDef() ) );
     actionAddSail = menuAdd->addAction( tr("3D &sail"), this, SLOT( slotAddSail() ) );
+    extraFileMenus.push_back(menuAdd);
 }
 
 

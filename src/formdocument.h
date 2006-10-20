@@ -46,12 +46,12 @@ public:
         return filename;
     };
 
-    virtual vector<QMenu*> getFileMenu()
-    {
-        vector<QMenu*> empty;
-        return empty;
-    };
-
+public:
+    /** Extra submenus for the File menu */
+    vector<QMenu*> extraFileMenus;
+    /** Extra actions for the View menu */
+    vector<QAction*> extraViewActions;
+    
 protected:
     /** The user preferences. */
     CPrefs *prefs;

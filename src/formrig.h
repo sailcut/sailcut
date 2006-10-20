@@ -38,7 +38,6 @@ class CFormRig : public CFormDocumentTmpl<CRigDef, CRigDefXmlWriter>
 
 public:
     CFormRig(CPrefs *myPrefs);
-    virtual vector<QMenu*> getFileMenu();
 
 protected:
     void closeEvent( QCloseEvent * e);

@@ -123,7 +123,6 @@ void CFormSail::languageChange()
 
     // View menu
 
-    menuView->setTitle( tr("&View") );
     actionViewDef->setText( tr("&Dimensions") );
     actionViewMould->setText( tr("&Mould") );
     actionViewPatch->setText( tr("&Patches") );
@@ -179,34 +178,25 @@ void CFormSail::setDef(const CSailDef& newdef)
 
 
 /**
- * Returns extra items for the file menu.
- */
-vector<QMenu*> CFormSail::getFileMenu()
-{
-    vector<QMenu *> menu;
-    menu.push_back(menuPrint);
-    menu.push_back(menuExport3d);
-    menu.push_back(menuExportFlat);
-    return menu;
-}
-
-
-/**
  * Creates the menu bar
  */
 void CFormSail::setupMenuBar()
 {
+    // File sub menus
+    
     // print submenu
     menuPrint = new QMenu(this);
     actionPrintData = menuPrint->addAction("", this, SLOT( slotPrintData() ));
     actionPrintDwg = menuPrint->addAction("", this, SLOT( slotPrintDwg() ));
     actionPrintDev = menuPrint->addAction("", this, SLOT( slotPrintDev() ));
+    extraFileMenus.push_back(menuPrint);
 
     // export 3d submenu
     menuExport3d = new QMenu(this);
     actionExport3dDXF = menuExport3d->addAction("", this, SLOT( slotExportDXF() ) );
     actionExport3dTXT = menuExport3d->addAction("", this, SLOT( slotExportTXT() ) );
     actionExport3dXML = menuExport3d->addAction("", this, SLOT( slotExportXML() ) );
+    extraFileMenus.push_back(menuExport3d);
 
     // export flat submenu
     menuExportFlat = new QMenu(this); //menuFile->addMenu("");
@@ -216,15 +206,22 @@ void CFormSail::setupMenuBar()
     actionExportFlatHand = menuExportFlat->addAction("", this, SLOT( slotExportFlatHand() ) );
     actionExportFlatTXT = menuExportFlat->addAction("", this, SLOT( slotExportFlatTXT() ) );
     actionExportFlatXML = menuExportFlat->addAction("", this, SLOT( slotExportFlatXML() ) );
+    extraFileMenus.push_back(menuExportFlat);
 
-    // View menu
+    // View actions
 
-    menuView = new QMenu(this);
-    actionViewDef = menuView->addAction( "", this, SLOT( slotDef() ) );
-    actionViewMould = menuView->addAction( "", this, SLOT ( slotMould() ) );
+    actionViewDef = new QAction(this);
+    connect( actionViewDef, SIGNAL( triggered() ), this, SLOT( slotDef() ) );
+    extraViewActions.push_back(actionViewDef);
+    
+    actionViewMould = new QAction(this);
+    connect( actionViewMould, SIGNAL( triggered() ), this, SLOT ( slotMould() ) );
+    extraViewActions.push_back(actionViewMould);
+    
     // TODO : enable the following action when the patch viewer is ready
-    actionViewPatch = menuView->addAction( "" );
+    actionViewPatch = new QAction(this);
     actionViewPatch->setEnabled(false);
+    extraViewActions.push_back(actionViewPatch);
 }
 
 
