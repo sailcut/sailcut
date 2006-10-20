@@ -22,7 +22,7 @@
 
 #include "panelgroup.h"
 
-typedef enum { SAILDEF, SAIL3D } enumRigSailType;
+typedef enum { SAILDEF, HULLDEF, PANELGROUP } enumRigSailType;
 
 /**
  * A rig sail. This class extends a regular sail with information

@@ -250,10 +250,12 @@ void CSailDoc::get
     QDomElement e = findElement( parent, "enumRigSailType", name);
     QString s = e.attributes().namedItem("value").nodeValue();
 
+    if (!s.compare("HULLDEF"))
+        t = HULLDEF;
     if (!s.compare("SAILDEF"))
         t = SAILDEF;
-    if (!s.compare("SAIL3D"))
-        t = SAIL3D;
+    if (!s.compare("PANELGROUP"))
+        t = PANELGROUP;
 }
 
 /** Reads a CHullDef hulll definition from an XML document.
@@ -634,11 +636,14 @@ void CSailDoc::put( QDomNode &parent, const enumRigSailType &t, const QString &n
     QString value;
     switch (t)
     {
+    case HULLDEF:
+        value = "HULLDEF";
+        break;
     case SAILDEF:
         value = "SAILDEF";
         break;
-    case SAIL3D:
-        value = "SAIL3D";
+    case PANELGROUP:
+        value = "PANELGROUP";
         break;
     }
     QDomElement e = createElement("enumRigSailType",name,value);

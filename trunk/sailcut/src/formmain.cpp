@@ -24,32 +24,15 @@
 #include "formmain.h"
 #include "formsail.h"
 #include "formhelp.h"
+#include "formhull.h"
 #include "formrig.h"
 
-#include "hullworker.h"
 #include "sailcutqt.h"
-#include "saildisp.h"
-#include "saildoc.h"
-#include "sailpainter.h"
-#include "sailprinter.h"
-#include "sailworker.h"
-#include "sailwriter-carlson.h"
-#include "sailwriter-dxf.h"
-#include "sailwriter-hand.h"
-#include "sailwriter-txt.h"
-#include "sailwriter-xml.h"
-#include "sailviewer-panel.h"
 
 #include "../icons/sailcut.xpm"
 
-#include <QDir>
-#include <QLayout>
 #include <QMenuBar>
 #include <QStatusBar>
-#include <QTabWidget>
-#include <QPainter>
-#include <QPrintDialog>
-#include <QPrinter>
 #include <QSignalMapper>
 #include <QWorkspace>
 #ifdef HAVE_QDESKTOPSERVICES
@@ -144,6 +127,7 @@ void CFormMain::languageChange()
 
     menuFileNew->setTitle( tr("&New") );
     actionNewSail->setText( tr("Sail") );
+    actionNewHull->setText( tr("Hull") );
     actionNewRig->setText( tr("Rig") );
     actionOpen->setText( tr("&Open") );
     menuRecent->setTitle( tr("Open &recent") );
@@ -224,6 +208,7 @@ void CFormMain::setupMenuBar()
 
     menuFileNew = menuFile->addMenu("");
     actionNewSail = menuFileNew->addAction("", this, SLOT( slotNewSail() ) );
+    actionNewHull = menuFileNew->addAction("", this, SLOT( slotNewHull() ) );
     actionNewRig = menuFileNew->addAction("", this, SLOT( slotNewRig() ) );
     
     actionOpen = menuFile->addAction("", this, SLOT( slotOpen() ) );
@@ -372,6 +357,17 @@ void CFormMain::slotLanguage()
 
 
 /**
+ * Creates a new hull
+ */
+void CFormMain::slotNewHull()
+{
+    CFormHull *wnd = new CFormHull(prefs);
+    workspace->addWindow(wnd);
+    wnd->show();
+}
+
+
+/**
  * Creates a new rig
  */
 void CFormMain::slotNewRig()
@@ -426,7 +422,7 @@ void CFormMain::slotSave()
 {
     if (activeChild()->save())
     {
-        QString filename = activeChild()->getFilename();
+        QString filename = activeChild()->filename;
         fileAccess( tr("wrote '%1'").arg(filename), filename );
     }
 }
@@ -439,7 +435,7 @@ void CFormMain::slotSaveAs()
 {
     if (activeChild()->saveAs())
     {
-        QString filename = activeChild()->getFilename();
+        QString filename = activeChild()->filename;
         fileAccess( tr("wrote '%1'").arg(filename), filename );
     }
 }

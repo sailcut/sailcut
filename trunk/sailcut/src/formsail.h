@@ -20,11 +20,6 @@
 #ifndef FORMSAIL_H
 #define FORMSAIL_H
 
-#include <QMainWindow>
-#include <QMessageBox>
-
-#include "sailcalc.h"
-
 #include "formdocument.h"
 #include "sailwriter-xml.h"
 
@@ -81,9 +76,6 @@ protected:
     /** the tab widget */
     QTabWidget *tabs;
 
-    /** the definition of the current hull */
-    CHullDef hulldef;
-    
     /** the sail */
     CPanelGroup sail;
     /** the developped sail */

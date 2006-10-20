@@ -33,30 +33,26 @@ class CException;
  */
 class CFormDocument : public QMainWindow
 {
-    Q_OBJECT
-
 public:
-    CFormDocument(CPrefs *myPrefs);
+    /** The constructor. */
+    CFormDocument(CPrefs *myPrefs)
+        : prefs(myPrefs)
+    {};
     virtual bool open(const QString &newfile) = 0;
     virtual bool save() = 0;
     virtual bool saveAs() = 0;
-
-    const QString& getFilename()
-    {
-        return filename;
-    };
 
 public:
     /** Extra submenus for the File menu */
     vector<QMenu*> extraFileMenus;
     /** Extra actions for the View menu */
     vector<QAction*> extraViewActions;
+    /** The current filename. */
+    QString filename;
     
 protected:
     /** The user preferences. */
     CPrefs *prefs;
-    /** The current filename. */
-    QString filename;
 };
 
 
