@@ -24,7 +24,7 @@
 
 // forward definitions
 class CPrefs;
-
+class CException;
 
 /** A dialog holding a Sailcut document.
  */
@@ -34,7 +34,7 @@ class CFormDocument : public QMainWindow
 
 public:
     CFormDocument(CPrefs *myPrefs);
-//    virtual bool open() = 0;
+    virtual bool open(const QString &newfile) = 0;
     virtual bool save() = 0;
     virtual bool saveAs() = 0;
     const QString& getFilename()
@@ -47,6 +47,86 @@ protected:
     CPrefs *prefs;
     /** The current filename. */
     QString filename;
+};
+
+
+template <class deftype, class writertype>
+class CFormDocumentTmpl : public CFormDocument
+{
+public:
+    /** The constructor.
+     *
+     * @params myPrefs
+     */
+    CFormDocumentTmpl(CPrefs *myPrefs)
+        : CFormDocument(myPrefs)
+    {}
+    ;
+    
+    /**
+    * Reads the definition from an XML file.
+    */
+    virtual bool open(const QString &newfile)
+    {
+        try
+        {
+            deftype newdef = writertype().read(newfile);
+            setDef(newdef);
+            filename = newfile;
+            return true;
+        } catch (CException e) {
+            writertype::readErrorMessage();
+        }
+        return false;
+    };
+   
+    /**
+    * Saves the definition to an XML file.
+    */
+    virtual bool save()
+    {
+        if ( filename.isEmpty() )
+            return saveAs();
+
+        // try writing to file, catch exception
+        try
+        {
+            writertype().write(def, filename);
+            return true;
+        }
+        catch (CException e)
+        {
+            writertype::writeErrorMessage();
+        }
+        return false;
+    };
+
+    /**
+     * Opens a dialog to select the XML to which the definition should be saved.
+     */
+    virtual bool saveAs()
+    {
+        QString newfile = writertype().writeDialog(def, filename);
+
+        if ( !newfile.isNull() )
+        {
+            filename = newfile;
+            return true;
+        }
+        return false;
+    };
+
+    virtual void show()
+    {
+        setDef(def);
+        QMainWindow::show();
+    };
+    
+protected:
+    virtual void setDef(const deftype& newdef) = 0;
+    
+protected:
+    deftype def;
 };
 
 #endif

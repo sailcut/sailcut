@@ -419,9 +419,10 @@ void CFormMain::slotOpenRecent()
     
     CFormSail *wnd = new CFormSail(prefs);
     workspace->addWindow(wnd);
-    if (wnd->show(filename))
+    if (wnd->open(filename))
     {
         fileAccess(tr("loaded '%1'").arg(filename), filename);
+        wnd->show();
     } else {
         prefs->mruSaildef.removeEntry(filename);
         makeMenuMru();

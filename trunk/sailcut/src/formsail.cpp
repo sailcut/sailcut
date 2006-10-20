@@ -36,7 +36,6 @@
 #include "sailwriter-dxf.h"
 #include "sailwriter-hand.h"
 #include "sailwriter-txt.h"
-#include "sailwriter-xml.h"
 #include "sailviewer-panel.h"
 
 #include <QDir>
@@ -54,7 +53,7 @@
  * @param parent the parent widget
  */
 CFormSail::CFormSail(CPrefs *myPrefs)
-        : CFormDocument(myPrefs)
+        : CFormDocumentTmpl<CSailDef, CSailDefXmlWriter> (myPrefs)
 {
     setMinimumSize( QSize( 300, 220 ) );
 
@@ -101,8 +100,6 @@ void CFormSail::languageChange()
     setWindowTitle( "Sail" );
 
     menuFile->setTitle( tr("&File") );
-
-    actionOpen->setText( tr("&Open") );
 
     // print submenu
     menuPrint->setTitle( tr("&Print") );
@@ -157,17 +154,17 @@ void CFormSail::languageChange()
  *
  * @param newdef
  */
-void CFormSail::setSailDef(const CSailDef newdef)
+void CFormSail::setDef(const CSailDef& newdef)
 {
-    saildef = newdef;
-    sail = CSailWorker(saildef).makeSail(flatsail,dispsail);
+    def = newdef;
+    sail = CSailWorker(def).makeSail(flatsail,dispsail);
 
     CPanelGroup obj_3d, obj_flat;
     obj_3d.child.push_back(sail);
     obj_flat.child.push_back(dispsail);
 
     // generate the hull
-    if (saildef.sailType != WING)
+    if (def.sailType != WING)
     {
         CPanelGroup hull = CHullWorker(hulldef).makeHull();
         obj_3d.child.push_back(hull);
@@ -190,9 +187,6 @@ void CFormSail::setupMenuBar()
 {
     // File menu
     menuFile = menuBar()->addMenu("");
-    actionOpen = menuFile->addAction("", this, SLOT( slotOpen() ) );
-
-    menuFile->addSeparator();
 
     // print submenu
     menuPrint = menuFile->addMenu("");
@@ -201,7 +195,6 @@ void CFormSail::setupMenuBar()
     actionPrintDev = menuPrint->addAction("", this, SLOT( slotPrintDev() ));
 
     menuFile->addSeparator();
-
 
     // export 3d submenu
     menuExport3d = menuFile->addMenu("");
@@ -259,42 +252,17 @@ void CFormSail::setupMainWidget()
 
 
 /**
- * Opens a given sail file
- */
-bool CFormSail::show(const QString newname)
-{
-    bool ret = true;
-
-    // load or create sail
-    CSailDef newdef;
-    filename = newname;
-    if ( !filename.isNull() )
-    {
-        try
-        {
-            newdef = CSailDefXmlWriter().read(filename);
-        } catch (CException e) {
-            ret = false;
-        }
-    }
-    setSailDef(newdef);
-    QMainWindow::show();
-    return ret;
-}
-
-
-/**
  * Displays the sail CFormSailDef sail definition dialog.
  */
 void CFormSail::slotDef()
 {  // we pass the CFormSailDef a pointer to a copy of the sail definition so
     // that it can update it if necessary
-    CSailDef saildefcopy = saildef;
+    CSailDef defcopy = def;
 
-    if ( CFormSailDef(this , &saildefcopy).exec() )
+    if ( CFormSailDef(this , &defcopy).exec() )
     {
         // we returned from the dialog with an 'OK',
-        setSailDef(saildefcopy);
+        setDef(defcopy);
     }
 }
 
@@ -386,28 +354,12 @@ void CFormSail::slotExportFlatXML()
 void CFormSail::slotMould()
 {  // we pass the CFormMould a pointer to a copy of the sail mould so
     // that it can update it if necessary
-    CSailDef saildefcopy = saildef;
+    CSailDef defcopy = def;
 
-    if ( CFormMould(this , &saildefcopy.mould).exec() )
+    if ( CFormMould(this , &defcopy.mould).exec() )
     {
         // we returned from the dialog with an 'OK'
-        setSailDef(saildefcopy);
-    }
-}
-
-
-/**
- * Displays a dialog box to open an XML sail definition.
- */
-void CFormSail::slotOpen()
-{
-    CSailDef newdef;
-    QString newname = CSailDefXmlWriter().readDialog(newdef,filename);
-    if ( !newname.isNull() )
-    {
-        filename = newname;
-//        fileAccess(tr("loaded '%1'").arg(filename), filename);
-        setSailDef(newdef);
+        setDef(defcopy);
     }
 }
 
@@ -427,7 +379,7 @@ void CFormSail::slotPrintData()
         if ( printDialog.exec() == QDialog::Accepted )
         {
             CSailPrinter p(&myprinter);
-            p.printSailData(saildef);
+            p.printSailData(def);
         }
     }
     catch (CException e)
@@ -489,43 +441,4 @@ void CFormSail::slotPrintDwg()
     }
 }
 
-
-/**
- * Saves the current sail definition to an XML file.
- */
-bool CFormSail::save()
-{
-    if ( filename.isEmpty() )
-    {
-        return saveAs();
-    }
-
-    // try writing to file, catch exception
-    try
-    {
-        CSailDefXmlWriter().write(saildef, filename);
-        return true;
-    }
-    catch (CException e)
-    {
-        CSailDefXmlWriter::writeErrorMessage();
-    }
-    return false;
-}
-
-
-/**
- * Opens a dialog to select the XML to which the sail definition should be saved.
- */
-bool CFormSail::saveAs()
-{
-    QString newname = CSailDefXmlWriter().writeDialog(saildef, filename);
-
-    if ( !newname.isNull() )
-    {
-        filename = newname;
-        return true;
-    }
-    return false;
-}
 

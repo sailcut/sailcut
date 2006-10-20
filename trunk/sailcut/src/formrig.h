@@ -22,31 +22,26 @@
 
 #include "formdocument.h"
 #include "rigdef.h"
+#include "sailwriter-xml.h"
 
 class QAction;
 class QMenu;
 class CSailViewerPanel;
 class CRigDefPanel;
-class CPrefs;
 
 
 /** A form allowing the user to assemble several sails into a rig.
  */
-class CFormRig : public CFormDocument
+class CFormRig : public CFormDocumentTmpl<CRigDef, CRigDefXmlWriter>
 {
     Q_OBJECT
 
 public:
-    // construction, destruction
     CFormRig(CPrefs *myPrefs);
-
-    //virtual bool open();
-    virtual bool save();
-    virtual bool saveAs();
 
 protected:
     void closeEvent( QCloseEvent * e);
-    void setRigDef(const CRigDef &newdef);
+    void setDef(const CRigDef &newdef);
     void setupMainWidget();
     void setupMenuBar();
 
@@ -54,8 +49,6 @@ protected slots:
     virtual void languageChange();
     virtual void slotAddSail();
     virtual void slotAddSailDef();
-    virtual void slotNew();
-    virtual void slotOpen();
     virtual void slotUpdate(const CRigDef& newdef);
 
 protected:
@@ -63,22 +56,16 @@ protected:
     CSailViewerPanel *viewer;
     /** A panel with one tab per sail in the current rig.  */
     CRigDefPanel *defpanel;
-    /** The rig definition. */
-    CRigDef rigdef;
 
     /** The File menu. */
     QMenu *menuFile;
     /** The Add menu. */
     QMenu *menuAdd;
 
-    /** create a new rig def */
-    QAction *actionNew;
     /** add a sail definition */
     QAction *actionAddSailDef;
     /** add a sail */
     QAction *actionAddSail;
-    /** read a rig from file */
-    QAction *actionOpen;
 
 };
 
