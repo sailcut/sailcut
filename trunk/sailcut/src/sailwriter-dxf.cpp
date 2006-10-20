@@ -32,7 +32,7 @@
  * @param code atom code
  * @param content atom content
  */
-void CSailDxfWriter::writeAtom(ofstream &out, int code, const QString& content)
+void CSailDxfWriter::writeAtom(ofstream &out, int code, const QString& content) const
 {
     out << code << endl << string(content.toLocal8Bit()) << endl;
 }
@@ -46,7 +46,7 @@ void CSailDxfWriter::writeAtom(ofstream &out, int code, const QString& content)
  * @param p2 third point
  * @param layer
  */
-void CSailDxfWriter::writeFace(ofstream &out, CPoint3d p0, CPoint3d p1, CPoint3d p2, unsigned int layer)
+void CSailDxfWriter::writeFace(ofstream &out, CPoint3d p0, CPoint3d p1, CPoint3d p2, unsigned int layer) const
 {
     // skip empty face
     real area = CVector3d(p1 -p0).cross(p2 - p0).norm();
@@ -87,7 +87,7 @@ void CSailDxfWriter::writeFace(ofstream &out, CPoint3d p0, CPoint3d p1, CPoint3d
  * @param color
  * red=1 blue=5 white=7
  */
-void CSailDxfWriter::writePolyline(ofstream &out, unsigned int layer, unsigned int color)
+void CSailDxfWriter::writePolyline(ofstream &out, unsigned int layer, unsigned int color) const
 {
     writeAtom(out, 0, "POLYLINE");
     // set the layer
@@ -107,7 +107,7 @@ void CSailDxfWriter::writePolyline(ofstream &out, unsigned int layer, unsigned i
  * @param pt  point
  * @param layer
  */
-void CSailDxfWriter::writeVertex(ofstream &out, CPoint3d pt, unsigned int layer)
+void CSailDxfWriter::writeVertex(ofstream &out, CPoint3d pt, unsigned int layer) const
 {
     writeAtom(out, 0, "VERTEX");
     // set the layer
@@ -135,7 +135,7 @@ void CSailDxfWriter::writeVertex(ofstream &out, CPoint3d pt, unsigned int layer)
  * @param sail the sail to write
  * @param filename the file to write to
  */
-void CSailDxfWriter2d::write(const CPanelGroup &sail, const QString &filename)
+void CSailDxfWriter2d::write(const CPanelGroup &sail, const QString &filename) const
 {
     ofstream out;
     
@@ -196,7 +196,7 @@ void CSailDxfWriter2d::write(const CPanelGroup &sail, const QString &filename)
  * @param sail the sail to write
  * @param filename the file to write to
  */
-void CSailDxfWriter2dBlocks::write(const CPanelGroup &sail, const QString &filename)
+void CSailDxfWriter2dBlocks::write(const CPanelGroup &sail, const QString &filename) const
 {
     ofstream out;
     out.open(QFile::encodeName(filename),ios::out);
@@ -272,7 +272,7 @@ void CSailDxfWriter2dBlocks::write(const CPanelGroup &sail, const QString &filen
  * @param sail the sail to write
  * @param panel = the number of the panel to write
  */
-void CSailDxfWriter2d::writePanel(ofstream &out, const CPanel &panel, unsigned int layer)
+void CSailDxfWriter2d::writePanel(ofstream &out, const CPanel &panel, unsigned int layer) const
 {
     //writeAtom(out, 999, panel.label.name);
 
@@ -416,7 +416,7 @@ void CSailDxfWriter2d::writePanel(ofstream &out, const CPanel &panel, unsigned i
  * @param sail the sail to write
  * @param filename the file to write to
  */
-void CSailDxfWriter3d::write(const CPanelGroup &sail, const QString &filename)
+void CSailDxfWriter3d::write(const CPanelGroup &sail, const QString &filename) const
 {
     ofstream out;
     out.open(QFile::encodeName(filename), ios::out);
@@ -477,7 +477,7 @@ void CSailDxfWriter3d::write(const CPanelGroup &sail, const QString &filename)
  * @param sail the sail to write
  * @param panel the number of the panel to write
  */
-void CSailDxfWriter3d::writePanel(ofstream &out, const CPanel &panel, unsigned int layer)
+void CSailDxfWriter3d::writePanel(ofstream &out, const CPanel &panel, unsigned int layer) const
 {
     //writeAtom(out, 999, panel.label.name);
     //writeAtom(out, 999, QString("panel : ") + QString::number(panel));

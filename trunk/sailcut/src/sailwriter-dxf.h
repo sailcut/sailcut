@@ -20,7 +20,7 @@
 #ifndef SAILWRITER_DXF_H
 #define SAILWRITER_DXF_H
 
-#include "filewriter.h"
+#include "fileio.h"
 #include "panelgroup.h"
 #include <iostream>
 #include <fstream>
@@ -36,10 +36,10 @@ public:
     {}
     ;
 
-    void writeAtom(ofstream &out, int code, const QString& content);
-    void writeFace(ofstream &out, CPoint3d p0, CPoint3d p1, CPoint3d p2, unsigned int layer);
-    void writePolyline(ofstream &out, unsigned int layer, unsigned int color);
-    void writeVertex(ofstream &out, CPoint3d p0, unsigned int layer);
+    void writeAtom(ofstream &out, int code, const QString& content) const;
+    void writeFace(ofstream &out, CPoint3d p0, CPoint3d p1, CPoint3d p2, unsigned int layer) const;
+    void writePolyline(ofstream &out, unsigned int layer, unsigned int color) const;
+    void writeVertex(ofstream &out, CPoint3d p0, unsigned int layer) const;
 };
 
 
@@ -56,8 +56,8 @@ public:
     {}
     ;
 
-    void write(const CPanelGroup &sail, const QString &filename);
-    void writePanel(ofstream &out, const CPanel &panel, unsigned int layer);
+    void write(const CPanelGroup &sail, const QString &filename) const;
+    void writePanel(ofstream &out, const CPanel &panel, unsigned int layer) const;
 };
 
 
@@ -72,7 +72,7 @@ public:
     {}
     ;
 
-    void write(const CPanelGroup &sail, const QString &filename);
+    void write(const CPanelGroup &sail, const QString &filename) const;
 };
 
 
@@ -88,8 +88,8 @@ public:
     {}
     ;
 
-    void write(const CPanelGroup &sail, const QString &filename);
-    void writePanel(ofstream &out, const CPanel &panel, unsigned int layer);
+    void write(const CPanelGroup &sail, const QString &filename) const;
+    void writePanel(ofstream &out, const CPanel &panel, unsigned int layer) const;
 };
 
 

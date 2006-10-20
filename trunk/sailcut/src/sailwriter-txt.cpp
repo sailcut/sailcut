@@ -26,7 +26,7 @@
  *
  * @param filename the file to write to
  */
-void CSailTxtWriter::write(const CPanelGroup &sail, const QString &filename)
+void CSailTxtWriter::write(const CPanelGroup &sail, const QString &filename) const
 {
     ofstream myOut;
     myOut.open(QFile::encodeName(filename), ios::out);

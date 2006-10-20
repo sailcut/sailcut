@@ -22,7 +22,6 @@
 #include "sailviewer-panel.h"
 #include "rigdef-panel.h"
 #include "sailworker.h"
-#include "sailreader-xml.h"
 #include "sailwriter-xml.h"
 
 #include <QLayout>
@@ -146,7 +145,7 @@ void CFormRig::setupMenuBar()
 void CFormRig::slotAddSail()
 {
     CRigSail rigsail;
-    QString newname = CPanelGroupXmlReader().readDialog((CPanelGroup&)rigsail,"");
+    QString newname = CPanelGroupXmlWriter().readDialog((CPanelGroup&)rigsail,"");
 
     if (!newname.isNull())
     {
@@ -165,7 +164,7 @@ void CFormRig::slotAddSail()
 void CFormRig::slotAddSailDef()
 {
     CSailDef saildef;
-    QString newname = CSailDefXmlReader().readDialog(saildef,"");
+    QString newname = CSailDefXmlWriter().readDialog(saildef,"");
 
     if (!newname.isNull())
     {
@@ -195,7 +194,7 @@ void CFormRig::slotNew()
 void CFormRig::slotOpen()
 {
     CRigDef newdef;
-    QString newname = CRigDefXmlReader().readDialog(newdef,filename);
+    QString newname = CRigDefXmlWriter().readDialog(newdef,filename);
 
     if (!newname.isNull())
     {

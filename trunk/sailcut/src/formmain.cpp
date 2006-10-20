@@ -32,7 +32,6 @@
 #include "saildoc.h"
 #include "sailpainter.h"
 #include "sailprinter.h"
-#include "sailreader-xml.h"
 #include "sailworker.h"
 #include "sailwriter-carlson.h"
 #include "sailwriter-dxf.h"

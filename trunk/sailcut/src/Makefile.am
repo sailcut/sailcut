@@ -10,7 +10,6 @@ bin_PROGRAMS = sailcut
 HEADER_FILES =  \
 	disparea.h \
 	fileio.h \
-	filewriter.h \
 	formdocument.h \
 	formhelp.h \
 	formhulldef.h \
@@ -51,7 +50,6 @@ HEADER_FILES =  \
 # the C++ source files
 CPP_FILES = \
 	disparea.cpp \
-	fileio.cpp \
 	formdocument.cpp \
 	formhelp.cpp \
 	formhulldef.cpp \

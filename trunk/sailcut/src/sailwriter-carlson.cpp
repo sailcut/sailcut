@@ -33,7 +33,7 @@ CSailCarlsonWriter::CSailCarlsonWriter()
  *
  * @param ct number of points to be written
  */
-void CSailCarlsonWriter::writeDraw(ofstream &out, unsigned int ct)
+void CSailCarlsonWriter::writeDraw(ofstream &out, unsigned int ct) const
 {
     out.setf(ios::left, ios::adjustfield);
     out<< setw(16) <<"draw"<<  ct << CRLF;
@@ -44,7 +44,7 @@ void CSailCarlsonWriter::writeDraw(ofstream &out, unsigned int ct)
  *
  * @param ct number of points to be written
  */
-void CSailCarlsonWriter::writeCut(ofstream &out, unsigned int ct)
+void CSailCarlsonWriter::writeCut(ofstream &out, unsigned int ct) const
 {
     out.setf(ios::left, ios::adjustfield);
     out<< setw(16) <<"cut"<<  ct << CRLF;
@@ -55,7 +55,7 @@ void CSailCarlsonWriter::writeCut(ofstream &out, unsigned int ct)
  *
  * @param p0 3d point to be written
  */
-void CSailCarlsonWriter::writePoint(ofstream &out, CPoint3d p0)
+void CSailCarlsonWriter::writePoint(ofstream &out, CPoint3d p0) const
 {
     real x=0, y=0;
     x= p0.x();
@@ -72,7 +72,7 @@ void CSailCarlsonWriter::writePoint(ofstream &out, CPoint3d p0)
  * @param panel the number of the panel to write
  *
  */
-void CSailCarlsonWriter::writePanelHeader(ofstream &out, const CPanel &panel)
+void CSailCarlsonWriter::writePanelHeader(ofstream &out, const CPanel &panel) const
 {
     //char identity;
     //identity = panel.label.name;
@@ -92,7 +92,7 @@ void CSailCarlsonWriter::writePanelHeader(ofstream &out, const CPanel &panel)
  * @param sail the sail to write
  * @param filename the file to write to
  */
-void CSailCarlsonWriter::write(const CPanelGroup &sail, const QString &filename)
+void CSailCarlsonWriter::write(const CPanelGroup &sail, const QString &filename) const
 {
     ofstream out;
 
@@ -117,7 +117,7 @@ void CSailCarlsonWriter::write(const CPanelGroup &sail, const QString &filename)
  * @param panel the number of the panel to write
  *
  */
-void CSailCarlsonWriter::writePanel(ofstream &out, const CPanel &panel)
+void CSailCarlsonWriter::writePanel(ofstream &out, const CPanel &panel) const
 {
     CSide top = panel.top;
     CSide btm = panel.bottom;

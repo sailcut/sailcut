@@ -26,7 +26,7 @@
   *
   * @param filename the file to write to
   */
-void CSailHandWriter::write(const CPanelGroup &sail, const QString &filename)
+void CSailHandWriter::write(const CPanelGroup &sail, const QString &filename) const
 {
     // open the output file
     ofstream myOut;

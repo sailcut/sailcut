@@ -20,7 +20,7 @@
 #ifndef SAILWRITER_CARLSON_H
 #define SAILWRITER_CARLSON_H
 
-#include "filewriter.h"
+#include "fileio.h"
 #include "panelgroup.h"
 #include <fstream>
 
@@ -31,12 +31,12 @@ class CSailCarlsonWriter : public CFileWriter<CPanelGroup>
 public:
     CSailCarlsonWriter();
 
-    void write(const CPanelGroup &sail, const QString &filename);
-    void writePanel(ofstream &out, const CPanel &panel);
-    void writePanelHeader(ofstream &out, const CPanel &panel);
-    void writeDraw(ofstream &out, unsigned int ct);
-    void writeCut(ofstream &out, unsigned int ct);
-    void writePoint(ofstream &out, CPoint3d p0);
+    void write(const CPanelGroup &sail, const QString &filename) const;
+    void writePanel(ofstream &out, const CPanel &panel) const;
+    void writePanelHeader(ofstream &out, const CPanel &panel) const;
+    void writeDraw(ofstream &out, unsigned int ct) const;
+    void writeCut(ofstream &out, unsigned int ct) const;
+    void writePoint(ofstream &out, CPoint3d p0) const;
 
 };
 

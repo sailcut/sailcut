@@ -18,7 +18,7 @@
  */
 
 #include "rigdef-panel.h"
-#include "sailreader-xml.h"
+#include "sailwriter-xml.h"
 #include "sailworker.h"
 
 #include <QLabel>
@@ -163,10 +163,10 @@ void CRigSailWidget::slotReload()
         switch (rigsail.type)
         {
         case SAILDEF:
-            (CPanelGroup&)rigsail = CSailWorker(CSailDefXmlReader().read(rigsail.filename)).makeSail();
+            (CPanelGroup&)rigsail = CSailWorker(CSailDefXmlWriter().read(rigsail.filename)).makeSail();
             break;
         case SAIL3D:
-            (CPanelGroup&)rigsail = CPanelGroupXmlReader().read(rigsail.filename);
+            (CPanelGroup&)rigsail = CPanelGroupXmlWriter().read(rigsail.filename);
             break;
         }
         signalUpdate(rigsail);

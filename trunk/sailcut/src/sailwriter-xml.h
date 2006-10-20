@@ -20,7 +20,9 @@
 #ifndef SAILWRITER_XML_H
 #define SAILWRITER_XML_H
 
-#include "filewriter.h"
+#include "fileio.h"
+#include "saildoc.h"
+
 
 /** This class allows you to write sailcut objects to
  *  an XML file.
@@ -54,12 +56,25 @@ public:
      * @param obj the object to write
      * @param filename the file to write to
      */
-    virtual void write(const objtype &obj, const QString &filename)
+    virtual void write(const objtype &obj, const QString &filename) const
     {
         CSailDoc doc;
         doc.put(doc.top, obj, _name);
         doc.toFile(filename);
     };
+
+    /** Read object from an XML file.
+     *
+     * @param filename the file we read from
+     */
+    const objtype read(const QString &filename) const
+    {
+        CSailDoc doc(filename);
+        objtype obj;
+        doc.get(doc.top, obj, _name);
+        return obj;
+    };
+   
 };
 
 
