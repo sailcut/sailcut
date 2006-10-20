@@ -43,7 +43,6 @@
 #include <QDir>
 #include <QLayout>
 #include <QMenuBar>
-#include <QStatusBar>
 #include <QTabWidget>
 #include <QPainter>
 #include <QPrintDialog>
@@ -59,10 +58,6 @@ CFormSail::CFormSail(CPrefs *myPrefs)
         : CFormDocument(myPrefs)
 {
     setMinimumSize( QSize( 300, 220 ) );
-
-    // create status bar
-    statusbar = new QStatusBar(this);
-    setStatusBar(statusbar);
 
     // create menu bar
     setupMenuBar();
@@ -99,21 +94,6 @@ void CFormSail::keyPressEvent ( QKeyEvent * e )
 
 
 /**
- * This method is called whenever we read or write a sail definition.
- * It updates the Most Recently Used files list correspondingly.
- *
- * @param event The action performed on the file (read, write)
- * @param file The file that was accessed
- */
-void CFormSail::fileAccess(QString event, QString file)
-{
-    statusbar->showMessage(event);
-    prefs->mruSaildef.touchEntry(file);
-    makeMenuMru();
-}
-
-
-/**
  * Sets the strings of the subwidgets using the current
  * language.
  */
@@ -124,7 +104,6 @@ void CFormSail::languageChange()
     menuFile->setTitle( tr("&File") );
 
     actionOpen->setText( tr("&Open") );
-    menuRecent->setTitle( tr("Open &recent") );
 
     // print submenu
     menuPrint->setTitle( tr("&Print") );
@@ -175,20 +154,6 @@ void CFormSail::languageChange()
 
 
 /**
- * Creates the "Open Recent" menu from the Most Recently Used files list.
- */
-void CFormSail::makeMenuMru()
-{
-    menuRecent->clear();
-
-    for ( unsigned int i = 0; i < prefs->mruSaildef.size(); i++)
-    {
-        menuRecent->addAction( prefs->mruSaildef[i], this, SLOT( slotOpenRecent() ) )->setData(i);
-    }
-}
-
-
-/**
  * Replaces the current sail definition.
  *
  * @param newdef
@@ -227,8 +192,6 @@ void CFormSail::setupMenuBar()
     // File menu
     menuFile = menuBar()->addMenu("");
     actionOpen = menuFile->addAction("", this, SLOT( slotOpen() ) );
-
-    menuRecent = menuFile->addMenu("");
 
     menuFile->addSeparator();
 
@@ -299,25 +262,25 @@ void CFormSail::setupMainWidget()
 /**
  * Opens a given sail file
  */
-void CFormSail::show(const QString newname)
+bool CFormSail::show(const QString newname)
 {
-    // load preferences
-    makeMenuMru();
+    bool ret = true;
 
     // load or create sail
     CSailDef newdef;
     filename = newname;
     if ( !filename.isNull() )
     {
-        newdef = CSailDefXmlReader("saildef").read(filename);
-        fileAccess(tr("loaded '%1'").arg(filename),filename);
-    }
-    else
-    {
-        statusbar->showMessage( tr("created new sail") );
+        try
+        {
+            newdef = CSailDefXmlReader("saildef").read(filename);
+        } catch (CException e) {
+            ret = false;
+        }
     }
     setSailDef(newdef);
     QMainWindow::show();
+    return ret;
 }
 
 
@@ -444,34 +407,8 @@ void CFormSail::slotOpen()
     if ( !newname.isNull() )
     {
         filename = newname;
-        fileAccess(tr("loaded '%1'").arg(filename), filename);
+//        fileAccess(tr("loaded '%1'").arg(filename), filename);
         setSailDef(newdef);
-    }
-}
-
-
-/**
- * Opens a recently used sail definition.
- */
-void CFormSail::slotOpenRecent()
-{
-    // retrieve the index of the MRU entry
-    QAction *a = qobject_cast<QAction *>(sender());
-    if ( !a )
-        return;
-    int index = a->data().toInt();
-
-    filename = prefs->mruSaildef[index];
-    try
-    {
-        setSailDef(CSailDefXmlReader("saildef").read(filename));
-        fileAccess(tr("loaded '%1'").arg(filename), filename);
-    }
-    catch (CException e)
-    {
-        prefs->mruSaildef.removeEntry(filename);
-        makeMenuMru();
-        statusbar->showMessage( tr("error loading '%1'").arg(filename) );
     }
 }
 
@@ -568,7 +505,6 @@ bool CFormSail::save()
     try
     {
         CSailDefXmlWriter(saildef , "saildef").write(filename);
-        fileAccess(tr("wrote '%1'").arg(filename),filename);
         return true;
     }
     catch (CException e)
@@ -589,7 +525,6 @@ bool CFormSail::saveAs()
     if ( !newname.isNull() )
     {
         filename = newname;
-        fileAccess(tr("wrote '%1'").arg(filename), filename);
         return true;
     }
     return false;

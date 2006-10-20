@@ -40,12 +40,12 @@ public:
     // construction, destruction
     CFormRig(CPrefs *myPrefs);
 
+    //virtual bool open();
     virtual bool save();
     virtual bool saveAs();
 
 protected:
     void closeEvent( QCloseEvent * e);
-    void makeMenuMru();
     void setRigDef(const CRigDef &newdef);
     void setupMainWidget();
     void setupMenuBar();
@@ -56,7 +56,6 @@ protected slots:
     virtual void slotAddSailDef();
     virtual void slotNew();
     virtual void slotOpen();
-    virtual void slotOpenRecent();
     virtual void slotUpdate(const CRigDef& newdef);
 
 protected:
@@ -71,8 +70,6 @@ protected:
     QMenu *menuFile;
     /** The Add menu. */
     QMenu *menuAdd;
-    /** The submenu with the most recently used rig definitions. */
-    QMenu *menuRecent;
 
     /** create a new rig def */
     QAction *actionNew;
