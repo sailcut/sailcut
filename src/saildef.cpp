@@ -89,10 +89,8 @@ CSailDef::CSailDef()
 CSailDef & CSailDef::operator=( const CSailDef &copy )
 {
     if (&copy == this)
-    {
-        CException e("CSailDef::operator= : self-assignment!");
-        throw(e);
-    }
+        return *this;
+    
     sailID = copy.sailID;
     sailCut = copy.sailCut;
     sailType = copy.sailType;

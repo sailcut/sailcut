@@ -34,7 +34,7 @@
  * @param prefs the user preferences
  */
 CFormRig::CFormRig(CPrefs *myPrefs)
-        : CFormDocument(myPrefs)
+        : CFormDocumentTmpl<CRigDef, CRigDefXmlWriter>(myPrefs)
 {
     // create main widget
     setupMainWidget();
@@ -76,16 +76,12 @@ void CFormRig::languageChange()
 
     /* File menu */
     menuFile->setTitle( tr("&File") );
-    actionNew->setText( tr("&New") );
     menuAdd->setTitle( tr("&Add sail") );
     actionAddSailDef->setText( tr("sail &definition") );
     actionAddSail->setText( tr("3D &sail") );
 
-    actionOpen->setText( tr("&Open") );
-
     defpanel->languageChange();
     viewer->languageChange();
-
 }
 
 
@@ -94,11 +90,11 @@ void CFormRig::languageChange()
  *
  * @param newdef The new rig definition
  */
-void CFormRig::setRigDef(const CRigDef &newdef)
+void CFormRig::setDef(const CRigDef &newdef)
 {
-    rigdef = newdef;
-    viewer->setObject(rigdef.makeViewSail());
-    defpanel->setRigDef(rigdef);
+    def = newdef;
+    viewer->setObject(def.makeViewSail());
+    defpanel->setRigDef(def);
 }
 
 
@@ -129,13 +125,9 @@ void CFormRig::setupMenuBar()
     /* create blank menu bar */
     menuFile = menuBar()->addMenu( "" );
 
-    actionNew = menuFile->addAction( "", this, SLOT( slotNew() ) );
-
     menuAdd = menuFile->addMenu( "" );
     actionAddSailDef = menuAdd->addAction( "", this, SLOT( slotAddSailDef() ) );
     actionAddSail = menuAdd->addAction( tr("3D &sail"), this, SLOT( slotAddSail() ) );
-
-    actionOpen = menuFile->addAction( "", this, SLOT( slotOpen() ) );
 }
 
 
@@ -151,8 +143,8 @@ void CFormRig::slotAddSail()
     {
         rigsail.type = SAIL3D;
         rigsail.filename = newname;
-        rigdef.rigsail.push_back(rigsail);
-        setRigDef(rigdef);
+        def.rigsail.push_back(rigsail);
+        setDef(def);
     }
 
 }
@@ -172,73 +164,10 @@ void CFormRig::slotAddSailDef()
         (CPanelGroup&)rigsail = CSailWorker(saildef).makeSail();
         rigsail.type = SAILDEF;
         rigsail.filename = newname;
-        rigdef.rigsail.push_back(rigsail);
-        setRigDef(rigdef);
+        def.rigsail.push_back(rigsail);
+        setDef(def);
     }
 
-}
-
-
-/**
- * The file menu's New item was clicked
- */
-void CFormRig::slotNew()
-{
-    setRigDef(CRigDef());
-}
-
-
-/**
- * The file menu's Open item was clicked.
- */
-void CFormRig::slotOpen()
-{
-    CRigDef newdef;
-    QString newname = CRigDefXmlWriter().readDialog(newdef,filename);
-
-    if (!newname.isNull())
-    {
-        filename = newname;
-        setRigDef(newdef);
-    }
-}
-
-
-/**
- * The file menu's Save item was clicked.
- */
-bool CFormRig::save()
-{
-    if ( filename.isEmpty() )
-        return saveAs();
-
-    // try writing to file, catch exception
-    try
-    {
-        CRigDefXmlWriter().write(rigdef, filename);
-        return true;
-    }
-    catch (CException e)
-    {
-        CRigDefXmlWriter::writeErrorMessage();
-    }
-    return false;
-}
-
-
-/**
- * The file menu's Save As item was clicked.
- */
-bool CFormRig::saveAs()
-{
-    QString newname = CRigDefXmlWriter().writeDialog(rigdef, filename);
-
-    if (!newname.isNull())
-    {
-        filename = newname;
-        return true;
-    }
-    return false;
 }
 
 
@@ -249,6 +178,8 @@ bool CFormRig::saveAs()
  */
 void CFormRig::slotUpdate(const CRigDef& newdef)
 {
-    rigdef = newdef;
-    viewer->setObject(rigdef.makeViewSail());
+    def = newdef;
+    viewer->setObject(def.makeViewSail());
 }
+
+

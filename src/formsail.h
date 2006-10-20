@@ -26,9 +26,7 @@
 #include "sailcalc.h"
 
 #include "formdocument.h"
-#include "panelgroup.h"
-#include "hulldef.h"
-#include "saildef.h"
+#include "sailwriter-xml.h"
 
 // forward definitions
 class QMenuBar;
@@ -42,7 +40,7 @@ class CPrefs;
 
 /** Dialog holding a sail.
  */
-class CFormSail : public CFormDocument
+class CFormSail : public CFormDocumentTmpl<CSailDef, CSailDefXmlWriter>
 {
     Q_OBJECT
 
@@ -50,17 +48,10 @@ public:
     // construction, destruction
     CFormSail(CPrefs *myPrefs);
 
-    bool show(const QString newname = QString::null);
-    void setSailDef(const CSailDef newdef);
-
-//    virtual bool open();
-    virtual bool save();
-    virtual bool saveAs();
-
 protected:
     void closeEvent( QCloseEvent * e);
     void keyPressEvent ( QKeyEvent * e );
-
+    void setDef(const CSailDef& newdef);
     void setupMenuBar();
     void setupMainWidget();
 
@@ -80,7 +71,6 @@ protected slots:
     virtual void slotExportFlatTXT();
     virtual void slotExportFlatXML();
     virtual void slotMould();
-    virtual void slotOpen();
 
     virtual void slotPrintData();
     virtual void slotPrintDwg();
@@ -96,8 +86,6 @@ protected:
 
     /** the definition of the current hull */
     CHullDef hulldef;
-    /** the definition of the current sail */
-    CSailDef saildef;
     
     /** the sail */
     CPanelGroup sail;
@@ -118,8 +106,6 @@ protected:
     /** the View menu */
     QMenu *menuView;
 
-    /** open an existing sail definition */
-    QAction *actionOpen;
     /** export 3D sail to DXF */
     QAction *actionExport3dDXF;
     /** export 3D sail to text */
