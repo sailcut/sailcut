@@ -21,6 +21,9 @@
 #define FORMDOCUMENT_H
 
 #include <QMainWindow>
+#include <vector>
+
+using namespace std;
 
 // forward definitions
 class CPrefs;
@@ -37,9 +40,16 @@ public:
     virtual bool open(const QString &newfile) = 0;
     virtual bool save() = 0;
     virtual bool saveAs() = 0;
+
     const QString& getFilename()
     {
         return filename;
+    };
+
+    virtual vector<QMenu*> getFileMenu()
+    {
+        vector<QMenu*> empty;
+        return empty;
     };
 
 protected:
@@ -119,7 +129,7 @@ public:
     virtual void show()
     {
         setDef(def);
-        QMainWindow::show();
+        CFormDocument::show();
     };
     
 protected:

@@ -22,18 +22,21 @@
 
 #include <QMainWindow>
 #include <QMessageBox>
+#include <QMenu>
 #include <QUrl>
+#include "formdocument.h"
 
 // forward definitions
-class QMenuBar;
+class QAction;
 class QMenu;
+class QMenuBar;
 class QStatusBar;
 class QWorkspace;
 class QSignalMapper;
 
 class CPrefs;
 class CSailApp;
-class CFormDocument;
+
 
 /** The main dialog of the Sailcut application.
  */
@@ -50,6 +53,7 @@ public:
 protected:
     void closeEvent( QCloseEvent * e);
     void makeMenuMru();
+    void open(QString filename);
     void fileAccess(QString event, QString file);
 
 private:
@@ -57,7 +61,6 @@ private:
     void setupMainWidget();
     CFormDocument *activeChild();
 
-    // slots
 protected slots:
 
     virtual void languageChange();
@@ -77,7 +80,6 @@ protected slots:
     virtual void slotLanguage();
     virtual void slotUpdateMenus();
 
-    // member variables
 protected:
     /** the workspace */
     QWorkspace *workspace;
@@ -97,7 +99,6 @@ protected:
     /** the status bar */
     QStatusBar* statusbar;
 
-    // menus and action
     /** the File menu */
     QMenu *menuFile;
     /** the New submenu */
@@ -114,6 +115,8 @@ protected:
     QAction *actionAbout;
     /** display information about Qt */
     QAction *actionAboutQt;
+    /** close the active document */
+    QAction *actionClose;
     /** display the handbook */
     QAction *actionHandbook;
     /** create a new rig */
@@ -126,8 +129,8 @@ protected:
     QAction *actionSave;
     /** prompt for a filename then write the sail definition to a file */
     QAction *actionSaveAs;
-    /** close the active document */
-    QAction *actionClose;
+    /** final separator before 'Quit' */
+    QAction *actionSep;
     /** view sail definition */
     QAction *actionViewDef;
     /** view sail mould */
@@ -138,6 +141,8 @@ protected:
     QAction *actionViewRig;
     /** quit */
     QAction *actionQuit;
+
+    vector<QAction*> fileChildActions;
 };
 
 #endif

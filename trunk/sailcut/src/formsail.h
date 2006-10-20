@@ -29,10 +29,7 @@
 #include "sailwriter-xml.h"
 
 // forward definitions
-class QMenuBar;
-class QGridLayout;
 class QMenu;
-class QStatusBar;
 class QTabWidget;
 class CSailViewerPanel;
 class CPrefs;
@@ -47,6 +44,7 @@ class CFormSail : public CFormDocumentTmpl<CSailDef, CSailDefXmlWriter>
 public:
     // construction, destruction
     CFormSail(CPrefs *myPrefs);
+    virtual vector<QMenu*> getFileMenu();
 
 protected:
     void closeEvent( QCloseEvent * e);
@@ -95,8 +93,6 @@ protected:
     CPanelGroup dispsail;
 
     // menus and action
-    /** the File menu */
-    QMenu *menuFile;
     /** the Print submenu */
     QMenu *menuPrint;
     /** the Export 3d submenu */

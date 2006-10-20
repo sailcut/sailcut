@@ -153,10 +153,8 @@ void CFormMain::languageChange()
 
     actionQuit->setText( tr("&Quit") );
 
-
     // Language menu
     menuLanguage->setTitle( tr("Language") );
-
 
     // Help menu
     menuHelp->setTitle( tr("&Help") );
@@ -164,8 +162,6 @@ void CFormMain::languageChange()
     actionAboutQt->setText( tr("About &Qt") );
     actionAbout->setText( tr("About &Sailcut CAD") );
 
-    // send changeLanguage to the tabs
-    // TODO
 }
 
 
@@ -179,6 +175,25 @@ void CFormMain::makeMenuMru()
     for ( unsigned int i = 0; i < prefs->mruSaildef.size(); i++)
     {
         menuRecent->addAction( prefs->mruSaildef[i], this, SLOT( slotOpenRecent() ) )->setData(i);
+    }
+}
+
+
+/**
+ * Opens the specified document.
+ */
+void CFormMain::open(QString filename)
+{
+    CFormSail *wnd = new CFormSail(prefs);
+    workspace->addWindow((QWidget*)wnd);
+    if (wnd->open(filename))
+    {
+        fileAccess(tr("loaded '%1'").arg(filename), filename);
+        wnd->show();
+    } else {
+        prefs->mruSaildef.removeEntry(filename);
+        makeMenuMru();
+        statusbar->showMessage( tr("error loading '%1'").arg(filename) );
     }
 }
 
@@ -216,11 +231,11 @@ void CFormMain::setupMenuBar()
 
     menuFile->addSeparator();
 
+    actionClose = menuFile->addAction( "", workspace, SLOT( closeActiveWindow() ) );
     actionSave = menuFile->addAction("", this, SLOT( slotSave() ) );
     actionSaveAs = menuFile->addAction("", this, SLOT( slotSaveAs() ) );
-    actionClose = menuFile->addAction( "", workspace, SLOT( closeActiveWindow() ) );
 
-    menuFile->addSeparator();
+    actionSep = menuFile->addSeparator();
 
     actionQuit = menuFile->addAction( "", this, SLOT( close() ) );
 
@@ -254,26 +269,15 @@ void CFormMain::setupMenuBar()
 /**
  * Opens a given sail file
  */
-void CFormMain::show(const QString newname)
+void CFormMain::show(const QString filename)
 {
     // load preferences
     makeMenuMru();
 
-    // load or create sail
-/* 
-    CSailDef newdef;
-    filename = newname;
+    // load specified file
     if ( !filename.isNull() )
-    {
-        newdef = CSailDefXmlReader("saildef").read(filename);
-        fileAccess(tr("loaded '%1'").arg(filename),filename);
-    }
-    else
-    {
-        statusbar->showMessage( tr("created new sail") );
-    }
-    setSailDef(newdef);
-*/    
+        open(filename);
+    
     QMainWindow::show();
 }
 
@@ -392,15 +396,9 @@ void CFormMain::slotNewSail()
  */
 void CFormMain::slotOpen()
 {
-/*    
-    QString newname = CSailDefXmlReader("saildef").readDialog(newdef,filename);
-    if ( !newname.isNull() )
-    {
-        filename = newname;
-        fileAccess(tr("loaded '%1'").arg(filename), filename);
-        setSailDef(newdef);
-    }
-*/    
+    QString newfile = QFileDialog::getOpenFileName(0, tr("Open"), "", "All files (*.*)");
+    if ( !newfile.isNull() )
+        open(newfile);
 }
 
 
@@ -414,20 +412,8 @@ void CFormMain::slotOpenRecent()
     if ( !a )
         return;
     int index = a->data().toInt();
-
-    QString filename = prefs->mruSaildef[index];
-    
-    CFormSail *wnd = new CFormSail(prefs);
-    workspace->addWindow(wnd);
-    if (wnd->open(filename))
-    {
-        fileAccess(tr("loaded '%1'").arg(filename), filename);
-        wnd->show();
-    } else {
-        prefs->mruSaildef.removeEntry(filename);
-        makeMenuMru();
-        statusbar->showMessage( tr("error loading '%1'").arg(filename) );
-    }
+    qDebug("trying to open");
+    open(prefs->mruSaildef[index]);
 }
 
 
@@ -465,6 +451,21 @@ void CFormMain::slotUpdateMenus()
     bool hasChild = (activeChild() != 0);
     actionSave->setEnabled(hasChild);    
     actionSaveAs->setEnabled(hasChild);    
-    actionClose->setEnabled(hasChild);    
+    actionClose->setEnabled(hasChild);
+
+    // remove old stuff
+    unsigned int i;
+    for (i = 0; i < fileChildActions.size(); i++)
+        menuFile->removeAction(fileChildActions[i]);
+    fileChildActions.clear();
+
+    // add new
+    if (hasChild && activeChild()->getFileMenu().size() > 0)
+    {
+        vector<QMenu*> childMenus = activeChild()->getFileMenu();
+        fileChildActions.push_back(menuFile->insertSeparator(actionSep));
+        for (i = 0; i < childMenus.size(); i++)
+            fileChildActions.push_back(menuFile->insertMenu(actionSep, childMenus[i]));
+    } 
 }
 
