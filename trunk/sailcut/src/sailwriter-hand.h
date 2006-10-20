@@ -33,12 +33,11 @@ public:
      *
      * @param sail the sail to write
      */
-    CSailHandWriter(const CPanelGroup &sail)
-            : CSailTxtWriter(sail)
+    CSailHandWriter() : CSailTxtWriter()
     {}
     ;
 
-    virtual void write(const QString &filename);
+    virtual void write(const CPanelGroup &sail, const QString &filename);
 };
 
 

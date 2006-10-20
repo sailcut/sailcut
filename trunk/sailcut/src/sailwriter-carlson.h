@@ -26,24 +26,17 @@
 
 /** A class for writing to Carlson files.
  */
-class CSailCarlsonWriter : public CFileWriter
+class CSailCarlsonWriter : public CFileWriter<CPanelGroup>
 {
-protected:
-    /** the sail we want to write to a file. */
-    CPanelGroup _sail;
-    /** the output stream */
-    ofstream _myOut;
-
 public:
-    CSailCarlsonWriter(const CPanelGroup &sail);
+    CSailCarlsonWriter();
 
-    void write(const QString &filename);
-    void writePanel(unsigned int panel);
-    void writePanelHeader (unsigned int panel);
-    void writeDraw(unsigned int ct);
-    void writeCut(unsigned int ct);
-    void writePoint(CPoint3d p0);
-    void writeEOF();
+    void write(const CPanelGroup &sail, const QString &filename);
+    void writePanel(ofstream &out, const CPanel &panel);
+    void writePanelHeader(ofstream &out, const CPanel &panel);
+    void writeDraw(ofstream &out, unsigned int ct);
+    void writeCut(ofstream &out, unsigned int ct);
+    void writePoint(ofstream &out, CPoint3d p0);
 
 };
 

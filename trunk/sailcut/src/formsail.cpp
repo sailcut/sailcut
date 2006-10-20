@@ -305,7 +305,7 @@ void CFormSail::slotDef()
  */
 void CFormSail::slotExportDXF()
 {
-    CSailDxfWriter3d(sail).writeDialog();
+    CSailDxfWriter3d().writeDialog(sail);
 }
 
 
@@ -314,7 +314,7 @@ void CFormSail::slotExportDXF()
  */
 void CFormSail::slotExportTXT()
 {
-    CSailTxtWriter(sail).writeDialog();
+    CSailTxtWriter().writeDialog(sail);
 }
 
 
@@ -323,7 +323,7 @@ void CFormSail::slotExportTXT()
  */
 void CFormSail::slotExportXML()
 {
-    CPanelGroupXmlWriter(sail, "sail").writeDialog();
+    CPanelGroupXmlWriter().writeDialog(sail);
 }
 
 
@@ -332,7 +332,7 @@ void CFormSail::slotExportXML()
  */
 void CFormSail::slotExportFlatCarlson()
 {
-    CSailCarlsonWriter(flatsail).writeDialog();
+    CSailCarlsonWriter().writeDialog(flatsail);
 }
 
 
@@ -341,7 +341,7 @@ void CFormSail::slotExportFlatCarlson()
   */
 void CFormSail::slotExportFlatDXF()
 {
-    CSailDxfWriter2d(dispsail).writeDialog();
+    CSailDxfWriter2d().writeDialog(dispsail);
 }
 
 
@@ -350,7 +350,7 @@ void CFormSail::slotExportFlatDXF()
   */
 void CFormSail::slotExportFlatDXFBlocks()
 {
-    CSailDxfWriter2d(flatsail).writeDialog();
+    CSailDxfWriter2d().writeDialog(flatsail);
 }
 
 
@@ -359,7 +359,7 @@ void CFormSail::slotExportFlatDXFBlocks()
  */
 void CFormSail::slotExportFlatHand()
 {
-    CSailHandWriter(flatsail).writeDialog();
+    CSailHandWriter().writeDialog(flatsail);
 }
 
 
@@ -368,7 +368,7 @@ void CFormSail::slotExportFlatHand()
  */
 void CFormSail::slotExportFlatTXT()
 {
-    CSailTxtWriter(flatsail).writeDialog();
+    CSailTxtWriter().writeDialog(flatsail);
 }
 
 
@@ -377,7 +377,7 @@ void CFormSail::slotExportFlatTXT()
  */
 void CFormSail::slotExportFlatXML()
 {
-    CPanelGroupXmlWriter(flatsail,"sail").writeDialog();
+    CPanelGroupXmlWriter().writeDialog(flatsail);
 }
 
 
@@ -504,7 +504,7 @@ bool CFormSail::save()
     // try writing to file, catch exception
     try
     {
-        CSailDefXmlWriter(saildef).write(filename);
+        CSailDefXmlWriter().write(saildef, filename);
         return true;
     }
     catch (CException e)
@@ -520,7 +520,7 @@ bool CFormSail::save()
  */
 bool CFormSail::saveAs()
 {
-    QString newname = CSailDefXmlWriter(saildef).writeDialog(filename);
+    QString newname = CSailDefXmlWriter().writeDialog(saildef, filename);
 
     if ( !newname.isNull() )
     {

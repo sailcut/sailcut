@@ -21,10 +21,13 @@
 #define FILEWRITER_H
 
 #include "fileio.h"
+#include "geocpp/core.h"
+#include <QMessageBox>
 
 /** This class is used as the base for various file output
  *  modules requiring a "Save to" dialog.
  */
+template <class objtype>
 class CFileWriter : public CFileIO
 {
 public:
@@ -40,11 +43,32 @@ public:
 
     /** Perform the actual writing operation, must be overriden.
      */
-    virtual void write(const QString &)
-    {}
-    ;
+    virtual void write(const objtype &, const QString &) = 0;
 
-    virtual QString writeDialog(const QString &filename = "");
+    /** Opens of a dialog to ask for a filename
+     *  then writes to a file.
+     *
+     *  @param obj The object to write.
+     *  @param filename The filename to start off with (default = "")
+     */
+    virtual QString writeDialog(const objtype &obj, const QString &filename = QString::null)
+    {
+        QString newfilename = showDialogWrite(filename);
+    
+        if (!newfilename.isNull())
+        {
+            try
+            {
+                write(obj, newfilename);
+            }
+            catch (CException e)
+            {
+                QMessageBox::information(0,tr("error"), tr("There was an error writing to the selected file."));
+                newfilename = QString::null;
+            }
+        }
+        return newfilename;
+    };
 };
 
 #endif

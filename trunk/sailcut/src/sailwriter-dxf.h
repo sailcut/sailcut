@@ -27,29 +27,19 @@
 
 /** An abstract class containing the methods needed for DXF writing.
  */
-class CSailDxfWriter : public CFileWriter
+class CSailDxfWriter : public CFileWriter<CPanelGroup>
 {
-protected:
-    /** the sail to write */
-    CPanelGroup _sail;
-    /** the output stream */
-    ofstream _out;
-
 public:
     /** The constructor.
-     *
-     * @param sail the sail to write
      */
-    CSailDxfWriter(const CPanelGroup &sail)
-            : CFileWriter(".dxf", "DXF files"), _sail(sail)
+    CSailDxfWriter() : CFileWriter<CPanelGroup>(".dxf", "DXF files")
     {}
     ;
 
-    void writeAtom(int code, const QString& content);
-    void writeFace(CPoint3d p0, CPoint3d p1, CPoint3d p2, unsigned int layer);
-    void writePolyline( unsigned int layer, unsigned int color);
-    void writeVertex(CPoint3d p0, unsigned int layer);
-
+    void writeAtom(ofstream &out, int code, const QString& content);
+    void writeFace(ofstream &out, CPoint3d p0, CPoint3d p1, CPoint3d p2, unsigned int layer);
+    void writePolyline(ofstream &out, unsigned int layer, unsigned int color);
+    void writeVertex(ofstream &out, CPoint3d p0, unsigned int layer);
 };
 
 
@@ -62,13 +52,12 @@ public:
      *
      * @param sail the sail to write
      */
-    CSailDxfWriter2d(const CPanelGroup &sail)
-            : CSailDxfWriter(sail)
+    CSailDxfWriter2d() : CSailDxfWriter()
     {}
     ;
 
-    void write(const QString &filename);
-    void writePanel(unsigned int panel);
+    void write(const CPanelGroup &sail, const QString &filename);
+    void writePanel(ofstream &out, const CPanel &panel, unsigned int layer);
 };
 
 
@@ -78,15 +67,12 @@ class CSailDxfWriter2dBlocks : public CSailDxfWriter2d
 {
 public:
     /** The constructor.
-     *
-     * @param sail the sail to write
      */
-    CSailDxfWriter2dBlocks(const CPanelGroup &sail)
-            : CSailDxfWriter2d(sail)
+    CSailDxfWriter2dBlocks() : CSailDxfWriter2d()
     {}
     ;
 
-    void write(const QString &filename);
+    void write(const CPanelGroup &sail, const QString &filename);
 };
 
 
@@ -97,16 +83,13 @@ class CSailDxfWriter3d : public CSailDxfWriter
 {
 public:
     /** The constructor.
-     *
-     * @param sail the sail to write
      */
-    CSailDxfWriter3d(const CPanelGroup &sail)
-            : CSailDxfWriter(sail)
+    CSailDxfWriter3d() : CSailDxfWriter()
     {}
     ;
 
-    void write(const QString &filename);
-    void writePanel(unsigned int panel);
+    void write(const CPanelGroup &sail, const QString &filename);
+    void writePanel(ofstream &out, const CPanel &panel, unsigned int layer);
 };
 
 

@@ -28,23 +28,25 @@
 
 /** Write a DXF atom to the file output stream.
  *
+ * @param out output stream
  * @param code atom code
  * @param content atom content
  */
-void CSailDxfWriter::writeAtom(int code, const QString& content)
+void CSailDxfWriter::writeAtom(ofstream &out, int code, const QString& content)
 {
-    _out << code << endl << string(content.toLocal8Bit()) << endl;
+    out << code << endl << string(content.toLocal8Bit()) << endl;
 }
 
 
 /** Write a triangular face to the file output stream.
  *
+ * @param out output stream
  * @param p0 first point
  * @param p1 second point
  * @param p2 third point
  * @param layer
  */
-void CSailDxfWriter::writeFace(CPoint3d p0, CPoint3d p1, CPoint3d p2, unsigned int layer)
+void CSailDxfWriter::writeFace(ofstream &out, CPoint3d p0, CPoint3d p1, CPoint3d p2, unsigned int layer)
 {
     // skip empty face
     real area = CVector3d(p1 -p0).cross(p2 - p0).norm();
@@ -55,66 +57,68 @@ void CSailDxfWriter::writeFace(CPoint3d p0, CPoint3d p1, CPoint3d p2, unsigned i
         return;
     }
 
-    writeAtom(0,"3DFACE");
+    writeAtom(out, 0, "3DFACE");
     // set the layer
-    writeAtom(8, QString::number(layer));
+    writeAtom(out, 8, QString::number(layer));
     // set the points
-    writeAtom(10,QString::number(p0.x()));
-    writeAtom(20,QString::number(p0.y()));
-    writeAtom(30,QString::number(p0.z()));
+    writeAtom(out, 10, QString::number(p0.x()));
+    writeAtom(out, 20, QString::number(p0.y()));
+    writeAtom(out, 30, QString::number(p0.z()));
 
-    writeAtom(11,QString::number(p1.x()));
-    writeAtom(21,QString::number(p1.y()));
-    writeAtom(31,QString::number(p1.z()));
+    writeAtom(out, 11, QString::number(p1.x()));
+    writeAtom(out, 21, QString::number(p1.y()));
+    writeAtom(out, 31, QString::number(p1.z()));
 
-    writeAtom(12,QString::number(p2.x()));
-    writeAtom(22,QString::number(p2.y()));
-    writeAtom(32,QString::number(p2.z()));
+    writeAtom(out, 12, QString::number(p2.x()));
+    writeAtom(out, 22, QString::number(p2.y()));
+    writeAtom(out, 32, QString::number(p2.z()));
 
     // duplicate last point for stupid AutoCAD
-    writeAtom(13,QString::number(p2.x()));
-    writeAtom(23,QString::number(p2.y()));
-    writeAtom(33,QString::number(p2.z()));
+    writeAtom(out, 13, QString::number(p2.x()));
+    writeAtom(out, 23, QString::number(p2.y()));
+    writeAtom(out, 33, QString::number(p2.z()));
 }
 
 
 /** Write a DXF Polyline header to the file output stream.
  *
+ * @param out output stream
  * @param layer
  * @param color
  * red=1 blue=5 white=7
  */
-void CSailDxfWriter::writePolyline( unsigned int layer, unsigned int color)
+void CSailDxfWriter::writePolyline(ofstream &out, unsigned int layer, unsigned int color)
 {
-    writeAtom(0,"POLYLINE");
+    writeAtom(out, 0, "POLYLINE");
     // set the layer
-    writeAtom(8, QString::number(layer));
+    writeAtom(out, 8, QString::number(layer));
     // set color
-    writeAtom(62, QString::number(color));
+    writeAtom(out, 62, QString::number(color));
     // set vertice follows flag
-    writeAtom(66, "1");
+    writeAtom(out, 66, "1");
     // line type
-    writeAtom(6, "CONTINUOUS");
+    writeAtom(out, 6, "CONTINUOUS");
 }
 
 
 /** Write a 2D DXF Vertex to the file output stream.
  *
+ * @param out output stream
  * @param pt  point
  * @param layer
  */
-void CSailDxfWriter::writeVertex(CPoint3d pt, unsigned int layer)
+void CSailDxfWriter::writeVertex(ofstream &out, CPoint3d pt, unsigned int layer)
 {
-    writeAtom(0,"VERTEX");
+    writeAtom(out, 0, "VERTEX");
     // set the layer
-    writeAtom(8, QString::number(layer));
+    writeAtom(out, 8, QString::number(layer));
     // set 3D flag
-    //writeAtom(70, "32"); // flag 3D vertex
+    //writeAtom(out, 70, "32"); // flag 3D vertex
 
     // set the points
-    writeAtom(10,QString::number(pt.x()));
-    writeAtom(20,QString::number(pt.y()));
-    //writeAtom(30,QString::number(pt.z())); // for 3D
+    writeAtom(out, 10, QString::number(pt.x()));
+    writeAtom(out, 20, QString::number(pt.y()));
+    //writeAtom(out, 30, QString::number(pt.z())); // for 3D
 }
 
 
@@ -128,165 +132,171 @@ void CSailDxfWriter::writeVertex(CPoint3d pt, unsigned int layer)
 
 /** Writes a CPanelGroup to a simple 2D DXF file.
  *
+ * @param sail the sail to write
  * @param filename the file to write to
  */
-void CSailDxfWriter2d::write(const QString &filename)
+void CSailDxfWriter2d::write(const CPanelGroup &sail, const QString &filename)
 {
-    _out.open(QFile::encodeName(filename),ios::out);
-    if (!_out.is_open())
+    ofstream out;
+    
+    out.open(QFile::encodeName(filename),ios::out);
+    if (!out.is_open())
         throw CException("CSailDxfWriter::write : unable to write to specified file");
 
     // write comment
-    writeAtom(999,"DXF 2d created by Sailcut CAD");
+    writeAtom(out, 999, "DXF 2d created by Sailcut CAD");
 
     // write header section
-    writeAtom( 0, "SECTION");
-    writeAtom( 2, "HEADER");
-    writeAtom( 0, "ENDSEC");
+    writeAtom(out, 0, "SECTION");
+    writeAtom(out, 2, "HEADER");
+    writeAtom(out, 0, "ENDSEC");
 
     // write tables section
-    writeAtom( 0, "SECTION");
-    writeAtom( 2, "TABLES");
-    writeAtom( 0, "TABLE");
-    writeAtom( 2, "LAYER");
-    writeAtom(70, "16");
+    writeAtom(out, 0, "SECTION");
+    writeAtom(out, 2, "TABLES");
+    writeAtom(out, 0, "TABLE");
+    writeAtom(out, 2, "LAYER");
+    writeAtom(out, 70, "16");
 
     unsigned int pn = 0;
-    for ( pn = 0; pn < _sail.panel.size(); pn++)
+    for ( pn = 0; pn < sail.panel.size(); pn++)
     {
         //writeAtom(999,_sail.panel[pn].label.name);
-        writeAtom( 0, "LAYER");
-        writeAtom( 2, QString::number(pn+1));
+        writeAtom(out, 0, "LAYER");
+        writeAtom(out, 2, QString::number(pn+1));
         // flags
-        writeAtom(70, "64");
+        writeAtom(out, 70, "64");
         // colour by default  red=1 yellow=2 blue=5 white=7
-        writeAtom(62, "3");
+        writeAtom(out, 62, "3");
 
-        writeAtom( 6, "CONTINUOUS");
+        writeAtom(out, 6, "CONTINUOUS");
     }
 
-    writeAtom( 0, "ENDTAB");
-    writeAtom( 0, "ENDSEC");
+    writeAtom(out, 0, "ENDTAB");
+    writeAtom(out, 0, "ENDSEC");
 
     // write entities section
-    writeAtom( 0, "SECTION");
-    writeAtom( 2, "ENTITIES");
+    writeAtom(out, 0, "SECTION");
+    writeAtom(out, 2, "ENTITIES");
 
     // loop over panels ////////
-    for ( pn = 0; pn < _sail.panel.size(); pn++)
-        writePanel(pn);
+    for ( pn = 0; pn < sail.panel.size(); pn++)
+        writePanel(out, sail.panel[pn], pn+1);
 
-    writeAtom( 0, "ENDSEC");
+    writeAtom(out, 0, "ENDSEC");
 
     // end of file
-    writeAtom( 0, "EOF");
-    _out.close();
+    writeAtom(out, 0, "EOF");
+    out.close();
 }
 
 
 /** Writes a CPanelGroup to a 2D DXF file with one block per panel.
  *
+ * @param sail the sail to write
  * @param filename the file to write to
  */
-void CSailDxfWriter2dBlocks::write(const QString &filename)
+void CSailDxfWriter2dBlocks::write(const CPanelGroup &sail, const QString &filename)
 {
-    _out.open(QFile::encodeName(filename),ios::out);
-    if (!_out.is_open())
+    ofstream out;
+    out.open(QFile::encodeName(filename),ios::out);
+    if (!out.is_open())
         throw CException("CSailDxfWriter::write : unable to write to specified file");
 
     // write comment
-    writeAtom(999,"DXF 2d created by Sailcut CAD");
+    writeAtom(out, 999, "DXF 2d created by Sailcut CAD");
 
     // write header section
-    writeAtom( 0, "SECTION");
-    writeAtom( 2, "HEADER");
-    writeAtom( 0, "ENDSEC");
+    writeAtom(out, 0, "SECTION");
+    writeAtom(out, 2, "HEADER");
+    writeAtom(out, 0, "ENDSEC");
 
     // write tables section
-    writeAtom( 0, "SECTION");
-    writeAtom( 2, "TABLES");
-    writeAtom( 0, "TABLE");
-    writeAtom( 2, "LAYER");
-    writeAtom(70, "16");
+    writeAtom(out, 0, "SECTION");
+    writeAtom(out, 2, "TABLES");
+    writeAtom(out, 0, "TABLE");
+    writeAtom(out, 2, "LAYER");
+    writeAtom(out, 70, "16");
 
     unsigned int pn = 0;
-    for ( pn = 0; pn < _sail.panel.size(); pn++)
+    for ( pn = 0; pn < sail.panel.size(); pn++)
     {
         //writeAtom(999,_sail.panel[pn].label.name);
-        writeAtom( 0, "LAYER");
-        writeAtom( 2, QString::number(pn+1));
+        writeAtom(out, 0, "LAYER");
+        writeAtom(out, 2, QString::number(pn+1));
         // flags
-        writeAtom(70, "64");
+        writeAtom(out, 70, "64");
         // colour by default  red=1 yellow=2 blue=5 white=7
-        writeAtom(62, "3");
+        writeAtom(out, 62, "3");
 
-        writeAtom( 6, "CONTINUOUS");
+        writeAtom(out, 6, "CONTINUOUS");
     }
 
-    writeAtom( 0, "ENDTAB");
-    writeAtom( 0, "ENDSEC");
+    writeAtom(out, 0, "ENDTAB");
+    writeAtom(out, 0, "ENDSEC");
 
     // write entities section
-    writeAtom( 0, "SECTION");
-    writeAtom( 2, "BLOCKS");
-    //writeAtom( 2, "ENTITIES");
+    writeAtom(out, 0, "SECTION");
+    writeAtom(out, 2, "BLOCKS");
+    //writeAtom(out, 2, "ENTITIES");
 
     // loop over panels ////////
-    for ( pn = 0; pn < _sail.panel.size(); pn++)
+    for ( pn = 0; pn < sail.panel.size(); pn++)
     {
-        writeAtom( 0, "BLOCK");
-        writeAtom( 100, "AcDbEntity");
-        writeAtom( 8, QString::number(pn+1));
-        writeAtom( 100, "AcDbBlockBegin");
-        writeAtom( 2, "panel "+QString::number(pn+1));
-        writeAtom( 70, "1");
-        writeAtom( 10, "0");
-        writeAtom( 20, "0");
-        writeAtom( 30, "0");
-        writeAtom( 3, "panel "+QString::number(pn+1));
+        writeAtom(out, 0, "BLOCK");
+        writeAtom(out, 100, "AcDbEntity");
+        writeAtom(out, 8, QString::number(pn+1));
+        writeAtom(out, 100, "AcDbBlockBegin");
+        writeAtom(out, 2, "panel "+QString::number(pn+1));
+        writeAtom(out, 70, "1");
+        writeAtom(out, 10, "0");
+        writeAtom(out, 20, "0");
+        writeAtom(out, 30, "0");
+        writeAtom(out, 3, "panel "+QString::number(pn+1));
 
-        writePanel(pn);
+        writePanel(out, sail.panel[pn], pn+1);
 
-        writeAtom( 0, "ENDBLCK");
-        writeAtom( 100, "AcDbBlockEnd");
+        writeAtom(out, 0, "ENDBLCK");
+        writeAtom(out, 100, "AcDbBlockEnd");
     }
-    writeAtom( 0, "ENDSEC"); // end of BLOCKS section
+    writeAtom(out, 0, "ENDSEC"); // end of BLOCKS section
 
     // end of file
-    writeAtom( 0, "EOF");
-    _out.close();
+    writeAtom(out, 0, "EOF");
+    out.close();
 }
 
 
 /** Write a single 2D DXF developed panel draw and cut edges to the file output stream.
  *
+ * @param sail the sail to write
  * @param panel = the number of the panel to write
  */
-void CSailDxfWriter2d::writePanel(unsigned int panel)
+void CSailDxfWriter2d::writePanel(ofstream &out, const CPanel &panel, unsigned int layer)
 {
-    //writeAtom(999,_sail.panel[panel].label.name);
+    //writeAtom(out, 999, panel.label.name);
 
-    CSide top = _sail.panel[panel].top;
-    CSide btm = _sail.panel[panel].bottom;
-    CSide left = _sail.panel[panel].left;
-    CSide right = _sail.panel[panel].right;
+    CSide top = panel.top;
+    CSide btm = panel.bottom;
+    CSide left = panel.left;
+    CSide right = panel.right;
 
-    CSide ctop = _sail.panel[panel].cutTop;
-    CSide cbtm = _sail.panel[panel].cutBottom;
-    CSide cleft = _sail.panel[panel].cutLeft;
-    CSide cright = _sail.panel[panel].cutRight;
+    CSide ctop = panel.cutTop;
+    CSide cbtm = panel.cutBottom;
+    CSide cleft = panel.cutLeft;
+    CSide cright = panel.cutRight;
 
     CPoint3d pt;
     CVector3d V;
-    unsigned int i=0, layer=panel+1;
+    unsigned int i=0;
     int j=0;
 
     //// polyline header for draw line
-    writePolyline(layer, 5); // color 5=blue
+    writePolyline(out, layer, 5); // color 5=blue
 
     // left edge
     pt = left.point[0];
-    writeVertex(pt, layer);
+    writeVertex(out, pt, layer);
 
     for (i = 1; i < left.nbpoints(); i++)
     {
@@ -294,7 +304,7 @@ void CSailDxfWriter2d::writePanel(unsigned int panel)
         if (V.norm()> EPS)
         {
             pt = left.point[i];
-            writeVertex(pt, layer);
+            writeVertex(out, pt, layer);
         }
     }
 
@@ -305,7 +315,7 @@ void CSailDxfWriter2d::writePanel(unsigned int panel)
         if (V.norm() > EPS)
         {
             pt = top.point[i];
-            writeVertex(pt, layer);
+            writeVertex(out, pt, layer);
         }
     }
 
@@ -316,7 +326,7 @@ void CSailDxfWriter2d::writePanel(unsigned int panel)
         if (V.norm() > EPS)
         {
             pt = right.point[j];
-            writeVertex(pt, layer);
+            writeVertex(out, pt, layer);
         }
     }
 
@@ -327,21 +337,21 @@ void CSailDxfWriter2d::writePanel(unsigned int panel)
         if (V.norm() > EPS)
         {
             pt = btm.point[j];
-            writeVertex(pt, layer);
+            writeVertex(out, pt, layer);
         }
     }
     // close the circuit to start point
     pt = left.point[0];
-    writeVertex(pt, layer);
+    writeVertex(out, pt, layer);
 
-    writeAtom(0,"SEQEND"); // end draw line
+    writeAtom(out, 0, "SEQEND"); // end draw line
 
     //// polyline header for cut line
-    writePolyline(layer, 1); // color 1=red
+    writePolyline(out, layer, 1); // color 1=red
 
     // left edge
     pt = cleft.point[0];
-    writeVertex(pt, layer);
+    writeVertex(out, pt, layer);
 
     for (i = 1; i < left.nbpoints(); i++)
     {
@@ -349,7 +359,7 @@ void CSailDxfWriter2d::writePanel(unsigned int panel)
         if (V.norm()> EPS)
         {
             pt = cleft.point[i];
-            writeVertex(pt, layer);
+            writeVertex(out, pt, layer);
         }
     }
 
@@ -360,7 +370,7 @@ void CSailDxfWriter2d::writePanel(unsigned int panel)
         if (V.norm() > EPS)
         {
             pt = ctop.point[i];
-            writeVertex(pt, layer);
+            writeVertex(out, pt, layer);
         }
     }
 
@@ -371,7 +381,7 @@ void CSailDxfWriter2d::writePanel(unsigned int panel)
         if (V.norm() > EPS)
         {
             pt = cright.point[j];
-            writeVertex(pt, layer);
+            writeVertex(out, pt, layer);
         }
     }
 
@@ -382,14 +392,14 @@ void CSailDxfWriter2d::writePanel(unsigned int panel)
         if (V.norm() > EPS)
         {
             pt = cbtm.point[j];
-            writeVertex(pt, layer);
+            writeVertex(out, pt, layer);
         }
     }
     // close the circuit to start point
     pt = cleft.point[0];
-    writeVertex(pt, layer);
+    writeVertex(out, pt, layer);
 
-    writeAtom(0,"SEQEND"); // end cut line
+    writeAtom(out, 0, "SEQEND"); // end cut line
 }
 
 
@@ -403,92 +413,97 @@ void CSailDxfWriter2d::writePanel(unsigned int panel)
 
 /** Writes a 3D CPanelGroup to a 3D DXF file.
  *
+ * @param sail the sail to write
  * @param filename the file to write to
  */
-void CSailDxfWriter3d::write(const QString &filename)
+void CSailDxfWriter3d::write(const CPanelGroup &sail, const QString &filename)
 {
-    _out.open(QFile::encodeName(filename), ios::out);
-    if (!_out.is_open())
+    ofstream out;
+    out.open(QFile::encodeName(filename), ios::out);
+    if (!out.is_open())
         throw CException("CSailDxfWriter3d::write : unable to write to specified DXF file");
 
     // write comment
-    writeAtom(999,"DXF 3d created by Sailcut CAD");
+    writeAtom(out, 999,"DXF 3d created by Sailcut CAD");
 
     // write header section
-    writeAtom( 0, "SECTION");
-    writeAtom( 2, "HEADER");
-    writeAtom( 0, "ENDSEC");
+    writeAtom(out, 0, "SECTION");
+    writeAtom(out, 2, "HEADER");
+    writeAtom(out, 0, "ENDSEC");
 
     // write tables section
-    writeAtom( 0, "SECTION");
-    writeAtom( 2, "TABLES");
-    writeAtom( 0, "TABLE");
-    writeAtom( 2, "LAYER");
-    writeAtom(70, "6");
-    for (unsigned int pn = 0; pn < _sail.panel.size(); pn++)
+    writeAtom(out, 0, "SECTION");
+    writeAtom(out, 2, "TABLES");
+    writeAtom(out, 0, "TABLE");
+    writeAtom(out, 2, "LAYER");
+    writeAtom(out, 70, "6");
+    for (unsigned int pn = 0; pn < sail.panel.size(); pn++)
     {
-        //writeAtom(999,_sail.panel[pn].label.name);
-        writeAtom( 0, "LAYER");
-        writeAtom( 2, QString::number(pn+1));
+        //writeAtom(out, 999, panel.label.name);
+        writeAtom(out, 0, "LAYER");
+        writeAtom(out, 2, QString::number(pn+1));
         // flags
-        writeAtom(70, "64");
+        writeAtom(out, 70, "64");
         // colour
         if (pn%2)
-            writeAtom(62, "2"); // 1=red 2=yellow
+            writeAtom(out, 62, "2"); // 1=red 2=yellow
         else
-            writeAtom(62, "4"); // 4=cyan 5=blue
+            writeAtom(out, 62, "4"); // 4=cyan 5=blue
 
-        writeAtom( 6, "CONTINUOUS");
+        writeAtom(out, 6, "CONTINUOUS");
     }
 
-    writeAtom( 0, "ENDTAB");
-    writeAtom( 0, "ENDSEC");
+    writeAtom(out, 0, "ENDTAB");
+    writeAtom(out, 0, "ENDSEC");
 
     // write entities section
-    writeAtom( 0, "SECTION");
-    writeAtom( 2, "ENTITIES");
+    writeAtom(out, 0, "SECTION");
+    writeAtom(out, 2, "ENTITIES");
 
     // loop over panels ////////
-    for (unsigned int i = 0; i < _sail.panel.size(); i++)
-        writePanel(i);
+    for (unsigned int i = 0; i < sail.panel.size(); i++)
+        writePanel(out, sail.panel[i], i+1);
 
-    writeAtom( 0, "ENDSEC");
+    writeAtom(out, 0, "ENDSEC");
 
     // end of file
-    writeAtom( 0, "EOF");
-    _out.close();
+    writeAtom(out, 0, "EOF");
+    out.close();
 }
 
 
 /** Write a single 3D DXF panel to the file output stream.
  *
+ * @param sail the sail to write
  * @param panel the number of the panel to write
  */
-void CSailDxfWriter3d::writePanel(unsigned int panel)
+void CSailDxfWriter3d::writePanel(ofstream &out, const CPanel &panel, unsigned int layer)
 {
-    //writeAtom(999,_sail.panel[pn].label.name);
-    //writeAtom(999, QString("panel : ") + QString::number(panel));
-    CSide top = _sail.panel[panel].top;
-    CSide btm = _sail.panel[panel].bottom;
-    CSide left = _sail.panel[panel].left;
-    CSide right = _sail.panel[panel].right;
+    //writeAtom(out, 999, panel.label.name);
+    //writeAtom(out, 999, QString("panel : ") + QString::number(panel));
+    CSide top = panel.top;
+    CSide btm = panel.bottom;
+    CSide left = panel.left;
+    CSide right = panel.right;
     CPoint3d pt;
-    unsigned int i=0, layer=panel+1;
+    unsigned int i=0;
 
     // left triangle fan
     pt = (left.point[0]+left.point[left.nbpoints()-1])*0.5;
     for (i = 1; i < left.nbpoints(); i++)
-        writeFace(pt,left.point[i-1],left.point[i],layer);
+        writeFace(out, pt, left.point[i-1], left.point[i], layer);
 
     // panel triangle strip
     for (i = 1; i < top.nbpoints(); i++)
     {
-        writeFace(top.point[i-1],btm.point[i-1],top.point[i],layer);
-        writeFace(top.point[i],btm.point[i],btm.point[i-1],layer);
+        writeFace(out, top.point[i-1], btm.point[i-1], top.point[i], layer);
+        writeFace(out, top.point[i], btm.point[i], btm.point[i-1], layer);
     }
 
     // right triangle fan
     pt = (right.point[0]+right.point[right.nbpoints()-1])*0.5;
     for (i = 1; i < right.nbpoints(); i++)
-        writeFace(pt,right.point[i-1],right.point[i],layer);
+        writeFace(out, pt, right.point[i-1], right.point[i], layer);
 }
+
+

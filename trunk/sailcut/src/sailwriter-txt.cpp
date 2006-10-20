@@ -26,14 +26,14 @@
  *
  * @param filename the file to write to
  */
-void CSailTxtWriter::write(const QString &filename)
+void CSailTxtWriter::write(const CPanelGroup &sail, const QString &filename)
 {
     ofstream myOut;
     myOut.open(QFile::encodeName(filename), ios::out);
     if (!myOut.is_open())
         throw CException("CSailTxtWriter::write : unable to write to specified file");
-    myOut << string(_sail.title.toLocal8Bit()) << endl;
-    myOut << _sail;
+    myOut << string(sail.title.toLocal8Bit()) << endl;
+    myOut << sail;
     myOut.close();
 }
 

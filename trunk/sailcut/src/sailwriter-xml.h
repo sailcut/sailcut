@@ -29,36 +29,35 @@
  *  @see CSailDefXmlWriter
  */
 template <class objtype>
-class XmlWriterTempl : public CFileWriter
+class XmlWriterTempl : public CFileWriter<objtype>
 {
 protected :
     /** the object's name */
     QString _name;
-    /** the object to write */
-    objtype _obj;
 
 public:
     /** The constructor.
      *
-     * @param obj the object to write
      * @param name the object's name
      * @param ext the file extension to show (defaults to ".xml")
      * @param desc a description of the file type (defaults to "XML files")
      */
-    XmlWriterTempl(const objtype &obj, const QString &name,
-                   const QString ext = ".xml", const QString desc = "XML files")
-            : CFileWriter(ext, desc), _name(name), _obj(obj)
+    XmlWriterTempl(const QString &name,
+                   const QString ext = ".xml",
+                   const QString desc = "XML files")
+            : CFileWriter<objtype>(ext, desc), _name(name)
     {}
     ;
 
     /** Write object to XML format.
      *
+     * @param obj the object to write
      * @param filename the file to write to
      */
-    virtual void write(const QString &filename)
+    virtual void write(const objtype &obj, const QString &filename)
     {
         CSailDoc doc;
-        doc.put(doc.top, _obj, _name);
+        doc.put(doc.top, obj, _name);
         doc.toFile(filename);
     };
 };
@@ -69,12 +68,9 @@ class CPanelGroupXmlWriter : public XmlWriterTempl<CPanelGroup>
 {
 public:
     /** The constructor.
-     *
-     * @param sail the sail to write
-     * @param name the sail's name
      */
-    CPanelGroupXmlWriter(const CPanelGroup &sail, const QString &name)
-            : XmlWriterTempl<CPanelGroup>(sail, name, ".panel3d", "3D sails or hulls")
+    CPanelGroupXmlWriter()
+            : XmlWriterTempl<CPanelGroup>("panelgroup", ".panel3d", "3D sails or hulls")
     {}
     ;
 };
@@ -85,12 +81,9 @@ class CHullDefXmlWriter : public XmlWriterTempl<CHullDef>
 {
 public:
     /** The constructor.
-     *
-     * @param hulldef the CHullDef to write
-     * @param name the CHullDef's name
      */
-    CHullDefXmlWriter(const CHullDef &hulldef)
-            : XmlWriterTempl<CHullDef>(hulldef, "hulldef", ".hulldef", "Hull definitions")
+    CHullDefXmlWriter()
+            : XmlWriterTempl<CHullDef>("hulldef", ".hulldef", "Hull definitions")
     {}
     ;
 };
@@ -101,12 +94,9 @@ class CSailDefXmlWriter : public XmlWriterTempl<CSailDef>
 {
 public:
     /** The constructor.
-     *
-     * @param saildef the CSailDef to write
-     * @param name the CSailDef's name
      */
-    CSailDefXmlWriter(const CSailDef &saildef)
-            : XmlWriterTempl<CSailDef>(saildef, "saildef", ".saildef", "Sail definitions")
+    CSailDefXmlWriter()
+            : XmlWriterTempl<CSailDef>("saildef", ".saildef", "Sail definitions")
     {}
     ;
 };
@@ -119,10 +109,9 @@ public:
     /** The constructor.
      *
      * @param rigdef the CRigDef to write
-     * @param name the CRigDef's name
      */
-    CRigDefXmlWriter(const CRigDef &rigdef)
-            : XmlWriterTempl<CRigDef>(rigdef, "rigdef", ".rigdef", "Rig definitions")
+    CRigDefXmlWriter()
+            : XmlWriterTempl<CRigDef>("rigdef", ".rigdef", "Rig definitions")
     {}
     ;
 };

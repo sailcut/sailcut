@@ -40,7 +40,6 @@ protected:
 public:
     /** The constructor.
      *
-     * @param name the object's name
      * @param ext the file extension to show (defaults to ".xml")
      * @param desc a description of the file type (defaults to "XML files")
      */
@@ -95,11 +94,9 @@ class CPanelGroupXmlReader : public XmlReaderTempl<CPanelGroup>
 {
 public:
     /** The constructor.
-     *
-     * @param name the sail's name
      */
-    CPanelGroupXmlReader(const QString &name)
-            : XmlReaderTempl<CPanelGroup>(name, ".panel3d", "3D sails or hulls")
+    CPanelGroupXmlReader()
+            : XmlReaderTempl<CPanelGroup>("panelgroup", ".panel3d", "3D sails or hulls")
     {}
     ;
 };
@@ -110,8 +107,6 @@ class CHullDefXmlReader : public XmlReaderTempl<CHullDef>
 {
 public:
     /** The constructor.
-     *
-     * @param name the hull definition's name
      */
     CHullDefXmlReader()
             : XmlReaderTempl<CHullDef>("hulldef", ".hulldef", "Hull definitions")
@@ -125,8 +120,6 @@ class CSailDefXmlReader : public XmlReaderTempl<CSailDef>
 {
 public:
     /** The constructor.
-     *
-     * @param name the sail definition's name
      */
     CSailDefXmlReader()
             : XmlReaderTempl<CSailDef>("saildef", ".saildef", "Sail definitions")
@@ -140,8 +133,6 @@ class CRigDefXmlReader : public XmlReaderTempl<CRigDef>
 {
 public:
     /** The constructor.
-     *
-     * @param name the rig definition's name
      */
     CRigDefXmlReader()
             : XmlReaderTempl<CRigDef>("rigdef", ".rigdef", "Rig definitions")
