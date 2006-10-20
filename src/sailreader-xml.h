@@ -113,8 +113,8 @@ public:
      *
      * @param name the hull definition's name
      */
-    CHullDefXmlReader(const QString &name)
-            : XmlReaderTempl<CHullDef>(name, ".hulldef", "Hull definitions")
+    CHullDefXmlReader()
+            : XmlReaderTempl<CHullDef>("hulldef", ".hulldef", "Hull definitions")
     {}
     ;
 };
@@ -128,8 +128,8 @@ public:
      *
      * @param name the sail definition's name
      */
-    CSailDefXmlReader(const QString &name)
-            : XmlReaderTempl<CSailDef>(name, ".saildef", "Sail definitions")
+    CSailDefXmlReader()
+            : XmlReaderTempl<CSailDef>("saildef", ".saildef", "Sail definitions")
     {}
     ;
 };
@@ -143,8 +143,8 @@ public:
      *
      * @param name the rig definition's name
      */
-    CRigDefXmlReader(const QString &name)
-            : XmlReaderTempl<CRigDef>(name, ".sailrig", "Rig definitions")
+    CRigDefXmlReader()
+            : XmlReaderTempl<CRigDef>("rigdef", ".rigdef", "Rig definitions")
     {}
     ;
 };

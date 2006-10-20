@@ -89,8 +89,8 @@ public:
      * @param hulldef the CHullDef to write
      * @param name the CHullDef's name
      */
-    CHullDefXmlWriter(const CHullDef &hulldef, const QString &name)
-            : XmlWriterTempl<CHullDef>(hulldef, name, ".hulldef", "Hull definitions")
+    CHullDefXmlWriter(const CHullDef &hulldef)
+            : XmlWriterTempl<CHullDef>(hulldef, "hulldef", ".hulldef", "Hull definitions")
     {}
     ;
 };
@@ -105,8 +105,8 @@ public:
      * @param saildef the CSailDef to write
      * @param name the CSailDef's name
      */
-    CSailDefXmlWriter(const CSailDef &saildef, const QString &name)
-            : XmlWriterTempl<CSailDef>(saildef, name, ".saildef", "Sail definitions")
+    CSailDefXmlWriter(const CSailDef &saildef)
+            : XmlWriterTempl<CSailDef>(saildef, "saildef", ".saildef", "Sail definitions")
     {}
     ;
 };
@@ -121,8 +121,8 @@ public:
      * @param rigdef the CRigDef to write
      * @param name the CRigDef's name
      */
-    CRigDefXmlWriter(const CRigDef &rigdef, const QString &name)
-            : XmlWriterTempl<CRigDef>(rigdef, name, ".sailrig", "Rig definitions")
+    CRigDefXmlWriter(const CRigDef &rigdef)
+            : XmlWriterTempl<CRigDef>(rigdef, "rigdef", ".rigdef", "Rig definitions")
     {}
     ;
 };

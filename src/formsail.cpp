@@ -273,7 +273,7 @@ bool CFormSail::show(const QString newname)
     {
         try
         {
-            newdef = CSailDefXmlReader("saildef").read(filename);
+            newdef = CSailDefXmlReader().read(filename);
         } catch (CException e) {
             ret = false;
         }
@@ -403,7 +403,7 @@ void CFormSail::slotMould()
 void CFormSail::slotOpen()
 {
     CSailDef newdef;
-    QString newname = CSailDefXmlReader("saildef").readDialog(newdef,filename);
+    QString newname = CSailDefXmlReader().readDialog(newdef,filename);
     if ( !newname.isNull() )
     {
         filename = newname;
@@ -504,7 +504,7 @@ bool CFormSail::save()
     // try writing to file, catch exception
     try
     {
-        CSailDefXmlWriter(saildef , "saildef").write(filename);
+        CSailDefXmlWriter(saildef).write(filename);
         return true;
     }
     catch (CException e)
@@ -520,7 +520,7 @@ bool CFormSail::save()
  */
 bool CFormSail::saveAs()
 {
-    QString newname = CSailDefXmlWriter(saildef , "saildef").writeDialog(filename);
+    QString newname = CSailDefXmlWriter(saildef).writeDialog(filename);
 
     if ( !newname.isNull() )
     {

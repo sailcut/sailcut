@@ -163,7 +163,7 @@ void CRigSailWidget::slotReload()
         switch (rigsail.type)
         {
         case SAILDEF:
-            (CPanelGroup&)rigsail = CSailWorker(CSailDefXmlReader("saildef").read(rigsail.filename)).makeSail();
+            (CPanelGroup&)rigsail = CSailWorker(CSailDefXmlReader().read(rigsail.filename)).makeSail();
             break;
         case SAIL3D:
             (CPanelGroup&)rigsail = CPanelGroupXmlReader("sail").read(rigsail.filename);
