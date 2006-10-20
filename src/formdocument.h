@@ -20,7 +20,7 @@
 #ifndef FORMDOCUMENT_H
 #define FORMDOCUMENT_H
 
-#include <QMainWindow>
+#include <QWidget>
 #include <vector>
 
 using namespace std;
@@ -28,10 +28,11 @@ using namespace std;
 // forward definitions
 class CPrefs;
 class CException;
+class QMenu;
 
 /** A dialog holding a Sailcut document.
  */
-class CFormDocument : public QMainWindow
+class CFormDocument : public QWidget
 {
 public:
     /** The constructor. */

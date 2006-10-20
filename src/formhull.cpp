@@ -130,11 +130,9 @@ void CFormHull::setupMenuBar()
  */
 void CFormHull::setupMainWidget()
 {
-    QWidget *mainwidget = new QWidget(this);
+    QGridLayout *layout = new QGridLayout(this);
     
-    QGridLayout *layout = new QGridLayout( mainwidget );
-    
-    tabs = new QTabWidget(mainwidget);
+    tabs = new QTabWidget(this);
     layout->addWidget(tabs);
 
     CSailViewerPanel *tmp;
@@ -152,8 +150,6 @@ void CFormHull::setupMainWidget()
     {
         tabs->addTab(panel[i],"");
     }
-
-    setCentralWidget(mainwidget);
 }
 
 
