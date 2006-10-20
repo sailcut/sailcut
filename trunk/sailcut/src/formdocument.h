@@ -34,8 +34,13 @@ class CFormDocument : public QMainWindow
 
 public:
     CFormDocument(CPrefs *myPrefs);
+//    virtual bool open() = 0;
     virtual bool save() = 0;
     virtual bool saveAs() = 0;
+    const QString& getFilename()
+    {
+        return filename;
+    };
 
 protected:
     /** The user preferences. */

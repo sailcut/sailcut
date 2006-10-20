@@ -50,17 +50,16 @@ public:
     // construction, destruction
     CFormSail(CPrefs *myPrefs);
 
-    void show(const QString newname = QString::null);
+    bool show(const QString newname = QString::null);
     void setSailDef(const CSailDef newdef);
 
+//    virtual bool open();
     virtual bool save();
     virtual bool saveAs();
 
 protected:
     void closeEvent( QCloseEvent * e);
     void keyPressEvent ( QKeyEvent * e );
-    void makeMenuMru();
-    void fileAccess(QString event, QString file);
 
     void setupMenuBar();
     void setupMainWidget();
@@ -82,7 +81,6 @@ protected slots:
     virtual void slotExportFlatXML();
     virtual void slotMould();
     virtual void slotOpen();
-    virtual void slotOpenRecent();
 
     virtual void slotPrintData();
     virtual void slotPrintDwg();
@@ -95,9 +93,6 @@ protected:
     vector<CSailViewerPanel *> panel;
     /** the tab widget */
     QTabWidget *tabs;
-
-    /** the status bar */
-    QStatusBar* statusbar;
 
     /** the definition of the current hull */
     CHullDef hulldef;
@@ -122,9 +117,6 @@ protected:
     QMenu *menuExportFlat;
     /** the View menu */
     QMenu *menuView;
-
-    /** the Most Recently Used files menu */
-    QMenu *menuRecent;
 
     /** open an existing sail definition */
     QAction *actionOpen;

@@ -410,25 +410,24 @@ void CFormMain::slotOpen()
  */
 void CFormMain::slotOpenRecent()
 {
-    /*
     // retrieve the index of the MRU entry
     QAction *a = qobject_cast<QAction *>(sender());
     if ( !a )
         return;
     int index = a->data().toInt();
 
-    filename = prefs->mruSaildef[index];
-    try
+    QString filename = prefs->mruSaildef[index];
+    
+    CFormSail *wnd = new CFormSail(prefs);
+    workspace->addWindow(wnd);
+    if (wnd->show(filename))
     {
-        setSailDef(CSailDefXmlReader("saildef").read(filename));
         fileAccess(tr("loaded '%1'").arg(filename), filename);
-    }
-    catch (CException e)
-    {
+    } else {
         prefs->mruSaildef.removeEntry(filename);
         makeMenuMru();
         statusbar->showMessage( tr("error loading '%1'").arg(filename) );
-    }*/
+    }
 }
 
 
@@ -439,7 +438,8 @@ void CFormMain::slotSave()
 {
     if (activeChild()->save())
     {
-        statusBar()->showMessage("save");
+        QString filename = activeChild()->getFilename();
+        fileAccess( tr("wrote '%1'").arg(filename), filename );
     }
 }
 
@@ -451,7 +451,8 @@ void CFormMain::slotSaveAs()
 {
     if (activeChild()->saveAs())
     {
-        statusBar()->showMessage("save as");
+        QString filename = activeChild()->getFilename();
+        fileAccess( tr("wrote '%1'").arg(filename), filename );
     }
 }
 

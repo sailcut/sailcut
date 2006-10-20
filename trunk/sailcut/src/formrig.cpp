@@ -83,24 +83,10 @@ void CFormRig::languageChange()
     actionAddSail->setText( tr("3D &sail") );
 
     actionOpen->setText( tr("&Open") );
-    menuRecent->setTitle( tr("Open &recent") );
 
     defpanel->languageChange();
     viewer->languageChange();
 
-}
-
-
-/**
- * Creates the "Open Recent" menu from the Most Recently Used files list.
- */
-void CFormRig::makeMenuMru()
-{
-    menuRecent->clear();
-    for ( unsigned int i = 0; i < prefs->mruRigdef.size(); i++)
-    {
-        menuRecent->addAction( prefs->mruRigdef[i], this, SLOT ( slotOpenRecent() ))->setData( i );
-    }
 }
 
 
@@ -151,9 +137,6 @@ void CFormRig::setupMenuBar()
     actionAddSail = menuAdd->addAction( tr("3D &sail"), this, SLOT( slotAddSail() ) );
 
     actionOpen = menuFile->addAction( "", this, SLOT( slotOpen() ) );
-    menuRecent = menuFile->addMenu( "" );
-
-    makeMenuMru();
 }
 
 
@@ -219,34 +202,7 @@ void CFormRig::slotOpen()
         filename = newname;
         setRigDef(newdef);
         prefs->mruRigdef.touchEntry(filename);
-        makeMenuMru();
     }
-}
-
-
-/**
- * Opens a recently used rig definition.
- */
-void CFormRig::slotOpenRecent()
-{
-    // retrieve the index of the MRU entry
-    QAction *a = qobject_cast<QAction *>(sender());
-    if (!a)
-        return;
-    int index = a->data().toInt();
-
-    filename = prefs->mruRigdef[index];
-    try
-    {
-        setRigDef(CRigDefXmlReader("rigdef").read(filename));
-        prefs->mruRigdef.touchEntry(filename);
-    }
-    catch (CException e)
-    {
-        prefs->mruRigdef.removeEntry(filename);
-    }
-    makeMenuMru();
-
 }
 
 
@@ -265,7 +221,6 @@ bool CFormRig::save()
     {
         CRigDefXmlWriter(rigdef,"rigdef").write(filename);
         prefs->mruRigdef.touchEntry(filename);
-        makeMenuMru();
         return true;
     }
     catch (CException e)
@@ -287,7 +242,6 @@ bool CFormRig::saveAs()
     {
         filename = newname;
         prefs->mruRigdef.touchEntry(filename);
-        makeMenuMru();
         return true;
     }
     return false;
