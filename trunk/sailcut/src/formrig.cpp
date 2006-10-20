@@ -200,7 +200,6 @@ void CFormRig::slotOpen()
     {
         filename = newname;
         setRigDef(newdef);
-        prefs->mruRigdef.touchEntry(filename);
     }
 }
 
@@ -211,20 +210,17 @@ void CFormRig::slotOpen()
 bool CFormRig::save()
 {
     if ( filename.isEmpty() )
-    {
         return saveAs();
-    }
 
     // try writing to file, catch exception
     try
     {
         CRigDefXmlWriter().write(rigdef, filename);
-        prefs->mruRigdef.touchEntry(filename);
         return true;
     }
     catch (CException e)
     {
-        QMessageBox::information(this, tr("error"), tr("There was an error writing to the selected file"));
+        CRigDefXmlWriter::writeErrorMessage();
     }
     return false;
 }
@@ -240,7 +236,6 @@ bool CFormRig::saveAs()
     if (!newname.isNull())
     {
         filename = newname;
-        prefs->mruRigdef.touchEntry(filename);
         return true;
     }
     return false;

@@ -20,7 +20,7 @@
 #ifndef SAILWRITER_XML_H
 #define SAILWRITER_XML_H
 
-#include "fileio.h"
+#include "filewriter.h"
 #include "saildoc.h"
 
 
@@ -122,8 +122,6 @@ class CRigDefXmlWriter : public XmlWriterTempl<CRigDef>
 {
 public:
     /** The constructor.
-     *
-     * @param rigdef the CRigDef to write
      */
     CRigDefXmlWriter()
             : XmlWriterTempl<CRigDef>("rigdef", ".rigdef", "Rig definitions")
@@ -133,7 +131,15 @@ public:
 
 
 /** A class used to output a CPrefs to an XML file. */
-typedef XmlWriterTempl<CPrefs> CPrefsXmlWriter;
-
+class CPrefsXmlWriter : public XmlWriterTempl<CPrefs>
+{
+public:
+    /** The constructor.
+     */
+    CPrefsXmlWriter()
+            : XmlWriterTempl<CPrefs>("prefs")
+    {}
+    ;
+};
 
 #endif

@@ -9,7 +9,7 @@ bin_PROGRAMS = sailcut
 # these are the headers
 HEADER_FILES =  \
 	disparea.h \
-	fileio.h \
+	filewriter.h \
 	formdocument.h \
 	formhelp.h \
 	formhulldef.h \

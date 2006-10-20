@@ -173,7 +173,7 @@ void CRigSailWidget::slotReload()
     }
     catch (CException e)
     {
-        QMessageBox::information(0,tr("error"), tr("There was an error reading from the selected file."));
+        CSailDefXmlWriter::readErrorMessage();
     }
 }
 

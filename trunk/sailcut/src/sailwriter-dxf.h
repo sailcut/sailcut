@@ -20,7 +20,7 @@
 #ifndef SAILWRITER_DXF_H
 #define SAILWRITER_DXF_H
 
-#include "fileio.h"
+#include "filewriter.h"
 #include "panelgroup.h"
 #include <iostream>
 #include <fstream>

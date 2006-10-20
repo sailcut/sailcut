@@ -17,8 +17,8 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef FILEIO_H
-#define FILEIO_H
+#ifndef FILEWRITER_H
+#define FILEWRITER_H
 
 #ifdef WIN32
   #define CRLF   endl
@@ -73,14 +73,22 @@ public:
             }
             catch (CException e)
             {
-                QMessageBox::information(0, tr("error"), tr("There was an error reading from the selected file."));
+                readErrorMessage();
                 newfilename = QString::null;
             }
         }
         return newfilename;
     };
 
-
+    
+    /** Show an error message indicating that reading failed.
+     */
+    static void readErrorMessage()
+    { 
+        QMessageBox::information(0, tr("error"), tr("There was an error reading from the selected file."));
+    };
+    
+ 
     /** Perform the actual writing operation, must be overriden.
      */
     virtual void write(const objtype &, const QString &) const = 0;
@@ -107,12 +115,20 @@ public:
         }
         catch (CException e)
         {
-            QMessageBox::information(0, tr("error"), tr("There was an error writing to the selected file."));
+            writeErrorMessage();
             newfilename = QString::null;
         }
         return newfilename;
     };
     
+    
+    /** Show an error message indicating that writing failed.
+     */
+    static void writeErrorMessage()
+    {
+        QMessageBox::information(0, tr("error"), tr("There was an error writing to the selected file."));
+    };
+   
  
 protected:
     /** file extension */

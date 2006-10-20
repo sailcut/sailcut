@@ -109,7 +109,7 @@ void CSailApp::readPrefs()
     try
     {
         if (QFile(prefsfile).exists())
-            prefs = CPrefsXmlWriter("prefs").read(prefsfile);
+            prefs = CPrefsXmlWriter().read(prefsfile);
     }
     catch (CException e)
     {
@@ -125,7 +125,7 @@ void CSailApp::writePrefs()
 {
     try
     {
-        CPrefsXmlWriter("prefs").write(prefs, prefsfile);
+        CPrefsXmlWriter().write(prefs, prefsfile);
     }
     catch (CException e)
     {
