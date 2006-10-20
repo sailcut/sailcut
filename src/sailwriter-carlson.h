@@ -20,7 +20,7 @@
 #ifndef SAILWRITER_CARLSON_H
 #define SAILWRITER_CARLSON_H
 
-#include "fileio.h"
+#include "filewriter.h"
 #include "panelgroup.h"
 #include <fstream>
 

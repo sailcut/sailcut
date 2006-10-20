@@ -508,7 +508,7 @@ bool CFormSail::save()
     }
     catch (CException e)
     {
-        QMessageBox::information( this, tr("error"), tr("There was an error writing to the selected file") );
+        CSailDefXmlWriter::writeErrorMessage();
     }
     return false;
 }

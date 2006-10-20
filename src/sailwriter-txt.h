@@ -20,7 +20,7 @@
 #ifndef TXTWRITER_H
 #define TXTWRITER_H
 
-#include "fileio.h"
+#include "filewriter.h"
 #include "panelgroup.h"
 
 
