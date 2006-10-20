@@ -31,7 +31,6 @@
 #include "saildoc.h"
 #include "sailpainter.h"
 #include "sailprinter.h"
-#include "sailreader-xml.h"
 #include "sailworker.h"
 #include "sailwriter-carlson.h"
 #include "sailwriter-dxf.h"
@@ -273,7 +272,7 @@ bool CFormSail::show(const QString newname)
     {
         try
         {
-            newdef = CSailDefXmlReader().read(filename);
+            newdef = CSailDefXmlWriter().read(filename);
         } catch (CException e) {
             ret = false;
         }
@@ -403,7 +402,7 @@ void CFormSail::slotMould()
 void CFormSail::slotOpen()
 {
     CSailDef newdef;
-    QString newname = CSailDefXmlReader().readDialog(newdef,filename);
+    QString newname = CSailDefXmlWriter().readDialog(newdef,filename);
     if ( !newname.isNull() )
     {
         filename = newname;

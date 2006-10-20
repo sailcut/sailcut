@@ -22,7 +22,6 @@
 #include <QDir>
 #include <QTranslator>
 #include <QUrl>
-#include "sailreader-xml.h"
 #include "sailwriter-xml.h"
 
 using namespace std;
@@ -110,7 +109,7 @@ void CSailApp::readPrefs()
     try
     {
         if (QFile(prefsfile).exists())
-            prefs = CPrefsXmlReader("prefs").read(prefsfile);
+            prefs = CPrefsXmlWriter("prefs").read(prefsfile);
     }
     catch (CException e)
     {

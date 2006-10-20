@@ -26,12 +26,15 @@
   #define CRLF "\r\n"
 #endif
 
-#include <QObject>
+#include "geocpp/core.h"
+#include <QFileDialog>
+#include <QMessageBox>
 
 /** This is a generic class used as the base for various file
  *  input and output modules.
  */
-class CFileIO : public QObject
+template <class objtype>
+class CFileWriter : public QObject
 {
 public:
     /** The constructor.
@@ -39,18 +42,84 @@ public:
      * @param ext the file extension
      * @param desc description of the file type
      */
-    CFileIO(const QString &ext, const QString &desc) : _ext(ext), _desc(desc)
+    CFileWriter(const QString &ext, const QString &desc) : _ext(ext), _desc(desc)
     {}
     ;
 
-    virtual QString showDialogWrite(const QString &filename) const;
-    virtual QString showDialogRead(const QString &filename) const;
+    
+    /** Perform the actual reading operation, may be overriden 
+     *  to provide this functionality.
+     */
+    virtual const objtype read(const QString &) const
+    {
+        throw CException("Reading is not supported for this file type.");
+    };
 
+   
+    /** Display a dialog then read file.
+     *
+     * @param dest the object we read to
+     * @param filename initial file name
+     */
+    QString readDialog(objtype &dest, const QString &filename = "") const
+    {
+        QString newfilename = QFileDialog::getOpenFileName(0, tr("Open"), QFileInfo(filename).absolutePath(), _desc + " (*" + _ext + ")");
+
+        if (!newfilename.isNull())
+        {
+            try
+            {
+                dest = read(newfilename);
+            }
+            catch (CException e)
+            {
+                QMessageBox::information(0, tr("error"), tr("There was an error reading from the selected file."));
+                newfilename = QString::null;
+            }
+        }
+        return newfilename;
+    };
+
+
+    /** Perform the actual writing operation, must be overriden.
+     */
+    virtual void write(const objtype &, const QString &) const = 0;
+
+
+    /** Opens of a dialog to ask for a filename
+     *  then writes to a file.
+     *
+     *  @param obj The object to write.
+     *  @param filename The filename to start off with (default = "")
+     */
+    QString writeDialog(const objtype &obj, const QString &filename = QString::null)
+    {
+        QString newfilename = QFileDialog::getSaveFileName(0, tr("Save"), filename, _desc + " (*" + _ext + ")");
+        if (newfilename.isNull())
+            return newfilename;
+
+        if (newfilename.right(_ext.length()).toLower() != _ext)
+            newfilename += _ext;
+
+        try
+        {
+            write(obj, newfilename);
+        }
+        catch (CException e)
+        {
+            QMessageBox::information(0, tr("error"), tr("There was an error writing to the selected file."));
+            newfilename = QString::null;
+        }
+        return newfilename;
+    };
+    
+ 
 protected:
     /** file extension */
     QString _ext;
     /** description of the file type */
     QString _desc;
 };
+
 
 #endif

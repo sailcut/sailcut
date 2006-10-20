@@ -20,7 +20,7 @@
 #ifndef TXTWRITER_H
 #define TXTWRITER_H
 
-#include "filewriter.h"
+#include "fileio.h"
 #include "panelgroup.h"
 
 
@@ -35,7 +35,7 @@ public:
     {}
     ;
 
-    virtual void write(const CPanelGroup &sail, const QString &filename);
+    virtual void write(const CPanelGroup &sail, const QString &filename) const;
 };
 
 

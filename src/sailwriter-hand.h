@@ -37,7 +37,7 @@ public:
     {}
     ;
 
-    virtual void write(const CPanelGroup &sail, const QString &filename);
+    virtual void write(const CPanelGroup &sail, const QString &filename) const;
 };
 
 
