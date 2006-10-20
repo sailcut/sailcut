@@ -24,20 +24,19 @@
 
 
 /** The constructor.
- * @param sail the sail to write
  */
-CSailCarlsonWriter::CSailCarlsonWriter(const CPanelGroup &sail)
-        : CFileWriter(".sp4","Carlson plotter files"), _sail(sail)
+CSailCarlsonWriter::CSailCarlsonWriter()
+        : CFileWriter<CPanelGroup>(".sp4","Carlson plotter files")
 {}
 
 /** Write the draw message
  *
  * @param ct number of points to be written
  */
-void CSailCarlsonWriter::writeDraw(unsigned int ct)
+void CSailCarlsonWriter::writeDraw(ofstream &out, unsigned int ct)
 {
-    _myOut.setf(ios::left, ios::adjustfield);
-    _myOut<< setw(16) <<"draw"<<  ct << CRLF;
+    out.setf(ios::left, ios::adjustfield);
+    out<< setw(16) <<"draw"<<  ct << CRLF;
 }
 
 
@@ -45,10 +44,10 @@ void CSailCarlsonWriter::writeDraw(unsigned int ct)
  *
  * @param ct number of points to be written
  */
-void CSailCarlsonWriter::writeCut(unsigned int ct)
+void CSailCarlsonWriter::writeCut(ofstream &out, unsigned int ct)
 {
-    _myOut.setf(ios::left, ios::adjustfield);
-    _myOut<< setw(16) <<"cut"<<  ct << CRLF;
+    out.setf(ios::left, ios::adjustfield);
+    out<< setw(16) <<"cut"<<  ct << CRLF;
 }
 
 
@@ -56,22 +55,14 @@ void CSailCarlsonWriter::writeCut(unsigned int ct)
  *
  * @param p0 3d point to be written
  */
-void CSailCarlsonWriter::writePoint(CPoint3d p0)
+void CSailCarlsonWriter::writePoint(ofstream &out, CPoint3d p0)
 {
     real x=0, y=0;
     x= p0.x();
     y= p0.y();
 
-    _myOut.setf(ios::left, ios::adjustfield);
-    _myOut << setw(16) << x << y << CRLF;
-}
-
-
-/** Write the end of file mark
- */
-void CSailCarlsonWriter::writeEOF()
-{
-    _myOut << "EOF" << CRLF;
+    out.setf(ios::left, ios::adjustfield);
+    out << setw(16) << x << y << CRLF;
 }
 
 
@@ -81,41 +72,42 @@ void CSailCarlsonWriter::writeEOF()
  * @param panel the number of the panel to write
  *
  */
-void CSailCarlsonWriter::writePanelHeader(unsigned int panel)
+void CSailCarlsonWriter::writePanelHeader(ofstream &out, const CPanel &panel)
 {
     //char identity;
-    //identity = _sail.panel[panel].label.name;
-    unsigned int pencolor = _sail.panel[panel].label.color;
-    unsigned int htx = _sail.panel[panel].label.height;    // text height in mm
+    //identity = panel.label.name;
+    unsigned int pencolor = panel.label.color;
+    unsigned int htx = panel.label.height;    // text height in mm
     real xoff =0 , yoff = 0, rtx=0; // position and text rotation from x axis.
-    xoff= _sail.panel[panel].label.origin.x();
-    yoff= _sail.panel[panel].label.origin.y();
-    //rtx = atn2(  xoff= _sail.panel[panel].label.direction.y(),  xoff= _sail.panel[panel].label.direction.x());
+    xoff= panel.label.origin.x();
+    yoff= panel.label.origin.y();
+    //rtx = atn2(  xoff= panel.label.direction.y(),  xoff= _sail.panel[panel].label.direction.x());
 
-    _myOut << "panel, "<< string(_sail.panel[panel].label.name.toLocal8Bit()) <<", "<<pencolor<<", "<< xoff<<", "<<yoff<<", "<<rtx<<", "<<htx << CRLF;
+    out << "panel, "<< string(panel.label.name.toLocal8Bit()) <<", "<<pencolor<<", "<< xoff<<", "<<yoff<<", "<<rtx<<", "<<htx << CRLF;
 }
 
 
 /** Write sail to Carlson plotter format.
  *
+ * @param sail the sail to write
  * @param filename the file to write to
  */
-void CSailCarlsonWriter::write(const QString &filename)
+void CSailCarlsonWriter::write(const CPanelGroup &sail, const QString &filename)
 {
-    // ofstream myOut;
+    ofstream out;
 
-    _myOut.open(QFile::encodeName(filename),ios::out);
-    if (!_myOut.is_open())
+    out.open(QFile::encodeName(filename),ios::out);
+    if (!out.is_open())
         throw CException("CSailCarlsonWriter::write : unable to write to specified file");
 
-    _myOut << "Sailcut Carlson plotter development: Test1" << CRLF;
+    out << "Sailcut Carlson plotter development: Test1" << CRLF;
 
     unsigned int pn = 0;
-    for (pn = 0; pn < _sail.panel.size(); pn++)
-        writePanel(pn);
+    for (pn = 0; pn < sail.panel.size(); pn++)
+        writePanel( out, sail.panel[pn] );
 
-    writeEOF();
-    _myOut.close();
+    out << "EOF" << CRLF;
+    out.close();
 }
 
 
@@ -125,77 +117,76 @@ void CSailCarlsonWriter::write(const QString &filename)
  * @param panel the number of the panel to write
  *
  */
-void CSailCarlsonWriter::writePanel(unsigned int panel)
+void CSailCarlsonWriter::writePanel(ofstream &out, const CPanel &panel)
 {
+    CSide top = panel.top;
+    CSide btm = panel.bottom;
+    CSide left = panel.left;
+    CSide right = panel.right;
 
-    CSide top = _sail.panel[panel].top;
-    CSide btm = _sail.panel[panel].bottom;
-    CSide left = _sail.panel[panel].left;
-    CSide right = _sail.panel[panel].right;
-
-    CSide ctop = _sail.panel[panel].cutTop;
-    CSide cbtm = _sail.panel[panel].cutBottom;
-    CSide cleft = _sail.panel[panel].cutLeft;
-    CSide cright = _sail.panel[panel].cutRight;
+    CSide ctop = panel.cutTop;
+    CSide cbtm = panel.cutBottom;
+    CSide cleft = panel.cutLeft;
+    CSide cright = panel.cutRight;
 
     unsigned int i=0; // ascending counter
     int j = 0;  // descending counter
 
     //// header of panel
-    writePanelHeader(panel);
+    writePanelHeader(out, panel);
 
     ////  header for draw line
-    writeDraw (left.nbpoints()+top.nbpoints()+right.nbpoints()+btm.nbpoints());
+    writeDraw (out, left.nbpoints()+top.nbpoints()+right.nbpoints()+btm.nbpoints());
 
     // left edge
     for (i = 0; i < left.nbpoints(); i++)
     {
-        writePoint( left.point[i] );
+        writePoint( out, left.point[i] );
     }
 
     // panel top edge
     for (i = 0; i < top.nbpoints(); i++)
     {
-        writePoint( top.point[i] );
+        writePoint( out, top.point[i] );
     }
 
     // panel right edge
     for (j = right.nbpoints() -1; j> -1; j--)
     {
-        writePoint( right.point[j] );
+        writePoint( out, right.point[j] );
     }
 
     //// panel bottom edge
     for (j = btm.nbpoints() -1; j > -1; j--)
     {
-        writePoint( btm.point[j] );
+        writePoint( out, btm.point[j] );
     }
 
     ////  header for cut line
-    writeCut (left.nbpoints()+top.nbpoints()+right.nbpoints()+btm.nbpoints());
+    writeCut ( out, left.nbpoints()+top.nbpoints()+right.nbpoints()+btm.nbpoints() );
 
     // left edge
     for (i = 0; i < left.nbpoints(); i++)
     {
-        writePoint( cleft.point[i] );
+        writePoint( out, cleft.point[i] );
     }
 
     // panel top edge
     for (i = 0; i < top.nbpoints(); i++)
     {
-        writePoint( ctop.point[i] );
+        writePoint( out, ctop.point[i] );
     }
 
     // panel right edge
     for (j = right.nbpoints() -1; j > - 1; j--)
     {
-        writePoint( cright.point[j] );
+        writePoint( out, cright.point[j] );
     }
 
     // panel bottom edge
     for (j = btm.nbpoints() -1; j > -1; j--)
     {
-        writePoint( cbtm.point[j] );
+        writePoint( out, cbtm.point[j] );
     }
 }
 

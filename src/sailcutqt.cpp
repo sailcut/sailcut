@@ -126,7 +126,7 @@ void CSailApp::writePrefs()
 {
     try
     {
-        CPrefsXmlWriter(prefs,"prefs").write(prefsfile);
+        CPrefsXmlWriter("prefs").write(prefs, prefsfile);
     }
     catch (CException e)
     {

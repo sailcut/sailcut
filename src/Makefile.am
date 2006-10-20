@@ -52,7 +52,6 @@ HEADER_FILES =  \
 CPP_FILES = \
 	disparea.cpp \
 	fileio.cpp \
-	filewriter.cpp \
 	formdocument.cpp \
 	formhelp.cpp \
 	formhulldef.cpp \

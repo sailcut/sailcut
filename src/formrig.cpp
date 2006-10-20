@@ -146,7 +146,7 @@ void CFormRig::setupMenuBar()
 void CFormRig::slotAddSail()
 {
     CRigSail rigsail;
-    QString newname = CPanelGroupXmlReader("sail").readDialog((CPanelGroup&)rigsail,"");
+    QString newname = CPanelGroupXmlReader().readDialog((CPanelGroup&)rigsail,"");
 
     if (!newname.isNull())
     {
@@ -219,7 +219,7 @@ bool CFormRig::save()
     // try writing to file, catch exception
     try
     {
-        CRigDefXmlWriter(rigdef).write(filename);
+        CRigDefXmlWriter().write(rigdef, filename);
         prefs->mruRigdef.touchEntry(filename);
         return true;
     }
@@ -236,7 +236,7 @@ bool CFormRig::save()
  */
 bool CFormRig::saveAs()
 {
-    QString newname = CRigDefXmlWriter(rigdef).writeDialog(filename);
+    QString newname = CRigDefXmlWriter().writeDialog(rigdef, filename);
 
     if (!newname.isNull())
     {

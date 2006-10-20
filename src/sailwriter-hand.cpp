@@ -26,7 +26,7 @@
   *
   * @param filename the file to write to
   */
-void CSailHandWriter::write(const QString &filename)
+void CSailHandWriter::write(const CPanelGroup &sail, const QString &filename)
 {
     // open the output file
     ofstream myOut;
@@ -35,26 +35,26 @@ void CSailHandWriter::write(const QString &filename)
         throw CException("CSailWriter::write : unable to write to specified file");
 
     // write the name of the sail
-    myOut << string(_sail.title.toLocal8Bit()) << endl;
+    myOut << string(sail.title.toLocal8Bit()) << endl;
 
     // TODO : modify code to write actual hand output
     //
-    // _sail is the sail, loop over its panels
-    for(unsigned int i=0; i < _sail.panel.size(); i++)
+    // sail is the sail, loop over its panels
+    for(unsigned int i=0; i < sail.panel.size(); i++)
     {
         myOut << "===== CPanel : " << i << " ====" << endl;
-        myOut << _sail.panel[i].label;
-        myOut << "== CSide : left ==" << endl << _sail.panel[i].left;
-        myOut << "== CSide : top ==" << endl << _sail.panel[i].top;
-        myOut << "== CSide : right ==" << endl << _sail.panel[i].right;
-        myOut << "== CSide : bottom ==" << endl << _sail.panel[i].bottom;
+        myOut << sail.panel[i].label;
+        myOut << "== CSide : left ==" << endl << sail.panel[i].left;
+        myOut << "== CSide : top ==" << endl << sail.panel[i].top;
+        myOut << "== CSide : right ==" << endl << sail.panel[i].right;
+        myOut << "== CSide : bottom ==" << endl << sail.panel[i].bottom;
 
-        if (_sail.panel[i].hasHems)
+        if (sail.panel[i].hasHems)
         {
-            myOut << "== CSide : cutLeft ==" << endl << _sail.panel[i].cutLeft;
-            myOut << "== CSide : cutTop ==" << endl << _sail.panel[i].cutTop;
-            myOut << "== CSide : cutRight ==" << endl << _sail.panel[i].cutRight;
-            myOut << "== CSide : cutBottom ==" << endl << _sail.panel[i].cutBottom;
+            myOut << "== CSide : cutLeft ==" << endl << sail.panel[i].cutLeft;
+            myOut << "== CSide : cutTop ==" << endl << sail.panel[i].cutTop;
+            myOut << "== CSide : cutRight ==" << endl << sail.panel[i].cutRight;
+            myOut << "== CSide : cutBottom ==" << endl << sail.panel[i].cutBottom;
         }
     }
 

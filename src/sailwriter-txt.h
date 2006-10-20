@@ -26,23 +26,16 @@
 
 /** A class used to output a CPanelGroup to a TXT file.
  */
-class CSailTxtWriter : public CFileWriter
+class CSailTxtWriter : public CFileWriter<CPanelGroup>
 {
-protected :
-    /** the sail to write */
-    CPanelGroup _sail;
-
 public:
     /** The constructor.
-     *
-     * @param sail the sail to write
      */
-    CSailTxtWriter(const CPanelGroup &sail)
-            : CFileWriter(".txt","Text files"), _sail(sail)
+    CSailTxtWriter() : CFileWriter<CPanelGroup>(".txt","Text files")
     {}
     ;
 
-    virtual void write(const QString &filename);
+    virtual void write(const CPanelGroup &sail, const QString &filename);
 };
 
 
