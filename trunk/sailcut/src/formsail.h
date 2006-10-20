@@ -44,7 +44,6 @@ class CFormSail : public CFormDocumentTmpl<CSailDef, CSailDefXmlWriter>
 public:
     // construction, destruction
     CFormSail(CPrefs *myPrefs);
-    virtual vector<QMenu*> getFileMenu();
 
 protected:
     void closeEvent( QCloseEvent * e);
@@ -99,8 +98,6 @@ protected:
     QMenu *menuExport3d;
     /** the Export flat submenu */
     QMenu *menuExportFlat;
-    /** the View menu */
-    QMenu *menuView;
 
     /** export 3D sail to DXF */
     QAction *actionExport3dDXF;

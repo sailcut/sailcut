@@ -153,7 +153,8 @@ void CFormMain::languageChange()
 
     actionQuit->setText( tr("&Quit") );
 
-    // Language menu
+    // View menu
+    menuView->setTitle( tr("&View") );
     menuLanguage->setTitle( tr("Language") );
 
     // Help menu
@@ -239,8 +240,9 @@ void CFormMain::setupMenuBar()
 
     actionQuit = menuFile->addAction( "", this, SLOT( close() ) );
 
-    // language submenu
-    menuLanguage = menuBar()->addMenu("");
+    // View menu
+    menuView = menuBar()->addMenu("");
+    menuLanguage = menuView->addMenu("");
 
     // language text is not to be translated
     menuLanguage->addAction( "English", this, SLOT( slotLanguage() ) )->setData("en");
@@ -453,19 +455,36 @@ void CFormMain::slotUpdateMenus()
     actionSaveAs->setEnabled(hasChild);    
     actionClose->setEnabled(hasChild);
 
-    // remove old stuff
+    // remove old extra menu entries
     unsigned int i;
-    for (i = 0; i < fileChildActions.size(); i++)
-        menuFile->removeAction(fileChildActions[i]);
-    fileChildActions.clear();
+    for (i = 0; i < childFileActions.size(); i++)
+        menuFile->removeAction(childFileActions[i]);
+    childFileActions.clear();
+    for (i = 0; i < childViewActions.size(); i++)
+        menuView->removeAction(childViewActions[i]);
+    childViewActions.clear();
 
-    // add new
-    if (hasChild && activeChild()->getFileMenu().size() > 0)
+    // add new extra menu entries
+    if (hasChild)
     {
-        vector<QMenu*> childMenus = activeChild()->getFileMenu();
-        fileChildActions.push_back(menuFile->insertSeparator(actionSep));
-        for (i = 0; i < childMenus.size(); i++)
-            fileChildActions.push_back(menuFile->insertMenu(actionSep, childMenus[i]));
+        vector<QMenu*> menus = activeChild()->extraFileMenus;
+        if (menus.size() > 0)
+        {
+            childFileActions.push_back(menuFile->insertSeparator(actionSep));
+            for (i = 0; i < menus.size(); i++)
+                childFileActions.push_back(menuFile->insertMenu(actionSep, menus[i]));
+        }
+        vector<QAction*> actions = activeChild()->extraViewActions;
+        if (actions.size() > 0)
+        {
+            for (i = 0; i < actions.size(); i++)
+            {
+                childViewActions.push_back(actions[i]);
+                menuView->insertAction(menuLanguage->menuAction(), actions[i]);
+            }
+            childViewActions.push_back(menuView->insertSeparator(menuLanguage->menuAction()));
+        }
+
     } 
 }
 
