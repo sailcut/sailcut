@@ -45,8 +45,8 @@
  *
  * @param prefs the user preferences
  */
-CFormSail::CFormSail(CPrefs *myPrefs)
-        : CFormDocumentTmpl<CSailDef, CSailDefXmlWriter> (myPrefs)
+CFormSail::CFormSail(CPrefs *myPrefs, QWidget *parent)
+        : CFormDocumentTmpl<CSailDef, CSailDefXmlWriter> (myPrefs, parent)
 {
     setMinimumSize( QSize( 300, 220 ) );
 

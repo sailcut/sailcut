@@ -38,7 +38,7 @@ class CFormHull : public CFormDocumentTmpl<CHullDef, CHullDefXmlWriter>
 
 public:
     // construction, destruction
-    CFormHull(CPrefs *myPrefs);
+    CFormHull(CPrefs *myPrefs, QWidget *parent);
 
 protected:
     void keyPressEvent ( QKeyEvent * e );

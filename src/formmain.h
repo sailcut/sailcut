@@ -54,7 +54,6 @@ protected:
     void closeEvent( QCloseEvent * e);
     void makeMenuMru();
     void open(QString filename);
-    void fileAccess(QString event, QString file);
 
 private:
     void setupMenuBar();
@@ -87,13 +86,13 @@ protected:
 
     /** signal mapper */
     QSignalMapper *windowMapper;
-    
+
     /** the location of the Sailcut CAD Handbook */
     QUrl handbook;
 
     /** the application */
     CSailApp *app;
-    
+
     /** the user preferences */
     CPrefs *prefs;
 

@@ -46,7 +46,7 @@ public:
     {}
     ;
 
-    
+
     /** Perform the actual reading operation, may be overriden 
      *  to provide this functionality.
      */
@@ -55,7 +55,7 @@ public:
         throw CException("Reading is not supported for this file type.");
     };
 
-   
+
     /** Display a dialog then read file.
      *
      * @param dest the object we read to
@@ -80,15 +80,15 @@ public:
         return newfilename;
     };
 
-    
+
     /** Show an error message indicating that reading failed.
      */
     static void readErrorMessage()
     { 
         QMessageBox::information(0, tr("error"), tr("There was an error reading from the selected file."));
     };
-    
- 
+
+
     /** Perform the actual writing operation, must be overriden.
      */
     virtual void write(const objtype &, const QString &) const = 0;
@@ -100,7 +100,7 @@ public:
      *  @param obj The object to write.
      *  @param filename The filename to start off with (default = "")
      */
-    QString writeDialog(const objtype &obj, const QString &filename = QString::null)
+    QString writeDialog(const objtype &obj, const QString &filename = QString::null) const
     {
         QString newfilename = QFileDialog::getSaveFileName(0, tr("Save"), filename, _desc + " (*" + _ext + ")");
         if (newfilename.isNull())
@@ -120,16 +120,31 @@ public:
         }
         return newfilename;
     };
-    
-    
+
+
     /** Show an error message indicating that writing failed.
      */
     static void writeErrorMessage()
     {
         QMessageBox::information(0, tr("error"), tr("There was an error writing to the selected file."));
     };
-   
- 
+
+
+    /** Return the file extension associated with this CFileWriter.
+     */
+    QString getExtension() const
+    {
+        return _ext;
+    };
+
+    /**
+     * Returns whether the given file is associated with this CFileWriter.
+     */
+    bool isDocument(QString filename) const
+    {
+        return (filename.right(_ext.length()).toLower() == _ext);
+    };
+
 protected:
     /** file extension */
     QString _ext;

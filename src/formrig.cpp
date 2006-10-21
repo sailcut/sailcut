@@ -34,8 +34,8 @@
  *
  * @param prefs the user preferences
  */
-CFormRig::CFormRig(CPrefs *myPrefs)
-        : CFormDocumentTmpl<CRigDef, CRigDefXmlWriter>(myPrefs)
+CFormRig::CFormRig(CPrefs *myPrefs, QWidget *parent)
+        : CFormDocumentTmpl<CRigDef, CRigDefXmlWriter>(myPrefs, parent)
 {
     // create main widget
     setupMainWidget();
