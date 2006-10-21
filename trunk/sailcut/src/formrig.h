@@ -37,7 +37,7 @@ class CFormRig : public CFormDocumentTmpl<CRigDef, CRigDefXmlWriter>
     Q_OBJECT
 
 public:
-    CFormRig(CPrefs *myPrefs);
+    CFormRig(CPrefs *myPrefs, QWidget *parent);
 
 protected:
     void closeEvent( QCloseEvent * e);

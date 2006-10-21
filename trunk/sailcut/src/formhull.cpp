@@ -37,8 +37,8 @@
  *
  * @param prefs the user preferences
  */
-CFormHull::CFormHull(CPrefs *myPrefs)
-        : CFormDocumentTmpl<CHullDef, CHullDefXmlWriter> (myPrefs)
+CFormHull::CFormHull(CPrefs *myPrefs, QWidget *parent)
+        : CFormDocumentTmpl<CHullDef, CHullDefXmlWriter> (myPrefs, parent)
 {
     setMinimumSize( QSize( 300, 220 ) );
 

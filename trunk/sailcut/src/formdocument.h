@@ -36,8 +36,8 @@ class CFormDocument : public QWidget
 {
 public:
     /** The constructor. */
-    CFormDocument(CPrefs *myPrefs)
-        : prefs(myPrefs)
+    CFormDocument(CPrefs *myPrefs, QWidget *parent)
+        : QWidget(parent), prefs(myPrefs)
     {};
     virtual bool open(const QString &newfile) = 0;
     virtual bool save() = 0;
@@ -65,14 +65,30 @@ public:
      *
      * @params myPrefs
      */
-    CFormDocumentTmpl(CPrefs *myPrefs)
-        : CFormDocument(myPrefs)
+    CFormDocumentTmpl(CPrefs *myPrefs, QWidget *parent)
+        : CFormDocument(myPrefs, parent)
     {}
     ;
-    
+
     /**
-    * Reads the definition from an XML file.
-    */
+     *  Returns the file extension associated with this CFormDocument.
+     */
+    static QString getFileExtension()
+    {
+        return writertype().getExtension();
+    };
+
+    /**
+     * Returns whether the given file can be opened by this CFormDocument.
+     */
+    static bool isDocument(QString filename)
+    {
+       return writertype().isDocument(filename);
+    };
+
+    /**
+     * Reads the definition from an XML file.
+     */
     virtual bool open(const QString &newfile)
     {
         try
@@ -86,10 +102,10 @@ public:
         }
         return false;
     };
-   
+
     /**
-    * Saves the definition to an XML file.
-    */
+     * Saves the definition to an XML file.
+     */
     virtual bool save()
     {
         if ( filename.isEmpty() )

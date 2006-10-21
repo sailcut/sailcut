@@ -101,21 +101,6 @@ void CFormMain::closeEvent(QCloseEvent *e)
 
 
 /**
- * This method is called whenever we read or write a sail definition.
- * It updates the Most Recently Used files list correspondingly.
- *
- * @param event The action performed on the file (read, write)
- * @param file The file that was accessed
- */
-void CFormMain::fileAccess(QString event, QString file)
-{
-    statusbar->showMessage(event);
-    prefs->mruSaildef.touchEntry(file);
-    makeMenuMru();
-}
-
-
-/**
  * Sets the strings of the subwidgets using the current
  * language.
  */
@@ -166,20 +151,37 @@ void CFormMain::makeMenuMru()
 
 /**
  * Opens the specified document.
+ *
+ * @params filename
  */
 void CFormMain::open(QString filename)
 {
-    CFormSail *wnd = new CFormSail(prefs);
-    workspace->addWindow((QWidget*)wnd);
+    CFormDocument *wnd;
+    if (CFormSail::isDocument(filename))
+    {
+        wnd = new CFormSail(prefs, this);
+    } else if (CFormHull::isDocument(filename)) {
+        wnd = new CFormHull(prefs, this);
+    } else if (CFormRig::isDocument(filename)) {
+        wnd = new CFormRig(prefs, this);
+    } else {
+        statusbar->showMessage( tr("unknown document type '%1'").arg(filename) );
+        return;
+    }
+
     if (wnd->open(filename))
     {
-        fileAccess(tr("loaded '%1'").arg(filename), filename);
+        workspace->addWindow((QWidget*)wnd);
         wnd->show();
+
+        prefs->mruSaildef.touchEntry(filename);
+        statusbar->showMessage(tr("loaded '%1'").arg(filename));
     } else {
         prefs->mruSaildef.removeEntry(filename);
-        makeMenuMru();
         statusbar->showMessage( tr("error loading '%1'").arg(filename) );
+        delete wnd;
     }
+    makeMenuMru();
 }
 
 
@@ -321,14 +323,13 @@ void CFormMain::slotAboutQt()
  */
 void CFormMain::slotHandbook()
 {
-    //qDebug("handbook : %s", (const char*)handbook.toLocal8Bit());
     if ( !handbook.isEmpty() )
     {
 #ifdef HAVE_QDESKTOPSERVICES
         if (QDesktopServices::openUrl(handbook))
             return;
 #endif
-        CFormHelp(this , prefs , handbook).exec();
+        CFormHelp(this, prefs , handbook).exec();
     }
 }
 
@@ -361,7 +362,7 @@ void CFormMain::slotLanguage()
  */
 void CFormMain::slotNewHull()
 {
-    CFormHull *wnd = new CFormHull(prefs);
+    CFormHull *wnd = new CFormHull(prefs, this);
     workspace->addWindow(wnd);
     wnd->show();
 }
@@ -372,7 +373,7 @@ void CFormMain::slotNewHull()
  */
 void CFormMain::slotNewRig()
 {
-    CFormRig *wnd = new CFormRig(prefs);
+    CFormRig *wnd = new CFormRig(prefs, this);
     workspace->addWindow(wnd);
     wnd->show();
 }
@@ -383,7 +384,7 @@ void CFormMain::slotNewRig()
  */
 void CFormMain::slotNewSail()
 {
-    CFormSail *wnd = new CFormSail(prefs);
+    CFormSail *wnd = new CFormSail(prefs, this);
     workspace->addWindow(wnd);
     wnd->show();
 }
@@ -394,7 +395,13 @@ void CFormMain::slotNewSail()
  */
 void CFormMain::slotOpen()
 {
-    QString newfile = QFileDialog::getOpenFileName(0, tr("Open"), "", "All files (*.*)");
+    QString filter = "Sailcut CAD files (";
+    filter += QString("*") + CFormSail::getFileExtension();
+    filter += QString(" *") + CFormHull::getFileExtension();
+    filter += QString(" *") + CFormRig::getFileExtension();
+    filter += ")";
+
+    QString newfile = QFileDialog::getOpenFileName(0, tr("Open"), "", filter);
     if ( !newfile.isNull() )
         open(newfile);
 }
@@ -410,7 +417,6 @@ void CFormMain::slotOpenRecent()
     if ( !a )
         return;
     int index = a->data().toInt();
-    qDebug("trying to open");
     open(prefs->mruSaildef[index]);
 }
 
@@ -423,7 +429,9 @@ void CFormMain::slotSave()
     if (activeChild()->save())
     {
         QString filename = activeChild()->filename;
-        fileAccess( tr("wrote '%1'").arg(filename), filename );
+        statusbar->showMessage(tr("wrote '%1'").arg(filename));
+        prefs->mruSaildef.touchEntry(filename);
+        makeMenuMru();
     }
 }
 
@@ -436,7 +444,9 @@ void CFormMain::slotSaveAs()
     if (activeChild()->saveAs())
     {
         QString filename = activeChild()->filename;
-        fileAccess( tr("wrote '%1'").arg(filename), filename );
+        statusbar->showMessage(tr("wrote '%1'").arg(filename));
+        prefs->mruSaildef.touchEntry(filename);
+        makeMenuMru();
     }
 }
 

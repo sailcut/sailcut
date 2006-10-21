@@ -38,7 +38,7 @@ class CFormSail : public CFormDocumentTmpl<CSailDef, CSailDefXmlWriter>
 
 public:
     // construction, destruction
-    CFormSail(CPrefs *myPrefs);
+    CFormSail(CPrefs *myPrefs, QWidget *parent);
 
 protected:
     void closeEvent( QCloseEvent * e);
