@@ -87,6 +87,7 @@ CPanelGroup CHullWorker::makeHull() const
 
     CPanelGroup hull(deck);
     hull.type = HULL;
+    hull.title = hullID;
     return hull;
 }
 
