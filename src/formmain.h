@@ -107,6 +107,8 @@ protected:
     QMenu *menuHelp;
     /** the View menu */
     QMenu *menuView;
+    /** the Window menu */
+    QMenu *menuWindow;
     /** the Language menu */
     QMenu *menuLanguage;
 
@@ -119,6 +121,12 @@ protected:
     QAction *actionAboutQt;
     /** close the active document */
     QAction *actionClose;
+    /** close all documents */
+    QAction *actionCloseAll;
+    /** tile document windows */
+    QAction *actionTile;
+    /** cascade document windows */
+    QAction *actionCascade;
     /** display the handbook */
     QAction *actionHandbook;
     /** create a new hull */

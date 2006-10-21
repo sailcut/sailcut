@@ -118,13 +118,19 @@ void CFormMain::languageChange()
     menuRecent->setTitle( tr("Open &recent") );
     actionSave->setText( tr("&Save") );
     actionSaveAs->setText( tr("Save &As") );
-    actionClose->setText( tr("&Close") );
 
     actionQuit->setText( tr("&Quit") );
 
     // View menu
     menuView->setTitle( tr("&View") );
     menuLanguage->setTitle( tr("Language") );
+
+    // Window menu
+    menuWindow->setTitle( tr("&Window") );
+    actionClose->setText( tr("&Close") );
+    actionCloseAll->setText( tr("Close &All") );
+    actionTile->setText( tr("&Tile") );
+    actionCascade->setText( tr("&Cascade") );
 
     // Help menu
     menuHelp->setTitle( tr("&Help") );
@@ -207,29 +213,28 @@ void CFormMain::setupMenuBar()
 {
     // File menu
     menuFile = menuBar()->addMenu("");
-
     menuFileNew = menuFile->addMenu("");
     actionNewSail = menuFileNew->addAction("", this, SLOT( slotNewSail() ) );
     actionNewHull = menuFileNew->addAction("", this, SLOT( slotNewHull() ) );
     actionNewRig = menuFileNew->addAction("", this, SLOT( slotNewRig() ) );
-    
     actionOpen = menuFile->addAction("", this, SLOT( slotOpen() ) );
-
     menuRecent = menuFile->addMenu("");
-
     menuFile->addSeparator();
-
-    actionClose = menuFile->addAction( "", workspace, SLOT( closeActiveWindow() ) );
     actionSave = menuFile->addAction("", this, SLOT( slotSave() ) );
     actionSaveAs = menuFile->addAction("", this, SLOT( slotSaveAs() ) );
-
     actionSep = menuFile->addSeparator();
-
     actionQuit = menuFile->addAction( "", this, SLOT( close() ) );
 
     // View menu
     menuView = menuBar()->addMenu("");
     menuLanguage = menuView->addMenu("");
+
+    // Window menu
+    menuWindow = menuBar()->addMenu("");
+    actionClose = menuWindow->addAction( "", workspace, SLOT( closeActiveWindow() ) );
+    actionCloseAll = menuWindow->addAction("", workspace, SLOT(closeAllWindows()));
+    actionTile = menuWindow->addAction("", workspace, SLOT(tile()));
+    actionCascade = menuWindow->addAction("", workspace, SLOT(cascade()));
 
     // language text is not to be translated
     menuLanguage->addAction( "English", this, SLOT( slotLanguage() ) )->setData("en");
@@ -241,7 +246,7 @@ void CFormMain::setupMenuBar()
     menuLanguage->addAction( "Dansk", this, SLOT( slotLanguage() ) )->setData("dk");
     // menuLanguage->addAction( "Svenska", this, SLOT( slotLanguage() ) )->setData("sv");
     menuLanguage->addAction( QString::fromUtf8("Portugês"), this, SLOT( slotLanguage() ) )->setData("pt");
-    // menuLanguage->addAction( "Español", this, SLOT( slotLanguage() ) )->setData("es");
+    // menuLanguage->addAction( QString::fromUtf8("Español"), this, SLOT( slotLanguage() ) )->setData("es");
     menuLanguage->addAction( "Russian", this, SLOT( slotLanguage() ) )->setData("ru");
     //menuLanguage->addAction( "Polish", this, SLOT( slotLanguage() ) )->setData("pl");
 
