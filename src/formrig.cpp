@@ -32,7 +32,8 @@
 /**
  * The constructor.
  *
- * @param prefs the user preferences
+ * @param myPrefs the user preferences
+ * @param parent the parent widget
  */
 CFormRig::CFormRig(CPrefs *myPrefs, QWidget *parent)
         : CFormDocumentTmpl<CRigDef, CRigDefXmlWriter>(myPrefs, parent)
