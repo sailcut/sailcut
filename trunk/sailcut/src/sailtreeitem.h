@@ -25,24 +25,24 @@
 #include <QList>
 #include <QVariant>
 
-class SailTreeItem
+class CSailTreeItem
 {
 public:
-    SailTreeItem(const QList<QVariant> &data, SailTreeItem *parent = 0);
-    ~SailTreeItem();
+    CSailTreeItem(const QList<QVariant> &data, CSailTreeItem *parent = 0);
+    ~CSailTreeItem();
 
-    void appendChild(SailTreeItem *child);
+    void appendChild(CSailTreeItem *child);
 
-    SailTreeItem *child(int row);
+    CSailTreeItem *child(int row);
     int childCount() const;
     int columnCount() const;
     QVariant data(int column) const;
     int row() const;
-    SailTreeItem *parent();
+    CSailTreeItem *parent();
 
 private:
-    QList<SailTreeItem*> childItems;
+    QList<CSailTreeItem*> childItems;
     QList<QVariant> itemData;
-    SailTreeItem *parentItem;
+    CSailTreeItem *parentItem;
 };
 #endif

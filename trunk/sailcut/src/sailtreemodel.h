@@ -24,15 +24,15 @@
 #include <QModelIndex>
 #include <QVariant>
 
-class SailTreeItem;
+class CSailTreeItem;
 
-class SailTreeModel : public QAbstractItemModel
+class CSailTreeModel : public QAbstractItemModel
 {
     Q_OBJECT
 
 public:
-    SailTreeModel(const QString &data, QObject *parent = 0);
-    ~SailTreeModel();
+    CSailTreeModel(const QString &data, QObject *parent = 0);
+    ~CSailTreeModel();
 
     QVariant data(const QModelIndex &index, int role) const;
     Qt::ItemFlags flags(const QModelIndex &index) const;
@@ -45,7 +45,7 @@ public:
     int columnCount(const QModelIndex &parent = QModelIndex()) const;
 
 private:
-    SailTreeItem *rootItem;
+    CSailTreeItem *rootItem;
 };
 
 #endif

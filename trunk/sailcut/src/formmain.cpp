@@ -25,6 +25,7 @@
 #include "formsail.h"
 #include "formhelp.h"
 #include "formhull.h"
+#include "formpanelgroup.h"
 #include "formrig.h"
 
 #include "sailcutqt.h"
@@ -170,6 +171,8 @@ void CFormMain::open(QString filename)
         wnd = new CFormHull(prefs, this);
     } else if (CFormRig::isDocument(filename)) {
         wnd = new CFormRig(prefs, this);
+    } else if (CFormPanelGroup::isDocument(filename)) {
+        wnd = new CFormPanelGroup(prefs, this);
     } else {
         statusbar->showMessage( tr("unknown document type '%1'").arg(filename) );
         return;
@@ -404,6 +407,7 @@ void CFormMain::slotOpen()
     filter += QString("*") + CFormSail::getFileExtension();
     filter += QString(" *") + CFormHull::getFileExtension();
     filter += QString(" *") + CFormRig::getFileExtension();
+    filter += QString(" *") + CFormPanelGroup::getFileExtension();
     filter += ")";
 
     QString newfile = QFileDialog::getOpenFileName(0, tr("Open"), "", filter);
