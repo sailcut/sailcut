@@ -21,11 +21,8 @@
 #define FORMRIG_H
 
 #include "formdocument.h"
-#include "rigdef.h"
 #include "sailwriter-xml.h"
 
-class QAction;
-class QMenu;
 class CSailViewerPanel;
 class CRigDefPanel;
 
