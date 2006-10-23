@@ -43,7 +43,8 @@
 /**
  * Constructs a window to display a sail.
  *
- * @param prefs the user preferences
+ * @param myPrefs the user preferences
+ * @param parent the parent widget
  */
 CFormSail::CFormSail(CPrefs *myPrefs, QWidget *parent)
         : CFormDocumentTmpl<CSailDef, CSailDefXmlWriter> (myPrefs, parent)

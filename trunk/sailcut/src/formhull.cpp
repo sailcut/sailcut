@@ -27,7 +27,6 @@
 #include "hullworker.h"
 #include "sailviewer-panel.h"
 
-#include <QDir>
 #include <QLayout>
 #include <QTabWidget>
 
@@ -35,7 +34,8 @@
 /**
  * Constructs a window to display a hull.
  *
- * @param prefs the user preferences
+ * @param myPrefs the user preferences
+ * @param parent the parent widget
  */
 CFormHull::CFormHull(CPrefs *myPrefs, QWidget *parent)
         : CFormDocumentTmpl<CHullDef, CHullDefXmlWriter> (myPrefs, parent)
