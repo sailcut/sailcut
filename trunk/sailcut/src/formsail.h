@@ -24,10 +24,8 @@
 #include "sailwriter-xml.h"
 
 // forward definitions
-class QMenu;
 class QTabWidget;
 class CSailViewerPanel;
-class CPrefs;
 
 
 /** Dialog holding a sail.
