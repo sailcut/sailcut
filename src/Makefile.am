@@ -16,6 +16,7 @@ HEADER_FILES =  \
 	formhulldef.h \
 	formmain.h \
 	formmould.h \
+	formpanelgroup.h \
 	formrig.h \
 	formsail.h \
 	formsaildef.h \
@@ -37,6 +38,8 @@ HEADER_FILES =  \
 	sailpainter.h \
 	sailprinter.h \
 	sailreader-xml.h \
+	sailtreeitem.h \
+	sailtreemodel.h \
 	sailviewer.h \
 	sailviewer-panel.h \
 	sailworker.h \
@@ -56,6 +59,7 @@ CPP_FILES = \
 	formhulldef.cpp \
 	formmain.cpp \
 	formmould.cpp \
+	formpanelgroup.cpp \
 	formrig.cpp \
 	formsail.cpp \
 	formsaildef.cpp \
@@ -77,6 +81,8 @@ CPP_FILES = \
 	sailmould.cpp \
 	sailpainter.cpp \
 	sailprinter.cpp \
+	sailtreeitem.cpp \
+	sailtreemodel.cpp \
 	sailviewer.cpp \
 	sailviewer-panel.cpp \
 	sailworker.cpp \
@@ -99,12 +105,14 @@ BUILT_SOURCES = \
 	formhulldef.moc.cpp \
 	formmain.moc.cpp \
 	formmould.moc.cpp \
+	formpanelgroup.moc.cpp \
 	formrig.moc.cpp \
 	formsail.moc.cpp \
 	formsaildefbase.h \
 	formsaildefbase.cpp \
 	formsaildef.moc.cpp \
 	rigdef-panel.moc.cpp \
+	sailtreemodel.moc.cpp \
 	sailviewer.moc.cpp \
 	sailviewer-panel.moc.cpp \
 	widgetprofile.moc.cpp \
