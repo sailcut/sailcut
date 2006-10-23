@@ -22,28 +22,28 @@
 #include "sailtreeitem.h"
 #include "sailtreemodel.h"
 
-SailTreeModel::SailTreeModel(const QString &data, QObject *parent)
+CSailTreeModel::CSailTreeModel(const QString &data, QObject *parent)
     : QAbstractItemModel(parent)
 {
     QList<QVariant> rootData;
     rootData << "Title" << "Summary";
-    rootItem = new SailTreeItem(rootData);
+    rootItem = new CSailTreeItem(rootData);
 }
 
-SailTreeModel::~SailTreeModel()
+CSailTreeModel::~CSailTreeModel()
 {
     delete rootItem;
 }
 
-int SailTreeModel::columnCount(const QModelIndex &parent) const
+int CSailTreeModel::columnCount(const QModelIndex &parent) const
 {
     if (parent.isValid())
-        return static_cast<SailTreeItem*>(parent.internalPointer())->columnCount();
+        return static_cast<CSailTreeItem*>(parent.internalPointer())->columnCount();
     else
         return rootItem->columnCount();
 }
 
-QVariant SailTreeModel::data(const QModelIndex &index, int role) const
+QVariant CSailTreeModel::data(const QModelIndex &index, int role) const
 {
     if (!index.isValid())
         return QVariant();
@@ -51,12 +51,12 @@ QVariant SailTreeModel::data(const QModelIndex &index, int role) const
     if (role != Qt::DisplayRole)
         return QVariant();
 
-    SailTreeItem *item = static_cast<SailTreeItem*>(index.internalPointer());
+    CSailTreeItem *item = static_cast<CSailTreeItem*>(index.internalPointer());
 
     return item->data(index.column());
 }
 
-Qt::ItemFlags SailTreeModel::flags(const QModelIndex &index) const
+Qt::ItemFlags CSailTreeModel::flags(const QModelIndex &index) const
 {
     if (!index.isValid())
         return Qt::ItemIsEnabled;
@@ -64,7 +64,7 @@ Qt::ItemFlags SailTreeModel::flags(const QModelIndex &index) const
     return Qt::ItemIsEnabled | Qt::ItemIsSelectable;
 }
 
-QVariant SailTreeModel::headerData(int section, Qt::Orientation orientation,
+QVariant CSailTreeModel::headerData(int section, Qt::Orientation orientation,
                                int role) const
 {
     if (orientation == Qt::Horizontal && role == Qt::DisplayRole)
@@ -73,30 +73,30 @@ QVariant SailTreeModel::headerData(int section, Qt::Orientation orientation,
     return QVariant();
 }
 
-QModelIndex SailTreeModel::index(int row, int column, const QModelIndex &parent)
+QModelIndex CSailTreeModel::index(int row, int column, const QModelIndex &parent)
             const
 {
-    SailTreeItem *parentItem;
+    CSailTreeItem *parentItem;
 
     if (!parent.isValid())
         parentItem = rootItem;
     else
-        parentItem = static_cast<SailTreeItem*>(parent.internalPointer());
+        parentItem = static_cast<CSailTreeItem*>(parent.internalPointer());
 
-    SailTreeItem *childItem = parentItem->child(row);
+    CSailTreeItem *childItem = parentItem->child(row);
     if (childItem)
         return createIndex(row, column, childItem);
     else
         return QModelIndex();
 }
 
-QModelIndex SailTreeModel::parent(const QModelIndex &index) const
+QModelIndex CSailTreeModel::parent(const QModelIndex &index) const
 {
     if (!index.isValid())
         return QModelIndex();
 
-    SailTreeItem *childItem = static_cast<SailTreeItem*>(index.internalPointer());
-    SailTreeItem *parentItem = childItem->parent();
+    CSailTreeItem *childItem = static_cast<CSailTreeItem*>(index.internalPointer());
+    CSailTreeItem *parentItem = childItem->parent();
 
     if (parentItem == rootItem)
         return QModelIndex();
@@ -104,14 +104,14 @@ QModelIndex SailTreeModel::parent(const QModelIndex &index) const
     return createIndex(parentItem->row(), 0, parentItem);
 }
 
-int SailTreeModel::rowCount(const QModelIndex &parent) const
+int CSailTreeModel::rowCount(const QModelIndex &parent) const
 {
-    SailTreeItem *parentItem;
+    CSailTreeItem *parentItem;
 
     if (!parent.isValid())
         parentItem = rootItem;
     else
-        parentItem = static_cast<SailTreeItem*>(parent.internalPointer());
+        parentItem = static_cast<CSailTreeItem*>(parent.internalPointer());
 
     return parentItem->childCount();
 }

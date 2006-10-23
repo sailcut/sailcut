@@ -19,7 +19,7 @@
 
 #include "formpanelgroup.h"
 #include "sailviewer-panel.h"
-//#include "sailtreemodel.h"
+#include "sailtreemodel.h"
 
 #include <QLayout>
 #include <QTreeView>
@@ -63,6 +63,9 @@ void CFormPanelGroup::setDef(const CPanelGroup& newdef)
 {
     def = newdef;
     viewer->setObject(def);
+
+    CSailTreeModel *model = new CSailTreeModel("");
+    treeview->setModel(model);
 }
 
 
@@ -75,6 +78,9 @@ void CFormPanelGroup::setupMainWidget()
     
     viewer = new CSailViewerPanel(0, WIREFRAME, true);
     layout->addWidget(viewer);
+
+    treeview = new QTreeView(this);
+    layout->addWidget(treeview);
 }
 
 

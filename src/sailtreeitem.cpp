@@ -21,51 +21,51 @@
 
 #include <QStringList>
 
-SailTreeItem::SailTreeItem(const QList<QVariant> &data, SailTreeItem *parent)
+CSailTreeItem::CSailTreeItem(const QList<QVariant> &data, CSailTreeItem *parent)
 {
     parentItem = parent;
     itemData = data;
 }
 
- SailTreeItem::~SailTreeItem()
+ CSailTreeItem::~CSailTreeItem()
 {
     qDeleteAll(childItems);
 }
 
-void SailTreeItem::appendChild(SailTreeItem *item)
+void CSailTreeItem::appendChild(CSailTreeItem *item)
 {
     childItems.append(item);
 }
 
-SailTreeItem *SailTreeItem::child(int row)
+CSailTreeItem *CSailTreeItem::child(int row)
 {
     return childItems.value(row);
 }
 
-int SailTreeItem::childCount() const
+int CSailTreeItem::childCount() const
 {
     return childItems.count();
 }
 
-int SailTreeItem::columnCount() const
+int CSailTreeItem::columnCount() const
 {
     return itemData.count();
 }
 
-QVariant SailTreeItem::data(int column) const
+QVariant CSailTreeItem::data(int column) const
 {
     return itemData.value(column);
 }
 
-SailTreeItem *SailTreeItem::parent()
+CSailTreeItem *CSailTreeItem::parent()
 {
     return parentItem;
 }
 
-int SailTreeItem::row() const
+int CSailTreeItem::row() const
 {
     if (parentItem)
-        return parentItem->childItems.indexOf(const_cast<SailTreeItem*>(this));
+        return parentItem->childItems.indexOf(const_cast<CSailTreeItem*>(this));
 
     return 0;
 }
