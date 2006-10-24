@@ -17,4 +17,4 @@ $(dist_pixmaps_DATA): %.xpm: %.svg
 	rm -f $*.tmp.*
 
 EXTRA_DIST = sailcut.svg sailcut-file.svg sailcut-file-alt.svg
-MAINTAINERCLEANFILES = $(dist_noinst_DATA)
+MAINTAINERCLEANFILES = $(dist_pixmaps_DATA) $(dist_noinst_DATA)
