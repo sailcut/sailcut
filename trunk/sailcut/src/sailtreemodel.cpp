@@ -39,12 +39,20 @@ QVariant CSailTreeModel::data(const QModelIndex &index, int role) const
     if (!index.isValid())
         return QVariant();
 
-    if (role != Qt::DisplayRole)
-        return QVariant();
-
     CSailTreeItem *item = static_cast<CSailTreeItem*>(index.internalPointer());
 
-    return item->data(index.column());
+    switch (role)
+    {
+        case Qt::DisplayRole:
+            return item->data(index.column());
+        case Qt::DecorationRole:
+            if (index.column() == 0)
+                return item->icon();
+            break;
+        default:
+            break;
+    }
+    return QVariant();
 }
 
 Qt::ItemFlags CSailTreeModel::flags(const QModelIndex &index) const

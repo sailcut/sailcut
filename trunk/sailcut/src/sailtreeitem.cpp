@@ -18,44 +18,45 @@
  */
 
 #include "sailtreeitem.h"
-
+#include "icons/point.xpm"
+#include "icons/panel.xpm"
+#include "icons/panelgroup.xpm"
 #include <QStringList>
+#include <QIcon>
 
 CSailTreeItem::CSailTreeItem(const QList<QVariant> &data, CSailTreeItem *parent)
 {
     parentItem = parent;
     itemData = data;
+    itemIcon = NULL;
 }
 
 CSailTreeItem::CSailTreeItem(const CPanelGroup &data, QString name, CSailTreeItem *parent)
 {
     parentItem = parent;
-    itemData << "CPanelGroup" << name;
+    itemData << name;
+    itemIcon = panelgroup_xpm;
     appendChild(new CSailTreeItem(data.panel, "panel", this));
-    appendChild(new CSailTreeItem(data.child, "child", this));
+    if (data.child.size() > 0)
+        appendChild(new CSailTreeItem(data.child, "child", this));
 }
 
 CSailTreeItem::CSailTreeItem(const CPanel &data, QString name, CSailTreeItem *parent)
 {
     parentItem = parent;
-    itemData << "CPanel" << name;
-    appendChild(new CSailTreeItem(data.left, "left", this));
-    appendChild(new CSailTreeItem(data.right, "right", this));
-    appendChild(new CSailTreeItem(data.top, "top", this));
-    appendChild(new CSailTreeItem(data.bottom, "bottom", this));
-}
-
-CSailTreeItem::CSailTreeItem(const CSide &data, QString name, CSailTreeItem *parent)
-{
-    parentItem = parent;
-    itemData << "CSide" << name;
-    appendChild(new CSailTreeItem(data.point, "point", this));
+    itemData << name;
+    itemIcon = panel_xpm;
+    appendChild(new CSailTreeItem(data.left.point, "left", this));
+    appendChild(new CSailTreeItem(data.right.point, "right", this));
+    appendChild(new CSailTreeItem(data.top.point, "top", this));
+    appendChild(new CSailTreeItem(data.bottom.point, "bottom", this));
 }
 
 CSailTreeItem::CSailTreeItem(const CPoint3d &data, QString name, CSailTreeItem *parent)
 {
     parentItem = parent;
-    itemData << "CPoint3d" << name << data.x() << data.y() << data.z();
+    itemIcon = point_xpm;
+    itemData << name << data.x() << data.y() << data.z();
 }
 
 CSailTreeItem::~CSailTreeItem()
@@ -86,6 +87,14 @@ int CSailTreeItem::columnCount() const
 QVariant CSailTreeItem::data(int column) const
 {
     return itemData.value(column);
+}
+
+QIcon CSailTreeItem::icon() const
+{
+    if (itemIcon != NULL)
+        return QIcon(QPixmap(itemIcon));
+    else
+        return QIcon();
 }
 
 CSailTreeItem *CSailTreeItem::parent()

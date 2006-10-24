@@ -25,13 +25,14 @@
 #include <QList>
 #include <QVariant>
 
+class QIcon;
+
 class CSailTreeItem
 {
 public:
     CSailTreeItem(const QList<QVariant> &data, CSailTreeItem *parent = 0);
     CSailTreeItem(const CPanelGroup& data, QString name, CSailTreeItem *parent = 0);
     CSailTreeItem(const CPanel& data, QString name, CSailTreeItem *parent = 0);
-    CSailTreeItem(const CSide& data, QString name, CSailTreeItem *parent = 0);
     CSailTreeItem(const CPoint3d& data, QString name, CSailTreeItem *parent = 0);
 
     /** Constructs a CSailTreeItem representing a vector of elements.
@@ -44,7 +45,8 @@ public:
     CSailTreeItem(const vector<myType>& v, QString name, CSailTreeItem *parent)
     {
         parentItem = parent;
-        itemData << "vector" << name;
+        itemData << name;
+        itemIcon = NULL;
         for(unsigned int i = 0; i < v.size(); i++)
             appendChild(new CSailTreeItem(v[i], QString::number(i), this));
     };
@@ -57,12 +59,14 @@ public:
     int childCount() const;
     int columnCount() const;
     QVariant data(int column) const;
+    QIcon icon() const;
     int row() const;
     CSailTreeItem *parent();
 
 private:
     QList<CSailTreeItem*> childItems;
     QList<QVariant> itemData;
+    char **itemIcon;
     CSailTreeItem *parentItem;
 };
 #endif

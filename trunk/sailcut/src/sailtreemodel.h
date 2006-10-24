@@ -31,13 +31,13 @@ class CSailTreeModel : public QAbstractItemModel
 
 public:
     template<class myType>
-    CSailTreeModel(const myType &data, QObject *parent = 0)
+    CSailTreeModel(const myType &data, QString name, QObject *parent = 0)
         : QAbstractItemModel(parent)
     {
         QList<QVariant> rootData;
-        rootData << "Type" << "Name" << "x" << "y" << "z";
+        rootData << "Name" << "x" << "y" << "z";
         rootItem = new CSailTreeItem(rootData);
-        rootItem->appendChild(new CSailTreeItem(data, "", rootItem));
+        rootItem->appendChild(new CSailTreeItem(data, name, rootItem));
     };
     ~CSailTreeModel();
 
