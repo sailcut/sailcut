@@ -3,23 +3,18 @@ dist_pixmaps_DATA = sailcut.xpm panel.xpm panelgroup.xpm point.xpm
 
 dist_noinst_DATA = sailcut.ico sailcut-file.ico
 
-%.ico: %-48x48.png %-32x32.png %-16x16.png
-	$(ICOTOOL) -c -o $@ $+
+%.ico: %.svg
+	for i in 48 32 16; do \
+		$(SODIPODI) -z --file=$< --export-png=$*.tmp.$$i --export-width=$$i --export-height=$$i || exit 1; \
+	done
+	$(ICOTOOL) -c -o $@ $*.tmp.48 $*.tmp.32 $*.tmp.16
+	rm -f $*.tmp.*
 
-%-16x16.png: %.svg
-	$(SODIPODI) -z --file=$< --export-png=$@ --export-width=16 --export-height=16
-
-%-32x32.png: %.svg
-	$(SODIPODI) -z --file=$< --export-png=$@ --export-width=32 --export-height=32
-
-%-48x48.png: %.svg
-	$(SODIPODI) -z --file=$< --export-png=$@ --export-width=48 --export-height=48
-
-$(dist_pixmaps_DATA): %.xpm: %-32x32.png
-	$(PNGTOPNM) -alpha $< > $<.alpha
-	$(PNGTOPNM) $< | $(PPMTOXPM) -alpha $<.alpha -name $*_xpm > $@.tmp
-	rm -f $<.alpha
-	mv -f $@.tmp $@
+$(dist_pixmaps_DATA): %.xpm: %.svg
+	$(SODIPODI) -z --file=$< --export-png=$*.tmp.png --export-width=32 --export-height=32
+	$(PNGTOPNM) -alpha $*.tmp.png > $*.tmp.alpha
+	$(PNGTOPNM) $*.tmp.png | $(PPMTOXPM) -alpha $*.tmp.alpha -name $*_xpm > $@
+	rm -f $*.tmp.*
 
 EXTRA_DIST = sailcut.svg sailcut-file.svg sailcut-file-alt.svg
 MAINTAINERCLEANFILES = $(dist_noinst_DATA)
