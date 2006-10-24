@@ -23,15 +23,22 @@
 #include <QAbstractItemModel>
 #include <QModelIndex>
 #include <QVariant>
-
-class CSailTreeItem;
+#include "sailtreeitem.h"
 
 class CSailTreeModel : public QAbstractItemModel
 {
     Q_OBJECT
 
 public:
-    CSailTreeModel(const QString &data, QObject *parent = 0);
+    template<class myType>
+    CSailTreeModel(const myType &data, QObject *parent = 0)
+        : QAbstractItemModel(parent)
+    {
+        QList<QVariant> rootData;
+        rootData << "Type" << "Name" << "x" << "y" << "z";
+        rootItem = new CSailTreeItem(rootData);
+        rootItem->appendChild(new CSailTreeItem(data, "", rootItem));
+    };
     ~CSailTreeModel();
 
     QVariant data(const QModelIndex &index, int role) const;

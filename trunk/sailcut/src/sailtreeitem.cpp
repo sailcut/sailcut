@@ -27,7 +27,38 @@ CSailTreeItem::CSailTreeItem(const QList<QVariant> &data, CSailTreeItem *parent)
     itemData = data;
 }
 
- CSailTreeItem::~CSailTreeItem()
+CSailTreeItem::CSailTreeItem(const CPanelGroup &data, QString name, CSailTreeItem *parent)
+{
+    parentItem = parent;
+    itemData << "CPanelGroup" << name;
+    appendChild(new CSailTreeItem(data.panel, "panel", this));
+    appendChild(new CSailTreeItem(data.child, "child", this));
+}
+
+CSailTreeItem::CSailTreeItem(const CPanel &data, QString name, CSailTreeItem *parent)
+{
+    parentItem = parent;
+    itemData << "CPanel" << name;
+    appendChild(new CSailTreeItem(data.left, "left", this));
+    appendChild(new CSailTreeItem(data.right, "right", this));
+    appendChild(new CSailTreeItem(data.top, "top", this));
+    appendChild(new CSailTreeItem(data.bottom, "bottom", this));
+}
+
+CSailTreeItem::CSailTreeItem(const CSide &data, QString name, CSailTreeItem *parent)
+{
+    parentItem = parent;
+    itemData << "CSide" << name;
+    appendChild(new CSailTreeItem(data.point, "point", this));
+}
+
+CSailTreeItem::CSailTreeItem(const CPoint3d &data, QString name, CSailTreeItem *parent)
+{
+    parentItem = parent;
+    itemData << "CPoint3d" << name << data.x() << data.y() << data.z();
+}
+
+CSailTreeItem::~CSailTreeItem()
 {
     qDeleteAll(childItems);
 }
