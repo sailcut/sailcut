@@ -30,7 +30,7 @@
 
 #include "sailcutqt.h"
 
-#include "../icons/sailcut.xpm"
+#include "icons/sailcut.xpm"
 
 #include <QMenuBar>
 #include <QStatusBar>

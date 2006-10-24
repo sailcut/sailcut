@@ -64,7 +64,7 @@ void CFormPanelGroup::setDef(const CPanelGroup& newdef)
     def = newdef;
     viewer->setObject(def);
 
-    CSailTreeModel *model = new CSailTreeModel(def);
+    CSailTreeModel *model = new CSailTreeModel(def, "panelgroup");
     treeview->setModel(model);
 }
 
