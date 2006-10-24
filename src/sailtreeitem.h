@@ -34,6 +34,7 @@ public:
     CSailTreeItem(const CPanelGroup& data, QString name, CSailTreeItem *parent = 0);
     CSailTreeItem(const CPanel& data, QString name, CSailTreeItem *parent = 0);
     CSailTreeItem(const CPoint3d& data, QString name, CSailTreeItem *parent = 0);
+    CSailTreeItem(const QString& data, QString name, CSailTreeItem *parent = 0);
 
     /** Constructs a CSailTreeItem representing a vector of elements.
      *
