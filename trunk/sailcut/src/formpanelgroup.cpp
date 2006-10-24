@@ -34,7 +34,7 @@
 CFormPanelGroup::CFormPanelGroup(CPrefs *myPrefs, QWidget *parent)
         : CFormDocumentTmpl<CPanelGroup, CPanelGroupXmlWriter> (myPrefs, parent)
 {
-    setMinimumSize( QSize( 300, 220 ) );
+    setMinimumSize( QSize( 400, 400 ) );
 
     // create main widget
     setupMainWidget();
@@ -66,6 +66,7 @@ void CFormPanelGroup::setDef(const CPanelGroup& newdef)
 
     CSailTreeModel *model = new CSailTreeModel(def, "panelgroup");
     treeview->setModel(model);
+    treeview->setColumnWidth(0, 200);
 }
 
 
