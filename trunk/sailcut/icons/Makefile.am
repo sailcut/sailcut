@@ -1,5 +1,5 @@
 pixmapsdir = $(prefix)/share/pixmaps
-dist_pixmaps_DATA = sailcut.xpm
+dist_pixmaps_DATA = sailcut.xpm panel.xpm panelgroup.xpm point.xpm
 
 dist_noinst_DATA = sailcut.ico sailcut-file.ico
 
@@ -15,10 +15,10 @@ dist_noinst_DATA = sailcut.ico sailcut-file.ico
 %-48x48.png: %.svg
 	$(SODIPODI) -z --file=$< --export-png=$@ --export-width=48 --export-height=48
 
-sailcut-new.xpm: sailcut-32x32.png
-	$(PNGTOPNM) $< | $(PPMTOXPM) -name sailcut_xpm > $@.tmp
-	sed -i -e 's/\"   c #000000\"/\"   c None\"/' $@.tmp
-	sed -i -e 's/static char/static const char/' $@.tmp
+$(dist_pixmaps_DATA): %.xpm: %-32x32.png
+	$(PNGTOPNM) -alpha $< > $<.alpha
+	$(PNGTOPNM) $< | $(PPMTOXPM) -alpha $<.alpha -name $*_xpm > $@.tmp
+	rm -f $<.alpha
 	mv -f $@.tmp $@
 
 EXTRA_DIST = sailcut.svg sailcut-file.svg sailcut-file-alt.svg
