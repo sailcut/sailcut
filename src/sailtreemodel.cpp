@@ -19,16 +19,7 @@
  
 #include <QtGui>
 
-#include "sailtreeitem.h"
 #include "sailtreemodel.h"
-
-CSailTreeModel::CSailTreeModel(const QString &data, QObject *parent)
-    : QAbstractItemModel(parent)
-{
-    QList<QVariant> rootData;
-    rootData << "Title" << "Summary";
-    rootItem = new CSailTreeItem(rootData);
-}
 
 CSailTreeModel::~CSailTreeModel()
 {

@@ -29,6 +29,26 @@ class CSailTreeItem
 {
 public:
     CSailTreeItem(const QList<QVariant> &data, CSailTreeItem *parent = 0);
+    CSailTreeItem(const CPanelGroup& data, QString name, CSailTreeItem *parent = 0);
+    CSailTreeItem(const CPanel& data, QString name, CSailTreeItem *parent = 0);
+    CSailTreeItem(const CSide& data, QString name, CSailTreeItem *parent = 0);
+    CSailTreeItem(const CPoint3d& data, QString name, CSailTreeItem *parent = 0);
+
+    /** Constructs a CSailTreeItem representing a vector of elements.
+     *
+     * @param v the vector
+     * @param name the name of the vector
+     * @param parent the parent node
+     */
+    template<class myType>
+    CSailTreeItem(const vector<myType>& v, QString name, CSailTreeItem *parent)
+    {
+        parentItem = parent;
+        itemData << "vector" << name;
+        for(unsigned int i = 0; i < v.size(); i++)
+            appendChild(new CSailTreeItem(v[i], QString::number(i), this));
+    };
+
     ~CSailTreeItem();
 
     void appendChild(CSailTreeItem *child);
