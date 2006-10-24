@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.0"
+   x="0.0000000"
+   y="0.0000000"
+   width="64.000000"
+   height="64.000000"
+   id="svg3575"
+   sodipodi:version="0.32"
+   inkscape:version="0.42"
+   sodipodi:docname="point.svg"
+   sodipodi:docbase="/a0313c-dev/sailcut/icons">
+  <metadata
+     id="metadata9">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     inkscape:window-height="510"
+     inkscape:window-width="737"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base"
+     inkscape:zoom="5.3750000"
+     inkscape:cx="32.000000"
+     inkscape:cy="35.731184"
+     inkscape:window-x="0"
+     inkscape:window-y="434"
+     inkscape:current-layer="svg3575" />
+  <defs
+     id="defs3577" />
+  <g
+     id="layer1"
+     transform="matrix(1.122990,-1.122990,1.122990,1.122990,-34.76801,34.02996)">
+    <path
+       d="M 30.000000,14.000000 L 30.000000,44.000000"
+       style="fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:#000000;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000"
+       id="path3583" />
+    <path
+       d="M 15.000000,29.000000 L 45.000000,29.000000"
+       style="fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:#000000;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000"
+       id="path3585" />
+    <rect
+       width="8.0000000"
+       height="8.0000000"
+       x="26.000000"
+       y="25.000000"
+       style="opacity:1.0000000;fill:#00c0ff;fill-opacity:1.0000000;stroke:#000000;stroke-opacity:1.0000000"
+       id="rect3587" />
+  </g>
+</svg>
