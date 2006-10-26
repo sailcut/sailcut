@@ -149,9 +149,9 @@ void CFormMain::makeMenuMru()
 {
     menuRecent->clear();
 
-    for ( unsigned int i = 0; i < prefs->mruSaildef.size(); i++)
+    for ( unsigned int i = 0; i < prefs->mruDocuments.size(); i++)
     {
-        menuRecent->addAction( prefs->mruSaildef[i], this, SLOT( slotOpenRecent() ) )->setData(i);
+        menuRecent->addAction( prefs->mruDocuments[i], this, SLOT( slotOpenRecent() ) )->setData(i);
     }
 }
 
@@ -183,10 +183,10 @@ void CFormMain::open(QString filename)
         workspace->addWindow((QWidget*)wnd);
         wnd->show();
 
-        prefs->mruSaildef.touchEntry(filename);
+        prefs->mruDocuments.touchEntry(filename);
         statusbar->showMessage(tr("loaded '%1'").arg(filename));
     } else {
-        prefs->mruSaildef.removeEntry(filename);
+        prefs->mruDocuments.removeEntry(filename);
         statusbar->showMessage( tr("error loading '%1'").arg(filename) );
         delete wnd;
     }
@@ -426,7 +426,7 @@ void CFormMain::slotOpenRecent()
     if ( !a )
         return;
     int index = a->data().toInt();
-    open(prefs->mruSaildef[index]);
+    open(prefs->mruDocuments[index]);
 }
 
 
@@ -439,7 +439,7 @@ void CFormMain::slotSave()
     {
         QString filename = activeChild()->filename;
         statusbar->showMessage(tr("wrote '%1'").arg(filename));
-        prefs->mruSaildef.touchEntry(filename);
+        prefs->mruDocuments.touchEntry(filename);
         makeMenuMru();
     }
 }
@@ -454,7 +454,7 @@ void CFormMain::slotSaveAs()
     {
         QString filename = activeChild()->filename;
         statusbar->showMessage(tr("wrote '%1'").arg(filename));
-        prefs->mruSaildef.touchEntry(filename);
+        prefs->mruDocuments.touchEntry(filename);
         makeMenuMru();
     }
 }

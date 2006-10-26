@@ -557,9 +557,7 @@ void CSailDoc::get
         get
             (e, p.language, "language");
         get
-            (e, p.mruRigdef, "mruRigdef");
-        get
-            (e, p.mruSaildef, "mruSaildef");
+            (e, p.mruDocuments, "mruDocuments");
         get
             (e, p.helpWindowHeight, "helpWindowHeight");
         get
@@ -896,8 +894,7 @@ void CSailDoc::put( QDomNode &parent, const CPrefs& p, const QString& name)
     parent.appendChild(e);
 
     put(e, p.language, "language");
-    put(e, p.mruRigdef, "mruRigdef");
-    put(e, p.mruSaildef, "mruSaildef");
+    put(e, p.mruDocuments, "mruDocuments");
     put(e, p.helpWindowHeight, "helpWindowHeight");
     put(e, p.helpWindowWidth, "helpWindowWidth");
     put(e, p.rigWindowHeight, "rigWindowHeight");
