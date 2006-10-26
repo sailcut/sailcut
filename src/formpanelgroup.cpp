@@ -28,7 +28,7 @@
 /**
  * Constructs a window to display a collection of panels.
  *
- * @param prefs the user preferences
+ * @param myPrefs the user preferences
  * @param parent the parent widget
  */
 CFormPanelGroup::CFormPanelGroup(CPrefs *myPrefs, QWidget *parent)
