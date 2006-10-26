@@ -78,7 +78,8 @@ protected slots:
     virtual void slotHandbook();
 
     virtual void slotLanguage();
-    virtual void slotUpdateMenus();
+    virtual void slotUpdateDocumentMenus();
+    virtual void slotUpdateWindowMenu();
 
 protected:
     /** the workspace */
@@ -141,8 +142,8 @@ protected:
     QAction *actionSave;
     /** prompt for a filename then write the sail definition to a file */
     QAction *actionSaveAs;
-    /** final separator before 'Quit' */
-    QAction *actionSep;
+    /** final separator in the 'File' menu before 'Quit' */
+    QAction *actionFileSep;
     /** view sail definition */
     QAction *actionViewDef;
     /** view sail mould */
@@ -151,6 +152,8 @@ protected:
     QAction *actionViewPatch;
     /** view sail rig */
     QAction *actionViewRig;
+    /** separator in the 'Window' menu */
+    QAction *actionWindowSep;
     /** quit */
     QAction *actionQuit;
 
