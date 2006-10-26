@@ -73,8 +73,8 @@ CFormMain::CFormMain(CSailApp *myApp, QWidget *parent)
     // set icon
     setWindowIcon( QPixmap( (const char **)sailcut_xpm ) );
 
-    // update menus
-    slotUpdateMenus();
+    // update document-specific menus
+    slotUpdateDocumentMenus();
 
     // resize to prefered size
     resize( QSize(prefs->mainWindowWidth,prefs->mainWindowHeight).expandedTo(minimumSizeHint()) );
@@ -202,7 +202,7 @@ void CFormMain::setupMainWidget()
     workspace = new QWorkspace();
     setCentralWidget(workspace);
     connect(workspace, SIGNAL(windowActivated(QWidget *)),
-            this, SLOT(slotUpdateMenus()));
+            this, SLOT(slotUpdateDocumentMenus()));
     windowMapper = new QSignalMapper(this);
     connect(windowMapper, SIGNAL(mapped(QWidget *)),
             workspace, SLOT(setActiveWindow(QWidget *)));    
@@ -225,7 +225,7 @@ void CFormMain::setupMenuBar()
     menuFile->addSeparator();
     actionSave = menuFile->addAction("", this, SLOT( slotSave() ) );
     actionSaveAs = menuFile->addAction("", this, SLOT( slotSaveAs() ) );
-    actionSep = menuFile->addSeparator();
+    actionFileSep = menuFile->addSeparator();
     actionQuit = menuFile->addAction( "", this, SLOT( close() ) );
 
     // View menu
@@ -234,10 +234,18 @@ void CFormMain::setupMenuBar()
 
     // Window menu
     menuWindow = menuBar()->addMenu("");
-    actionClose = menuWindow->addAction( "", workspace, SLOT( closeActiveWindow() ) );
-    actionCloseAll = menuWindow->addAction("", workspace, SLOT(closeAllWindows()));
-    actionTile = menuWindow->addAction("", workspace, SLOT(tile()));
-    actionCascade = menuWindow->addAction("", workspace, SLOT(cascade()));
+    actionClose = new QAction(this);
+    connect(actionClose, SIGNAL( triggered() ), workspace, SLOT( closeActiveWindow() ) );
+    actionCloseAll = new QAction(this);
+    connect(actionCloseAll, SIGNAL( triggered() ), workspace, SLOT( closeAllWindows() ) );
+    actionTile = new QAction(this);
+    connect(actionTile, SIGNAL( triggered() ), workspace, SLOT( tile() ) );
+    actionCascade = new QAction(this);
+    connect(actionCascade, SIGNAL( triggered() ), workspace, SLOT( cascade() ) );
+    actionWindowSep = new QAction(this);
+    actionWindowSep->setSeparator(true);
+    connect(menuWindow, SIGNAL( aboutToShow() ), this, SLOT( slotUpdateWindowMenu() ) );
+
 
     // language text is not to be translated
     menuLanguage->addAction( "English", this, SLOT( slotLanguage() ) )->setData("en");
@@ -461,14 +469,13 @@ void CFormMain::slotSaveAs()
 
 
 /**
- * Refresh the available menus.
+ * Refresh the document-specific menus.
  */
-void CFormMain::slotUpdateMenus()
+void CFormMain::slotUpdateDocumentMenus()
 {
     bool hasChild = (activeChild() != 0);
     actionSave->setEnabled(hasChild);    
     actionSaveAs->setEnabled(hasChild);    
-    actionClose->setEnabled(hasChild);
 
     // remove old extra menu entries
     unsigned int i;
@@ -485,9 +492,9 @@ void CFormMain::slotUpdateMenus()
         vector<QMenu*> menus = activeChild()->extraFileMenus;
         if (menus.size() > 0)
         {
-            childFileActions.push_back(menuFile->insertSeparator(actionSep));
+            childFileActions.push_back(menuFile->insertSeparator(actionFileSep));
             for (i = 0; i < menus.size(); i++)
-                childFileActions.push_back(menuFile->insertMenu(actionSep, menus[i]));
+                childFileActions.push_back(menuFile->insertMenu(actionFileSep, menus[i]));
         }
         vector<QAction*> actions = activeChild()->extraViewActions;
         if (actions.size() > 0)
@@ -502,4 +509,40 @@ void CFormMain::slotUpdateMenus()
 
     } 
 }
+
+
+/**
+ * Refresh the "window" menu.
+ */
+void CFormMain::slotUpdateWindowMenu()
+{
+    menuWindow->clear();
+    menuWindow->addAction(actionClose);
+    menuWindow->addAction(actionCloseAll);
+    menuWindow->addAction(actionTile);
+    menuWindow->addAction(actionCascade);
+    menuWindow->addAction(actionWindowSep);
+
+    QList<QWidget *> windows = workspace->windowList();
+    actionWindowSep->setVisible(!windows.isEmpty());
+    actionClose->setEnabled(!windows.isEmpty());
+    actionCloseAll->setEnabled(!windows.isEmpty());
+    actionTile->setEnabled(!windows.isEmpty());
+    actionCascade->setEnabled(!windows.isEmpty());
+
+    for (int i = 0; i < windows.size(); ++i) {
+        CFormDocument *child = qobject_cast<CFormDocument *>(windows.at(i));
+
+        QString text = QString("%1 %2").arg(i + 1).arg(child->windowTitle());
+        if (!child->filename.isNull())
+            text.append(QString(" - %1").arg(QFileInfo(child->filename).fileName()));
+
+        QAction *action  = menuWindow->addAction(text);
+        action->setCheckable(true);
+        action->setChecked(child == activeChild());
+        connect(action, SIGNAL(triggered()), windowMapper, SLOT(map()));
+        windowMapper->setMapping(action, child);
+    }    
+}
+
 
