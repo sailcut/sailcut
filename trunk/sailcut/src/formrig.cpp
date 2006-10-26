@@ -47,24 +47,8 @@ CFormRig::CFormRig(CPrefs *myPrefs, QWidget *parent)
     // set language
     languageChange();
 
-    // resize to prefered size
-    resize( QSize(prefs->rigWindowWidth, prefs->rigWindowHeight).expandedTo(minimumSizeHint()) );
-
-    // connect signals to slots
-    connect(defpanel, SIGNAL(signalUpdate(const CRigDef& )), this, SLOT(slotUpdate(const CRigDef& )));
-}
-
-
-/**
- * This event is received when the user closes the dialog.
- *
- * @param e the QCloseEvent
- */
-void CFormRig::closeEvent(QCloseEvent *e)
-{
-    prefs->rigWindowHeight = height();
-    prefs->rigWindowWidth = width();
-    CFormDocument::closeEvent(e);
+    // set initial definition
+    setDef(def);
 }
 
 
@@ -113,6 +97,8 @@ void CFormRig::setupMainWidget()
     layout->setRowStretch(0, 2);
     layout->addWidget(defpanel, 1, 0);
     layout->setRowStretch(1, 1);
+    
+    connect(defpanel, SIGNAL(signalUpdate(const CRigDef& )), this, SLOT(slotUpdate(const CRigDef& )));
 }
 
 

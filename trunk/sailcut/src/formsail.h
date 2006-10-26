@@ -39,7 +39,6 @@ public:
     CFormSail(CPrefs *myPrefs, QWidget *parent);
 
 protected:
-    void closeEvent( QCloseEvent * e);
     void keyPressEvent ( QKeyEvent * e );
     void setDef(const CSailDef& newdef);
     void setupMenuBar();

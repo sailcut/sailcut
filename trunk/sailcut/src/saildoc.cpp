@@ -563,14 +563,6 @@ void CSailDoc::get
         get
             (e, p.helpWindowWidth, "helpWindowWidth");
         get
-            (e, p.rigWindowHeight, "rigWindowHeight");
-        get
-            (e, p.rigWindowWidth, "rigWindowWidth");
-        get
-            (e, p.sailWindowHeight, "sailWindowHeight");
-        get
-            (e, p.sailWindowWidth, "sailWindowWidth");
-        get
             (e, p.mainWindowHeight, "mainWindowHeight");
         get
             (e, p.mainWindowWidth, "mainWindowWidth");
@@ -897,10 +889,6 @@ void CSailDoc::put( QDomNode &parent, const CPrefs& p, const QString& name)
     put(e, p.mruDocuments, "mruDocuments");
     put(e, p.helpWindowHeight, "helpWindowHeight");
     put(e, p.helpWindowWidth, "helpWindowWidth");
-    put(e, p.rigWindowHeight, "rigWindowHeight");
-    put(e, p.rigWindowWidth, "rigWindowWidth");
-    put(e, p.sailWindowHeight, "sailWindowHeight");
-    put(e, p.sailWindowWidth, "sailWindowWidth");
     put(e, p.mainWindowHeight, "mainWindowHeight");
     put(e, p.mainWindowWidth, "mainWindowWidth");
 }

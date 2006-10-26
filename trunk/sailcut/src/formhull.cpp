@@ -51,8 +51,8 @@ CFormHull::CFormHull(CPrefs *myPrefs, QWidget *parent)
     // set language
     languageChange();
 
-    // resize to prefered size
-    resize( QSize(prefs->sailWindowWidth,prefs->sailWindowHeight).expandedTo(minimumSizeHint()) );
+    // set initial definition
+    setDef(def);
 }
 
 

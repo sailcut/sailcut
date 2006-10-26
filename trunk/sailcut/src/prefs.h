@@ -61,16 +61,6 @@ public:
     /** The height of the main window */
     int mainWindowHeight;
 
-    /** The width of the rig window */
-    int rigWindowWidth;
-    /** The height of the rig window */
-    int rigWindowHeight;
-
-    /** The width of the sail window */
-    int sailWindowWidth;
-    /** The height of the sail window */
-    int sailWindowHeight;
-
     /** The preferred language. */
     QString language;
 };
