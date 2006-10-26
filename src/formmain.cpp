@@ -82,6 +82,20 @@ CFormMain::CFormMain(CSailApp *myApp, QWidget *parent)
 
 
 /**
+ * Add a document window and show it.
+ */
+void CFormMain::addChild(CFormDocument *child)
+{
+    bool max = ((activeChild() == NULL) || activeChild()->isMaximized());
+    workspace->addWindow(child);
+    if (max)
+        child->showMaximized();
+    else
+        child->show();  
+}
+
+
+/**
  * Returns the active document window.
  */
 CFormDocument* CFormMain::activeChild()
@@ -180,9 +194,7 @@ void CFormMain::open(QString filename)
 
     if (wnd->open(filename))
     {
-        workspace->addWindow((QWidget*)wnd);
-        wnd->show();
-
+        addChild(wnd);
         prefs->mruDocuments.touchEntry(filename);
         statusbar->showMessage(tr("loaded '%1'").arg(filename));
     } else {
@@ -278,12 +290,15 @@ void CFormMain::show(const QString filename)
 {
     // load preferences
     makeMenuMru();
+    
+    // show main window
+    QMainWindow::show();
 
-    // load specified file
+    // load specified file or create empty sail
     if ( !filename.isNull() )
         open(filename);
-    
-    QMainWindow::show();
+    else
+        slotNewSail();
 }
 
 
@@ -379,8 +394,7 @@ void CFormMain::slotLanguage()
 void CFormMain::slotNewHull()
 {
     CFormHull *wnd = new CFormHull(prefs, this);
-    workspace->addWindow(wnd);
-    wnd->show();
+    addChild(wnd);
 }
 
 
@@ -390,8 +404,7 @@ void CFormMain::slotNewHull()
 void CFormMain::slotNewRig()
 {
     CFormRig *wnd = new CFormRig(prefs, this);
-    workspace->addWindow(wnd);
-    wnd->show();
+    addChild(wnd);
 }
 
 
@@ -401,8 +414,7 @@ void CFormMain::slotNewRig()
 void CFormMain::slotNewSail()
 {
     CFormSail *wnd = new CFormSail(prefs, this);
-    workspace->addWindow(wnd);
-    wnd->show();
+    addChild(wnd);
 }
 
 

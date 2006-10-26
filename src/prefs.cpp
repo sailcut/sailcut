@@ -53,8 +53,7 @@ void CPrefsMru::touchEntry( const QString &newEntry )
  * Constructs a class holding the user's preferences.
  */
 CPrefs::CPrefs() :
-        helpWindowWidth(600), helpWindowHeight(500),
-        rigWindowWidth(700), rigWindowHeight(700),
-        sailWindowWidth(800), sailWindowHeight(600)
+        helpWindowWidth(800), helpWindowHeight(600),
+        mainWindowWidth(800), mainWindowHeight(600)
 {}
 

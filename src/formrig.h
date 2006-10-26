@@ -37,7 +37,6 @@ public:
     CFormRig(CPrefs *myPrefs, QWidget *parent);
 
 protected:
-    void closeEvent( QCloseEvent * e);
     void setDef(const CRigDef &newdef);
     void setupMainWidget();
     void setupMenuBar();

@@ -41,6 +41,9 @@ CFormPanelGroup::CFormPanelGroup(CPrefs *myPrefs, QWidget *parent)
 
     // set language
     languageChange();
+    
+    // set initial definition
+    setDef(def);
 }
 
 
@@ -66,7 +69,7 @@ void CFormPanelGroup::setDef(const CPanelGroup& newdef)
 
     CSailTreeModel *model = new CSailTreeModel(def, "panelgroup");
     treeview->setModel(model);
-    treeview->setColumnWidth(0, 200);
+    //treeview->setColumnWidth(0, 200);
 }
 
 

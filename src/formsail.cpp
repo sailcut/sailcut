@@ -60,19 +60,8 @@ CFormSail::CFormSail(CPrefs *myPrefs, QWidget *parent)
     // set language
     languageChange();
 
-    // resize to prefered size
-    resize( QSize(prefs->sailWindowWidth,prefs->sailWindowHeight).expandedTo(minimumSizeHint()) );
-}
-
-
-/**
- * This event is received when the user closes the dialog.
- */
-void CFormSail::closeEvent(QCloseEvent *e)
-{
-    prefs->sailWindowHeight = height();
-    prefs->sailWindowWidth = width();
-    CFormDocument::closeEvent(e);
+    // set initial definition
+    setDef(def);
 }
 
 

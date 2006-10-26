@@ -139,12 +139,6 @@ public:
         return false;
     };
 
-    virtual void show()
-    {
-        setDef(def);
-        CFormDocument::show();
-    };
-    
 protected:
     virtual void setDef(const deftype& newdef) = 0;
     

@@ -56,6 +56,7 @@ protected:
     void open(QString filename);
 
 private:
+    void addChild(CFormDocument *child);
     void setupMenuBar();
     void setupMainWidget();
     CFormDocument *activeChild();
