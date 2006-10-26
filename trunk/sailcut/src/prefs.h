@@ -48,10 +48,8 @@ class CPrefs
 public:
     CPrefs();
 
-    /** The most recently used rig definitions. */
-    CPrefsMru mruRigdef;
-    /** The most recently used sail definitions. */
-    CPrefsMru mruSaildef;
+    /** The most recently used documents. */
+    CPrefsMru mruDocuments;
 
     /** The width of the help window */
     int helpWindowWidth;
