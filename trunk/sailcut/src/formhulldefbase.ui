@@ -1,5 +1,5 @@
 <ui version="4.0" >
- <author>sailcuter</author>
+ <author>Robert lainé</author>
  <class>CFormHullDefBase</class>
  <widget class="QDialog" name="CFormHullDefBase" >
   <property name="geometry" >
@@ -35,7 +35,7 @@
       </font>
      </property>
      <property name="currentIndex" >
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tab" >
       <attribute name="title" >
@@ -1796,5 +1796,7 @@
    </item>
   </layout>
  </widget>
+ <includes/>
  <resources/>
+ <connections/>
 </ui>
