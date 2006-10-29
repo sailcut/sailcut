@@ -425,12 +425,12 @@ AC_DEFUN([JWB_PATH_MISC],
         ;;
     esac
 
-    if test -z "$x_includes"; then
+    if test -z "$x_includes" || test "$x_includes" = NONE; then
         X_INCLUDES=""
     else
         X_INCLUDES="-I$x_includes"
     fi
-    if test -z "$x_libraries"; then
+    if test -z "$x_libraries" || test "$x_libraries" = NONE; then
         LIB_X11=""
         X_LDFLAGS=""
     else
