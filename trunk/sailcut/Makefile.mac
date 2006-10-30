@@ -1,0 +1,42 @@
+##### MacOSX distribution generation #####
+
+STRIP = strip
+
+VERSION := $(shell cat configure.in | grep AM_INIT_AUTOMAKE | sed -e 's/.*,\([0-9a-zA-Z\.]*\).*/\1/')
+
+mac_configure= ../configure
+mac_builddir = mac-build
+mac_distdir = mac-dist
+mac_contents = $(mac_distdir)/Sailcut.app/Contents
+mac_image = sailcut-$(VERSION)-macosx-intel
+
+mac-dist: mac-image mac-clean
+
+mac-build-stamp:
+	mkdir -p $(mac_builddir)
+	cd $(mac_builddir) && \
+	  $(mac_configure) \
+	    --with-datadir=../Resources/Translations \
+	    --with-docdir=../Resources/Documentation
+	make -C $(mac_builddir)
+	touch $@
+
+mac-install-stamp: mac-build-stamp
+	rm -rf $(mac_distdir)
+	mkdir -p $(mac_contents)/MacOS
+	make -C $(mac_builddir) DESTDIR=$(CURDIR)/$(mac_contents)/MacOS/ bindir=. pixmapsdir=icons install
+	rm -rf $(mac_contents)/MacOS/icons
+	mv $(mac_contents)/MacOS/sailcut $(mac_contents)/MacOS/Sailcut
+	$(STRIP) $(mac_contents)/MacOS/Sailcut
+	sed -e 's/@VERSION@/$(VERSION)/g' sailcut.plist.in > $(mac_contents)/Info.plist
+	touch $@
+
+mac-image: mac-install-stamp
+	@echo; echo "## Building Mac image ##"; echo
+	rm -f $(mac_image).dmg
+	hdiutil create $(mac_image).dmg -srcdir $(mac_distdir) -fs HFS+ -volname "Sailcut CAD $(VERSION)"
+
+mac-clean:
+	rm -rf $(mac_distdir) $(mac_builddir) mac-build-stamp mac-install-stamp
+
+.PHONY: mac-dist mac-clean mac-bundle
