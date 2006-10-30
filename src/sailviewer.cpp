@@ -23,7 +23,7 @@
 
 #include "sailviewer.h"
 #include "saildisplabel.h"
-#ifdef HAVE_GL
+#ifdef HAVE_QTOPENGL
   #include "saildispgl.h"
 #endif
 #include <QSlider>
@@ -66,7 +66,7 @@ CSailViewer::CSailViewer( QWidget *parent, enumViewMode viewMode, bool show_slid
     /* create the drawing area */
     switch (viewMode)
     {
-#ifdef HAVE_GL
+#ifdef HAVE_QTOPENGL
     case SHADED:
         lblDraw = new CSailDispGL( this );
         sailDispLayout->addWidget( (CSailDispGL*)(lblDraw), 0, xpos );

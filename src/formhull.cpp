@@ -81,7 +81,7 @@ void CFormHull::languageChange()
     for (unsigned int i = 0; i < panel.size(); i++)
         panel[i]->languageChange();
 
-#ifdef HAVE_GL
+#ifdef HAVE_QTOPENGL
 
     tabs->setTabText(0, tr("shaded view"));
     tabs->setTabText(1, tr("wireframe view"));
@@ -106,7 +106,7 @@ void CFormHull::setDef(const CHullDef& newdef)
     CPanelGroup obj_3d = CHullWorker(def).makeHull();
 
     panel[0]->setObject(obj_3d);
-#ifdef HAVE_GL
+#ifdef HAVE_QTOPENGL
     panel[1]->setObject(obj_3d);
 #endif
 }
@@ -137,7 +137,7 @@ void CFormHull::setupMainWidget()
 
     CSailViewerPanel *tmp;
 
-#ifdef HAVE_GL
+#ifdef HAVE_QTOPENGL
 
     tmp = new CSailViewerPanel(0, SHADED, true);
     panel.push_back(tmp);

@@ -115,7 +115,7 @@ void CFormSail::languageChange()
     for (unsigned int i = 0; i < panel.size(); i++)
         panel[i]->languageChange();
 
-#ifdef HAVE_GL
+#ifdef HAVE_QTOPENGL
 
     tabs->setTabText(0, tr("shaded view"));
     tabs->setTabText(1, tr("wireframe view"));
@@ -140,7 +140,7 @@ void CFormSail::setDef(const CSailDef& newdef)
     sail = CSailWorker(def).makeSail(flatsail,dispsail);
 
     panel[0]->setObject(sail);
-#ifdef HAVE_GL
+#ifdef HAVE_QTOPENGL
     panel[1]->setObject(sail);
     panel[2]->setObject(dispsail);
 #else
@@ -209,7 +209,7 @@ void CFormSail::setupMainWidget()
 
     CSailViewerPanel *tmp;
 
-#ifdef HAVE_GL
+#ifdef HAVE_QTOPENGL
 
     tmp = new CSailViewerPanel(0, SHADED, true);
     panel.push_back(tmp);
