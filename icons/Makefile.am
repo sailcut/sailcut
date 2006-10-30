@@ -16,5 +16,5 @@ $(dist_pixmaps_DATA): %.xpm: %.svg
 	$(PNGTOPNM) $*.tmp.png | $(PPMTOXPM) -alpha $*.tmp.alpha -name $*_xpm > $@
 	rm -f $*.tmp.*
 
-EXTRA_DIST = sailcut.svg sailcut-file.svg sailcut-file-alt.svg
+EXTRA_DIST = sailcut.icns sailcut.svg sailcut-file.svg sailcut-file-alt.svg
 MAINTAINERCLEANFILES = $(dist_pixmaps_DATA) $(dist_noinst_DATA)
