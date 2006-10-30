@@ -28,6 +28,7 @@ mac-install-stamp: mac-build-stamp
 	rm -rf $(mac_contents)/MacOS/icons
 	mv $(mac_contents)/MacOS/sailcut $(mac_contents)/MacOS/Sailcut
 	$(STRIP) $(mac_contents)/MacOS/Sailcut
+	echo -n "APPL????" > $(mac_contents)/PkgInfo
 	sed -e 's/@VERSION@/$(VERSION)/g' sailcut.plist.in > $(mac_contents)/Info.plist
 	touch $@
 
