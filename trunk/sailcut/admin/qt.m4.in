@@ -385,6 +385,13 @@ AC_DEFUN([JWB_CHECK_QT],
     JWB_PATH_QT_LIBRARIES
     QT_LDFLAGS="-L$qt_libdir"
   
+    dnl prerequisites
+    case "$host" in
+      *-apple-darwin* )
+        LIB_QT="-framework Carbon -liconv -lz"
+        ;;
+    esac
+
     dnl compulsory modules
     JWB_PATH_QT_MODULE(QtCore, LIB_QTCORE, [qt_have_core=yes], [qt_have_core=no])
     JWB_PATH_QT_MODULE(QtGui, LIB_QTGUI, [qt_have_gui=yes], [qt_have_gui=no])
@@ -415,9 +422,13 @@ AC_DEFUN([JWB_PATH_MISC],
 [
     dnl Check various libraries
     case "$host" in
+      *-apple-darwin* )
+        x_includes=""
+        x_libraries=""
+        ;;
       *-mingw32* )
         x_includes=""
-	x_libraries=""
+        x_libraries=""
         ;;
       *)
         AC_PATH_X
@@ -452,10 +463,14 @@ AC_DEFUN([JWB_HAVE_GL],
 [
     AC_REQUIRE([JWB_PATH_MISC])
     
+    jwb_gl_hprefix="GL"
     case "$host" in 
+      *-apple-darwin* )
+        jwb_gl_libs="-framework OpenGL -framework AGL"
+        jwb_gl_hprefix="OpenGL"
+        ;;
       *-mingw32* )
         jwb_gl_libs="-lopengl32 -lglu32"
-        	
         ;;
       * )
         jwb_gl_libs="-lGL -lGLU"
@@ -467,10 +482,7 @@ AC_DEFUN([JWB_HAVE_GL],
 
     AC_ARG_WITH(gl,AC_HELP_STRING([--without-gl],[disable 3D GL modes]),
                 gl_test=$withval, gl_test="yes")
-    if test "x$kde_use_qt_emb" = "xyes"; then
-        # GL and Qt Embedded is a no-go for now.
-        ac_cv_have_gl=no
-    elif test "x$gl_test" = xno; then
+    if test "x$gl_test" = xno; then
         ac_cv_have_gl=no
     else
         AC_MSG_CHECKING(for GL)
@@ -487,8 +499,8 @@ AC_DEFUN([JWB_HAVE_GL],
             LIBS="$LIBS $LIB_XEXT -lm $LIBSOCKET"
             CXXFLAGS="$CFLAGS $X_INCLUDES"
             test -n "$GL_INCLUDE" && CFLAGS="-I$GL_INCLUDE $CFLAGS"
-            AC_TRY_LINK([#include <GL/gl.h>
-#include <GL/glu.h>
+            AC_TRY_LINK([#include <$jwb_gl_hprefix/gl.h>
+#include <$jwb_gl_hprefix/glu.h>
 ], [], ac_cv_have_gl="yes", ac_cv_have_gl="no")
             AC_LANG_RESTORE
             LDFLAGS=$ac_save_ldflags
