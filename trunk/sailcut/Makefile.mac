@@ -8,7 +8,7 @@ mac_configure= ../configure
 mac_builddir = mac-build
 mac_distdir = mac-dist
 mac_contents = $(mac_distdir)/Sailcut.app/Contents
-mac_image = sailcut-$(VERSION)-macosx-intel
+mac_image := sailcut-$(VERSION)-macosx-$(shell uname -p)
 
 mac-dist: mac-image mac-clean
 
