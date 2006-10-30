@@ -21,7 +21,7 @@
   #include "config.h"
 #endif
 
-#ifdef HAVE_GL
+#ifdef HAVE_QTOPENGL
 
 #include "saildispgl.h"
 #include <QMouseEvent>
