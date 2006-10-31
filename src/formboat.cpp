@@ -17,7 +17,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#include "formrig.h"
+#include "formboat.h"
 #include "sailcutqt.h"
 #include "sailviewer-panel.h"
 #include "rigdef-panel.h"
@@ -35,7 +35,7 @@
  * @param myPrefs the user preferences
  * @param parent the parent widget
  */
-CFormRig::CFormRig(CPrefs *myPrefs, QWidget *parent)
+CFormBoat::CFormBoat(CPrefs *myPrefs, QWidget *parent)
         : CFormDocumentTmpl<CRigDef, CRigDefXmlWriter>(myPrefs, parent)
 {
     // create main widget
@@ -56,9 +56,9 @@ CFormRig::CFormRig(CPrefs *myPrefs, QWidget *parent)
  * Sets the strings of the subwidgets using the current
  * language.
  */
-void CFormRig::languageChange()
+void CFormBoat::languageChange()
 {
-    setWindowTitle( tr("Rig") );
+    setWindowTitle( tr("Boat") );
 
     /* File menu */
     menuAdd->setTitle( tr("&Add") );
@@ -72,11 +72,11 @@ void CFormRig::languageChange()
 
 
 /**
- * We got a new sail definition, update widgets.
+ * We got a new boat definition, update widgets.
  *
- * @param newdef The new rig definition
+ * @param newdef The new boat definition
  */
-void CFormRig::setDef(const CRigDef &newdef)
+void CFormBoat::setDef(const CRigDef &newdef)
 {
     def = newdef;
     viewer->setObject(def.makeViewSail());
@@ -87,7 +87,7 @@ void CFormRig::setDef(const CRigDef &newdef)
 /**
  * Creates the main widget
  */
-void CFormRig::setupMainWidget()
+void CFormBoat::setupMainWidget()
 {
     viewer = new CSailViewerPanel(this, WIREFRAME, true, false);
     defpanel = new CRigDefPanel(this);
@@ -105,7 +105,7 @@ void CFormRig::setupMainWidget()
 /**
  * Creates the menu bar
  */
-void CFormRig::setupMenuBar()
+void CFormBoat::setupMenuBar()
 {
     menuAdd = new QMenu(this);
     actionAddSailDef = menuAdd->addAction( "", this, SLOT( slotAddSailDef() ) );
@@ -118,7 +118,7 @@ void CFormRig::setupMenuBar()
 /**
  * The file menu's "Add->Panels" item was clicked.
  */
-void CFormRig::slotAddPanelGroup()
+void CFormBoat::slotAddPanelGroup()
 {
     CRigSail rigsail;
     QString newname = CPanelGroupXmlWriter().readDialog((CPanelGroup&)rigsail,"");
@@ -137,7 +137,7 @@ void CFormRig::slotAddPanelGroup()
 /**
  * The file menu's "Add->Hull definition" item was clicked.
  */
-void CFormRig::slotAddHullDef()
+void CFormBoat::slotAddHullDef()
 {
     CHullDef hulldef;
     QString newname = CHullDefXmlWriter().readDialog(hulldef,"");
@@ -158,7 +158,7 @@ void CFormRig::slotAddHullDef()
 /**
  * The file menu's "Add->Sail definition" item was clicked.
  */
-void CFormRig::slotAddSailDef()
+void CFormBoat::slotAddSailDef()
 {
     CSailDef saildef;
     QString newname = CSailDefXmlWriter().readDialog(saildef,"");
@@ -177,11 +177,11 @@ void CFormRig::slotAddSailDef()
 
 
 /**
- * The rig definition was modified by the user.
+ * The boat definition was modified by the user.
  *
- * @param newdef The new rig definition
+ * @param newdef The new boat definition
  */
-void CFormRig::slotUpdate(const CRigDef& newdef)
+void CFormBoat::slotUpdate(const CRigDef& newdef)
 {
     def = newdef;
     viewer->setObject(def.makeViewSail());
