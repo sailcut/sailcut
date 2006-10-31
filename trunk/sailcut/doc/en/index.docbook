@@ -36,20 +36,6 @@
 
 <sect2>
 
-<title>Technical info on code</title>
-
-<para>Sailcut CAD is written with portability in mind. As such it is written in C++ and uses the Qt library from Trolltech for the graphical user interface. Sailcut CAD uses OpenGL to display the 3D view of the sail. Sailcut CAD is known to compile and run on GNU/Linux, Microsoft Windows and MacOS/X.</para>
-
-</sect2>
-
-</sect1>
-
-<sect1 id="s.install">
-
-<title>Installation</title>
-
-<sect2>
-
 <title>How to obtain Sailcut CAD?</title>
 
 <para>You can download the latest version of Sailcut CAD from the project&apos;s home page at <ulink url="http://sailcut.sourceforge.net/"/>. Sailcut CAD is made available both in binary (compiled for you) and in source code form.</para>
@@ -58,104 +44,9 @@
 
 <sect2>
 
-<title>Compilation requirements</title>
+<title>Technical information on the code</title>
 
-<para>Sailcut should compile on a wide variety of systems provided you have a C++ compiler and Trolltech&apos;s Qt4 toolkit. If you wish to make use of Sailcut CAD&apos;s 3D view, you will need OpenGL support on your system.</para>
-
-<sect3>
-
-<title>Notes for MacOS/X</title>
-
-<para>On MacOS/X systems, you will also need to get hold of the Fink package system which is available from <ulink url="http://fink.sourceforge.net/"/>.</para>
-
-</sect3>
-
-<sect3>
-
-<title>Notes for Microsoft Windows</title>
-
-<para>First of all you need various compilation tools from the MinGW project, which you can download from <ulink url="http://www.mingw.org/"/>. Download and install the following:</para>
-
-<itemizedlist>
-
-<listitem>
-
-<para>MinGW : MinGW-4.1.0.exe</para>
-
-</listitem>
-
-<listitem>
-
-<para>MSYS : MSYS-1.0.10.exe</para>
-
-</listitem>
-
-<listitem>
-
-<para>MSYS Developer Tool Kit : msysDTK-1.0.1.exe</para>
-
-</listitem>
-
-</itemizedlist>
-
-<para>Next, you should download and install Qt 4.0 Opensource for Windows from Trolltech&apos;s website <ulink url="http://www.trolltech.com/"/>.</para>
-
-<itemizedlist>
-
-<listitem>
-
-<para>Qt4 : qt-win-opensource-desktop-4.0.0-mingw.exe</para>
-
-</listitem>
-
-</itemizedlist>
-
-</sect3>
-
-</sect2>
-
-<sect2>
-
-<title>Compilation and installation</title>
-
-<sect3>
-
-<title>Procedure</title>
-
-<para>The procedure to compile and install Sailcut CAD involves the three steps : running the <command>configure</command> script, compiling and installing. From a command prompt you need to type the following in the directory containing the Sailcut CAD source code:</para>
-
-<programlisting>% ./configure
-% make
-% make install</programlisting> </sect3>
-
-<sect3>
-
-<title>Notes for Windows</title>
-
-<para>To compile Sailcut CAD on your system, launch MSYS to get a command prompt, then type the following in the base directory of the Sailcut distribution:</para>
-
-<programlisting>
-% ./configure
-% make
-</programlisting> 
-
-<para>When installing the Sailcut executable file on Windows, do not forget to also install the DLLs &quot;Qt4 runtime for Win32&quot; in the same directory or in the <filename>C:\Windows\System32</filename> directory.</para>
-
-</sect3>
-
-<sect3>
-
-<title>Notes for MacOS/X</title>
-
-<para>Sailcut CAD is known to compile and run when using the <application>Fink</application> package manager. In order to compile and install Sailcut CAD, type the following in the base directory of the Sailcut distribution:</para>
-
-<programlisting>
-% ./configure --with-qt-includes=/sw/include/qt
-% make
-% make install
-</programlisting> 
-
-</sect3>
+<para>Sailcut CAD is written with portability in mind. As such it is written in C++ and uses the Qt library from Trolltech for the graphical user interface. Sailcut CAD uses OpenGL to display the 3D view of the sail. Sailcut CAD is known to compile and run on GNU/Linux, Microsoft Windows and MacOS/X.</para>
 
 </sect2>
 
