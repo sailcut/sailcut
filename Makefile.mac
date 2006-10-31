@@ -26,11 +26,13 @@ mac-install-stamp: mac-build-stamp
 	mkdir -p $(mac_contents)/MacOS
 	make -C $(mac_builddir) DESTDIR=$(CURDIR)/$(mac_contents)/MacOS/ bindir=. pixmapsdir=icons install
 	rm -rf $(mac_contents)/MacOS/icons
-	cp $(mac_builddir)/icons/sailcut.icns $(mac_contents)/Sailcut.icns
+	# rename and strip binary
 	mv $(mac_contents)/MacOS/sailcut $(mac_contents)/MacOS/Sailcut
 	$(STRIP) $(mac_contents)/MacOS/Sailcut
+	# add extra files
+	cp icons/sailcut.icns $(mac_contents)/Sailcut.icns
 	echo -n "APPL????" > $(mac_contents)/PkgInfo
-	sed -e 's/@VERSION@/$(VERSION)/g' sailcut.plist.in > $(mac_contents)/Info.plist
+	cp $(mac_builddir)/sailcut.plist $(mac_contents)/Info.plist
 	touch $@
 
 mac-image: mac-install-stamp
@@ -41,4 +43,4 @@ mac-image: mac-install-stamp
 mac-clean:
 	rm -rf $(mac_distdir) $(mac_builddir) mac-build-stamp mac-install-stamp
 
-.PHONY: mac-dist mac-clean mac-bundle
+.PHONY: mac-dist mac-clean mac-image
