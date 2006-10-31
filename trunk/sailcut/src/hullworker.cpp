@@ -48,7 +48,7 @@ CPanelGroup CHullWorker::makeHull() const
     unsigned int npl = deck.right.nbpoints();   // number of right/left points
     unsigned int npb = deck.bottom.nbpoints(); // number of bottom/top points
 
-    /** Start laying deck edge */
+    /** Start laying half deck deck edge */
     deck.top.fill(p1, p2);
     v1 = CVector3d(p2 - p1);
     mid = (npb-1)/2;
@@ -58,33 +58,40 @@ CPanelGroup CHullWorker::makeHull() const
         deck.top.point[j] = deck.top.point[j] + CMatrix::rot3d(1, PI/2)*v1.unit()*d1;
     }
 
-    /** make panel lower edge symetrical of upper edge */
-    for ( j = 0 ; j < npb ; j++)
-    {
-        deck.bottom.point[j] = deck.top.point[j];
-        deck.bottom.point[j].z() = -deck.bottom.point[j].z();
-    }
-
     /** make stem */
-    deck.left.fill(deck.bottom.point[0], deck.top.point[0]);
-    v1 = CVector3d ( deck.top.point[0] -deck.bottom.point[0]);
-    mid = (npl -1) / 2;
-    for ( j = 1 ; j < npl-1 ; j++)
+    p3 = deck.top.point[0];
+    p3.z() = 0;
+    deck.left.fill(p3, deck.top.point[0]);
+    v1 = CVector3d ( deck.left.point[npl-1] -deck.left.point[0]);
+    for ( j = 0 ; j < npl-1 ; j++)
     {
-        d1 = -(1- ((real(j) - mid) / mid)* ((real(j) - mid) / mid)) * 0.3 * v1.norm();
+        d1 = (real(npl-1 -j) / (npl-1))* 0.3 * v1.norm();
         deck.left.point[j] = deck.left.point[j] + CMatrix::rot3d(1,PI/2)*v1.unit()*d1;
     }
 
     /** make stern */
-    deck.right.fill(deck.bottom.point[npb-1], deck.top.point[npb-1]);
-    v1 = CVector3d ( deck.top.point[npb-1] - deck.bottom.point[npb-1]);
-    mid = (npl - 1) / 2;
-    for ( j = 1 ; j < npl-1 ; j++)
+    p3 = deck.top.point[npb-1];
+    p3.z() = 0;
+    deck.right.fill(p3, deck.top.point[npb-1]);
+    v1 = CVector3d ( deck.right.point[npl-1] -deck.right.point[0]);
+    for ( j = 0 ; j < npl-1 ; j++)
     {
-        d1 = -(1- ((real(j) - mid) / mid) * ((real(j) - mid) / mid)) * 0.1 * v1.norm();
-        deck.right.point[j] = deck.right.point[j] + CMatrix::rot3d(1,-PI/2)*v1.unit()*d1;
+        d1 = (real(npl-1 -j) / (npl-1))* 0.05 * v1.norm();
+        deck.left.point[j] = deck.left.point[j] + CMatrix::rot3d(1,-PI/2)*v1.unit()*d1;
     }
+    
+    /** make panel lower edge on axis X */
+    for ( j = 0 ; j < npb ; j++)
+    {
+        deck.bottom.point[j] = deck.top.point[j];
+        deck.bottom.point[j].z() = 0;
+    }
+    deck.bottom.point[0] = deck.left.point[0];
+    deck.bottom.right[npb-1] = deck.right.point[0];
 
+    /** rotate panel around X axis to tilt it sideway*/
+    deck = deck.rotate(CPoint3d(0,0,0) , CMatrix::rot3d(0,-0.1) )
+    
     CPanelGroup hull(deck);
     hull.type = HULL;
     hull.title = hullID;
