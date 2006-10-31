@@ -1,4 +1,4 @@
-##### MacOSX distribution generation #####
+##### MacOS distribution generation #####
 
 STRIP = strip
 
@@ -17,20 +17,19 @@ mac-build-stamp:
 	cd $(mac_builddir) && \
 	  $(mac_configure) \
 	    --with-datadir=../Resources/Translations \
-	    --with-docdir=../Resources/Documentation
+	    --with-docdir=../Resources/Documentation \
+	    --with-icondir=..
 	make -C $(mac_builddir)
 	touch $@
 
 mac-install-stamp: mac-build-stamp
 	rm -rf $(mac_distdir)
 	mkdir -p $(mac_contents)/MacOS
-	make -C $(mac_builddir) DESTDIR=$(CURDIR)/$(mac_contents)/MacOS/ bindir=. pixmapsdir=icons install
-	rm -rf $(mac_contents)/MacOS/icons
+	make -C $(mac_builddir) DESTDIR=$(CURDIR)/$(mac_contents)/MacOS/ bindir=. install
 	# rename and strip binary
 	mv $(mac_contents)/MacOS/sailcut $(mac_contents)/MacOS/Sailcut
 	$(STRIP) $(mac_contents)/MacOS/Sailcut
 	# add extra files
-	cp icons/sailcut.icns $(mac_contents)/Sailcut.icns
 	echo -n "APPL????" > $(mac_contents)/PkgInfo
 	cp $(mac_builddir)/sailcut.plist $(mac_contents)/Info.plist
 	touch $@
