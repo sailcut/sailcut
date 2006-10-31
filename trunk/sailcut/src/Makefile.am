@@ -1,8 +1,8 @@
 SUBDIRS = geocpp ts
 
-# set the include path for Qt
-AM_CPPFLAGS = $(QT_INCLUDES) $(X_INCLUDES) $(GLINC) \
-      -DSAILCUT_DOCDIR=\"$(pkgdocdir)\" -DSAILCUT_DATADIR=\"$(pkgdatadir)\"
+AM_CPPFLAGS = \
+	-I$(top_srcdir) $(QT_INCLUDES) $(X_INCLUDES) $(GLINC) \
+	-DSAILCUT_DOCDIR=\"$(pkgdocdir)\" -DSAILCUT_DATADIR=\"$(pkgdatadir)\"
 
 bin_PROGRAMS = sailcut
 
@@ -37,7 +37,6 @@ HEADER_FILES =  \
 	sailmould.h \
 	sailpainter.h \
 	sailprinter.h \
-	sailreader-xml.h \
 	sailtreeitem.h \
 	sailtreemodel.h \
 	sailviewer.h \
