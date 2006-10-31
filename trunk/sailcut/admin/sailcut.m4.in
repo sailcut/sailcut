@@ -75,7 +75,7 @@ AC_DEFUN([JWB_CHECK_ICONDIR],
 	
     AC_MSG_CHECKING([for icon directory])
     if test x"$ac_cv_with_icondir" = x; then
-        pkgicondir="${prefix}/share/$1"
+        pkgicondir="${prefix}/share/pixmaps"
     else
         pkgicondir="$ac_cv_with_icondir"
     fi
