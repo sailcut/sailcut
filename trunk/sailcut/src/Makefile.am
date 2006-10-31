@@ -10,6 +10,7 @@ bin_PROGRAMS = sailcut
 HEADER_FILES =  \
 	disparea.h \
 	filewriter.h \
+	formboat.h \
 	formdocument.h \
 	formhelp.h \
 	formhull.h \
@@ -17,7 +18,6 @@ HEADER_FILES =  \
 	formmain.h \
 	formmould.h \
 	formpanelgroup.h \
-	formrig.h \
 	formsail.h \
 	formsaildef.h \
 	hulldef.h \
@@ -53,13 +53,13 @@ HEADER_FILES =  \
 # the C++ source files
 CPP_FILES = \
 	disparea.cpp \
+	formboat.cpp \
 	formhelp.cpp \
 	formhull.cpp \
 	formhulldef.cpp \
 	formmain.cpp \
 	formmould.cpp \
 	formpanelgroup.cpp \
-	formrig.cpp \
 	formsail.cpp \
 	formsaildef.cpp \
 	hulldef.cpp \
@@ -97,6 +97,7 @@ UI_FILES = formhulldefbase.ui formsaildefbase.ui
 
 # generated source files
 BUILT_SOURCES = \
+	formboat.moc.cpp \
 	formhelp.moc.cpp \
 	formhull.moc.cpp \
 	formhulldefbase.h \
@@ -105,7 +106,6 @@ BUILT_SOURCES = \
 	formmain.moc.cpp \
 	formmould.moc.cpp \
 	formpanelgroup.moc.cpp \
-	formrig.moc.cpp \
 	formsail.moc.cpp \
 	formsaildefbase.h \
 	formsaildefbase.cpp \

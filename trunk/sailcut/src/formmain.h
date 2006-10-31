@@ -68,8 +68,8 @@ protected slots:
     virtual void slotAbout();
     virtual void slotAboutQt();
 
+    virtual void slotNewBoat();
     virtual void slotNewHull();
-    virtual void slotNewRig();
     virtual void slotNewSail();
     virtual void slotOpen();
     virtual void slotOpenRecent();
@@ -131,10 +131,10 @@ protected:
     QAction *actionCascade;
     /** display the handbook */
     QAction *actionHandbook;
+    /** create a new boat */
+    QAction *actionNewBoat;
     /** create a new hull */
     QAction *actionNewHull;
-    /** create a new rig */
-    QAction *actionNewRig;
     /** create a new sail */
     QAction *actionNewSail;
     /** open an existing sail definition */

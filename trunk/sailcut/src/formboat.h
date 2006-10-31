@@ -17,8 +17,8 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef FORMRIG_H
-#define FORMRIG_H
+#ifndef FORMBOAT_H
+#define FORMBOAT_H
 
 #include "formdocument.h"
 #include "sailwriter-xml.h"
@@ -29,12 +29,12 @@ class CRigDefPanel;
 
 /** A form allowing the user to assemble several sails into a rig.
  */
-class CFormRig : public CFormDocumentTmpl<CRigDef, CRigDefXmlWriter>
+class CFormBoat : public CFormDocumentTmpl<CRigDef, CRigDefXmlWriter>
 {
     Q_OBJECT
 
 public:
-    CFormRig(CPrefs *myPrefs, QWidget *parent);
+    CFormBoat(CPrefs *myPrefs, QWidget *parent);
 
 protected:
     void setDef(const CRigDef &newdef);

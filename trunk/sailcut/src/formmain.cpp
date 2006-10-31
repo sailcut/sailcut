@@ -26,7 +26,7 @@
 #include "formhelp.h"
 #include "formhull.h"
 #include "formpanelgroup.h"
-#include "formrig.h"
+#include "formboat.h"
 
 #include "sailcutqt.h"
 
@@ -126,9 +126,9 @@ void CFormMain::languageChange()
     menuFile->setTitle( tr("&File") );
 
     menuFileNew->setTitle( tr("&New") );
+    actionNewBoat->setText( tr("Boat") );
     actionNewSail->setText( tr("Sail") );
     actionNewHull->setText( tr("Hull") );
-    actionNewRig->setText( tr("Rig") );
     actionOpen->setText( tr("&Open") );
     menuRecent->setTitle( tr("Open &recent") );
     actionSave->setText( tr("&Save") );
@@ -183,8 +183,8 @@ void CFormMain::open(QString filename)
         wnd = new CFormSail(prefs, this);
     } else if (CFormHull::isDocument(filename)) {
         wnd = new CFormHull(prefs, this);
-    } else if (CFormRig::isDocument(filename)) {
-        wnd = new CFormRig(prefs, this);
+    } else if (CFormBoat::isDocument(filename)) {
+        wnd = new CFormBoat(prefs, this);
     } else if (CFormPanelGroup::isDocument(filename)) {
         wnd = new CFormPanelGroup(prefs, this);
     } else {
@@ -231,7 +231,7 @@ void CFormMain::setupMenuBar()
     menuFileNew = menuFile->addMenu("");
     actionNewSail = menuFileNew->addAction("", this, SLOT( slotNewSail() ) );
     actionNewHull = menuFileNew->addAction("", this, SLOT( slotNewHull() ) );
-    actionNewRig = menuFileNew->addAction("", this, SLOT( slotNewRig() ) );
+    actionNewBoat = menuFileNew->addAction("", this, SLOT( slotNewBoat() ) );
     actionOpen = menuFile->addAction("", this, SLOT( slotOpen() ) );
     menuRecent = menuFile->addMenu("");
     menuFile->addSeparator();
@@ -389,21 +389,21 @@ void CFormMain::slotLanguage()
 
 
 /**
- * Creates a new hull
+ * Creates a new boat
  */
-void CFormMain::slotNewHull()
+void CFormMain::slotNewBoat()
 {
-    CFormHull *wnd = new CFormHull(prefs, this);
+    CFormBoat *wnd = new CFormBoat(prefs, this);
     addChild(wnd);
 }
 
 
 /**
- * Creates a new rig
+ * Creates a new hull
  */
-void CFormMain::slotNewRig()
+void CFormMain::slotNewHull()
 {
-    CFormRig *wnd = new CFormRig(prefs, this);
+    CFormHull *wnd = new CFormHull(prefs, this);
     addChild(wnd);
 }
 
@@ -426,7 +426,7 @@ void CFormMain::slotOpen()
     QString filter = "Sailcut CAD files (";
     filter += QString("*") + CFormSail::getFileExtension();
     filter += QString(" *") + CFormHull::getFileExtension();
-    filter += QString(" *") + CFormRig::getFileExtension();
+    filter += QString(" *") + CFormBoat::getFileExtension();
     filter += QString(" *") + CFormPanelGroup::getFileExtension();
     filter += ")";
 
