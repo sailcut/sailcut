@@ -238,16 +238,16 @@ void CSailDoc::get
 }
 
 
-/** Reads an enumRigSailType from an XML document.
+/** Reads an enumBoatElementType from an XML document.
  *
  * @param parent the parent node
- * @param t the enumRigSailType
+ * @param t the enumBoatElementType
  * @param name the name of the value
  */
 void CSailDoc::get
-    ( const QDomNode &parent, enumRigSailType &t, const QString &name )
+    ( const QDomNode &parent, enumBoatElementType &t, const QString &name )
 {
-    QDomElement e = findElement( parent, "enumRigSailType", name);
+    QDomElement e = findElement( parent, "enumBoatElementType", name);
     QString s = e.attributes().namedItem("value").nodeValue();
 
     if (!s.compare("HULLDEF"))
@@ -489,33 +489,33 @@ void CSailDoc::get
 }
 
 
-/** Reads a CRigDef rig definition from an XML document.
+/** Reads a CBoatDef boat definition from an XML document.
  *
  * @param parent the parent node
- * @param d the rig definition
- * @param name the name of the rig definition
+ * @param d the boat definition
+ * @param name the name of the boat definition
  */
 void CSailDoc::get
-    ( const QDomNode &parent, CRigDef &d, const QString &name )
+    ( const QDomNode &parent, CBoatDef &d, const QString &name )
 {
-    QDomElement e = findElement( parent, "CRigDef", name);
+    QDomElement e = findElement( parent, "CBoatDef", name);
     get
-        (e, d.rigsail, "rigsail");
+        (e, d.element, "element");
 }
 
 
-/** Reads a CRigSail rig definition from an XML document.
+/** Reads a CBoatElement from an XML document.
  *
  * @param parent the parent node
- * @param s the rig sail
- * @param name the name of the rig sail
+ * @param s the boat element
+ * @param name the name of the boat element
  */
 void CSailDoc::get
-    ( const QDomNode &parent, CRigSail &s, const QString &name )
+    ( const QDomNode &parent, CBoatElement &s, const QString &name )
 {
-    QDomElement e = findElement( parent, "CRigSail", name);
+    QDomElement e = findElement( parent, "CBoatElement", name);
     get
-        (e, (CPanelGroup&)s, "sail");
+        (e, (CPanelGroup&)s, "panelgroup");
     get
         (e, s.type, "type");
     get
@@ -619,9 +619,9 @@ void CSailDoc::put( QDomNode &parent, const CPoint3d &p, const QString &name )
 }
 
 
-/** Puts an enumRigSailType to an XML document.
+/** Puts an enumBoatElementType to an XML document.
  */
-void CSailDoc::put( QDomNode &parent, const enumRigSailType &t, const QString &name )
+void CSailDoc::put( QDomNode &parent, const enumBoatElementType &t, const QString &name )
 {
     QString value;
     switch (t)
@@ -636,7 +636,7 @@ void CSailDoc::put( QDomNode &parent, const enumRigSailType &t, const QString &n
         value = "PANELGROUP";
         break;
     }
-    QDomElement e = createElement("enumRigSailType",name,value);
+    QDomElement e = createElement("enumBoatElementType",name,value);
     parent.appendChild(e);
 }
 
@@ -841,28 +841,28 @@ void CSailDoc::put( QDomNode &parent, const CProfile &p, const QString &name )
 }
 
 
-/** Put a CRigDef rig definition to an XML document.
+/** Put a CBoatDef boat definition to an XML document.
  */
-void CSailDoc::put( QDomNode &parent, const CRigDef &d, const QString &name )
+void CSailDoc::put( QDomNode &parent, const CBoatDef &d, const QString &name )
 {
-    QDomElement e = createElement("CRigDef",name);
+    QDomElement e = createElement("CBoatDef",name);
     parent.appendChild(e);
 
-    put(e, d.rigsail, "rigsail");
+    put(e, d.element, "element");
 }
 
 
-/** Put a CRigSail sail to an XML document.
+/** Put a CBoatElement sail to an XML document.
  */
-void CSailDoc::put( QDomNode &parent, const CRigSail &s, const QString &name )
+void CSailDoc::put( QDomNode &parent, const CBoatElement &s, const QString &name )
 {
-    QDomElement e = createElement("CRigSail",name);
+    QDomElement e = createElement("CBoatElement",name);
     parent.appendChild(e);
 
     put(e, s.filename, "filename");
     put(e, s.type, "type");
     put(e, s.origin, "origin");
-    put(e, (CPanelGroup&)s, "sail");
+    put(e, (CPanelGroup&)s, "panelgroup");
 }
 
 

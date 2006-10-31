@@ -17,46 +17,46 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef RIGDEF_H
-#define RIGDEF_H
+#ifndef BOATDEF_H
+#define BOATDEF_H
 
 #include "panelgroup.h"
 
-typedef enum { SAILDEF, HULLDEF, PANELGROUP } enumRigSailType;
+typedef enum { SAILDEF, HULLDEF, PANELGROUP } enumBoatElementType;
 
 /**
- * A rig sail. This class extends a regular sail with information
- *  about how to integrate it into a rig.
+ * A boat element. This class extends a CPanelGroup with information
+ *  about how to integrate it into a boat.
  *
- * @see CSail
- * @see CRigDef
+ * @see CPanelGroup
+ * @see CBoatDef
  */
-class CRigSail : public CPanelGroup
+class CBoatElement : public CPanelGroup
 {
 public:
-    /** the type of file this sail was read from (sail definition or 3D sail) */
-    enumRigSailType type;
-    /** the name of the file this sail was read from */
+    /** the type of file this element was read from (sail, hull definition or 3D panels) */
+    enumBoatElementType type;
+    /** the name of the file this element was read from */
     QString filename;
-    /** the origin of the sail */
+    /** the origin of the element */
     CPoint3d origin;
 };
 
 
 /**
- * A rig definition, which consists of a collection of rig sails.
+ * A boat definition, which consists of a collection of boat elements.
  *
- * @see CRigSail
+ * @see CBoatElement
  */
-class CRigDef
+class CBoatDef
 {
 public:
-    CRigDef();
+    CBoatDef();
 
-    CPanelGroup makeViewSail() const;
+    CPanelGroup makePanelGroup() const;
 
-    /** the collection of sails that makes up the rig */
-    vector<CRigSail> rigsail;
+    /** the collection of elements that makes up the boat */
+    vector<CBoatElement> element;
 };
 
 #endif

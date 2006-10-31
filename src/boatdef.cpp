@@ -17,22 +17,22 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#include "rigdef.h"
+#include "boatdef.h"
 
 /** The constructor.
  */
-CRigDef::CRigDef()
+CBoatDef::CBoatDef()
 {}
 
 
-/** Produce the combined sail made up of all the panels
+/** Produce the combined panel group made up of all the panels
  */
-CPanelGroup CRigDef::makeViewSail() const
+CPanelGroup CBoatDef::makePanelGroup() const
 {
     CPanelGroup output;
 
-    for (unsigned int i = 0; i < rigsail.size(); i++)
-        output.child.push_back(rigsail[i] + rigsail[i].origin);
+    for (unsigned int i = 0; i < element.size(); i++)
+        output.child.push_back(element[i] + element[i].origin);
 
     return output;
 }

@@ -8,6 +8,8 @@ bin_PROGRAMS = sailcut
 
 # these are the headers
 HEADER_FILES =  \
+	boatdef.h \
+	boatdef-panel.h \
 	disparea.h \
 	filewriter.h \
 	formboat.h \
@@ -25,8 +27,6 @@ HEADER_FILES =  \
 	panel.h \
 	panelgroup.h \
 	prefs.h \
-	rigdef.h \
-	rigdef-panel.h \
 	sailcalc.h \
 	sailcutqt.h \
 	saildef.h \
@@ -52,6 +52,8 @@ HEADER_FILES =  \
 
 # the C++ source files
 CPP_FILES = \
+	boatdef.cpp \
+	boatdef-panel.cpp \
 	disparea.cpp \
 	formboat.cpp \
 	formhelp.cpp \
@@ -68,8 +70,6 @@ CPP_FILES = \
 	panel.cpp \
 	panelgroup.cpp \
 	prefs.cpp \
-	rigdef.cpp \
-	rigdef-panel.cpp \
 	sailcalc.cpp \
 	sailcutqt.cpp \
 	saildef.cpp \
@@ -97,6 +97,7 @@ UI_FILES = formhulldefbase.ui formsaildefbase.ui
 
 # generated source files
 BUILT_SOURCES = \
+	boatdef-panel.moc.cpp \
 	formboat.moc.cpp \
 	formhelp.moc.cpp \
 	formhull.moc.cpp \
@@ -110,7 +111,6 @@ BUILT_SOURCES = \
 	formsaildefbase.h \
 	formsaildefbase.cpp \
 	formsaildef.moc.cpp \
-	rigdef-panel.moc.cpp \
 	sailtreemodel.moc.cpp \
 	sailviewer.moc.cpp \
 	sailviewer-panel.moc.cpp \

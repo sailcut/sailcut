@@ -17,7 +17,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#include "rigdef-panel.h"
+#include "boatdef-panel.h"
 #include "sailwriter-xml.h"
 #include "hullworker.h"
 #include "sailworker.h"
@@ -87,7 +87,7 @@ void CVector3dWidget::setVector(const CVector3d &v)
  *
  * @param parent the parent widget
  */
-CRigSailWidget::CRigSailWidget(QWidget *parent)
+CBoatElementWidget::CBoatElementWidget(QWidget *parent)
         : QWidget(parent)
 {
     grpInfo = new QGroupBox( 0 );
@@ -129,7 +129,7 @@ CRigSailWidget::CRigSailWidget(QWidget *parent)
 /**
  * Sets the strings of the subwidgets using the current language.
  */
-void CRigSailWidget::languageChange()
+void CBoatElementWidget::languageChange()
 {
     grpInfo->setTitle( tr( "Sail information" ) );
     lblFileStatic->setText( tr("file") );
@@ -141,39 +141,39 @@ void CRigSailWidget::languageChange()
 
 
 /**
- * The rigsail changed, update widgets.
+ * The boat element changed, update widgets.
  *
- * @param newsail The new value of the rigsail
+ * @param newelement The new value of the boat element
  */
-void CRigSailWidget::setRigSail(const CRigSail& newsail)
+void CBoatElementWidget::setElement(const CBoatElement& newelement)
 {
-    rigsail = newsail;
-    lblFile->setText( rigsail.filename );
-    txtName->setText( rigsail.title );
-    wdgOrigin->setVector( rigsail.origin );
+    element = newelement;
+    lblFile->setText( element.filename );
+    txtName->setText( element.title );
+    wdgOrigin->setVector( element.origin );
 }
 
 
 /**
  * The "reload" button was pressed, fire signalUpdate.
  */
-void CRigSailWidget::slotReload()
+void CBoatElementWidget::slotReload()
 {
     try
     {
-        switch (rigsail.type)
+        switch (element.type)
         {
         case SAILDEF:
-            (CPanelGroup&)rigsail = CSailWorker(CSailDefXmlWriter().read(rigsail.filename)).makeSail();
+            (CPanelGroup&)element = CSailWorker(CSailDefXmlWriter().read(element.filename)).makeSail();
             break;
         case HULLDEF:
-            (CPanelGroup&)rigsail = CHullWorker(CHullDefXmlWriter().read(rigsail.filename)).makeHull();
+            (CPanelGroup&)element = CHullWorker(CHullDefXmlWriter().read(element.filename)).makeHull();
             break;
         case PANELGROUP:
-            (CPanelGroup&)rigsail = CPanelGroupXmlWriter().read(rigsail.filename);
+            (CPanelGroup&)element = CPanelGroupXmlWriter().read(element.filename);
             break;
         }
-        signalUpdate(rigsail);
+        signalUpdate(element);
     }
     catch (CException e)
     {
@@ -185,7 +185,7 @@ void CRigSailWidget::slotReload()
 /**
  * The "remove" button was pressed, fire signalRemove.
  */
-void CRigSailWidget::slotRemove()
+void CBoatElementWidget::slotRemove()
 {
     signalRemove();
 }
@@ -194,11 +194,11 @@ void CRigSailWidget::slotRemove()
 /**
  * The "update" button was pressed, fire signalUpdate.
  */
-void CRigSailWidget::slotUpdate()
+void CBoatElementWidget::slotUpdate()
 {
-    rigsail.title = txtName->text();
-    rigsail.origin = wdgOrigin->getVector();
-    signalUpdate(rigsail);
+    element.title = txtName->text();
+    element.origin = wdgOrigin->getVector();
+    signalUpdate(element);
 }
 
 
@@ -208,7 +208,7 @@ void CRigSailWidget::slotUpdate()
  *
  * @param parent the parent widget
  */
-CRigDefPanel::CRigDefPanel(QWidget *parent)
+CBoatDefPanel::CBoatDefPanel(QWidget *parent)
         : QWidget(parent)
 {
     QGridLayout *layout = new QGridLayout( this );
@@ -220,73 +220,73 @@ CRigDefPanel::CRigDefPanel(QWidget *parent)
 /**
  * Sets the strings of the subwidgets using the current language.
  */
-void CRigDefPanel::languageChange()
+void CBoatDefPanel::languageChange()
 {
-    for ( unsigned int i = 0; i < sailwidget.size(); i++)
-        sailwidget[i]->languageChange();
+    for ( unsigned int i = 0; i < elementwidget.size(); i++)
+        elementwidget[i]->languageChange();
 }
 
 
 /**
- * We were passed a new rig definition, update the widgets.
+ * We were passed a new boat definition, update the widgets.
  *
- * @param newdef The new rig definition
+ * @param newdef The new boat definition
  */
-void CRigDefPanel::setRigDef(const CRigDef& newdef)
+void CBoatDefPanel::setDef(const CBoatDef& newdef)
 {
     unsigned int i;
-    for ( i = 0; i < sailwidget.size(); i++)
+    for ( i = 0; i < elementwidget.size(); i++)
     {
         tabs->removeTab(i);
-        delete sailwidget[i];
+        delete elementwidget[i];
     }
 
-    rigdef = newdef;
-    sailwidget.resize(rigdef.rigsail.size());
+    def = newdef;
+    elementwidget.resize(def.element.size());
 
-    for ( i = 0; i < rigdef.rigsail.size(); i++)
+    for ( i = 0; i < def.element.size(); i++)
     {
-        sailwidget[i] = new CRigSailWidget(0);
-        sailwidget[i]->setRigSail(rigdef.rigsail[i]);
+        elementwidget[i] = new CBoatElementWidget(0);
+        elementwidget[i]->setElement(def.element[i]);
 
-        connect(sailwidget[i], SIGNAL(signalRemove()), this, SLOT(slotRemove()));
-        connect(sailwidget[i], SIGNAL(signalUpdate(const CRigSail&)), this, SLOT(slotUpdate(const CRigSail&)));
+        connect(elementwidget[i], SIGNAL(signalRemove()), this, SLOT(slotRemove()));
+        connect(elementwidget[i], SIGNAL(signalUpdate(const CBoatElement&)), this, SLOT(slotUpdate(const CBoatElement&)));
 
-        tabs->addTab(sailwidget[i], rigdef.rigsail[i].title);
+        tabs->addTab(elementwidget[i], def.element[i].title);
     }
 
-    if (sailwidget.size() > 0)
+    if (elementwidget.size() > 0)
         tabs->setCurrentIndex(0);
 }
 
 
 
 /**
- * The user requested the removal of the current rigsail.
+ * The user requested the removal of the current boat element.
  */
-void CRigDefPanel::slotRemove()
+void CBoatDefPanel::slotRemove()
 {
     int tabIndex = tabs->currentIndex();
 
     tabs->removeTab(tabIndex);
-    delete sailwidget[tabIndex];
-    sailwidget.erase(sailwidget.begin()+tabIndex);
-    rigdef.rigsail.erase(rigdef.rigsail.begin()+tabIndex);
-    signalUpdate(rigdef);
+    delete elementwidget[tabIndex];
+    elementwidget.erase(elementwidget.begin()+tabIndex);
+    def.element.erase(def.element.begin()+tabIndex);
+    signalUpdate(def);
 }
 
 
 /**
- * The user updated the current rigsail.
+ * The user updated the current boat element.
  *
- * @param newsail The new rigsail
+ * @param newelement The new boat element
  */
-void CRigDefPanel::slotUpdate(const CRigSail& newsail)
+void CBoatDefPanel::slotUpdate(const CBoatElement& newelement)
 {
     int tabIndex = tabs->currentIndex();
 
-    rigdef.rigsail[tabIndex] = newsail;
-    tabs->setTabText(tabIndex, rigdef.rigsail[tabIndex].title);
-    signalUpdate(rigdef);
+    def.element[tabIndex] = newelement;
+    tabs->setTabText(tabIndex, def.element[tabIndex].title);
+    signalUpdate(def);
 }
 

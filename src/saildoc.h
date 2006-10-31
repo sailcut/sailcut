@@ -24,7 +24,7 @@
 #include "panelgroup.h"
 #include "hulldef.h"
 #include "saildef.h"
-#include "rigdef.h"
+#include "boatdef.h"
 #include "prefs.h"
 
 /** This class handles input and output to Sailcut XML documents.
@@ -58,7 +58,7 @@ public:
     void get
         (const QDomNode &parent, enumSailType &t, const QString &name );
     void get
-        (const QDomNode &parent, enumRigSailType &t, const QString &name );
+        (const QDomNode &parent, enumBoatElementType &t, const QString &name );
     void get
         (const QDomNode &parent, CHullDef &d, const QString &name );
     void get
@@ -68,9 +68,9 @@ public:
     void get
         (const QDomNode &parent, CPanel &p, const QString &name );
     void get
-        (const QDomNode &parent, CRigDef &d, const QString &name );
+        (const QDomNode &parent, CBoatDef &d, const QString &name );
     void get
-        (const QDomNode &parent, CRigSail &s, const QString &name );
+        (const QDomNode &parent, CBoatElement &s, const QString &name );
     void get
         (const QDomNode &parent, CPanelGroup &g, const QString &name );
     void get
@@ -109,11 +109,11 @@ public:
     void put(QDomNode &parent, const real &r, const QString &name ="" );
     void put(QDomNode &parent, const QString &s, const QString &name="" );
     void put(QDomNode &parent, const CPoint3d &p, const QString &name="" );
-    void put(QDomNode &parent, const enumRigSailType &t, const QString &name="");
+    void put(QDomNode &parent, const enumBoatElementType &t, const QString &name="");
     void put(QDomNode &parent, const enumSailCut &c, const QString &name="" );
     void put(QDomNode &parent, const enumSailType &t, const QString &name="" );
-    void put(QDomNode &parent, const CRigDef &d, const QString &name="" );
-    void put(QDomNode &parent, const CRigSail &s, const QString &name="" );
+    void put(QDomNode &parent, const CBoatDef &d, const QString &name="" );
+    void put(QDomNode &parent, const CBoatElement &s, const QString &name="" );
     void put(QDomNode &parent, const CHullDef &d, const QString &name="" );
     void put(QDomNode &parent, const CSailDef &d, const QString &name="" );
     void put(QDomNode &parent, const CSide &s, const QString &name="" );
