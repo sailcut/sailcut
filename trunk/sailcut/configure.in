@@ -57,6 +57,7 @@ JWB_HAVE_QTOPENGL
 dnl Check data and documentation directories
 JWB_CHECK_DATADIR(sailcut)
 JWB_CHECK_DOCDIR(sailcut)
+JWB_CHECK_ICONDIR
 
 dnl Disable console on Win32
 case "$host" in 
