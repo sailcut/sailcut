@@ -19,49 +19,6 @@ dnl Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 dnl
 
 dnl ------------------------------------------------------------------------
-dnl Determine the directory where the package's data is installed
-dnl ------------------------------------------------------------------------
-dnl
-AC_DEFUN([JWB_CHECK_DATADIR],
-[
-    AC_ARG_WITH(datadir,
-        [AC_HELP_STRING([--with-datadir=DIR],
-	    [where package data is installed @<:@default=PREFIX/share/$1@:>@])],
-        [ac_cv_with_datadir="$withval"])
-	
-    AC_MSG_CHECKING([for data directory])
-    if test x"$ac_cv_with_datadir" = x; then
-        pkgdatadir="${prefix}/share/$1"
-    else
-        pkgdatadir="$ac_cv_with_datadir"
-    fi
-    AC_MSG_RESULT($pkgdatadir)
-    AC_SUBST(pkgdatadir)
-])
-
-dnl ------------------------------------------------------------------------
-dnl Determine the directory where the package's documentation is installed
-dnl ------------------------------------------------------------------------
-dnl
-AC_DEFUN([JWB_CHECK_DOCDIR],
-[
-    AC_ARG_WITH(docdir,
-        [AC_HELP_STRING([--with-docdir=DIR],
-	    [where package documentation is installed @<:@default=PREFIX/share/doc/$1@:>@])],
-        [ac_cv_with_docdir="$withval"])
-	
-    AC_MSG_CHECKING([for documentation directory])
-    if test x"$ac_cv_with_docdir" = x; then
-        pkgdocdir="${prefix}/share/doc/$1"
-    else
-        pkgdocdir="$ac_cv_with_docdir"
-    fi
-    AC_MSG_RESULT($pkgdocdir)
-    AC_SUBST(pkgdocdir)
-])
-
-
-dnl ------------------------------------------------------------------------
 dnl Error messages
 dnl ------------------------------------------------------------------------
 dnl
