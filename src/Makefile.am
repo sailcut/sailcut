@@ -93,7 +93,7 @@ CPP_FILES = \
 	widgetprofilevert.cpp
 
 # the Qt UI files
-UI_FILES = formhulldefbase.ui formsaildefbase.ui
+UI_FILES = formhulldefbase.ui formrigdefbase.ui formsaildefbase.ui
 
 # generated source files
 BUILT_SOURCES = \
@@ -107,6 +107,8 @@ BUILT_SOURCES = \
 	formmain.moc.cpp \
 	formmould.moc.cpp \
 	formpanelgroup.moc.cpp \
+	formrigdefbase.h \
+	formrigdefbase.cpp \
 	formsail.moc.cpp \
 	formsaildefbase.h \
 	formsaildefbase.cpp \
