@@ -12,7 +12,6 @@ BIN_DOCS = README COPYING ChangeLog
 win32_configure= ../configure
 win32_builddir = win32-build
 win32_distdir = sailcut-$(VERSION)-win32
-win32_icons = sailcut.ico sailcut-file.ico
 win32_qtlibs = mingwm10.dll QtCore4.dll QtGui4.dll QtOpenGL4.dll QtXml4.dll
 win32_nsi = sailcut.nsi
 
@@ -25,7 +24,8 @@ win32-build-stamp:
 	    --host=$(MINGW) \
 	    --with-qt-dir=$(QTDIR) \
 	    --with-datadir=data \
-	    --with-docdir=doc
+	    --with-docdir=doc \
+	    --with-icondir=icons
 	make -C $(win32_builddir)
 	touch $@
 
@@ -36,8 +36,7 @@ win32-install-stamp: win32-build-stamp
 	  cp $$i $(win32_distdir); \
 	  $(UNIX2DOS) $(win32_distdir)/$$i; \
 	done
-	make -C $(win32_builddir) DESTDIR=$(CURDIR)/$(win32_distdir)/ bindir=. pixmapsdir=icons install
-	cp -f $(addprefix $(win32_builddir)/icons/,$(win32_icons)) $(win32_distdir)/icons
+	make -C $(win32_builddir) DESTDIR=$(CURDIR)/$(win32_distdir)/ bindir=. install
 	$(STRIP) $(win32_distdir)/sailcut.exe
 	cp -f $(addprefix $(QTDIR)/bin/,$(win32_qtlibs)) $(win32_distdir)
 
