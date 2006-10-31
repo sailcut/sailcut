@@ -60,11 +60,12 @@ QUrl CSailApp::findHandbook(const QString locale)
 #endif
 
     // look for handbook in different languages
+    QDir appDir(applicationDirPath());
     for (int i = 0; i < locales.size(); i++)
     {
         for (int d = 0; d < docdirs.size(); d++)
         {
-            handbook = docdirs.at(d) + QDir::separator() + locales.at(i) + QDir::separator() + "index.html";
+            handbook = appDir.absoluteFilePath(docdirs.at(d) + QDir::separator() + locales.at(i) + QDir::separator() + "index.html");
             if (QFile::exists(handbook))
                 return QUrl::fromLocalFile(QFileInfo(handbook).absoluteFilePath());
         }
@@ -92,8 +93,9 @@ void CSailApp::loadTranslation(const QString locale)
 #endif
 
     int d = 0;
+    QDir appDir(applicationDirPath());
     while ((d < datadirs.size()) &&
-            (!transApp->load(qm, datadirs.at(d))))
+            (!transApp->load(qm, appDir.absoluteFilePath(datadirs.at(d)))))
     {
         d++;
     }
