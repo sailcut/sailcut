@@ -26,6 +26,7 @@ mac-install-stamp: mac-build-stamp
 	mkdir -p $(mac_contents)/MacOS
 	make -C $(mac_builddir) DESTDIR=$(CURDIR)/$(mac_contents)/MacOS/ bindir=. pixmapsdir=icons install
 	rm -rf $(mac_contents)/MacOS/icons
+	cp $(mac_builddir)/icons/sailcut.icns $(mac_contents)/Sailcut.icns
 	mv $(mac_contents)/MacOS/sailcut $(mac_contents)/MacOS/Sailcut
 	$(STRIP) $(mac_contents)/MacOS/Sailcut
 	echo -n "APPL????" > $(mac_contents)/PkgInfo
