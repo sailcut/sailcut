@@ -20,7 +20,7 @@
 #include "formboat.h"
 #include "sailcutqt.h"
 #include "sailviewer-panel.h"
-#include "rigdef-panel.h"
+#include "boatdef-panel.h"
 #include "hullworker.h"
 #include "sailworker.h"
 #include "sailwriter-xml.h"
@@ -36,7 +36,7 @@
  * @param parent the parent widget
  */
 CFormBoat::CFormBoat(CPrefs *myPrefs, QWidget *parent)
-        : CFormDocumentTmpl<CRigDef, CRigDefXmlWriter>(myPrefs, parent)
+        : CFormDocumentTmpl<CBoatDef, CBoatDefXmlWriter>(myPrefs, parent)
 {
     // create main widget
     setupMainWidget();
@@ -76,11 +76,11 @@ void CFormBoat::languageChange()
  *
  * @param newdef The new boat definition
  */
-void CFormBoat::setDef(const CRigDef &newdef)
+void CFormBoat::setDef(const CBoatDef &newdef)
 {
     def = newdef;
-    viewer->setObject(def.makeViewSail());
-    defpanel->setRigDef(def);
+    viewer->setObject(def.makePanelGroup());
+    defpanel->setDef(def);
 }
 
 
@@ -90,7 +90,7 @@ void CFormBoat::setDef(const CRigDef &newdef)
 void CFormBoat::setupMainWidget()
 {
     viewer = new CSailViewerPanel(this, WIREFRAME, true, false);
-    defpanel = new CRigDefPanel(this);
+    defpanel = new CBoatDefPanel(this);
 
     QGridLayout *layout = new QGridLayout(this);
     layout->addWidget(viewer, 0, 0);
@@ -98,7 +98,7 @@ void CFormBoat::setupMainWidget()
     layout->addWidget(defpanel, 1, 0);
     layout->setRowStretch(1, 1);
     
-    connect(defpanel, SIGNAL(signalUpdate(const CRigDef& )), this, SLOT(slotUpdate(const CRigDef& )));
+    connect(defpanel, SIGNAL(signalUpdate(const CBoatDef& )), this, SLOT(slotUpdate(const CBoatDef& )));
 }
 
 
@@ -120,14 +120,14 @@ void CFormBoat::setupMenuBar()
  */
 void CFormBoat::slotAddPanelGroup()
 {
-    CRigSail rigsail;
-    QString newname = CPanelGroupXmlWriter().readDialog((CPanelGroup&)rigsail,"");
+    CBoatElement element;
+    QString newname = CPanelGroupXmlWriter().readDialog((CPanelGroup&)element,"");
 
     if (!newname.isNull())
     {
-        rigsail.type = PANELGROUP;
-        rigsail.filename = newname;
-        def.rigsail.push_back(rigsail);
+        element.type = PANELGROUP;
+        element.filename = newname;
+        def.element.push_back(element);
         setDef(def);
     }
 
@@ -144,11 +144,11 @@ void CFormBoat::slotAddHullDef()
 
     if (!newname.isNull())
     {
-        CRigSail rigsail;
-        (CPanelGroup&)rigsail = CHullWorker(hulldef).makeHull();
-        rigsail.type = HULLDEF;
-        rigsail.filename = newname;
-        def.rigsail.push_back(rigsail);
+        CBoatElement element;
+        (CPanelGroup&)element = CHullWorker(hulldef).makeHull();
+        element.type = HULLDEF;
+        element.filename = newname;
+        def.element.push_back(element);
         setDef(def);
     }
 
@@ -165,11 +165,11 @@ void CFormBoat::slotAddSailDef()
 
     if (!newname.isNull())
     {
-        CRigSail rigsail;
-        (CPanelGroup&)rigsail = CSailWorker(saildef).makeSail();
-        rigsail.type = SAILDEF;
-        rigsail.filename = newname;
-        def.rigsail.push_back(rigsail);
+        CBoatElement element;
+        (CPanelGroup&)element = CSailWorker(saildef).makeSail();
+        element.type = SAILDEF;
+        element.filename = newname;
+        def.element.push_back(element);
         setDef(def);
     }
 
@@ -181,10 +181,10 @@ void CFormBoat::slotAddSailDef()
  *
  * @param newdef The new boat definition
  */
-void CFormBoat::slotUpdate(const CRigDef& newdef)
+void CFormBoat::slotUpdate(const CBoatDef& newdef)
 {
     def = newdef;
-    viewer->setObject(def.makeViewSail());
+    viewer->setObject(def.makePanelGroup());
 }
 
 

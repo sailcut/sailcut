@@ -17,10 +17,10 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef RIGDEF_PANEL_H
-#define RIGDEF_PANEL_H
+#ifndef BOATDEF_PANEL_H
+#define BOATDEF_PANEL_H
 
-#include "rigdef.h"
+#include "boatdef.h"
 
 #include <QWidget>
 
@@ -49,16 +49,16 @@ protected:
     vector<QLineEdit *>txtBox;
 };
 
-/** A widget for displaying information about a rigsail.
+/** A widget for displaying information about a boat element.
  */
-class CRigSailWidget : public QWidget
+class CBoatElementWidget : public QWidget
 {
     Q_OBJECT
 
 public:
-    CRigSailWidget(QWidget *parent);
+    CBoatElementWidget(QWidget *parent);
 
-    void setRigSail(const CRigSail &newsail);
+    void setElement(const CBoatElement &newelement);
 
 public slots:
     virtual void languageChange();
@@ -66,8 +66,8 @@ public slots:
 signals:
     /** Signals that the user hit the "Remove" button. */
     void signalRemove();
-    /** Signals that the rigsail was modified. */
-    void signalUpdate(const CRigSail& newsail);
+    /** Signals that the element was modified. */
+    void signalUpdate(const CBoatElement& newelement);
 
 protected slots:
     void slotReload();
@@ -75,15 +75,15 @@ protected slots:
     void slotUpdate();
 
 protected:
-    /** the rigsail we are operating on */
-    CRigSail rigsail;
+    /** the boat element we are operating on */
+    CBoatElement element;
 
-    /** groupbox for the sail info */
+    /** groupbox for the element info */
     QGroupBox* grpInfo;
 
     /** label for the filename */
     QLabel* lblFile;
-    /** label for the sail name */
+    /** label for the element name */
     QLineEdit* txtName;
     /** static label saying "file" */
     QLabel* lblFileStatic;
@@ -93,46 +93,46 @@ protected:
     /** widget for the origin */
     CVector3dWidget *wdgOrigin;
 
-    /** button to accept changes to the CRigSail */
+    /** button to accept changes to the CBoatElement */
     QPushButton *btnUpdate;
-    /** button to reload this sail from file */
+    /** button to reload this element from file */
     QPushButton *btnReload;
-    /** button to remove this CRigSail */
+    /** button to remove this CBoatElement */
     QPushButton *btnRemove;
 
 };
 
 
-/** A panel displaying one tab per rigsail of a given
- *  rig definition.
+/** A panel displaying one tab per element of a given
+ *  boat definition.
  */
-class CRigDefPanel : public QWidget
+class CBoatDefPanel : public QWidget
 {
     Q_OBJECT
 
 public:
-    CRigDefPanel(QWidget *parent);
+    CBoatDefPanel(QWidget *parent);
 
-    void setRigDef(const CRigDef &newdef);
+    void setDef(const CBoatDef &newdef);
 
 public slots:
     virtual void languageChange();
     virtual void slotRemove();
-    virtual void slotUpdate(const CRigSail& newsail);
+    virtual void slotUpdate(const CBoatElement& newelement);
 
 signals:
-    /**  Signals that the rig definition was modified. */
-    void signalUpdate(const CRigDef& newdef);
+    /**  Signals that the boat definition was modified. */
+    void signalUpdate(const CBoatDef& newdef);
 
 protected:
-    /** the tabbed widget, with one tab per rigsail */
+    /** the tabbed widget, with one tab per boat element */
     QTabWidget *tabs;
 
-    /** the widgets for the rigsail parameters */
-    vector <CRigSailWidget*> sailwidget;
+    /** the widgets for the boat element parameters */
+    vector <CBoatElementWidget*> elementwidget;
 
-    /** the rig definition we are operating one */
-    CRigDef rigdef;
+    /** the boat definition we are operating one */
+    CBoatDef def;
 };
 
 #endif

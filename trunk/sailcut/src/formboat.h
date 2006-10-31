@@ -24,12 +24,12 @@
 #include "sailwriter-xml.h"
 
 class CSailViewerPanel;
-class CRigDefPanel;
+class CBoatDefPanel;
 
 
-/** A form allowing the user to assemble several sails into a rig.
+/** A form allowing the user to assemble several elements into a boat.
  */
-class CFormBoat : public CFormDocumentTmpl<CRigDef, CRigDefXmlWriter>
+class CFormBoat : public CFormDocumentTmpl<CBoatDef, CBoatDefXmlWriter>
 {
     Q_OBJECT
 
@@ -37,7 +37,7 @@ public:
     CFormBoat(CPrefs *myPrefs, QWidget *parent);
 
 protected:
-    void setDef(const CRigDef &newdef);
+    void setDef(const CBoatDef &newdef);
     void setupMainWidget();
     void setupMenuBar();
 
@@ -46,13 +46,13 @@ protected slots:
     virtual void slotAddHullDef();
     virtual void slotAddPanelGroup();
     virtual void slotAddSailDef();
-    virtual void slotUpdate(const CRigDef& newdef);
+    virtual void slotUpdate(const CBoatDef& newdef);
 
 protected:
-    /** An area to view the rig. */
+    /** An area to view the boat. */
     CSailViewerPanel *viewer;
-    /** A panel with one tab per sail in the current rig.  */
-    CRigDefPanel *defpanel;
+    /** A panel with one tab per element in the current boat.  */
+    CBoatDefPanel *defpanel;
 
     /** The Add menu. */
     QMenu *menuAdd;

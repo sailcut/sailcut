@@ -117,14 +117,14 @@ public:
 };
 
 
-/** A class used to output a CRigDef to an XML file. */
-class CRigDefXmlWriter : public XmlWriterTempl<CRigDef>
+/** A class used to output a CBoatDef to an XML file. */
+class CBoatDefXmlWriter : public XmlWriterTempl<CBoatDef>
 {
 public:
     /** The constructor.
      */
-    CRigDefXmlWriter()
-            : XmlWriterTempl<CRigDef>("rigdef", ".rigdef", "Rig definitions")
+    CBoatDefXmlWriter()
+            : XmlWriterTempl<CBoatDef>("boatdef", ".boatdef", "Boat definitions")
     {}
     ;
 };
