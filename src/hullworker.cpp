@@ -59,7 +59,7 @@ CPanelGroup CHullWorker::makeHull() const
     }
 
     /** make stem */
-    p3 = deck.top.point[0];
+    CPoint3d p3 = deck.top.point[0];
     p3.z() = 0;
     deck.left.fill(p3, deck.top.point[0]);
     v1 = CVector3d ( deck.left.point[npl-1] -deck.left.point[0]);
@@ -87,12 +87,16 @@ CPanelGroup CHullWorker::makeHull() const
         deck.bottom.point[j].z() = 0;
     }
     deck.bottom.point[0] = deck.left.point[0];
-    deck.bottom.right[npb-1] = deck.right.point[0];
+    deck.right.point[npl-1] = deck.right.point[0];
 
-    /** rotate panel around X axis to tilt it sideway*/
-    deck = deck.rotate(CPoint3d(0,0,0) , CMatrix::rot3d(0,-0.1) )
-    
+    /** duplicate panel and rotate panel around X axis to tilt sideways */
+    real deck_angle = 0.1;
+    CPanel deck2 = deck.rotate(CPoint3d(0,0,0) , CMatrix::rot3d(0,PI + deck_angle) );
+    deck = deck.rotate(CPoint3d(0,0,0) , CMatrix::rot3d(0,-deck_angle) );
+
+    /** create other half by symetry */
     CPanelGroup hull(deck);
+    hull.panel.push_back(deck2);
     hull.type = HULL;
     hull.title = hullID;
     return hull;
