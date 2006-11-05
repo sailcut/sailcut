@@ -64,7 +64,7 @@ void CFormHullDef::accept()
 
 
 /** Check all dimensions entered in order
- *  to make sure that the sail is possible and reasonable
+ *  to make sure that the hull is possible and reasonable
  */
 bool CFormHullDef::check()
 {
