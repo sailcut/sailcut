@@ -82,14 +82,10 @@ void CFormHull::languageChange()
         panel[i]->languageChange();
 
 #ifdef HAVE_QTOPENGL
-
     tabs->setTabText(0, tr("shaded view"));
     tabs->setTabText(1, tr("wireframe view"));
-    tabs->setTabText(2, tr("development"));
 #else
-
     tabs->setTabText(0, tr("wireframe view"));
-    tabs->setTabText(1, tr("development"));
 #endif
 
 }
@@ -138,7 +134,6 @@ void CFormHull::setupMainWidget()
     CSailViewerPanel *tmp;
 
 #ifdef HAVE_QTOPENGL
-
     tmp = new CSailViewerPanel(0, SHADED, true);
     panel.push_back(tmp);
 #endif
