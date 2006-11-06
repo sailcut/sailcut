@@ -35,7 +35,6 @@ class CFormHull : public CFormDocumentTmpl<CHullDef, CHullDefXmlWriter>
     Q_OBJECT
 
 public:
-    // construction, destruction
     CFormHull(CPrefs *myPrefs, QWidget *parent);
 
 protected:
@@ -44,18 +43,17 @@ protected:
     void setupMenuBar();
     void setupMainWidget();
 
-    // slots
 protected slots:
 
     virtual void languageChange();
 
     virtual void slotDef();
 
-    // member variables
 protected:
 
     /** the widgets of each view */
     vector<CSailViewerPanel *> panel;
+
     /** the tab widget */
     QTabWidget *tabs;
 
