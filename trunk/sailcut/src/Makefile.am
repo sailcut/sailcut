@@ -27,6 +27,7 @@ HEADER_FILES =  \
 	panel.h \
 	panelgroup.h \
 	prefs.h \
+	rigdef.h \
 	sailcalc.h \
 	sailcutqt.h \
 	saildef.h \
@@ -70,6 +71,7 @@ CPP_FILES = \
 	panel.cpp \
 	panelgroup.cpp \
 	prefs.cpp \
+	rigdef.cpp \
 	sailcalc.cpp \
 	sailcutqt.cpp \
 	saildef.cpp \

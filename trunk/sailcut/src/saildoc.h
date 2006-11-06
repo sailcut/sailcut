@@ -22,9 +22,10 @@
 
 #include <QDomDocument>
 #include "panelgroup.h"
-#include "hulldef.h"
-#include "saildef.h"
 #include "boatdef.h"
+#include "hulldef.h"
+#include "rigdef.h"
+#include "saildef.h"
 #include "prefs.h"
 
 /** This class handles input and output to Sailcut XML documents.
@@ -79,6 +80,8 @@ public:
         (const QDomNode &parent, CSailMould &m, const QString &name );
     void get
         (const QDomNode &parent, CPrefs &p, const QString &name );
+    void get
+        (const QDomNode &parent, CRigDef &d, const QString &name );
 
     /** Reads a vector of elements from an XML document.
      *
@@ -122,6 +125,7 @@ public:
     void put(QDomNode &parent, const CProfile &p, const QString &name="" );
     void put(QDomNode &parent, const CSailMould &m, const QString &name="" );
     void put(QDomNode &parent, const CPrefs &p, const QString &name="" );
+    void put(QDomNode &parent, const CRigDef &d, const QString &name="" );
 
     /** Writes a vector of elements to an XML document.
      *

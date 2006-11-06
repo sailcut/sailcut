@@ -573,6 +573,22 @@ void CSailDoc::get
     }
 }
 
+
+/** Reads a CRigDef rig definition from an XML document.
+ *
+ * @param parent the parent node
+ * @param d the rig definition
+ * @param name the name of the rig definition
+ */
+void CSailDoc::get
+    ( const QDomNode &parent, CRigDef &d, const QString &name )
+{
+    QDomElement e = findElement( parent, "CRigDef", name);
+    get
+        (e, d.rigID,"rigID" );
+}
+
+
 /**************************************************************************
  
                                 Output
@@ -891,6 +907,17 @@ void CSailDoc::put( QDomNode &parent, const CPrefs& p, const QString& name)
     put(e, p.helpWindowWidth, "helpWindowWidth");
     put(e, p.mainWindowHeight, "mainWindowHeight");
     put(e, p.mainWindowWidth, "mainWindowWidth");
+}
+
+
+/** Puts a CRigDef rig definition to an XML document.
+ */
+void CSailDoc::put( QDomNode &parent, const CRigDef &d, const QString &name )
+{
+    QDomElement e = createElement("CRigDef",name);
+    parent.appendChild(e);
+
+    put(e, d.rigID, "rigID");
 }
 
 
