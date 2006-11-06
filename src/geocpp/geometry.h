@@ -19,7 +19,7 @@
 #ifndef GEOCPP_GEOMETRY_H
 #define GEOCPP_GEOMETRY_H
 
-#include "vector.h"
+#include <geocpp/vector.h>
 
 class CMatrix;
 class CSubSpace;

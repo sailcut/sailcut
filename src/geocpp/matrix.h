@@ -19,7 +19,8 @@
 #ifndef GEOCPP_MATRIX_H
 #define GEOCPP_MATRIX_H
 
-#include "vector.h"
+#include <geocpp/vector.h>
+
 enum soltype_t { NONE, ONE, INF };
 
 class CSubSpace;
