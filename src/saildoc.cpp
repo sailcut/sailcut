@@ -254,9 +254,12 @@ void CSailDoc::get
         t = HULLDEF;
     if (!s.compare("SAILDEF"))
         t = SAILDEF;
+    if (!s.compare("RIGDEF"))
+        t = RIGDEF;
     if (!s.compare("PANELGROUP"))
         t = PANELGROUP;
 }
+
 
 /** Reads a CHullDef hulll definition from an XML document.
  *
@@ -647,6 +650,9 @@ void CSailDoc::put( QDomNode &parent, const enumBoatElementType &t, const QStrin
         break;
     case SAILDEF:
         value = "SAILDEF";
+        break;
+    case RIGDEF:
+        value = "RIGDEF";
         break;
     case PANELGROUP:
         value = "PANELGROUP";

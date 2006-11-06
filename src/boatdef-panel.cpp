@@ -20,6 +20,7 @@
 #include "boatdef-panel.h"
 #include "sailwriter-xml.h"
 #include "hullworker.h"
+#include "rigworker.h"
 #include "sailworker.h"
 
 #include <QLabel>
@@ -168,6 +169,9 @@ void CBoatElementWidget::slotReload()
             break;
         case HULLDEF:
             (CPanelGroup&)element = CHullWorker(CHullDefXmlWriter().read(element.filename)).makeHull();
+            break;
+        case RIGDEF:
+            (CPanelGroup&)element = CRigWorker(CRigDefXmlWriter().read(element.filename)).makeRig();
             break;
         case PANELGROUP:
             (CPanelGroup&)element = CPanelGroupXmlWriter().read(element.filename);

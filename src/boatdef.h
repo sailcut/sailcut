@@ -22,7 +22,7 @@
 
 #include "panelgroup.h"
 
-typedef enum { SAILDEF, HULLDEF, PANELGROUP } enumBoatElementType;
+typedef enum { SAILDEF, HULLDEF, RIGDEF, PANELGROUP } enumBoatElementType;
 
 /**
  * A boat element. This class extends a CPanelGroup with information

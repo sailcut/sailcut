@@ -46,6 +46,7 @@ protected slots:
     virtual void slotAddHullDef();
     virtual void slotAddPanelGroup();
     virtual void slotAddSailDef();
+    virtual void slotAddRigDef();
     virtual void slotUpdate(const CBoatDef& newdef);
 
 protected:
@@ -63,6 +64,8 @@ protected:
     QAction *actionAddPanelGroup;
     /** add a sail definition */
     QAction *actionAddSailDef;
+    /** add a rig definition */
+    QAction *actionAddRigDef;
 
 };
 
