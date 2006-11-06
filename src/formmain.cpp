@@ -25,6 +25,7 @@
 #include "formsail.h"
 #include "formhelp.h"
 #include "formhull.h"
+#include "formrig.h"
 #include "formpanelgroup.h"
 #include "formboat.h"
 
@@ -127,8 +128,9 @@ void CFormMain::languageChange()
 
     menuFileNew->setTitle( tr("&New") );
     actionNewBoat->setText( tr("Boat") );
-    actionNewSail->setText( tr("Sail") );
     actionNewHull->setText( tr("Hull") );
+    actionNewRig->setText( tr("Rig") );
+    actionNewSail->setText( tr("Sail") );
     actionOpen->setText( tr("&Open") );
     menuRecent->setTitle( tr("Open &recent") );
     actionSave->setText( tr("&Save") );
@@ -185,6 +187,8 @@ void CFormMain::open(QString filename)
         wnd = new CFormHull(prefs, this);
     } else if (CFormBoat::isDocument(filename)) {
         wnd = new CFormBoat(prefs, this);
+    } else if (CFormRig::isDocument(filename)) {
+        wnd = new CFormRig(prefs, this);
     } else if (CFormPanelGroup::isDocument(filename)) {
         wnd = new CFormPanelGroup(prefs, this);
     } else {
@@ -229,9 +233,10 @@ void CFormMain::setupMenuBar()
     // File menu
     menuFile = menuBar()->addMenu("");
     menuFileNew = menuFile->addMenu("");
-    actionNewSail = menuFileNew->addAction("", this, SLOT( slotNewSail() ) );
-    actionNewHull = menuFileNew->addAction("", this, SLOT( slotNewHull() ) );
-    actionNewBoat = menuFileNew->addAction("", this, SLOT( slotNewBoat() ) );
+    actionNewSail = menuFileNew->addAction("", this, SLOT( slotNew() ) );
+    actionNewHull = menuFileNew->addAction("", this, SLOT( slotNew() ) );
+    actionNewBoat = menuFileNew->addAction("", this, SLOT( slotNew() ) );
+    actionNewRig = menuFileNew->addAction("", this, SLOT( slotNew() ) );
     actionOpen = menuFile->addAction("", this, SLOT( slotOpen() ) );
     menuRecent = menuFile->addMenu("");
     menuFile->addSeparator();
@@ -295,10 +300,12 @@ void CFormMain::show(const QString filename)
     QMainWindow::show();
 
     // load specified file or create empty sail
-    if ( !filename.isNull() )
+    if ( !filename.isNull() ) {
         open(filename);
-    else
-        slotNewSail();
+    } else {
+        CFormSail *wnd = new CFormSail(prefs, this);
+        addChild(wnd);
+    }
 }
 
 
@@ -389,31 +396,25 @@ void CFormMain::slotLanguage()
 
 
 /**
- * Creates a new boat
+ * Creates a new document
  */
-void CFormMain::slotNewBoat()
+void CFormMain::slotNew()
 {
-    CFormBoat *wnd = new CFormBoat(prefs, this);
-    addChild(wnd);
-}
+    CFormDocument *wnd;
 
-
-/**
- * Creates a new hull
- */
-void CFormMain::slotNewHull()
-{
-    CFormHull *wnd = new CFormHull(prefs, this);
-    addChild(wnd);
-}
-
-
-/**
- * Creates a new sail
- */
-void CFormMain::slotNewSail()
-{
-    CFormSail *wnd = new CFormSail(prefs, this);
+    QAction *a = qobject_cast<QAction *>(sender());
+    if (a == actionNewSail) {
+        wnd = new CFormSail(prefs, this);
+    } else if (a == actionNewBoat) {
+        wnd = new CFormBoat(prefs, this);
+    } else if (a == actionNewRig) {
+        wnd = new CFormRig(prefs, this);
+    } else if (a == actionNewHull) {
+        wnd = new CFormHull(prefs, this);
+    } else {
+        return;
+    }
+    
     addChild(wnd);
 }
 
