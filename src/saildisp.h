@@ -21,7 +21,7 @@
 #define SAILDISP_H
 
 #include "panelgroup.h"
-#include "geocpp/matrix.h"
+#include <geocpp/geocpp.h>
 #include "disparea.h"
 
 

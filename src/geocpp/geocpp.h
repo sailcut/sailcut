@@ -1,45 +1,26 @@
 /*
- * Copyright (C) 1993-2006 Robert & Jeremy Laine
- * See AUTHORS file for a full list of contributors.
- *
+ * Copyright (C) 2002-2006 Jeremy Laine
+ * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- *
+ * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- *
+ * 
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef HULLDEF_H
-#define HULLDEF_H
+#ifndef GEOCPP_GEOCPP_H
+#define GEOCPP_GEOCPP_H
 
-#include <QString>
-#include <geocpp/geocpp.h>
-
-
-/** This class holds the parameters that define a hull.
- *
- * @see CHullWorker
- */
-class CHullDef
-{
-public:
-    CHullDef();
-
-    CHullDef & operator=( const CHullDef & );
-
-    /** hull ID name */
-    QString hullID;
-
-    /** boat deck Length */
-    real LOA;
-};
+#include <geocpp/geometry.h>
+#include <geocpp/matrix.h>
+#include <geocpp/subspace.h>
 
 #endif

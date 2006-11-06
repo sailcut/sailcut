@@ -20,7 +20,7 @@
 #ifndef SAILCALC_H
 #define SAILCALC_H
 
-#include "geocpp/geometry.h"
+#include <geocpp/geocpp.h>
 
 real RoundP( const real &x, const int &p );
 real Atriangle( const real &a, const real &b, const real &c );

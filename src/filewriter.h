@@ -26,7 +26,7 @@
   #define CRLF "\r\n"
 #endif
 
-#include "geocpp/core.h"
+#include <geocpp/core.h>
 #include <QFileDialog>
 #include <QMessageBox>
 

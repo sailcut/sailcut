@@ -21,7 +21,7 @@
 #define RIGDEF_H
 
 #include <QString>
-#include "geocpp/geometry.h"
+#include <geocpp/geocpp.h>
 
 
 /** This class holds the parameters that define a rig.
