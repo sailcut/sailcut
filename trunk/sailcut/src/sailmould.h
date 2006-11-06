@@ -20,7 +20,7 @@
 #ifndef SAILMOULD_H
 #define SAILMOULD_H
 
-#include "geocpp/core.h"
+#include <geocpp/geocpp.h>
 #include <vector>
 
 using namespace std;

@@ -20,7 +20,7 @@
 #ifndef DISPAREA_H
 #define DISPAREA_H
 
-#include "geocpp/geometry.h"
+#include <geocpp/geocpp.h>
 
 
 /** A generic display area

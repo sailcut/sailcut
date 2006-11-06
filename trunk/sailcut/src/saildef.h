@@ -23,7 +23,6 @@
 #include <QString>
 
 #include "sailmould.h"
-#include "geocpp/subspace.h"
 
 
 // enumerated types

@@ -23,9 +23,7 @@
 #include <vector>
 #include <QString>
 
-#include "geocpp/geometry.h"
-#include "geocpp/subspace.h"
-#include "geocpp/matrix.h"
+#include <geocpp/geocpp.h>
 
 enum enumPointType { LUFF, FOOT, LEECH, GAFF };
 enum enumAlign {LEFT, LOW_LEFT, BOTTOM};
