@@ -130,6 +130,19 @@ public:
 };
 
 
+/** A class used to output a CRigDef to an XML file. */
+class CRigDefXmlWriter : public XmlWriterTempl<CRigDef>
+{
+public:
+    /** The constructor.
+     */
+    CRigDefXmlWriter()
+            : XmlWriterTempl<CRigDef>("rigdef", ".rigdef", "Rig definitions")
+    {}
+    ;
+};
+
+
 /** A class used to output a CPrefs to an XML file. */
 class CPrefsXmlWriter : public XmlWriterTempl<CPrefs>
 {
