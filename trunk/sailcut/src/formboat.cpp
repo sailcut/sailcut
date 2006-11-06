@@ -66,7 +66,7 @@ void CFormBoat::languageChange()
     actionAddSailDef->setText( tr("sail") );
     actionAddHullDef->setText( tr("hull") );
     actionAddRigDef->setText( tr("rig") );
-    actionAddPanelGroup->setText( tr("3D panels") );
+    actionAddPanelGroup->setText( tr("panels") );
 
     defpanel->languageChange();
     viewer->languageChange();
