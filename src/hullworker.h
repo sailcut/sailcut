@@ -23,9 +23,6 @@
 #include "panelgroup.h"
 #include "hulldef.h"
 
-#include "geocpp/geometry.h"
-#include "sailcalc.h"
-
 
 /** The CHullWorker class does all the hull-related calculations.
  *  It is used to create the hull from its definition.
@@ -35,7 +32,7 @@
 class CHullWorker : public CHullDef
 {
 public:
-    CHullWorker(const CHullDef &s);
+    CHullWorker(const CHullDef &d);
 
     CPanelGroup makeHull() const;
 };

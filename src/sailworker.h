@@ -23,9 +23,6 @@
 #include "panelgroup.h"
 #include "saildef.h"
 
-#include "geocpp/geometry.h"
-#include "sailcalc.h"
-
 // forward declarations
 class CPanelGroup;
 class CSeam;

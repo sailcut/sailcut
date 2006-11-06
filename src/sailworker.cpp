@@ -18,6 +18,7 @@
  */
 
 #include "sailworker.h"
+#include "sailcalc.h"
 
 #define MAX_PANELS 210
 

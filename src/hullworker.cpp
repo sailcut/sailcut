@@ -23,7 +23,7 @@
 /** The constructor does some preliminary calculations to set
  *  internal variables.
  */
-CHullWorker::CHullWorker(const CHullDef &h) : CHullDef(h)
+CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
 {
 }
 
