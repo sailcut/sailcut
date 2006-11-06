@@ -20,6 +20,7 @@ HEADER_FILES =  \
 	formmain.h \
 	formmould.h \
 	formpanelgroup.h \
+	formrigdef.h \
 	formsail.h \
 	formsaildef.h \
 	hulldef.h \
@@ -63,6 +64,7 @@ CPP_FILES = \
 	formmain.cpp \
 	formmould.cpp \
 	formpanelgroup.cpp \
+	formrigdef.cpp \
 	formsail.cpp \
 	formsaildef.cpp \
 	hulldef.cpp \
@@ -111,6 +113,7 @@ BUILT_SOURCES = \
 	formpanelgroup.moc.cpp \
 	formrigdefbase.h \
 	formrigdefbase.cpp \
+	formrigdef.moc.cpp \
 	formsail.moc.cpp \
 	formsaildefbase.h \
 	formsaildefbase.cpp \
