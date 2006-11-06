@@ -16,8 +16,8 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#include "geometry.h"
-#include "subspace.h"
+#include <geocpp/geometry.h>
+#include <geocpp/subspace.h>
 #include <time.h>
 
 #ifdef DEBUG

@@ -19,7 +19,7 @@
 #ifndef GEOCPP_VECTOR_H
 #define GEOCPP_VECTOR_H
 
-#include "core.h"
+#include <geocpp/core.h>
 #include <iostream>
 
 using namespace std;
