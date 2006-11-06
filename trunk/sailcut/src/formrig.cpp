@@ -71,7 +71,7 @@ void CFormRig::keyPressEvent ( QKeyEvent * e )
  */
 void CFormRig::languageChange()
 {
-    setWindowTitle( "Rig" );
+    setWindowTitle( tr("rig") );
 
     // View menu
 

@@ -80,7 +80,7 @@ void CFormSail::keyPressEvent ( QKeyEvent * e )
  */
 void CFormSail::languageChange()
 {
-    setWindowTitle( "Sail" );
+    setWindowTitle( tr("sail") );
 
     // print submenu
     menuPrint->setTitle( tr("&Print") );

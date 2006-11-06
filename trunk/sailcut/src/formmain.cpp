@@ -127,10 +127,10 @@ void CFormMain::languageChange()
     menuFile->setTitle( tr("&File") );
 
     menuFileNew->setTitle( tr("&New") );
-    actionNewBoat->setText( tr("Boat") );
-    actionNewHull->setText( tr("Hull") );
-    actionNewRig->setText( tr("Rig") );
-    actionNewSail->setText( tr("Sail") );
+    actionNewSail->setText( tr("sail") );
+    actionNewHull->setText( tr("hull") );
+    actionNewRig->setText( tr("rig") );
+    actionNewBoat->setText( tr("boat") );
     actionOpen->setText( tr("&Open") );
     menuRecent->setTitle( tr("Open &recent") );
     actionSave->setText( tr("&Save") );
@@ -235,8 +235,8 @@ void CFormMain::setupMenuBar()
     menuFileNew = menuFile->addMenu("");
     actionNewSail = menuFileNew->addAction("", this, SLOT( slotNew() ) );
     actionNewHull = menuFileNew->addAction("", this, SLOT( slotNew() ) );
-    actionNewBoat = menuFileNew->addAction("", this, SLOT( slotNew() ) );
     actionNewRig = menuFileNew->addAction("", this, SLOT( slotNew() ) );
+    actionNewBoat = menuFileNew->addAction("", this, SLOT( slotNew() ) );
     actionOpen = menuFile->addAction("", this, SLOT( slotOpen() ) );
     menuRecent = menuFile->addMenu("");
     menuFile->addSeparator();

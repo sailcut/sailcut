@@ -71,7 +71,7 @@ void CFormHull::keyPressEvent ( QKeyEvent * e )
  */
 void CFormHull::languageChange()
 {
-    setWindowTitle( "Hull" );
+    setWindowTitle( tr("hull") );
 
     // View menu
 

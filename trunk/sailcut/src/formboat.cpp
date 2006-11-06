@@ -23,6 +23,7 @@
 #include "boatdef-panel.h"
 #include "hullworker.h"
 #include "sailworker.h"
+#include "rigworker.h"
 #include "sailwriter-xml.h"
 
 #include <QLayout>
@@ -58,13 +59,14 @@ CFormBoat::CFormBoat(CPrefs *myPrefs, QWidget *parent)
  */
 void CFormBoat::languageChange()
 {
-    setWindowTitle( tr("Boat") );
+    setWindowTitle( tr("boat") );
 
     /* File menu */
     menuAdd->setTitle( tr("&Add") );
-    actionAddSailDef->setText( tr("&sail definition") );
-    actionAddHullDef->setText( tr("&hull definition") );
-    actionAddPanelGroup->setText( tr("3D &panels") );
+    actionAddSailDef->setText( tr("sail") );
+    actionAddHullDef->setText( tr("hull") );
+    actionAddRigDef->setText( tr("rig") );
+    actionAddPanelGroup->setText( tr("3D panels") );
 
     defpanel->languageChange();
     viewer->languageChange();
@@ -110,7 +112,8 @@ void CFormBoat::setupMenuBar()
     menuAdd = new QMenu(this);
     actionAddSailDef = menuAdd->addAction( "", this, SLOT( slotAddSailDef() ) );
     actionAddHullDef = menuAdd->addAction( "", this, SLOT( slotAddHullDef() ) );
-    actionAddPanelGroup = menuAdd->addAction( tr("3D &sail"), this, SLOT( slotAddPanelGroup() ) );
+    actionAddRigDef = menuAdd->addAction( "", this, SLOT( slotAddRigDef() ) );
+    actionAddPanelGroup = menuAdd->addAction("", this, SLOT( slotAddPanelGroup() ) );
     extraFileMenus.push_back(menuAdd);
 }
 
@@ -168,6 +171,27 @@ void CFormBoat::slotAddSailDef()
         CBoatElement element;
         (CPanelGroup&)element = CSailWorker(saildef).makeSail();
         element.type = SAILDEF;
+        element.filename = newname;
+        def.element.push_back(element);
+        setDef(def);
+    }
+
+}
+
+
+/**
+ * The file menu's "Add->Rig definition" item was clicked.
+ */
+void CFormBoat::slotAddRigDef()
+{
+    CRigDef rigdef;
+    QString newname = CRigDefXmlWriter().readDialog(rigdef,"");
+
+    if (!newname.isNull())
+    {
+        CBoatElement element;
+        (CPanelGroup&)element = CRigWorker(rigdef).makeRig();
+        element.type = RIGDEF;
         element.filename = newname;
         def.element.push_back(element);
         setDef(def);
