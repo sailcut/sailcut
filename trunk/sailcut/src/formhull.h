@@ -59,9 +59,6 @@ protected:
     /** the tab widget */
     QTabWidget *tabs;
 
-    /** the definition of the current hull */
-    CHullDef hulldef;
-    
     /** view hull definition */
     QAction *actionViewDef;
 };
