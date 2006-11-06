@@ -427,6 +427,7 @@ void CFormMain::slotOpen()
     QString filter = "Sailcut CAD files (";
     filter += QString("*") + CFormSail::getFileExtension();
     filter += QString(" *") + CFormHull::getFileExtension();
+    filter += QString(" *") + CFormRig::getFileExtension();
     filter += QString(" *") + CFormBoat::getFileExtension();
     filter += QString(" *") + CFormPanelGroup::getFileExtension();
     filter += ")";
