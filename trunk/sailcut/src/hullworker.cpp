@@ -52,7 +52,7 @@ CPanelGroup CHullWorker::makeHull() const
     deck.top.fill(p1, p2);
     v1 = CVector3d(p2 - p1);
     mid = real(npb-1)/2;
-    for ( j = 0 ; j <= npb-1 ; j++)
+    for ( j = 0 ; j < npb ; j++)
     {
         d1 = -(1 -(((real(j) - mid) / mid) * ((real(j) - mid) / mid))) * LOA / 8;
         deck.top.point[j] = deck.top.point[j] + CMatrix::rot3d(1, PI/2)*v1.unit()*d1;
@@ -95,9 +95,44 @@ CPanelGroup CHullWorker::makeHull() const
 
     /** add second half of the deck to hull */
     CPanelGroup hull(deck);
-    hull.panel.push_back(deck2);
     hull.type = HULL;
     hull.title = hullID;
+    hull.panel.push_back(deck2);
+   
+   
+    /** add test mast */
+    CPanel mast1; // half mast section
+    p1 = CPoint3d (LOA/2 , 0 , 0); // mast base point
+    real cord = 0.05 + LOA/40;
+    real height = LOA;
+    for ( j = 0 ; j < npb ; j++ )
+    {
+        v1 = CVector3d(cos(PI * real(j) /(npb-1)), 0, sin(PI * real(j) /(npb-1) ) ); 
+        mast1.bottom.point[j] = p1 + cord * v1;
+        mast1.top.point[j] = mast1.bottom.point[j] + CVector3d(0 , height , 0); 
+    }
+    mast1.left.fill(mast1.bottom.point[0],mast1.top.point[0]); 
+    mast1.right.fill(mast1.bottom.point[npb-1],mast1.top.point[npb-1]); 
+    hull.panel.push_back(mast1);
+    mast1 = mast1.rotate(p1 , CMatrix::rot3d(1, PI) );
+    hull.panel.push_back(mast1);
+    
+    /** add test spreader */
+    p1.y() = height/2;
+    real spw = height / 10;
+    for ( j = 0 ; j < npb ; j++ )
+    {
+        v1 = CVector3d(cos(PI * real(j) /(npb-1)), sin(PI * real(j) /(npb-1) ), 0 ); 
+        mast1.bottom.point[j] = p1 + .3 * cord * v1;
+        mast1.bottom.point[j] = mast1.bottom.point[j] + CVector3d(0 , 0 , -spw); 
+        mast1.top.point[j] = mast1.bottom.point[j] + CVector3d(0 , 0 , 2*spw); 
+    }
+    mast1.left.fill(mast1.bottom.point[0],mast1.top.point[0]); 
+    mast1.right.fill(mast1.bottom.point[npb-1],mast1.top.point[npb-1]); 
+    hull.panel.push_back(mast1);
+    mast1 = mast1.rotate(p1 , CMatrix::rot3d(2, PI) );
+    hull.panel.push_back(mast1);
+    
     return hull;
 }
 
