@@ -35,7 +35,7 @@ CRigDef::CRigDef()
     MRakeD = 0;
     CSH = 7000;   // cap shroud height
     CSB = 1100;
-    LSB = 1000;
+    LSB = 900;
     SPNB = 1;     // number of spreaders
     SPH1 = 3500;
     SPW1 = 1000;
