@@ -38,7 +38,10 @@ CFormRigDef::CFormRigDef( QWidget* parent, CRigDef * rigptr )
        the user clicks OK */
     rigdef = rigptr;
 
-    //txtRigID->setText(QString(rigdef->rigID));
+    txtRigID->setText(QString(rigdef->rigID));
+    txtI->setText(QString::number(rigdef->foreI));
+    txtJ->setText(QString::number(rigdef->foreJ));
+    
 
     connect( btnOK, SIGNAL( clicked() ), this, SLOT( accept() ) );
     connect( btnCancel, SIGNAL( clicked() ), this, SLOT( reject() ) );
