@@ -60,8 +60,38 @@ void CFormRigDef::accept()
  *  to make sure that the rig is possible and reasonable.
  */
 bool CFormRigDef::check()
-{
-    //rigdef->rigID = txtRigID->text();
+{ 
+    long L1=1, L2=1;
+    real A1=0, A2=0;
+    bool flag=true;
+    QString txt;
+    ///  create four palettes
+    QPalette palStd, palHi, palLo, palRel;
+    palStd = txtLuffLen->palette();
+    palLo = palHi = palRel = palStd;
+    palLo.setColor( QPalette::Text, Qt::magenta); // too low value
+    palHi.setColor( QPalette::Text, Qt::red );    // too high value
+    palRel.setColor( QPalette::Text, Qt::blue );  // related value to be checked
+
+    ///  start collecting data
+    txt = txtRigID->text();
+    txt = txt.simplified();
+
+    ///  check the sail ID text
+    if (txt.length() > 40)
+    {
+        txt.truncate(40);
+        flag = false;
+        txtSailID->setPalette(palHi);
+        txtSailID->setText(QString(txt));
+    }
+    else
+    {
+        txtSailID->setPalette(palStd);
+        txtSailID->setText(QString(txt));
+    }
+    rigdef->rigID = txt;
+    
     
     // return true IF everything is OK
     return true;
