@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>634</width>
-    <height>517</height>
+    <width>656</width>
+    <height>548</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -19,35 +19,25 @@
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="4" column="0" colspan="3" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>131</width>
-       <height>31</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="4" column="3" >
-    <widget class="QPushButton" name="btnOK" >
+   <item row="1" column="0" >
+    <widget class="QLabel" name="lblRigID" >
      <property name="text" >
-      <string>OK</string>
+      <string>Rig ID</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
      </property>
     </widget>
    </item>
-   <item row="4" column="4" >
-    <widget class="QPushButton" name="btnCancel" >
+   <item row="1" column="1" colspan="5" >
+    <widget class="QLineEdit" name="txtRigID" >
      <property name="text" >
-      <string>Cancel</string>
+      <string>description of rig</string>
      </property>
     </widget>
    </item>
-   <item row="0" column="0" colspan="5" >
-    <widget class="QLabel" name="label" >
+   <item row="0" column="0" colspan="6" >
+    <widget class="QLabel" name="lbl_top" >
      <property name="sizePolicy" >
       <sizepolicy>
        <hsizetype>5</hsizetype>
@@ -67,345 +57,23 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="0" >
-    <widget class="QGroupBox" name="groupBox" >
-     <property name="title" >
-      <string>Fore triangle</string>
+   <item row="2" column="2" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
      </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
-       <number>9</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
-      <item row="1" column="0" >
-       <widget class="QLabel" name="label_1_2" >
-        <property name="text" >
-         <string>Fore triangle base</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0" >
-       <widget class="QLabel" name="label_1_1" >
-        <property name="text" >
-         <string>Fore triangle hoist</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1" >
-       <widget class="QLabel" name="lbl_1_2" >
-        <property name="text" >
-         <string>= J</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1" >
-       <widget class="QLabel" name="lbl_1_1" >
-        <property name="text" >
-         <string>= I</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2" >
-       <widget class="QLineEdit" name="lEdit_J" >
-        <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>1</hsizetype>
-          <vsizetype>0</vsizetype>
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize" >
-         <size>
-          <width>70</width>
-          <height>0</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="2" >
-       <widget class="QLineEdit" name="lEdit_I" >
-        <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>1</hsizetype>
-          <vsizetype>0</vsizetype>
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize" >
-         <size>
-          <width>70</width>
-          <height>0</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="1" column="2" colspan="3" >
-    <widget class="QGroupBox" name="groupBox_3" >
-     <property name="title" >
-      <string>Shrouds</string>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Minimum</enum>
      </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
-       <number>9</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
-      <item row="1" column="2" >
-       <widget class="QLineEdit" name="lEdit_CSB" >
-        <property name="minimumSize" >
-         <size>
-          <width>70</width>
-          <height>0</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="2" >
-       <widget class="QLineEdit" name="lEdit_CSH" >
-        <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>3</hsizetype>
-          <vsizetype>0</vsizetype>
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize" >
-         <size>
-          <width>70</width>
-          <height>0</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2" >
-       <widget class="QLineEdit" name="lEdit_LSB" >
-        <property name="minimumSize" >
-         <size>
-          <width>70</width>
-          <height>0</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0" >
-       <widget class="QLabel" name="label_3_1" >
-        <property name="text" >
-         <string>Outer shroud height</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1" >
-       <widget class="QLabel" name="lbl_3_1" >
-        <property name="text" >
-         <string>= CSH</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1" >
-       <widget class="QLabel" name="lbl_3_2" >
-        <property name="text" >
-         <string>= CSB</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0" >
-       <widget class="QLabel" name="label_3_2" >
-        <property name="text" >
-         <string>Outer shroud base</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1" >
-       <widget class="QLabel" name="lbl_3_3" >
-        <property name="text" >
-         <string>= LSB</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0" >
-       <widget class="QLabel" name="label_3_3" >
-        <property name="text" >
-         <string>Lower shroud base</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="2" column="0" colspan="5" >
-    <widget class="QGroupBox" name="groupBox_2" >
-     <property name="title" >
-      <string>Mast</string>
+     <property name="sizeHint" >
+      <size>
+       <width>21</width>
+       <height>20</height>
+      </size>
      </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
-       <number>9</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
-      <item row="2" column="4" >
-       <widget class="QLabel" name="label_2_4" >
-        <property name="text" >
-         <string>Mast width</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="5" >
-       <widget class="QLabel" name="lbl_2_4" >
-        <property name="text" >
-         <string>= MW</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="6" >
-       <widget class="QLineEdit" name="lEdit_MW" >
-        <property name="minimumSize" >
-         <size>
-          <width>70</width>
-          <height>0</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="4" >
-       <widget class="QLabel" name="lbl_2_5" >
-        <property name="text" >
-         <string>Mast rake</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="5" >
-       <widget class="QLabel" name="lbl_2_6" >
-        <property name="text" >
-         <string>degrees</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="6" >
-       <widget class="QLabel" name="lblTxt_MRD" >
-        <property name="text" >
-         <string>TextRakeDeg</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="3" >
-       <spacer>
-        <property name="orientation" >
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeType" >
-         <enum>QSizePolicy::Minimum</enum>
-        </property>
-        <property name="sizeHint" >
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="0" column="4" >
-       <widget class="QLabel" name="label_2_2" >
-        <property name="text" >
-         <string>Mast rake</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="5" >
-       <widget class="QLabel" name="lbl_2_2" >
-        <property name="text" >
-         <string>= MR</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="6" >
-       <widget class="QLineEdit" name="lEdit_MRM" >
-        <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>3</hsizetype>
-          <vsizetype>0</vsizetype>
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize" >
-         <size>
-          <width>70</width>
-          <height>0</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0" >
-       <widget class="QLabel" name="label_2_1" >
-        <property name="text" >
-         <string>Mast height</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1" >
-       <widget class="QLabel" name="lbl_2_1" >
-        <property name="text" >
-         <string>= MH</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1" >
-       <widget class="QLabel" name="lbl_2_3" >
-        <property name="text" >
-         <string>= MC</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0" >
-       <widget class="QLabel" name="label_2_3" >
-        <property name="text" >
-         <string>Mast cord</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="2" >
-       <widget class="QLineEdit" name="lEdit_MH" >
-        <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>3</hsizetype>
-          <vsizetype>0</vsizetype>
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize" >
-         <size>
-          <width>70</width>
-          <height>0</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2" >
-       <widget class="QLineEdit" name="lEdit_MC" >
-        <property name="minimumSize" >
-         <size>
-          <width>70</width>
-          <height>0</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
+    </spacer>
    </item>
-   <item row="3" column="0" colspan="5" >
+   <item row="4" column="0" colspan="6" >
     <widget class="QGroupBox" name="groupBox_4" >
      <property name="title" >
       <string>Spreaders</string>
@@ -468,7 +136,7 @@
        </widget>
       </item>
       <item row="1" column="6" >
-       <widget class="QLineEdit" name="lEdit_SPW3" >
+       <widget class="QLineEdit" name="txt_SPW3" >
         <property name="minimumSize" >
          <size>
           <width>70</width>
@@ -478,10 +146,10 @@
        </widget>
       </item>
       <item row="2" column="6" >
-       <widget class="QLineEdit" name="lEdit_SPW2" />
+       <widget class="QLineEdit" name="txt_SPW2" />
       </item>
       <item row="3" column="6" >
-       <widget class="QLineEdit" name="lEdit_SPW1" />
+       <widget class="QLineEdit" name="txt_SPW1" />
       </item>
       <item row="2" column="1" >
        <widget class="QLabel" name="lbl_4_2" >
@@ -498,13 +166,13 @@
        </widget>
       </item>
       <item row="3" column="2" >
-       <widget class="QLineEdit" name="lEdit_SPH1" />
+       <widget class="QLineEdit" name="txt_SPH1" />
       </item>
       <item row="2" column="2" >
-       <widget class="QLineEdit" name="lEdit_SPH2" />
+       <widget class="QLineEdit" name="txt_SPH2" />
       </item>
       <item row="1" column="2" >
-       <widget class="QLineEdit" name="lEdit_SPH3" >
+       <widget class="QLineEdit" name="txt_SPH3" >
         <property name="minimumSize" >
          <size>
           <width>70</width>
@@ -579,18 +247,367 @@
      </layout>
     </widget>
    </item>
-   <item row="1" column="1" >
+   <item row="3" column="0" colspan="6" >
+    <widget class="QGroupBox" name="groupBox_2" >
+     <property name="title" >
+      <string>Mast</string>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="2" column="4" >
+       <widget class="QLabel" name="label_2_4" >
+        <property name="text" >
+         <string>Mast width</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="5" >
+       <widget class="QLabel" name="lbl_2_4" >
+        <property name="text" >
+         <string>= MW</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="6" >
+       <widget class="QLineEdit" name="txt_MW" >
+        <property name="minimumSize" >
+         <size>
+          <width>70</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="4" >
+       <widget class="QLabel" name="lbl_2_5" >
+        <property name="text" >
+         <string>Mast rake angle</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="5" >
+       <widget class="QLabel" name="lbl_2_6" >
+        <property name="text" >
+         <string>= MRD</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="6" >
+       <widget class="QLabel" name="lbl_MRD" >
+        <property name="text" >
+         <string>lbl_MRD</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3" >
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType" >
+         <enum>QSizePolicy::Minimum</enum>
+        </property>
+        <property name="sizeHint" >
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="4" >
+       <widget class="QLabel" name="label_2_2" >
+        <property name="text" >
+         <string>Mast rake</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="5" >
+       <widget class="QLabel" name="lbl_2_2" >
+        <property name="text" >
+         <string>= MRM</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="6" >
+       <widget class="QLineEdit" name="txt_MRM" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>3</hsizetype>
+          <vsizetype>0</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize" >
+         <size>
+          <width>70</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="label_2_1" >
+        <property name="text" >
+         <string>Mast height</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" >
+       <widget class="QLabel" name="lbl_2_1" >
+        <property name="text" >
+         <string>= MH</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1" >
+       <widget class="QLabel" name="lbl_2_3" >
+        <property name="text" >
+         <string>= MC</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" >
+       <widget class="QLabel" name="label_2_3" >
+        <property name="text" >
+         <string>Mast cord</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2" >
+       <widget class="QLineEdit" name="txt_MH" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>3</hsizetype>
+          <vsizetype>0</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize" >
+         <size>
+          <width>70</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2" >
+       <widget class="QLineEdit" name="txt_MC" >
+        <property name="minimumSize" >
+         <size>
+          <width>70</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="3" colspan="3" >
+    <widget class="QGroupBox" name="groupBox_3" >
+     <property name="title" >
+      <string>Shrouds</string>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="1" column="2" >
+       <widget class="QLineEdit" name="txt_CSB" >
+        <property name="minimumSize" >
+         <size>
+          <width>70</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2" >
+       <widget class="QLineEdit" name="txt_CSH" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>3</hsizetype>
+          <vsizetype>0</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize" >
+         <size>
+          <width>70</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2" >
+       <widget class="QLineEdit" name="txt_LSB" >
+        <property name="minimumSize" >
+         <size>
+          <width>70</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="label_3_1" >
+        <property name="text" >
+         <string>Outer shroud height</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" >
+       <widget class="QLabel" name="lbl_3_1" >
+        <property name="text" >
+         <string>= CSH</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" >
+       <widget class="QLabel" name="lbl_3_2" >
+        <property name="text" >
+         <string>= CSB</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QLabel" name="label_3_2" >
+        <property name="text" >
+         <string>Outer shroud base</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1" >
+       <widget class="QLabel" name="lbl_3_3" >
+        <property name="text" >
+         <string>= LSB</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" >
+       <widget class="QLabel" name="label_3_3" >
+        <property name="text" >
+         <string>Lower shroud base</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="2" >
+    <widget class="QGroupBox" name="groupBox" >
+     <property name="title" >
+      <string>Fore triangle</string>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="1" column="0" >
+       <widget class="QLabel" name="label_1_2" >
+        <property name="text" >
+         <string>Fore triangle base</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="label_1_1" >
+        <property name="text" >
+         <string>Fore triangle hoist</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" >
+       <widget class="QLabel" name="lbl_1_2" >
+        <property name="text" >
+         <string>= J</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" >
+       <widget class="QLabel" name="lbl_1_1" >
+        <property name="text" >
+         <string>= I</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2" >
+       <widget class="QLineEdit" name="txtJ" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>1</hsizetype>
+          <vsizetype>0</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize" >
+         <size>
+          <width>70</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2" >
+       <widget class="QLineEdit" name="txtI" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>1</hsizetype>
+          <vsizetype>0</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize" >
+         <size>
+          <width>70</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="5" column="5" >
+    <widget class="QPushButton" name="btnCancel" >
+     <property name="text" >
+      <string>Cancel</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="4" >
+    <widget class="QPushButton" name="btnOK" >
+     <property name="text" >
+      <string>OK</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0" colspan="4" >
     <spacer>
      <property name="orientation" >
       <enum>Qt::Horizontal</enum>
      </property>
-     <property name="sizeType" >
-      <enum>QSizePolicy::Minimum</enum>
-     </property>
      <property name="sizeHint" >
       <size>
-       <width>21</width>
-       <height>20</height>
+       <width>131</width>
+       <height>31</height>
       </size>
      </property>
     </spacer>
@@ -598,4 +615,5 @@
   </layout>
  </widget>
  <resources/>
+ <connections/>
 </ui>

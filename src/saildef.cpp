@@ -70,7 +70,6 @@ CSailDef::CSailDef()
     nbSections = 5;      // radial sections
     nbGores = 5;         // radial gores
     nbLuffGores = 2;   // luff gores
-
 }
 
 
@@ -90,7 +89,7 @@ CSailDef & CSailDef::operator=( const CSailDef &copy )
 {
     if (&copy == this)
         return *this;
-    
+    // else
     sailID = copy.sailID;
     sailCut = copy.sailCut;
     sailType = copy.sailType;

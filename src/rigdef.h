@@ -37,6 +37,41 @@ public:
 
     /** rig ID name */
     QString rigID;
+    /** fore triangle hoist*/
+    real foreI;
+    /** fore triangle base*/
+    real foreJ;
+    /** mast height */
+    real MHeight;
+    /** mast cord */
+    real MCord;
+    /** mast width */
+    real MWidth;
+    /** mast rake */
+    real MRakeM;
+    /** mast rake angle in degree */
+    real MRakeD;
+    /** cap shroud height */
+    real CSH;
+    /** cap shroud base */
+    real CSB;
+    /** lower shroud base */
+    real LSB;
+    /** number of spreaders */
+    int SPNB;
+    /** spreader 1 height */
+    real SPH1;
+    /** spreader 1 width */
+    real SPW1;
+    /** spreader 2 height */
+    real SPH2;
+    /** spreader 2 width */
+    real SPW2;
+    /** spreader 3 height */
+    real SPH3;
+    /** spreader 3 width */
+    real SPW3;
+    
 };
 
 #endif

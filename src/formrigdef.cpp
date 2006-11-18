@@ -67,7 +67,7 @@ bool CFormRigDef::check()
     QString txt;
     ///  create four palettes
     QPalette palStd, palHi, palLo, palRel;
-    palStd = txtLuffLen->palette();
+    palStd = txtRigID->palette();
     palLo = palHi = palRel = palStd;
     palLo.setColor( QPalette::Text, Qt::magenta); // too low value
     palHi.setColor( QPalette::Text, Qt::red );    // too high value
@@ -77,21 +77,24 @@ bool CFormRigDef::check()
     txt = txtRigID->text();
     txt = txt.simplified();
 
-    ///  check the sail ID text
+    ///  check the rig ID text
     if (txt.length() > 40)
     {
         txt.truncate(40);
         flag = false;
-        txtSailID->setPalette(palHi);
-        txtSailID->setText(QString(txt));
+        txtRigID->setPalette(palHi);
+        txtRigID->setText(QString(txt));
     }
     else
     {
-        txtSailID->setPalette(palStd);
-        txtSailID->setText(QString(txt));
+        txtRigID->setPalette(palStd);
+        txtRigID->setText(QString(txt));
     }
     rigdef->rigID = txt;
     
+    rigdef->foreI = txtI->text().toDouble();
+    rigdef->foreJ = txtJ->text().toDouble();
+
     
     // return true IF everything is OK
     return true;
