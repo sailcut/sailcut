@@ -26,6 +26,24 @@ CRigDef::CRigDef()
 {
     // default values for member variables are set here
     rigID = "Test rig 1";
+    foreI  = 5500;    // height of fore triangle
+    foreJ  = 2000;    // base of fore triangle
+    MHeight = 8000;   // mast height
+    MCord = 140;
+    MWidth = 70;
+    MRakeM = 200;
+    MRakeD = 0;
+    CSH = 7000;   // cap shroud height
+    CSB = 1100;
+    LSB = 1000;
+    SPNB = 1;     // number of spreaders
+    SPH1 = 3500;
+    SPW1 = 1000;
+    SPH2 = 0;
+    SPW2 = 0;
+    SPH3 = 0;
+    SPW3 = 0;
+    
 }
 
 
@@ -38,8 +56,26 @@ CRigDef & CRigDef::operator=( const CRigDef &copy )
 {
     if (&copy == this)
         return *this;
-    
+    // else
     rigID = copy.rigID;
+    foreI  = copy.foreI;    // height of fore triangle
+    foreJ  = copy.foreJ;    // base of fore triangle
+    MHeight = copy.MHeight; // mast height
+    MCord = copy.MCord;
+    MWidth = copy.MWidth;
+    MRakeM = copy.MRakeM;
+    MRakeD = copy.MRakeD;
+    CSH = copy.CSH;  // outer shroud height
+    CSB = copy.CSB;
+    LSB = copy.LSB;
+    SPNB = copy.SPNB; // number of spreaders
+    SPH1 = copy.SPH1;
+    SPW1 = copy.SPW1;
+    SPH2 = copy.SPH2;
+    SPW2 = copy.SPW2;
+    SPH3 = copy.SPH3;
+    SPW3 = copy.SPW3;
+    
     return *this;
 }
 
