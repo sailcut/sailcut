@@ -127,8 +127,11 @@
         <property name="minimumSize" >
          <size>
           <width>50</width>
-          <height>0</height>
+          <height>21</height>
          </size>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignHCenter</set>
         </property>
         <property name="maximum" >
          <number>3</number>

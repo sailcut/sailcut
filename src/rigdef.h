@@ -58,7 +58,7 @@ public:
     /** lower shroud base */
     real LSB;
     /** number of spreaders */
-    int SPNB;
+    unsigned int SPNB;
     /** spreader 1 height */
     real SPH1;
     /** spreader 1 width */
