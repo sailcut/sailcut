@@ -37,7 +37,7 @@ CFormRigDef::CFormRigDef( QWidget* parent, CRigDef * rigptr )
     /* we store the pointer to the CRigDef so we can update it when
        the user clicks OK */
     rigdef = rigptr;
-
+    
     txt_RigID->setText(QString(rigdef->rigID));
     txt_foreI->setText(QString::number(rigdef->foreI));
     txt_foreJ->setText(QString::number(rigdef->foreJ));
@@ -58,7 +58,7 @@ CFormRigDef::CFormRigDef( QWidget* parent, CRigDef * rigptr )
     txt_SPW2->setText(QString::number(rigdef->SPW2));
     txt_SPH3->setText(QString::number(rigdef->SPH3));
     txt_SPW3->setText(QString::number(rigdef->SPW3));
-
+    
     connect( btnOK, SIGNAL( clicked() ), this, SLOT( accept() ) );
     connect( btnCancel, SIGNAL( clicked() ), this, SLOT( reject() ) );
 }
@@ -80,9 +80,9 @@ void CFormRigDef::accept()
  */
 bool CFormRigDef::check()
 { 
-    long L1=1, L2=1;
-    real A1=0, A2=0;
-    bool flag=true;
+    long I=1, J=1, L1=1, L2=1;
+    //real A1=0, A2=0;
+    bool flag = true;
     QString txt;
     ///  create four palettes
     QPalette palStd, palHi, palLo, palRel;
@@ -113,10 +113,108 @@ bool CFormRigDef::check()
     
     rigdef->foreI = txt_foreI->text().toDouble();
     rigdef->foreJ = txt_foreJ->text().toDouble();
-
+    I = (long)(rigdef->foreI);
+    J = (long)(rigdef->foreJ);
+    if (( I / J )> 10)
+    {
+        flag = false;
+        txt_foreI->setPalette(palHi);
+        txt_foreJ->setPalette(palLo);
+    }
+    else if (( J / I )> 3)
+    {
+        flag = false;
+        txt_foreJ->setPalette(palHi);
+        txt_foreI->setPalette(palLo);
+    }
+    else
+    {
+        txt_foreJ->setPalette(palStd);
+        txt_foreI->setPalette(palStd);
+    }
+    // checking mast
+    rigdef->MHeight = txt_MH->text().toDouble();
+    L1 = (long)(rigdef->MHeight);
+    if ( L1 < I )
+    {
+        flag = false;
+        txt_foreI->setPalette(palRel);
+        txt_MH->setPalette(palLo);
+        rigdef->MHeight = I;
+    }
+    else if ( L1 > (2*I))
+    {
+        flag = false;
+        txt_foreI->setPalette(palRel);
+        txt_MH->setPalette(palHi);
+        rigdef->MHeight = ceil (2*I);
+    }
+    else
+    {
+        txt_foreI->setPalette(palStd);
+        txt_MH->setPalette(palStd);
+    }
+    txt_MH->setText(QString::number(rigdef->MHeight));
+    L1 = (long)(rigdef->MHeight);
     
-    // return true IF everything is OK
-    return true;
+    rigdef->MCord = txt_MC->text().toDouble();
+    rigdef->MWidth = txt_MW->text().toDouble();
+    if (rigdef->MWidth > rigdef->MCord)
+    {
+        flag = false;
+        txt_MC->setPalette(palRel);
+        txt_MW->setPalette(palHi);
+        rigdef->MWidth = rigdef->MCord;
+    }
+    else
+    {
+        txt_MC->setPalette(palStd);
+        txt_MW->setPalette(palStd);
+    }
+    txt_MW->setText(QString::number(rigdef->MWidth));
+    
+    rigdef->MRakeM = txt_MRM->text().toDouble();
+    rigdef->MRakeD = lbl_MRD->text().toDouble();
+    
+    // checking shrouds
+    rigdef->CSH = txt_CSH->text().toDouble();
+    L2 = (long)(rigdef->CSH);
+    if ( L2 > (1.5*I))
+    {
+        flag = false;
+        txt_foreI->setPalette(palRel);
+        txt_CSH->setPalette(palHi);
+        rigdef->CSH = floor(1.5*I);
+    }
+    else if ( L2 < (.75*I))
+    {
+        flag = false;
+        txt_foreI->setPalette(palRel);
+        txt_CSH->setPalette(palLo);
+        rigdef->CSH = ceil(0.75*I);
+    }
+    else
+    {
+        txt_foreI->setPalette(palStd);
+        txt_CSH->setPalette(palStd);
+    }
+    txt_CSH->setText(QString::number(rigdef->CSH));
+    L2 = (long)(rigdef->CSH);
+    
+    rigdef->CSB = txt_CSB->text().toDouble();
+    rigdef->LSB = txt_LSB->text().toDouble();
+    
+    // checking spreaders
+    rigdef->SPNB = spinBox_SPNB->value();
+    rigdef->SPH1 = txt_SPH1->text().toDouble();
+    rigdef->SPW1 = txt_SPW1->text().toDouble();
+    rigdef->SPH2 = txt_SPH2->text().toDouble();
+    rigdef->SPW2 = txt_SPW2->text().toDouble();
+    rigdef->SPH3 = txt_SPH3->text().toDouble();
+    rigdef->SPW3 = txt_SPW3->text().toDouble();
+    
+    // return flag = true IF everything is OK
+    return flag;
 }
 
 
