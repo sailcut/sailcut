@@ -38,10 +38,26 @@ CFormRigDef::CFormRigDef( QWidget* parent, CRigDef * rigptr )
        the user clicks OK */
     rigdef = rigptr;
 
-    txtRigID->setText(QString(rigdef->rigID));
-    txtI->setText(QString::number(rigdef->foreI));
-    txtJ->setText(QString::number(rigdef->foreJ));
+    txt_RigID->setText(QString(rigdef->rigID));
+    txt_foreI->setText(QString::number(rigdef->foreI));
+    txt_foreJ->setText(QString::number(rigdef->foreJ));
+    txt_CSH->setText(QString::number(rigdef->CSH));
+    txt_CSB->setText(QString::number(rigdef->CSB));
+    txt_LSB->setText(QString::number(rigdef->LSB));
     
+    txt_MH->setText(QString::number(rigdef->MHeight));
+    txt_MC->setText(QString::number(rigdef->MCord));
+    txt_MW->setText(QString::number(rigdef->MWidth));
+    txt_MRM->setText(QString::number(rigdef->MRakeM));
+    lbl_MRD->setText(QString::number(rigdef->MRakeD));
+    
+    spinBox_SPNB->setValue(rigdef->SPNB);
+    txt_SPH1->setText(QString::number(rigdef->SPH1));
+    txt_SPW1->setText(QString::number(rigdef->SPW1));
+    txt_SPH2->setText(QString::number(rigdef->SPH2));
+    txt_SPW2->setText(QString::number(rigdef->SPW2));
+    txt_SPH3->setText(QString::number(rigdef->SPH3));
+    txt_SPW3->setText(QString::number(rigdef->SPW3));
 
     connect( btnOK, SIGNAL( clicked() ), this, SLOT( accept() ) );
     connect( btnCancel, SIGNAL( clicked() ), this, SLOT( reject() ) );
@@ -70,14 +86,14 @@ bool CFormRigDef::check()
     QString txt;
     ///  create four palettes
     QPalette palStd, palHi, palLo, palRel;
-    palStd = txtRigID->palette();
+    palStd = txt_RigID->palette();
     palLo = palHi = palRel = palStd;
     palLo.setColor( QPalette::Text, Qt::magenta); // too low value
     palHi.setColor( QPalette::Text, Qt::red );    // too high value
     palRel.setColor( QPalette::Text, Qt::blue );  // related value to be checked
 
     ///  start collecting data
-    txt = txtRigID->text();
+    txt = txt_RigID->text();
     txt = txt.simplified();
 
     ///  check the rig ID text
@@ -85,18 +101,18 @@ bool CFormRigDef::check()
     {
         txt.truncate(40);
         flag = false;
-        txtRigID->setPalette(palHi);
-        txtRigID->setText(QString(txt));
+        txt_RigID->setPalette(palHi);
+        txt_RigID->setText(QString(txt));
     }
     else
     {
-        txtRigID->setPalette(palStd);
-        txtRigID->setText(QString(txt));
+        txt_RigID->setPalette(palStd);
+        txt_RigID->setText(QString(txt));
     }
     rigdef->rigID = txt;
     
-    rigdef->foreI = txtI->text().toDouble();
-    rigdef->foreJ = txtJ->text().toDouble();
+    rigdef->foreI = txt_foreI->text().toDouble();
+    rigdef->foreJ = txt_foreJ->text().toDouble();
 
     
     // return true IF everything is OK
