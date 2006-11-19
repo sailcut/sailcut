@@ -20,7 +20,7 @@
     <number>6</number>
    </property>
    <item row="1" column="0" >
-    <widget class="QLabel" name="lblRigID" >
+    <widget class="QLabel" name="lbl_RigID" >
      <property name="text" >
       <string>Rig ID</string>
      </property>
@@ -30,7 +30,7 @@
     </widget>
    </item>
    <item row="1" column="1" colspan="5" >
-    <widget class="QLineEdit" name="txtRigID" >
+    <widget class="QLineEdit" name="txt_RigID" >
      <property name="text" >
       <string>description of rig</string>
      </property>
@@ -86,21 +86,21 @@
        <number>6</number>
       </property>
       <item row="2" column="5" >
-       <widget class="QLabel" name="lbl_4_5" >
+       <widget class="QLabel" name="lbl_SPW2" >
         <property name="text" >
          <string>= SPW2</string>
         </property>
        </widget>
       </item>
       <item row="3" column="5" >
-       <widget class="QLabel" name="lbl_4_4" >
+       <widget class="QLabel" name="lbl_SPW1" >
         <property name="text" >
          <string>= SPW1</string>
         </property>
        </widget>
       </item>
       <item row="1" column="5" >
-       <widget class="QLabel" name="lbl_4_6" >
+       <widget class="QLabel" name="lbl_SPW3" >
         <property name="text" >
          <string>= SPW3</string>
         </property>
@@ -152,14 +152,14 @@
        <widget class="QLineEdit" name="txt_SPW1" />
       </item>
       <item row="2" column="1" >
-       <widget class="QLabel" name="lbl_4_2" >
+       <widget class="QLabel" name="lbl_SPH2" >
         <property name="text" >
          <string>= SPH2</string>
         </property>
        </widget>
       </item>
       <item row="3" column="1" >
-       <widget class="QLabel" name="lbl_4_1" >
+       <widget class="QLabel" name="lbl_SPH1" >
         <property name="text" >
          <string>= SPH1</string>
         </property>
@@ -182,63 +182,63 @@
        </widget>
       </item>
       <item row="1" column="0" >
-       <widget class="QLabel" name="label_4_3" >
+       <widget class="QLabel" name="lbl_SpreaderHeight3" >
         <property name="text" >
          <string>Spreader height</string>
         </property>
        </widget>
       </item>
       <item row="2" column="0" >
-       <widget class="QLabel" name="label_4_2" >
+       <widget class="QLabel" name="lbl_SpreaderHeight2" >
         <property name="text" >
          <string>Spreader height</string>
         </property>
        </widget>
       </item>
       <item row="3" column="0" >
-       <widget class="QLabel" name="label_4_1" >
+       <widget class="QLabel" name="lbl_SpreaderHeight1" >
         <property name="text" >
          <string>Spreader height</string>
         </property>
        </widget>
       </item>
       <item row="1" column="4" >
-       <widget class="QLabel" name="label_4_6" >
+       <widget class="QLabel" name="lbl_SpreaderWidth3" >
         <property name="text" >
          <string>Spreader width</string>
         </property>
        </widget>
       </item>
       <item row="2" column="4" >
-       <widget class="QLabel" name="label_4_5" >
+       <widget class="QLabel" name="lbl_SpreaderWidth2" >
         <property name="text" >
          <string>Spreader width</string>
         </property>
        </widget>
       </item>
       <item row="3" column="4" >
-       <widget class="QLabel" name="label_4_4" >
+       <widget class="QLabel" name="lbl_SpreaderWidth1" >
         <property name="text" >
          <string>Spreader width</string>
         </property>
        </widget>
       </item>
       <item row="0" column="0" >
-       <widget class="QLabel" name="label_4_0" >
+       <widget class="QLabel" name="label_SpreaderNumber" >
         <property name="text" >
          <string>Number of spreaders</string>
         </property>
        </widget>
       </item>
       <item row="1" column="1" >
-       <widget class="QLabel" name="lbl_4_3" >
+       <widget class="QLabel" name="lbl_SPH3" >
         <property name="text" >
          <string>= SPH3</string>
         </property>
        </widget>
       </item>
       <item row="0" column="1" >
-       <widget class="QLabel" name="lbl_4_0" >
+       <widget class="QLabel" name="lbl_SPNB" >
         <property name="text" >
          <string>= SPNB</string>
         </property>
@@ -260,14 +260,14 @@
        <number>6</number>
       </property>
       <item row="2" column="4" >
-       <widget class="QLabel" name="label_2_4" >
+       <widget class="QLabel" name="lbl_MastWidth" >
         <property name="text" >
          <string>Mast width</string>
         </property>
        </widget>
       </item>
       <item row="2" column="5" >
-       <widget class="QLabel" name="lbl_2_4" >
+       <widget class="QLabel" name="lbl_MW" >
         <property name="text" >
          <string>= MW</string>
         </property>
@@ -284,21 +284,21 @@
        </widget>
       </item>
       <item row="1" column="4" >
-       <widget class="QLabel" name="lbl_2_5" >
+       <widget class="QLabel" name="lbl_MastRakeAngle" >
         <property name="text" >
          <string>Mast rake angle</string>
         </property>
        </widget>
       </item>
       <item row="1" column="5" >
-       <widget class="QLabel" name="lbl_2_6" >
+       <widget class="QLabel" name="lbl_MRD" >
         <property name="text" >
          <string>= MRD</string>
         </property>
        </widget>
       </item>
       <item row="1" column="6" >
-       <widget class="QLabel" name="lbl_MRD" >
+       <widget class="QLabel" name="lbl_MRDegree" >
         <property name="text" >
          <string>lbl_MRD</string>
         </property>
@@ -321,14 +321,14 @@
        </spacer>
       </item>
       <item row="0" column="4" >
-       <widget class="QLabel" name="label_2_2" >
+       <widget class="QLabel" name="lbl_MastRake" >
         <property name="text" >
          <string>Mast rake</string>
         </property>
        </widget>
       </item>
       <item row="0" column="5" >
-       <widget class="QLabel" name="lbl_2_2" >
+       <widget class="QLabel" name="lbl_MR" >
         <property name="text" >
          <string>= MRM</string>
         </property>
@@ -353,28 +353,28 @@
        </widget>
       </item>
       <item row="0" column="0" >
-       <widget class="QLabel" name="label_2_1" >
+       <widget class="QLabel" name="lbl_MastHeight" >
         <property name="text" >
          <string>Mast height</string>
         </property>
        </widget>
       </item>
       <item row="0" column="1" >
-       <widget class="QLabel" name="lbl_2_1" >
+       <widget class="QLabel" name="lbl_MH" >
         <property name="text" >
          <string>= MH</string>
         </property>
        </widget>
       </item>
       <item row="2" column="1" >
-       <widget class="QLabel" name="lbl_2_3" >
+       <widget class="QLabel" name="lbl_MC" >
         <property name="text" >
          <string>= MC</string>
         </property>
        </widget>
       </item>
       <item row="2" column="0" >
-       <widget class="QLabel" name="label_2_3" >
+       <widget class="QLabel" name="lbl_MastCord" >
         <property name="text" >
          <string>Mast cord</string>
         </property>
@@ -462,42 +462,42 @@
        </widget>
       </item>
       <item row="0" column="0" >
-       <widget class="QLabel" name="label_3_1" >
+       <widget class="QLabel" name="lbl_CapShroudHeight" >
         <property name="text" >
          <string>Outer shroud height</string>
         </property>
        </widget>
       </item>
       <item row="0" column="1" >
-       <widget class="QLabel" name="lbl_3_1" >
+       <widget class="QLabel" name="lbl_CSH" >
         <property name="text" >
          <string>= CSH</string>
         </property>
        </widget>
       </item>
       <item row="1" column="1" >
-       <widget class="QLabel" name="lbl_3_2" >
+       <widget class="QLabel" name="lbl_CSB" >
         <property name="text" >
          <string>= CSB</string>
         </property>
        </widget>
       </item>
       <item row="1" column="0" >
-       <widget class="QLabel" name="label_3_2" >
+       <widget class="QLabel" name="lbl_CapShroudBase" >
         <property name="text" >
          <string>Outer shroud base</string>
         </property>
        </widget>
       </item>
       <item row="2" column="1" >
-       <widget class="QLabel" name="lbl_3_3" >
+       <widget class="QLabel" name="lbl_LSB" >
         <property name="text" >
          <string>= LSB</string>
         </property>
        </widget>
       </item>
       <item row="2" column="0" >
-       <widget class="QLabel" name="label_3_3" >
+       <widget class="QLabel" name="lbl_LowerShroudBase" >
         <property name="text" >
          <string>Lower shroud base</string>
         </property>
@@ -519,35 +519,35 @@
        <number>6</number>
       </property>
       <item row="1" column="0" >
-       <widget class="QLabel" name="label_1_2" >
+       <widget class="QLabel" name="lbl_foreJ" >
         <property name="text" >
          <string>Fore triangle base</string>
         </property>
        </widget>
       </item>
       <item row="0" column="0" >
-       <widget class="QLabel" name="label_1_1" >
+       <widget class="QLabel" name="lbl_foreI" >
         <property name="text" >
          <string>Fore triangle hoist</string>
         </property>
        </widget>
       </item>
       <item row="1" column="1" >
-       <widget class="QLabel" name="lbl_1_2" >
+       <widget class="QLabel" name="lbl_J" >
         <property name="text" >
          <string>= J</string>
         </property>
        </widget>
       </item>
       <item row="0" column="1" >
-       <widget class="QLabel" name="lbl_1_1" >
+       <widget class="QLabel" name="lbl_I" >
         <property name="text" >
          <string>= I</string>
         </property>
        </widget>
       </item>
       <item row="1" column="2" >
-       <widget class="QLineEdit" name="txtJ" >
+       <widget class="QLineEdit" name="txt_foreJ" >
         <property name="sizePolicy" >
          <sizepolicy>
           <hsizetype>1</hsizetype>
@@ -565,7 +565,7 @@
        </widget>
       </item>
       <item row="0" column="2" >
-       <widget class="QLineEdit" name="txtI" >
+       <widget class="QLineEdit" name="txt_foreI" >
         <property name="sizePolicy" >
          <sizepolicy>
           <hsizetype>1</hsizetype>
