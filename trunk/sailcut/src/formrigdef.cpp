@@ -64,7 +64,7 @@ CFormRigDef::CFormRigDef( QWidget* parent, CRigDef * rigptr )
 }
 
 
-/** Saves the parameters entered by the user in the CRigDef.
+/** Save the parameters entered by the user in the CRigDef.
  *  slot connected to OK button
  */
 void CFormRigDef::accept()
@@ -92,8 +92,8 @@ bool CFormRigDef::check()
     palHi.setColor( QPalette::Text, Qt::red );    // too high value
     palRel.setColor( QPalette::Text, Qt::blue );  // related value to be checked
 
-    ///  start collecting data
-    /**  check the rig ID text */
+    //  start collecting data
+    ///  check the rig ID text 
     txt = txt_RigID->text();
     txt = txt.simplified();
     if (txt.length() > 40)
@@ -121,14 +121,16 @@ bool CFormRigDef::check()
         txt_foreJ->setPalette(palLo);
         txt_foreI->setText(QString::number(rigdef->foreI));
         txt_foreJ->setText(QString::number(rigdef->foreJ));
+        return flag;
     }
-    else if (( J / I )> 3)
+    else if (( J / I )> 2)
     {
         flag = false;
         txt_foreJ->setPalette(palHi);
         txt_foreI->setPalette(palLo);
         txt_foreI->setText(QString::number(rigdef->foreI));
         txt_foreJ->setText(QString::number(rigdef->foreJ));
+        return flag;
     }
     else
     {
@@ -138,7 +140,7 @@ bool CFormRigDef::check()
         txt_foreJ->setText(QString::number(rigdef->foreJ));
     }
     
-    /** checking mast */
+    /// checking mast 
     rigdef->MHeight = txt_MH->text().toDouble();
     L1 = (long)(rigdef->MHeight);
     if ( L1 < I )
@@ -147,13 +149,15 @@ bool CFormRigDef::check()
         txt_foreI->setPalette(palRel);
         txt_MH->setPalette(palLo);
         rigdef->MHeight = I;
+        return flag;
     }
-    else if ( L1 > (2*I))
+    else if ( L1 > (1.6 * I))
     {
         flag = false;
         txt_foreI->setPalette(palRel);
         txt_MH->setPalette(palHi);
-        rigdef->MHeight = ceil (2*I);
+        rigdef->MHeight = ceil (1.6 * I);
+        return flag;
     }
     else
     {
@@ -208,16 +212,17 @@ bool CFormRigDef::check()
     rigdef->MRakeM = txt_MRM->text().toDouble();
     rigdef->MRakeD = lbl_MRD->text().toDouble();
     
-    /** checking shrouds */
+    /// checking shrouds 
     rigdef->SPNB = spinBox_SPNB->value();
     
     rigdef->CSH = txt_CSH->text().toDouble();
-    if ( rigdef->CSH > L1) // above mast head
+    if ( rigdef->CSH > L1) // cap shroud above mast head
     {
         flag = false;
         txt_CSH->setPalette(palHi);
         txt_MH->setPalette(palRel);
         rigdef->CSH = L1;
+        return flag;
     }
     else if ( rigdef->CSH < (0.75 * I))
     {
@@ -225,6 +230,7 @@ bool CFormRigDef::check()
         txt_CSH->setPalette(palLo);
         txt_foreI->setPalette(palRel);
         rigdef->CSH = ceil(0.75 * I);
+        return flag;
     }
     else
     {
@@ -278,7 +284,7 @@ bool CFormRigDef::check()
     }
     txt_CSB->setText(QString::number(rigdef->CSB));
     
-    /** checking spreaders */
+    /// checking spreaders 
     rigdef->SPH1 = txt_SPH1->text().toDouble();
     if (rigdef->SPH1 < (rigdef->CSH)/(2 + rigdef->SPNB))
     {
