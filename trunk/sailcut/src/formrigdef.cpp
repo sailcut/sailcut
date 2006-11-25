@@ -119,18 +119,25 @@ bool CFormRigDef::check()
         flag = false;
         txt_foreI->setPalette(palHi);
         txt_foreJ->setPalette(palLo);
+        txt_foreI->setText(QString::number(rigdef->foreI));
+        txt_foreJ->setText(QString::number(rigdef->foreJ));
     }
     else if (( J / I )> 3)
     {
         flag = false;
         txt_foreJ->setPalette(palHi);
         txt_foreI->setPalette(palLo);
+        txt_foreI->setText(QString::number(rigdef->foreI));
+        txt_foreJ->setText(QString::number(rigdef->foreJ));
     }
     else
     {
         txt_foreJ->setPalette(palStd);
         txt_foreI->setPalette(palStd);
+        txt_foreI->setText(QString::number(rigdef->foreI));
+        txt_foreJ->setText(QString::number(rigdef->foreJ));
     }
+    
     /** checking mast */
     rigdef->MHeight = txt_MH->text().toDouble();
     L1 = (long)(rigdef->MHeight);
@@ -208,16 +215,16 @@ bool CFormRigDef::check()
     if ( rigdef->CSH > L1) // above mast head
     {
         flag = false;
-        txt_MH->setPalette(palRel);
         txt_CSH->setPalette(palHi);
+        txt_MH->setPalette(palRel);
         rigdef->CSH = L1;
     }
-    else if ( rigdef->CSH < (.85*I))
+    else if ( rigdef->CSH < (0.75 * I))
     {
         flag = false;
         txt_CSH->setPalette(palLo);
         txt_foreI->setPalette(palRel);
-        rigdef->CSH = ceil(0.75*I);
+        rigdef->CSH = ceil(0.75 * I);
     }
     else
     {
@@ -235,12 +242,12 @@ bool CFormRigDef::check()
         txt_CSH->setPalette(palRel);
         rigdef->LSB = ceil((rigdef->CSH)/(10*(1 + rigdef->SPNB)));
     }
-    else if (rigdef->LSB > ((rigdef->CSH)/(1 + rigdef->SPNB)) )
+    else if (rigdef->LSB > ((rigdef->CSH)/(2 + rigdef->SPNB)) )
     {
         flag = false;
         txt_LSB->setPalette(palHi);
         txt_CSH->setPalette(palRel);
-        rigdef->LSB = floor((rigdef->CSH)/(1 + rigdef->SPNB));
+        rigdef->LSB = floor((rigdef->CSH)/(2 + rigdef->SPNB));
     }
     else 
     {
@@ -280,12 +287,12 @@ bool CFormRigDef::check()
         txt_SPH1->setPalette(palLo);
         rigdef->SPH1 = ceil((rigdef->CSH)/(2 + rigdef->SPNB));
     }
-    else if (rigdef->SPH1 > ((rigdef->CSH)/(1.5 + rigdef->SPNB)) )
+    else if (rigdef->SPH1 > ((rigdef->CSH)/(0.5 + rigdef->SPNB)) )
     {
         flag = false;
         txt_CSH->setPalette(palRel);
         txt_SPH1->setPalette(palHi);
-        rigdef->SPH1 = floor((rigdef->CSH)/(1.5 + rigdef->SPNB));
+        rigdef->SPH1 = floor((rigdef->CSH)/(0.5 + rigdef->SPNB));
     }
     else 
     {
@@ -296,7 +303,7 @@ bool CFormRigDef::check()
     
     rigdef->SPW1 = txt_SPW1->text().toDouble();
     
-    L2 = rigdef->CSH - rigdef->SPH1;
+    L2 = (long) (rigdef->CSH - rigdef->SPH1);
     
     rigdef->SPH2 = txt_SPH2->text().toDouble();
     if (rigdef->SPNB>1 && rigdef->SPH2 < (rigdef->SPH1 +(L2 /(1 + rigdef->SPNB))) )
@@ -322,7 +329,7 @@ bool CFormRigDef::check()
     
     rigdef->SPW2 = txt_SPW2->text().toDouble();
     
-    L2 = rigdef->CSH - rigdef->SPH2;
+    L2 = (long)(rigdef->CSH - rigdef->SPH2);
     
     rigdef->SPH3 = txt_SPH3->text().toDouble();
     if (rigdef->SPNB>2 && rigdef->SPH3 < (rigdef->SPH2 + L2 /(rigdef->SPNB)) )
