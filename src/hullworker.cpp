@@ -36,7 +36,6 @@ CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
 CPanelGroup CHullWorker::makeHull() const
 {
     CPanel deck;
-
     unsigned int j = 0;
     real d1 = 0;
     real mid = 1;
@@ -98,40 +97,6 @@ CPanelGroup CHullWorker::makeHull() const
     hull.type = HULL;
     hull.title = hullID;
     hull.panel.push_back(deck2);
-   
-   
-    /** add test mast */
-    CPanel mast1; // half mast section
-    p1 = CPoint3d (LOA/2 , 0 , 0); // mast base point
-    real cord = 0.05 + LOA/40;
-    real height = LOA;
-    for ( j = 0 ; j < npb ; j++ )
-    {
-        v1 = CVector3d(cos(PI * real(j) /(npb-1)), 0, sin(PI * real(j) /(npb-1) ) ); 
-        mast1.bottom.point[j] = p1 + cord * v1;
-        mast1.top.point[j] = mast1.bottom.point[j] + CVector3d(0 , height , 0); 
-    }
-    mast1.left.fill(mast1.bottom.point[0],mast1.top.point[0]); 
-    mast1.right.fill(mast1.bottom.point[npb-1],mast1.top.point[npb-1]); 
-    hull.panel.push_back(mast1);
-    mast1 = mast1.rotate(p1 , CMatrix::rot3d(1, PI) );
-    hull.panel.push_back(mast1);
-    
-    /** add test spreader */
-    p1.y() = height/2;
-    real spw = height / 10;
-    for ( j = 0 ; j < npb ; j++ )
-    {
-        v1 = CVector3d(cos(PI * real(j) /(npb-1)), sin(PI * real(j) /(npb-1) ), 0 ); 
-        mast1.bottom.point[j] = p1 + .3 * cord * v1;
-        mast1.bottom.point[j] = mast1.bottom.point[j] + CVector3d(0 , 0 , -spw); 
-        mast1.top.point[j] = mast1.bottom.point[j] + CVector3d(0 , 0 , 2*spw); 
-    }
-    mast1.left.fill(mast1.bottom.point[0],mast1.top.point[0]); 
-    mast1.right.fill(mast1.bottom.point[npb-1],mast1.top.point[npb-1]); 
-    hull.panel.push_back(mast1);
-    mast1 = mast1.rotate(p1 , CMatrix::rot3d(2, PI) );
-    hull.panel.push_back(mast1);
     
     return hull;
 }
