@@ -561,16 +561,16 @@
        </widget>
       </item>
       <item row="1" column="6" >
-       <widget class="QLabel" name="lbl_MRD" >
+       <widget class="QLabel" name="lbl_MRkD" >
         <property name="text" >
-         <string>lbl_MRD</string>
+         <string>lbl_MRkD</string>
         </property>
        </widget>
       </item>
       <item row="1" column="5" >
-       <widget class="QLabel" name="lbl_MRDeg" >
+       <widget class="QLabel" name="lbl_MRkDeg" >
         <property name="text" >
-         <string>= MRD</string>
+         <string>= MRkD</string>
         </property>
        </widget>
       </item>
@@ -603,7 +603,7 @@
        </widget>
       </item>
       <item row="1" column="2" >
-       <widget class="QLineEdit" name="txt_MRD" >
+       <widget class="QLineEdit" name="txt_MRnd" >
         <property name="alignment" >
          <set>Qt::AlignHCenter</set>
         </property>
@@ -633,14 +633,14 @@
        </widget>
       </item>
       <item row="0" column="5" >
-       <widget class="QLabel" name="lbl_MR" >
+       <widget class="QLabel" name="lbl_MRkM" >
         <property name="text" >
-         <string>= MRM</string>
+         <string>= MRkM</string>
         </property>
        </widget>
       </item>
       <item row="0" column="6" >
-       <widget class="QLineEdit" name="txt_MRM" >
+       <widget class="QLineEdit" name="txt_MRkM" >
         <property name="sizePolicy" >
          <sizepolicy>
           <hsizetype>3</hsizetype>
@@ -675,9 +675,9 @@
        </widget>
       </item>
       <item row="1" column="1" >
-       <widget class="QLabel" name="lbl_MRD" >
+       <widget class="QLabel" name="lbl_MRnd" >
         <property name="text" >
-         <string>= MRD</string>
+         <string>= MRnd</string>
         </property>
        </widget>
       </item>
@@ -689,9 +689,9 @@
        </widget>
       </item>
       <item row="2" column="1" >
-       <widget class="QLabel" name="lbl_MRDP" >
+       <widget class="QLabel" name="lbl_MRndPos" >
         <property name="text" >
-         <string>= MRDP</string>
+         <string>= MRndPos</string>
         </property>
        </widget>
       </item>
@@ -710,7 +710,7 @@
        </widget>
       </item>
       <item row="2" column="2" >
-       <widget class="QSpinBox" name="spinBox_MRDP" >
+       <widget class="QSpinBox" name="spinBox_MRndPos" >
         <property name="alignment" >
          <set>Qt::AlignHCenter</set>
         </property>
