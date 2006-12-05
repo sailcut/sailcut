@@ -41,6 +41,7 @@ public:
     real foreI;
     /** fore triangle base*/
     real foreJ;
+    ////// mast /////
     /** mast height */
     real MHeight;
     /** mast cord */
@@ -51,6 +52,12 @@ public:
     real MRakeM;
     /** mast rake angle in degree */
     real MRakeD;
+    //** mast round */
+    real MRnd;
+    //* mast round position */
+    unsigned int MRndPos;
+    
+    ////// spreaders and shrouds /////
     /** cap shroud height */
     real CSH;
     /** cap shroud base */

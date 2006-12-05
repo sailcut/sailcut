@@ -48,8 +48,8 @@ CFormRigDef::CFormRigDef( QWidget* parent, CRigDef * rigptr )
     txt_MH->setText(QString::number(rigdef->MHeight));
     txt_MC->setText(QString::number(rigdef->MCord));
     txt_MW->setText(QString::number(rigdef->MWidth));
-    txt_MRM->setText(QString::number(rigdef->MRakeM));
-    lbl_MRD->setText(QString::number(rigdef->MRakeD));
+    txt_MRkM->setText(QString::number(rigdef->MRakeM));
+    lbl_MRkD->setText(QString::number(rigdef->MRakeD));
     
     spinBox_SPNB->setValue(rigdef->SPNB);
     txt_SPH1->setText(QString::number(rigdef->SPH1));
@@ -209,8 +209,8 @@ bool CFormRigDef::check()
     }
     txt_MW->setText(QString::number(rigdef->MWidth));
     
-    rigdef->MRakeM = txt_MRM->text().toDouble();
-    rigdef->MRakeD = lbl_MRD->text().toDouble();
+    rigdef->MRakeM = txt_MRkM->text().toDouble();
+    rigdef->MRakeD = lbl_MRkD->text().toDouble();
     
     /// checking shrouds 
     rigdef->SPNB = spinBox_SPNB->value();
