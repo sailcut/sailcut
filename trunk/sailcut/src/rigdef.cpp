@@ -36,15 +36,15 @@ CRigDef::CRigDef()
     MRnd = 0;
     MRndPos = 50;
     CSH = 7000;   // cap shroud height
-    CSB = 1100;
-    LSB = 900;
-    SPNB = 1;     // number of spreaders
-    SPH1 = 3500;
-    SPW1 = 1000;
-    SPH2 = 0;
-    SPW2 = 0;
-    SPH3 = 0;
-    SPW3 = 0;
+    CSB = 900;
+    LSB = 800;
+    SPNB = 3;     // number of spreaders
+    SPH[1] = 2000;
+    SPW[1] = 800;
+    SPH[2] = 4000;
+    SPW[2] = 600;
+    SPH[3] = 6000;
+    SPW[3] = 400;
 }
 
 
@@ -70,12 +70,12 @@ CRigDef & CRigDef::operator=( const CRigDef &copy )
     CSB = copy.CSB;
     LSB = copy.LSB;
     SPNB = copy.SPNB; // number of spreaders
-    SPH1 = copy.SPH1;
-    SPW1 = copy.SPW1;
-    SPH2 = copy.SPH2;
-    SPW2 = copy.SPW2;
-    SPH3 = copy.SPH3;
-    SPW3 = copy.SPW3;
+    SPH[1] = copy.SPH[1];
+    SPW[1] = copy.SPW[1];
+    SPH[2] = copy.SPH[2];
+    SPW[2] = copy.SPW[2];
+    SPH[3] = copy.SPH[3];
+    SPW[3] = copy.SPW[3];
     
     return *this;
 }
