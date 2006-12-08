@@ -33,6 +33,8 @@ CRigDef::CRigDef()
     MWidth = 70;
     MRakeM = 200;
     MRakeD = 0;
+    MRnd = 0;
+    MRndPos = 50;
     CSH = 7000;   // cap shroud height
     CSB = 1100;
     LSB = 900;
@@ -43,7 +45,6 @@ CRigDef::CRigDef()
     SPW2 = 0;
     SPH3 = 0;
     SPW3 = 0;
-    
 }
 
 

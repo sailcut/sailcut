@@ -212,9 +212,26 @@ bool CFormRigDef::check()
     rigdef->MRakeM = txt_MRkM->text().toDouble();
     rigdef->MRakeD = lbl_MRkD->text().toDouble();
     
-    /// checking shrouds 
+    rigdef->MRnd = txt_MRnd->text().toDouble();
+    rigdef->MRndPos = spinBox_MRndPos->value();
+    if ( rigdef->MRnd > L1/10)
+    {
+        flag = false;
+        rigdef->MRnd = ceil( L1/10 );
+        txt_MRnd->setPalette(palHi);
+        txt_MRnd->setPalette(palHi);
+    } 
+    else
+    {
+        txt_MH->setPalette(palStd);
+        txt_MRnd->setPalette(palStd); 
+    }
+    txt_MRnd->setText(QString::number(rigdef->MRnd));
+    
+    /// reading number of spreaders
     rigdef->SPNB = spinBox_SPNB->value();
     
+    /// checking shrouds height and length
     rigdef->CSH = txt_CSH->text().toDouble();
     if ( rigdef->CSH > L1) // cap shroud above mast head
     {
