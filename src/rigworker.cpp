@@ -34,7 +34,7 @@ CRigWorker::CRigWorker(const CRigDef &d) : CRigDef(d)
  */
 CPanelGroup CRigWorker::makeRig() const
 {
-    unsigned int j = 0;
+    unsigned int i = 0, j = 0;
 
     CPoint3d p1(0, 0, 0);
     CVector3d v1(1, 1, 1);
@@ -61,21 +61,22 @@ CPanelGroup CRigWorker::makeRig() const
     rig.panel.push_back(mast1);
     
     /** add test spreader */
-    p1.y() = SPH1;
-    for ( j = 0 ; j < npb ; j++ )
-    {
-        v1 = CVector3d(cos(PI * real(j) /(npb-1)), sin(PI * real(j) /(npb-1) ), 0 ); 
-        mast1.bottom.point[j] = p1 + .3 * cord * v1;
-        mast1.bottom.point[j] = mast1.bottom.point[j] + CVector3d(0 , 0 , -SPW1); 
-        mast1.top.point[j] = mast1.bottom.point[j] + CVector3d(0 , 0 , 2*SPW1); 
+    for ( i = 1; j < SPNB ; i++)
+    { 
+        p1.y() = SPH[i];
+        for ( j = 0 ; j < npb ; j++ )
+        {
+            v1 = CVector3d(cos(PI * real(j) /(npb-1)), sin(PI * real(j) /(npb-1) ), 0 ); 
+            mast1.bottom.point[j] = p1 + .3 * cord * v1;
+            mast1.bottom.point[j] = mast1.bottom.point[j] + CVector3d(0 , 0 , -SPW[i]); 
+            mast1.top.point[j] = mast1.bottom.point[j] + CVector3d(0 , 0 , 2*SPW[i]); 
+        }
+        mast1.left.fill(mast1.bottom.point[0],mast1.top.point[0]); 
+        mast1.right.fill(mast1.bottom.point[npb-1],mast1.top.point[npb-1]); 
+        rig.panel.push_back(mast1);
+        mast1 = mast1.rotate(p1 , CMatrix::rot3d(2, PI) );
+        rig.panel.push_back(mast1);
     }
-    mast1.left.fill(mast1.bottom.point[0],mast1.top.point[0]); 
-    mast1.right.fill(mast1.bottom.point[npb-1],mast1.top.point[npb-1]); 
-    rig.panel.push_back(mast1);
-    
-    mast1 = mast1.rotate(p1 , CMatrix::rot3d(2, PI) );
-    rig.panel.push_back(mast1);
-
      
     return rig;
 }

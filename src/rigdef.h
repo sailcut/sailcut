@@ -66,18 +66,10 @@ public:
     real LSB;
     /** number of spreaders */
     unsigned int SPNB;
-    /** spreader 1 height */
-    real SPH1;
-    /** spreader 1 width */
-    real SPW1;
-    /** spreader 2 height */
-    real SPH2;
-    /** spreader 2 width */
-    real SPW2;
-    /** spreader 3 height */
-    real SPH3;
-    /** spreader 3 width */
-    real SPW3;
+    /** spreader height */
+    real SPH[4];
+    /** spreader width */
+    real SPW[4];
     
 };
 
