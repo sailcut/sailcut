@@ -45,8 +45,9 @@ CPanelGroup CRigWorker::makeRig() const
     CPanelGroup rig;
    
     /** add test mast */
+    // TODO take into account mast rake and round
     p1 = CPoint3d (foreJ , 0 , 0); // mast base point
-    real cord = MCord;
+    real cord = MCord / 2;
     for ( j = 0 ; j < npb ; j++ )
     {
         v1 = CVector3d(cos(PI * real(j) /(npb-1)), 0, sin(PI * real(j) /(npb-1) ) ); 
@@ -61,19 +62,21 @@ CPanelGroup CRigWorker::makeRig() const
     rig.panel.push_back(mast1);
     
     /** add test spreader */
-    for ( i = 1; j < SPNB ; i++)
+    cord = MCord / 6;
+    for ( i = 1; i <= SPNB ; i++)
     { 
         p1.y() = SPH[i];
         for ( j = 0 ; j < npb ; j++ )
         {
             v1 = CVector3d(cos(PI * real(j) /(npb-1)), sin(PI * real(j) /(npb-1) ), 0 ); 
-            mast1.bottom.point[j] = p1 + .3 * cord * v1;
+            mast1.bottom.point[j] = p1 + cord * v1;
             mast1.bottom.point[j] = mast1.bottom.point[j] + CVector3d(0 , 0 , -SPW[i]); 
             mast1.top.point[j] = mast1.bottom.point[j] + CVector3d(0 , 0 , 2*SPW[i]); 
         }
         mast1.left.fill(mast1.bottom.point[0],mast1.top.point[0]); 
         mast1.right.fill(mast1.bottom.point[npb-1],mast1.top.point[npb-1]); 
         rig.panel.push_back(mast1);
+        // make second half by rotation
         mast1 = mast1.rotate(p1 , CMatrix::rot3d(2, PI) );
         rig.panel.push_back(mast1);
     }
