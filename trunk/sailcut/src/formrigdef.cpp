@@ -110,7 +110,22 @@ bool CFormRigDef::check()
     }
     rigdef->rigID = txt;
     
+    /// checking fore triangle
     rigdef->foreI = txt_foreI->text().toDouble();
+    if (rigdef->foreI < 100) // height too small
+    {
+        flag = false;
+        rigdef->foreI = 100;
+        txt_foreI->setPalette(palLo);
+        txt_foreI->setText(QString::number(rigdef->foreI));
+        return flag;
+    }
+    else
+    {   
+        txt_foreI->setPalette(palStd);
+        txt_foreI->setText(QString::number(rigdef->foreI));
+    }
+    
     rigdef->foreJ = txt_foreJ->text().toDouble();
     I = (long)(rigdef->foreI);
     J = (long)(rigdef->foreJ);
@@ -140,9 +155,10 @@ bool CFormRigDef::check()
         txt_foreJ->setText(QString::number(rigdef->foreJ));
     }
     
-    /// checking mast 
+    /// checking mast height
     rigdef->MHeight = txt_MH->text().toDouble();
     L1 = (long)(rigdef->MHeight);
+    
     if ( L1 < I )
     {
         flag = false;
@@ -168,6 +184,7 @@ bool CFormRigDef::check()
     
     L1 = (long)(rigdef->MHeight);
     
+    /// checking mast cord
     rigdef->MCord = txt_MC->text().toDouble();
     if (rigdef->MCord > (L1 / 10))
     {
@@ -187,6 +204,7 @@ bool CFormRigDef::check()
     }
     txt_MC->setText(QString::number(rigdef->MCord));
     
+    /// checking mast width
     rigdef->MWidth = txt_MW->text().toDouble();
     if (rigdef->MWidth > rigdef->MCord)
     {
@@ -209,15 +227,39 @@ bool CFormRigDef::check()
     }
     txt_MW->setText(QString::number(rigdef->MWidth));
     
+    /// checking mast rake
     rigdef->MRakeM = txt_MRkM->text().toDouble();
-    rigdef->MRakeD = lbl_MRkD->text().toDouble();
+    if ( rigdef->MRakeM > L1 / 5)
+    {
+        flag = false;
+        rigdef->MRakeM = floor( L1 / 5 );
+        txt_MH->setPalette(palRel);
+        txt_MRkM->setPalette(palHi);
+    } 
+    else if ( rigdef->MRakeM < -L1 / 5)
+    {
+        flag = false;
+        rigdef->MRakeM = -floor( L1 / 5 );
+        txt_MH->setPalette(palRel);
+        txt_MRkM->setPalette(palLo);
+    } 
+    else
+    {
+        txt_MH->setPalette(palStd);
+        txt_MRkM->setPalette(palStd); 
+    }
+    txt_MRnd->setText(QString::number(rigdef->MRnd));
+    rigdef->MRakeD = atan2(rigdef->MRakeM ,rigdef->MHeight) * (180 / PI);
+    lbl_MRkD->setText(QString::number(rigdef->MRakeD));
+    //rigdef->MRakeD = lbl_MRkD->text().toDouble();
     
+    /// checking mast round
     rigdef->MRnd = txt_MRnd->text().toDouble();
     rigdef->MRndPos = spinBox_MRndPos->value();
     if ( rigdef->MRnd > L1/10)
     {
         flag = false;
-        rigdef->MRnd = ceil( L1/10 );
+        rigdef->MRnd = floor( L1/10 );
         txt_MRnd->setPalette(palHi);
         txt_MRnd->setPalette(palHi);
     } 
@@ -287,12 +329,12 @@ bool CFormRigDef::check()
         txt_LSB->setPalette(palRel);
         rigdef->CSB = ceil(rigdef->LSB);
     }
-    else if (rigdef->CSB > (2* rigdef->LSB))
+    else if (rigdef->CSB > (2 * rigdef->LSB))
     {
         flag = false;
         txt_CSB->setPalette(palHi);
         txt_LSB->setPalette(palRel);
-        rigdef->CSB = floor(2* rigdef->LSB);
+        rigdef->CSB = floor(2 * rigdef->LSB);
     }
     else
     {
@@ -302,7 +344,10 @@ bool CFormRigDef::check()
     txt_CSB->setText(QString::number(rigdef->CSB));
     
     /// checking spreaders 
+    rigdef->SPH[0] = 0;
+    rigdef->SPW[0] = rigdef->CSB;
     rigdef->SPH[1] = txt_SPH1->text().toDouble();
+    
     if (rigdef->SPH[1] < (rigdef->CSH)/(2 + rigdef->SPNB))
     {
         flag = false;
