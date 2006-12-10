@@ -52,6 +52,8 @@ public:
     real MRakeM;
     /** mast rake angle in degree */
     real MRakeD;
+    /** mast base distance to stem */
+    real MBase;
     //** mast round */
     real MRnd;
     //* mast round position */
