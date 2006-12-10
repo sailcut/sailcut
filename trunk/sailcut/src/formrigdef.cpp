@@ -248,10 +248,14 @@ bool CFormRigDef::check()
         txt_MH->setPalette(palStd);
         txt_MRkM->setPalette(palStd); 
     }
-    txt_MRnd->setText(QString::number(rigdef->MRnd));
+    txt_MRkM->setText(QString::number(rigdef->MRakeM));
+    
+    /// computing mast rake in degree
     rigdef->MRakeD = atan2(rigdef->MRakeM ,rigdef->MHeight) * (180 / PI);
     lbl_MRkD->setText(QString::number(rigdef->MRakeD));
-    //rigdef->MRakeD = lbl_MRkD->text().toDouble();
+    
+    /// computing mast base distance to stem
+    rigdef->MBase = rigdef->foreJ - rigdef->MRakeM * (rigdef->foreI / rigdef->MHeight);
     
     /// checking mast round
     rigdef->MRnd = txt_MRnd->text().toDouble();
