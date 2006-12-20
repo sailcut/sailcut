@@ -34,7 +34,7 @@ CRigDef::CRigDef()
     MRakeM = 200;
     MRakeD = atan2(MRakeM, MHeight) * (180 / PI);
     MBase = foreJ - MRakeM * (foreI/MHeight);
-    MRnd = 0;
+    MRnd = 200;
     MRndPos = 50;
     CSH = 7000;   // cap shroud height
     CSB = 900;

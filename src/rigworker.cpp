@@ -18,6 +18,7 @@
  */
 
 #include "rigworker.h"
+#include "sailcalc.h"
 
 
 /** The constructor does some preliminary calculations to set
@@ -34,45 +35,65 @@ CRigWorker::CRigWorker(const CRigDef &d) : CRigDef(d)
  */
 CPanelGroup CRigWorker::makeRig() const
 {
-    unsigned int i = 0, j = 0;
-    CPoint3d p1(0, 0, 0), p2(0, 0, 0);
+    CPoint3d p0, p2;
     CVector3d v1(1, 0, 0), vm(0, 1, 0);
     CPanel mast1, mast2; // half mast section
+    unsigned int i = 0, j = 0;
     //unsigned int npl = mast1.left.nbpoints();   // number of right/left points
     unsigned int npb = mast1.bottom.nbpoints(); // number of bottom/top points
+    real h = 0, cord, round;
     
     CPanelGroup rig;
    
     /** add test mast */
-    // TODO take into account mast rake and round
-    real cord = MCord / 2;
-    vm = CVector3d(MRakeM, MHeight, 0);
-    p1 = CPoint3d (foreJ + cord , 0 , 0); // mast centre base point
-    p1 = p1 + CVector3d(-(MRakeM * foreI / MHeight), 0, 0); // offset by rake 
-    p2 = p1 + vm;
+    cord = MCord / 2;
+    vm = CVector3d(MRakeM, MHeight, 0); //straight mast cord vector 
+    p0 = CPoint3d (foreJ + cord , 0 , 0); // mast centre base point
+    p0 = p0 + CVector3d(-(MRakeM * foreI / MHeight), 0, 0); // base centre offset by rake 
     
     for ( j = 0 ; j < npb ; j++ )
+        {
+            v1 = CVector3d(cos(PI * real(j) /(npb-1)), 0, sin(PI * real(j) /(npb-1) ) );
+            v1.z() = v1.z() * MWidth/MCord;
+            mast1.top.point[j] = p0 + cord * v1;
+            mast2.top.point[j] = p0 - cord *v1;
+        }
+    
+    for ( i = 1; i <= 10; i++ )
     {
-        v1 = CVector3d(cos(PI * real(j) /(npb-1)), 0, sin(PI * real(j) /(npb-1) ) );
-        v1.z() = v1.z() * MWidth/MCord;
-        mast1.bottom.point[j] = p1 + cord * v1;
-        mast1.top.point[j] = p2 + cord *v1;
-        mast2.bottom.point[j] = p1 - cord *v1;
-        mast2.top.point[j] = p2 - cord * v1;
+        h = i * MHeight / 10; // top of section
+        round = MRnd * RoundP(h/MHeight , MRndPos); // round
+        // printf ("i= %d, MRnd = %f \n", i, round);
+        // mast section center
+        p2 = p0 + h * vm.unit();
+        // displace center by round
+        p2 = p2 + CMatrix::rot3d(2, PI/2) * vm.unit() * round;
+
+        for ( j = 0 ; j < npb ; j++ )
+        {
+            v1 = CVector3d(cos(PI * real(j) /(npb-1)), 0, sin(PI * real(j) /(npb-1) ) );
+            v1.z() = v1.z() * MWidth/MCord;
+            mast1.bottom.point[j] = mast1.top.point[j];
+            mast2.bottom.point[j] = mast2.top.point[j];
+            mast1.top.point[j] = p2 + cord *v1;
+            mast2.top.point[j] = p2 - cord * v1;
+        }
+        mast1.left.fill(mast1.bottom.point[0],mast1.top.point[0]); 
+        mast1.right.fill(mast1.bottom.point[npb-1],mast1.top.point[npb-1]); 
+        rig.panel.push_back(mast1);
+    
+        mast2.left.fill(mast2.bottom.point[0],mast2.top.point[0]); 
+        mast2.right.fill(mast2.bottom.point[npb-1],mast2.top.point[npb-1]); 
+        rig.panel.push_back(mast2);
     }
-    mast1.left.fill(mast1.bottom.point[0],mast1.top.point[0]); 
-    mast1.right.fill(mast1.bottom.point[npb-1],mast1.top.point[npb-1]); 
-    rig.panel.push_back(mast1);
-    
-    mast2.left.fill(mast2.bottom.point[0],mast2.top.point[0]); 
-    mast2.right.fill(mast2.bottom.point[npb-1],mast2.top.point[npb-1]); 
-    rig.panel.push_back(mast2);
-    
     /** add test spreader */
     cord = MCord / 6;
     for ( i = 1; i <= SPNB ; i++)
     { 
-        p2 = p1 + vm.unit() * SPH[i];
+        p2 = p0 + vm.unit() * SPH[i];
+        round = MRnd * RoundP(SPH[i]/MHeight , MRndPos); // round
+        p2 = p2 + CMatrix::rot3d(2, PI/2) * vm.unit() * round;
+        //printf ("P2 x= %f, y= %f \n", p2.x(), p2.y());
         for ( j = 0 ; j < npb ; j++ )
         {
             v1 = CVector3d(cos(PI * real(j) /(npb-1)), sin(PI * real(j) /(npb-1) ), 0 );
