@@ -50,6 +50,8 @@ CFormRigDef::CFormRigDef( QWidget* parent, CRigDef * rigptr )
     txt_MW->setText(QString::number(rigdef->MWidth));
     txt_MRkM->setText(QString::number(rigdef->MRakeM));
     lbl_MRkD->setText(QString::number(rigdef->MRakeD));
+    txt_MRnd->setText(QString::number(rigdef->MRnd));
+    spinBox_MRndPos->setValue(rigdef->MRndPos);
     
     spinBox_SPNB->setValue(rigdef->SPNB);
     txt_SPH1->setText(QString::number(rigdef->SPH[1]));

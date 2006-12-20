@@ -246,7 +246,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
         exc = 0; // current excess of width
         cnt = 0; // counter of iterations
 
-        do  /** begin the loop for optimising the seam position to fit cloth width */
+        do  /// begin the loop for optimising the seam position to fit cloth width */
         {
             cnt++;
             p2[npanel] = p2[npanel-1] + (clothW-seamW-exb)/(seamV*leechVP) * leechV.unit();
@@ -303,7 +303,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
 
                 ////// end peak panel /////
             }
-            else        // normal panel  ///////////////////////////
+            else   // normal panel  ///////////////////////////
             {
                 /* find position of luff/seam intersection relative to tack and head */
                 i = seamSP.intersect(luff).getp();
@@ -350,7 +350,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
                     }
                 }
 
-                /** We now add the intermediate points on all sides of the normal panel  */
+                /// We now add the intermediate points on all sides of the normal panel  */
 
                 /* Below is the code for the left side depending
                 *  on t1 for the top side and bottom side
@@ -456,7 +456,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
                 }
             }
 
-            /** Now we add the seam and hems allowance */
+            /** Add the seam and hems allowance */
             if ( npanel == 1 )
                 dev.panel[npanel-1].addHems(hemsW, seamW, leechHemW, hemsW);
             else if ( flag == true )
@@ -464,7 +464,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
             else
                 dev.panel[npanel-1].addHems(hemsW, seamW, leechHemW, 0);
 
-            /** Now we check the width of developed panel */
+            /** Check the width of developed panel */
             ymax = dev.panel[npanel-1].height();
             exc = ymax-clothW;
 
@@ -490,10 +490,10 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
         */
         dev.panel[npanel-1] = dev.panel[npanel-1].reframe(LOW_LEFT);
 
-        /** check if peak has been reached to break off */
+        /// check if peak has been reached to break off */
         if ( flag == true )
             break;
-    }  /** loop FOR next seam */
+    }  /// loop FOR next seam */
     ////////////////////////////////////////
 
     if ( npanel == MAX_PANELS-1 )
