@@ -35,41 +35,37 @@ CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
  */
 CPanelGroup CHullWorker::makeHull() const
 {
-    CPanel deck;
+    CPanel deck1, deck2, side;
     unsigned int j = 0;
     real d1 = 0;
     real mid = 1;
 
-    CPoint3d p1(0, 0, LOA/100);
+    CPoint3d p1(0, 0, 0);
     CPoint3d p2(LOA, 0, LOA/10);
+    CPoint3d p3;
     CVector3d v1(1, 1, 1);
 
-    unsigned int npl = deck.right.nbpoints();   // number of right/left points
-    unsigned int npb = deck.bottom.nbpoints(); // number of bottom/top points
+    unsigned int npl = deck1.right.nbpoints();   // number of right/left points
+    unsigned int npb = deck1.bottom.nbpoints(); // number of bottom/top points
 
-    /** Start laying half deck edge */
-    deck.top.fill(p1, p2);
+    ///* Start laying first half deck edge */
+    deck1.top.fill(p1, p2);
     v1 = CVector3d(p2 - p1);
     mid = real(npb-1)/2;
     for ( j = 0 ; j < npb ; j++)
     {
         d1 = -(1 -(((real(j) - mid) / mid) * ((real(j) - mid) / mid))) * LOA / 8;
-        deck.top.point[j] = deck.top.point[j] + CMatrix::rot3d(1, PI/2)*v1.unit()*d1;
+        deck1.top.point[j] = deck1.top.point[j] + CMatrix::rot3d(1, PI/2)*v1.unit()*d1;
     }
-    /** make stem */
-    CPoint3d p3 = deck.top.point[0];
-    p3.z() = 0;
-    deck.left.fill(p3, deck.top.point[0]);
-    v1 = CVector3d ( deck.left.point[npl-1] -deck.left.point[0]);
+    /* make stem */
     for ( j = 0 ; j < npl-1 ; j++)
     {
-        d1 = (1-((real(j) / (npl-1))*(real(j) / (npl-1))))* 0.4 * v1.norm();
-        deck.left.point[j] = deck.left.point[j] + d1*CVector3d(-1,0,0);
+        deck1.left.point[j] = p1;
     }
-    /** make stern */
-    p3 = deck.top.point[npb-1];
+    /* make stern */
+    p3 = deck1.top.point[npb-1];
     p3.z() = 0;
-    deck.right.fill(p3, deck.top.point[npb-1]);
+    deck1.right.fill(p3, deck1.top.point[npb-1]);
     /*
     v1 = CVector3d ( deck.right.point[npl-1] -deck.right.point[0]);
     for ( j = 0 ; j < npl-1 ; j++)
@@ -78,25 +74,45 @@ CPanelGroup CHullWorker::makeHull() const
         deck.right.point[j] = deck.right.point[j] + d1*CVector3d(1,0,0);
     }
     */
-    /** make half deck lower edge on axis X */
+    /* make half deck lower edge on axis X */
     for ( j = 0 ; j < npb ; j++)
     {
-        deck.bottom.point[j] = deck.top.point[j];
-        deck.bottom.point[j].z() = 0;
+        deck1.bottom.point[j] = deck1.top.point[j];
+        deck1.bottom.point[j].z() = 0;
     }
-    deck.bottom.point[0] = deck.left.point[0];
-    deck.bottom.point[npl-1] = deck.right.point[0];
+    deck1.bottom.point[0] = deck1.left.point[0];
+    deck1.bottom.point[npl-1] = deck1.right.point[0];
 
-    /** duplicate half deck and rotate panels around X axis to tilt sideways */
+    ///* duplicate half deck and rotate panels around X axis to tilt sideways */
     real deck_angle = 0.1;
-    CPanel deck2 = deck.rotate(CPoint3d(0,0,0) , CMatrix::rot3d(0,PI - deck_angle) );
-    deck = deck.rotate(CPoint3d(0,0,0) , CMatrix::rot3d(0, deck_angle) );
+    deck2 = deck1.rotate(CPoint3d(0,0,0) , CMatrix::rot3d(0,PI - deck_angle) );
+    deck1 = deck1.rotate(CPoint3d(0,0,0) , CMatrix::rot3d(0, deck_angle) );
 
-    /** add second half of the deck to hull */
-    CPanelGroup hull(deck);
+    /* add first and second half of the deck to make hull */
+    CPanelGroup hull(deck1);
     hull.type = HULL;
     hull.title = hullID;
     hull.panel.push_back(deck2);
+    
+    ///* make sides */
+    v1 = CVector3d(LOA/50, -LOA/20, 0);
+    for ( j = 0 ; j < npb ; j++)
+    {
+        side.top.point[j] = deck1.top.point[j];
+        side.bottom.point[j] = side.top.point[j] + v1;
+    }
+    side.left.fill(side.bottom.point[0],side.top.point[0]);
+    side.right.fill(side.bottom.point[npb-1], side.top.point[npb-1]);
+    hull.panel.push_back(side);
+    
+    for ( j = 0 ; j < npb ; j++)
+    {
+        side.top.point[j] = deck2.top.point[j];
+        side.bottom.point[j] = side.top.point[j] + v1;
+    }
+    side.left.fill(side.bottom.point[0],side.top.point[0]);
+    side.right.fill(side.bottom.point[npb-1], side.top.point[npb-1]);
+    hull.panel.push_back(side);
     
     return hull;
 }

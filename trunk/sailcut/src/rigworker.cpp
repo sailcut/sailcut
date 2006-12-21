@@ -45,7 +45,7 @@ CPanelGroup CRigWorker::makeRig() const
     
     CPanelGroup rig;
    
-    /** add test mast */
+    /** add mast */
     cord = MCord / 2;
     vm = CVector3d(MRakeM, MHeight, 0); //straight mast cord vector 
     p0 = CPoint3d (foreJ + cord , 0 , 0); // mast centre base point
@@ -86,7 +86,7 @@ CPanelGroup CRigWorker::makeRig() const
         mast2.right.fill(mast2.bottom.point[npb-1],mast2.top.point[npb-1]); 
         rig.panel.push_back(mast2);
     }
-    /** add test spreader */
+    /** add spreader */
     cord = MCord / 6;
     for ( i = 1; i <= SPNB ; i++)
     { 
