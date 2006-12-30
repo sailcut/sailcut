@@ -43,11 +43,11 @@ CRigDef::CRigDef()
     SPH[0] = 0;
     SPW[0] = CSB;
     SPH[1] = 2000;
-    SPW[1] = 800;
+    SPW[1] = CSB;
     SPH[2] = 4000;
-    SPW[2] = 650;
+    SPW[2] = 700;
     SPH[3] = 6000;
-    SPW[3] = 450;
+    SPW[3] = 350;
 }
 
 
