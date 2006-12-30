@@ -169,12 +169,12 @@ bool CFormRigDef::check()
         rigdef->MHeight = I;
         return flag;
     }
-    else if ( L1 > (1.6 * I))
+    else if ( L1 > (1.8 * I))
     {
         flag = false;
         txt_foreI->setPalette(palRel);
         txt_MH->setPalette(palHi);
-        rigdef->MHeight = ceil (1.6 * I);
+        rigdef->MHeight = ceil (1.8 * I);
         return flag;
     }
     else
