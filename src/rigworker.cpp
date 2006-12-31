@@ -170,6 +170,8 @@ CPanelGroup CRigWorker::makeRig() const
         mast2.right.fill(mast2.bottom.point[npb-1],mast2.top.point[npb-1]); 
         rig.panel.push_back(mast2);
     
+    // set the title
+    rig.title = rigID;
     return rig;
 }
 
