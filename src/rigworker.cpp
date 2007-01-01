@@ -109,14 +109,43 @@ CPanelGroup CRigWorker::makeRig() const
         mast1 = mast1.rotate(p2 , CMatrix::rot3d(2, PI) );
         rig.panel.push_back(mast1);
     }
-    /** add shroud */
+    /** add shrouds */
     cord = MCord /12;
     p1 = p0;
     
+    if (SPNB > 1)    /// add inner shroud
+    {
+        p2 = p0 + vm.unit() * SPH[1];
+        round = MRnd * RoundP(SPH[1]/MHeight , MRndPos); // mast round
+        p2 = p2 + CMatrix::rot3d(2, PI/2) * vm.unit() * round;
+        mast1.bottom.point[0] = p1 + cord * CVector3d (1,0,0) + CVector3d(0,0,LSB);
+        mast1.top.point[0] = p1 - cord * CVector3d(1,0,0) + CVector3d(0,0,LSB); 
+        mast1.bottom.point[npb-1] = p2 + cord * CVector3d (1,0,0) + CVector3d(0,0,MWidth/2);
+        mast1.top.point[npb-1] = p2 - cord * CVector3d(1,0,0) + CVector3d(0,0,MWidth/2); 
+
+        mast1.bottom.fill(mast1.bottom.point[0],mast1.bottom.point[npb-1]); 
+        mast1.top.fill(mast1.top.point[0],mast1.top.point[npb-1]); 
+        mast1.left.fill(mast1.bottom.point[0],mast1.top.point[0]); 
+        mast1.right.fill(mast1.bottom.point[npb-1],mast1.top.point[npb-1]); 
+        rig.panel.push_back(mast1);
+        
+        // make second half 
+        mast2.bottom.point[0] = p1 + cord * CVector3d (1,0,0) - CVector3d(0,0,LSB);
+        mast2.top.point[0] = p1 - cord * CVector3d(1,0,0) - CVector3d(0,0,LSB); 
+        mast2.bottom.point[npb-1] = p2 + cord * CVector3d (1,0,0) - CVector3d(0,0,MWidth/2);
+        mast2.top.point[npb-1] = p2 - cord * CVector3d(1,0,0) - CVector3d(0,0,MWidth/2);
+
+        mast2.bottom.fill(mast2.bottom.point[0],mast2.bottom.point[npb-1]);
+        mast2.top.fill(mast2.top.point[0],mast2.top.point[npb-1]); 
+        mast2.left.fill(mast2.bottom.point[0],mast2.top.point[0]); 
+        mast2.right.fill(mast2.bottom.point[npb-1],mast2.top.point[npb-1]);
+        rig.panel.push_back(mast2);
+    }
+    /// add outer shroud
     for ( i = 1; i <= SPNB ; i++)
     { 
         p2 = p0 + vm.unit() * SPH[i];
-        round = MRnd * RoundP(SPH[i]/MHeight , MRndPos); // round
+        round = MRnd * RoundP(SPH[i]/MHeight , MRndPos); // mast round
         p2 = p2 + CMatrix::rot3d(2, PI/2) * vm.unit() * round;
         //printf ("P2 x= %f, y= %f \n", p2.x(), p2.y());
         mast1.bottom.point[0] = p1 + cord * CVector3d (1,0,0) + CVector3d(0,0,SPW[i-1]);
@@ -129,6 +158,7 @@ CPanelGroup CRigWorker::makeRig() const
         mast1.left.fill(mast1.bottom.point[0],mast1.top.point[0]); 
         mast1.right.fill(mast1.bottom.point[npb-1],mast1.top.point[npb-1]); 
         rig.panel.push_back(mast1);
+        
         // make second half 
         mast2.bottom.point[0] = p1 + cord * CVector3d (1,0,0) - CVector3d(0,0,SPW[i-1]);
         mast2.top.point[0] = p1 - cord * CVector3d(1,0,0) - CVector3d(0,0,SPW[i-1]); 
@@ -143,7 +173,7 @@ CPanelGroup CRigWorker::makeRig() const
         
         p1 = p2;
     }
-    // add top shroud
+    // add cap shroud
         p2 = p0 + vm.unit() * CSH;
         round = MRnd * RoundP(CSH/MHeight , MRndPos); // round
         p2 = p2 + CMatrix::rot3d(2, PI/2) * vm.unit() * round;
