@@ -35,7 +35,7 @@ CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
  */
 CPanelGroup CHullWorker::makeHull() const
 {
-    CPanel deck1, deck2, side;
+    CPanel deck1, deck2, side1, side2, side;
     unsigned int j = 0;
     real d1 = 0;
     real mid = 1;
@@ -48,7 +48,7 @@ CPanelGroup CHullWorker::makeHull() const
     unsigned int npl = deck1.right.nbpoints();   // number of right/left points
     unsigned int npb = deck1.bottom.nbpoints(); // number of bottom/top points
 
-    ///* Start laying first half deck edge */
+    /// Start laying first half deck edge
     deck1.top.fill(p1, p2);
     v1 = CVector3d(p2 - p1);
     mid = real(npb-1)/2;
@@ -57,12 +57,12 @@ CPanelGroup CHullWorker::makeHull() const
         d1 = -(1 -(((real(j) - mid) / mid) * ((real(j) - mid) / mid))) * LOA / 8;
         deck1.top.point[j] = deck1.top.point[j] + CMatrix::rot3d(1, PI/2)*v1.unit()*d1;
     }
-    /* make stem */
+    // make stem 
     for ( j = 0 ; j < npl-1 ; j++)
     {
         deck1.left.point[j] = p1;
     }
-    /* make stern */
+    // make stern 
     p3 = deck1.top.point[npb-1];
     p3.z() = 0;
     deck1.right.fill(p3, deck1.top.point[npb-1]);
@@ -74,7 +74,7 @@ CPanelGroup CHullWorker::makeHull() const
         deck.right.point[j] = deck.right.point[j] + d1*CVector3d(1,0,0);
     }
     */
-    /* make half deck lower edge on axis X */
+    // make half deck lower edge on axis X
     for ( j = 0 ; j < npb ; j++)
     {
         deck1.bottom.point[j] = deck1.top.point[j];
@@ -83,7 +83,7 @@ CPanelGroup CHullWorker::makeHull() const
     deck1.bottom.point[0] = deck1.left.point[0];
     deck1.bottom.point[npl-1] = deck1.right.point[0];
 
-    ///* duplicate half deck and rotate panels around X axis to tilt sideways */
+    /// duplicate half deck and rotate panels around X axis to tilt sideways
     real deck_angle = 0.1;
     deck2 = deck1.rotate(CPoint3d(0,0,0) , CMatrix::rot3d(0,PI - deck_angle) );
     deck1 = deck1.rotate(CPoint3d(0,0,0) , CMatrix::rot3d(0, deck_angle) );
@@ -94,26 +94,52 @@ CPanelGroup CHullWorker::makeHull() const
     hull.title = hullID;
     hull.panel.push_back(deck2);
     
-    ///* make sides */
+    /// make sides 
     v1 = CVector3d(LOA/50, -LOA/20, 0);
     for ( j = 0 ; j < npb ; j++)
     {
-        side.top.point[j] = deck1.top.point[j];
-        side.bottom.point[j] = side.top.point[j] + v1;
+        side1.top.point[j] = deck1.top.point[j];
+        side1.bottom.point[j] = side1.top.point[j] + v1;
     }
-    side.left.fill(side.bottom.point[0],side.top.point[0]);
-    side.right.fill(side.bottom.point[npb-1], side.top.point[npb-1]);
-    hull.panel.push_back(side);
+    side1.left.fill(side1.bottom.point[0],side1.top.point[0]);
+    side1.right.fill(side1.bottom.point[npb-1], side1.top.point[npb-1]);
+    hull.panel.push_back(side1);
     
     for ( j = 0 ; j < npb ; j++)
     {
-        side.top.point[j] = deck2.top.point[j];
-        side.bottom.point[j] = side.top.point[j] + v1;
+        side2.top.point[j] = deck2.top.point[j];
+        side2.bottom.point[j] = side2.top.point[j] + v1;
     }
-    side.left.fill(side.bottom.point[0],side.top.point[0]);
-    side.right.fill(side.bottom.point[npb-1], side.top.point[npb-1]);
+    side2.left.fill(side2.bottom.point[0],side2.top.point[0]);
+    side2.right.fill(side2.bottom.point[npb-1], side2.top.point[npb-1]);
+    hull.panel.push_back(side2);
+    
+    /// make stern
+    side.top = CSide (npl);
+    side.bottom = CSide(npl);
+    for (j = 0; j < npl; j++)
+    {
+        side.top.point[j] = deck1.right.point[j];
+    }
+    side.bottom.point[0] = side1.bottom.point[npb-1];
+    side.bottom.point[0].z() = 0;
+    side.bottom.point[npl-1] = side1.bottom.point[npb-1];
+    side.bottom.fill(side.bottom.point[0], side.bottom.point[npl-1]);
+    side.left.fill(side.bottom.point[0], side.top.point[0]);
+    side.right.fill(side.bottom.point[npl-1], side.top.point[npl-1]);
     hull.panel.push_back(side);
     
+    for (j = 0; j < npl; j++)
+    {
+        side.top.point[j] = deck2.right.point[j];
+    }
+    //side.bottom.point[0] = side.top.point[0] + v1;
+    side.bottom.point[npl-1] = side2.bottom.point[npb-1];
+    side.bottom.fill(side.bottom.point[0], side.bottom.point[npl-1]);
+    side.left.fill(side.bottom.point[0], side.top.point[0]);
+    side.right.fill(side.bottom.point[npl-1], side.top.point[npl-1]);
+    hull.panel.push_back(side);
+     
     return hull;
 }
 
