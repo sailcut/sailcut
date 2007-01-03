@@ -42,9 +42,31 @@ CFormHullDef::CFormHullDef( QWidget* parent, CHullDef * hullptr )
        the user clicks OK */
     hulldef = hullptr;
 
-    txtHullID->setText(QString(hulldef->hullID));
-
-//    txtLOA->setText( QString::number(hulldef->LOA ) );
+    txt_HullID->setText(QString(hulldef->hullID));
+    // deck parameters
+    txt_DLOA->setText( QString::number(hulldef->DLOA) );
+    txt_DfwdHeight->setText( QString::number(hulldef->DfwdHeight) );
+    txt_DmidHeight->setText( QString::number(hulldef->DmidHeight) );
+    txt_DaftHeight->setText( QString::number(hulldef->DaftHeight) );
+    txt_DBW->setText( QString::number(hulldef->DBW) );
+    txt_DaftW->setText( QString::number(hulldef->DaftW) );
+    spinBox_DBWPos->setValue(hulldef->DBWPos);
+    spinBox_StemA->setValue(hulldef->StemA);
+    spinBox_DfwdShape->setValue(hulldef->DfwdShape);
+    spinBox_DaftShape->setValue(hulldef->DaftShape);
+    // bottom parameters
+    txt_BfwdHeight->setText( QString::number(hulldef->BfwdHeight) );
+    txt_BmidHeight->setText( QString::number(hulldef->BmidHeight) );
+    txt_BaftHeight->setText( QString::number(hulldef->BaftHeight) );
+    spinBox_BdeadriseA->setValue(hulldef->BdeadriseA);
+    spinBox_BsweepA->setValue(hulldef->BsweepA);
+    // planking parameters
+    spinBox_NBPlank->setValue(hulldef->NBPlank);
+    spinBox_TopPlankA->setValue(hulldef->TopPlankA);
+    spinBox_LowPlankA->setValue(hulldef->LowPlankA);
+    
+    checkBox_AutoPlank->setChecked(hulldef->AutoPlank);
+    
     connect( btnOK, SIGNAL( clicked() ), this, SLOT( accept() ) );
     connect( btnCancel, SIGNAL( clicked() ), this, SLOT( reject() ) );
 }
@@ -68,8 +90,10 @@ void CFormHullDef::accept()
  */
 bool CFormHullDef::check()
 {
-    hulldef->hullID = txtHullID->text();
+    hulldef->hullID = txt_HullID->text();
     ///  return true IF everything is OK
+    
+    
     return true;
 }
 
