@@ -26,7 +26,29 @@ CHullDef::CHullDef()
 {
     // default values for member variables are set here
     hullID = "Test hull 1";
-    LOA    = 7000;  // length of hull in millimetre
+    DLOA    = 7000;  // length of hull in millimetre
+    DfwdHeight = 1000;
+    DmidHeight = 800;
+    DaftHeight = 850;
+    DBW = 2500;
+    DBWPos = 50;
+    DaftW = 2000;
+    DfwdShape = 2;
+    DaftShape = 3;
+    StemA = 80;
+    
+    BfwdHeight = 100;
+    BmidHeight = 0;
+    BaftHeight = 200;
+    BdeadriseA = 12;
+    BsweepA = 45;
+    
+    NBPlank = 3;
+    AutoPlank = true;
+    TopPlankA = 80;
+    LowPlankA = 30;
+    
+    
 }
 
 
@@ -39,9 +61,30 @@ CHullDef & CHullDef::operator=( const CHullDef &copy )
 {
     if (&copy == this)
         return *this;
-    
+    // else new data to be copied
     hullID = copy.hullID;
-    LOA = copy.LOA;
+    DLOA = copy.DLOA;
+    DfwdHeight = copy.DfwdHeight;
+    DmidHeight = copy.DmidHeight;
+    DaftHeight = copy.DaftHeight;
+    DBW = copy.DBW;
+    DBWPos = copy.DBWPos;
+    DaftW = copy.DaftW;
+    DfwdShape = copy.DfwdShape;
+    DaftShape = copy.DaftShape;
+    StemA = copy.StemA;
+    
+    BfwdHeight = copy.BfwdHeight;
+    BmidHeight = copy.BmidHeight;
+    BaftHeight = copy.BaftHeight;
+    BdeadriseA = copy.BdeadriseA;
+    BsweepA = copy.BsweepA;
+    
+    NBPlank = copy.NBPlank;
+    AutoPlank = copy.AutoPlank;
+    TopPlankA = copy.TopPlankA;
+    LowPlankA = copy.LowPlankA;
+    
     return *this;
 }
 

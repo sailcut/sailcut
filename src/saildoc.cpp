@@ -275,7 +275,7 @@ void CSailDoc::get
     get
         (e, d.hullID,"hullID" );
     get
-        (e, d.LOA,"LOA");
+        (e, d.DLOA,"LOA");
 }
 
 
@@ -724,7 +724,7 @@ void CSailDoc::put( QDomNode &parent, const CHullDef &d, const QString &name )
     parent.appendChild(e);
 
     put(e, d.hullID, "hullID"); 
-    put(e, d.LOA, "LOA");
+    put(e, d.DLOA, "LOA");
 }
 
 

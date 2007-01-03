@@ -39,7 +39,8 @@ CPanelGroup CHullWorker::makeHull() const
     unsigned int j = 0;
     real d1 = 0;
     real mid = 1;
-
+    real LOA = DLOA;
+    
     CPoint3d p1(0, 0, 0);
     CPoint3d p2(LOA, 0, LOA/10);
     CPoint3d p3;

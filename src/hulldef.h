@@ -37,9 +37,46 @@ public:
 
     /** hull ID name */
     QString hullID;
-
-    /** boat deck Length */
-    real LOA;
+    /** deck Length */
+    real DLOA;
+    /** deck forward height*/
+    real DfwdHeight;
+    /** deck Middle height*/
+    real DmidHeight;
+    /** deck aft height*/
+    real DaftHeight;
+    /** deck max beam width */
+    real DBW;
+    /** deck max beam width position */
+    unsigned int DBWPos;
+    /** deck aft width */
+    real DaftW;
+    /** deck forward shape */
+    unsigned int DfwdShape;
+    /** deck aft shape */
+    unsigned int DaftShape;
+    /** stem angle from horizontal */
+    unsigned int StemA;
+    /** bottom forward height */
+    real BfwdHeight;
+    /** bottom middle height */
+    real BmidHeight;
+    /** bottom aft height */
+    real BaftHeight;
+    /** bottom dead rise angle */
+    unsigned int BdeadriseA;
+    /** bottom sweep angle */
+    unsigned int BsweepA;
+    /** Number of side planks */
+    unsigned int NBPlank;
+    /** top plank angle from horizontal */
+    unsigned int TopPlankA;
+    /** lower plank angle from horizontal */
+    unsigned int LowPlankA;
+    /** auto planking chech box */
+    bool AutoPlank;
+    
+    
 };
 
 #endif
