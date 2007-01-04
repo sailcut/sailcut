@@ -37,6 +37,9 @@ public:
     bool check();
     virtual void accept();
 
+protected slots:
+    void slotAutoPlank();
+
 protected:
     /** a pointer to the hull definion */
     CHullDef *hulldef;

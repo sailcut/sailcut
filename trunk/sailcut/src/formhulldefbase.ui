@@ -35,7 +35,7 @@
     </font>
    </property>
    <property name="currentIndex" >
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tab" >
     <attribute name="title" >
@@ -447,7 +447,7 @@
         <item row="1" column="0" >
          <widget class="QCheckBox" name="checkBox_AutoPlank" >
           <property name="text" >
-           <string>Auto planking</string>
+           <string>Automatic planking</string>
           </property>
           <property name="checked" >
            <bool>true</bool>
@@ -1743,6 +1743,61 @@
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>txt_HullID</tabstop>
+  <tabstop>txt_DLOA</tabstop>
+  <tabstop>txt_DfwdHeight</tabstop>
+  <tabstop>txt_DmidHeight</tabstop>
+  <tabstop>txt_DaftHeight</tabstop>
+  <tabstop>txt_DBW</tabstop>
+  <tabstop>spinBox_DBWPos</tabstop>
+  <tabstop>txt_DaftW</tabstop>
+  <tabstop>spinBox_StemA</tabstop>
+  <tabstop>spinBox_DfwdShape</tabstop>
+  <tabstop>spinBox_DaftShape</tabstop>
+  <tabstop>txt_BfwdHeight</tabstop>
+  <tabstop>txt_BmidHeight</tabstop>
+  <tabstop>txt_BaftHeight</tabstop>
+  <tabstop>spinBox_BdeadriseA</tabstop>
+  <tabstop>spinBox_BsweepA</tabstop>
+  <tabstop>spinBox_NBPlank</tabstop>
+  <tabstop>checkBox_AutoPlank</tabstop>
+  <tabstop>spinBox_TopPlankA</tabstop>
+  <tabstop>spinBox_LowPlankA</tabstop>
+  <tabstop>btnOK</tabstop>
+  <tabstop>btnCancel</tabstop>
+  <tabstop>spinBox_1_1</tabstop>
+  <tabstop>spinBox_1_2</tabstop>
+  <tabstop>spinBox_1_3</tabstop>
+  <tabstop>spinBox_1_4</tabstop>
+  <tabstop>spinBox_1_5</tabstop>
+  <tabstop>spinBox_1_6</tabstop>
+  <tabstop>spinBox_1_10</tabstop>
+  <tabstop>spinBox_1_9</tabstop>
+  <tabstop>spinBox_1_8</tabstop>
+  <tabstop>spinBox_1_7</tabstop>
+  <tabstop>spinBox_1_11</tabstop>
+  <tabstop>spinBox_1_15</tabstop>
+  <tabstop>spinBox_1_14</tabstop>
+  <tabstop>spinBox_1_13</tabstop>
+  <tabstop>spinBox_1_12</tabstop>
+  <tabstop>spinBox_1_16</tabstop>
+  <tabstop>spinBox_1_20</tabstop>
+  <tabstop>spinBox_1_19</tabstop>
+  <tabstop>spinBox_1_18</tabstop>
+  <tabstop>spinBox_1_17</tabstop>
+  <tabstop>spinBox_1_21</tabstop>
+  <tabstop>spinBox_1_25</tabstop>
+  <tabstop>spinBox_1_24</tabstop>
+  <tabstop>spinBox_1_23</tabstop>
+  <tabstop>spinBox_1_22</tabstop>
+  <tabstop>spinBox_1_26</tabstop>
+  <tabstop>spinBox_1_30</tabstop>
+  <tabstop>spinBox_1_29</tabstop>
+  <tabstop>spinBox_1_28</tabstop>
+  <tabstop>spinBox_1_27</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

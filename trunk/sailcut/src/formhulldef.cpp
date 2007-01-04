@@ -69,6 +69,7 @@ CFormHullDef::CFormHullDef( QWidget* parent, CHullDef * hullptr )
     
     connect( btnOK, SIGNAL( clicked() ), this, SLOT( accept() ) );
     connect( btnCancel, SIGNAL( clicked() ), this, SLOT( reject() ) );
+    //connect( checkBox_AutoPlank, SIGNAL( buttonClicked(QAbstractButton *) ), this, SLOT( slotAutoPlank() ) );
 }
 
 
@@ -80,7 +81,7 @@ CFormHullDef::CFormHullDef( QWidget* parent, CHullDef * hullptr )
 void CFormHullDef::accept()
 {
     // return data if everything is OK. /////////////////////////
-    if (check() ==true)
+    if (check() == true)
         QDialog::accept();
 }
 
@@ -90,11 +91,55 @@ void CFormHullDef::accept()
  */
 bool CFormHullDef::check()
 {
-    hulldef->hullID = txt_HullID->text();
     ///  return true IF everything is OK
+    long L1=1, L2=1;
+    real A1=0, A2=0;
+    bool flag = true;
+    QString txt;
+    
+    ///  create four palettes
+    QPalette palStd, palHi, palLo, palRel;
+    palStd = txt_HullID->palette();
+    palLo = palHi = palRel = palStd;
+    palLo.setColor( QPalette::Text, Qt::magenta); // too low value
+    palHi.setColor( QPalette::Text, Qt::red );    // too high value
+    palRel.setColor( QPalette::Text, Qt::blue );  // related value to be checked
+    
+    /// check hull ID
+    txt = txt_HullID->text();
+    txt = txt.simplified();
+    if (txt.length() > 40)
+    {
+        txt.truncate(40);
+        flag = false;
+        txt_HullID->setPalette(palHi);
+        txt_HullID->setText(QString(txt));
+    }
+    else
+    {
+        txt_HullID->setPalette(palStd);
+        txt_HullID->setText(QString(txt));
+    }
+    hulldef->hullID = txt;
+    
+    /// check deck data
     
     
-    return true;
+    /// check automatic planking 
+    if (checkBox_AutoPlank->isChecked() )
+        hulldef->AutoPlank = true;
+    else
+        hulldef->AutoPlank = false;
+    
+    ///  return true IF everything is OK 
+    return flag;
 }
 
-
+/** slot for dealing with automatic planking
+ 
+void CFormHullDef::slotAutoPlank()
+{
+    if (checkBox_AutoPlank->isChecked() )
+        hulldef->AutoPlank = true;
+}
+*/
