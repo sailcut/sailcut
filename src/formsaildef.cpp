@@ -282,7 +282,7 @@ void CFormSailDef::setSailType( enumSailType type )
 void CFormSailDef::accept()
 {
     // return data if everything is OK. /////////////////////////
-    if (check() ==true)
+    if (check() == true)
         QDialog::accept();
 }
 
@@ -294,7 +294,7 @@ bool CFormSailDef::check()
 {
     long L1=1, L2=1;
     real A1=0, A2=0;
-    bool flag=true;
+    bool flag = true;
     QString txt;
     ///  create four palettes
     QPalette palStd, palHi, palLo, palRel;
@@ -1108,7 +1108,6 @@ void CFormSailDef::slotCompute()
     txtc = txtc  + "\n  h= "+QString::number(h)+"\t w= "+QString::number(int(w)) +" mm";
 
     displayData(  txta, txtb, txtc, txtd, txte );
-
 }
 
 
