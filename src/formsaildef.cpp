@@ -345,10 +345,9 @@ bool CFormSailDef::check()
         txtLOA->setPalette(palStd);
     }
     txtLOA->setText(QString::number(saildef->LOA));
+    L1 = (long)(saildef->LOA);
 
     saildef->foreJ = txtTriangBase->text().toDouble();
-
-    L1 = (long)(saildef->LOA);
 
     if (saildef->foreJ > 0.9* L1)
     {
