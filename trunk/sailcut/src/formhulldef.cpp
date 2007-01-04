@@ -69,7 +69,7 @@ CFormHullDef::CFormHullDef( QWidget* parent, CHullDef * hullptr )
     
     connect( btnOK, SIGNAL( clicked() ), this, SLOT( accept() ) );
     connect( btnCancel, SIGNAL( clicked() ), this, SLOT( reject() ) );
-    //connect( checkBox_AutoPlank, SIGNAL( buttonClicked(QAbstractButton *) ), this, SLOT( slotAutoPlank() ) );
+    connect( checkBox_AutoPlank, SIGNAL( buttonClicked(QAbstractButton *) ), this, SLOT( slotAutoPlank() ) );
 }
 
 
@@ -123,7 +123,121 @@ bool CFormHullDef::check()
     hulldef->hullID = txt;
     
     /// check deck data
+    hulldef->DLOA = txt_DLOA->text().toDouble();
+
+    if (hulldef->DLOA < 100)
+    {
+        flag = false;
+        txt_DLOA->setPalette(palLo);
+        hulldef->DLOA = 100;
+    }
+    else if (hulldef->DLOA > 100000)
+    {
+        flag = false;
+        txt_DLOA->setPalette(palHi);
+        hulldef->DLOA = 100000;
+    }
+    else
+    {
+        txt_DLOA->setPalette(palStd);
+    }
+    txt_DLOA->setText(QString::number(hulldef->DLOA));
+    L1 = (long)(hulldef->DLOA);
     
+    hulldef->DfwdHeight = txt_DfwdHeight->text().toDouble();
+    hulldef->DmidHeight = txt_DmidHeight->text().toDouble();
+    hulldef->DaftHeight = txt_DaftHeight->text().toDouble();
+    
+    hulldef->DBW = txt_DBW->text().toDouble();
+    if (hulldef->DBW < L1/20)
+    {
+        flag = false;
+        txt_DBW->setPalette(palLo);
+        hulldef->DBW = ceil(L1/20);
+    }
+    else if (hulldef->DBW > L1/2)
+    {
+        flag = false;
+        txt_DBW->setPalette(palHi);
+        hulldef->DBW = floor(L1/2);
+    }
+    else
+    {
+        txt_DBW->setPalette(palStd);
+    }
+    txt_DBW->setText(QString::number(hulldef->DBW));
+    
+    hulldef->DaftW = txt_DaftW->text().toDouble();
+    if (hulldef->DaftW < 0)
+    {
+        flag = false;
+        txt_DaftW->setPalette(palLo);
+        hulldef->DaftW = 0;
+    }
+    else if (hulldef->DaftW > hulldef->DBW)
+    {
+        flag = false;
+        txt_DaftW->setPalette(palHi);
+        hulldef->DaftW = floor(hulldef->DBW);
+    }
+    else
+    {
+        txt_DaftW->setPalette(palStd);
+    }
+    txt_DaftW->setText(QString::number(hulldef->DaftW));
+    
+    hulldef->DBWPos = spinBox_DBWPos->value();
+    hulldef->StemA = spinBox_StemA->value();
+    hulldef->DfwdShape = spinBox_DfwdShape->value();
+    hulldef->DaftShape = spinBox_DaftShape->value();
+    
+    /// check bottom data
+    hulldef->BfwdHeight = txt_BfwdHeight->text().toDouble();
+    if (hulldef->BfwdHeight > hulldef->DfwdHeight - L1/10)
+    {
+        flag = false;
+        txt_BfwdHeight->setPalette(palHi);
+        hulldef->BfwdHeight = floor(hulldef->DfwdHeight - L1/10);
+    }
+    else
+    {
+        txt_BfwdHeight->setPalette(palStd);
+    }
+    txt_BfwdHeight->setText(QString::number(hulldef->BfwdHeight));
+    
+    hulldef->BmidHeight = txt_BmidHeight->text().toDouble();
+    if (hulldef->BmidHeight > hulldef->DmidHeight - L1/10)
+    {
+        flag = false;
+        txt_BmidHeight->setPalette(palHi);
+        hulldef->BmidHeight = floor(hulldef->DmidHeight - L1/10);
+    }
+    else
+    {
+        txt_BmidHeight->setPalette(palStd);
+    }
+    txt_BmidHeight->setText(QString::number(hulldef->BmidHeight));
+    
+    hulldef->BaftHeight = txt_BaftHeight->text().toDouble();
+    if (hulldef->BaftHeight > hulldef->DaftHeight - L1/10)
+    {
+        flag = false;
+        txt_BaftHeight->setPalette(palHi);
+        hulldef->BaftHeight = floor(hulldef->DaftHeight - L1/10);
+    }
+    else
+    {
+        txt_BaftHeight->setPalette(palStd);
+    }
+    txt_BaftHeight->setText(QString::number(hulldef->BaftHeight));
+    
+    hulldef->BdeadriseA = spinBox_BdeadriseA->value();
+    hulldef->BsweepA = spinBox_BsweepA->value();
+    
+    /// planking parameters
+    hulldef->NBPlank = spinBox_NBPlank->value();
+    hulldef->TopPlankA = spinBox_TopPlankA->value();
+    hulldef->LowPlankA = spinBox_LowPlankA->value();
     
     /// check automatic planking 
     if (checkBox_AutoPlank->isChecked() )
@@ -136,10 +250,12 @@ bool CFormHullDef::check()
 }
 
 /** slot for dealing with automatic planking
- 
+ */ 
 void CFormHullDef::slotAutoPlank()
 {
     if (checkBox_AutoPlank->isChecked() )
         hulldef->AutoPlank = true;
+        
+    check();
 }
-*/
+
