@@ -31,11 +31,12 @@ CHullDef::CHullDef()
     DmidHeight = 800;
     DaftHeight = 850;
     DBW = 2500;
-    DBWPos = 50;
+    DBWPos = 50;  // percent of deck length
     DaftW = 2000;
+    StemA = 80;     // degrees from horizontal
+    TransomA = 80;
     DfwdShape = 2;
     DaftShape = 3;
-    StemA = 80;
     
     BfwdHeight = 100;
     BmidHeight = 0;
@@ -45,7 +46,7 @@ CHullDef::CHullDef()
     
     NBPlank = 3;
     AutoPlank = true;
-    TopPlankA = 80;
+    TopPlankA = 80;  // degrees from horizontal
     LowPlankA = 30;
     
     
@@ -70,9 +71,10 @@ CHullDef & CHullDef::operator=( const CHullDef &copy )
     DBW = copy.DBW;
     DBWPos = copy.DBWPos;
     DaftW = copy.DaftW;
+    StemA = copy.StemA;
+    TransomA = copy.TransomA;
     DfwdShape = copy.DfwdShape;
     DaftShape = copy.DaftShape;
-    StemA = copy.StemA;
     
     BfwdHeight = copy.BfwdHeight;
     BmidHeight = copy.BmidHeight;
