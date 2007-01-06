@@ -43,7 +43,7 @@ CFormHullDef::CFormHullDef( QWidget* parent, CHullDef * hullptr )
     hulldef = hullptr;
 
     txt_HullID->setText(QString(hulldef->hullID));
-    // deck parameters
+    /// deck parameters
     txt_DLOA->setText( QString::number(hulldef->DLOA) );
     txt_DfwdHeight->setText( QString::number(hulldef->DfwdHeight) );
     txt_DmidHeight->setText( QString::number(hulldef->DmidHeight) );
@@ -51,22 +51,28 @@ CFormHullDef::CFormHullDef( QWidget* parent, CHullDef * hullptr )
     txt_DBW->setText( QString::number(hulldef->DBW) );
     txt_DaftW->setText( QString::number(hulldef->DaftW) );
     spinBox_DBWPos->setValue(hulldef->DBWPos);
+    
     spinBox_StemA->setValue(hulldef->StemA);
+    spinBox_TransomA->setValue(hulldef->TransomA);
+    
     spinBox_DfwdShape->setValue(hulldef->DfwdShape);
     spinBox_DaftShape->setValue(hulldef->DaftShape);
-    // bottom parameters
+    
+    /// bottom parameters
     txt_BfwdHeight->setText( QString::number(hulldef->BfwdHeight) );
     txt_BmidHeight->setText( QString::number(hulldef->BmidHeight) );
     txt_BaftHeight->setText( QString::number(hulldef->BaftHeight) );
     spinBox_BdeadriseA->setValue(hulldef->BdeadriseA);
     spinBox_BsweepA->setValue(hulldef->BsweepA);
-    // planking parameters
+    
+    /// planking parameters
     spinBox_NBPlank->setValue(hulldef->NBPlank);
     spinBox_TopPlankA->setValue(hulldef->TopPlankA);
     spinBox_LowPlankA->setValue(hulldef->LowPlankA);
     
     checkBox_AutoPlank->setChecked(hulldef->AutoPlank);
     
+    /// signal and slots connections
     connect( btnOK, SIGNAL( clicked() ), this, SLOT( accept() ) );
     connect( btnCancel, SIGNAL( clicked() ), this, SLOT( reject() ) );
     connect( checkBox_AutoPlank, SIGNAL( buttonClicked(QAbstractButton *) ), this, SLOT( slotAutoPlank() ) );
@@ -187,7 +193,10 @@ bool CFormHullDef::check()
     txt_DaftW->setText(QString::number(hulldef->DaftW));
     
     hulldef->DBWPos = spinBox_DBWPos->value();
+    
     hulldef->StemA = spinBox_StemA->value();
+    hulldef->TransomA = spinBox_TransomA->value();
+    
     hulldef->DfwdShape = spinBox_DfwdShape->value();
     hulldef->DaftShape = spinBox_DaftShape->value();
     

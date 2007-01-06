@@ -37,45 +37,48 @@ public:
 
     /** hull ID name */
     QString hullID;
-    /** deck Length */
+    /** deck Length in millimeter */
     real DLOA;
-    /** deck forward height*/
+    /** deck forward height in millimeter */
     real DfwdHeight;
-    /** deck Middle height*/
+    /** deck Middle height in millimeter */
     real DmidHeight;
-    /** deck aft height*/
+    /** deck aft height in millimeter */
     real DaftHeight;
-    /** deck max beam width */
+    /** deck max beam width in millimeter */
     real DBW;
-    /** deck max beam width position */
+    /** deck max beam width position in percent of deck length */
     unsigned int DBWPos;
-    /** deck aft width */
+    /** deck aft width in millimeter */
     real DaftW;
-    /** deck forward shape */
-    unsigned int DfwdShape;
-    /** deck aft shape */
-    unsigned int DaftShape;
-    /** stem angle from horizontal */
+    /** stem angle in degree from horizontal */
     unsigned int StemA;
-    /** bottom forward height */
+    /** transom angle in degree from horizontal */
+    unsigned int TransomA;
+    /** deck forward shape coefficient (power of x) */
+    unsigned int DfwdShape;
+    /** deck aft shape coefficient (power of x) */
+    unsigned int DaftShape;
+    // bottom data
+    /** bottom forward height in millimeter */
     real BfwdHeight;
-    /** bottom middle height */
+    /** bottom middle height in millimeter */
     real BmidHeight;
-    /** bottom aft height */
+    /** bottom aft height in millimeter */
     real BaftHeight;
-    /** bottom dead rise angle */
+    /** bottom dead rise angle in degree from horizontal */
     unsigned int BdeadriseA;
-    /** bottom sweep angle */
+    /** bottom sweep angle in degree forward of transverse axis */
     unsigned int BsweepA;
+    //planking data
     /** Number of side planks */
     unsigned int NBPlank;
-    /** top plank angle from horizontal */
-    unsigned int TopPlankA;
-    /** lower plank angle from horizontal */
-    unsigned int LowPlankA;
     /** auto planking chech box */
     bool AutoPlank;
-    
+    /** top plank angle in degree from horizontal */
+    unsigned int TopPlankA;
+    /** lower plank angle in degree from horizontal */
+    unsigned int LowPlankA;
     
 };
 
