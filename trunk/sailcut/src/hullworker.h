@@ -35,6 +35,15 @@ public:
     CHullWorker(const CHullDef &d);
 
     CPanelGroup makeHull() const;
+
+protected:
+    /** central longitudinal plane X-Y */
+    CSubSpace central;  
+    /** deck plane */
+    CSubSpace deck;     
+    /** transom plane */
+    CSubSpace transom;  
+
 };
 
 #endif

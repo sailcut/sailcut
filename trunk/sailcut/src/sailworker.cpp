@@ -35,20 +35,20 @@ CSailWorker::CSailWorker(const CSailDef &s) : CSailDef(s)
 {
     /* first compute the coordinates of the corner of the sail */
     CVector3d v, v1;
-    real x=0, headstay=0;
+    real x = 0, headstay = 0;
 
     /* computing the coordinates of the 4 corners of the sail */
     switch (sailType )
     {
     case JIB:
-        x= tackY * foreJ / foreI;
-        headstay= sqrt(foreI * foreI + foreJ * foreJ);
-        rake= foreJ * luffL / headstay;
-        tack = CPoint3d(x, tackY,0);
+        x = tackY * foreJ / foreI;
+        headstay = sqrt(foreI * foreI + foreJ * foreJ);
+        rake = foreJ * luffL / headstay;
+        tack = CPoint3d( x , tackY , 0 );
         //gaffL=1;
-        gaffR=0;
-        gaffRP=50;
-        gaffDeg=atan2(foreI, foreJ) * 180/PI -10;
+        gaffR = 0;
+        gaffRP = 50;
+        gaffDeg = atan2( foreI , foreJ ) * 180/PI - 10;
         break;
     default:
         tack = CPoint3d( tackX, tackY, 0 );
@@ -65,12 +65,12 @@ CSailWorker::CSailWorker(const CSailDef &s) : CSailDef(s)
 
     /* computing triangle tack-peak-clew */
     real aa, b, bb;
-    bb= atan2(peak.y() - tack.y() , peak.x() - tack.x() );
+    bb = atan2(peak.y() - tack.y() , peak.x() - tack.x() );
     b = CVector3d(peak - tack).norm();
     aa = Atriangle(leechL, b, footL);
 
     v1 = CVector3d(footL, 0, 0);  // initial foot vector set on horizontal
-    if (sailType==WING)
+    if (sailType == WING)
         clew = tack + v1;
     else
         clew = tack + CMatrix::rot3d(2, bb-aa) * v1;
@@ -89,7 +89,7 @@ CSailWorker::CSailWorker(const CSailDef &s) : CSailDef(s)
     footVP = CMatrix::rot3d(2, PI/2) * footV.unit();
     gaffVP = CMatrix::rot3d(2, PI/2) * gaffV.unit();
     leechVP = CMatrix::rot3d(2, PI/2) * leechV.unit();
-    luffVP =CMatrix::rot3d(2, PI/2) * luffV.unit();
+    luffVP = CMatrix::rot3d(2, PI/2) * luffV.unit();
 
     /* define useful straight lines */
     foot = CSubSpace3d::line(tack, footV);

@@ -26,21 +26,21 @@ CHullDef::CHullDef()
 {
     // default values for member variables are set here
     hullID = "Test hull 1";
-    DLOA    = 7000;  // length of hull in millimetre
+    DLOA    = 7000;   // length of hull in millimetre
     DfwdHeight = 1000;
-    DmidHeight = 800;
     DaftHeight = 850;
+    DSlopeA = 8;     // degree from horizontal
     DBW = 2500;
-    DBWPos = 50;  // percent of deck length
+    DBWPos = 50;     // percent of deck length
     DaftW = 2000;
-    StemA = 80;     // degrees from horizontal
+    StemA = 80;      // degrees from horizontal
     TransomA = 80;
-    DfwdShape = 2;
+    DfwdShape = 2;   // coefficient power of X
     DaftShape = 3;
     
     BfwdHeight = 100;
-    BmidHeight = 0;
     BaftHeight = 200;
+    BSlopeA = 12;    // degree from horizontal
     BdeadriseA = 12;
     BsweepA = 45;
     
@@ -66,8 +66,8 @@ CHullDef & CHullDef::operator=( const CHullDef &copy )
     hullID = copy.hullID;
     DLOA = copy.DLOA;
     DfwdHeight = copy.DfwdHeight;
-    DmidHeight = copy.DmidHeight;
     DaftHeight = copy.DaftHeight;
+    DSlopeA = copy.DSlopeA;
     DBW = copy.DBW;
     DBWPos = copy.DBWPos;
     DaftW = copy.DaftW;
@@ -77,8 +77,8 @@ CHullDef & CHullDef::operator=( const CHullDef &copy )
     DaftShape = copy.DaftShape;
     
     BfwdHeight = copy.BfwdHeight;
-    BmidHeight = copy.BmidHeight;
     BaftHeight = copy.BaftHeight;
+    BSlopeA = copy.BSlopeA;
     BdeadriseA = copy.BdeadriseA;
     BsweepA = copy.BsweepA;
     

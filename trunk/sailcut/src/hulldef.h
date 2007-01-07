@@ -41,16 +41,16 @@ public:
     real DLOA;
     /** deck forward height in millimeter */
     real DfwdHeight;
-    /** deck Middle height in millimeter */
-    real DmidHeight;
     /** deck aft height in millimeter */
     real DaftHeight;
+    /** deck side slope angle in degree from horizontal */
+    unsigned int DSlopeA;
     /** deck max beam width in millimeter */
     real DBW;
-    /** deck max beam width position in percent of deck length */
-    unsigned int DBWPos;
     /** deck aft width in millimeter */
     real DaftW;
+    /** deck max beam width position in percent of deck length */
+    unsigned int DBWPos;
     /** stem angle in degree from horizontal */
     unsigned int StemA;
     /** transom angle in degree from horizontal */
@@ -62,10 +62,10 @@ public:
     // bottom data
     /** bottom forward height in millimeter */
     real BfwdHeight;
-    /** bottom middle height in millimeter */
-    real BmidHeight;
     /** bottom aft height in millimeter */
     real BaftHeight;
+    /** bottom chine side slope angle in degree from horizontal */
+    unsigned int BSlopeA;
     /** bottom dead rise angle in degree from horizontal */
     unsigned int BdeadriseA;
     /** bottom sweep angle in degree forward of transverse axis */
