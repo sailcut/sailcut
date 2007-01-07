@@ -25,6 +25,19 @@
  */
 CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
 {
+    CPoint3d p0 = CPoint3d( 0 , DfwdHeight , 0 );
+    CVector3d v1 = CVector3d( 1 , 0 , 0 );
+    CVector3d v2 = CVector3d( 0 , 1 , 0 );
+    central = CSubSpace3d::plane( p0 , v1 , v2 );
+    
+    v1 = CVector3d(CPoint3d( 0 , sin(real(-DSlopeA) * PI/180) , cos(real(-DSlopeA) * PI/180) ) - p0);
+    v2 = CVector3d(CPoint3d( DLOA , DaftHeight , 0 ) -p0);
+    deck = CSubSpace3d::plane( 0 , v1 , v2 );
+    
+    p0 = CPoint3d( DLOA , DaftHeight , DaftW/2 );
+    v1 = CVector3d( 0 , 0 , 1 );
+    v2 = CVector3d( cos(real(TransomA) * PI/180) , sin(real(TransomA) * PI/180) , 0 );
+    transom = CSubSpace3d::plane( p0 , v1 , v2 );
 }
 
 

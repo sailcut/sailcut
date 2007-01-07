@@ -46,10 +46,10 @@ CFormHullDef::CFormHullDef( QWidget* parent, CHullDef * hullptr )
     /// deck parameters
     txt_DLOA->setText( QString::number(hulldef->DLOA) );
     txt_DfwdHeight->setText( QString::number(hulldef->DfwdHeight) );
-    txt_DmidHeight->setText( QString::number(hulldef->DmidHeight) );
     txt_DaftHeight->setText( QString::number(hulldef->DaftHeight) );
     txt_DBW->setText( QString::number(hulldef->DBW) );
     txt_DaftW->setText( QString::number(hulldef->DaftW) );
+    spinBox_DSlopeA->setValue(hulldef->DSlopeA);
     spinBox_DBWPos->setValue(hulldef->DBWPos);
     
     spinBox_StemA->setValue(hulldef->StemA);
@@ -60,8 +60,8 @@ CFormHullDef::CFormHullDef( QWidget* parent, CHullDef * hullptr )
     
     /// bottom parameters
     txt_BfwdHeight->setText( QString::number(hulldef->BfwdHeight) );
-    txt_BmidHeight->setText( QString::number(hulldef->BmidHeight) );
     txt_BaftHeight->setText( QString::number(hulldef->BaftHeight) );
+    spinBox_BSlopeA->setValue(hulldef->BSlopeA);
     spinBox_BdeadriseA->setValue(hulldef->BdeadriseA);
     spinBox_BsweepA->setValue(hulldef->BsweepA);
     
@@ -151,8 +151,8 @@ bool CFormHullDef::check()
     L1 = (long)(hulldef->DLOA);
     
     hulldef->DfwdHeight = txt_DfwdHeight->text().toDouble();
-    hulldef->DmidHeight = txt_DmidHeight->text().toDouble();
     hulldef->DaftHeight = txt_DaftHeight->text().toDouble();
+    hulldef->DSlopeA = spinBox_DSlopeA->value();
     
     hulldef->DBW = txt_DBW->text().toDouble();
     if (hulldef->DBW < L1/20)
@@ -214,19 +214,6 @@ bool CFormHullDef::check()
     }
     txt_BfwdHeight->setText(QString::number(hulldef->BfwdHeight));
     
-    hulldef->BmidHeight = txt_BmidHeight->text().toDouble();
-    if (hulldef->BmidHeight > hulldef->DmidHeight - L1/10)
-    {
-        flag = false;
-        txt_BmidHeight->setPalette(palHi);
-        hulldef->BmidHeight = floor(hulldef->DmidHeight - L1/10);
-    }
-    else
-    {
-        txt_BmidHeight->setPalette(palStd);
-    }
-    txt_BmidHeight->setText(QString::number(hulldef->BmidHeight));
-    
     hulldef->BaftHeight = txt_BaftHeight->text().toDouble();
     if (hulldef->BaftHeight > hulldef->DaftHeight - L1/10)
     {
@@ -240,6 +227,7 @@ bool CFormHullDef::check()
     }
     txt_BaftHeight->setText(QString::number(hulldef->BaftHeight));
     
+    hulldef->BSlopeA = spinBox_BSlopeA->value();
     hulldef->BdeadriseA = spinBox_BdeadriseA->value();
     hulldef->BsweepA = spinBox_BsweepA->value();
     
