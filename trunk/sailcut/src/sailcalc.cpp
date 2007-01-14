@@ -20,27 +20,33 @@
 #include "sailcalc.h"
 
 
-/** Compute the normalised roach of a sail side
+/** Compute the normalised roach or round of a sail side
+ *  Return the value of the normalised round at position X
+ *  X is the relative position of the point along the straight edge
+ *  P is the position of the maximum round in percent of the edge length
+ *  The curve is a parabola on either side of the point P
  *
  * @author Robert Laine
  */
 real RoundP( const real &x, const int &p )
 {
     /*
-      X 0..1.0 is the relative position of the point along the edge
-      P is the position of the maximum round in percent of the edge length
-      Y 0..1.0 is the returned value of the normalised round at position X
-      on either side of the point P the curve is a parabola
+      X (0..1) is the relative position of the point along the edge
+      P is the integer position of the maximum round in percent of the edge length
+      The curve is a parabola on either side of the point P 
+      Return Y (0..1) is the value of the normalised round at position X
     */
 
-    real p1=.5, x1=0 , y=0;
+    real p1 = .5, x1 = 0 , y = 0;
 
-    p1 = real(p) / 100;
+    p1 = real(p) / 100; 
+    // limit the position of maximum round of side
     if (p1 < 0.01)
         p1=0.01;
     if (p1 > 0.99)
         p1=0.99;
-
+    
+    // limit the computation of the domain 0..1
     if (x <= 0.00001)
         y=0;
     else if (x >= 1)
@@ -58,23 +64,23 @@ real RoundP( const real &x, const int &p )
 
     return y;
 }
-///////////////////////////////////////////////////////////////////
 
 
 /** Compute the angle of a 2D triangle from its 3 sides length
- *
- * @author Robert Laine
+ *  Return the angle in radian opposite to side a of the triangle
+ *  a b and c are the length of the sides of the triangle 
+ * 
+ *  @author Robert Laine
  */
 real Atriangle( const real &a, real const &b, const real &c )
 {
     /*
-      return the angle AA opposite to side A of the triangle
-      B and C are the sides of the triangle adjacent to the angle AA
-      The returned angle AA is expressed in Radians
+      A  B and C are the length of the sides of the triangle
+      The returned angle AA is the angle opposite to side A expressed in Radians
     */
 
-    real per=0, AA=0;
-    per = (a+b+c)/2;
+    real per = 0, AA = 0;
+    per = (a + b + c) / 2;
 
     if (per < 2E-7)
         AA = PI /3;
@@ -85,18 +91,19 @@ real Atriangle( const real &a, real const &b, const real &c )
 
     return AA;
 }
-//////////////////////////////////////////////////////////////
 
 
 /** Compute the angle of a 3D triangle from its 3 corner points
- *
- * @author Robert Laine
+ *  Return the angle in radian at point pta of the triangle
+ *  Triangle is defined by the 3d points pta, ptb, ptc
+ * 
+ *  @author Robert Laine
  */
 real Atriangle3d ( const CPoint3d &pta, const CPoint3d &ptb, const CPoint3d &ptc )
 {
     /*
-      return the Angle AA at the corner pta of the triangle
-      defined by 3 points in space pta-ptb-ptc
+      The triangle is defined by 3d points pta, ptb, ptc
+      Return the angle AA at the corner pta of the triangle
       The returned angle AA is expressed in Radians
     */
     real AA, a=0, b=0, c=0, per=0;
@@ -121,18 +128,21 @@ real Atriangle3d ( const CPoint3d &pta, const CPoint3d &ptb, const CPoint3d &ptc
 
     return AA;
 }
-///////////////////////////////////
+
 
 /** Compute the distance from a point pta
- *  to a line defined by two points ptb and ptc
- *@author Robert Laine
+ *  to the line defined by the points ptb and ptc
+ *
+ *  @author Robert Laine
  */
 real Distance3d(const CPoint3d &pta, const CPoint3d &ptb, const CPoint3d &ptc)
 {
-    /*  The two points ptb, ptc defining the baseline also define
-    its positive direction from point ptb toward point ptc.
-        It is assumed that the line ptb=>ptc and point pta define
+    /*  The two points ptb and ptc defining the baseline also define
+        its positive direction from point ptb toward point ptc.
+        
+        It is assumed that the line ptb toward ptc and point pta define
         a plane not far from the X-Y plane.
+        
         The routine then returns the distance d with a positive sign
         if the point pta is left of the line ptb=>ptc
         The sign of d is negative if pta is right of the line.
@@ -147,4 +157,3 @@ real Distance3d(const CPoint3d &pta, const CPoint3d &ptb, const CPoint3d &ptc)
 
     return d;
 }
-/////////////////////////////////

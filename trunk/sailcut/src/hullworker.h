@@ -37,13 +37,19 @@ public:
     CPanelGroup makeHull() const;
 
 protected:
-    /** central longitudinal plane X-Y */
-    CSubSpace central;  
+    /** central plane longitudinal X-Y */
+    CSubSpace Pcentral;
     /** deck plane */
-    CSubSpace deck;     
+    CSubSpace Pdeck;
     /** transom plane */
-    CSubSpace transom;  
-
+    CSubSpace Ptransom;
+    /** deck point1 */
+    CPoint3d deckpt1;
+    /** deck point2 */
+    CPoint3d deckpt2;
+    /** deck panel */
+    CPanel deck;
+    
 };
 
 #endif

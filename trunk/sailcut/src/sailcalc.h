@@ -22,9 +22,13 @@
 
 #include <geocpp/geocpp.h>
 
+/* computation of parabolic edge round */
 real RoundP( const real &x, const int &p );
+/* computation of angle of triangle defined by 3 sides */
 real Atriangle( const real &a, const real &b, const real &c );
+/* computation of angle of triangle defined by 3 points */
 real Atriangle3d ( const CPoint3d &pta, const CPoint3d &ptb, const CPoint3d &ptc );
+/* computation of distance of a point to a line defined by 2 points */
 real Distance3d(const CPoint3d &pta, const CPoint3d &ptb, const CPoint3d &ptc);
 
 #endif
