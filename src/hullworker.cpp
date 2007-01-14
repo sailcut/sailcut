@@ -18,6 +18,7 @@
  */
 
 #include "hullworker.h"
+#include "sailcalc.h"
 
 
 /** The constructor does some preliminary calculations to set
@@ -25,19 +26,52 @@
  */
 CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
 {
+    unsigned int j;
+    real d ;
     CPoint3d p0 = CPoint3d( 0 , DfwdHeight , 0 );
+    CPoint3d p1 = CPoint3d( DLOA , DaftHeight , 0 ); // centre point of deck aft
+    CPoint3d p2 = p1;
+    
     CVector3d v1 = CVector3d( 1 , 0 , 0 );
     CVector3d v2 = CVector3d( 0 , 1 , 0 );
-    central = CSubSpace3d::plane( p0 , v1 , v2 );
+    Pcentral = CSubSpace3d::plane( p0 , v1 , v2 );
     
     v1 = CVector3d(CPoint3d( 0 , sin(real(-DSlopeA) * PI/180) , cos(real(-DSlopeA) * PI/180) ) - p0);
-    v2 = CVector3d(CPoint3d( DLOA , DaftHeight , 0 ) -p0);
-    deck = CSubSpace3d::plane( 0 , v1 , v2 );
+    v2 = CVector3d(CPoint3d( p1 - p0 ) );
+    Pdeck = CSubSpace3d::plane( p0 , v1 , v2 );
     
-    p0 = CPoint3d( DLOA , DaftHeight , DaftW/2 );
     v1 = CVector3d( 0 , 0 , 1 );
     v2 = CVector3d( cos(real(TransomA) * PI/180) , sin(real(TransomA) * PI/180) , 0 );
-    transom = CSubSpace3d::plane( p0 , v1 , v2 );
+    Ptransom = CSubSpace3d::plane( p1 , v1 , v2 );
+    
+    CSubSpace Intersection1, Intersection2;
+    // intersection line between deck and transom
+    Intersection1 = Pdeck.intersect(Ptransom);
+    if (Intersection1.getdim() >= 1)
+    {
+        CSubSpace Plane1 = CSubSpace3d::plane( p0 +CVector3d(0,0,DaftW/2) , CVector3d(1,0,0) , CVector3d(0,1,0) );
+        // intersection point at aft edge of deck
+        Intersection2 = Intersection1.intersect(Plane1);
+        if (Intersection2.getdim() == 0)
+            p2 = Intersection2.getp();
+        else throw "ERROR in hullworker constructor = no deck aft edge point";
+    }
+    else throw "ERROR in hullworker constructor = intersection deck transom is not a line";
+     
+    /* laying deck edge */ 
+    unsigned int npl = deck.right.nbpoints();   // number of right/left points
+    unsigned int npb = deck.bottom.nbpoints(); // number of bottom/top points
+    
+    deck.top.fill(p0 , p1);
+    deck.bottom.fill(p0 , p2);
+    deck.left.fill(p0 , p0);
+    deck.right.fill(p2 , p1);
+    
+    for (j = 0 ; j < npb ; j++ )
+    {
+        d = RoundP (real(j)/npb , DBWPos );
+    }
+    
 }
 
 
