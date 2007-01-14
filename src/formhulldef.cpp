@@ -75,7 +75,6 @@ CFormHullDef::CFormHullDef( QWidget* parent, CHullDef * hullptr )
     /// signal and slots connections
     connect( btnOK, SIGNAL( clicked() ), this, SLOT( accept() ) );
     connect( btnCancel, SIGNAL( clicked() ), this, SLOT( reject() ) );
-    connect( checkBox_AutoPlank, SIGNAL( buttonClicked(QAbstractButton *) ), this, SLOT( slotAutoPlank() ) );
 }
 
 
