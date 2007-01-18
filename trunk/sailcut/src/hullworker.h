@@ -37,6 +37,9 @@ public:
     CPanelGroup makeHull() const;
 
 protected:
+    /** deck edge point calculation */
+    CPoint3d DeckPt( const real &x );
+    
     /** central plane longitudinal X-Y */
     CSubSpace Pcentral;
     /** deck plane */
