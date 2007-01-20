@@ -86,7 +86,12 @@ CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
     for ( j=0 ; j <= npb-1 ; j++)
     {   // move point to edge of deck
         p1 = deck.top.point[j];        
-        deck.top.point[j] = DeckPt( p1.x() );
+        p2 = DeckPt( p1.x() );
+        deck.top.point[j] = p2;
+        /*
+        txt = "point " + QString::number (j)+" ----   x = " + QString::number (p2.x()) + "  y = " + QString::number (p2.y()) + "  z = "+ QString::number (p2.z());
+        qDebug ( txt.toLocal8Bit() );
+        */
     }
 }
 
@@ -122,7 +127,7 @@ CPoint3d CHullWorker::DeckPt( const real &x )
     else
     {   // fwd part of deck
         x1 = 1 - ( x / pBmax );
-        z  = (.5 * DBW)  - pow(x1 , DfwdShape);
+        z  = (.5 * DBW)  *(1- pow(x1 , DfwdShape));
     }
     
     // point pt with x input and z computed
@@ -152,28 +157,45 @@ CPoint3d CHullWorker::DeckPt( const real &x )
 CPanelGroup CHullWorker::makeHull() const
 {
     CPanel deck1, deck2, side1, side2, side;
-    
+    unsigned int j;
     CPoint3d p0 = deckPt0;
     CPoint3d p1 = deckPt1;
     CPoint3d p2 = deckPt2;
-    CPoint3d p3;
+    CPoint3d pt;
     CVector3d v1(1, 1, 1);
 
     /// Start laying first half deck edge
     deck1 = deck;
-    
-
-    /*// duplicate half deck and rotate panels around X axis to tilt sideways
-    real deck_angle = real(DSlopeA) * PI/180;
-    deck2 = deck1.rotate(CPoint3d(0,0,0) , CMatrix::rot3d(0,PI + 2* deck_angle) );
-    */
-
-    /* add first and second half of the deck to make hull 
     CPanelGroup hull(deck1);
     hull.type = HULL;
     hull.title = hullID;
+    
+    unsigned int npl = deck.right.nbpoints();   // number of right/left points
+    unsigned int npb = deck.bottom.nbpoints(); // number of bottom/top points
+
+    /// create symetrical half deck 
+    for ( j = 0 ; j <= npb-1 ; j++ )
+    {
+        pt = deck1.top.point[j];
+        pt.z() = -pt.z();
+        deck2.top.point[j] = pt;
+        
+        pt = deck1.bottom.point[j];
+        pt.z() = pt.z();
+        deck2.bottom.point[j] = pt;
+    } 
+
+    for (j=0 ; j <= npl-1 ; j++ )
+    {
+        pt = deck1.left.point[j];
+        pt.z() = -pt.z();
+        deck2.left.point[j] = pt;
+        
+        pt = deck1.right.point[j];
+        pt.z() = -pt.z();
+        deck2.right.point[j] = pt;
+    } 
     hull.panel.push_back(deck2);
-    */
     
     /*
     // make sides 
