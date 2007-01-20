@@ -26,32 +26,50 @@
  */
 CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
 {
-    CPoint3d p0 = CPoint3d( 0 , DfwdHeight , 0 );
-    CPoint3d p1 = CPoint3d( DLOA , DaftHeight , 0 ); // centre point of deck aft
-    CPoint3d p2 = p1;
+    deckPt0 = CPoint3d( 0 , DfwdHeight , 0 );
+    deckPt1 = CPoint3d( DLOA , DaftHeight , 0 ); // centre point of deck aft
+    deckPt2 = deckPt1; 
+    CPoint3d p1, p2;
+    QString txt;
+    /*
+    txt = "point 0 ----   x = " + QString::number (p0.x() ) + "  y = " + QString::number (p0.y() ) + "  z = "+ QString::number (p0.z() );
+    qDebug ( txt.toLocal8Bit() );
+    */
     // compute the vertical central plane
     CVector3d v1 = CVector3d( 1 , 0 , 0 );
     CVector3d v2 = CVector3d( 0 , 1 , 0 );
-    Pcentral = CSubSpace3d::plane( p0 , v1 , v2 );
-    // compute the deck plane
-    v1 = CVector3d(CPoint3d( 0 , sin(real(-DSlopeA) * PI/180) , cos(real(-DSlopeA) * PI/180) ) - p0);
-    v2 = CVector3d(CPoint3d( p1 - p0 ) );
-    Pdeck = CSubSpace3d::plane( p0 , v1 , v2 );
-    // compute the transom plane
-    v1 = CVector3d( 0 , 0 , 1 );
-    v2 = CVector3d( cos(real(TransomA) * PI/180) , sin(real(TransomA) * PI/180) , 0 );
-    Ptransom = CSubSpace3d::plane( p1 , v1 , v2 );
+    Pcentral = CSubSpace3d::plane( deckPt0 , v1 , v2 );
     
-    CSubSpace Intersection1, Intersection2;
+    /// compute the deck plane
+    // vector v1 is sideway tilt of deck
+    v1 = CVector3d( 0 , -sin(real(DSlopeA)*PI/180) , cos(real(DSlopeA)*PI/180) );
+    // vector v2 is fore-aft slope of deck
+    v2 = CVector3d(CPoint3d( deckPt1 - deckPt0 ) );
+    Pdeck = CSubSpace3d::plane( deckPt0 , v1 , v2 );
+     
+    /// compute the transom plane
+    // vector v1 parrallel to Z axis
+    v1 = CVector3d( 0 , 0 , 1 ); 
+    // vector v2 in inclined transom plane
+    v2 = CVector3d( cos(real(TransomA) * PI/180) , sin(real(TransomA) * PI/180) , 0 );
+    Ptransom = CSubSpace3d::plane( deckPt1 , v1 , v2 );
+    
     // compute intersection line between deck and transom
-    Intersection1 = Pdeck.intersect(Ptransom);
-    if (Intersection1.getdim() >= 1)
+    CSubSpace Line1;
+    Line1 = Pdeck.intersect(Ptransom);
+    
+    // compute intersection point of line1 with central plane located at aft width
+    CSubSpace Intersection2;
+    if (Line1.getdim() == 1)
     {
-        CSubSpace Plane1 = CSubSpace3d::plane( p0 +CVector3d(0,0,DaftW/2) , CVector3d(1,0,0) , CVector3d(0,1,0) );
-        // compute intersection point at aft edge of deck
-        Intersection2 = Intersection1.intersect(Plane1);
+        v1 = CVector3d( 1 , 0 , 0 );
+        v2 = CVector3d( 0 , 1 , 0 );
+        p2 = deckPt1 + CVector3d(0 , 0, DaftW/2); // initial deck aft edge point
+        CSubSpace Plane1 = CSubSpace3d::plane( p2 , v1 , v2 );
+        // compute intersection point at real aft edge of deck
+        Intersection2 = Line1.intersect(Plane1);
         if (Intersection2.getdim() == 0)
-            p2 = Intersection2.getp();
+            deckPt2 = Intersection2.getp();
         else throw "ERROR in hullworker constructor = no deck aft edge point";
     }
     else throw "ERROR in hullworker constructor = intersection deck transom is not a line";
@@ -61,20 +79,20 @@ CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
     //unsigned int npl = deck.right.nbpoints();   // number of right/left points
     unsigned int npb = deck.bottom.nbpoints(); // number of bottom/top points
     
-    deck.top.fill(p0 , p1);
-    deck.bottom.fill(p0 , p2);
-    deck.left.fill(p0 , p0);
-    deck.right.fill(p2 , p1);
-    for ( j=0 ; j< npb-1 ; j++)
+    deck.bottom.fill(deckPt0 , deckPt1);   // centre line
+    deck.top.fill(deckPt0 , deckPt2);      // deck edge
+    deck.left.fill(deckPt0 , deckPt0);     // stem
+    deck.right.fill(deckPt2 , deckPt1);    // transom
+    for ( j=0 ; j <= npb-1 ; j++)
     {   // move point to edge of deck
-        deck.bottom.point[j] = DeckPt( deck.bottom.point[j].x() );
+        p1 = deck.top.point[j];        
+        deck.top.point[j] = DeckPt( p1.x() );
     }
 }
 
-/** Compute the deck edge point function of x
- *  Return the 3D point at position x
- *  x is the position of the point along the centre line
- *  The deck edge curve is a parabola on either side of the maximum beam point
+/** Return the 3D point at the deck edge function of x
+ *  x is the absisse of the point along the centre line
+ *  The deck edge curve is a power curve on either side of the maximum beam point
  *
  * @author Robert Laine
  */
@@ -86,29 +104,37 @@ CPoint3d CHullWorker::DeckPt( const real &x )
       The curve is a parabola on either side of the point P 
       Return Y (0..1) is the value of the normalised round at position X
     */
+    QString txt;
 
     real x1 = 0 , y = 0, z = 0;
     // compute position of max beam
-    real p1 = real(DBWPos) * DLOA / 100; 
+    real pBmax = real(DBWPos) * DLOA / 100; 
     
-    if (x > p1)
+    if (x > pBmax)
     {   // aft part of deck
-        x1 = (x - p1) / (DLOA - p1);
-        z  = .5 * DBW + .5* (DaftW - DBW)* pow(x1 , DaftShape);
+        x1 = (x - pBmax) / (deckPt2.x() - pBmax);
+        z  = (.5 * DBW) + .5* (DaftW - DBW)* pow(x1 , DaftShape);
+        /* 
+        txt = "pt        x1 = " + QString::number (x1) + "  z = "+ QString::number (z);
+        qDebug ( txt.toLocal8Bit() );
+        */
     }
     else
     {   // fwd part of deck
-        x1 = 1 - x / p1;
-        z  = .5* DBW * (1 - pow(x1,DfwdShape) );
+        x1 = 1 - ( x / pBmax );
+        z  = (.5 * DBW)  - pow(x1 , DfwdShape);
     }
-
-    CPoint3d pt = CPoint3d (x,y,z);
-    CSubSpace Intersection1, line1;
-    // vertical line passing through point pt
+    
+    // point pt with x input and z computed
+    CPoint3d pt = CPoint3d (x , y , z);
+    // define vertical line1 passing through point pt
+    CSubSpace line1;
     line1 =  CSubSpace3d::line (pt , CVector3d (0, 1, 0) );
 
-    // compute vertical intersection with deck
+    // project pt vertically on real deck
+    CSubSpace Intersection1;
     Intersection1 = Pdeck.intersect(line1);
+    
     if (Intersection1.getdim() == 0 )
         pt = Intersection1.getp();
     else
@@ -126,67 +152,31 @@ CPoint3d CHullWorker::DeckPt( const real &x )
 CPanelGroup CHullWorker::makeHull() const
 {
     CPanel deck1, deck2, side1, side2, side;
-    unsigned int j = 0;
-    real d1 = 0;
-    real mid = 1;   
-
-    real LOA = DLOA;
     
-    CPoint3d p1(0, 0, 0);
-    CPoint3d p2(LOA, 0, LOA/10);
+    CPoint3d p0 = deckPt0;
+    CPoint3d p1 = deckPt1;
+    CPoint3d p2 = deckPt2;
     CPoint3d p3;
     CVector3d v1(1, 1, 1);
 
-    unsigned int npl = deck1.right.nbpoints();   // number of right/left points
-    unsigned int npb = deck1.bottom.nbpoints(); // number of bottom/top points
-
     /// Start laying first half deck edge
-    deck1.top.fill(p1, p2);
-    v1 = CVector3d(p2 - p1);
-    mid = real(npb-1)/2;
-    for ( j = 0 ; j < npb ; j++)
-    {
-        d1 = -(1 -(((real(j) - mid) / mid) * ((real(j) - mid) / mid))) * LOA / 8;
-        deck1.top.point[j] = deck1.top.point[j] + CMatrix::rot3d(1, PI/2)*v1.unit()*d1;
-    }
-    // make stem 
-    for ( j = 0 ; j < npl-1 ; j++)
-    {
-        deck1.left.point[j] = p1;
-    }
-    // make stern 
-    p3 = deck1.top.point[npb-1];
-    p3.z() = 0;
-    deck1.right.fill(p3, deck1.top.point[npb-1]);
-    /*
-    v1 = CVector3d ( deck.right.point[npl-1] -deck.right.point[0]);
-    for ( j = 0 ; j < npl-1 ; j++)
-    {
-        d1 = (1-((real(j) / (npl-1))*(real(j) / (npl-1))))* 0.1 * v1.norm();
-        deck.right.point[j] = deck.right.point[j] + d1*CVector3d(1,0,0);
-    }
+    deck1 = deck;
+    
+
+    /*// duplicate half deck and rotate panels around X axis to tilt sideways
+    real deck_angle = real(DSlopeA) * PI/180;
+    deck2 = deck1.rotate(CPoint3d(0,0,0) , CMatrix::rot3d(0,PI + 2* deck_angle) );
     */
-    // make half deck lower edge on axis X
-    for ( j = 0 ; j < npb ; j++)
-    {
-        deck1.bottom.point[j] = deck1.top.point[j];
-        deck1.bottom.point[j].z() = 0;
-    }
-    deck1.bottom.point[0] = deck1.left.point[0];
-    deck1.bottom.point[npl-1] = deck1.right.point[0];
 
-    /// duplicate half deck and rotate panels around X axis to tilt sideways
-    real deck_angle = 0.1;
-    deck2 = deck1.rotate(CPoint3d(0,0,0) , CMatrix::rot3d(0,PI - deck_angle) );
-    deck1 = deck1.rotate(CPoint3d(0,0,0) , CMatrix::rot3d(0, deck_angle) );
-
-    /* add first and second half of the deck to make hull */
+    /* add first and second half of the deck to make hull 
     CPanelGroup hull(deck1);
     hull.type = HULL;
     hull.title = hullID;
     hull.panel.push_back(deck2);
+    */
     
-    /// make sides 
+    /*
+    // make sides 
     v1 = CVector3d(LOA/50, -LOA/20, 0);
     for ( j = 0 ; j < npb ; j++)
     {
@@ -231,7 +221,7 @@ CPanelGroup CHullWorker::makeHull() const
     side.left.fill(side.bottom.point[0], side.top.point[0]);
     side.right.fill(side.bottom.point[npl-1], side.top.point[npl-1]);
     hull.panel.push_back(side);
-     
+    */ 
     return hull;
 }
 
