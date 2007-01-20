@@ -29,7 +29,7 @@ CHullDef::CHullDef()
     DLOA    = 7000;   // length of hull in millimetre
     DfwdHeight = 1000;
     DaftHeight = 850;
-    DSlopeA = 8;     // degree from horizontal
+    DSlopeA = 6;     // degree from horizontal
     DBW = 2500;
     DBWPos = 50;     // percent of deck length
     DaftW = 2000;

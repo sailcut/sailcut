@@ -86,7 +86,7 @@
         <number>6</number>
        </property>
        <item row="3" column="0" >
-        <widget class="QGroupBox" name="groupBox_2" >
+        <widget class="QGroupBox" name="groupBox_Planking" >
          <property name="font" >
           <font>
            <weight>50</weight>
@@ -146,7 +146,7 @@
            </spacer>
           </item>
           <item row="2" column="3" >
-           <widget class="QLabel" name="label_22" >
+           <widget class="QLabel" name="label_LowPlankA" >
             <property name="text" >
              <string>lower plank angle</string>
             </property>
@@ -221,14 +221,14 @@
            </widget>
           </item>
           <item row="0" column="0" >
-           <widget class="QLabel" name="label_20" >
+           <widget class="QLabel" name="label_NBPlank" >
             <property name="text" >
              <string>Number of planks</string>
             </property>
            </widget>
           </item>
           <item row="2" column="0" >
-           <widget class="QLabel" name="label_21" >
+           <widget class="QLabel" name="label_TopPlankA" >
             <property name="text" >
              <string>top plank angle</string>
             </property>
@@ -270,7 +270,7 @@
         </widget>
        </item>
        <item row="2" column="0" >
-        <widget class="QGroupBox" name="groupBox_1" >
+        <widget class="QGroupBox" name="groupBox_Bottom" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>5</hsizetype>
@@ -306,7 +306,7 @@
            </widget>
           </item>
           <item row="0" column="4" >
-           <widget class="QLabel" name="label_8" >
+           <widget class="QLabel" name="label_BSlopeA" >
             <property name="sizePolicy" >
              <sizepolicy>
               <hsizetype>5</hsizetype>
@@ -321,7 +321,7 @@
            </widget>
           </item>
           <item row="0" column="0" >
-           <widget class="QLabel" name="label_7" >
+           <widget class="QLabel" name="label_BfwdHeight" >
             <property name="sizePolicy" >
              <sizepolicy>
               <hsizetype>5</hsizetype>
@@ -385,7 +385,7 @@
            </widget>
           </item>
           <item row="0" column="7" >
-           <widget class="QLabel" name="label_9" >
+           <widget class="QLabel" name="label_BaftHeight" >
             <property name="sizePolicy" >
              <sizepolicy>
               <hsizetype>5</hsizetype>
@@ -413,7 +413,7 @@
            </spacer>
           </item>
           <item row="2" column="0" colspan="2" >
-           <widget class="QLabel" name="label_6" >
+           <widget class="QLabel" name="label_BsweepA" >
             <property name="sizePolicy" >
              <sizepolicy>
               <hsizetype>5</hsizetype>
@@ -428,7 +428,7 @@
            </widget>
           </item>
           <item row="1" column="0" colspan="2" >
-           <widget class="QLabel" name="label_5" >
+           <widget class="QLabel" name="label_BdeadriseA" >
             <property name="sizePolicy" >
              <sizepolicy>
               <hsizetype>5</hsizetype>
@@ -548,7 +548,7 @@
            </widget>
           </item>
           <item row="0" column="0" >
-           <widget class="QLabel" name="labelname" >
+           <widget class="QLabel" name="label_HullID" >
             <property name="sizePolicy" >
              <sizepolicy>
               <hsizetype>5</hsizetype>
@@ -566,7 +566,7 @@
         </widget>
        </item>
        <item row="1" column="0" >
-        <widget class="QGroupBox" name="groupBox_3" >
+        <widget class="QGroupBox" name="groupBox_Deck" >
          <property name="title" >
           <string>Deck</string>
          </property>
@@ -608,7 +608,7 @@
            </spacer>
           </item>
           <item row="2" column="5" >
-           <widget class="QLabel" name="label_2" >
+           <widget class="QLabel" name="label_percent" >
             <property name="text" >
              <string>%</string>
             </property>
@@ -637,14 +637,14 @@
            </widget>
           </item>
           <item row="2" column="3" >
-           <widget class="QLabel" name="label_38" >
+           <widget class="QLabel" name="label_DBWPos" >
             <property name="text" >
              <string>Max Width position</string>
             </property>
            </widget>
           </item>
           <item row="2" column="0" >
-           <widget class="QLabel" name="label_37" >
+           <widget class="QLabel" name="label_DBW" >
             <property name="text" >
              <string>Max Width</string>
             </property>
@@ -730,28 +730,28 @@
            </spacer>
           </item>
           <item row="0" column="3" >
-           <widget class="QLabel" name="label_33" >
+           <widget class="QLabel" name="label_StemA" >
             <property name="text" >
              <string>Stem angle</string>
             </property>
            </widget>
           </item>
           <item row="3" column="0" >
-           <widget class="QLabel" name="label_31" >
+           <widget class="QLabel" name="label_DfwdShape" >
             <property name="text" >
              <string>Forward shape</string>
             </property>
            </widget>
           </item>
           <item row="3" column="7" >
-           <widget class="QLabel" name="label_36" >
+           <widget class="QLabel" name="label_DaftShape" >
             <property name="text" >
              <string>Aft shape</string>
             </property>
            </widget>
           </item>
           <item row="1" column="7" >
-           <widget class="QLabel" name="label_32" >
+           <widget class="QLabel" name="label_DaftHeight" >
             <property name="text" >
              <string>Aft height</string>
             </property>
@@ -768,14 +768,14 @@
            </widget>
           </item>
           <item row="0" column="7" >
-           <widget class="QLabel" name="label_56" >
+           <widget class="QLabel" name="label_TransomA" >
             <property name="text" >
              <string>Transom angle</string>
             </property>
            </widget>
           </item>
           <item row="0" column="0" >
-           <widget class="QLabel" name="label_34" >
+           <widget class="QLabel" name="label_DLOA" >
             <property name="text" >
              <string>Length</string>
             </property>
@@ -853,14 +853,14 @@
            </spacer>
           </item>
           <item row="1" column="0" >
-           <widget class="QLabel" name="label_35" >
+           <widget class="QLabel" name="label_DfwdHeight" >
             <property name="text" >
              <string>Forward height</string>
             </property>
            </widget>
           </item>
           <item row="1" column="3" >
-           <widget class="QLabel" name="label_55" >
+           <widget class="QLabel" name="label_DSlopeA" >
             <property name="text" >
              <string>Side slope angle</string>
             </property>

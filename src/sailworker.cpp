@@ -456,7 +456,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
                 }
             }
 
-            /** Add the seam and hems allowance */
+            /* Add the seam and hems allowance */
             if ( npanel == 1 )
                 dev.panel[npanel-1].addHems(hemsW, seamW, leechHemW, hemsW);
             else if ( flag == true )
@@ -464,7 +464,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
             else
                 dev.panel[npanel-1].addHems(hemsW, seamW, leechHemW, 0);
 
-            /** Check the width of developed panel */
+            /* Check the width of developed panel */
             ymax = dev.panel[npanel-1].height();
             exc = ymax-clothW;
 

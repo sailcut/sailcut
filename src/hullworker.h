@@ -46,11 +46,13 @@ protected:
     CSubSpace Pdeck;
     /** transom plane */
     CSubSpace Ptransom;
-    /** deck point1 */
-    CPoint3d deckpt1;
-    /** deck point2 */
-    CPoint3d deckpt2;
-    /** deck panel */
+    /** deck point0 at stem/centre line */
+    CPoint3d deckPt0;
+    /** deck point1 at transom/centre line */
+    CPoint3d deckPt1;
+    /** deck point2 at transom/edge */
+    CPoint3d deckPt2;
+    /** deck basic panel */
     CPanel deck;
     
 };
