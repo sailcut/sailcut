@@ -33,7 +33,7 @@ CHullDef::CHullDef()
     DBW = 2500;
     DBWPos = 50;      // percent of deck length
     DaftW = 2000;
-    StemA = 80;       // in degree from horizontal
+    StemA = 85;       // in degree from horizontal
     TransomA = 80;
     DfwdShape = 2;    // coefficient power of X
     DaftShape = 3;
@@ -46,7 +46,7 @@ CHullDef::CHullDef()
     
     NBPlank = 3;
     AutoPlank = true;
-    TopPlankA = 80;   // inclination in degree from horizontal
+    TopPlankA = 75;   // inclination in degree from horizontal
     LowPlankA = 30;
     
 }
