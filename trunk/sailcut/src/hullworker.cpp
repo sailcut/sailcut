@@ -48,7 +48,7 @@ CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
     Pdeck = CSubSpace3d::plane( deckPt0 , v1 , v2 );
      
     /// compute the transom plane
-    // vector v1 parrallel to Z axis
+    // vector v1 parrallel to Z axis perpendicular to central plane
     v1 = CVector3d( 0 , 0 , 1 ); 
     // vector v2 in inclined transom plane
     v2 = CVector3d( cos(real(TransomA) * PI/180) , sin(real(TransomA) * PI/180) , 0 );
@@ -158,11 +158,9 @@ CPanelGroup CHullWorker::makeHull() const
 {
     CPanel deck1, deck2, side1, side2, side;
     unsigned int j;
-    CPoint3d p0 = deckPt0;
-    CPoint3d p1 = deckPt1;
-    CPoint3d p2 = deckPt2;
-    CPoint3d pt;
-    CVector3d v1(1, 1, 1);
+    real x , y , z ;
+    CPoint3d pt , p1 , p2;
+    CVector3d v1 , v2 , v3;
 
     /// Start laying first half deck edge
     deck1 = deck;
@@ -181,7 +179,7 @@ CPanelGroup CHullWorker::makeHull() const
         deck2.top.point[j] = pt;
         
         pt = deck1.bottom.point[j];
-        pt.z() = pt.z();
+        pt.z() = -pt.z();
         deck2.bottom.point[j] = pt;
     } 
 
@@ -197,9 +195,13 @@ CPanelGroup CHullWorker::makeHull() const
     } 
     hull.panel.push_back(deck2);
     
+    /// make sides 
+    pt = deck1.top.point[1];
+    v1 = CVector3d( pt - deckPt0 ).norm();
+    v2 = CVector3d( cos(real(StemA) * PI/180) , -sin(real(StemA) * PI/180) , 0 );
+    v3 = CVector3d( 0, -sin(real(TopPlankA) * PI/180) , -cos(real(TopPlankA) * PI/180) );
+    
     /*
-    // make sides 
-    v1 = CVector3d(LOA/50, -LOA/20, 0);
     for ( j = 0 ; j < npb ; j++)
     {
         side1.top.point[j] = deck1.top.point[j];
