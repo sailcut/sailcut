@@ -24,31 +24,30 @@
  */
 CHullDef::CHullDef()
 {
-    // default values for member variables are set here
+    // default values for hull member variables are set here
     hullID = "Test hull 1";
     DLOA    = 7000;   // length of hull in millimetre
     DfwdHeight = 1000;
     DaftHeight = 850;
-    DSlopeA = 6;     // degree from horizontal
+    DSlopeA = 6;      // side slope in degree from horizontal
     DBW = 2500;
-    DBWPos = 50;     // percent of deck length
+    DBWPos = 50;      // percent of deck length
     DaftW = 2000;
-    StemA = 80;      // degrees from horizontal
+    StemA = 80;       // in degree from horizontal
     TransomA = 80;
-    DfwdShape = 2;   // coefficient power of X
+    DfwdShape = 2;    // coefficient power of X
     DaftShape = 3;
     
     BfwdHeight = 100;
     BaftHeight = 200;
-    BSlopeA = 12;    // degree from horizontal
+    BSlopeA = 24;     // side slope in degree from horizontal
     BdeadriseA = 12;
     BsweepA = 45;
     
     NBPlank = 3;
     AutoPlank = true;
-    TopPlankA = 80;  // degrees from horizontal
+    TopPlankA = 80;   // inclination in degree from horizontal
     LowPlankA = 30;
-    
     
 }
 
