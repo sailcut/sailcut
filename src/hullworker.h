@@ -37,21 +37,23 @@ public:
     CPanelGroup makeHull() const;
 
 protected:
-    /** deck edge point calculation */
+    /** deck edge point compute */
     CPoint3d DeckPt( const real &x );
     
     /** central plane longitudinal X-Y */
-    CSubSpace Pcentral;
+    CSubSpace centralPlane;
     /** deck plane */
-    CSubSpace Pdeck;
+    CSubSpace deckPlane;
     /** transom plane */
-    CSubSpace Ptransom;
+    CSubSpace transomPlane;
+    
     /** deck point0 at stem/centre line */
     CPoint3d deckPt0;
     /** deck point1 at transom/centre line */
     CPoint3d deckPt1;
     /** deck point2 at transom/edge */
     CPoint3d deckPt2;
+    
     /** deck basic panel */
     CPanel deck;
     
