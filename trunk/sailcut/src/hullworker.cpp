@@ -30,7 +30,12 @@ CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
     deckPt2 = deckPt1; 
     CPoint3d p1, p2;
     QString txt;
-    /*
+    /* print debug
+        QString txt;
+        txt = "point " + QString::number (j)+" ----   x = " + QString::number (p2.x()) + "  y = " + QString::number (p2.y()) + "  z = "+ QString::number (p2.z());
+        qDebug ( txt.toLocal8Bit() );
+    */
+
     txt = "point 0 ----   x = " + QString::number (p0.x() ) + "  y = " + QString::number (p0.y() ) + "  z = "+ QString::number (p0.z() );
     qDebug ( txt.toLocal8Bit() );
     */
@@ -87,10 +92,6 @@ CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
         p1 = deck.top.point[j];        
         p2 = DeckPt( p1.x() );
         deck.top.point[j] = p2;
-        /*
-        txt = "point " + QString::number (j)+" ----   x = " + QString::number (p2.x()) + "  y = " + QString::number (p2.y()) + "  z = "+ QString::number (p2.z());
-        qDebug ( txt.toLocal8Bit() );
-        */
     }
 }
 
