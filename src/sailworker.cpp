@@ -22,7 +22,8 @@
 
 #define MAX_PANELS 210
 
-/*    QString txt;
+/*  print debug 
+    QString txt;
     txt = "point 1 ----   x=" + QString::number (p1.x() ) + "  y=" + QString::number (p1.y() ) + "  z="+ QString::number (p1.z() );
     qDebug ( txt.toLocal8Bit() );
 */

@@ -41,6 +41,12 @@ CFormHullDef::CFormHullDef( QWidget* parent, CHullDef * hullptr )
     /* we store the pointer to the CHullDef so we can update it when
        the user clicks OK */
     hulldef = hullptr;
+    
+/*  print debug 
+    QString txt;
+    txt = "point 1 ----   x=" + QString::number (p1.x() ) + "  y=" + QString::number (p1.y() ) + "  z="+ QString::number (p1.z() );
+    qDebug ( txt.toLocal8Bit() );
+*/
 
     txt_HullID->setText(QString(hulldef->hullID));
     /// deck parameters
