@@ -103,8 +103,8 @@ void CFormHullDef::accept()
 bool CFormHullDef::check()
 {
     ///  return true IF everything is OK
-    long L1=1, L2=1;
-    real A1=0, A2=0;
+    long L1=1;
+    // real A1=0, A2=0;
     bool flag = true;
     QString txt;
     
@@ -156,7 +156,43 @@ bool CFormHullDef::check()
     L1 = (long)(hulldef->DLOA);
     
     hulldef->DfwdHeight = txt_DfwdHeight->text().toDouble();
+    if (hulldef->DfwdHeight < (L1 / 20) )
+    {
+        flag = false;
+        txt_DfwdHeight->setPalette(palLo);
+        hulldef->DfwdHeight = ceil( L1 / 20 );
+    }
+    else if (hulldef->DfwdHeight > ( L1 / 4 ) )
+    {
+        flag = false;
+        txt_DfwdHeight->setPalette(palHi);
+        hulldef->DfwdHeight = floor( L1 / 4 );
+    }
+    else
+    {
+        txt_DfwdHeight->setPalette(palStd);
+    }
+    txt_DfwdHeight->setText(QString::number(hulldef->DfwdHeight));
+    
     hulldef->DaftHeight = txt_DaftHeight->text().toDouble();
+    if (hulldef->DaftHeight < (L1 / 20) )
+    {
+        flag = false;
+        txt_DaftHeight->setPalette(palLo);
+        hulldef->DaftHeight = ceil( L1 / 20 );
+    }
+    else if (hulldef->DaftHeight > ( L1 / 4 ) )
+    {
+        flag = false;
+        txt_DaftHeight->setPalette(palHi);
+        hulldef->DaftHeight = floor( L1 / 4 );
+    }
+    else
+    {
+        txt_DaftHeight->setPalette(palStd);
+    }
+    txt_DaftHeight->setText(QString::number(hulldef->DaftHeight));
+    
     hulldef->DSlopeA = spinBox_DSlopeA->value();
     
     hulldef->DBW = txt_DBW->text().toDouble();
@@ -207,11 +243,11 @@ bool CFormHullDef::check()
     
     /// check bottom data
     hulldef->BfwdHeight = txt_BfwdHeight->text().toDouble();
-    if (hulldef->BfwdHeight > hulldef->DfwdHeight - L1/10)
+    if (hulldef->BfwdHeight > .9 * hulldef->DfwdHeight)
     {
         flag = false;
         txt_BfwdHeight->setPalette(palHi);
-        hulldef->BfwdHeight = floor(hulldef->DfwdHeight - L1/10);
+        hulldef->BfwdHeight = floor(.9 * hulldef->DfwdHeight);
     }
     else
     {
@@ -220,11 +256,11 @@ bool CFormHullDef::check()
     txt_BfwdHeight->setText(QString::number(hulldef->BfwdHeight));
     
     hulldef->BaftHeight = txt_BaftHeight->text().toDouble();
-    if (hulldef->BaftHeight > hulldef->DaftHeight - L1/10)
+    if (hulldef->BaftHeight > .9 * hulldef->DaftHeight)
     {
         flag = false;
         txt_BaftHeight->setPalette(palHi);
-        hulldef->BaftHeight = floor(hulldef->DaftHeight - L1/10);
+        hulldef->BaftHeight = floor(.9 * hulldef->DaftHeight);
     }
     else
     {

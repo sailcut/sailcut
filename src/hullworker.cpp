@@ -29,15 +29,10 @@ CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
     deckPt1 = CPoint3d( DLOA , DaftHeight , 0 ); // centre point of deck aft
     deckPt2 = deckPt1; 
     CPoint3d p1, p2;
-    QString txt;
     /* print debug
         QString txt;
         txt = "point " + QString::number (j)+" ----   x = " + QString::number (p2.x()) + "  y = " + QString::number (p2.y()) + "  z = "+ QString::number (p2.z());
         qDebug ( txt.toLocal8Bit() );
-    */
-
-    txt = "point 0 ----   x = " + QString::number (p0.x() ) + "  y = " + QString::number (p0.y() ) + "  z = "+ QString::number (p0.z() );
-    qDebug ( txt.toLocal8Bit() );
     */
     // compute the vertical central plane
     CVector3d v1 = CVector3d( 1 , 0 , 0 );
@@ -52,9 +47,9 @@ CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
     deckPlane = CSubSpace3d::plane( deckPt0 , v1 , v2 );
      
     /// compute the transom plane
-    // vector v1 parrallel to Z axis perpendicular to central plane
+    // vector v1 is parrallel to Z axis = perpendicular to central plane
     v1 = CVector3d( 0 , 0 , 1 ); 
-    // vector v2 in inclined transom plane
+    // vector v2 is in inclined transom plane
     v2 = CVector3d( cos(real(TransomA) * PI/180) , sin(real(TransomA) * PI/180) , 0 );
     transomPlane = CSubSpace3d::plane( deckPt1 , v1 , v2 );
     
@@ -103,12 +98,6 @@ CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
  */
 CPoint3d CHullWorker::DeckPt( const real &x )
 {
-    /*
-      X (0..1) is the relative position of the point along the edge
-      P is the integer position of the maximum round in percent of the edge length
-      The curve is a parabola on either side of the point P 
-      Return Y (0..1) is the value of the normalised round at position X
-    */
     QString txt;
 
     real x1 = 0 , y = 0, z = 0;
@@ -119,10 +108,6 @@ CPoint3d CHullWorker::DeckPt( const real &x )
     {   // aft part of deck
         x1 = (x - pBmax) / (deckPt2.x() - pBmax);
         z  = (.5 * DBW) + .5* (DaftW - DBW)* pow(x1 , DaftShape);
-        /* 
-        txt = "pt        x1 = " + QString::number (x1) + "  z = "+ QString::number (z);
-        qDebug ( txt.toLocal8Bit() );
-        */
     }
     else
     {   // fwd part of deck
@@ -195,7 +180,7 @@ CPanelGroup CHullWorker::makeHull() const
     }
     else throw "ERROR in CHullWorker::makeHull() Intersection 1 is not a point" ;
     
-    /// define lower chine plane
+    /// define lower chine plane = Plane1
     v1 = CVector3d ( CPoint3d(DLOA, BaftHeight, 0) - CPoint3d(0, BfwdHeight, 0) );
     v2 = CVector3d ( 0 , -sin(real(BSlopeA)*PI/180) , cos (real(BSlopeA)*PI/180) );
     Plane1 = CSubSpace3d::plane( CPoint3d(0, BfwdHeight, 0) , v1 , v2);
@@ -219,6 +204,10 @@ CPanelGroup CHullWorker::makeHull() const
     }
     
     j1 = j;
+    /*    QString txt;
+        txt = "pt   j1 = " + QString::number (j1) + "  ;  x = " + QString::number (p2.x());
+        qDebug ( txt.toLocal8Bit() );
+    */
     
     // compute previous point on chine plane 
     p1 = deck1.top.point[j-1];
