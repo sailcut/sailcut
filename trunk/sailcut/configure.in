@@ -38,7 +38,7 @@ AC_CHECK_PROG(FIG2DEV, fig2dev, fig2dev)
 AC_CHECK_PROG(PNGTOPNM, pngtopnm, pngtopnm)
 AC_CHECK_PROG(PPMTOXPM, ppmtoxpm, ppmtoxpm)
 AC_CHECK_PROG(ICOTOOL, icotool, icotool)
-AC_CHECK_PROG(SODIPODI, sodipodi, sodipodi)
+AC_CHECK_PROG(INKSCAPE, inkscape, inkscape)
 AC_CHECK_PROG(XSLTPROC, xsltproc, xsltproc)
 AC_CHECK_PROG(DBLATEX, dblatex, dblatex)
 
