@@ -80,6 +80,7 @@ void CFormSail::keyPressEvent ( QKeyEvent * e )
  */
 void CFormSail::languageChange()
 {
+    int tabidx = 0;
     setWindowTitle( tr("sail") );
 
     // print submenu
@@ -116,16 +117,10 @@ void CFormSail::languageChange()
         panel[i]->languageChange();
 
 #ifdef HAVE_QTOPENGL
-
-    tabs->setTabText(0, tr("shaded view"));
-    tabs->setTabText(1, tr("wireframe view"));
-    tabs->setTabText(2, tr("development"));
-#else
-
-    tabs->setTabText(0, tr("wireframe view"));
-    tabs->setTabText(1, tr("development"));
+    tabs->setTabText(tabidx++, tr("shaded view"));
 #endif
-
+    tabs->setTabText(tabidx++, tr("wireframe view"));
+    tabs->setTabText(tabidx++, tr("development"));
 }
 
 
@@ -136,16 +131,15 @@ void CFormSail::languageChange()
  */
 void CFormSail::setDef(const CSailDef& newdef)
 {
+    int tabidx = 0;
     def = newdef;
     sail = CSailWorker(def).makeSail(flatsail,dispsail);
 
-    panel[0]->setObject(sail);
 #ifdef HAVE_QTOPENGL
-    panel[1]->setObject(sail);
-    panel[2]->setObject(dispsail);
-#else
-    panel[1]->setObject(dispsail);
+    panel[tabidx++]->setObject(sail);
 #endif
+    panel[tabidx++]->setObject(sail);
+    panel[tabidx++]->setObject(dispsail);
 }
 
 
@@ -202,28 +196,23 @@ void CFormSail::setupMenuBar()
  */
 void CFormSail::setupMainWidget()
 {
-    QGridLayout *layout = new QGridLayout(this);
-    
-    tabs = new QTabWidget(this);
-    layout->addWidget(tabs);
-
+    // create viewers
     CSailViewerPanel *tmp;
-
 #ifdef HAVE_QTOPENGL
-
     tmp = new CSailViewerPanel(0, SHADED, true);
     panel.push_back(tmp);
 #endif
-
     tmp = new CSailViewerPanel(0, WIREFRAME, true);
     panel.push_back(tmp);
     tmp = new CSailViewerPanel(0, WIREFRAME, false);
     panel.push_back(tmp);
 
+    // create tabs
+    QGridLayout *layout = new QGridLayout(this);
+    tabs = new QTabWidget(this);
+    layout->addWidget(tabs);
     for (unsigned int i = 0 ; i < panel.size(); i++)
-    {
         tabs->addTab(panel[i],"");
-    }
 }
 
 
