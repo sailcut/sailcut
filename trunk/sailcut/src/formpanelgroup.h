@@ -25,6 +25,7 @@
 
 // forward definitions
 class CSailViewerPanel;
+class QTabWidget;
 class QTreeView;
 
 /** Dialog holding a sail.
@@ -45,8 +46,12 @@ protected slots:
 
 protected:
     /** the widgets of each view */
-    CSailViewerPanel *viewer;
+    vector<CSailViewerPanel *> panel;
+
     /** the tab widget */
+    QTabWidget *tabs;
+
+    /** the tree view */
     QTreeView *treeview;
 };
 
