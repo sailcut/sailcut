@@ -66,6 +66,7 @@ void CSailDispLabel::paintEvent( QPaintEvent * )
     if ( wasResized )
     {
         setViewRect(painter.viewRect());
+        wasResized = 0;
     }
 
     // set coordinate system to match the logical viewport
