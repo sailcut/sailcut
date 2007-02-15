@@ -104,18 +104,14 @@ void CFormSail::languageChange()
     actionExportFlatTXT->setText( tr("to &TXT sail") );
     actionExportFlatXML->setText( tr("to &XML sail") );
 
-
-    // View menu
-
+    // view menu
     actionViewDef->setText( tr("&Dimensions") );
     actionViewMould->setText( tr("&Mould") );
     actionViewPatch->setText( tr("&Patches") );
-
     
-    // send changeLanguage to the tabs
+    // tabs
     for (unsigned int i = 0; i < panel.size(); i++)
         panel[i]->languageChange();
-
 #ifdef HAVE_QTOPENGL
     tabs->setTabText(tabidx++, tr("shaded view"));
 #endif
