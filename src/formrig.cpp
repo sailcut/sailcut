@@ -17,19 +17,11 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifdef HAVE_CONFIG_H
-  #include "config.h"
-#endif
-
 #include "formrig.h"
 #include "formrigdef.h"
-
 #include "rigworker.h"
-#include "sailviewer-panel.h"
 
 #include <QLayout>
-#include <QTabWidget>
-
 
 /**
  * Constructs a window to display a rig.
@@ -46,7 +38,9 @@ CFormRig::CFormRig(CPrefs *myPrefs, QWidget *parent)
     setupMenuBar();
 
     // create main widget
-    setupMainWidget();
+    QGridLayout *layout = new QGridLayout(this);
+    tabs = new CSailViewerTabs(this);
+    layout->addWidget(tabs);
 
     // set language
     languageChange();
@@ -57,33 +51,14 @@ CFormRig::CFormRig(CPrefs *myPrefs, QWidget *parent)
 
 
 /**
- * We received a keypress, we pass it down to the visible tab.
- */
-void CFormRig::keyPressEvent ( QKeyEvent * e )
-{
-    panel[tabs->currentIndex()]->keyPressEvent(e);
-}
-
-
-/**
  * Sets the strings of the subwidgets using the current
  * language.
  */
 void CFormRig::languageChange()
 {
-    int tabidx = 0;
     setWindowTitle( tr("rig") );
-
-    // view menu
     actionViewDef->setText( tr("&Dimensions") );
-
-    // tabs
-    for (unsigned int i = 0; i < panel.size(); i++)
-        panel[i]->languageChange();
-#ifdef HAVE_QTOPENGL
-    tabs->setTabText(tabidx++, tr("shaded view"));
-#endif
-    tabs->setTabText(tabidx++, tr("wireframe view"));
+    tabs->languageChange();
 }
 
 
@@ -95,9 +70,7 @@ void CFormRig::languageChange()
 void CFormRig::setDef(const CRigDef& newdef)
 {
     def = newdef;
-    CPanelGroup obj_3d = CRigWorker(def).makeRig();
-    for (unsigned int i = 0; i < panel.size(); i++)
-        panel[i]->setObject(obj_3d);
+    tabs->setObject(CRigWorker(def).makeRig());
 }
 
 
@@ -110,29 +83,6 @@ void CFormRig::setupMenuBar()
     actionViewDef = new QAction(this);
     connect( actionViewDef, SIGNAL( triggered() ), this, SLOT( slotDef() ) );
     extraViewActions.push_back(actionViewDef);
-}
-
-
-/**
- * Creates the main widget
- */
-void CFormRig::setupMainWidget()
-{
-    // create viewers
-    CSailViewerPanel *tmp;
-#ifdef HAVE_QTOPENGL
-    tmp = new CSailViewerPanel(0, SHADED, true);
-    panel.push_back(tmp);
-#endif
-    tmp = new CSailViewerPanel(0, WIREFRAME, true);
-    panel.push_back(tmp);
-
-    // create tabs
-    QGridLayout *layout = new QGridLayout(this);
-    tabs = new QTabWidget(this);
-    layout->addWidget(tabs);
-    for (unsigned int i = 0 ; i < panel.size(); i++)
-        tabs->addTab(panel[i],"");
 }
 
 

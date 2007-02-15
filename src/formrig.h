@@ -23,11 +23,6 @@
 #include "formdocument.h"
 #include "sailwriter-xml.h"
 
-// forward definitions
-class QTabWidget;
-class CSailViewerPanel;
-
-
 /** Dialog holding a rig.
  */
 class CFormRig : public CFormDocumentTmpl<CRigDef, CRigDefXmlWriter>
@@ -39,27 +34,17 @@ public:
     CFormRig(CPrefs *myPrefs, QWidget *parent);
 
 protected:
-    void keyPressEvent ( QKeyEvent * e );
+    T_KEYPRESS
     void setDef(const CRigDef& newdef);
     void setupMenuBar();
-    void setupMainWidget();
 
     // slots
 protected slots:
-
     virtual void languageChange();
-
     virtual void slotDef();
 
     // member variables
 protected:
-
-    /** the widgets of each view */
-    vector<CSailViewerPanel *> panel;
-    
-    /** the tab widget */
-    QTabWidget *tabs;
-
     /** view hull definition */
     QAction *actionViewDef;
 };

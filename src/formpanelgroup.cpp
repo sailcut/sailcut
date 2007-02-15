@@ -17,15 +17,11 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifdef HAVE_CONFIG_H
-  #include "config.h"
-#endif
-
 #include "formpanelgroup.h"
-#include "sailviewer-panel.h"
 #include "sailtreemodel.h"
 
 #include <QLayout>
+#include <QSplitter>
 #include <QTreeView>
 
 
@@ -57,16 +53,8 @@ CFormPanelGroup::CFormPanelGroup(CPrefs *myPrefs, QWidget *parent)
  */
 void CFormPanelGroup::languageChange()
 {
-    int tabidx = 0;
     setWindowTitle( tr("panels") );
-
-    // tabs
-    for (unsigned int i = 0; i < panel.size(); i++)
-        panel[i]->languageChange();
-#ifdef HAVE_QTOPENGL
-    tabs->setTabText(tabidx++, tr("shaded view"));
-#endif
-    tabs->setTabText(tabidx++, tr("wireframe view"));
+    tabs->languageChange();
 }
 
 
@@ -78,11 +66,8 @@ void CFormPanelGroup::languageChange()
 void CFormPanelGroup::setDef(const CPanelGroup& newdef)
 {
     def = newdef;
-    for (unsigned int i = 0; i < panel.size(); i++)
-        panel[i]->setObject(def);
-
-    CSailTreeModel *model = new CSailTreeModel(def, "panelgroup");
-    treeview->setModel(model);
+    tabs->setObject(def);
+    treeview->setModel(new CSailTreeModel(def, "panelgroup"));
     //treeview->setColumnWidth(0, 200);
 }
 
@@ -92,24 +77,15 @@ void CFormPanelGroup::setDef(const CPanelGroup& newdef)
  */
 void CFormPanelGroup::setupMainWidget()
 {
-    // create viewers
-    CSailViewerPanel *tmp;
-#ifdef HAVE_QTOPENGL
-    tmp = new CSailViewerPanel(0, SHADED, true);
-    panel.push_back(tmp);
-#endif
-    tmp = new CSailViewerPanel(0, WIREFRAME, true);
-    panel.push_back(tmp);
-   
-    // create tabs 
-    QGridLayout *layout = new QGridLayout(this);
-    tabs = new QTabWidget(this);
-    layout->addWidget(tabs);
-    for (unsigned int i = 0 ; i < panel.size(); i++)
-        tabs->addTab(panel[i],"");
-
+    tabs = new CSailViewerTabs(this);
     treeview = new QTreeView(this);
-    layout->addWidget(treeview);
+
+    QSplitter *splitter = new QSplitter(this);
+    splitter->addWidget(tabs);
+    splitter->addWidget(treeview);
+
+    QHBoxLayout *layout = new QHBoxLayout(this);
+    layout->addWidget(splitter);
 }
 
 

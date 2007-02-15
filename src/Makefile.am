@@ -128,6 +128,7 @@ BUILT_SOURCES = \
 	sailtreemodel.moc.cpp \
 	sailviewer.moc.cpp \
 	sailviewer-panel.moc.cpp \
+	sailviewer-tabs.moc.cpp \
 	widgetprofile.moc.cpp \
 	widgetprofilevert.moc.cpp
 

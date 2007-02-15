@@ -21,21 +21,23 @@
 #define SAILVIEWER_TABS_H
 
 #include <QTabWidget>
-
-// forward definitions
-class CSailViewerPanel;
+#include "sailviewer-panel.h"
 
 /** Collection of tabs holding several CSailViewerPanel.
  */
 class CSailViewerTabs : public QTabWidget
 {
+    Q_OBJECT
+
 public:
     CSailViewerTabs(QWidget *parent);
+    void addViewer(CSailViewerPanel *viewer);
+    void setObject(const CPanelGroup &obj);
 
-protected:
-    void addViewer(const enumViewMode viewMode, bool show_sliders, bool show_labeling);
+public slots:
+    virtual void languageChange();
 
-protected:
+public:
     /** the widgets of each view */
     vector<CSailViewerPanel *> panel;
 };

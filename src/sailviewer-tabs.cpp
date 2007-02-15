@@ -17,35 +17,66 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
+#ifdef HAVE_CONFIG_H
+  #include "config.h"
+#endif
+
 #include "sailviewer-panel.h"
 #include "sailviewer-tabs.h"
 
-#include <QLayout>
-
-
 /**
- * Constructs a window to display a rig.
+ * Constructs a tabbed widget to hold sail viewers.
  *
- * @param myPrefs the user preferences
  * @param parent the parent widget
  */
 CSailViewerTabs::CSailViewerTabs(QWidget *parent)
         : QTabWidget(parent)
 {
+#ifdef HAVE_QTOPENGL
+    addViewer(new CSailViewerPanel(NULL, SHADED, true));
+#endif
+    addViewer(new CSailViewerPanel(NULL, WIREFRAME, true));
 }
 
 
 /**
- * Creates the main widget
+ * Adds a tab with a new sail viewer.
  */
-void CSailViewerTabs::addViewer(const enumViewMode viewMode, bool show_sliders, bool show_labeling = true)
+void CSailViewerTabs::addViewer(CSailViewerPanel *viewer)
 {
-    // create viewers
-    CSailViewerPanel *viewer = new CSailViewerPanel(this, viewMode, show_sliders, show_labeling);
+    // add viewer
     panel.push_back(viewer);
-    
     // add tab
     addTab(viewer,"");
 }
 
 
+/**
+ * Sets the strings of the subwidgets using the current
+ * language.
+ */
+void CSailViewerTabs::languageChange()
+{
+    int tabidx = 0;
+    for (unsigned int i = 0; i < panel.size(); i++)
+        panel[i]->languageChange();
+#ifdef HAVE_QTOPENGL
+    setTabText(tabidx++, tr("shaded view"));
+#endif
+    setTabText(tabidx++, tr("wireframe view"));
+}
+
+
+/**
+ * Change the displayed object.
+ *
+ * @param obj the new object to display
+ */
+void CSailViewerTabs::setObject(const CPanelGroup &obj)
+{
+    int tabidx = 0;
+#ifdef HAVE_QTOPENGL
+    panel[tabidx++]->setObject(obj);
+#endif
+    panel[tabidx++]->setObject(obj);
+}

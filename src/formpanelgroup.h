@@ -24,8 +24,6 @@
 #include "sailwriter-xml.h"
 
 // forward definitions
-class CSailViewerPanel;
-class QTabWidget;
 class QTreeView;
 
 /** Dialog holding a sail.
@@ -38,6 +36,7 @@ public:
     CFormPanelGroup(CPrefs *myPrefs, QWidget *parent);
 
 protected:
+    T_KEYPRESS
     void setDef(const CPanelGroup& newdef);
     void setupMainWidget();
 
@@ -45,12 +44,6 @@ protected slots:
     virtual void languageChange();
 
 protected:
-    /** the widgets of each view */
-    vector<CSailViewerPanel *> panel;
-
-    /** the tab widget */
-    QTabWidget *tabs;
-
     /** the tree view */
     QTreeView *treeview;
 };
