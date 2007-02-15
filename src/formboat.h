@@ -25,6 +25,7 @@
 
 class CSailViewerPanel;
 class CBoatDefPanel;
+class QTabWidget;
 
 
 /** A form allowing the user to assemble several elements into a boat.
@@ -50,8 +51,12 @@ protected slots:
     virtual void slotUpdate(const CBoatDef& newdef);
 
 protected:
-    /** An area to view the boat. */
-    CSailViewerPanel *viewer;
+    /** the widgets of each view */
+    vector<CSailViewerPanel *> panel;
+
+    /** the tab widget */
+    QTabWidget *tabs;
+
     /** A panel with one tab per element in the current boat.  */
     CBoatDefPanel *defpanel;
 
