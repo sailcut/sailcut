@@ -45,6 +45,7 @@ HEADER_FILES =  \
 	sailtreemodel.h \
 	sailviewer.h \
 	sailviewer-panel.h \
+	sailviewer-tabs.h \
 	sailworker.h \
 	sailwriter-carlson.h \
 	sailwriter-dxf.h \
@@ -92,6 +93,7 @@ CPP_FILES = \
 	sailtreemodel.cpp \
 	sailviewer.cpp \
 	sailviewer-panel.cpp \
+	sailviewer-tabs.cpp \
 	sailworker.cpp \
 	sailwriter-carlson.cpp \
 	sailwriter-dxf.cpp \
