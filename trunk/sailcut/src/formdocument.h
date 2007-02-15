@@ -79,22 +79,6 @@ public:
     ;
 
     /**
-     *  Returns the file extension associated with this CFormDocument.
-     */
-    static QString getFileExtension()
-    {
-        return writertype().getExtension();
-    };
-
-    /**
-     * Returns whether the given file can be opened by this CFormDocument.
-     */
-    static bool isDocument(QString filename)
-    {
-       return writertype().isDocument(filename);
-    };
-
-    /**
      * Reads the definition from an XML file.
      */
     virtual bool open(const QString &newfile)
