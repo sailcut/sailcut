@@ -71,23 +71,19 @@ void CFormRig::keyPressEvent ( QKeyEvent * e )
  */
 void CFormRig::languageChange()
 {
+    int tabidx = 0;
     setWindowTitle( tr("rig") );
 
-    // View menu
-
+    // view menu
     actionViewDef->setText( tr("&Dimensions") );
 
-    // send changeLanguage to the tabs
+    // tabs
     for (unsigned int i = 0; i < panel.size(); i++)
         panel[i]->languageChange();
-
 #ifdef HAVE_QTOPENGL
-    tabs->setTabText(0, tr("shaded view"));
-    tabs->setTabText(1, tr("wireframe view"));
-#else
-    tabs->setTabText(0, tr("wireframe view"));
+    tabs->setTabText(tabidx++, tr("shaded view"));
 #endif
-
+    tabs->setTabText(tabidx++, tr("wireframe view"));
 }
 
 
@@ -98,13 +94,14 @@ void CFormRig::languageChange()
  */
 void CFormRig::setDef(const CRigDef& newdef)
 {
+    int tabidx = 0;
     def = newdef;
     CPanelGroup obj_3d = CRigWorker(def).makeRig();
 
-    panel[0]->setObject(obj_3d);
 #ifdef HAVE_QTOPENGL
-    panel[1]->setObject(obj_3d);
+    panel[tabidx++]->setObject(obj_3d);
 #endif
+    panel[tabidx++]->setObject(obj_3d);
 }
 
 
@@ -113,8 +110,7 @@ void CFormRig::setDef(const CRigDef& newdef)
  */
 void CFormRig::setupMenuBar()
 {
-    // View actions
-
+    // view actions
     actionViewDef = new QAction(this);
     connect( actionViewDef, SIGNAL( triggered() ), this, SLOT( slotDef() ) );
     extraViewActions.push_back(actionViewDef);
@@ -126,13 +122,8 @@ void CFormRig::setupMenuBar()
  */
 void CFormRig::setupMainWidget()
 {
-    QGridLayout *layout = new QGridLayout(this);
-    
-    tabs = new QTabWidget(this);
-    layout->addWidget(tabs);
-
+    // create viewers
     CSailViewerPanel *tmp;
-
 #ifdef HAVE_QTOPENGL
     tmp = new CSailViewerPanel(0, SHADED, true);
     panel.push_back(tmp);
@@ -140,10 +131,12 @@ void CFormRig::setupMainWidget()
     tmp = new CSailViewerPanel(0, WIREFRAME, true);
     panel.push_back(tmp);
 
+    // create tabs
+    QGridLayout *layout = new QGridLayout(this);
+    tabs = new QTabWidget(this);
+    layout->addWidget(tabs);
     for (unsigned int i = 0 ; i < panel.size(); i++)
-    {
         tabs->addTab(panel[i],"");
-    }
 }
 
 
