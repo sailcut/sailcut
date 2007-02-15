@@ -180,16 +180,16 @@ void CFormMain::makeMenuMru()
 void CFormMain::open(QString filename)
 {
     CFormDocument *wnd;
-    if (CFormSail::isDocument(filename))
+    if (CSailDefXmlWriter().isDocument(filename))
     {
         wnd = new CFormSail(prefs, this);
-    } else if (CFormHull::isDocument(filename)) {
+    } else if (CHullDefXmlWriter().isDocument(filename)) {
         wnd = new CFormHull(prefs, this);
-    } else if (CFormBoat::isDocument(filename)) {
+    } else if (CBoatDefXmlWriter().isDocument(filename)) {
         wnd = new CFormBoat(prefs, this);
-    } else if (CFormRig::isDocument(filename)) {
+    } else if (CRigDefXmlWriter().isDocument(filename)) {
         wnd = new CFormRig(prefs, this);
-    } else if (CFormPanelGroup::isDocument(filename)) {
+    } else if (CPanelGroupXmlWriter().isDocument(filename)) {
         wnd = new CFormPanelGroup(prefs, this);
     } else {
         statusbar->showMessage( tr("unknown document type '%1'").arg(filename) );
@@ -425,11 +425,11 @@ void CFormMain::slotNew()
 void CFormMain::slotOpen()
 {
     QString filter = "Sailcut CAD files (";
-    filter += QString("*") + CFormSail::getFileExtension();
-    filter += QString(" *") + CFormHull::getFileExtension();
-    filter += QString(" *") + CFormRig::getFileExtension();
-    filter += QString(" *") + CFormBoat::getFileExtension();
-    filter += QString(" *") + CFormPanelGroup::getFileExtension();
+    filter += QString("*") + CSailDefXmlWriter().getExtension();
+    filter += QString(" *") + CHullDefXmlWriter().getExtension();
+    filter += QString(" *") + CRigDefXmlWriter().getExtension();
+    filter += QString(" *") + CBoatDefXmlWriter().getExtension();
+    filter += QString(" *") + CPanelGroupXmlWriter().getExtension();
     filter += ")";
 
     QString newfile = QFileDialog::getOpenFileName(0, tr("Open"), "", filter);
