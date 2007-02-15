@@ -33,6 +33,7 @@ class CFormBoat : public CFormDocumentTmpl<CBoatDef, CBoatDefXmlWriter>
 
 public:
     CFormBoat(CPrefs *myPrefs, QWidget *parent);
+    void add(const QString &newfile);
 
 protected:
     T_KEYPRESS
@@ -42,28 +43,16 @@ protected:
 
 protected slots:
     virtual void languageChange();
-    virtual void slotAddHullDef();
-    virtual void slotAddPanelGroup();
-    virtual void slotAddSailDef();
-    virtual void slotAddRigDef();
+    virtual void slotAdd();
     virtual void slotUpdate(const CBoatDef& newdef);
 
 protected:
     /** A panel with one tab per element in the current boat.  */
     CBoatDefPanel *defpanel;
-
     /** The Add menu. */
     QMenu *menuAdd;
-
-    /** add a sail definition */
-    QAction *actionAddHullDef;
-    /** add a collection of panels */
-    QAction *actionAddPanelGroup;
-    /** add a sail definition */
-    QAction *actionAddSailDef;
-    /** add a rig definition */
-    QAction *actionAddRigDef;
-
+    /** add a file */
+    QAction *actionAddFile;
 };
 
 #endif
