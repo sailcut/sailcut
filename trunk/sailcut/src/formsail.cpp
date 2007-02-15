@@ -31,7 +31,6 @@
 #include "sailwriter-dxf.h"
 #include "sailwriter-hand.h"
 #include "sailwriter-txt.h"
-#include "sailviewer-panel.h"
 
 #include <QLayout>
 #include <QMenu>
@@ -66,21 +65,11 @@ CFormSail::CFormSail(CPrefs *myPrefs, QWidget *parent)
 
 
 /**
- * We received a keypress, we pass it down to the visible tab.
- */
-void CFormSail::keyPressEvent ( QKeyEvent * e )
-{
-    panel[tabs->currentIndex()]->keyPressEvent(e);
-}
-
-
-/**
  * Sets the strings of the subwidgets using the current
  * language.
  */
 void CFormSail::languageChange()
 {
-    int tabidx = 0;
     setWindowTitle( tr("sail") );
 
     // print submenu
@@ -108,15 +97,10 @@ void CFormSail::languageChange()
     actionViewDef->setText( tr("&Dimensions") );
     actionViewMould->setText( tr("&Mould") );
     actionViewPatch->setText( tr("&Patches") );
-    
+
     // tabs
-    for (unsigned int i = 0; i < panel.size(); i++)
-        panel[i]->languageChange();
-#ifdef HAVE_QTOPENGL
-    tabs->setTabText(tabidx++, tr("shaded view"));
-#endif
-    tabs->setTabText(tabidx++, tr("wireframe view"));
-    tabs->setTabText(tabidx++, tr("development"));
+    tabs->languageChange();
+    tabs->setTabText(tabs->panel.size()-1, tr("development"));
 }
 
 
@@ -127,15 +111,10 @@ void CFormSail::languageChange()
  */
 void CFormSail::setDef(const CSailDef& newdef)
 {
-    int tabidx = 0;
     def = newdef;
     sail = CSailWorker(def).makeSail(flatsail,dispsail);
-
-#ifdef HAVE_QTOPENGL
-    panel[tabidx++]->setObject(sail);
-#endif
-    panel[tabidx++]->setObject(sail);
-    panel[tabidx++]->setObject(dispsail);
+    tabs->setObject(sail);
+    tabs->panel[tabs->panel.size()-1]->setObject(dispsail);
 }
 
 
@@ -192,23 +171,12 @@ void CFormSail::setupMenuBar()
  */
 void CFormSail::setupMainWidget()
 {
-    // create viewers
-    CSailViewerPanel *tmp;
-#ifdef HAVE_QTOPENGL
-    tmp = new CSailViewerPanel(0, SHADED, true);
-    panel.push_back(tmp);
-#endif
-    tmp = new CSailViewerPanel(0, WIREFRAME, true);
-    panel.push_back(tmp);
-    tmp = new CSailViewerPanel(0, WIREFRAME, false);
-    panel.push_back(tmp);
+    tabs = new CSailViewerTabs(this);
+    tabs->addViewer(new CSailViewerPanel(NULL, WIREFRAME, false));
 
     // create tabs
     QGridLayout *layout = new QGridLayout(this);
-    tabs = new QTabWidget(this);
     layout->addWidget(tabs);
-    for (unsigned int i = 0 ; i < panel.size(); i++)
-        tabs->addTab(panel[i],"");
 }
 
 

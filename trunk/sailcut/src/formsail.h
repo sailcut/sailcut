@@ -23,10 +23,6 @@
 #include "formdocument.h"
 #include "sailwriter-xml.h"
 
-// forward definitions
-class QTabWidget;
-class CSailViewerPanel;
-
 
 /** Dialog holding a sail.
  */
@@ -39,7 +35,7 @@ public:
     CFormSail(CPrefs *myPrefs, QWidget *parent);
 
 protected:
-    void keyPressEvent ( QKeyEvent * e );
+    T_KEYPRESS
     void setDef(const CSailDef& newdef);
     void setupMenuBar();
     void setupMainWidget();
@@ -67,12 +63,6 @@ protected slots:
 
     // member variables
 protected:
-
-    /** the widgets of each view */
-    vector<CSailViewerPanel *> panel;
-    /** the tab widget */
-    QTabWidget *tabs;
-
     /** the sail */
     CPanelGroup sail;
     /** the developped sail */

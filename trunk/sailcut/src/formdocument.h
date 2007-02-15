@@ -22,6 +22,7 @@
 
 #include <QWidget>
 #include <vector>
+#include "sailviewer-tabs.h"
 
 using namespace std;
 
@@ -29,6 +30,11 @@ using namespace std;
 class CPrefs;
 class CException;
 class QMenu;
+
+#define T_KEYPRESS \
+  void keyPressEvent(QKeyEvent * e) { \
+    tabs->panel[tabs->currentIndex()]->keyPressEvent(e); \
+  };
 
 /** A dialog holding a Sailcut document.
  */
@@ -50,10 +56,12 @@ public:
     vector<QAction*> extraViewActions;
     /** The current filename. */
     QString filename;
-    
+
 protected:
     /** The user preferences. */
     CPrefs *prefs;
+    /** An optional tabbed widget */
+    CSailViewerTabs *tabs;
 };
 
 

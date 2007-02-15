@@ -20,7 +20,7 @@
 #include "formdocument.h"
 
 CFormDocument::CFormDocument(CPrefs *myPrefs)
-    : prefs(myPrefs)
+    : prefs(myPrefs), tabs(NULL)
 {
 }
 

@@ -23,10 +23,7 @@
 #include "formdocument.h"
 #include "sailwriter-xml.h"
 
-class CSailViewerPanel;
 class CBoatDefPanel;
-class QTabWidget;
-
 
 /** A form allowing the user to assemble several elements into a boat.
  */
@@ -38,6 +35,7 @@ public:
     CFormBoat(CPrefs *myPrefs, QWidget *parent);
 
 protected:
+    T_KEYPRESS
     void setDef(const CBoatDef &newdef);
     void setupMainWidget();
     void setupMenuBar();
@@ -51,12 +49,6 @@ protected slots:
     virtual void slotUpdate(const CBoatDef& newdef);
 
 protected:
-    /** the widgets of each view */
-    vector<CSailViewerPanel *> panel;
-
-    /** the tab widget */
-    QTabWidget *tabs;
-
     /** A panel with one tab per element in the current boat.  */
     CBoatDefPanel *defpanel;
 
