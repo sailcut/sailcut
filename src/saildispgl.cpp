@@ -168,6 +168,13 @@ void CSailDispGL::paintGL()
 {
     clear();
 
+    if ( wasResized )
+    {
+        glViewport( 0, 0, (GLint)resizeW, (GLint)resizeH );
+        setViewRect( CRect3d(CPoint3d(0,0,0), CPoint3d(resizeW,resizeH,0)) );
+        wasResized = 0;
+    }
+    
     // set coordinate system to match the logical viewport
     glLoadIdentity();
     CRect3d lRect = getLogicalRect();
@@ -186,8 +193,9 @@ void CSailDispGL::paintGL()
  */
 void CSailDispGL::resizeGL( int w, int h )
 {
-    glViewport( 0, 0, (GLint)w, (GLint)h );
-    setViewRect( CRect3d(CPoint3d(0,0,0), CPoint3d(w,h,0)) );
+    resizeW = w;
+    resizeH = h;
+    wasResized = 1;
 }
 
 

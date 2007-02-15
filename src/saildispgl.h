@@ -44,6 +44,11 @@ protected:
     void paintGL();
     void resizeGL( int w, int h );
     void wheelEvent( QWheelEvent *event);
+
+    /** width of last resize event */
+    int resizeW;
+    /** height of last resize event */
+    int resizeH;
 };
 
 
