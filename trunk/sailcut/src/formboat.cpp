@@ -17,6 +17,10 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
+#ifdef HAVE_CONFIG_H
+  #include "config.h"
+#endif
+
 #include "formboat.h"
 #include "sailcutqt.h"
 #include "sailviewer-panel.h"
@@ -29,6 +33,7 @@
 #include <QLayout>
 #include <QMenuBar>
 #include <QFileInfo>
+#include <QTabWidget>
 
 /**
  * The constructor.
@@ -59,9 +64,10 @@ CFormBoat::CFormBoat(CPrefs *myPrefs, QWidget *parent)
  */
 void CFormBoat::languageChange()
 {
+    int tabidx = 0;
     setWindowTitle( tr("boat") );
 
-    /* File menu */
+    // file menu
     menuAdd->setTitle( tr("&Add") );
     actionAddSailDef->setText( tr("sail") );
     actionAddHullDef->setText( tr("hull") );
@@ -69,7 +75,14 @@ void CFormBoat::languageChange()
     actionAddPanelGroup->setText( tr("panels") );
 
     defpanel->languageChange();
-    viewer->languageChange();
+
+    // tabs
+    for (unsigned int i = 0; i < panel.size(); i++)
+        panel[i]->languageChange();
+#ifdef HAVE_QTOPENGL
+    tabs->setTabText(tabidx++, tr("shaded view"));
+#endif
+    tabs->setTabText(tabidx++, tr("wireframe view"));
 }
 
 
@@ -80,8 +93,15 @@ void CFormBoat::languageChange()
  */
 void CFormBoat::setDef(const CBoatDef &newdef)
 {
+    int tabidx = 0;
     def = newdef;
-    viewer->setObject(def.makePanelGroup());
+    CPanelGroup obj_3d = def.makePanelGroup();
+
+#ifdef HAVE_QTOPENGL
+    panel[tabidx++]->setObject(obj_3d);
+#endif
+    panel[tabidx++]->setObject(obj_3d);
+
     defpanel->setDef(def);
 }
 
@@ -91,11 +111,23 @@ void CFormBoat::setDef(const CBoatDef &newdef)
  */
 void CFormBoat::setupMainWidget()
 {
-    viewer = new CSailViewerPanel(this, WIREFRAME, true, false);
+    // create viewers
+    CSailViewerPanel *tmp;
+#ifdef HAVE_QTOPENGL
+    tmp = new CSailViewerPanel(0, SHADED, true);
+    panel.push_back(tmp);
+#endif
+    tmp = new CSailViewerPanel(0, WIREFRAME, true);
+    panel.push_back(tmp);
     defpanel = new CBoatDefPanel(this);
 
+    // create tabs 
     QGridLayout *layout = new QGridLayout(this);
-    layout->addWidget(viewer, 0, 0);
+    tabs = new QTabWidget(this);
+    layout->addWidget(tabs, 0, 0);
+    for (unsigned int i = 0 ; i < panel.size(); i++)
+        tabs->addTab(panel[i],"");
+
     layout->setRowStretch(0, 2);
     layout->addWidget(defpanel, 1, 0);
     layout->setRowStretch(1, 1);
@@ -207,8 +239,7 @@ void CFormBoat::slotAddRigDef()
  */
 void CFormBoat::slotUpdate(const CBoatDef& newdef)
 {
-    def = newdef;
-    viewer->setObject(def.makePanelGroup());
+    setDef(newdef);
 }
 
 
