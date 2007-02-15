@@ -1,5 +1,6 @@
 Sailcut CAD 1.3.0
  * improved - redesign user interface as a multiple document interface
+ * fixed - fix initialisation of shaded view
 
 Sailcut CAD 1.2.4
  * fixed - remove offset at tack and clew in radial cut
