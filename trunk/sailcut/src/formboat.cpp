@@ -93,15 +93,10 @@ void CFormBoat::languageChange()
  */
 void CFormBoat::setDef(const CBoatDef &newdef)
 {
-    int tabidx = 0;
     def = newdef;
     CPanelGroup obj_3d = def.makePanelGroup();
-
-#ifdef HAVE_QTOPENGL
-    panel[tabidx++]->setObject(obj_3d);
-#endif
-    panel[tabidx++]->setObject(obj_3d);
-
+    for (unsigned int i = 0; i < panel.size(); i++)
+        panel[i]->setObject(obj_3d);
     defpanel->setDef(def);
 }
 
