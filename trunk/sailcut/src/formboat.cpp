@@ -54,22 +54,51 @@ CFormBoat::CFormBoat(CPrefs *myPrefs, QWidget *parent)
 
 
 /**
+ * Adds a new element to the boat.
+ *
+ * @param newfile name of the file to add
+ */
+void CFormBoat::add(const QString &newfile)
+{
+    CBoatElement element;
+    qDebug(newfile.toLocal8Bit());
+
+    if (CSailDefXmlWriter().isDocument(newfile)) {
+        CSailDef saildef = CSailDefXmlWriter().read(newfile);
+        (CPanelGroup&)element = CSailWorker(saildef).makeSail();
+        element.type = SAILDEF;
+    } else if (CHullDefXmlWriter().isDocument(newfile)) {
+        CHullDef hulldef = CHullDefXmlWriter().read(newfile);
+        (CPanelGroup&)element = CHullWorker(hulldef).makeHull();
+        element.type = HULLDEF;
+    } else if (CRigDefXmlWriter().isDocument(newfile)) {
+        CRigDef rigdef = CRigDefXmlWriter().read(newfile);
+        (CPanelGroup&)element = CRigWorker(rigdef).makeRig();
+        element.type = RIGDEF;
+    } else if (CPanelGroupXmlWriter().isDocument(newfile)) {
+        (CPanelGroup&)element = CPanelGroupXmlWriter().read(newfile);
+        element.type = PANELGROUP;
+    } else {
+        qDebug("unknown document type");
+        return;
+    }
+    element.filename = newfile;
+    def.element.push_back(element);
+    setDef(def);
+}
+
+
+/**
  * Sets the strings of the subwidgets using the current
  * language.
  */
 void CFormBoat::languageChange()
 {
     setWindowTitle( tr("boat") );
-
-    // file menu
     menuAdd->setTitle( tr("&Add") );
-    actionAddSailDef->setText( tr("sail") );
-    actionAddHullDef->setText( tr("hull") );
-    actionAddRigDef->setText( tr("rig") );
-    actionAddPanelGroup->setText( tr("panels") );
+    actionAddFile->setText( tr("file") );
 
     defpanel->languageChange();
-
     tabs->languageChange();
 }
 
@@ -112,93 +141,25 @@ void CFormBoat::setupMainWidget()
 void CFormBoat::setupMenuBar()
 {
     menuAdd = new QMenu(this);
-    actionAddSailDef = menuAdd->addAction( "", this, SLOT( slotAddSailDef() ) );
-    actionAddHullDef = menuAdd->addAction( "", this, SLOT( slotAddHullDef() ) );
-    actionAddRigDef = menuAdd->addAction( "", this, SLOT( slotAddRigDef() ) );
-    actionAddPanelGroup = menuAdd->addAction("", this, SLOT( slotAddPanelGroup() ) );
+    actionAddFile = menuAdd->addAction( "", this, SLOT( slotAdd() ) );
     extraFileMenus.push_back(menuAdd);
 }
 
-
 /**
- * The file menu's "Add->Panels" item was clicked.
+ * The file menu's "Add" item was clicked.
  */
-void CFormBoat::slotAddPanelGroup()
+void CFormBoat::slotAdd()
 {
-    CBoatElement element;
-    QString newname = CPanelGroupXmlWriter().readDialog((CPanelGroup&)element,"");
+    QString filter = "Sailcut CAD files (";
+    filter += QString("*") + CSailDefXmlWriter().getExtension();
+    filter += QString(" *") + CHullDefXmlWriter().getExtension();
+    filter += QString(" *") + CRigDefXmlWriter().getExtension();
+    filter += QString(" *") + CPanelGroupXmlWriter().getExtension();
+    filter += ")";
 
-    if (!newname.isNull())
-    {
-        element.type = PANELGROUP;
-        element.filename = newname;
-        def.element.push_back(element);
-        setDef(def);
-    }
-
-}
-
-
-/**
- * The file menu's "Add->Hull definition" item was clicked.
- */
-void CFormBoat::slotAddHullDef()
-{
-    CHullDef hulldef;
-    QString newname = CHullDefXmlWriter().readDialog(hulldef,"");
-
-    if (!newname.isNull())
-    {
-        CBoatElement element;
-        (CPanelGroup&)element = CHullWorker(hulldef).makeHull();
-        element.type = HULLDEF;
-        element.filename = newname;
-        def.element.push_back(element);
-        setDef(def);
-    }
-
-}
-
-
-/**
- * The file menu's "Add->Sail definition" item was clicked.
- */
-void CFormBoat::slotAddSailDef()
-{
-    CSailDef saildef;
-    QString newname = CSailDefXmlWriter().readDialog(saildef,"");
-
-    if (!newname.isNull())
-    {
-        CBoatElement element;
-        (CPanelGroup&)element = CSailWorker(saildef).makeSail();
-        element.type = SAILDEF;
-        element.filename = newname;
-        def.element.push_back(element);
-        setDef(def);
-    }
-
-}
-
-
-/**
- * The file menu's "Add->Rig definition" item was clicked.
- */
-void CFormBoat::slotAddRigDef()
-{
-    CRigDef rigdef;
-    QString newname = CRigDefXmlWriter().readDialog(rigdef,"");
-
-    if (!newname.isNull())
-    {
-        CBoatElement element;
-        (CPanelGroup&)element = CRigWorker(rigdef).makeRig();
-        element.type = RIGDEF;
-        element.filename = newname;
-        def.element.push_back(element);
-        setDef(def);
-    }
-
+    QString newfile = QFileDialog::getOpenFileName(0, tr("Open"), "", filter);
+    if ( !newfile.isNull() )
+        add(newfile);
 }
 
 
