@@ -25,11 +25,11 @@
 
 #include <QLabel>
 #include <QLayout>
-#include <QLineEdit>
 #include <QGroupBox>
+#include <QLineEdit>
+#include <QSpinBox>
 #include <QTabWidget>
 #include <QPushButton>
-
 
 
 /** The constructor for a CVector3dWidget.
@@ -41,24 +41,26 @@ CVector3dWidget::CVector3dWidget(QWidget *parent)
 {
     for (int i = 0; i < 3; i++)
     {
-        txtBox.push_back(new QLineEdit(this));
+        QSpinBox *spin = new QSpinBox(this);
+        spin->setRange(0, 10000);
+        spin->setSingleStep(10);
+        spinBox.push_back(spin);
     }
 
     QLabel *lblStaticX = new QLabel(this);
-    lblStaticX->setText("x : ");
+    lblStaticX->setText("x");
     QLabel *lblStaticY = new QLabel(this);
-    lblStaticY->setText("y : ");
+    lblStaticY->setText("y");
     QLabel *lblStaticZ = new QLabel(this);
-    lblStaticZ->setText("z : ");
+    lblStaticZ->setText("z");
 
-    QGridLayout* layout = new QGridLayout( this );
-    layout->addWidget(lblStaticX, 0, 0);
-    layout->addWidget(txtBox[0], 0, 1);
-    layout->addWidget(lblStaticY, 0, 2);
-    layout->addWidget(txtBox[1], 0, 3);
-    layout->addWidget(lblStaticZ, 0, 4);
-    layout->addWidget(txtBox[2], 0, 5);
-
+    QHBoxLayout* layout = new QHBoxLayout(this);
+    layout->addWidget(lblStaticX);
+    layout->addWidget(spinBox[0], 1);
+    layout->addWidget(lblStaticY);
+    layout->addWidget(spinBox[1], 1);
+    layout->addWidget(lblStaticZ);
+    layout->addWidget(spinBox[2], 1);
 }
 
 
@@ -68,7 +70,7 @@ CVector3d CVector3dWidget::getVector()
 {
     CVector3d v;
     for (int i = 0; i < 3; i++)
-        v[i] = txtBox[i]->text().toDouble();
+        v[i] = spinBox[i]->value();
     return v;
 }
 
@@ -80,7 +82,7 @@ CVector3d CVector3dWidget::getVector()
 void CVector3dWidget::setVector(const CVector3d &v)
 {
     for (unsigned int i = 0; i < 3; i++)
-        txtBox[i]->setText(QString::number(v.getcoord(i)));
+        spinBox[i]->setValue(int(v.getcoord(i)));
 }
 
 
