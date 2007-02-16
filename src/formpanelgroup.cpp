@@ -41,7 +41,7 @@ CFormPanelGroup::CFormPanelGroup(CPrefs *myPrefs, QWidget *parent)
 
     // set language
     languageChange();
-    
+
     // set initial definition
     setDef(def);
 }
@@ -68,7 +68,8 @@ void CFormPanelGroup::setDef(const CPanelGroup& newdef)
     def = newdef;
     tabs->setObject(def);
     treeview->setModel(new CSailTreeModel(def, "panelgroup"));
-    //treeview->setColumnWidth(0, 200);
+    treeview->expandAll();
+//    treeview->resizeColumnToContents(0);
 }
 
 
@@ -87,5 +88,4 @@ void CFormPanelGroup::setupMainWidget()
     QHBoxLayout *layout = new QHBoxLayout(this);
     layout->addWidget(splitter);
 }
-
 
