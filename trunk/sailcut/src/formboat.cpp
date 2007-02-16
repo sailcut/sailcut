@@ -41,7 +41,7 @@ CFormBoat::CFormBoat(CPrefs *myPrefs, QWidget *parent)
 {
     // create main widget
     setupMainWidget();
-    
+
     // create menu bar
     setupMenuBar();
 
@@ -111,8 +111,8 @@ void CFormBoat::languageChange()
 void CFormBoat::setDef(const CBoatDef &newdef)
 {
     def = newdef;
-    tabs->setObject(def.makePanelGroup());
     defpanel->setDef(def);
+    tabs->setObject(def.makePanelGroup());
 }
 
 

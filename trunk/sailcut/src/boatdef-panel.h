@@ -29,6 +29,7 @@ class QTabWidget;
 class QLabel;
 class QLineEdit;
 class QPushButton;
+class QSpinBox;
 
 
 /**
@@ -45,8 +46,9 @@ public:
     void setVector(const CVector3d &v);
 
 protected:
-    /** The text boxes. */
-    vector<QLineEdit *>txtBox;
+    /** The spin boxes. */
+    vector<QSpinBox *>spinBox;
+
 };
 
 /** A widget for displaying information about a boat element.
