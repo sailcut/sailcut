@@ -142,10 +142,21 @@ CPoint3d CHullWorker::DeckPt( const real &x )
 CPanelGroup CHullWorker::makeHull() const
 {
     CPanel deck1, deck2, side1, side2, side;
-    unsigned int j , j1;
+    unsigned int j;
     real a , b;
     CPoint3d pt , p1 , p2 , p3 , p4;
     CVector3d v1 , v2 , v3 , vg;
+    /* array used to identify points for stem intersection 
+     * the integer gives the  point on the top side of a side panel
+     * which project on the stem bottom side point of the panel
+     */
+    unsigned int ptStem[NBPlank +1];
+    
+    /* array used to identify points for transom intersection
+     * the integer gives the  point on the top side of a side panel
+     * which project on the transom bottom side point of the panel
+     */ 
+    unsigned int ptTransom[NBPlank +1];
     
     CSubSpace Plane1;
     CSubSpace Line1;
@@ -156,9 +167,6 @@ CPanelGroup CHullWorker::makeHull() const
     CPanelGroup hull(deck1);
     hull.type = HULL;
     hull.title = hullID;
-    
-    unsigned int npl = deck.right.nbpoints();   // number of right/left points
-    unsigned int npb = deck.bottom.nbpoints(); // number of bottom/top points
     
     /// prepare for top side 
     pt = deck1.top.point[1];
@@ -185,7 +193,7 @@ CPanelGroup CHullWorker::makeHull() const
     v2 = CVector3d ( 0 , -sin(real(BSlopeA)*PI/180) , cos (real(BSlopeA)*PI/180) );
     Plane1 = CSubSpace3d::plane( CPoint3d(0, BfwdHeight, 0) , v1 , v2);
     
-    /// search for point of deck which project at stem lower point
+    /// search for the point of deck edge which projects at stem lower point
     p4 = deckPt0;
     p4.z() = -1;
     j = 0;
@@ -203,14 +211,15 @@ CPanelGroup CHullWorker::makeHull() const
         else throw "ERROR in CHullWorker::makeHull() Intersection 2 is not a point" ;
     }
     
-    j1 = j;
+    // keep memory of deck point number
+    ptStem[NBPlank +1] = j;
     /*    QString txt;
         txt = "pt   j1 = " + QString::number (j1) + "  ;  x = " + QString::number (p2.x());
         qDebug ( txt.toLocal8Bit() );
     */
     
     // compute previous point on chine plane 
-    p1 = deck1.top.point[j-1];
+    p1 = deck1.top.point[ptStem[NBPlank + 1] - 1];
     Line1 = CSubSpace3d::line( p1 , vg );
     Intersection1 = Line1.intersect(Plane1);
     if (Intersection1.getdim() == 0)
@@ -219,20 +228,20 @@ CPanelGroup CHullWorker::makeHull() const
     }
     else throw "ERROR in CHullWorker::makeHull() Intersection 3 is not a point" ;
     
-    //interpolate from last point to find proper point on deck edge 
+    //interpolate from previous point to find proper point on deck edge 
     a = p4.z() - p3.z();
     b = p4.z();
     // move deck point to fit 
     v1 = CVector3d( p1 - p2 )*(b / a);
     pt = p2 + v1;
     // move accordingly the deck point
-    deck1.top.point[j] = pt;
-    // keep memory of deck point number
-    j1 = j;
-    
+    deck1.top.point[ptStem[NBPlank +1]] = pt;
+    if (deck1.top.point[ptStem[NBPlank +1] +1].x() < pt.x() )
+        deck1.top.point[ptStem[NBPlank +1] +1].x() = pt.x();
+        
     /// generate side 1
     //  trim first part to stem line
-    for ( j = 0 ; j <= j1 ; j++)
+    for ( j = 0 ; j <= ptStem[NBPlank +1] ; j++)
     {
         side1.top.point[j] = deck1.top.point[j];
         Line1 = CSubSpace3d::line( side1.top.point[j] , vg );
@@ -245,7 +254,8 @@ CPanelGroup CHullWorker::makeHull() const
         
         side1.bottom.point[j] = pt;
     }
-    for ( j = j1+1 ; j < npb ; j++)
+    
+    for ( j = ptStem[NBPlank + 1] +1 ; j < side1.top.nbpoints() ; j++)
     {
         side1.top.point[j] = deck1.top.point[j];
         Line1 = CSubSpace3d::line( side1.top.point[j] , vg );
@@ -260,11 +270,11 @@ CPanelGroup CHullWorker::makeHull() const
     }
     
     side1.left.fill(side1.bottom.point[0],side1.top.point[0]);
-    side1.right.fill(side1.bottom.point[npb-1], side1.top.point[npb-1]);
+    side1.right.fill(side1.bottom.point[side1.bottom.nbpoints()-1], side1.top.point[side1.top.nbpoints()-1]);
     hull.panel.push_back(side1);
     
-    /// create symetrical half deck 
-    for ( j = 0 ; j <= npb-1 ; j++ )
+    /// create symetrical half deck ///
+    for ( j = 0 ; j < deck1.top.nbpoints() ; j++ )
     {
         pt = deck1.top.point[j];
         pt.z() = -pt.z();
@@ -275,7 +285,7 @@ CPanelGroup CHullWorker::makeHull() const
         deck2.bottom.point[j] = pt;
     } 
 
-    for (j=0 ; j <= npl-1 ; j++ )
+    for (j=0 ; j < deck1.left.nbpoints() ; j++ )
     {
         pt = deck1.left.point[j];
         pt.z() = -pt.z();
@@ -288,7 +298,7 @@ CPanelGroup CHullWorker::makeHull() const
     hull.panel.push_back(deck2);
     
     /// make side 2 symetric by changing sign of z component of points
-    for ( j = 0 ; j <= npb-1 ; j++ )
+    for ( j = 0 ; j < side1.top.nbpoints() ; j++ )
     {
         pt = side1.top.point[j];
         pt.z() = -pt.z();
@@ -299,7 +309,7 @@ CPanelGroup CHullWorker::makeHull() const
         side2.bottom.point[j] = pt;
     } 
 
-    for (j=0 ; j <= npl-1 ; j++ )
+    for (j=0 ; j < side1.left.nbpoints() ; j++ )
     {
         pt = side1.left.point[j];
         pt.z() = -pt.z();
