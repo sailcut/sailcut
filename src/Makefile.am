@@ -7,7 +7,7 @@ AM_CPPFLAGS = \
 bin_PROGRAMS = sailcut
 
 # these are the headers
-HEADER_FILES =  \
+noinst_HEADERS =  \
 	boatdef.h \
 	boatdef-panel.h \
 	disparea.h \
@@ -55,8 +55,38 @@ HEADER_FILES =  \
 	widgetprofile.h \
 	widgetprofilevert.h
 
-# the C++ source files
-CPP_FILES = \
+# the Qt UI files
+UI_FILES = formhulldefbase.ui formrigdefbase.ui formsaildefbase.ui
+
+# generated source files
+BUILT_SOURCES = \
+	boatdef-panel.moc.cpp \
+	formboat.moc.cpp \
+	formhelp.moc.cpp \
+	formhull.moc.cpp \
+	formhulldefbase.h \
+	formhulldefbase.cpp \
+	formhulldef.moc.cpp \
+	formmain.moc.cpp \
+	formmould.moc.cpp \
+	formpanelgroup.moc.cpp \
+	formrig.moc.cpp \
+	formrigdefbase.h \
+	formrigdefbase.cpp \
+	formrigdef.moc.cpp \
+	formsail.moc.cpp \
+	formsaildefbase.h \
+	formsaildefbase.cpp \
+	formsaildef.moc.cpp \
+	sailtreemodel.moc.cpp \
+	sailviewer.moc.cpp \
+	sailviewer-panel.moc.cpp \
+	sailviewer-tabs.moc.cpp \
+	widgetprofile.moc.cpp \
+	widgetprofilevert.moc.cpp
+
+# the application source, library search path, and link libraries
+sailcut_SOURCES = \
 	boatdef.cpp \
 	boatdef-panel.cpp \
 	disparea.cpp \
@@ -101,39 +131,6 @@ CPP_FILES = \
 	sailwriter-txt.cpp \
 	widgetprofile.cpp \
 	widgetprofilevert.cpp
-
-# the Qt UI files
-UI_FILES = formhulldefbase.ui formrigdefbase.ui formsaildefbase.ui
-
-# generated source files
-BUILT_SOURCES = \
-	boatdef-panel.moc.cpp \
-	formboat.moc.cpp \
-	formhelp.moc.cpp \
-	formhull.moc.cpp \
-	formhulldefbase.h \
-	formhulldefbase.cpp \
-	formhulldef.moc.cpp \
-	formmain.moc.cpp \
-	formmould.moc.cpp \
-	formpanelgroup.moc.cpp \
-	formrig.moc.cpp \
-	formrigdefbase.h \
-	formrigdefbase.cpp \
-	formrigdef.moc.cpp \
-	formsail.moc.cpp \
-	formsaildefbase.h \
-	formsaildefbase.cpp \
-	formsaildef.moc.cpp \
-	sailtreemodel.moc.cpp \
-	sailviewer.moc.cpp \
-	sailviewer-panel.moc.cpp \
-	sailviewer-tabs.moc.cpp \
-	widgetprofile.moc.cpp \
-	widgetprofilevert.moc.cpp
-
-# the application source, library search path, and link libraries
-sailcut_SOURCES = $(HEADER_FILES) $(CPP_FILES)
 nodist_sailcut_SOURCES = $(BUILT_SOURCES)
 
 sailcut_LDFLAGS = $(QT_LDFLAGS) $(X_LDFLAGS) $(GL_LDFLAGS)
