@@ -35,8 +35,8 @@
         <topsourcedir/>
         <cppflags/>
         <ldflags/>
-        <ccompilerbinary>&quot;ccache gcc&quot;</ccompilerbinary>
-        <cxxcompilerbinary>&quot;ccache g++&quot;</cxxcompilerbinary>
+        <ccompilerbinary/>
+        <cxxcompilerbinary/>
         <f77compilerbinary/>
         <cflags/>
         <f77flags/>
@@ -150,7 +150,12 @@
     <qt>
       <used>false</used>
       <version>3</version>
-      <root/>
+      <root>/usr/share/qt3</root>
+      <includestyle>3</includestyle>
+      <designerintegration>EmbeddedKDevDesigner</designerintegration>
+      <qmake>/usr/bin/qmake-qt3</qmake>
+      <designer>/usr/bin/designer</designer>
+      <designerpluginpaths/>
     </qt>
   </kdevcppsupport>
   <kdevfileview>
