@@ -23,6 +23,7 @@
     <run>
       <mainprogram>src/sailcut</mainprogram>
       <terminal>false</terminal>
+      <directoryradio>executable</directoryradio>
     </run>
     <configurations>
       <debug>
