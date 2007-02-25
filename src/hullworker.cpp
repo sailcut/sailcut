@@ -161,7 +161,9 @@ CPanelGroup CHullWorker::makeHull() const
     CSubSpace Plane1;
     CSubSpace Line1;
     CSubSpace Intersection1;
-
+    
+    /* all the code has to be changed to start building the hull from the lower chine */
+    
     /// Start laying first half deck edge
     deck1 = deck;
     CPanelGroup hull(deck1);
