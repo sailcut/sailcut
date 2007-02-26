@@ -33,3 +33,8 @@ doc_srcdir := $(top_srcdir)/doc
 %.svg: %.fig
 	$(FIG2DEV) -L svg $^ $@
 
+# translations
+
+%.qm: %.ts
+	$(LRELEASE) $< -qm $@
+
