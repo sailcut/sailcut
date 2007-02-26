@@ -14,4 +14,4 @@ sailcut-handbook.css: FORCE
 FORCE:
 
 CLEANFILES = $(if $(out_of_source),sailcut-handbook.css)
-EXTRA_DIST = Makefile.docbook sailcut-html.xsl
+EXTRA_DIST = sailcut-html.xsl
