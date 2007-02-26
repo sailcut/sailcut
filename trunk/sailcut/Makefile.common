@@ -1,0 +1,35 @@
+# win32 icons
+
+%.ico: %.svg
+	for i in 48 32 16; do \
+		$(INKSCAPE) -z --file=$< --export-png=$*.tmp.$$i --export-width=$$i --export-height=$$i || exit 1; \
+	done
+	$(ICOTOOL) -c -o $@ $*.tmp.48 $*.tmp.32 $*.tmp.16
+	rm -f $*.tmp.*
+
+# XPM icons
+
+%.xpm: %.svg
+	$(INKSCAPE) -z --file=$< --export-png=$*.tmp.png --export-width=32 --export-height=32
+	$(PNGTOPNM) -alpha $*.tmp.png > $*.tmp.alpha
+	$(PNGTOPNM) $*.tmp.png | $(PPMTOXPM) -alpha $*.tmp.alpha -name $*_xpm > $@
+	rm -f $*.tmp.*
+
+# XML DocBook output
+
+doc_srcdir := $(top_srcdir)/doc
+ 
+%.html: %.docbook $(FIGS:.fig=.png) $(doc_srcdir)/sailcut-html.xsl
+	$(XSLTPROC) -o $@ $(doc_srcdir)/sailcut-html.xsl $<
+
+%.pdf: %.docbook $(FIGS)
+	$(DBLATEX) -o $@ $<
+
+# XFig graphics conversions
+
+%.png: %.fig
+	$(FIG2DEV) -L png -S2 $^ $@
+
+%.svg: %.fig
+	$(FIG2DEV) -L svg $^ $@
+
