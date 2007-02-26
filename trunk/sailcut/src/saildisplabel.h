@@ -20,10 +20,6 @@
 #ifndef SAILDISPLABEL_H
 #define SAILDISPLABEL_H
 
-#ifdef HAVE_CONFIG_H
-  #include "config.h"
-#endif
-
 #include <QLabel>
 #include "saildisp.h"
 
