@@ -20,7 +20,7 @@
 #ifndef FORMRIGDEF_H
 #define FORMRIGDEF_H
 
-#include "formrigdefbase.h"
+#include "ui_formrigdefbase.h"
 #include "rigdef.h"
 
 

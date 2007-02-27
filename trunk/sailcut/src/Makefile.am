@@ -60,27 +60,27 @@ UI_FILES = formhulldefbase.ui formrigdefbase.ui formsaildefbase.ui
 
 # generated source files
 BUILT_SOURCES = \
-	boatdef-panel.moc.cpp \
-	formboat.moc.cpp \
-	formhelp.moc.cpp \
-	formhull.moc.cpp \
-	formhulldefbase.h \
-	formhulldef.moc.cpp \
-	formmain.moc.cpp \
-	formmould.moc.cpp \
-	formpanelgroup.moc.cpp \
-	formrig.moc.cpp \
-	formrigdefbase.h \
-	formrigdef.moc.cpp \
-	formsail.moc.cpp \
-	formsaildefbase.h \
-	formsaildef.moc.cpp \
-	sailtreemodel.moc.cpp \
-	sailviewer.moc.cpp \
-	sailviewer-panel.moc.cpp \
-	sailviewer-tabs.moc.cpp \
-	widgetprofile.moc.cpp \
-	widgetprofilevert.moc.cpp
+	ui_formhulldefbase.h \
+	ui_formrigdefbase.h \
+	ui_formsaildefbase.h \
+	moc_boatdef-panel.cpp \
+	moc_formboat.cpp \
+	moc_formhelp.cpp \
+	moc_formhull.cpp \
+	moc_formhulldef.cpp \
+	moc_formmain.cpp \
+	moc_formmould.cpp \
+	moc_formpanelgroup.cpp \
+	moc_formrig.cpp \
+	moc_formrigdef.cpp \
+	moc_formsail.cpp \
+	moc_formsaildef.cpp \
+	moc_sailtreemodel.cpp \
+	moc_sailviewer.cpp \
+	moc_sailviewer-panel.cpp \
+	moc_sailviewer-tabs.cpp \
+	moc_widgetprofile.cpp \
+	moc_widgetprofilevert.cpp
 
 # the application source, library search path, and link libraries
 sailcut_SOURCES = \
@@ -134,10 +134,10 @@ sailcut_LDFLAGS = $(QT_LDFLAGS) $(X_LDFLAGS) $(GL_LDFLAGS)
 sailcut_LDADD   = geocpp/libgeocpp.a $(LIB_QT) $(LIB_QTXML) $(LIB_QTOPENGL) $(GLLIB)
 
 # rules for Qt metasources
-%.h: %.ui
+ui_%.h: %.ui
 	$(UIC) -o $@ $<
 
-%.moc.cpp: %.h
+moc_%.cpp: %.h
 	$(MOC) -o $@ $<
 
 CLEANFILES = $(BUILT_SOURCES)
