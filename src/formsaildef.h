@@ -20,7 +20,7 @@
 #ifndef FORMSAILDEF_H
 #define FORMSAILDEF_H
 
-#include "formsaildefbase.h"
+#include "ui_formsaildefbase.h"
 #include "saildef.h"
 
 

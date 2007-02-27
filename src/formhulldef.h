@@ -20,7 +20,7 @@
 #ifndef FORMHULLDEF_H
 #define FORMHULLDEF_H
 
-#include "formhulldefbase.h"
+#include "ui_formhulldefbase.h"
 #include "hulldef.h"
 
 
