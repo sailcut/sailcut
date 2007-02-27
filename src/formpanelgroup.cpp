@@ -68,7 +68,9 @@ void CFormPanelGroup::setDef(const CPanelGroup& newdef)
     def = newdef;
     tabs->setObject(def);
     treeview->setModel(new CSailTreeModel(def, "panelgroup"));
+#if QT_VERSION >= 0x040200
     treeview->expandAll();
+#endif
 //    treeview->resizeColumnToContents(0);
 }
 
