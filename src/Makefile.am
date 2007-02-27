@@ -65,18 +65,15 @@ BUILT_SOURCES = \
 	formhelp.moc.cpp \
 	formhull.moc.cpp \
 	formhulldefbase.h \
-	formhulldefbase.cpp \
 	formhulldef.moc.cpp \
 	formmain.moc.cpp \
 	formmould.moc.cpp \
 	formpanelgroup.moc.cpp \
 	formrig.moc.cpp \
 	formrigdefbase.h \
-	formrigdefbase.cpp \
 	formrigdef.moc.cpp \
 	formsail.moc.cpp \
 	formsaildefbase.h \
-	formsaildefbase.cpp \
 	formsaildef.moc.cpp \
 	sailtreemodel.moc.cpp \
 	sailviewer.moc.cpp \
@@ -137,10 +134,6 @@ sailcut_LDFLAGS = $(QT_LDFLAGS) $(X_LDFLAGS) $(GL_LDFLAGS)
 sailcut_LDADD   = geocpp/libgeocpp.a $(LIB_QT) $(LIB_QTXML) $(LIB_QTOPENGL) $(GLLIB)
 
 # rules for Qt metasources
-%.cpp: %.ui %.h
-	$(UIC) $< > $@; ret=$$?; \
-	if test "$$ret" != 0; then rm -f $@ ; exit $$ret ; fi
-
 %.h: %.ui
 	$(UIC) -o $@ $<
 
