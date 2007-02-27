@@ -204,7 +204,7 @@ void CFormMain::open(QString filename)
     } else {
         prefs->mruDocuments.removeEntry(filename);
         statusbar->showMessage( tr("error loading '%1'").arg(filename) );
-        delete wnd;
+        wnd->deleteLater();
     }
     makeMenuMru();
 }
