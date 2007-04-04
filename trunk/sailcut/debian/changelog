@@ -1,3 +1,9 @@
+sailcut (1.2.4-2) unstable; urgency=low
+
+  * Apply patch from Martin Michlmayr for GCC 4.3 FTBFS (Closes: #417680).
+
+ -- Jeremy Lainé <jeremy.laine@m4x.org>  Wed, 04 Apr 2007 12:10:16 +0200
+
 sailcut (1.2.4-1) unstable; urgency=low
 
   * New upstream release
