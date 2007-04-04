@@ -19,6 +19,9 @@
 #include <geocpp/matrix.h>
 #include <geocpp/subspace.h>
 
+#include <climits>
+#include <cstdlib>
+
 /*******************************************************
  
                       Static functions
