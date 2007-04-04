@@ -18,7 +18,9 @@
 
 #include <geocpp/geometry.h>
 #include <geocpp/subspace.h>
+
 #include <time.h>
+#include <cstdlib>
 
 #ifdef DEBUG
   #include <mcheck.h>
