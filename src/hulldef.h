@@ -24,7 +24,8 @@
 #include <geocpp/geocpp.h>
 
 
-/** This class holds the parameters that define a hull.
+/** This class holds the parameters that define a hull
+ *  and the default parameters.
  *
  * @see CHullWorker
  */

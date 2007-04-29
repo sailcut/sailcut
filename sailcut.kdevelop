@@ -37,7 +37,7 @@
         <cppflags/>
         <ldflags/>
         <ccompilerbinary/>
-        <cxxcompilerbinary/>
+        <cxxcompilerbinary>&quot;ccache g++&quot;</cxxcompilerbinary>
         <f77compilerbinary/>
         <cflags/>
         <f77flags/>
@@ -158,6 +158,14 @@
       <designer>/usr/bin/designer</designer>
       <designerpluginpaths/>
     </qt>
+    <creategettersetter>
+      <prefixGet/>
+      <prefixSet>set</prefixSet>
+      <prefixVariable>m_,_</prefixVariable>
+      <parameterName>theValue</parameterName>
+      <inlineGet>true</inlineGet>
+      <inlineSet>true</inlineSet>
+    </creategettersetter>
   </kdevcppsupport>
   <kdevfileview>
     <groups>
