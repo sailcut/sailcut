@@ -30,7 +30,8 @@ enum enumSailType { MAINSAIL, JIB, WING };
 enum enumSailCut { CROSS, TWIST, HORIZONTAL, VERTICAL, RADIAL, MITRE };
 
 
-/** This class holds the parameters that define a sail.
+/** This class holds the parameters that define a sail
+ *  and the default parameters
  *
  * @see CSailWorker, CSail
  */

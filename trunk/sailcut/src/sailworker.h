@@ -28,8 +28,8 @@ class CPanelGroup;
 class CSeam;
 
 
-/** The CSailWorker class does all the sail-related calculations. It is used to create
- * the sail from its definition.
+/** The CSailWorker class does all the sail-related calculations like laying the panels
+ *  It is used to create the sail from its definition.
  *
  * @see CSailDef, CPanelGroup
  */

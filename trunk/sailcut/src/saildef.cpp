@@ -26,7 +26,8 @@
  
 **************************************************************************/
 
-/** Constructs a CSailDef object.
+/** Constructs a CSailDef object from the default sail parameters.
+ *
  */
 CSailDef::CSailDef()
 {

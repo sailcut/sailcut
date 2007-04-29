@@ -20,7 +20,8 @@
 #include "rigdef.h"
 
 
-/** Constructs a CRigDef object.
+/** Constructs a CRigDef object from the default rig parameters.
+ *
  */
 CRigDef::CRigDef()
 {

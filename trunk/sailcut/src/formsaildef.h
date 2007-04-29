@@ -24,8 +24,10 @@
 #include "saildef.h"
 
 
-/** The sail definition dialog, where the user enters
- *  the parameters of the sail.
+/** This class is for sail definition dialog where,
+ *  The user enters the parameters of the sail
+ *  Checking the input data
+ *  Computing and displaying ancillary data.
  */
 class CFormSailDef : public QDialog, private Ui::CFormSailDefBase
 {

@@ -120,7 +120,7 @@ CFormSailDef::CFormSailDef( QWidget* parent, CSailDef * sailptr )
 
 // member functions
 
-/** Compute and Display ancillary data of the sail computation*/
+/** Compute and Display ancillary data of the sail computation */
 void CFormSailDef::compute()
 {
     CSailWorker worker(*saildef);

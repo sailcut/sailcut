@@ -20,29 +20,30 @@
 #include "hulldef.h"
 
 
-/** Constructs a CHullDef object.
+/** Constructs a CHullDef object from the default hull parameters
+ *
  */
 CHullDef::CHullDef()
 {
     // default values for hull member variables are set here
     hullID = "Test hull 1";
-    DLOA    = 7000;   // length of hull in millimetre
-    DfwdHeight = 1000;
-    DaftHeight = 850;
-    DSlopeA = 6;      // side slope in degree from horizontal
-    DBW = 2500;
-    DBWPos = 50;      // percent of deck length
-    DaftW = 2000;
-    StemA = 85;       // in degree from horizontal
-    TransomA = 80;
-    DfwdShape = 2;    // coefficient power of X
-    DaftShape = 3;
+    DLOA    = 7000;    // Deck length in millimetre
+    DfwdHeight = 1000; // Deck height forward
+    DaftHeight = 850;  // Deck height aft
+    DSlopeA = 6;       // Deck side slope in degree from horizontal
+    DBW = 2500;        // Deck max beam width
+    DBWPos = 50;       // percent of deck length
+    DaftW = 2000;      // Deck aft width
+    StemA = 85;        // Stem inclination in degree from horizontal
+    TransomA = 80;     // Transom inclination
+    DfwdShape = 2;     // forward coefficient power of X
+    DaftShape = 3;     // aft coefficient power of X
     
-    BfwdHeight = 100;
+    BfwdHeight = 100;  // Bottom chine forward height
     BaftHeight = 200;
-    BSlopeA = 24;     // side slope in degree from horizontal
+    BSlopeA = 24;      // side slope in degree from horizontal
     BdeadriseA = 12;
-    BsweepA = 45;
+    BsweepA = 45;      // Bottom plank sweep angle in degree
     
     NBPlank = 3;
     AutoPlank = true;
