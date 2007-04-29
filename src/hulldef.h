@@ -60,14 +60,22 @@ public:
     unsigned int DfwdShape;
     /** deck aft shape coefficient (power of x) */
     unsigned int DaftShape;
-    // bottom data
+    	// bottom data
+    /** bottom chine Length in millimeter */
+    real BLOA;
     /** bottom forward height in millimeter */
     real BfwdHeight;
     /** bottom aft height in millimeter */
     real BaftHeight;
     /** bottom chine side slope angle in degree from horizontal */
     unsigned int BSlopeA;
-    /** bottom dead rise angle in degree from horizontal */
+    /** bottom chine max beam width in millimeter */
+    real BBW;
+    /** bottom chine aft width in millimeter */
+    real BaftW;
+    /** bottom chine max beam width position in percent of deck length */
+    unsigned int BBWPos;
+    /** bottom plank dead rise angle in degree from horizontal */
     unsigned int BdeadriseA;
     /** bottom sweep angle in degree forward of transverse axis */
     unsigned int BsweepA;

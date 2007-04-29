@@ -1,12 +1,13 @@
 <ui version="4.0" >
+ <author>sailcuter</author>
  <class>CFormRigDefBase</class>
  <widget class="QDialog" name="CFormRigDefBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>658</width>
-    <height>618</height>
+    <width>656</width>
+    <height>678</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -19,25 +20,8 @@
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="1" column="0" >
-    <widget class="QLabel" name="lbl_RigID" >
-     <property name="text" >
-      <string>Rig ID</string>
-     </property>
-     <property name="alignment" >
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1" colspan="5" >
-    <widget class="QLineEdit" name="txt_RigID" >
-     <property name="text" >
-      <string>description of rig</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0" colspan="6" >
-    <widget class="QLabel" name="lbl_top" >
+   <item row="4" column="0" colspan="6" >
+    <widget class="QGroupBox" name="groupBox_5" >
      <property name="sizePolicy" >
       <sizepolicy>
        <hsizetype>5</hsizetype>
@@ -48,38 +32,12 @@
      </property>
      <property name="minimumSize" >
       <size>
-       <width>200</width>
-       <height>40</height>
+       <width>0</width>
+       <height>60</height>
       </size>
      </property>
-     <property name="text" >
-      <string>All dimensions are in millimeter and angles in degrees</string>
-     </property>
-     <property name="alignment" >
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="2" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeType" >
-      <enum>QSizePolicy::Minimum</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>21</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="2" column="3" colspan="3" >
-    <widget class="QGroupBox" name="groupBox_3" >
      <property name="title" >
-      <string>Shrouds</string>
+      <string>Boom</string>
      </property>
      <layout class="QGridLayout" >
       <property name="margin" >
@@ -88,211 +46,91 @@
       <property name="spacing" >
        <number>6</number>
       </property>
-      <item row="1" column="2" >
-       <widget class="QLineEdit" name="txt_CSB" >
-        <property name="minimumSize" >
-         <size>
-          <width>70</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignHCenter</set>
-        </property>
-       </widget>
-      </item>
       <item row="0" column="2" >
-       <widget class="QLineEdit" name="txt_CSH" >
-        <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>3</hsizetype>
-          <vsizetype>0</vsizetype>
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
+       <widget class="QLineEdit" name="txt_BAD" >
         <property name="minimumSize" >
          <size>
           <width>70</width>
           <height>0</height>
          </size>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignHCenter</set>
         </property>
        </widget>
       </item>
-      <item row="2" column="2" >
-       <widget class="QLineEdit" name="txt_LSB" >
-        <property name="minimumSize" >
+      <item row="0" column="8" >
+       <widget class="QLabel" name="lbl_tackY" >
+        <property name="frameShape" >
+         <enum>QFrame::Box</enum>
+        </property>
+        <property name="text" >
+         <string>lbl tackY</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="7" >
+       <widget class="QLabel" name="lbl_Y" >
+        <property name="text" >
+         <string>Y =</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="5" >
+       <widget class="QLabel" name="lbl_X" >
+        <property name="text" >
+         <string>X =</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="6" >
+       <widget class="QLabel" name="lbl_tackX" >
+        <property name="frameShape" >
+         <enum>QFrame::Box</enum>
+        </property>
+        <property name="text" >
+         <string>lbl tackX</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="4" >
+       <widget class="QLabel" name="lbl_Mtack" >
+        <property name="text" >
+         <string>Tack</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3" >
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType" >
+         <enum>QSizePolicy::Minimum</enum>
+        </property>
+        <property name="sizeHint" >
          <size>
-          <width>70</width>
-          <height>0</height>
+          <width>31</width>
+          <height>20</height>
          </size>
         </property>
-        <property name="alignment" >
-         <set>Qt::AlignHCenter</set>
+       </spacer>
+      </item>
+      <item row="0" column="1" >
+       <widget class="QLabel" name="lblBAD" >
+        <property name="text" >
+         <string>= BAD</string>
         </property>
        </widget>
       </item>
       <item row="0" column="0" >
-       <widget class="QLabel" name="lbl_CapShroudHeight" >
+       <widget class="QLabel" name="lbl_BAD" >
         <property name="text" >
-         <string>Outer shroud height</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1" >
-       <widget class="QLabel" name="lbl_CSH" >
-        <property name="text" >
-         <string>= CSH</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1" >
-       <widget class="QLabel" name="lbl_CSB" >
-        <property name="text" >
-         <string>= CSB</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0" >
-       <widget class="QLabel" name="lbl_CapShroudBase" >
-        <property name="text" >
-         <string>Outer shroud base</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1" >
-       <widget class="QLabel" name="lbl_LSB" >
-        <property name="text" >
-         <string>= LSB</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0" >
-       <widget class="QLabel" name="lbl_LowerShroudBase" >
-        <property name="text" >
-         <string>Lower shroud base</string>
+         <string>Boom height </string>
         </property>
        </widget>
       </item>
      </layout>
     </widget>
    </item>
-   <item row="2" column="0" colspan="2" >
-    <widget class="QGroupBox" name="groupBox" >
-     <property name="title" >
-      <string>Fore triangle</string>
-     </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
-       <number>9</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
-      <item row="1" column="0" >
-       <widget class="QLabel" name="lbl_foreJ" >
-        <property name="text" >
-         <string>Fore triangle base</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0" >
-       <widget class="QLabel" name="lbl_foreI" >
-        <property name="text" >
-         <string>Fore triangle hoist</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1" >
-       <widget class="QLabel" name="lbl_J" >
-        <property name="text" >
-         <string>= J</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1" >
-       <widget class="QLabel" name="lbl_I" >
-        <property name="text" >
-         <string>= I</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2" >
-       <widget class="QLineEdit" name="txt_foreJ" >
-        <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>1</hsizetype>
-          <vsizetype>0</vsizetype>
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize" >
-         <size>
-          <width>70</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignHCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="2" >
-       <widget class="QLineEdit" name="txt_foreI" >
-        <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>1</hsizetype>
-          <vsizetype>0</vsizetype>
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize" >
-         <size>
-          <width>70</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignHCenter</set>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="5" column="5" >
-    <widget class="QPushButton" name="btnCancel" >
-     <property name="text" >
-      <string>Cancel</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="4" >
-    <widget class="QPushButton" name="btnOK" >
-     <property name="text" >
-      <string>OK</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="0" colspan="4" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>131</width>
-       <height>31</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="4" column="0" colspan="6" >
+   <item row="5" column="0" colspan="6" >
     <widget class="QGroupBox" name="groupBox_4" >
      <property name="title" >
       <string>Spreaders</string>
@@ -488,6 +326,255 @@
        <widget class="QLabel" name="lbl_SPNB" >
         <property name="text" >
          <string>= SPNB</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="6" >
+    <widget class="QLabel" name="lbl_top" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>5</hsizetype>
+       <vsizetype>5</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize" >
+      <size>
+       <width>200</width>
+       <height>40</height>
+      </size>
+     </property>
+     <property name="font" >
+      <font>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="text" >
+      <string>All dimensions are in millimeter and angles in degrees</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1" colspan="5" >
+    <widget class="QLineEdit" name="txt_RigID" >
+     <property name="text" >
+      <string>description of rig</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" >
+    <widget class="QLabel" name="lbl_RigID" >
+     <property name="text" >
+      <string>Rig ID</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="4" >
+    <widget class="QPushButton" name="btnOK" >
+     <property name="text" >
+      <string>OK</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="5" >
+    <widget class="QPushButton" name="btnCancel" >
+     <property name="text" >
+      <string>Cancel</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="2" >
+    <widget class="QGroupBox" name="groupBox" >
+     <property name="title" >
+      <string>Fore triangle</string>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="1" column="0" >
+       <widget class="QLabel" name="lbl_foreJ" >
+        <property name="text" >
+         <string>Fore triangle base</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="lbl_foreI" >
+        <property name="text" >
+         <string>Fore triangle hoist</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" >
+       <widget class="QLabel" name="lbl_J" >
+        <property name="text" >
+         <string>= J</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" >
+       <widget class="QLabel" name="lbl_I" >
+        <property name="text" >
+         <string>= I</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2" >
+       <widget class="QLineEdit" name="txt_foreJ" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>1</hsizetype>
+          <vsizetype>0</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize" >
+         <size>
+          <width>70</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignHCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2" >
+       <widget class="QLineEdit" name="txt_foreI" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>1</hsizetype>
+          <vsizetype>0</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize" >
+         <size>
+          <width>70</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignHCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="3" colspan="3" >
+    <widget class="QGroupBox" name="groupBox_3" >
+     <property name="title" >
+      <string>Shrouds</string>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="1" column="2" >
+       <widget class="QLineEdit" name="txt_CSB" >
+        <property name="minimumSize" >
+         <size>
+          <width>70</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignHCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2" >
+       <widget class="QLineEdit" name="txt_CSH" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>3</hsizetype>
+          <vsizetype>0</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize" >
+         <size>
+          <width>70</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignHCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2" >
+       <widget class="QLineEdit" name="txt_LSB" >
+        <property name="minimumSize" >
+         <size>
+          <width>70</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignHCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="lbl_CapShroudHeight" >
+        <property name="text" >
+         <string>Outer shroud height</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" >
+       <widget class="QLabel" name="lbl_CSH" >
+        <property name="text" >
+         <string>= CSH</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" >
+       <widget class="QLabel" name="lbl_CSB" >
+        <property name="text" >
+         <string>= CSB</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QLabel" name="lbl_CapShroudBase" >
+        <property name="text" >
+         <string>Outer shroud base</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1" >
+       <widget class="QLabel" name="lbl_LSB" >
+        <property name="text" >
+         <string>= LSB</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" >
+       <widget class="QLabel" name="lbl_LowerShroudBase" >
+        <property name="text" >
+         <string>Lower shroud base</string>
         </property>
        </widget>
       </item>
@@ -728,8 +815,39 @@
      </layout>
     </widget>
    </item>
+   <item row="2" column="2" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Minimum</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>21</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="6" column="0" colspan="4" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>131</width>
+       <height>31</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
   </layout>
  </widget>
+ <layoutdefault spacing="6" margin="9" />
+ <includes/>
  <resources/>
  <connections/>
 </ui>

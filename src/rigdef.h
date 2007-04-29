@@ -42,6 +42,7 @@ public:
     real foreI;
     /** fore triangle base*/
     real foreJ;
+
     ////// mast /////
     /** mast height */
     real MHeight;
@@ -59,7 +60,14 @@ public:
     real MRnd;
     //* mast round position */
     unsigned int MRndPos;
-    
+
+    //** Boom height above deck */
+    real BAD;
+    //** mainsail tack X */
+    real MtackX;
+    //** mainsail tack Y */
+    real MtackY;
+
     ////// spreaders and shrouds /////
     /** cap shroud height */
     real CSH;

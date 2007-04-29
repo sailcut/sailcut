@@ -39,10 +39,14 @@ CHullDef::CHullDef()
     DfwdShape = 2;     // forward coefficient power of X
     DaftShape = 3;     // aft coefficient power of X
     
+    BLOA    = 7000;    // Bottom chine length in millimetre
     BfwdHeight = 100;  // Bottom chine forward height
     BaftHeight = 200;
-    BSlopeA = 24;      // side slope in degree from horizontal
-    BdeadriseA = 12;
+    BSlopeA = 24;      // Bottom chine side slope in degree from horizontal
+    BBW = 2500;        // Bottom max beam width
+    BBWPos = 50;       // Bottom chine max width position percent of deck length
+    BaftW = 2000;      // Bottom aft width
+    BdeadriseA = 12;   // Bottom plank dead rise from horizontal
     BsweepA = 45;      // Bottom plank sweep angle in degree
     
     NBPlank = 3;
@@ -76,9 +80,14 @@ CHullDef & CHullDef::operator=( const CHullDef &copy )
     DfwdShape = copy.DfwdShape;
     DaftShape = copy.DaftShape;
     
+    BLOA = copy.BLOA;
     BfwdHeight = copy.BfwdHeight;
     BaftHeight = copy.BaftHeight;
     BSlopeA = copy.BSlopeA;
+    BBW = copy.BBW;
+    BBWPos = copy.BBWPos;
+    BaftW = copy.BaftW;
+
     BdeadriseA = copy.BdeadriseA;
     BsweepA = copy.BsweepA;
     
