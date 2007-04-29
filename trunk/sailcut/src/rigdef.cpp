@@ -37,6 +37,9 @@ CRigDef::CRigDef()
     MBase = foreJ - MRakeM * (foreI/MHeight);
     MRnd = 200;
     MRndPos = 50;
+
+    BAD = 400;
+
     CSH = 7000;   // cap shroud height
     CSB = 900;
     LSB = 800;
@@ -74,6 +77,10 @@ CRigDef & CRigDef::operator=( const CRigDef &copy )
     MRnd = copy.MRnd;     // mast round
     MRndPos = copy.MRndPos;
     
+    BAD = copy.BAD;
+    MtackX = copy.MtackX;
+    MtackY = copy.MtackY;
+
     CSH = copy.CSH;       // outer shroud height
     CSB = copy.CSB;
     LSB = copy.LSB;
