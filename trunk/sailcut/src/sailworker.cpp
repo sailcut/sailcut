@@ -3155,35 +3155,6 @@ real CSailWorker::IRCwidth( const real &HL )
 }
 
 
-/** Routine for computing the width of the sail
- *   perpendicular to the luff
- *
- * @author Robert Laine
- */
-real CSailWorker::SailLP( )
-{
-    unsigned int i, imax=10;
-    real h1=0,  w=0;
-    CPoint3d p, p1, p2, p3;
-    //printf ("IRC height = %f \n", HL);
-
-    /// compute the distance to the real luff
-    p1 = Zpoint(LuffIntersect(clew, luffVP));
-    p2 = clew;
-
-    w = 0;
-    p3 = p1;
-    for (i=1; i<=imax; i++)
-    {
-        h1 = real(i) / imax;
-        p = Zpoint(p1 +CVector3d(p2-p1)*h1);
-        w = w+ CVector3d(p-p3).norm();
-        p3 = p;
-    }
-    //
-    return ( w );
-}
-
 /** Routine for computing the width of the sail at a given
  *   relative height on the luff and the leech
  *
@@ -3227,11 +3198,11 @@ real CSailWorker::SailWidth( const  real  &HL )
     {
         h = h1;
         l1 = LuffLength(h);
-        h1 = h * (1-(l1 - LuL*HL)/(LuL*HL));
+        h1 = h * (1 - (l1 - LuL*HL) / (LuL*HL) );
         //printf (" HL=%f  l1=%f  h1=%f - h2=%f \n", HL, l1, h, h1);
         h = h1;
         l1 = LuffLength(h);
-        h1 = h * (1-(l1 - LuL*HL)/(LuL*HL));
+        h1 = h * (1 - (l1 - LuL*HL) / (LuL*HL) );
         //printf (" HL=%f  l1=%f  h=%f - h1=%f \n", HL, l1, h, h1);
     }
     //while ( fabs(h1-h2)>.001 );
@@ -3257,6 +3228,37 @@ real CSailWorker::SailWidth( const  real  &HL )
     return ( w );
 }
 
+
+/** Routine for computing the width LP of the sail
+ *   perpendicular to the luff
+ *
+ * @author Robert Laine
+ */
+real CSailWorker::SailLP( )
+{
+    unsigned int i, imax=10;
+    real h1=0,  w=0;
+    CPoint3d p, p1, p2, p3;
+    //printf ("IRC height = %f \n", HL);
+
+    /// compute the distance to the real luff
+    p1 = Zpoint(LuffIntersect(clew, luffVP));
+    p2 = clew;
+
+    w = 0;
+    p3 = p1;
+    for (i=1; i<=imax; i++)
+    {
+        h1 = real(i) / imax;
+        p = Zpoint(p1 +CVector3d(p2-p1)*h1);
+        w = w+ CVector3d(p-p3).norm();
+        p3 = p;
+    }
+    //
+    return ( w );
+}
+
+
 /** Routine for computing the length of the leech edge
  *  up to a given relative heigth on straight leech line
  *
@@ -3273,7 +3275,7 @@ real CSailWorker::LeechLength( const real &h )
     for (i=1; i<=imax; i++)
     {
         h1= real(i) / imax;
-        p2 = clew + leechV*(h*h1);
+        p2 = clew + leechV * (h * h1);
         p3 = Zpoint(LeechIntersect (p2, leechVP));
         l = l + CVector3d(p3-p1).norm();
         // printf ("step = %f - p2.y = %f - leech length = %f \n", h1, p2.y(), l);
@@ -3297,8 +3299,8 @@ real CSailWorker::LuffLength( const real &h )
 
     for (i=1; i<imax; i++)
     {
-        h1= i/imax;
-        p2 = tack + luffV*(h*h1);
+        h1= real(i) / imax;
+        p2 = tack + luffV * (h * h1);
         p3 = Zpoint(LuffIntersect (p2, luffVP));
         l = l + CVector3d(p3-p1).norm();
         p1 = p3;

@@ -1093,22 +1093,23 @@ void CFormSailDef::slotCompute()
     w = worker.SailLP();
     txtb = "\nLP = " +QString::number(int(w)) +" mm ";
 
-    txtc = "\n" + tr("IRC width measurements ");
+    txtc = "\n" + tr("Sail width measurements ");
     h=0.5;
     w = worker.IRCwidth(h);
     w1 = worker.SailWidth(h);
     // printf ("h=%f IRC width=%f IOR width=%f \n", h, w, w1);
-    txtc = txtc +"\n  h= " +QString::number(h)+"\t w= " +QString::number(int(w)) +" mm / IOR " +QString::number(int(w1)) +" mm";
+    txtc = txtc +"\n  h= " +QString::number(h)+"\t IRC w= " +QString::number(int(w)) +" mm / IOR w= " +QString::number(int(w1)) +" mm";
 
     h=0.75;
     w = worker.IRCwidth(h);
     w1 = worker.SailWidth(h);
     // printf ("h=%f IRC width=%f IOR width=%f \n", h, w, w1);
-    txtc = txtc+ "\n  h= " +QString::number(h)+"\t w= " +QString::number(int(w)) +" mm / IOR " +QString::number(int(w1)) +" mm";
+    txtc = txtc+ "\n  h= " +QString::number(h)+"\t IRC w= " +QString::number(int(w)) +" mm / IOR w= " +QString::number(int(w1)) +" mm";
 
     h=0.875;
     w = worker.IRCwidth(h);
-    txtc = txtc  + "\n  h= "+QString::number(h)+"\t w= "+QString::number(int(w)) +" mm";
+    w1 = worker.SailWidth(h);
+    txtc = txtc  + "\n  h= "+QString::number(h)+"\t IRC w= "+QString::number(int(w)) +" mm / IOR w= " +QString::number(int(w1)) +" mm";
 
     displayData(  txta, txtb, txtc, txtd, txte );
 }
