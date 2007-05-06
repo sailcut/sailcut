@@ -25,6 +25,8 @@
 
 
 /** Dialog holding a sail.
+ *
+ *  @see CFormSailDef for data input and checking, CSailWorker, CSailDef
  */
 class CFormSail : public CFormDocumentTmpl<CSailDef, CSailDefXmlWriter>
 {

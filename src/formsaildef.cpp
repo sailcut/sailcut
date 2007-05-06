@@ -1067,7 +1067,8 @@ void CFormSailDef::slotSailCut()
 
 
 /** Saves the parameters entered by the user in the CSailDef.
- *  compute and display ancillary data
+ *  compute and display ancillary sail data
+ *
  *  slot connected to Compute button
  */
 void CFormSailDef::slotCompute()
@@ -1078,7 +1079,7 @@ void CFormSailDef::slotCompute()
     compute();
 
     // display ancillary data
-    real h=0, w=0;
+    real h=0, w=0, w1=0;
     QString txta, txtb, txtc, txtd, txte;
 
     CSailWorker worker(*saildef);
@@ -1087,20 +1088,23 @@ void CFormSailDef::slotCompute()
     txta = txta+"\n  "+tr("tack")+" \t x = "+QString::number(int(worker.tack.x())) +"\n\t y = "+QString::number(int(worker.tack.y())) +" mm" ;
     txta = txta+"\n  "+tr("clew")+" \t x = "+QString::number(int(worker.clew.x())) +"\n\t y = "+QString::number(int(worker.clew.y())) +" mm";
     txta = txta+"\n  "+tr("head")+" \t x = "+QString::number(int(worker.head.x())) +"\n\t y = "+QString::number(int(worker.head.y())) +" mm";
-    txta = txta+"\n  "+tr("peak")+" \t x = "+QString::number(int(worker.peak.x())) +"\n\t y = "+QString::number(int(worker.peak.y())) +" mm";
+    txta = txta+"\n  "+tr("peak")+" \t x = "+QString::number(int(worker.peak.x())) +"\n\t y = "+QString::number(int(worker.peak.y())) +" mm ";
 
     w = worker.SailLP();
-    txtb = "\nLP = " +QString::number(int(w)) +" mm";
+    txtb = "\nLP = " +QString::number(int(w)) +" mm ";
 
-    txtc = "\n" + tr("IRC width measurements");
+    txtc = "\n" + tr("IRC width measurements ");
     h=0.5;
     w = worker.IRCwidth(h);
-    // printf ("IRC width %f \n", w);
-    txtc = txtc +"\n  h= "+QString::number(h)+"\t w= "+QString::number(int(w)) +" mm";
+    w1 = worker.SailWidth(h);
+    // printf ("h=%f IRC width=%f IOR width=%f \n", h, w, w1);
+    txtc = txtc +"\n  h= " +QString::number(h)+"\t w= " +QString::number(int(w)) +" mm / IOR " +QString::number(int(w1)) +" mm";
 
     h=0.75;
     w = worker.IRCwidth(h);
-    txtc = txtc+ "\n  h= "+QString::number(h)+"\t w= "+QString::number(int(w)) +" mm";
+    w1 = worker.SailWidth(h);
+    // printf ("h=%f IRC width=%f IOR width=%f \n", h, w, w1);
+    txtc = txtc+ "\n  h= " +QString::number(h)+"\t w= " +QString::number(int(w)) +" mm / IOR " +QString::number(int(w1)) +" mm";
 
     h=0.875;
     w = worker.IRCwidth(h);
@@ -1110,7 +1114,7 @@ void CFormSailDef::slotCompute()
 }
 
 
-/** display data in a message box
+/** display ancillary data in a message box
  */
 void CFormSailDef::displayData(QString &txt0, QString &txt1, QString &txt2, QString &txt3, QString &txt4 )
 {

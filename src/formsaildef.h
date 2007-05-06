@@ -28,6 +28,8 @@
  *  The user enters the parameters of the sail
  *  Checking the input data
  *  Computing and displaying ancillary data.
+ *  
+ *  @see also CsailDef for definition and default values
  */
 class CFormSailDef : public QDialog, private Ui::CFormSailDefBase
 {

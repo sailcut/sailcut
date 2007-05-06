@@ -33,7 +33,7 @@ enum enumSailCut { CROSS, TWIST, HORIZONTAL, VERTICAL, RADIAL, MITRE };
 /** This class holds the parameters that define a sail
  *  and the default parameters
  *
- * @see CSailWorker, CSail
+ *  @see CFormSailDef for data input and checking, CSailWorker
  */
 class CSailDef
 {

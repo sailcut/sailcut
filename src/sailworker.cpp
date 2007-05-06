@@ -3115,12 +3115,12 @@ real CSailWorker::IRCwidth( const real &HL )
     CPoint3d p, p1, p2, p3;
     //printf ("IRC height = %f \n", HL);
 
-    // compute the leech edge length LL
+    /// compute the leech edge length LL
     h1 = 1;
     LL = LeechLength( h1 );
     //printf ("IRC leech length = %f \n", LL);
 
-    // compute the point on leech for relative length HL
+    /// compute the point on leech for relative length HL
     h2 = HL;
     //do
     {
@@ -3135,9 +3135,10 @@ real CSailWorker::IRCwidth( const real &HL )
     }
     //while ( fabs(h1-h2)>.001 );
 
-    // compute the shortest distance to the real luff
+    /// compute the shortest distance to the real luff
     p1 = clew + leechV*h2;
     p2 = Zpoint(LeechIntersect(p1, leechVP));
+    
     p1 = Zpoint(LuffIntersect(p2, luffVP));
 
     w = 0;
@@ -3153,6 +3154,7 @@ real CSailWorker::IRCwidth( const real &HL )
     return ( w );
 }
 
+
 /** Routine for computing the width of the sail
  *   perpendicular to the luff
  *
@@ -3165,7 +3167,7 @@ real CSailWorker::SailLP( )
     CPoint3d p, p1, p2, p3;
     //printf ("IRC height = %f \n", HL);
 
-    // compute the distance to the real luff
+    /// compute the distance to the real luff
     p1 = Zpoint(LuffIntersect(clew, luffVP));
     p2 = clew;
 
@@ -3183,54 +3185,76 @@ real CSailWorker::SailLP( )
 }
 
 /** Routine for computing the width of the sail at a given
- *   relative height on the luff and leech
+ *   relative height on the luff and the leech
  *
  * @author Robert Laine
  */
-real CSailWorker::SailW( const  real  &HL )
+real CSailWorker::SailWidth( const  real  &HL )
 {
     unsigned int i, imax=10;
-    real h1=0, h2=0, LL=0, l1=0, w=0;
+    real h=0, h1=0, h2=0, LeL=0, LuL=0, l1=0, w=0;
     CPoint3d p, p1, p2, p3;
     //printf ("IRC height = %f \n", HL);
 
-    // compute the leech edge length LL
-    h1 = 1;
-    LL = LeechLength( h1 );
-    //printf ("IRC leech length = %f \n", LL);
+    /// compute the leech edge length LeL
+    h = 1;
+    LeL = LeechLength( h );
+    //printf ("IOR leech length = %f \n", LeL);
 
-    // compute the point on leech for relative length HL
+    /// compute the height of point on leech for relative length HL
     h2 = HL;
     //do
     {
-        h1 = h2;
-        l1 = LeechLength(h1);
-        h2 = h1 * (1-(l1 - LL*HL)/(LL*HL));
-        //printf (" HL=%f  l1=%f  h1=%f - h2=%f \n", HL, l1, h1, h2);
-        h1 = h2;
-        l1 = LeechLength(h1);
-        h2 = h1 * (1-(l1 - LL*HL)/(LL*HL));
-        //printf (" HL=%f  l1=%f  h1=%f - h2=%f \n", HL, l1, h1, h2);
+        h = h2;
+        l1 = LeechLength(h);
+        h2 = h * (1-(l1 - LeL*HL)/(LeL*HL));
+        //printf (" HL=%f  l1=%f  h1=%f - h2=%f \n", HL, l1, h, h2);
+        h = h2;
+        l1 = LeechLength(h);
+        h2 = h * (1-(l1 - LeL*HL)/(LeL*HL));
+        //printf (" HL=%f  l1=%f  h=%f - h1=%f \n", HL, l1, h, h2);
     }
     //while ( fabs(h1-h2)>.001 );
 
-    // compute the shortest distance to the real luff
-    p1 = clew + leechV*h2;
-    p2 = Zpoint(LeechIntersect(p1, leechVP));
-    p1 = Zpoint(LuffIntersect(p2, luffVP));
+    /// compute the luff edge length LuL
+    h = 1;
+    LuL = LuffLength( h );
+    //printf ("IOR luff length = %f \n", LuL);
 
+    /// compute the height of point on luff for relative length HL
+    h1 = HL;
+    //do
+    {
+        h = h1;
+        l1 = LuffLength(h);
+        h1 = h * (1-(l1 - LuL*HL)/(LuL*HL));
+        //printf (" HL=%f  l1=%f  h1=%f - h2=%f \n", HL, l1, h, h1);
+        h = h1;
+        l1 = LuffLength(h);
+        h1 = h * (1-(l1 - LuL*HL)/(LuL*HL));
+        //printf (" HL=%f  l1=%f  h=%f - h1=%f \n", HL, l1, h, h1);
+    }
+    //while ( fabs(h1-h2)>.001 );
+
+
+    /// compute the shortest distance real leech to the real luff
+    p = clew + leechV * h2;
+    p2 = Zpoint(LeechIntersect(p, leechVP));
+    
+    p = tack + luffV * h1;
+    p1 = Zpoint(LuffIntersect(p, luffVP));
+    
     w = 0;
     p3 = p1;
     for (i=1; i<=imax; i++)
     {
         h1 = real(i) / imax;
-        p = Zpoint(p1 +CVector3d(p2-p1)*h1);
-        w = w+ CVector3d(p-p3).norm();
+        p = Zpoint(p1 + CVector3d(p2-p1) * h1);
+        w = w + CVector3d(p-p3).norm();
         p3 = p;
     }
     //
     return ( w );
-
 }
 
 /** Routine for computing the length of the leech edge
