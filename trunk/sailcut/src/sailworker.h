@@ -41,7 +41,7 @@ public:
     real Area();
     real Diagonal();
     real IRCwidth( const real &h );
-    real SailW( const real &h );
+    real SailWidth( const real &h );
     real LeechLength( const real &h );
     real LuffLength( const real &h );
     real SailLP( );
