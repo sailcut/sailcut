@@ -32,18 +32,20 @@ CRigDef::CRigDef()
     MHeight = 8000;   // mast height
     MCord = 140;
     MWidth = 70;
-    MRakeM = 200;
+    MRakeM = 220;
     MRakeD = atan2(MRakeM, MHeight) * (180 / PI);
     MBase = foreJ - MRakeM * (foreI/MHeight);
-    MRnd = 200;
+    MRnd = 110;
     MRndPos = 50;
 
-    BAD = 400;
-
-    CSH = 7000;   // cap shroud height
+    BAD = 750;      // height of boom 
+    MtackX =  2100;
+    MtackY = 750;
+    
+    CSH = 7000;     // cap shroud height
     CSB = 900;
     LSB = 800;
-    SPNB = 3;     // number of spreaders
+    SPNB = 3;       // number of spreaders
     SPH[0] = 0;
     SPW[0] = CSB;
     SPH[1] = 2000;
@@ -80,7 +82,7 @@ CRigDef & CRigDef::operator=( const CRigDef &copy )
     BAD = copy.BAD;
     MtackX = copy.MtackX;
     MtackY = copy.MtackY;
-
+    
     CSH = copy.CSH;       // outer shroud height
     CSB = copy.CSB;
     LSB = copy.LSB;

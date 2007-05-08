@@ -38,28 +38,32 @@ CFormRigDef::CFormRigDef( QWidget* parent, CRigDef * rigptr )
        the user clicks OK */
     rigdef = rigptr;
     
-    txt_RigID->setText(QString(rigdef->rigID));
-    txt_foreI->setText(QString::number(rigdef->foreI));
-    txt_foreJ->setText(QString::number(rigdef->foreJ));
-    txt_CSH->setText(QString::number(rigdef->CSH));
-    txt_CSB->setText(QString::number(rigdef->CSB));
-    txt_LSB->setText(QString::number(rigdef->LSB));
+    txt_RigID->setText(QString(rigdef->rigID) );
+    txt_foreI->setText(QString::number(rigdef->foreI) );
+    txt_foreJ->setText(QString::number(rigdef->foreJ) );
+    txt_CSH->setText(QString::number(rigdef->CSH) );
+    txt_CSB->setText(QString::number(rigdef->CSB) );
+    txt_LSB->setText(QString::number(rigdef->LSB) );
     
-    txt_MH->setText(QString::number(rigdef->MHeight));
-    txt_MC->setText(QString::number(rigdef->MCord));
-    txt_MW->setText(QString::number(rigdef->MWidth));
-    txt_MRkM->setText(QString::number(rigdef->MRakeM));
-    lbl_MRkD->setText(QString::number(rigdef->MRakeD));
-    txt_MRnd->setText(QString::number(rigdef->MRnd));
+    txt_MH->setText(QString::number(rigdef->MHeight) );
+    txt_MC->setText(QString::number(rigdef->MCord) );
+    txt_MW->setText(QString::number(rigdef->MWidth) );
+    txt_MRkM->setText(QString::number(rigdef->MRakeM) );
+    lbl_MRkD->setText(QString::number(rigdef->MRakeD) );
+    txt_MRnd->setText(QString::number(rigdef->MRnd) );
     spinBox_MRndPos->setValue(rigdef->MRndPos);
     
+    txt_BAD->setText(QString::number(rigdef->BAD) );
+    lbl_tackX->setText(QString::number(int(rigdef->MtackX)) );
+    lbl_tackY->setText(QString::number(int(rigdef->MtackY)) );
+    
     spinBox_SPNB->setValue(rigdef->SPNB);
-    txt_SPH1->setText(QString::number(rigdef->SPH[1]));
-    txt_SPW1->setText(QString::number(rigdef->SPW[1]));
-    txt_SPH2->setText(QString::number(rigdef->SPH[2]));
-    txt_SPW2->setText(QString::number(rigdef->SPW[2]));
-    txt_SPH3->setText(QString::number(rigdef->SPH[3]));
-    txt_SPW3->setText(QString::number(rigdef->SPW[3]));
+    txt_SPH1->setText(QString::number(rigdef->SPH[1]) );
+    txt_SPW1->setText(QString::number(rigdef->SPW[1]) );
+    txt_SPH2->setText(QString::number(rigdef->SPH[2]) );
+    txt_SPW2->setText(QString::number(rigdef->SPW[2]) );
+    txt_SPH3->setText(QString::number(rigdef->SPH[3]) );
+    txt_SPW3->setText(QString::number(rigdef->SPW[3]) );
     
     connect( btnOK, SIGNAL( clicked() ), this, SLOT( accept() ) );
     connect( btnCancel, SIGNAL( clicked() ), this, SLOT( reject() ) );
@@ -262,7 +266,7 @@ bool CFormRigDef::check()
     /// checking mast round
     rigdef->MRnd = txt_MRnd->text().toDouble();
     rigdef->MRndPos = spinBox_MRndPos->value();
-    if ( rigdef->MRnd > L1/10)
+    if ( rigdef->MRnd > L1/10 )
     {
         flag = false;
         rigdef->MRnd = floor( L1/10 );
@@ -275,6 +279,36 @@ bool CFormRigDef::check()
         txt_MRnd->setPalette(palStd); 
     }
     txt_MRnd->setText(QString::number(rigdef->MRnd));
+    
+    /// checking Boom height 
+    rigdef->BAD = txt_BAD->text().toDouble();
+    if (rigdef->BAD < 0 )
+    {
+        flag = false;
+        rigdef->BAD = 0;
+        txt_BAD->setPalette(palLo);
+    }
+    else if ( rigdef->BAD > L1/4 )
+    {
+        flag = false;
+        rigdef->BAD = floor( L1/4 );
+        txt_BAD->setPalette(palHi);
+        txt_MH->setPalette(palRel);
+    } 
+    else
+    {
+        txt_BAD->setPalette(palStd);
+        txt_MH->setPalette(palStd); 
+    }
+    txt_BAD->setText(QString::number(rigdef->BAD));
+    
+    rigdef->MtackY = rigdef->BAD;
+    /*
+    CRigWorker worker(*rigdef);
+    rigdef->MtackX = worker.mastCenter(rigdef->BAD).x();
+    */ 
+    lbl_tackX->setText(QString::number( rigdef->MtackX) ); 
+    lbl_tackY->setText(QString::number( rigdef->MtackY) );
     
     /// reading number of spreaders
     rigdef->SPNB = spinBox_SPNB->value();

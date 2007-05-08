@@ -3388,7 +3388,7 @@ CPoint3d CSailWorker::FwdIntersect( const CPoint3d &p1 ) const
  */
 CPoint3d CSailWorker::FootIntersect( const CPoint3d &pt1, const CVector3d &v1 ) const
 {
-    CPoint3d p2=pt1;
+    CPoint3d p2 = pt1;
 
     /* useful straight lines */
     CSubSpace ptv1 = CSubSpace3d::line(pt1, v1);
