@@ -213,9 +213,9 @@ CWidgetProfile::CWidgetProfile( QWidget *parent, CProfile *ptr,
     // we set the "active" flag to false so that we can set the initial
     // values without slotChanged being triggered
     active = false;
-    spinLeech->setValue( int(profile->getLeech()*50) );
+    spinLeech->setValue( int(profile->getLeech()*50 +0.01) );//+0.01 to avoid rounding down
     spinLuff->setValue( int(profile->getLuff()) );
-    spinDepth->setValue( int(profile->getDepth()*100) );
+    spinDepth->setValue( int(profile->getDepth()*100 +0.01) );//+0.01 to avoid rounding down
     active = true;
 
     // signals and slots connections
