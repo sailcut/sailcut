@@ -87,7 +87,6 @@ void CFormRigDef::accept()
 bool CFormRigDef::check()
 { 
     long I=1, J=1, L1=1, L2=1;
-    //real A1=0, A2=0;
     bool flag = true;
     QString txt;
     ///  create four palettes
