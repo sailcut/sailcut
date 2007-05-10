@@ -59,13 +59,13 @@ void CLabelProfile::paintEvent( QPaintEvent *)
     if ( wasResized )
     {
         CRect3d viewRect;
-        viewRect.max = CPoint3d(vRect.width(), vRect.height());
+        viewRect.max = CPoint3d(vRect.width() , vRect.height());
 
         CRect3d objRect;
-        objRect.max = CPoint3d(1, 0.2);
+        objRect.max = CPoint3d(1 , 0.2);
         center = objRect.center();
 
-        lRect = calcLRect(viewRect, objRect);
+        lRect = calcLRect(viewRect , objRect);
         wasResized = 0;
     }
 
@@ -81,15 +81,15 @@ void CLabelProfile::paintEvent( QPaintEvent *)
     // flip coordinate system to have the z axis pointing up
     painter.scale(1,-1);
 
-    prev = QPoint( 0, int(scale * profile->z(0)) );
+    prev = QPoint( 0 , int(scale * profile->z(0) ) );
     for( unsigned i = 1; i < nbpoints; i++)
     {
-        x = real(i) / (nbpoints-1);
+        x = real(i) / (nbpoints -1);
         z = profile->z(x);
 
         //qDebug( "( " + QString::number(x) + ", " + QString::number(z) + " )" );
-        next = QPoint( int(x*scale) , int(z*scale) );
-        painter.drawLine(prev, next);
+        next = QPoint( int(x * scale) , int(z * scale) );
+        painter.drawLine(prev , next);
         prev = next;
     }
 }
@@ -213,9 +213,9 @@ CWidgetProfile::CWidgetProfile( QWidget *parent, CProfile *ptr,
     // we set the "active" flag to false so that we can set the initial
     // values without slotChanged being triggered
     active = false;
-    spinLeech->setValue( int(profile->getLeech()*50 +0.01) );//+0.01 to avoid rounding down
-    spinLuff->setValue( int(profile->getLuff()) );
-    spinDepth->setValue( int(profile->getDepth()*100 +0.01) );//+0.01 to avoid rounding down
+    spinLeech->setValue( int(round(profile->getLeech() * 50) ) );
+    spinLuff->setValue( int(round(profile->getLuff() ) ) );
+    spinDepth->setValue( int(round(profile->getDepth() * 100) ) );
     active = true;
 
     // signals and slots connections
@@ -226,7 +226,7 @@ CWidgetProfile::CWidgetProfile( QWidget *parent, CProfile *ptr,
     // set translations and trigger update 
     // NOTE : all the widgets need to be created before doing this
     languageChange();
-    resize( QSize(527, 159).expandedTo(minimumSizeHint()) );
+    resize( QSize(527, 159).expandedTo( minimumSizeHint() ) );
     
     // trigger the computation of profile to update the ancillary data labels
     slotChanged();
@@ -253,7 +253,7 @@ void CWidgetProfile::languageChange()
  */
 void CWidgetProfile::slotChanged()
 {
-    if (active == false)
+    if ( active == false )
         return;
 
     // store the new values
