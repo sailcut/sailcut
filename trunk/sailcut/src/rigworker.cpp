@@ -221,8 +221,10 @@ CPoint3d CRigWorker::mastCenter( const real &HM ) const
     // round
     real round = MRnd * RoundP( h , MRndPos ); 
         // printf ("i= %d, MRnd = %f \n", i, round);
+
     // straight mast section center point
     p1 = p0 + HM * vm.unit();
+
     // displace center point of section by round
     p1 = p1 + CMatrix::rot3d( 2, PI/2 ) * vm.unit() * round;
     

@@ -26,6 +26,8 @@
 
 /** The rig definition dialog, where the user enters
  *  the parameters of the rig.
+ *
+ *  @see CRigDef default values
  */
 class CFormRigDef : public QDialog, private Ui::CFormRigDefBase
 {
@@ -36,6 +38,10 @@ public:
 
     bool check();
     virtual void accept();
+
+protected slots:
+    virtual void languageChange();
+    void slotChanged();
 
 protected:
     /** a pointer to the rig definion */

@@ -18,6 +18,7 @@
  */
 
 #include "formrigdef.h"
+#include "rigworker.h"
 #include <QLabel>
 #include <QMessageBox>
 #include <QRadioButton>
@@ -67,6 +68,8 @@ CFormRigDef::CFormRigDef( QWidget* parent, CRigDef * rigptr )
     
     connect( btnOK, SIGNAL( clicked() ), this, SLOT( accept() ) );
     connect( btnCancel, SIGNAL( clicked() ), this, SLOT( reject() ) );
+    connect( txt_BAD, SIGNAL( valueChanged(int) ), this, SLOT( check() ) );
+
 }
 
 
@@ -81,8 +84,39 @@ void CFormRigDef::accept()
 }
 
 
-/** Check all dimensions entered in order
- *  to make sure that the rig is possible and reasonable.
+/** Sets the strings of the subwidgets using the current
+ *  language.
+ */
+void CFormRigDef::languageChange()
+{   // FIXME use proper labels 
+    /*lblLuff->setText( tr( "Luff shape" ) );
+    lblDepth->setText( tr( "Depth" ) );
+    lblPercent->setText( tr( "%" ) );
+    lblLeech->setText( tr( "Leech shape" ) );
+    // ancillary data labels
+    lblLuffSlopeDegrees->setText( tr( "degrees" ) );
+    lblMaxPosCord->setText( tr( "cord") );
+    lblLeechSlopeDegrees->setText( tr( "degrees" ) );    
+    */
+}
+
+
+/** Called when one of the values changes.
+ */
+void CFormRigDef::slotChanged()
+{
+    /* 
+    if ( active == false )
+        return;
+    */
+    check(); // FIXME  it does nothing    
+    
+}
+
+
+/** Check all dimensions entered in order to 
+ *  make sure that the rig is possible and reasonable.
+ *
  */
 bool CFormRigDef::check()
 { 
@@ -301,13 +335,13 @@ bool CFormRigDef::check()
     }
     txt_BAD->setText(QString::number(rigdef->BAD));
     
-    rigdef->MtackY = rigdef->BAD;
-    /*
+    ///computing X-Y position of main sail tack    
     CRigWorker worker(*rigdef);
-    rigdef->MtackX = worker.mastCenter(rigdef->BAD).x();
-    */ 
-    lbl_tackX->setText(QString::number( rigdef->MtackX) ); 
-    lbl_tackY->setText(QString::number( rigdef->MtackY) );
+    rigdef->MtackX = worker.mastCenter( rigdef->BAD ).x() + (rigdef->MCord)/2;
+    rigdef->MtackY = worker.mastCenter( rigdef->BAD ).y();
+    
+    lbl_tackX->setText(QString::number( int(round(rigdef->MtackX) ))); 
+    lbl_tackY->setText(QString::number( int(round(rigdef->MtackY) )));
     
     /// reading number of spreaders
     rigdef->SPNB = spinBox_SPNB->value();
