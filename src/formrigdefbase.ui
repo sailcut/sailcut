@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>592</width>
+    <width>674</width>
     <height>678</height>
    </rect>
   </property>
@@ -860,6 +860,30 @@
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="9" />
+ <tabstops>
+  <tabstop>btnOK</tabstop>
+  <tabstop>btnCancel</tabstop>
+  <tabstop>txt_RigID</tabstop>
+  <tabstop>txt_foreI</tabstop>
+  <tabstop>txt_foreJ</tabstop>
+  <tabstop>txt_CSH</tabstop>
+  <tabstop>txt_CSB</tabstop>
+  <tabstop>txt_LSB</tabstop>
+  <tabstop>txt_MH</tabstop>
+  <tabstop>txt_MRnd</tabstop>
+  <tabstop>spinBox_MRndPos</tabstop>
+  <tabstop>txt_MRkM</tabstop>
+  <tabstop>txt_MC</tabstop>
+  <tabstop>txt_MW</tabstop>
+  <tabstop>txt_BAD</tabstop>
+  <tabstop>spinBox_SPNB</tabstop>
+  <tabstop>txt_SPH3</tabstop>
+  <tabstop>txt_SPW3</tabstop>
+  <tabstop>txt_SPH2</tabstop>
+  <tabstop>txt_SPW2</tabstop>
+  <tabstop>txt_SPH1</tabstop>
+  <tabstop>txt_SPW1</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

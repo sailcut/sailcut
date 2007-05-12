@@ -122,6 +122,7 @@ CWidgetProfile::CWidgetProfile( QWidget *parent, CProfile *ptr,
                                 QString caption , CWidgetProfileVert *vert)
         : QWidget(parent), widgetVert(vert)
 {
+    // store the pointer
     profile = ptr;
 
     QHBoxLayout *layout = new QHBoxLayout( this );
