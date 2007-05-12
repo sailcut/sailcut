@@ -68,7 +68,7 @@ CFormRigDef::CFormRigDef( QWidget* parent, CRigDef * rigptr )
     
     connect( btnOK, SIGNAL( clicked() ), this, SLOT( accept() ) );
     connect( btnCancel, SIGNAL( clicked() ), this, SLOT( reject() ) );
-    connect( txt_BAD, SIGNAL( valueChanged(int) ), this, SLOT( check() ) );
+    connect( txt_BAD, SIGNAL( textChanged() ), this, SLOT( slotChanged() ) );
 
 }
 
