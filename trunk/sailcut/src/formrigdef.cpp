@@ -38,7 +38,7 @@ CFormRigDef::CFormRigDef( QWidget* parent, CRigDef * rigptr )
     /* we store the pointer to the CRigDef so we can update it when
        the user clicks OK */
     rigdef = rigptr;
-    
+    //active = false;
     txt_RigID->setText(QString(rigdef->rigID) );
     txt_foreI->setText(QString::number(rigdef->foreI) );
     txt_foreJ->setText(QString::number(rigdef->foreJ) );
@@ -65,7 +65,8 @@ CFormRigDef::CFormRigDef( QWidget* parent, CRigDef * rigptr )
     txt_SPW2->setText(QString::number(rigdef->SPW[2]) );
     txt_SPH3->setText(QString::number(rigdef->SPH[3]) );
     txt_SPW3->setText(QString::number(rigdef->SPW[3]) );
-    
+    //active = true;
+
     connect( btnOK, SIGNAL( clicked() ), this, SLOT( accept() ) );
     connect( btnCancel, SIGNAL( clicked() ), this, SLOT( reject() ) );
     connect( txt_BAD, SIGNAL( textChanged() ), this, SLOT( slotChanged() ) );
@@ -105,11 +106,13 @@ void CFormRigDef::languageChange()
  */
 void CFormRigDef::slotChanged()
 {
-    /* 
+    /*
     if ( active == false )
         return;
     */
     check(); // FIXME  it does nothing    
+    lbl_tackX->setText(QString::number( int(round(rigdef->MtackX) ))); 
+    lbl_tackY->setText(QString::number( int(round(rigdef->MtackY) )));
     
 }
 
