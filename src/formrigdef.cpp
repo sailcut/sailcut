@@ -38,7 +38,13 @@ CFormRigDef::CFormRigDef( QWidget* parent, CRigDef * rigptr )
     /* we store the pointer to the CRigDef so we can update it when
        the user clicks OK */
     rigdef = rigptr;
-    //active = false;
+
+    connect( btnOK, SIGNAL( clicked() ), this, SLOT( accept() ) );
+    connect( btnCancel, SIGNAL( clicked() ), this, SLOT( reject() ) );
+    connect( txt_BAD, SIGNAL( textChanged(const QString&) ), this, SLOT( slotChanged() ) );
+    //connect( txt_foreI, SIGNAL( textChanged(const QString&) ), this, SLOT( slotChanged() ) );
+    //connect( txt_MH, SIGNAL( textChanged(const QString&) ), this, SLOT( slotChanged() ) );
+
     txt_RigID->setText(QString(rigdef->rigID) );
     txt_foreI->setText(QString::number(rigdef->foreI) );
     txt_foreJ->setText(QString::number(rigdef->foreJ) );
@@ -55,9 +61,11 @@ CFormRigDef::CFormRigDef( QWidget* parent, CRigDef * rigptr )
     spinBox_MRndPos->setValue(rigdef->MRndPos);
     
     txt_BAD->setText(QString::number(rigdef->BAD) );
+    /* activated by txt_BAD change 
     lbl_tackX->setText(QString::number(int(rigdef->MtackX)) );
     lbl_tackY->setText(QString::number(int(rigdef->MtackY)) );
-    
+    */
+
     spinBox_SPNB->setValue(rigdef->SPNB);
     txt_SPH1->setText(QString::number(rigdef->SPH[1]) );
     txt_SPW1->setText(QString::number(rigdef->SPW[1]) );
@@ -65,11 +73,6 @@ CFormRigDef::CFormRigDef( QWidget* parent, CRigDef * rigptr )
     txt_SPW2->setText(QString::number(rigdef->SPW[2]) );
     txt_SPH3->setText(QString::number(rigdef->SPH[3]) );
     txt_SPW3->setText(QString::number(rigdef->SPW[3]) );
-    //active = true;
-
-    connect( btnOK, SIGNAL( clicked() ), this, SLOT( accept() ) );
-    connect( btnCancel, SIGNAL( clicked() ), this, SLOT( reject() ) );
-    connect( txt_BAD, SIGNAL( textChanged(const QString&) ), this, SLOT( slotChanged() ) );
 
 }
 
@@ -103,6 +106,7 @@ void CFormRigDef::languageChange()
 
 
 /** Called when one of the values changes.
+ *  it triggers a check of all data
  */
 void CFormRigDef::slotChanged()
 {
@@ -110,10 +114,9 @@ void CFormRigDef::slotChanged()
     if ( active == false )
         return;
     */
-    check(); // FIXME  it does nothing    
-    lbl_tackX->setText(QString::number( int(round(rigdef->MtackX) ))); 
-    lbl_tackY->setText(QString::number( int(round(rigdef->MtackY) )));
-    
+
+    check();
+
 }
 
 
@@ -123,7 +126,7 @@ void CFormRigDef::slotChanged()
  */
 bool CFormRigDef::check()
 { 
-    long I=1, J=1, L1=1, L2=1;
+    long I = 1, J = 1, L1 = 1, L2 = 1;
     bool flag = true;
     QString txt;
     ///  create four palettes
@@ -344,7 +347,7 @@ bool CFormRigDef::check()
     rigdef->MtackY = worker.mastCenter( rigdef->BAD ).y();
     
     lbl_tackX->setText(QString::number( int(round(rigdef->MtackX) ))); 
-    lbl_tackY->setText(QString::number( int(round(rigdef->MtackY) )));
+    lbl_tackY->setText(QString::number( int(rigdef->MtackY) ));
     
     /// reading number of spreaders
     rigdef->SPNB = spinBox_SPNB->value();
