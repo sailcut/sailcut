@@ -36,20 +36,20 @@ CSailDef::CSailDef()
     sailCut = CROSS;
     sailID = "Test sail 1";
 
-    LOA    = 7000;  // length of hull in millimetre
+    LOA    = 7000;   // length of hull in millimetre
     foreJ  = 2000;    // base of fore triangle
     foreI  = 5500;    // height of fore triangle
 
-    tackX  = 2100;  // longitudinal distance of main sail tack from stem in millimetre
-    tackY  = 750;    // height of sail tack above stem in millimetre
+    tackX  = 1972;    // longitudinal distance of main sail tack from stem in millimetre
+    tackY  = 750;     // height of sail tack above stem in millimetre
     luffL  = 6250;    // in millimetre
     rake   = 200;     // in millimetre
     gaffDeg= 45;     // in degree
     gaffL  = 2500;   // in millimetre
-    leechL = 8220;  // in millimetre
+    leechL = 8220;   // in millimetre
     footL  = 4100;   // in millimetre
 
-    luffR  = 100;       // in millimetre // NOTE: Positive value for mast bend Negative for headstay sag
+    luffR  = 100;     // in millimetre // NOTE: Positive value for mast bend Negative for headstay sag
     luffRP = 45;      // in percent of luff length
     gaffR  = 150;    // in millimetre
     gaffRP = 50;     // in percent
