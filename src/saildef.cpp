@@ -43,14 +43,14 @@ CSailDef::CSailDef()
     tackX  = 1972;    // longitudinal distance of main sail tack from stem in millimetre
     tackY  = 750;     // height of sail tack above stem in millimetre
     luffL  = 6250;    // in millimetre
-    rake   = 200;     // in millimetre
+    rake   = 160;     // in millimetre
     gaffDeg= 45;     // in degree
     gaffL  = 2500;   // in millimetre
     leechL = 8220;   // in millimetre
     footL  = 4100;   // in millimetre
 
-    luffR  = 100;     // in millimetre // NOTE: Positive value for mast bend Negative for headstay sag
-    luffRP = 45;      // in percent of luff length
+    luffR  = 66;     // in millimetre // NOTE: Positive value for mast bend Negative for headstay sag
+    luffRP = 50;      // in percent of luff length
     gaffR  = 150;    // in millimetre
     gaffRP = 50;     // in percent
     leechR = -120;  // in millimetre // NOTE: Negative value for hollow leech

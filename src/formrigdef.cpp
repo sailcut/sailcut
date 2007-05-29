@@ -61,7 +61,7 @@ CFormRigDef::CFormRigDef( QWidget* parent, CRigDef * rigptr )
     spinBox_MRndPos->setValue(rigdef->MRndPos);
     
     txt_BAD->setText(QString::number(rigdef->BAD) );
-    /* activated by txt_BAD change 
+    /* will be activated by txt_BAD change 
     lbl_tackX->setText(QString::number(int(rigdef->MtackX)) );
     lbl_tackY->setText(QString::number(int(rigdef->MtackY)) );
     */
@@ -327,10 +327,10 @@ bool CFormRigDef::check()
         rigdef->BAD = 0;
         txt_BAD->setPalette(palLo);
     }
-    else if ( rigdef->BAD > L1/4 )
+    else if ( rigdef->BAD > L1 )
     {
         flag = false;
-        rigdef->BAD = floor( L1/4 );
+        rigdef->BAD = L1;
         txt_BAD->setPalette(palHi);
         txt_MH->setPalette(palRel);
     } 
