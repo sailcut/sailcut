@@ -41,7 +41,8 @@ CRigDef::CRigDef()
     BAD = 750;      // height of boom 
     MtackX =  2100;
     MtackY = 750;
-    
+    HAD = 7000;
+
     CSH = 7000;     // cap shroud height
     CSB = 900;
     LSB = 800;
@@ -80,6 +81,7 @@ CRigDef & CRigDef::operator=( const CRigDef &copy )
     MRndPos = copy.MRndPos;
     
     BAD = copy.BAD;
+    HAD = copy.HAD;
     MtackX = copy.MtackX;
     MtackY = copy.MtackY;
     

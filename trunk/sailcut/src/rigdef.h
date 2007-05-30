@@ -56,17 +56,19 @@ public:
     real MRakeD;
     /** mast base distance to stem */
     real MBase;
-    //** mast round */
+    /** mast round */
     real MRnd;
-    //* mast round position */
+    /** mast round position */
     unsigned int MRndPos;
 
-    //** Boom height above deck */
+    /** Boom height above deck */
     real BAD;
-    //** mainsail tack X */
+    /** mainsail tack X */
     real MtackX;
-    //** mainsail tack Y */
+    /** mainsail tack Y */
     real MtackY;
+    /** mainsail head height above deck */
+    real HAD;
 
     ////// spreaders and shrouds /////
     /** cap shroud height */

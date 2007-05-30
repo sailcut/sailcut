@@ -41,9 +41,10 @@ CFormRigDef::CFormRigDef( QWidget* parent, CRigDef * rigptr )
 
     connect( btnOK, SIGNAL( clicked() ), this, SLOT( accept() ) );
     connect( btnCancel, SIGNAL( clicked() ), this, SLOT( reject() ) );
+    connect( txt_foreI, SIGNAL( lostFocus() ), this, SLOT( slotChanged() ) );
+    connect( txt_MH, SIGNAL( lostFocus() ), this, SLOT( slotChanged() ) );
+    connect( txt_HAD, SIGNAL( lostFocus() ), this, SLOT( slotChanged() ) );
     connect( txt_BAD, SIGNAL( textChanged(const QString&) ), this, SLOT( slotChanged() ) );
-    //connect( txt_foreI, SIGNAL( textChanged(const QString&) ), this, SLOT( slotChanged() ) );
-    //connect( txt_MH, SIGNAL( textChanged(const QString&) ), this, SLOT( slotChanged() ) );
 
     txt_RigID->setText(QString(rigdef->rigID) );
     txt_foreI->setText(QString::number(rigdef->foreI) );
@@ -65,6 +66,7 @@ CFormRigDef::CFormRigDef( QWidget* parent, CRigDef * rigptr )
     lbl_tackX->setText(QString::number(int(rigdef->MtackX)) );
     lbl_tackY->setText(QString::number(int(rigdef->MtackY)) );
     */
+    txt_HAD->setText(QString::number(rigdef->HAD) );
 
     spinBox_SPNB->setValue(rigdef->SPNB);
     txt_SPH1->setText(QString::number(rigdef->SPH[1]) );
@@ -327,10 +329,10 @@ bool CFormRigDef::check()
         rigdef->BAD = 0;
         txt_BAD->setPalette(palLo);
     }
-    else if ( rigdef->BAD > L1 )
+    else if ( rigdef->BAD > L1 / 2 )
     {
         flag = false;
-        rigdef->BAD = L1;
+        rigdef->BAD = int(L1 / 2);
         txt_BAD->setPalette(palHi);
         txt_MH->setPalette(palRel);
     } 
@@ -340,14 +342,39 @@ bool CFormRigDef::check()
         txt_MH->setPalette(palStd); 
     }
     txt_BAD->setText(QString::number(rigdef->BAD));
-    
-    ///computing X-Y position of main sail tack    
+
+    ///computing and display X-Y position of main sail tack    
     CRigWorker worker(*rigdef);
     rigdef->MtackX = worker.mastCenter( rigdef->BAD ).x() + (rigdef->MCord)/2;
     rigdef->MtackY = worker.mastCenter( rigdef->BAD ).y();
     
     lbl_tackX->setText(QString::number( int(round(rigdef->MtackX) ))); 
     lbl_tackY->setText(QString::number( int(rigdef->MtackY) ));
+    
+    /// checking mainsail head height
+    rigdef->HAD = txt_HAD->text().toDouble();
+    if (rigdef->HAD < rigdef->BAD +10 )
+    {
+        flag = false;
+        rigdef->HAD = rigdef->BAD +10;
+        txt_HAD->setPalette(palLo);
+        txt_BAD->setPalette(palRel);
+    }
+    else if ( rigdef->HAD > L1 )
+    {
+        flag = false;
+        rigdef->HAD = L1;
+        txt_HAD->setPalette(palHi);
+        txt_MH->setPalette(palRel);
+    } 
+    else
+    {
+        txt_HAD->setPalette(palStd);
+        txt_BAD->setPalette(palStd);
+        txt_MH->setPalette(palStd); 
+    }
+    txt_HAD->setText(QString::number(rigdef->HAD));
+    lbl_LuffL->setText(QString::number( int(round(rigdef->HAD-rigdef->BAD) )));
     
     /// reading number of spreaders
     rigdef->SPNB = spinBox_SPNB->value();
