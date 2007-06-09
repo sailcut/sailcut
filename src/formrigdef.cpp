@@ -94,15 +94,34 @@ void CFormRigDef::accept()
  *  language.
  */
 void CFormRigDef::languageChange()
-{   // FIXME use proper labels 
-    /*lblLuff->setText( tr( "Luff shape" ) );
-    lblDepth->setText( tr( "Depth" ) );
-    lblPercent->setText( tr( "%" ) );
-    lblLeech->setText( tr( "Leech shape" ) );
-    // ancillary data labels
-    lblLuffSlopeDegrees->setText( tr( "degrees" ) );
-    lblMaxPosCord->setText( tr( "cord") );
-    lblLeechSlopeDegrees->setText( tr( "degrees" ) );    
+{   /* FIXME use proper labels 
+    lbl_RigID->setText( tr("Rig identification") );
+    lbl_foreJ->setText( tr("Fore triangle base") );
+    lbl_foreI->setText( tr("Fore triangle height") );
+    lbl_MastWidth->setText( tr("Mast width") );
+    lbl_MastCord->setText( tr("Mast cord") );
+    lbl_MastRakeAngle->setText( tr("Mast rake angle") );
+    lbl_MastRake->setText( tr("Mast rake") );
+    lbl_MastHeight->setText( tr("Mast height") );
+    lbl_MastRound->setText( tr("Mast round") );
+    lbl_MastRoundPos->setText( tr("Mast round position") );
+
+    lbl_CapShroudHeight->setText( tr("Cap shroud height") );
+    lbl_CapShroudBase->setText( tr("Cap shroud base width") );
+    lbl_LowerShroudBase->setText( tr("Lower shroud base width") );
+    lbl_SpreaderHeight1->setText( tr("Spreader height") );
+    lbl_SpreaderHeight2->setText( tr("Spreader height") );
+    lbl_SpreaderHeight3->setText( tr("Spreader height") );
+    lbl_SpreaderWidth1->setText( tr("Spreader width") );
+    lbl_SpreaderWidth2->setText( tr("Spreader width") );
+    lbl_SpreaderWidth3->setText( tr("Spreader width") );
+    label_SpreaderNumber->setText( tr("Number of spreaders") );
+
+    lbl_BAD->setText( tr("Mainsail tack height") );
+    lbl_HAD->setText( tr("Mainsail head height") );
+    lbl_Luff_Round->setText( tr("Luff round") );
+    lbl_Luff->setText( tr("Luff length") );
+
     */
 }
 
