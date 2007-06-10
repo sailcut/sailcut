@@ -119,6 +119,9 @@
           <height>0</height>
          </size>
         </property>
+        <property name="text" >
+         <string>txt_SPW3</string>
+        </property>
         <property name="alignment" >
          <set>Qt::AlignHCenter</set>
         </property>
@@ -126,6 +129,9 @@
       </item>
       <item row="2" column="6" >
        <widget class="QLineEdit" name="txt_SPW2" >
+        <property name="text" >
+         <string>txt_SPW2</string>
+        </property>
         <property name="alignment" >
          <set>Qt::AlignHCenter</set>
         </property>
@@ -133,6 +139,9 @@
       </item>
       <item row="3" column="6" >
        <widget class="QLineEdit" name="txt_SPW1" >
+        <property name="text" >
+         <string>txt_SPW1</string>
+        </property>
         <property name="alignment" >
          <set>Qt::AlignHCenter</set>
         </property>
@@ -154,6 +163,9 @@
       </item>
       <item row="3" column="2" >
        <widget class="QLineEdit" name="txt_SPH1" >
+        <property name="text" >
+         <string>txt_SPH1</string>
+        </property>
         <property name="alignment" >
          <set>Qt::AlignHCenter</set>
         </property>
@@ -161,6 +173,9 @@
       </item>
       <item row="2" column="2" >
        <widget class="QLineEdit" name="txt_SPH2" >
+        <property name="text" >
+         <string>txt_SPH2</string>
+        </property>
         <property name="alignment" >
          <set>Qt::AlignHCenter</set>
         </property>
@@ -173,6 +188,9 @@
           <width>70</width>
           <height>0</height>
          </size>
+        </property>
+        <property name="text" >
+         <string>txt_SPH3</string>
         </property>
         <property name="alignment" >
          <set>Qt::AlignHCenter</set>
@@ -333,7 +351,7 @@
        </spacer>
       </item>
       <item row="3" column="10" colspan="2" >
-       <widget class="QLabel" name="lbl_LuffRP" >
+       <widget class="QLabel" name="lbl_MS_LuffRP" >
         <property name="minimumSize" >
          <size>
           <width>60</width>
@@ -344,7 +362,10 @@
          <enum>QFrame::Box</enum>
         </property>
         <property name="text" >
-         <string>lbl_LuffRP</string>
+         <string>lbl_MS_LuffRP</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
@@ -359,7 +380,7 @@
        </widget>
       </item>
       <item row="3" column="6" colspan="3" >
-       <widget class="QLabel" name="lbl_LuffR" >
+       <widget class="QLabel" name="lbl_MS_LuffR" >
         <property name="minimumSize" >
          <size>
           <width>70</width>
@@ -370,26 +391,29 @@
          <enum>QFrame::Box</enum>
         </property>
         <property name="text" >
-         <string>lbl_LuffR</string>
+         <string>lbl_MS_LuffR</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
       <item row="3" column="4" colspan="2" >
-       <widget class="QLabel" name="lbl_Luff_Round" >
+       <widget class="QLabel" name="lbl_Main_Luff_Round" >
         <property name="text" >
          <string>Luff round</string>
         </property>
        </widget>
       </item>
       <item row="3" column="0" >
-       <widget class="QLabel" name="lbl_MainRake" >
+       <widget class="QLabel" name="lbl_Main_Rake" >
         <property name="text" >
-         <string>Mainsail rake</string>
+         <string>Luff rake</string>
         </property>
        </widget>
       </item>
       <item row="3" column="2" >
-       <widget class="QLabel" name="lbl_MSRake" >
+       <widget class="QLabel" name="lbl_MS_Rake" >
         <property name="minimumSize" >
          <size>
           <width>70</width>
@@ -400,7 +424,10 @@
          <enum>QFrame::Box</enum>
         </property>
         <property name="text" >
-         <string>lbl_MSRake</string>
+         <string>lbl_MS_Rake</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
@@ -415,14 +442,14 @@
        </widget>
       </item>
       <item row="2" column="4" >
-       <widget class="QLabel" name="lbl_Mtack" >
+       <widget class="QLabel" name="lbl_Main_Tack" >
         <property name="text" >
          <string>Tack</string>
         </property>
        </widget>
       </item>
       <item row="2" column="2" >
-       <widget class="QLabel" name="lbl_LuffL" >
+       <widget class="QLabel" name="lbl_MS_LuffL" >
         <property name="minimumSize" >
          <size>
           <width>70</width>
@@ -433,12 +460,15 @@
          <enum>QFrame::Box</enum>
         </property>
         <property name="text" >
-         <string>lbl_LuffL</string>
+         <string>lbl_MS_LuffL</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
       <item row="2" column="0" >
-       <widget class="QLabel" name="lbl_Luff" >
+       <widget class="QLabel" name="lbl_Main_LuffL" >
         <property name="text" >
          <string>Luff length </string>
         </property>
@@ -458,7 +488,7 @@
        </spacer>
       </item>
       <item row="2" column="10" colspan="2" >
-       <widget class="QLabel" name="lbl_tackY" >
+       <widget class="QLabel" name="lbl_MS_TackY" >
         <property name="minimumSize" >
          <size>
           <width>70</width>
@@ -469,7 +499,10 @@
          <enum>QFrame::Box</enum>
         </property>
         <property name="text" >
-         <string>lbl tackY</string>
+         <string>lbl_MS_TackY</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
@@ -484,7 +517,7 @@
        </widget>
       </item>
       <item row="2" column="6" colspan="3" >
-       <widget class="QLabel" name="lbl_tackX" >
+       <widget class="QLabel" name="lbl_MS_TackX" >
         <property name="minimumSize" >
          <size>
           <width>70</width>
@@ -495,7 +528,10 @@
          <enum>QFrame::Box</enum>
         </property>
         <property name="text" >
-         <string>lbl tackX</string>
+         <string>lbl_MS_TackX</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
@@ -506,6 +542,12 @@
           <width>70</width>
           <height>0</height>
          </size>
+        </property>
+        <property name="text" >
+         <string>txt_BAD</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignHCenter</set>
         </property>
        </widget>
       </item>
@@ -545,6 +587,12 @@
           <width>70</width>
           <height>0</height>
          </size>
+        </property>
+        <property name="text" >
+         <string>txt_HAD</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignHCenter</set>
         </property>
        </widget>
       </item>
@@ -592,6 +640,9 @@
           <height>0</height>
          </size>
         </property>
+        <property name="text" >
+         <string>txt_MW</string>
+        </property>
         <property name="alignment" >
          <set>Qt::AlignHCenter</set>
         </property>
@@ -604,6 +655,9 @@
           <width>70</width>
           <height>0</height>
          </size>
+        </property>
+        <property name="text" >
+         <string>txt_MC</string>
         </property>
         <property name="alignment" >
          <set>Qt::AlignHCenter</set>
@@ -631,6 +685,9 @@
         </property>
         <property name="text" >
          <string>lbl_MRkD</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
@@ -664,6 +721,9 @@
           <height>0</height>
          </size>
         </property>
+        <property name="text" >
+         <string>txt_MH</string>
+        </property>
         <property name="alignment" >
          <set>Qt::AlignHCenter</set>
         </property>
@@ -671,6 +731,9 @@
       </item>
       <item row="1" column="2" >
        <widget class="QLineEdit" name="txt_MRnd" >
+        <property name="text" >
+         <string>txt_MRnd</string>
+        </property>
         <property name="alignment" >
          <set>Qt::AlignHCenter</set>
         </property>
@@ -721,6 +784,9 @@
           <width>70</width>
           <height>0</height>
          </size>
+        </property>
+        <property name="text" >
+         <string>txt_MRkM</string>
         </property>
         <property name="alignment" >
          <set>Qt::AlignHCenter</set>
@@ -857,6 +923,9 @@
           <height>0</height>
          </size>
         </property>
+        <property name="text" >
+         <string>txt_LSB</string>
+        </property>
         <property name="alignment" >
          <set>Qt::AlignHCenter</set>
         </property>
@@ -878,6 +947,9 @@
           <height>0</height>
          </size>
         </property>
+        <property name="text" >
+         <string>txt_CSH</string>
+        </property>
         <property name="alignment" >
          <set>Qt::AlignHCenter</set>
         </property>
@@ -890,6 +962,9 @@
           <width>70</width>
           <height>0</height>
          </size>
+        </property>
+        <property name="text" >
+         <string>txt_CSB</string>
         </property>
         <property name="alignment" >
          <set>Qt::AlignHCenter</set>
@@ -1032,6 +1107,9 @@
           <height>0</height>
          </size>
         </property>
+        <property name="text" >
+         <string>txt_foreJ</string>
+        </property>
         <property name="alignment" >
          <set>Qt::AlignHCenter</set>
         </property>
@@ -1052,6 +1130,9 @@
           <width>70</width>
           <height>0</height>
          </size>
+        </property>
+        <property name="text" >
+         <string>txt_foreI</string>
         </property>
         <property name="alignment" >
          <set>Qt::AlignHCenter</set>

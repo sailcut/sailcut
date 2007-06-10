@@ -63,12 +63,12 @@ public:
 
     /** Boom height above deck */
     real BAD;
-    /** mainsail tack X */
-    real MtackX;
-    /** mainsail tack Y */
-    real MtackY;
+    /** mainsail tack */
+    CVector3d MStack;
     /** mainsail head height above deck */
     real HAD;
+    /** mainsail head point */
+    CVector3d MShead;
 
     ////// spreaders and shrouds /////
     /** cap shroud height */

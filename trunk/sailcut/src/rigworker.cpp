@@ -64,7 +64,7 @@ CPanelGroup CRigWorker::makeRig() const
     for ( i = 1; i <= 20; i++ )
     {
         // top of current section
-        h = i * MHeight / 20; 
+        h = real(i) * MHeight / 20; 
         p2 = mastCenter ( h );
         
         for ( j = 0 ; j < npb ; j++ )
