@@ -42,31 +42,33 @@ CFormRigDef::CFormRigDef( QWidget* parent, CRigDef * rigptr )
     connect( btnOK, SIGNAL( clicked() ), this, SLOT( accept() ) );
     connect( btnCancel, SIGNAL( clicked() ), this, SLOT( reject() ) );
     connect( txt_foreI, SIGNAL( lostFocus() ), this, SLOT( slotChanged() ) );
+    connect( txt_foreJ, SIGNAL( lostFocus() ), this, SLOT( slotChanged() ) );
+    connect( txt_CSH, SIGNAL( lostFocus() ), this, SLOT( slotChanged() ) );
+    connect( txt_CSB, SIGNAL( lostFocus() ), this, SLOT( slotChanged() ) );
+    connect( txt_LSB, SIGNAL( lostFocus() ), this, SLOT( slotChanged() ) );
     connect( txt_MH, SIGNAL( lostFocus() ), this, SLOT( slotChanged() ) );
+    connect( txt_MRnd, SIGNAL( lostFocus() ), this, SLOT( slotChanged() ) );
+    connect( txt_MRkM, SIGNAL( lostFocus() ), this, SLOT( slotChanged() ) );
+    connect( txt_MC, SIGNAL( lostFocus() ), this, SLOT( slotChanged() ) );
+    connect( txt_MW, SIGNAL( lostFocus() ), this, SLOT( slotChanged() ) );
+    connect( spinBox_MRndPos, SIGNAL( valueChanged(int) ), this, SLOT( slotChanged() ) );
     connect( txt_HAD, SIGNAL( lostFocus() ), this, SLOT( slotChanged() ) );
     connect( txt_BAD, SIGNAL( textChanged(const QString&) ), this, SLOT( slotChanged() ) );
 
     txt_RigID->setText(QString(rigdef->rigID) );
     txt_foreI->setText(QString::number(rigdef->foreI) );
     txt_foreJ->setText(QString::number(rigdef->foreJ) );
+    txt_MH->setText(QString::number(rigdef->MHeight) );
     txt_CSH->setText(QString::number(rigdef->CSH) );
     txt_CSB->setText(QString::number(rigdef->CSB) );
     txt_LSB->setText(QString::number(rigdef->LSB) );
-    
-    txt_MH->setText(QString::number(rigdef->MHeight) );
+    txt_MRnd->setText(QString::number(rigdef->MRnd) );
+    txt_MRkM->setText(QString::number(rigdef->MRakeM) );
     txt_MC->setText(QString::number(rigdef->MCord) );
     txt_MW->setText(QString::number(rigdef->MWidth) );
-    txt_MRkM->setText(QString::number(rigdef->MRakeM) );
-    lbl_MRkD->setText(QString::number(rigdef->MRakeD) );
-    txt_MRnd->setText(QString::number(rigdef->MRnd) );
     spinBox_MRndPos->setValue(rigdef->MRndPos);
-    
-    txt_BAD->setText(QString::number(rigdef->BAD) );
-    /* will be activated by txt_BAD change 
-    lbl_tackX->setText(QString::number(int(rigdef->MtackX)) );
-    lbl_tackY->setText(QString::number(int(rigdef->MtackY)) );
-    */
-    txt_HAD->setText(QString::number(rigdef->HAD) );
+    // display
+    lbl_MRkD->setText(QString::number(rigdef->MRakeD) );
 
     spinBox_SPNB->setValue(rigdef->SPNB);
     txt_SPH1->setText(QString::number(rigdef->SPH[1]) );
@@ -75,6 +77,10 @@ CFormRigDef::CFormRigDef( QWidget* parent, CRigDef * rigptr )
     txt_SPW2->setText(QString::number(rigdef->SPW[2]) );
     txt_SPH3->setText(QString::number(rigdef->SPH[3]) );
     txt_SPW3->setText(QString::number(rigdef->SPW[3]) );
+
+    // variable changes triggering a check 
+    txt_HAD->setText(QString::number(rigdef->HAD) );
+    txt_BAD->setText(QString::number(rigdef->BAD) );
 
 }
 
@@ -143,7 +149,8 @@ void CFormRigDef::slotChanged()
 
 /** Check all dimensions entered in order to 
  *  make sure that the rig is possible and reasonable.
- *
+ *  This will also trigger ancillary data computation 
+ *  for mainsail luff parameters.
  */
 bool CFormRigDef::check()
 { 
@@ -340,7 +347,7 @@ bool CFormRigDef::check()
     }
     txt_MRnd->setText(QString::number(rigdef->MRnd));
     
-    /// checking Boom height 
+    /// checking mainsail tack height 
     rigdef->BAD = txt_BAD->text().toDouble();
     if (rigdef->BAD < 0 )
     {
@@ -362,14 +369,6 @@ bool CFormRigDef::check()
     }
     txt_BAD->setText(QString::number(rigdef->BAD));
 
-    ///computing and display X-Y position of main sail tack    
-    CRigWorker worker(*rigdef);
-    rigdef->MtackX = worker.mastCenter( rigdef->BAD ).x() + (rigdef->MCord)/2;
-    rigdef->MtackY = worker.mastCenter( rigdef->BAD ).y();
-    
-    lbl_tackX->setText(QString::number( int(round(rigdef->MtackX) ))); 
-    lbl_tackY->setText(QString::number( int(rigdef->MtackY) ));
-    
     /// checking mainsail head height
     rigdef->HAD = txt_HAD->text().toDouble();
     if (rigdef->HAD < rigdef->BAD +10 )
@@ -393,8 +392,44 @@ bool CFormRigDef::check()
         txt_MH->setPalette(palStd); 
     }
     txt_HAD->setText(QString::number(rigdef->HAD));
-    lbl_LuffL->setText(QString::number( int(round(rigdef->HAD-rigdef->BAD) )));
+
+    ///computing and display main sail tack and luff data
+    CRigWorker worker(*rigdef);
+    rigdef->MStack = worker.mastCenter( rigdef->BAD ) + CVector3d(rigdef->MCord /2, 0, 0);
+    rigdef->MShead = worker.mastCenter( rigdef->HAD ) + CVector3d(rigdef->MCord /2, 0, 0);
+
+    CVector3d MSluff = CVector3d(rigdef->MShead - rigdef->MStack);
+
+    // compute mainsail luff round and its position 
+    CPoint3d p1, p2;
+    real h=0, rd1 = 0, rd2 = 0;
+    unsigned int rdPos = 49;
+    unsigned int i = 5;
+    do 
+    {
+        i++;
+        p1 = rigdef->MStack + MSluff*(real(i) / 50);
+        h = p1.y();
+        p2 = worker.mastCenter( h ) + CVector3d(rigdef->MCord /2, 0, 0);
+        rd2 = CVector3d(p1-p2).x();
+
+        if (fabs(rd2) < fabs(rd1) )
+            rdPos = (i-1) * 2;
+        else
+            rd1 = rd2;
+    }
+    while ( rd1 == rd2 && i < 45);
+
+    // display mainsail data
+    lbl_MS_TackX->setText(QString::number( int(round(rigdef->MStack.x()) ))); 
+    lbl_MS_TackY->setText(QString::number( int(rigdef->MStack.y()) ));
     
+    lbl_MS_LuffL->setText(QString::number( int(round(MSluff.norm())) ));
+    lbl_MS_Rake->setText(QString::number( int(round(MSluff.x())) ));
+
+    lbl_MS_LuffR->setText(QString::number( round(rd1) ));
+    lbl_MS_LuffRP->setText(QString::number( rdPos ) +" %");
+
     /// reading number of spreaders
     rigdef->SPNB = spinBox_SPNB->value();
     

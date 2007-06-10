@@ -39,9 +39,9 @@ CRigDef::CRigDef()
     MRndPos = 50;
 
     BAD = 750;      // height of boom 
-    MtackX =  2100;
-    MtackY = 750;
+    //MStack = CVector3d(2100, 750 , 0);
     HAD = 7000;
+    //MShead = CVector3d(2200, 7000, 0);
 
     CSH = 7000;     // cap shroud height
     CSB = 900;
@@ -82,8 +82,8 @@ CRigDef & CRigDef::operator=( const CRigDef &copy )
     
     BAD = copy.BAD;
     HAD = copy.HAD;
-    MtackX = copy.MtackX;
-    MtackY = copy.MtackY;
+    //MStack = copy.MStack;
+    //MShead = copy.MShead;
     
     CSH = copy.CSH;       // outer shroud height
     CSB = copy.CSB;
