@@ -41,6 +41,7 @@ CFormRigDef::CFormRigDef( QWidget* parent, CRigDef * rigptr )
 
     connect( btnOK, SIGNAL( clicked() ), this, SLOT( accept() ) );
     connect( btnCancel, SIGNAL( clicked() ), this, SLOT( reject() ) );
+    connect( btnCheck, SIGNAL( clicked() ), this, SLOT( slotChanged() ) );
     connect( txt_foreI, SIGNAL( lostFocus() ), this, SLOT( slotChanged() ) );
     connect( txt_foreJ, SIGNAL( lostFocus() ), this, SLOT( slotChanged() ) );
     connect( txt_CSH, SIGNAL( lostFocus() ), this, SLOT( slotChanged() ) );
@@ -52,6 +53,7 @@ CFormRigDef::CFormRigDef( QWidget* parent, CRigDef * rigptr )
     connect( txt_MC, SIGNAL( lostFocus() ), this, SLOT( slotChanged() ) );
     connect( txt_MW, SIGNAL( lostFocus() ), this, SLOT( slotChanged() ) );
     connect( spinBox_MRndPos, SIGNAL( valueChanged(int) ), this, SLOT( slotChanged() ) );
+    connect( spinBox_SPNB, SIGNAL( valueChanged(int) ), this, SLOT( slotChanged() ) );
     connect( txt_HAD, SIGNAL( lostFocus() ), this, SLOT( slotChanged() ) );
     connect( txt_BAD, SIGNAL( textChanged(const QString&) ), this, SLOT( slotChanged() ) );
 
@@ -432,7 +434,7 @@ bool CFormRigDef::check()
 
     /// reading number of spreaders
     rigdef->SPNB = spinBox_SPNB->value();
-    
+
     /// checking shrouds height and length
     rigdef->CSH = txt_CSH->text().toDouble();
     if ( rigdef->CSH > L1) // cap shroud above mast head
