@@ -26,8 +26,8 @@
 CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
 {
     deckPt0 = CPoint3d( 0 , DfwdHeight , 0 );
-    deckPt1 = CPoint3d( DLOA , DaftHeight , 0 ); // centre point of deck aft
-    deckPt2 = deckPt1; 
+    deckPt1 = CPoint3d( DLOA , DaftHeight , 0 ); // centre point of deck aft edge
+    deckPt2 = deckPt1; // transom deck edge
     CPoint3d p1, p2;
     /* print debug
         QString txt;
@@ -81,7 +81,7 @@ CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
     deck.bottom.fill(deckPt0 , deckPt1);   // centre line
     deck.top.fill(deckPt0 , deckPt2);      // deck edge
     deck.left.fill(deckPt0 , deckPt0);     // stem
-    deck.right.fill(deckPt2 , deckPt1);    // transom
+    deck.right.fill(deckPt1 , deckPt2);    // transom
     for ( j=0 ; j <= npb-1 ; j++)
     {   // move point to edge of deck
         p1 = deck.top.point[j];        
@@ -146,6 +146,7 @@ CPanelGroup CHullWorker::makeHull() const
     real a , b;
     CPoint3d pt , p1 , p2 , p3 , p4;
     CVector3d v1 , v2 , v3 , vg;
+    
     /* array used to identify points for stem intersection 
      * the integer gives the  point on the top side of a side panel
      * which project on the stem bottom side point of the panel
@@ -278,11 +279,11 @@ CPanelGroup CHullWorker::makeHull() const
     /// create symetrical half deck ///
     for ( j = 0 ; j < deck1.top.nbpoints() ; j++ )
     {
-        pt = deck1.top.point[j];
+        pt = deck1.top.point[j];  // deck edge
         pt.z() = -pt.z();
         deck2.top.point[j] = pt;
         
-        pt = deck1.bottom.point[j];
+        pt = deck1.bottom.point[j];  //centre line
         pt.z() = -pt.z();
         deck2.bottom.point[j] = pt;
     } 
@@ -323,33 +324,50 @@ CPanelGroup CHullWorker::makeHull() const
     } 
     hull.panel.push_back(side2);
     
-    /// make stern
-    /*
-    side.top = CSide (npl);
-    side.bottom = CSide(npl);
-    for (j = 0; j < npl; j++)
+    /// make transom first half
+    unsigned int npb = deck1.right.nbpoints();
+    unsigned int npl = side1.right.nbpoints();
+    side.top = CSide(npb);
+    side.bottom = CSide(npb);
+    side.right = CSide(npl);
+    side.left = CSide(npl);
+    
+    for (j = 0; j < npb; j++)
     {
         side.top.point[j] = deck1.right.point[j];
     }
-    side.bottom.point[0] = side1.bottom.point[npb-1];
-    side.bottom.point[0].z() = 0;
-    side.bottom.point[npl-1] = side1.bottom.point[npb-1];
-    side.bottom.fill(side.bottom.point[0], side.bottom.point[npl-1]);
-    side.left.fill(side.bottom.point[0], side.top.point[0]);
-    side.right.fill(side.bottom.point[npl-1], side.top.point[npl-1]);
-    hull.panel.push_back(side);
-    
     for (j = 0; j < npl; j++)
+    {
+        side.right.point[j] = side1.right.point[j];
+    }
+    side.bottom.point[npb-1] = side.right.point[0];
+    side.bottom.point[0] = side.bottom.point[npb-1];
+    side.bottom.point[0].z() = 0;
+    side.bottom.fill(side.bottom.point[0], side.bottom.point[npb-1]);
+    side.left.fill(side.bottom.point[0], side.top.point[0]);
+    hull.panel.push_back(side);
+    /// make transom second half
+    for (j = 0; j < side.top.nbpoints(); j++)
     {
         side.top.point[j] = deck2.right.point[j];
     }
-    //side.bottom.point[0] = side.top.point[0] + v1;
-    side.bottom.point[npl-1] = side2.bottom.point[npb-1];
-    side.bottom.fill(side.bottom.point[0], side.bottom.point[npl-1]);
+    for (j = 0; j < npl; j++)
+    {
+        side.right.point[j] = side2.right.point[j];
+    }
+    side.bottom.point[npb-1] = side2.right.point[0];
+    side.bottom.point[0] = side.bottom.point[npb-1];
+    side.bottom.point[0].z() = 0;
+    side.bottom.fill(side.bottom.point[0], side.bottom.point[npb-1]);
     side.left.fill(side.bottom.point[0], side.top.point[0]);
-    side.right.fill(side.bottom.point[npl-1], side.top.point[npl-1]);
     hull.panel.push_back(side);
-    */ 
+    
+    /// translate the hull such that stem is at x=O, y=0, z=0 ///
+    for ( j=0; j < hull.panel.size(); j++ )
+    {
+        hull.panel[j] = hull.panel[j] + CVector3d(-deckPt0);
+    }
+    
     return hull;
 }
 
