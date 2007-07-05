@@ -65,6 +65,7 @@ BUILT_SOURCES = \
 	ui_formsaildefbase.h \
 	moc_boatdef-panel.cpp \
 	moc_formboat.cpp \
+	moc_formdocument.cpp \
 	moc_formhelp.cpp \
 	moc_formhull.cpp \
 	moc_formhulldef.cpp \

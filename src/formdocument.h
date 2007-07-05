@@ -40,6 +40,8 @@ class QMenu;
  */
 class CFormDocument : public QWidget
 {
+    Q_OBJECT
+
 public:
     /** The constructor. */
     CFormDocument(CPrefs *myPrefs, QWidget *parent)
