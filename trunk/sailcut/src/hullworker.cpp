@@ -20,14 +20,15 @@
 #include "hullworker.h"
 
 
-/** The constructor does some preliminary calculations to set
- *  internal variables.
+/** The constructor does some preliminary lower chine calculations 
+ *  to set internal variables.
  */
 CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
 {
-    deckPt0 = CPoint3d( 0 , DfwdHeight , 0 );
-    deckPt1 = CPoint3d( DLOA , DaftHeight , 0 ); // centre point of deck aft edge
-    deckPt2 = deckPt1; // transom deck edge
+    ptFwdChine = CPoint3d( 0 , BfwdHeight , 0 );
+    ptAftChine = CPoint3d( BLOA , BaftHeight , BaftW ); // transom end of lower chine 
+    xBmax = real(DBWPos) * DLOA / 100; 
+    
     CPoint3d p1, p2;
     /* print debug
         QString txt;
@@ -37,82 +38,76 @@ CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
     // compute the vertical central plane
     CVector3d v1 = CVector3d( 1 , 0 , 0 );
     CVector3d v2 = CVector3d( 0 , 1 , 0 );
-    centralPlane = CSubSpace3d::plane( deckPt0 , v1 , v2 );
+    planeCentral = CSubSpace3d::plane( ptFwdChine , v1 , v2 );
     
-    /// compute the deck plane
-    // vector v1 is sideway tilt of deck
-    v1 = CVector3d( 0 , -sin(real(DSlopeA)*PI/180) , cos(real(DSlopeA)*PI/180) );
+    /// compute the lower Chine plane
+    // vector v1 is sideway tilt of chine
+    v1 = CVector3d( 0 , -sin(real(BSlopeA)*PI/180) , cos(real(BSlopeA)*PI/180) );
     // vector v2 is fore-aft slope of deck
-    v2 = CVector3d( deckPt1 - deckPt0 );
-    deckPlane = CSubSpace3d::plane( deckPt0 , v1 , v2 );
+    v2 = CVector3d( ptAftChine - ptFwdChine );
+    planeLowChine = CSubSpace3d::plane( ptFwdChine , v1 , v2 );
      
     /// compute the transom plane
-    // vector v1 is parrallel to Z axis = perpendicular to central plane
+    // vector v1 is parallel to Z axis = perpendicular to central plane
     v1 = CVector3d( 0 , 0 , 1 ); 
     // vector v2 is in inclined transom plane
     v2 = CVector3d( cos(real(TransomA) * PI/180) , sin(real(TransomA) * PI/180) , 0 );
-    transomPlane = CSubSpace3d::plane( deckPt1 , v1 , v2 );
+    planeTransom = CSubSpace3d::plane( ptAftChine , v1 , v2 );
     
-    // compute intersection line between deck and transom
+    // compute intersection line between chine plane and transom
     CSubSpace Line1;
-    Line1 = deckPlane.intersect(transomPlane);
+    Line1 = planeLowChine.intersect(planeTransom);
     
     // compute intersection point of line1 with central plane located at aft width
     CSubSpace Intersection2;
     if (Line1.getdim() == 1)
     {
-        v1 = CVector3d( 1 , 0 , 0 );
-        v2 = CVector3d( 0 , 1 , 0 );
-        p2 = deckPt1 + CVector3d(0 , 0, DaftW/2); // initial deck aft edge point
-        CSubSpace Plane1 = CSubSpace3d::plane( p2 , v1 , v2 );
-        // compute intersection point at real aft edge of deck
-        Intersection2 = Line1.intersect(Plane1);
+        Intersection2 = Line1.intersect(planeCentral);
         if (Intersection2.getdim() == 0)
-            deckPt2 = Intersection2.getp();
-        else throw "ERROR in hullworker constructor = no deck aft edge point";
+            ptCentreChine = Intersection2.getp();
+        else throw "ERROR in hullworker constructor = no low chine aft  point";
     }
-    else throw "ERROR in hullworker constructor = intersection deck transom is not a line";
+    else throw "ERROR in hullworker constructor = intersection chine plane and transom is not a line";
      
-    /* laying deck edge */ 
+    /* laying lower chine */ 
     unsigned int j;
     //unsigned int npl = deck.right.nbpoints();   // number of right/left points
-    unsigned int npb = deck.bottom.nbpoints(); // number of bottom/top points
+    unsigned int npb = chine.bottom.nbpoints(); // number of bottom/top points
     
-    deck.bottom.fill(deckPt0 , deckPt1);   // centre line
-    deck.top.fill(deckPt0 , deckPt2);      // deck edge
-    deck.left.fill(deckPt0 , deckPt0);     // stem
-    deck.right.fill(deckPt1 , deckPt2);    // transom
+    chine.bottom.fill(ptFwdChine , ptCentreChine);   // centre line
+    chine.top.fill(ptFwdChine , ptAftChine);      // edge
+    deck.left.fill(ptFwdChine, ptFwdChine);     // stem
+    deck.right.fill(ptCentreChine , ptAftChine);    // transom
     for ( j=0 ; j <= npb-1 ; j++)
     {   // move point to edge of deck
-        p1 = deck.top.point[j];        
-        p2 = DeckPt( p1.x() );
-        deck.top.point[j] = p2;
+        p1 = chine.top.point[j];        
+        p2 = ptLowChine( p1.x() );
+        chine.top.point[j] = p2;
     }
 }
 
-/** Return the 3D point at the deck edge function of x
+
+/** Return the 3D point at the Lower chine edge function of x
  *  x is the absisse of the point along the centre line
- *  The deck edge curve is a power curve on either side of the maximum beam point
+ *  The chine edge curve is a power curve on either side of the maximum beam point
  *
  * @author Robert Laine
  */
-CPoint3d CHullWorker::DeckPt( const real &x )
+CPoint3d CHullWorker::ptLowChine( const real &x )
 {
     QString txt;
 
-    real x1 = 0 , y = 0, z = 0;
-    // compute position of max beam
-    real pBmax = real(DBWPos) * DLOA / 100; 
+    real x1 = 0 , y = 0 , z = 0;
     
-    if (x > pBmax)
-    {   // aft part of deck
-        x1 = (x - pBmax) / (deckPt2.x() - pBmax);
-        z  = (.5 * DBW) + .5* (DaftW - DBW)* pow(x1 , DaftShape);
+    if (x > xBmax)
+    {   // aft part of chine
+        x1 = (x - xBmax) / (ptAftChine.x() - xBmax);
+        z  = (.5 * BBW) + .5* (BaftW - BBW)* pow(x1 , BaftShape);
     }
     else
-    {   // fwd part of deck
-        x1 = 1 - ( x / pBmax );
-        z  = (.5 * DBW)  *(1- pow(x1 , DfwdShape));
+    {   // fwd part of chine
+        x1 = 1 - ( x / xBmax );
+        z  = (.5 * BBW)  *(1- pow(x1 , BfwdShape));
     }
     
     // point pt with x input and z computed
@@ -121,14 +116,45 @@ CPoint3d CHullWorker::DeckPt( const real &x )
     CSubSpace line1;
     line1 =  CSubSpace3d::line (pt , CVector3d (0, 1, 0) );
 
-    // project pt vertically on real deck
+    // project pt vertically on chine plane
     CSubSpace Intersection1;
-    Intersection1 = deckPlane.intersect(line1);
+    Intersection1 = planeLowChine.intersect(line1);
     
     if (Intersection1.getdim() == 0 )
         pt = Intersection1.getp();
     else
-        throw "ERROR in CHullWorker::DeckPt intersection 0 point is not a point";
+        throw "ERROR in CHullWorker::ptLowChine intersection is not a point";
+    
+    return pt;
+}
+
+
+/** Return the 3D point at the keel function of x
+ *  x is the absisse of the corresponding lower chine point along the centre line
+ *
+ * @author Robert Laine
+ */
+CPoint3d CHullWorker::ptKeel( const real &x )
+{
+    QString txt;
+
+    // point pt with x input and z computed
+    CPoint3d pt = ptLowChine ( x );
+    // vector with deadrise and sweep
+    CVector3d v1 = CVector3d( tan(real(-BSweepA) * PI/180) , tan(real(-BDeadriseA) * PI/180) , -1 );
+;
+    // define ruling line 1 passing through point pt
+    CSubSpace line1;
+    line1 =  CSubSpace3d::line (pt , v1 );
+
+    // project pt on central plane
+    CSubSpace Intersection1;
+    Intersection1 = planeCentral.intersect(line1);
+    
+    if (Intersection1.getdim() == 0 )
+        pt = Intersection1.getp();
+    else
+        throw "ERROR in CHullWorker::ptKeel intersection is not a point";
     
     return pt;
 }
@@ -157,7 +183,6 @@ CPanelGroup CHullWorker::makeHull() const
      * the integer gives the  point on the top side of a side panel
      * which project on the transom bottom side point of the panel
      */ 
-    unsigned int ptTransom[NBPlank +1];
     
     CSubSpace Plane1;
     CSubSpace Line1;

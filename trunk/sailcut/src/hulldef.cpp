@@ -27,7 +27,7 @@ CHullDef::CHullDef()
 {
     // default values for hull member variables are set here
     hullID = "Test hull 1";
-    DLOA    = 7000;    // Deck length in millimetre
+    BLOA    = 7000;    // Deck length in millimetre
     DfwdHeight = 1000; // Deck height forward
     DaftHeight = 850;  // Deck height aft
     DSlopeA = 6;       // Deck side slope in degree from horizontal
@@ -36,8 +36,6 @@ CHullDef::CHullDef()
     DaftW = 2000;      // Deck aft width
     StemA = 85;        // Stem inclination in degree from horizontal
     TransomA = 80;     // Transom inclination
-    DfwdShape = 2;     // forward coefficient power of X
-    DaftShape = 3;     // aft coefficient power of X
     
     BLOA    = 7000;    // Bottom chine length in millimetre
     BfwdHeight = 100;  // Bottom chine forward height
@@ -46,8 +44,10 @@ CHullDef::CHullDef()
     BBW = 2500;        // Bottom max beam width
     BBWPos = 50;       // Bottom chine max width position percent of deck length
     BaftW = 2000;      // Bottom aft width
-    BdeadriseA = 12;   // Bottom plank dead rise from horizontal
-    BsweepA = 45;      // Bottom plank sweep angle in degree
+    BDeadriseA = 12;   // Bottom plank dead rise from horizontal
+    BSweepA = 45;      // Bottom plank sweep angle in degree
+    BfwdShape = 2;     // forward coefficient power of X
+    BaftShape = 3;     // aft coefficient power of X
     
     NBPlank = 3;
     AutoPlank = true;
@@ -77,8 +77,6 @@ CHullDef & CHullDef::operator=( const CHullDef &copy )
     DaftW = copy.DaftW;
     StemA = copy.StemA;
     TransomA = copy.TransomA;
-    DfwdShape = copy.DfwdShape;
-    DaftShape = copy.DaftShape;
     
     BLOA = copy.BLOA;
     BfwdHeight = copy.BfwdHeight;
@@ -88,8 +86,10 @@ CHullDef & CHullDef::operator=( const CHullDef &copy )
     BBWPos = copy.BBWPos;
     BaftW = copy.BaftW;
 
-    BdeadriseA = copy.BdeadriseA;
-    BsweepA = copy.BsweepA;
+    BDeadriseA = copy.BDeadriseA;
+    BSweepA = copy.BSweepA;
+    BfwdShape = copy.BfwdShape;
+    BaftShape = copy.BaftShape;
     
     NBPlank = copy.NBPlank;
     AutoPlank = copy.AutoPlank;

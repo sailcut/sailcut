@@ -37,25 +37,38 @@ public:
     CPanelGroup makeHull() const;
 
 protected:
-    /** compute deck edge point */
-    CPoint3d DeckPt( const real &x );
+    /** abciss of Bmax point on chine */
+    real xBmax;
+    
+    /** compute a Deck edge point */
+    CPoint3d ptDeck( const real &x );
+    /** compute a Keel point */
+    CPoint3d ptKeel( const real &x);
+    /** compute a Chine point */
+    CPoint3d ptChine(const int &n, const real &x );
+    CPoint3d ptLowChine( const real &x );
     
     /** central plane longitudinal X-Y */
-    CSubSpace centralPlane;
+    CSubSpace planeCentral;
     /** deck plane */
-    CSubSpace deckPlane;
+    CSubSpace planeDeck;
     /** transom plane */
-    CSubSpace transomPlane;
+    CSubSpace planeTransom;
+    /** chine plane */
+    CSubSpace planeChine[5];
+    CSubSpace planeLowChine;
     
-    /** deck point0 at stem/centre line */
-    CPoint3d deckPt0;
-    /** deck point1 at transom/centre line */
-    CPoint3d deckPt1;
-    /** deck point2 at transom/edge */
-    CPoint3d deckPt2;
+    /** Lower Chine point at stem/centre line */
+    CPoint3d ptFwdChine;
+    /** Lower Chine point at transom/edge */
+    CPoint3d ptAftChine;
+    /** Lower Chine point at transom/centre line */
+    CPoint3d ptCentreChine;
     
-    /** deck basic panel */
+    /** basic panels */
     CPanel deck;
+    Cpanel plank;
+    CPanel chine;
     
 };
 

@@ -38,6 +38,7 @@ public:
 
     /** hull ID name */
     QString hullID;
+        //deck
     /** deck Length in millimeter */
     real DLOA;
     /** deck forward height in millimeter */
@@ -56,10 +57,7 @@ public:
     unsigned int StemA;
     /** transom angle in degree from horizontal */
     unsigned int TransomA;
-    /** deck forward shape coefficient (power of x) */
-    unsigned int DfwdShape;
-    /** deck aft shape coefficient (power of x) */
-    unsigned int DaftShape;
+    
     	// bottom data
     /** bottom chine Length in millimeter */
     real BLOA;
@@ -76,10 +74,15 @@ public:
     /** bottom chine max beam width position in percent of deck length */
     unsigned int BBWPos;
     /** bottom plank dead rise angle in degree from horizontal */
-    unsigned int BdeadriseA;
+    unsigned int BDeadriseA;
     /** bottom sweep angle in degree forward of transverse axis */
-    unsigned int BsweepA;
-    //planking data
+    unsigned int BSweepA;
+    /** Lower chine forward shape */
+    real BfwdShape;
+    //* Lower chine aft shape */
+    real BaftShape;
+    
+        //planking data
     /** Number of side planks */
     unsigned int NBPlank;
     /** auto planking chech box */
