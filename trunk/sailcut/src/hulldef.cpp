@@ -27,7 +27,7 @@ CHullDef::CHullDef()
 {
     // default values for hull member variables are set here
     hullID = "Test hull 1";
-    BLOA    = 7000;    // Deck length in millimetre
+    DLOA    = 7500;    // Deck length in millimetre
     DfwdHeight = 1000; // Deck height forward
     DaftHeight = 850;  // Deck height aft
     DSlopeA = 6;       // Deck side slope in degree from horizontal
@@ -37,10 +37,10 @@ CHullDef::CHullDef()
     StemA = 85;        // Stem inclination in degree from horizontal
     TransomA = 80;     // Transom inclination
     
-    BLOA    = 7000;    // Bottom chine length in millimetre
-    BfwdHeight = 100;  // Bottom chine forward height
-    BaftHeight = 200;
-    BSlopeA = 24;      // Bottom chine side slope in degree from horizontal
+    BLWL    = 7000;    // Bottom length in millimetre
+    BfwdHeight = 0;  // Bottom chine forward height
+    BaftHeight = -100;  // Bottom chine aft height
+    BSlopeA = 12;      // Bottom chine plane side slope in degree from horizontal
     BBW = 2500;        // Bottom max beam width
     BBWPos = 50;       // Bottom chine max width position percent of deck length
     BaftW = 2000;      // Bottom aft width
@@ -78,7 +78,7 @@ CHullDef & CHullDef::operator=( const CHullDef &copy )
     StemA = copy.StemA;
     TransomA = copy.TransomA;
     
-    BLOA = copy.BLOA;
+    BLWL = copy.BLWL;
     BfwdHeight = copy.BfwdHeight;
     BaftHeight = copy.BaftHeight;
     BSlopeA = copy.BSlopeA;

@@ -50,26 +50,26 @@ CFormHullDef::CFormHullDef( QWidget* parent, CHullDef * hullptr )
 
     txt_HullID->setText(QString(hulldef->hullID));
     /// deck parameters
-    txt_DLOA->setText( QString::number(hulldef->DLOA) );
+    txt_BLWL->setText( QString::number(hulldef->BLWL) );
     txt_DfwdHeight->setText( QString::number(hulldef->DfwdHeight) );
     txt_DaftHeight->setText( QString::number(hulldef->DaftHeight) );
-    txt_DBW->setText( QString::number(hulldef->DBW) );
-    txt_DaftW->setText( QString::number(hulldef->DaftW) );
-    spinBox_DSlopeA->setValue(hulldef->DSlopeA);
-    spinBox_DBWPos->setValue(hulldef->DBWPos);
+    txt_BBW->setText( QString::number(hulldef->BBW) );
+    txt_BaftW->setText( QString::number(hulldef->BaftW) );
+    spinBox_BSlopeA->setValue(hulldef->BSlopeA);
+    spinBox_BBWPos->setValue(hulldef->BBWPos);
     
     spinBox_StemA->setValue(hulldef->StemA);
     spinBox_TransomA->setValue(hulldef->TransomA);
     
-    spinBox_DfwdShape->setValue(hulldef->DfwdShape);
-    spinBox_DaftShape->setValue(hulldef->DaftShape);
+    spinBox_BfwdShape->setValue(hulldef->BfwdShape);
+    spinBox_BaftShape->setValue(hulldef->BaftShape);
     
     /// bottom parameters
     txt_BfwdHeight->setText( QString::number(hulldef->BfwdHeight) );
     txt_BaftHeight->setText( QString::number(hulldef->BaftHeight) );
     spinBox_BSlopeA->setValue(hulldef->BSlopeA);
-    spinBox_BdeadriseA->setValue(hulldef->BdeadriseA);
-    spinBox_BsweepA->setValue(hulldef->BsweepA);
+    spinBox_BDeadriseA->setValue(hulldef->BDeadriseA);
+    spinBox_BSweepA->setValue(hulldef->BSweepA);
     
     /// planking parameters
     spinBox_NBPlank->setValue(hulldef->NBPlank);
@@ -79,6 +79,7 @@ CFormHullDef::CFormHullDef( QWidget* parent, CHullDef * hullptr )
     checkBox_AutoPlank->setChecked(hulldef->AutoPlank);
     
     /// signal and slots connections
+    connect( btnCheck, SIGNAL( clicked() ), this, SLOT( slotCheck() ) );
     connect( btnOK, SIGNAL( clicked() ), this, SLOT( accept() ) );
     connect( btnCancel, SIGNAL( clicked() ), this, SLOT( reject() ) );
 }
@@ -94,6 +95,23 @@ void CFormHullDef::accept()
     // return data if everything is OK. /////////////////////////
     if (check() == true)
         QDialog::accept();
+}
+
+/** slot for dealing with automatic planking
+ */ 
+void CFormHullDef::slotAutoPlank()
+{
+    if (checkBox_AutoPlank->isChecked() )
+        hulldef->AutoPlank = true;
+        
+    check();
+}
+
+/** slot for dealing with check button
+ */ 
+void CFormHullDef::slotCheck()
+{ 
+    check();
 }
 
 
@@ -133,34 +151,114 @@ bool CFormHullDef::check()
     }
     hulldef->hullID = txt;
     
-    /// check deck data
-    hulldef->DLOA = txt_DLOA->text().toDouble();
+    /// check bottom data
+    hulldef->BLWL = txt_BLWL->text().toDouble(); // length waterline
 
-    if (hulldef->DLOA < 100)
+    if (hulldef->BLWL < 100)
     {
         flag = false;
-        txt_DLOA->setPalette(palLo);
-        hulldef->DLOA = 100;
+        txt_BLWL->setPalette(palLo);
+        hulldef->BLWL = 100;
     }
-    else if (hulldef->DLOA > 100000)
+    else if (hulldef->BLWL > 100000)
     {
         flag = false;
-        txt_DLOA->setPalette(palHi);
-        hulldef->DLOA = 100000;
+        txt_BLWL->setPalette(palHi);
+        hulldef->BLWL = 100000;
     }
     else
     {
-        txt_DLOA->setPalette(palStd);
+        txt_BLWL->setPalette(palStd);
     }
-    txt_DLOA->setText(QString::number(hulldef->DLOA));
-    L1 = (long)(hulldef->DLOA);
+    txt_BLWL->setText(QString::number(hulldef->BLWL));
+    L1 = (long)(hulldef->BLWL);
     
+    // lower chine height
+    hulldef->BfwdHeight = txt_BfwdHeight->text().toDouble();
+    if (hulldef->BfwdHeight > L1/5)
+    {
+        flag = false;
+        txt_BfwdHeight->setPalette(palHi);
+        hulldef->BfwdHeight = floor(L1 / 5);
+    }
+    else
+    {
+        txt_BfwdHeight->setPalette(palStd);
+    }
+    txt_BfwdHeight->setText(QString::number(hulldef->BfwdHeight));
+    
+    hulldef->BaftHeight = txt_BaftHeight->text().toDouble();
+    if (hulldef->BaftHeight > L1 / 5)
+    {
+        flag = false;
+        txt_BaftHeight->setPalette(palHi);
+        hulldef->BaftHeight = floor(L1 / 5);
+    }
+    else
+    {
+        txt_BaftHeight->setPalette(palStd);
+    }
+    txt_BaftHeight->setText(QString::number(hulldef->BaftHeight));
+    
+    // bottom width
+    hulldef->BBW = txt_BBW->text().toDouble();
+    if (hulldef->BBW < L1/20)
+    {
+        flag = false;
+        txt_BBW->setPalette(palLo);
+        hulldef->BBW = ceil(L1/20);
+    }
+    else if (hulldef->BBW > L1/2)
+    {
+        flag = false;
+        txt_BBW->setPalette(palHi);
+        hulldef->BBW = floor(L1/2);
+    }
+    else
+    {
+        txt_BBW->setPalette(palStd);
+    }
+    txt_BBW->setText(QString::number(hulldef->BBW));
+    
+    hulldef->BaftW = txt_BaftW->text().toDouble();
+    if (hulldef->BaftW < 0)
+    {
+        flag = false;
+        txt_BaftW->setPalette(palLo);
+        hulldef->BaftW = 0;
+    }
+    else if (hulldef->BaftW > hulldef->BBW)
+    {
+        flag = false;
+        txt_BaftW->setPalette(palHi);
+        hulldef->BaftW = floor(hulldef->BBW);
+    }
+    else
+    {
+        txt_BaftW->setPalette(palStd);
+    }
+    txt_BaftW->setText(QString::number(hulldef->BaftW));
+    
+    hulldef->BBWPos = spinBox_BBWPos->value();
+    
+    // bottom shape
+    hulldef->BfwdShape = spinBox_BfwdShape->value();
+    hulldef->BaftShape = spinBox_BaftShape->value();
+    
+    hulldef->BSlopeA = spinBox_BSlopeA->value();
+    hulldef->BDeadriseA = spinBox_BDeadriseA->value();
+    hulldef->BSweepA = spinBox_BSweepA->value();
+    
+    hulldef->StemA = spinBox_StemA->value();
+    hulldef->TransomA = spinBox_TransomA->value();
+    
+    /// check deck data 
     hulldef->DfwdHeight = txt_DfwdHeight->text().toDouble();
-    if (hulldef->DfwdHeight < (L1 / 20) )
+    if (hulldef->DfwdHeight < (hulldef->BfwdHeight + L1 / 20) )
     {
         flag = false;
         txt_DfwdHeight->setPalette(palLo);
-        hulldef->DfwdHeight = ceil( L1 / 20 );
+        hulldef->DfwdHeight = ceil( hulldef->BfwdHeight + L1 / 20 );
     }
     else if (hulldef->DfwdHeight > ( L1 / 4 ) )
     {
@@ -175,11 +273,11 @@ bool CFormHullDef::check()
     txt_DfwdHeight->setText(QString::number(hulldef->DfwdHeight));
     
     hulldef->DaftHeight = txt_DaftHeight->text().toDouble();
-    if (hulldef->DaftHeight < (L1 / 20) )
+    if (hulldef->DaftHeight < (hulldef->BaftHeight + L1 / 20) )
     {
         flag = false;
         txt_DaftHeight->setPalette(palLo);
-        hulldef->DaftHeight = ceil( L1 / 20 );
+        hulldef->DaftHeight = ceil( hulldef->BaftHeight + L1 / 20);
     }
     else if (hulldef->DaftHeight > ( L1 / 4 ) )
     {
@@ -192,85 +290,6 @@ bool CFormHullDef::check()
         txt_DaftHeight->setPalette(palStd);
     }
     txt_DaftHeight->setText(QString::number(hulldef->DaftHeight));
-    
-    hulldef->DSlopeA = spinBox_DSlopeA->value();
-    
-    hulldef->DBW = txt_DBW->text().toDouble();
-    if (hulldef->DBW < L1/20)
-    {
-        flag = false;
-        txt_DBW->setPalette(palLo);
-        hulldef->DBW = ceil(L1/20);
-    }
-    else if (hulldef->DBW > L1/2)
-    {
-        flag = false;
-        txt_DBW->setPalette(palHi);
-        hulldef->DBW = floor(L1/2);
-    }
-    else
-    {
-        txt_DBW->setPalette(palStd);
-    }
-    txt_DBW->setText(QString::number(hulldef->DBW));
-    
-    hulldef->DaftW = txt_DaftW->text().toDouble();
-    if (hulldef->DaftW < 0)
-    {
-        flag = false;
-        txt_DaftW->setPalette(palLo);
-        hulldef->DaftW = 0;
-    }
-    else if (hulldef->DaftW > hulldef->DBW)
-    {
-        flag = false;
-        txt_DaftW->setPalette(palHi);
-        hulldef->DaftW = floor(hulldef->DBW);
-    }
-    else
-    {
-        txt_DaftW->setPalette(palStd);
-    }
-    txt_DaftW->setText(QString::number(hulldef->DaftW));
-    
-    hulldef->DBWPos = spinBox_DBWPos->value();
-    
-    hulldef->StemA = spinBox_StemA->value();
-    hulldef->TransomA = spinBox_TransomA->value();
-    
-    hulldef->DfwdShape = spinBox_DfwdShape->value();
-    hulldef->DaftShape = spinBox_DaftShape->value();
-    
-    /// check bottom data
-    hulldef->BfwdHeight = txt_BfwdHeight->text().toDouble();
-    if (hulldef->BfwdHeight > .9 * hulldef->DfwdHeight)
-    {
-        flag = false;
-        txt_BfwdHeight->setPalette(palHi);
-        hulldef->BfwdHeight = floor(.9 * hulldef->DfwdHeight);
-    }
-    else
-    {
-        txt_BfwdHeight->setPalette(palStd);
-    }
-    txt_BfwdHeight->setText(QString::number(hulldef->BfwdHeight));
-    
-    hulldef->BaftHeight = txt_BaftHeight->text().toDouble();
-    if (hulldef->BaftHeight > .9 * hulldef->DaftHeight)
-    {
-        flag = false;
-        txt_BaftHeight->setPalette(palHi);
-        hulldef->BaftHeight = floor(.9 * hulldef->DaftHeight);
-    }
-    else
-    {
-        txt_BaftHeight->setPalette(palStd);
-    }
-    txt_BaftHeight->setText(QString::number(hulldef->BaftHeight));
-    
-    hulldef->BSlopeA = spinBox_BSlopeA->value();
-    hulldef->BdeadriseA = spinBox_BdeadriseA->value();
-    hulldef->BsweepA = spinBox_BsweepA->value();
     
     /// planking parameters
     hulldef->NBPlank = spinBox_NBPlank->value();
@@ -286,14 +305,3 @@ bool CFormHullDef::check()
     ///  return true IF everything is OK 
     return flag;
 }
-
-/** slot for dealing with automatic planking
- */ 
-void CFormHullDef::slotAutoPlank()
-{
-    if (checkBox_AutoPlank->isChecked() )
-        hulldef->AutoPlank = true;
-        
-    check();
-}
-

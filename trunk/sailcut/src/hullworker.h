@@ -67,7 +67,7 @@ protected:
     
     /** basic panels */
     CPanel deck;
-    Cpanel plank;
+    CPanel plank;
     CPanel chine;
     
 };

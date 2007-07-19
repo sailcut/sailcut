@@ -39,7 +39,8 @@ public:
 
 protected slots:
     void slotAutoPlank();
-
+    void slotCheck();
+    
 protected:
     /** a pointer to the hull definion */
     CHullDef *hulldef;
