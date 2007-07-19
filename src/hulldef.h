@@ -60,7 +60,7 @@ public:
     
     	// bottom data
     /** bottom chine Length in millimeter */
-    real BLOA;
+    real BLWL;
     /** bottom forward height in millimeter */
     real BfwdHeight;
     /** bottom aft height in millimeter */
@@ -78,9 +78,9 @@ public:
     /** bottom sweep angle in degree forward of transverse axis */
     unsigned int BSweepA;
     /** Lower chine forward shape */
-    real BfwdShape;
+    unsigned int BfwdShape;
     //* Lower chine aft shape */
-    real BaftShape;
+    unsigned int BaftShape;
     
         //planking data
     /** Number of side planks */

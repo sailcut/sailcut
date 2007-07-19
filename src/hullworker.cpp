@@ -21,13 +21,14 @@
 
 
 /** The constructor does some preliminary lower chine calculations 
- *  to set internal variables.
+ *  to set internal variables
+ *  and compute lower chine plane.
  */
 CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
 {
     ptFwdChine = CPoint3d( 0 , BfwdHeight , 0 );
-    ptAftChine = CPoint3d( BLOA , BaftHeight , BaftW ); // transom end of lower chine 
-    xBmax = real(DBWPos) * DLOA / 100; 
+    ptAftChine = CPoint3d( BLWL , BaftHeight , BaftW/2 ); // transom end of lower chine 
+    xBmax = real(DBWPos) * BLWL / 100; 
     
     CPoint3d p1, p2;
     /* print debug
@@ -69,16 +70,16 @@ CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
     }
     else throw "ERROR in hullworker constructor = intersection chine plane and transom is not a line";
      
-    /* laying lower chine */ 
+    /* laying lower chine panel from centre line to chine */ 
     unsigned int j;
     //unsigned int npl = deck.right.nbpoints();   // number of right/left points
-    unsigned int npb = chine.bottom.nbpoints(); // number of bottom/top points
+    unsigned int npb = chine.bottom.nbpoints();   // number of bottom/top points
     
     chine.bottom.fill(ptFwdChine , ptCentreChine);   // centre line
-    chine.top.fill(ptFwdChine , ptAftChine);      // edge
-    deck.left.fill(ptFwdChine, ptFwdChine);     // stem
-    deck.right.fill(ptCentreChine , ptAftChine);    // transom
-    for ( j=0 ; j <= npb-1 ; j++)
+    chine.top.fill(ptFwdChine , ptAftChine);         // edge
+    deck.left.fill(ptFwdChine, ptFwdChine);          // stem
+    deck.right.fill(ptCentreChine , ptAftChine);     // transom
+    for ( j=0 ; j < npb ; j++)
     {   // move point to edge of deck
         p1 = chine.top.point[j];        
         p2 = ptLowChine( p1.x() );
@@ -130,7 +131,7 @@ CPoint3d CHullWorker::ptLowChine( const real &x )
 
 
 /** Return the 3D point at the keel function of x
- *  x is the absisse of the corresponding lower chine point along the centre line
+ *  x is the absisse of the corresponding point on the lower chine 
  *
  * @author Robert Laine
  */
@@ -160,17 +161,16 @@ CPoint3d CHullWorker::ptKeel( const real &x )
 }
 
 
-/** Creates the deck.
+/** Creates the hull.
  *
  * @return CPanelGroup
  * @author Robert Laine
  */
 CPanelGroup CHullWorker::makeHull() const
 {
-    CPanel deck1, deck2, side1, side2, side;
+    CPanel deck1, deck2, side, side1, side2;
     unsigned int j;
-    real a , b;
-    CPoint3d pt , p1 , p2 , p3 , p4;
+    CPoint3d pt , pt0 , p1 , p2 , p3 , p4;
     CVector3d v1 , v2 , v3 , vg;
     
     /* array used to identify points for stem intersection 
@@ -178,25 +178,34 @@ CPanelGroup CHullWorker::makeHull() const
      * which project on the stem bottom side point of the panel
      */
     unsigned int ptStem[NBPlank +1];
-    
-    /* array used to identify points for transom intersection
-     * the integer gives the  point on the top side of a side panel
-     * which project on the transom bottom side point of the panel
-     */ 
-    
+     
     CSubSpace Plane1;
     CSubSpace Line1;
     CSubSpace Intersection1;
     
     /* all the code has to be changed to start building the hull from the lower chine */
+    unsigned int npl = deck.right.nbpoints();     // number of right/left points
+    unsigned int npb = chine.bottom.nbpoints();   // number of bottom/top points
     
-    /// Start laying first half deck edge
-    deck1 = deck;
-    CPanelGroup hull(deck1);
+    /// Laying chine deck panels
+    CPanelGroup hull(chine);
     hull.type = HULL;
     hull.title = hullID;
+    deck1 = chine;
     
-    /// prepare for top side 
+    for ( j=0 ; j < npb ; j++)
+    {   // mirror points
+        deck1.top.point[j].z() = -deck1.top.point[j].z();        
+        deck1.bottom.point[j].z() = -deck1.bottom.point[j].z();        
+    }
+    for ( j=0 ; j < npl ; j++)
+    {   // mirror points
+        deck1.left.point[j].z() = -deck1.left.point[j].z();        
+        deck1.right.point[j].z() = -deck1.right.point[j].z();        
+    }
+    hull.panel.push_back(deck1);
+
+    /*// prepare for top side 
     pt = deck1.top.point[1];
     v1 = CVector3d( 1 , 0 , 0 );
     v2 = CVector3d( 0 , -sin(real(TopPlankA) * PI/180) , -cos(real(TopPlankA) * PI/180) );
@@ -204,7 +213,7 @@ CPanelGroup CHullWorker::makeHull() const
     v3 = CVector3d( cos(real(StemA) * PI/180) , -sin(real(StemA) * PI/180) , 0 );
     
     Plane1 = CSubSpace3d::plane( pt , v1 , v2 );
-    Line1 = CSubSpace3d::line( deckPt0 , v3 );
+    Line1 = CSubSpace3d::line( pt , v3 );
     
         // compute intersection of stem and side inclination plane
     Intersection1 = Line1.intersect(Plane1);
@@ -222,7 +231,7 @@ CPanelGroup CHullWorker::makeHull() const
     Plane1 = CSubSpace3d::plane( CPoint3d(0, BfwdHeight, 0) , v1 , v2);
     
     /// search for the point of deck edge which projects at stem lower point
-    p4 = deckPt0;
+    p4 = pt;
     p4.z() = -1;
     j = 0;
     while ( p4.z() < 0 )
@@ -238,13 +247,8 @@ CPanelGroup CHullWorker::makeHull() const
         }
         else throw "ERROR in CHullWorker::makeHull() Intersection 2 is not a point" ;
     }
-    
     // keep memory of deck point number
     ptStem[NBPlank +1] = j;
-    /*    QString txt;
-        txt = "pt   j1 = " + QString::number (j1) + "  ;  x = " + QString::number (p2.x());
-        qDebug ( txt.toLocal8Bit() );
-    */
     
     // compute previous point on chine plane 
     p1 = deck1.top.point[ptStem[NBPlank + 1] - 1];
@@ -273,7 +277,7 @@ CPanelGroup CHullWorker::makeHull() const
     {
         side1.top.point[j] = deck1.top.point[j];
         Line1 = CSubSpace3d::line( side1.top.point[j] , vg );
-        Intersection1 = Line1.intersect(centralPlane);
+        Intersection1 = Line1.intersect(planeCentral);
         if (Intersection1.getdim() == 0)
         {
             pt = Intersection1.getp();
@@ -390,9 +394,9 @@ CPanelGroup CHullWorker::makeHull() const
     /// translate the hull such that stem is at x=O, y=0, z=0 ///
     for ( j=0; j < hull.panel.size(); j++ )
     {
-        hull.panel[j] = hull.panel[j] + CVector3d(-deckPt0);
+        hull.panel[j] = hull.panel[j] + CVector3d(-pt0);
     }
-    
+    */
     return hull;
 }
 
