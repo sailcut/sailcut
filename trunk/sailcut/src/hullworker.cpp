@@ -75,16 +75,17 @@ CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
     //unsigned int npl = deck.right.nbpoints();   // number of right/left points
     unsigned int npb = chine.bottom.nbpoints();   // number of bottom/top points
     
-    chine.bottom.fill(ptFwdChine , ptCentreChine);   // centre line
-    chine.top.fill(ptFwdChine , ptAftChine);         // edge
-    deck.left.fill(ptFwdChine, ptFwdChine);          // stem
-    deck.right.fill(ptCentreChine , ptAftChine);     // transom
+    chine.bottom.fill( ptFwdChine , ptCentreChine );   // centre line
+    chine.top.fill( ptFwdChine , ptAftChine );         // edge
+    deck.left.fill( ptFwdChine, ptFwdChine );          // stem
     for ( j=0 ; j < npb ; j++)
     {   // move point to edge of deck
         p1 = chine.top.point[j];        
         p2 = ptLowChine( p1.x() );
         chine.top.point[j] = p2;
     }
+    deck.right.fill( chine.bottom.point[npb-1] , chine.top.point[npb-1] );     // transom
+    
 }
 
 
@@ -143,7 +144,7 @@ CPoint3d CHullWorker::ptKeel( const real &x )
     CPoint3d pt = ptLowChine ( x );
     // vector with deadrise and sweep
     CVector3d v1 = CVector3d( tan(real(-BSweepA) * PI/180) , tan(real(-BDeadriseA) * PI/180) , -1 );
-;
+
     // define ruling line 1 passing through point pt
     CSubSpace line1;
     line1 =  CSubSpace3d::line (pt , v1 );
@@ -168,31 +169,25 @@ CPoint3d CHullWorker::ptKeel( const real &x )
  */
 CPanelGroup CHullWorker::makeHull() const
 {
-    CPanel deck1, deck2, side, side1, side2;
-    unsigned int j;
+    CPanel deck1, plank1;
+    unsigned int j, k;
     CPoint3d pt , pt0 , p1 , p2 , p3 , p4;
     CVector3d v1 , v2 , v3 , vg;
     
-    /* array used to identify points for stem intersection 
-     * the integer gives the  point on the top side of a side panel
-     * which project on the stem bottom side point of the panel
-     */
-    unsigned int ptStem[NBPlank +1];
-     
     CSubSpace Plane1;
     CSubSpace Line1;
     CSubSpace Intersection1;
     
     /* all the code has to be changed to start building the hull from the lower chine */
-    unsigned int npl = deck.right.nbpoints();     // number of right/left points
+    unsigned int npl = chine.right.nbpoints();     // number of right/left points
     unsigned int npb = chine.bottom.nbpoints();   // number of bottom/top points
     
     /// Laying chine deck panels
     CPanelGroup hull(chine);
     hull.type = HULL;
     hull.title = hullID;
+    // add symetric chine deck panel
     deck1 = chine;
-    
     for ( j=0 ; j < npb ; j++)
     {   // mirror points
         deck1.top.point[j].z() = -deck1.top.point[j].z();        
@@ -390,13 +385,15 @@ CPanelGroup CHullWorker::makeHull() const
     side.bottom.fill(side.bottom.point[0], side.bottom.point[npb-1]);
     side.left.fill(side.bottom.point[0], side.top.point[0]);
     hull.panel.push_back(side);
-    
+    */
+   
     /// translate the hull such that stem is at x=O, y=0, z=0 ///
-    for ( j=0; j < hull.panel.size(); j++ )
+    k = hull.panel.size();
+    pt0 = hull.panel[k-1].bottom.point[0];
+    for ( j=0; j < k ; j++ )
     {
         hull.panel[j] = hull.panel[j] + CVector3d(-pt0);
     }
-    */
     return hull;
 }
 

@@ -40,12 +40,13 @@ protected:
     /** abciss of Bmax point on chine */
     real xBmax;
     
-    /** compute a Deck edge point */
+    /** function compute a point on Deck edge  */
     CPoint3d ptDeck( const real &x );
-    /** compute a Keel point */
+    /** function compute a point on Keel line */
     CPoint3d ptKeel( const real &x);
-    /** compute a Chine point */
+    /** function compute a point on chine n */
     CPoint3d ptChine(const int &n, const real &x );
+    /** function compute a point on lower Chine */
     CPoint3d ptLowChine( const real &x );
     
     /** central plane longitudinal X-Y */
