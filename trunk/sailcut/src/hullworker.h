@@ -34,7 +34,7 @@ class CHullWorker : public CHullDef
 public:
     CHullWorker(const CHullDef &d);
 
-    CPanelGroup makeHull() const;
+    CPanelGroup makeHull();
 
 protected:
     /** abciss of Bmax point on chine */
@@ -65,6 +65,9 @@ protected:
     CPoint3d ptAftChine;
     /** Lower Chine point at transom/centre line */
     CPoint3d ptCentreChine;
+    
+    /** Deck Forward Point */
+    CPoint3d ptFwdDeck;
     
     /** basic panels */
     CPanel deck;
