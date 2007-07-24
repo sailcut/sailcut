@@ -34,18 +34,18 @@ CHullDef::CHullDef()
     DBW = 2500;        // Deck max beam width
     DBWPos = 50;       // percent of deck length
     DaftW = 2000;      // Deck aft width
-    StemA = 85;        // Stem inclination in degree from horizontal
+    StemA = 65;        // Stem inclination in degree from horizontal
     TransomA = 80;     // Transom inclination
     
     BLWL    = 7000;    // Bottom length in millimetre
-    BfwdHeight = 0;  // Bottom chine forward height
-    BaftHeight = -100;  // Bottom chine aft height
+    BfwdHeight = 100;  // Bottom chine forward height
+    BaftHeight = 200;  // Bottom chine aft height
     BSlopeA = 12;      // Bottom chine plane side slope in degree from horizontal
     BBW = 2500;        // Bottom max beam width
     BBWPos = 50;       // Bottom chine max width position percent of deck length
     BaftW = 2000;      // Bottom aft width
     BDeadriseA = 12;   // Bottom plank dead rise from horizontal
-    BSweepA = 45;      // Bottom plank sweep angle in degree
+    BSweepA = 30;      // Bottom plank sweep angle in degree
     BfwdShape = 2;     // forward coefficient power of X
     BaftShape = 3;     // aft coefficient power of X
     
