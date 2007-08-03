@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>640</width>
+    <width>659</width>
     <height>608</height>
    </rect>
   </property>
@@ -391,6 +391,9 @@
               <height>22</height>
              </size>
             </property>
+            <property name="text" >
+             <string>txt_BBW</string>
+            </property>
            </widget>
           </item>
           <item row="2" column="0" >
@@ -416,6 +419,9 @@
               <height>22</height>
              </size>
             </property>
+            <property name="text" >
+             <string>txt_BfwdHeight</string>
+            </property>
            </widget>
           </item>
           <item row="0" column="1" >
@@ -434,6 +440,9 @@
               <height>22</height>
              </size>
             </property>
+            <property name="text" >
+             <string>txt_BLWL</string>
+            </property>
            </widget>
           </item>
           <item row="2" column="6" >
@@ -451,6 +460,9 @@
               <width>60</width>
               <height>22</height>
              </size>
+            </property>
+            <property name="text" >
+             <string>txt_BaftW</string>
             </property>
            </widget>
           </item>
@@ -543,6 +555,9 @@
               <height>22</height>
              </size>
             </property>
+            <property name="text" >
+             <string>txt_BaftHeight</string>
+            </property>
            </widget>
           </item>
           <item row="0" column="6" >
@@ -586,7 +601,7 @@
              </sizepolicy>
             </property>
             <property name="text" >
-             <string>Bottom dead rise angle</string>
+             <string>Dead rise angle</string>
             </property>
            </widget>
           </item>
@@ -637,7 +652,7 @@
              </sizepolicy>
             </property>
             <property name="text" >
-             <string>Side slope angle</string>
+             <string>Chine angle</string>
             </property>
            </widget>
           </item>
@@ -726,6 +741,9 @@
               <height>22</height>
              </size>
             </property>
+            <property name="text" >
+             <string>txt_HullID</string>
+            </property>
            </widget>
           </item>
           <item row="0" column="0" >
@@ -804,6 +822,9 @@
               <height>22</height>
              </size>
             </property>
+            <property name="text" >
+             <string>txt_DaftHeight</string>
+            </property>
            </widget>
           </item>
           <item row="0" column="1" >
@@ -822,6 +843,9 @@
               <height>22</height>
              </size>
             </property>
+            <property name="text" >
+             <string>txt_DfwdHeight</string>
+            </property>
            </widget>
           </item>
           <item row="0" column="0" >
@@ -834,7 +858,7 @@
           <item row="0" column="2" >
            <widget class="QLabel" name="label_DSlopeA" >
             <property name="text" >
-             <string>Side slope angle</string>
+             <string>Side angle</string>
             </property>
            </widget>
           </item>
@@ -852,7 +876,7 @@
      </widget>
      <widget class="QWidget" name="tab_2" >
       <attribute name="title" >
-       <string>Side Planks</string>
+       <string>Planks</string>
       </attribute>
       <layout class="QGridLayout" >
        <property name="margin" >
