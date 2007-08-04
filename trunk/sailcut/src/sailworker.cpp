@@ -182,8 +182,8 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
     CPoint3d p1[MAX_PANELS], p2[MAX_PANELS];
 
     /* Create two temporary sails lay and the corresponding dev */
-    CPanelGroup lay(MAX_PANELS); // 3D sail
-    CPanelGroup dev(MAX_PANELS); // developed sail
+    CPanelGroup lay(MAX_PANELS);  // 3D sail
+    CPanelGroup dev(MAX_PANELS);  // developed sail
 
     /* create number of panels */
     unsigned int npanel = 1;
@@ -311,7 +311,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
 
                 /* the case when the intersection is not a point needs to be handled */
                 if ( seamSP.intersect(luff).getdim() != 0 )
-                    throw CException("CSailDef::Layout0 : intersection of seam and luff is not a point!");
+                    throw CException("CSailDef::Layout0-1 : intersection of seam and luff is not a point!");
 
                 if ( CVector3d(i-tack)*luffV < 0 )
                 {
@@ -326,7 +326,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
                     }
                     /* the case when the intersection is not a point needs to be handled */
                     if ( seamSP.intersect(foot).getdim() != 0 )
-                        throw CException("CSailDef::Layout0 : intersection of seam and foot is not a point!");
+                        throw CException("CSailDef::Layout0-2 : intersection of seam and foot is not a point!");
                 }
                 else if ( CVector3d(i-head)*luffV > 0 )
                 {
@@ -336,7 +336,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
 
                     /* the case when the intersection is not a point needs to be handled */
                     if ( seamSP.intersect(gaff).getdim() != 0 )
-                        throw CException("CSailDef::Layout0 : intersection of seam and foot is not a point!");
+                        throw CException("CSailDef::Layout0-3 : intersection of seam and foot is not a point!");
                 }
                 else
                 {
@@ -673,7 +673,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
 
                 /* the case when the intersection is not a point needs to be handled */
                 if (seamSP.intersect(luff).getdim() != 0)
-                    throw CException("CSailDef::Layout1 : twist intersection of seam and luff is not a point!");
+                    throw CException("CSailDef::Layout1-1 : twist intersection of seam and luff is not a point!");
 
                 if (CVector3d(i- (seamW + clothW/5)*luffV.unit() -p1[npanel-1])*luffV <= 0.00001)
                 { // seam intersects below previous panel luff point + 1/5 clothW
@@ -691,7 +691,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
 
                     /* the case when the intersection is not a point needs to be handled */
                     if (seamSP.intersect(gaff).getdim() != 0)
-                        throw CException("CSailDef::Layout1 : intersection of seam and foot is not a point!");
+                        throw CException("CSailDef::Layout1-2 : intersection of seam and foot is not a point!");
                 }
                 else
                 { // seam intersects luff normally
@@ -822,7 +822,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
     ////////////////////////////////////////
 
     if (npanel == MAX_PANELS-1)
-        throw CException("CSailDef::Layout1 : got to MAX_PANELS without reaching head, do increase cloth width ");
+        throw CException("CSailDef::Layout1-5 : got to MAX_PANELS without reaching head, do increase cloth width ");
 
     /** copying the sails for display **** */
     CPanelGroup sail(npanel);
@@ -948,6 +948,9 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
             seamSP = CSubSpace3d::line(pt, seamV);
             p1[npanel] = seamSP.intersect(foot).getp();
             t1[npanel] = 1; // type1=1= foot intersection vertically cut panels
+            /* the case when the intersection is not a point needs to be handled */
+            if (seamSP.intersect(foot).getdim() != 0)
+            throw CException("CSailDef::Layout vertical-1 : intersection of seam and foot is not a point!");
 
             if (p1[npanel].x() <= tack.x())
             { // last panel
@@ -961,11 +964,18 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
             {
                 // printf ("normal panel \n");
                 p2[npanel] = seamSP.intersect(gaff).getp();
+                /* the case when the intersection is not a point needs to be handled */
+                if (seamSP.intersect(gaff).getdim() != 0)
+                    throw CException("CSailDef::Layout vertical-2 : intersection of seam and gaff is not a point!");
+                    
                 if (CVector3d(p2[npanel]-head)*gaffV > 0.00001)
                     t2[npanel] = 3;
                 else
                 {
                     p2[npanel] = seamSP.intersect(luff).getp();
+                    /* the case when the intersection is not a point needs to be handled */
+                    if (seamSP.intersect(luff).getdim() != 0)
+                    throw CException("CSailDef::Layout vertical-3 : intersection of seam and luff is not a point!");
                     t2[npanel] = 2;
                 }
             }
@@ -1250,7 +1260,7 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
 
             /* the case when the intersection is not a point needs to be handled */
             if (seamSP.intersect(luff).getdim() != 0)
-                throw CException("CSailDef::Layout0 : intersection of seam and luff is not a point!");
+                throw CException("CSailDef::Layout wing-1 : intersection of seam and luff is not a point!");
 
             if (CVector3d(i-tack)*luffV < 0)
             {
@@ -1265,7 +1275,7 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
                 }
                 /* the case when the intersection is not a point needs to be handled */
                 if (seamSP.intersect(foot).getdim() != 0)
-                    throw CException("CSailDef::Layout0 : intersection of seam and foot is not a point!");
+                    throw CException("CSailDef::Layout wing-2 : intersection of seam and foot is not a point!");
             }
             else if (CVector3d(i-head)*luffV > 0)
             {
@@ -1275,7 +1285,7 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
 
                 /* the case when the intersection is not a point needs to be handled */
                 if (seamSP.intersect(gaff).getdim() != 0)
-                    throw CException("CSailDef::Layout0 : intersection of seam and foot is not a point!");
+                    throw CException("CSailDef::Layout wing-3 : intersection of seam and foot is not a point!");
             }
             else
             {
@@ -1436,7 +1446,7 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
     ////////////////////////////////////////
 
     if ( npanel == MAX_PANELS/2 -1 )
-        throw CException("CSailDef::Layout0 : got to MAX_PANELS without reaching head, do increase cloth width ");
+        throw CException("CSailDef::Layout wing-4 : got to MAX_PANELS without reaching head, do increase cloth width ");
 
     /** creating the symetrical panels */
     np = npanel;
@@ -3403,6 +3413,9 @@ CPoint3d CSailWorker::FootIntersect( const CPoint3d &pt1, const CVector3d &v1 ) 
 
     /* find point p0 at intersection of straight foot with ptv1 */
     CPoint3d p0 = ptv1.intersect(foot).getp();
+        /* the case when the intersection is not a point needs to be handled */
+    if (ptv1.intersect(foot).getdim() != 0)
+        throw CException("CSailDef::FootIntersect-1 : intersection with foot is not a point!");
 
     if ( CVector3d(p0 - tack) * footV <= 0.00001 )
         p2 = tack;  // intersection left of tack
@@ -3430,6 +3443,10 @@ CPoint3d CSailWorker::FootIntersect( const CPoint3d &pt1, const CVector3d &v1 ) 
             CSubSpace parallel = CSubSpace3d::line(p1, footV);
             // point intersection of ptv1 with parrallel
             p2 = ptv1.intersect(parallel).getp();
+                /* the case when the intersection is not a point needs to be handled */
+            if (ptv1.intersect(parallel).getdim() != 0)
+                throw CException("CSailDef::FootIntersect-2 : intersection is not a point!");
+                
             dh2 = CVector3d(p2 - p0) * footV.unit(); // projection on foot
             hr2 = (h0 + dh2) / (footL + .00001);
             if ( hr2 <= 0 )
@@ -3452,10 +3469,15 @@ CPoint3d CSailWorker::FootIntersect( const CPoint3d &pt1, const CVector3d &v1 ) 
         /* final convergence on mean point */
         d1 = (d1 + d2) / 2;
         p1 = p0 + CMatrix::rot3d(2 , -PI/2)*footV.unit() * d1;
+        
         // define a line parrallel to leech at distance d1
         CSubSpace parallel = CSubSpace3d::line(p1,  footV);
+        
         // point intersection of ptv1 with parrallel
         p2 = ptv1.intersect(parallel).getp();
+            /* the case when the intersection is not a point needs to be handled */
+        if (ptv1.intersect(parallel).getdim() != 0)
+            throw CException("CSailDef::FootIntersect-3 : intersection is not a point!");
     } // end IF ELSE
 
     return p2;
@@ -3486,6 +3508,9 @@ CPoint3d CSailWorker::GaffIntersect( const CPoint3d &pt1, const CVector3d &v1 ) 
 
     /* find point p0 at intersection of straight gaff with ptv1 */
     CPoint3d p0 = ptv1.intersect(gaff).getp();
+        /* the case when the intersection is not a point needs to be handled */
+    if (ptv1.intersect(gaff).getdim() != 0)
+        throw CException("CSailDef::GaffIntersect-1 : intersection with gaff is not a point!");
 
     if (CVector3d(p0 - head) * gaffV <= 0.00001)
         p2 = head;  // intersection left of gaff
@@ -3511,8 +3536,13 @@ CPoint3d CSailWorker::GaffIntersect( const CPoint3d &pt1, const CVector3d &v1 ) 
             p1 = p0 + CMatrix::rot3d(2, PI/2) * gaffV.unit() * d1;
             // define a line parrallel to gaff at distance d1
             CSubSpace parallel = CSubSpace3d::line(p1, gaffV);
+
             // point intersection of ptv1 with parrallel
             p2 = ptv1.intersect(parallel).getp();
+                /* the case when the intersection is not a point needs to be handled */
+            if (ptv1.intersect(parallel).getdim() != 0)
+                throw CException("CSailDef::GaffIntersect-2 : intersection is not a point!");
+
             dh2 = CVector3d(p2 - p0) * gaffV.unit(); // projection on gaff
             hr2 = (h0 +dh2) / (gaffV.norm() +.00001);
             if ( hr2 <= 0 )
@@ -3535,10 +3565,15 @@ CPoint3d CSailWorker::GaffIntersect( const CPoint3d &pt1, const CVector3d &v1 ) 
         // final convergence on mean point
         d1 = (d1+d2)/2;
         p1 = p0 + CMatrix::rot3d(2, PI/2) * gaffV.unit()*d1;
+        
         // define a line parrallel to leech at distance d1
         CSubSpace parallel = CSubSpace3d::line(p1, gaffV);
+        
         // point intersection of ptv1 with parrallel
         p2 = ptv1.intersect(parallel).getp();
+            /* the case when the intersection is not a point needs to be handled */
+        if (ptv1.intersect(parallel).getdim() != 0)
+            throw CException("CSailDef::GaffIntersect-3 : intersection is not a point!");
     } // end ELSE
     return p2;
 } //////////////// GaffIntersect //////////////////////////////////////////
@@ -3568,6 +3603,9 @@ CPoint3d CSailWorker::LeechIntersect( const CPoint3d &pt1, const CVector3d &v1 )
 
     /* find point p0 at intersection of straight leech with ptv1 */
     CPoint3d p0 = ptv1.intersect(leech).getp();
+        /* the case when the intersection is not a point needs to be handled */
+    if (ptv1.intersect(leech).getdim() != 0)
+        throw CException("CSailDef::LeechIntersect-1 : intersection with leech is not a point!");
 
     if (CVector3d(p0 - clew) * leechV <= 0.00001)
         p2 = clew;  // intersection below clew
@@ -3591,10 +3629,16 @@ CPoint3d CSailWorker::LeechIntersect( const CPoint3d &pt1, const CVector3d &v1 )
         for (j=1; j<3; j++)
         {
             p1 = p0 + CMatrix::rot3d(2, -PI/2) * leechV.unit() * d1;
+            
             // define a line parrallel to leech at distance d1
             CSubSpace parallel = CSubSpace3d::line(p1, leechV);
+            
             // point intersection of ptv1 with parrallel
             p2 = ptv1.intersect(parallel).getp();
+            /* the case when the intersection is not a point needs to be handled */
+            if (ptv1.intersect(parallel).getdim() != 0)
+                throw CException("CSailDef::LeechIntersect-2 : intersection is not a point!");
+
             dh2 = CVector3d(p2-p0) * leechV.unit(); // projection on leech
             hr2 = (h0+dh2) / (leechV.norm()+.00001);
             if (hr2 <= 0)
@@ -3617,10 +3661,15 @@ CPoint3d CSailWorker::LeechIntersect( const CPoint3d &pt1, const CVector3d &v1 )
         // final convergence on mean point
         d1 = (d1+d2) / 2;
         p1 = p0 + CMatrix::rot3d(2, -PI/2) * leechV.unit() * d1;
+        
         // define a line parrallel to leech at distance d1
         CSubSpace parallel = CSubSpace3d::line(p1, leechV);
+        
         // point intersection of ptv1 with parrallel
         p2 = ptv1.intersect(parallel).getp();
+            /* the case when the intersection is not a point needs to be handled */
+        if (ptv1.intersect(parallel).getdim() != 0)
+            throw CException("CSailDef::LeechIntersect-3 : intersection is not a point!");
     } // end ELSE
     return p2;
 } /////////// LeechIntersect ///////////////////////////////////////////
@@ -3650,6 +3699,9 @@ CPoint3d CSailWorker::LuffIntersect( const CPoint3d &pt1, const CVector3d &v1 ) 
 
     /* find point p0 at intersection of straight luff with ptv1 */
     CPoint3d p0 = ptv1.intersect(luff).getp();
+    /* the case when the intersection is not a point needs to be handled */
+    if (ptv1.intersect(luff).getdim() != 0)
+        throw CException("CSailDef::LuffIntersect-1 : intersection with luff is not a point!");
 
     if (CVector3d(p0 - tack) * luffV <= 0.00001)
         p2 = tack;  // intersection below tack
@@ -3677,6 +3729,10 @@ CPoint3d CSailWorker::LuffIntersect( const CPoint3d &pt1, const CVector3d &v1 ) 
             CSubSpace parallel = CSubSpace3d::line(p1, luffV);
             // point intersection of ptv1 with parrallel to luff
             p2 = ptv1.intersect(parallel).getp();
+            /* the case when the intersection is not a point needs to be handled */
+            if (ptv1.intersect(parallel).getdim() != 0)
+                throw CException("CSailDef::LuffIntersect-2 : intersection is not a point!");
+
             dh2 = CVector3d(p2 - p0) * luffV.unit(); // projection on luff
             hr2 = (h0+dh2) / (luffV.norm()+.00001);
             if (hr2 <= 0)
@@ -3703,6 +3759,10 @@ CPoint3d CSailWorker::LuffIntersect( const CPoint3d &pt1, const CVector3d &v1 ) 
         CSubSpace parallel = CSubSpace3d::line(p1, luffV);
         // point intersection of ptv1 with parrallel to luff
         p2 = ptv1.intersect(parallel).getp();
+        /* the case when the intersection is not a point needs to be handled */
+        if (ptv1.intersect(parallel).getdim() != 0)
+            throw CException("CSailDef::LuffIntersect-3 : intersection is not a point!");
+
     } // end ELSE
     return p2;
 } ////////////// LuffIntersect /////////////////////////////////////////
@@ -3728,6 +3788,9 @@ CPoint3d CSailWorker::MitreIntersect( const CPoint3d &pt1, const CVector3d &v1 )
 
         /* point at intersection of input vector and mitre */
         p2 = ptv1.intersect(mitre).getp();
+        /* the case when the intersection is not a point needs to be handled */
+        if (ptv1.intersect(mitre).getdim() != 0)
+            throw CException("CSailDef::MitreIntersect-1 : intersection with mitre is not a point!");
     }
     return p2;
 } ///////////// MitreIntersect ////////////////////////////////////////
