@@ -205,10 +205,9 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
     /* define point i for intersections */
     CPoint3d i;
 
-    /* define seamV as the vector perpendicular to the leech vector (peak-clew)*/
     CVector3d seamV(-1, 0, 0);
     CSubSpace seamSP;
-
+    /* define seamV as the vector perpendicular to the leech vector (peak-clew)*/
     if ( sailCut == HORIZONTAL )
         seamV = CVector3d(-1, 0, 0);  // seam orientation for horizontal cut
     else
@@ -222,7 +221,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
     CVector3d vk(0, 0, 0);
 
     /* create variable for edge correction */
-    CVector3d deviation [30];
+    CVector3d deviation [30]; // TODO adjust to npb 
     CVector3d deviaPrev [30];
     for ( k = 0 ; k < 29 ; k++)
     {
@@ -235,13 +234,13 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
     real CC = 0, x = 0, y = 0;
 
     /* seam 0 is on the foot of the sail ending at the clew */
-    p1[0] = tack; // initialised at tack point
-    p2[0] = clew;
+    p1[0] = tack; // initialise seam forward end at tack point
+    p2[0] = clew; // initialise seam aft end at clew point
     t1[0] = 1;
     t2[0] = 4;    // type=4=leech intersection
 
     /** Start laying the panels from the foot upward to the peak */
-    for ( npanel = 1 ; npanel < MAX_PANELS-1 ; npanel++)
+    for ( npanel = 1 ; npanel < MAX_PANELS -1 ; npanel++)
     {
         exb = 0; // total correction
         exc = 0; // current excess of width
@@ -251,10 +250,10 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
         {
             cnt++;
             p2[npanel] = p2[npanel-1] + (clothW-seamW-exb)/(seamV*leechVP) * leechV.unit();
-            t2[npanel] = 4; // type2=4=leech intersection for all horizontally cut panels
+            t2[npanel] = 4; // type2 = 4 = leech intersection for all horizontally cut panels
             seamSP = CSubSpace3d::line(p2[npanel], seamV);
 
-            if ( CVector3d(p2[npanel]-peak)*leechV > 0 )  // we are above peak, stop last panel
+            if ( CVector3d(p2[npanel]-peak)*leechV > 0 )  // we are above peak, stop this is last panel
             {
                 flag = true;
                 p2[npanel] = peak;
@@ -266,9 +265,9 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
                     // left points on foot-tack-luff
                     lay.panel[npanel-1].left.fill(p1[npanel-1], tack, p1[npanel]);
                     for ( k = 0 ; k < npl / 2 ; k++)
-                        lay.panel[npanel-1].left.point[k]=FootIntersect(lay.panel[npanel-1].left.point[k], seamV);
+                        lay.panel[npanel-1].left.point[k] = FootIntersect(lay.panel[npanel-1].left.point[k], seamV);
                     for ( k = npl / 2 +1 ; k < npl ; k++)
-                        lay.panel[npanel-1].left.point[k]=LuffIntersect(lay.panel[npanel-1].left.point[k], seamV);
+                        lay.panel[npanel-1].left.point[k] = LuffIntersect(lay.panel[npanel-1].left.point[k], seamV);
                 }
                 else if ( t1[npanel-1] == 2 )
                 { // left points on luff
@@ -276,7 +275,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
                     t1[npanel] = 2;
                     lay.panel[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
                     for ( k = 0 ; k < npl ; k++)
-                        lay.panel[npanel-1].left.point[k]=LuffIntersect(lay.panel[npanel-1].left.point[k], seamV);
+                        lay.panel[npanel-1].left.point[k] = LuffIntersect(lay.panel[npanel-1].left.point[k], seamV);
                 }
                 else
                 { // left points on gaff
@@ -284,7 +283,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
                     t1[npanel] = 3;
                     lay.panel[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
                     for ( k = 0 ; k < npl ; k++)
-                        lay.panel[npanel-1].left.point[k]=GaffIntersect(lay.panel[npanel-1].left.point[k], seamV);
+                        lay.panel[npanel-1].left.point[k] = GaffIntersect(lay.panel[npanel-1].left.point[k], seamV);
                 }
 
                 // fill right points on leech
@@ -300,8 +299,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
 
                 // move all top points of top panel to gaff curve
                 for( k = 1 ; k < npb -1 ; k++)
-                    lay.panel[npanel -1].top.point[k]=GaffIntersect(lay.panel[npanel-1].top.point[k], CVector3d (head.y()-peak.y(),peak.x()-head.x(),0));
-
+                    lay.panel[npanel -1].top.point[k] = GaffIntersect(lay.panel[npanel-1].top.point[k], CVector3d (head.y()-peak.y(),peak.x()-head.x(),0));
                 ////// end peak panel /////
             }
             else   // normal panel  ///////////////////////////
@@ -309,13 +307,12 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
                 /* find position of luff/seam intersection relative to tack and head */
                 i = seamSP.intersect(luff).getp();
 
-                /* the case when the intersection is not a point needs to be handled */
+                /* the case when the intersection is not a point is handled */
                 if ( seamSP.intersect(luff).getdim() != 0 )
                     throw CException("CSailDef::Layout0-1 : intersection of seam and luff is not a point!");
 
                 if ( CVector3d(i-tack)*luffV < 0 )
-                {
-                    // seam intersects foot
+                {   // seam intersects foot
                     p1[npanel] = seamSP.intersect(foot).getp();
                     t1[npanel] =1;  // 1=foot type of intersection
 
@@ -329,8 +326,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
                         throw CException("CSailDef::Layout0-2 : intersection of seam and foot is not a point!");
                 }
                 else if ( CVector3d(i-head)*luffV > 0 )
-                {
-                    // seam intersects gaff
+                {   // seam intersects gaff
                     p1[npanel] = seamSP.intersect(gaff).getp();
                     t1[npanel] = 3;  // 3=gaff type of intersection
 
@@ -339,13 +335,11 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
                         throw CException("CSailDef::Layout0-3 : intersection of seam and foot is not a point!");
                 }
                 else
-                {
-                    // seam intersects luff
+                {   // seam intersects luff
                     p1[npanel] = i;
                     t1[npanel] = 2;  // luff
                     if ( npanel == 1 )
-                    {
-                        // force seam 0 to start at the tack
+                    {   // force seam 0 to start at the tack
                         p1[0] = tack;
                         t1[0] = 2;
                     }
@@ -359,56 +353,60 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
                 if ( t1[npanel-1] == 1  &&  t1[npanel] == 1 )
                 {
                     // full foot
-                    lay.panel[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
+                    lay.panel[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
                     for ( k = 0 ; k < npl ; k++)
-                        lay.panel[npanel-1].left.point[k]=FootIntersect(lay.panel[npanel-1].left.point[k], seamV);
+                        lay.panel[npanel-1].left.point[k] = FootIntersect(lay.panel[npanel-1].left.point[k], seamV);
                 }
                 else if ( t1[npanel-1] == 2  &&  t1[npanel] == 2 )
                 {
                     // full luff
-                    lay.panel[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
+                    lay.panel[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
                     for ( k = 0 ; k < npl ; k++)
-                        lay.panel[npanel-1].left.point[k]=LuffIntersect(lay.panel[npanel-1].left.point[k] , seamV);
+                        lay.panel[npanel-1].left.point[k] = LuffIntersect(lay.panel[npanel-1].left.point[k] , seamV);
                 }
                 else if ( t1[npanel-1] == 3  &&  t1[npanel] == 3 )
                 {
                     // full gaff
-                    lay.panel[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
+                    lay.panel[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
                     for ( k = 0 ; k < npl ; k++)
-                        lay.panel[npanel-1].left.point[k]=GaffIntersect(lay.panel[npanel-1].left.point[k] , seamV);
+                        lay.panel[npanel-1].left.point[k] = GaffIntersect(lay.panel[npanel-1].left.point[k] , seamV);
                 }
                 else if ( (t1[npanel-1] == 1) && (t1[npanel] == 2) )
                 {
                     // foot-tack-luff
                     lay.panel[npanel-1].left.fill(p1[npanel-1], tack, p1[npanel]);
                     for ( k = 0 ; k < npl / 2 ; k++)
-                        lay.panel[npanel-1].left.point[k]=FootIntersect(lay.panel[npanel-1].left.point[k], seamV);
+                        lay.panel[npanel-1].left.point[k] = FootIntersect(lay.panel[npanel-1].left.point[k], seamV);
                     for ( k = npl / 2 +1 ; k < npl ; k++)
-                        lay.panel[npanel-1].left.point[k]=LuffIntersect(lay.panel[npanel-1].left.point[k], seamV);
+                        lay.panel[npanel-1].left.point[k] = LuffIntersect(lay.panel[npanel-1].left.point[k], seamV);
                 }
                 else if ( (t1[npanel-1] == 2) && (t1[npanel] == 3) )
                 {
                     // luff-head-gaff
                     lay.panel[npanel-1].left.fill(p1[npanel-1], head, p1[npanel]);
                     for ( k = 0 ; k < npl/2 ; k++)
-                        lay.panel[npanel-1].left.point[k]=LuffIntersect(lay.panel[npanel-1].left.point[k], seamV);
+                        lay.panel[npanel-1].left.point[k] = LuffIntersect(lay.panel[npanel-1].left.point[k], seamV);
                     for ( k = npl / 2 +1 ; k < npl ; k++)
-                        lay.panel[npanel-1].left.point[k]=GaffIntersect(lay.panel[npanel-1].left.point[k], seamV);
+                        lay.panel[npanel-1].left.point[k] = GaffIntersect(lay.panel[npanel-1].left.point[k], seamV);
                 } // end IF ELSE for left side
 
                 /* Below is the code for the intermediate points of the right side
                 *  which are all on the leech for a crosscut layout.
                 */
-                lay.panel[npanel-1].right.fill(p2[npanel-1],p2[npanel]);
+                // first check if upper point is not below lower point 
+                if ( CVector3d(p2[npanel]-p2[npanel-1])*leechV < 0) 
+                    p2[npanel] = p2[npanel-1];
+                
+                lay.panel[npanel-1].right.fill(p2[npanel-1] , p2[npanel]);
                 for ( k = 0 ; k < npl ; k++)
-                    lay.panel[npanel-1].right.point[k]=LeechIntersect(lay.panel[npanel-1].right.point[k], seamV);
+                    lay.panel[npanel-1].right.point[k] = LeechIntersect(lay.panel[npanel-1].right.point[k], seamV);
 
                 /* Below is the code for the intermediate points of the top and bottom sides.
                 *  The first point is identical to the last point of the left side
                 *  The last point is identical to the last point of the right side
                 */
-                lay.panel[npanel-1].top.fill(lay.panel[npanel-1].left.point[npl-1], lay.panel[npanel-1].right.point[npl-1]);
-                lay.panel[npanel-1].bottom.fill(lay.panel[npanel-1].left.point[0], lay.panel[npanel-1].right.point[0]);
+                lay.panel[npanel-1].top.fill(lay.panel[npanel-1].left.point[npl-1] , lay.panel[npanel-1].right.point[npl-1]);
+                lay.panel[npanel-1].bottom.fill(lay.panel[npanel-1].left.point[0] , lay.panel[npanel-1].right.point[0]);
 
                 /* Below is the code for the intermediate points of the bottom side of first panel  */
                 if ( npanel == 1 )
@@ -416,7 +414,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
                     for( k = 1 ; k < npb -1 ; k++)
                         lay.panel[0].bottom.point[k] = FootIntersect(lay.panel[0].bottom.point[k], CVector3d(0,-1,0));
                 }
-            } //// end else normal panel ///////////////////////
+            }  //// end else normal panel ///////////////////////
 
             /* Now we go over all the points and calculate their z */
             for( k = 0 ; k < npl ; k ++)
@@ -447,7 +445,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
             */
             if ( flag == false )
             {
-                vb= CMatrix::rot3d(2,PI/2)*CVector3d(dev.panel[npanel-1].top.point[npb-1] -dev.panel[npanel-1].top.point[0]).unit();
+                vb= CMatrix::rot3d(2,PI/2) * CVector3d(dev.panel[npanel-1].top.point[npb-1] - dev.panel[npanel-1].top.point[0]).unit();
                 for( k = 1 ; k < npb -1 ; k ++)
                 {
                     vk= CVector3d (dev.panel[npanel-1].top.point[k] - dev.panel[npanel-1].top.point[0]);
@@ -469,7 +467,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
             ymax = dev.panel[npanel-1].height();
             exc = ymax-clothW;
 
-            exb = exb + .8*exc +1; // sum previous correction + 80% of current excess of width
+            exb = exb + .8 * exc +1; // sum previous correction + 80% of current excess of width
 
             //printf ("P %d count %d exc %f exb %f \n", npanel,cnt,exc,exb); // send to console
 
@@ -523,15 +521,15 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
         bot = dispsail.panel[j].bottom.point[0];
 
         // rotation to align bottom of panel to top of previous panel
-        x = dispsail.panel[j-1].top.point[npb-1].x()-top.x();
-        y = dispsail.panel[j-1].top.point[npb-1].y()-top.y();
-        CC= atan2(y , x);
+        x = dispsail.panel[j-1].top.point[npb-1].x() - top.x();
+        y = dispsail.panel[j-1].top.point[npb-1].y() - top.y();
+        CC = atan2(y , x);
         dispsail.panel[j] = dispsail.panel[j].rotate(bot,CMatrix::rot3d(2,CC));
 
         // translation v to align panel bottom edge origin to previous panel upper edge origin
         v = CVector3d ( top - CPoint3d(0,0,0) );
-        v.x()= v.x() - bot.x();
-        v.y() = v.y() + 2*seamW +20; // adding offset to separate panels vertically
+        v.x() = v.x() - bot.x();
+        v.y() = v.y() + 2 * seamW +20; // adding offset to separate panels vertically
 
         dispsail.panel[j] = dispsail.panel[j] + v;
     }
@@ -624,7 +622,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
             cnt++;
             p2[npanel] = p2[npanel-1] + (clothW-seamW-exb)/leechL * leechV;
             t2[npanel] = 4; // type2=4=leech intersection for all horizontally cut panels
-            seamSP = CSubSpace3d::line(p2[npanel], seamV);
+            seamSP = CSubSpace3d::line(p2[npanel] , seamV);
 
             if (CVector3d(p2[npanel]-peak)*leechV > 0)
             {  /// we are above peak, stop this is last panel ///
@@ -636,23 +634,23 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
                 { // left points on luff
                     p1[npanel] = head;
                     t1[npanel] = 2;
-                    lay.panel[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
+                    lay.panel[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
                     for (k=0; k<npl; k++)
-                        lay.panel[npanel-1].left.point[k]=LuffIntersect(lay.panel[npanel-1].left.point[k], seamV);
+                        lay.panel[npanel-1].left.point[k] = LuffIntersect(lay.panel[npanel-1].left.point[k], seamV);
                 }
                 else
                 { // left points on gaff
                     p1[npanel] = p1[npanel-1];
                     t1[npanel] = 3;
-                    lay.panel[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
+                    lay.panel[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
                     for (k=0; k<npl; k++)
-                        lay.panel[npanel-1].left.point[k]=GaffIntersect(lay.panel[npanel-1].left.point[k], seamV);
+                        lay.panel[npanel-1].left.point[k] = GaffIntersect(lay.panel[npanel-1].left.point[k], seamV);
                 }
 
                 // fill right points on leech
-                lay.panel[npanel-1].right.fill(p2[npanel-1],p2[npanel]);
+                lay.panel[npanel-1].right.fill(p2[npanel-1] , p2[npanel]);
                 for (k=0; k<npl; k++)
-                    lay.panel[npanel-1].right.point[k]=LeechIntersect(lay.panel[npanel-1].right.point[k], seamV);
+                    lay.panel[npanel-1].right.point[k] = LeechIntersect(lay.panel[npanel-1].right.point[k], seamV);
 
                 // fill bottom points
                 lay.panel[npanel-1].bottom.fill(lay.panel[npanel-1].left.point[0], lay.panel[npanel-1].right.point[0]);
@@ -662,7 +660,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
 
                 // move all top points to gaff curve
                 for( k=1; k < npb-1; k++)
-                    lay.panel[npanel-1].top.point[k]=GaffIntersect(lay.panel[npanel-1].top.point[k], CVector3d (head.y()-peak.y(),peak.x()-head.x(),0));
+                    lay.panel[npanel-1].top.point[k] = GaffIntersect(lay.panel[npanel-1].top.point[k], CVector3d (head.y()-peak.y() , peak.x()-head.x() , 0));
 
                 ///// end peak panel //////
             }
@@ -677,10 +675,10 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
 
                 if (CVector3d(i- (seamW + clothW/5)*luffV.unit() -p1[npanel-1])*luffV <= 0.00001)
                 { // seam intersects below previous panel luff point + 1/5 clothW
-                    p1[npanel] = p1[npanel-1]+ (seamW + clothW/5)*luffV.unit();
+                    p1[npanel] = p1[npanel-1] + (seamW + clothW/5)*luffV.unit();
                     t1[npanel] =2;  // 2=luff type of intersection
                     seamVT = (p1[npanel]-p2[npanel]).unit();
-                    seamSPT = CSubSpace3d::line(p2[npanel], seamVT);
+                    seamSPT = CSubSpace3d::line(p2[npanel] , seamVT);
                     i = seamSPT.intersect(luff).getp();
                 }
                 else if (CVector3d(i-head)*luffV > 0)
@@ -712,25 +710,29 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
                 }
                 else if (t1[npanel-1] == 3 && t1[npanel] == 3)
                 { // full gaff
-                    lay.panel[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
+                    lay.panel[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
                     for (k=0; k<npl; k++)
-                        lay.panel[npanel-1].left.point[k]=GaffIntersect(lay.panel[npanel-1].left.point[k], seamV);
+                        lay.panel[npanel-1].left.point[k] = GaffIntersect(lay.panel[npanel-1].left.point[k], seamV);
                 }
                 else if ((t1[npanel-1] ==2 ) && (t1[npanel] == 3))
                 { // luff-head-gaff
-                    lay.panel[npanel-1].left.fill(p1[npanel-1], head, p1[npanel]);
+                    lay.panel[npanel-1].left.fill(p1[npanel-1] , head, p1[npanel]);
                     for (k=0; k<npl/2; k++)
-                        lay.panel[npanel-1].left.point[k]=LuffIntersect(lay.panel[npanel-1].left.point[k], seamV);
+                        lay.panel[npanel-1].left.point[k] = LuffIntersect(lay.panel[npanel-1].left.point[k], seamV);
                     for (k=npl/2+1; k<npl; k++)
-                        lay.panel[npanel-1].left.point[k]=GaffIntersect(lay.panel[npanel-1].left.point[k], seamV);
+                        lay.panel[npanel-1].left.point[k] = GaffIntersect(lay.panel[npanel-1].left.point[k], seamV);
                 } // end IF ELSE for left side
 
                 /* Below is the code for the intermediate points of the right side
                  *  which are all on the leech for a twist cut layout.
                  */
-                lay.panel[npanel-1].right.fill(p2[npanel-1],p2[npanel]);
+                // first check if upper point is not below lower point 
+                if ( CVector3d(p2[npanel]-p2[npanel-1])*leechV < 0) 
+                    p2[npanel] = p2[npanel-1];
+                
+                lay.panel[npanel-1].right.fill(p2[npanel-1] , p2[npanel]);
                 for (k=0; k<npl; k++)
-                    lay.panel[npanel-1].right.point[k]=LeechIntersect(lay.panel[npanel-1].right.point[k], seamV);
+                    lay.panel[npanel-1].right.point[k] = LeechIntersect(lay.panel[npanel-1].right.point[k], seamV);
 
                 /* Below is the code for the intermediate points of the top and bottom sides.
                  *  The first point is identical to the last point of the left side
@@ -774,7 +776,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
              */
             if (flag == false)
             {
-                vb= CMatrix::rot3d(2,PI/2)*CVector3d(dev.panel[npanel-1].top.point[npb-1] -dev.panel[npanel-1].top.point[0]).unit();
+                vb= CMatrix::rot3d(2,PI/2) * CVector3d(dev.panel[npanel-1].top.point[npb-1] - dev.panel[npanel-1].top.point[0]).unit();
                 for( k = 1; k < npb-1; k ++)
                 {
                     vk= CVector3d (dev.panel[npanel-1].top.point[k] - dev.panel[npanel-1].top.point[0]);
@@ -796,7 +798,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
             ymax = dev.panel[npanel-1].height();
             exc = ymax-clothW;
 
-            exb=exb +.8*exc +1;
+            exb=exb +.8 * exc +1;
 
             //printf ("P %d count %d exc %f exb %f \n", npanel,cnt,exc,exb);
         }
@@ -844,15 +846,15 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
         bot = dispsail.panel[j].bottom.point[0];
 
         // rotation to align bottom of panel to top of previous panel
-        x = dispsail.panel[j-1].top.point[npb-1].x()-top.x();
-        y = dispsail.panel[j-1].top.point[npb-1].y()-top.y();
-        CC= atan2(y,x);
+        x = dispsail.panel[j-1].top.point[npb-1].x() - top.x();
+        y = dispsail.panel[j-1].top.point[npb-1].y() - top.y();
+        CC = atan2(y,x);
         dispsail.panel[j] = dispsail.panel[j].rotate(bot,CMatrix::rot3d(2,CC));
 
         // translation v to align panel bottom edge origin to previous panel upper edge origin
         v = top;
         v.x() -= bot.x();
-        v.y() += 2*seamW +20; // adding offset to separate panels vertically
+        v.y() += 2 * seamW +20; // adding offset to separate panels vertically
 
         dispsail.panel[j] = dispsail.panel[j] + v;
     }
@@ -2780,7 +2782,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
 
     /** store the number of panels in foot */
     npanelFoot=npanel;
-    if (npanel == MAX_PANELS/2-1)
+    if (npanel == MAX_PANELS/2 -1)
         throw CException("CSailDef::Layout5 : panelling of Foot got to MAX_PANELS/2 without reaching tack, do increase cloth width ");
 
     p1[npanel] = clew; // re-initialising at clew point
