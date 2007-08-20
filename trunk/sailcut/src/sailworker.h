@@ -59,6 +59,9 @@ public:
     CPoint3d clew;
 
 protected:
+    // minimum relative height
+    real minH ;
+    
     /** layout of sail's panels */
     CPanelGroup Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; // CROSS
     CPanelGroup LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; // TWIST

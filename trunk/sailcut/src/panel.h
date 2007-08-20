@@ -171,6 +171,7 @@ public:
     void addHems( const real &, const real &, const real &, const real &);
     CPanel develop(enumDevelopAlign align) const;
     real height() const;    //  height Y of a panel
+    
     void placeLabel();   //  place a label at the center of a panel
     CPanel reframe(enumAlign align) const;
     CPanel rotate( const CPoint3d &, const CMatrix &) const;
