@@ -475,46 +475,104 @@ CPanel CPanel::reframe(enumAlign align) const
  *   rw = width to be added on right side
  *   bw = width to be added on bottom side
  */
-void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real &bw)
+void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real &bw )
 {
     // the panel will have hems added to its edges
     hasHems = true;
 
     CPoint3d pt(0,0,0);
-    CVector3d v(0,0,0);
-    CVector3d v0;
-    CSubSpace l1, l2;
-    real dw;    // an artificial hem width
-    real minSize = 0.1;     // used to avoid computation near zero wdth side
+    CVector3d v(1,0,0);
+    CVector3d v0(1,0,0);
+    CSubSpace Line1, Line2; // two lines 
+    CSubSpace Intersection;
+    
+    real minSize = 0.1;     // used to avoid computation near zero width side
     
     unsigned int i = 0;
     unsigned int npl = left.nbpoints(), npb = bottom.nbpoints();
-
+    
+    // compute basic edges vectors
     CVector3d v1 = CVector3d( left.point[npl/2] - left.point[0] );
     CVector3d v2 = CVector3d( left.point[npl-1] - left.point[npl/2] );
     CVector3d v3 = CVector3d( right.point[npl/2] - right.point[0] );
     CVector3d v4 = CVector3d( right.point[npl-1] - right.point[npl/2] );
     CVector3d v5 = CVector3d( bottom.point[npb-1] - bottom.point[0] );
-    CVector3d v6 = CVector3d( top.point[npb-1] - top.point[0] );
+    CVector3d v6 = CVector3d( bottom.point[npb-1] - bottom.point[npb-2] );
+    CVector3d v7 = CVector3d( top.point[npb-1] - top.point[0] );
+    CVector3d v8 = CVector3d( top.point[npb-1] - top.point[npb-2] );
 
-    if ( v5.norm() < minSize && v6.norm() < minSize )
-    {   // panel is a point
-        for ( i = 0 ; i < npl ; i++ )
-        {
-            cutLeft.point[i] = left.point[i];
-            cutRight.point[i] = right.point[i];
-        }
+    // copy the basic panel edge points to cut points as default
+    for ( i = 0 ; i < npl ; i++ )
+    {
+        cutLeft.point[i] = left.point[i];
+        cutRight.point[i] = right.point[i];
+    }
+    for ( i = 0 ; i < npb ; i++ )
+    {
+        cutTop.point[i] = top.point[i];
+        cutBottom.point[i] = bottom.point[i];
+    }
+    
+    if ( v5.norm() < minSize && v7.norm() < minSize )   // panel is a point
+        throw CException ("CPanelLabel::addPanel : basic panel edges v5 and v6 too small");
+    
+    if (v5.norm() < minSize )
+    {
+        v5 = v7.unit();
+        v6 = v5;
+    }
+    else
+    {
+        v5 = CVector3d( bottom.point[1] - bottom.point[0] );
+    }
+    
+    if (v7.norm() < minSize )
+    {
+        v7 = v5.unit();
+        v8 = v7;
+    }
+    else
+    {
+        v7 = CVector3d( top.point[1] - top.point[0] );
+    }
+    
+    /** Move the basic bottom edge points to the cut line */
+    if ( v5.norm() >= minSize && bw > EPS )
+    { // side is not a point and width of material is not too small
         for ( i = 0 ; i < npb ; i++ )
         {
-            cutTop.point[i] = top.point[i];
-            cutBottom.point[i] = bottom.point[i];
+            if ( i == 0 ) 
+                v = CVector3d( bottom.point[1] - bottom.point[0] );
+            else
+                v = CVector3d( bottom.point[i] - bottom.point[i-1] );
+            
+            if ( v.norm() <= EPS ) 
+                throw CException ("CPanelLabel::addPanel : Move basic bottom edge v too small");
+
+            cutBottom.point[i] = bottom.point[i] + CMatrix::rot3d(2,-PI/2) * v.unit() *bw;
         }
-        throw CException ("CPanelLabel::addPanel : panel size v5 and v6 too small");
-    }    
-    
+    }
+
+    /** Move the basic top edge points to the cut line */
+    if ( v6.norm() >= minSize && tw > EPS )
+    { // side is not a point and width of material is not too small
+        for ( i = 0 ; i < npb ; i++ )
+        {
+            if ( i == 0 )
+                v = CVector3d( top.point[1] - top.point[0] );
+            else
+                v = CVector3d( top.point[i] - top.point[i-1] );
+            
+            if ( v.norm() <= EPS ) 
+                throw CException ("CPanelLabel::addPanel : Move basic top edge v too small");
+            
+            cutTop.point[i] = top.point[i] + CMatrix::rot3d(2,PI/2) * v.unit() *tw;
+        }
+    }
+
     /** Move the basic left edge points to the cut line */
-    if ( v1.norm() >= minSize)
-    {  // lower left side is not a point
+    if ( v1.norm() >= minSize )
+    {  // lower left side is not a point 
         for ( i = 0 ; i < npl/2 ; i++)
         {
             if ( i == 0 )
@@ -522,446 +580,245 @@ void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real
             else
                 v = CVector3d( left.point[i] - left.point[i-1] );
 
-            cutLeft.point[i] = left.point[i] + CMatrix::rot3d(2 , PI/2) * v.unit() *lw;
+            cutLeft.point[i] = left.point[i] + CMatrix::rot3d( 2 , PI/2) * v.unit() * lw;
         }
+        
+        v0 = CVector3d( left.point[npl/2] - left.point[npl/2 -1] );
+        Line1 = CSubSpace3d::line( cutLeft.point[npl/2 -1] , v0 );
 
         if ( v2.norm() >= minSize )
         {  // upper left side is not a point
-            for ( i = npl/2 ; i < npl ; i++ )
+            for ( i = npl/2 +1 ; i < npl ; i++ )
             {
-                if ( i == npl/2 )
-                { // mid side break point
-                    v0 = CVector3d( left.point[npl/2+1] - left.point[npl/2] ).unit();
-                    v = v0 + CVector3d( left.point[npl/2] - left.point[npl/2-1] ).unit();
-                    dw = lw / (v.unit() * v0.unit());
-                    cutLeft.point[i] = left.point[i] + CMatrix::rot3d(2 , PI/2) * v.unit() *dw;
+                v2 = CVector3d( left.point[i] - left.point[i-1] );
+                cutLeft.point[i] = left.point[i] + CMatrix::rot3d( 2 , PI/2) * v2.unit() * lw;
+                if ( i == npl/2 +1 )
+                {   // compute mid side break point
+                    Line2 = CSubSpace3d::line( cutLeft.point[i] , v2 );
+                    Intersection = Line1.intersect(Line2);
+                    if (Intersection.getdim() == 0)
+                        cutLeft.point[npl/2] = Intersection.getp();
+                    else throw "ERROR in CPanel::addHems = no mid left side intersection point";
+                    // check adjacent points relative to mid side point
+                    if ( (CVector3d(cutLeft.point[npl/2] - cutLeft.point[npl/2 -1]) * v0) <= 0 )
+                        cutLeft.point[npl/2 -1] = cutLeft.point[npl/2];
+                    if ( (CVector3d(cutLeft.point[npl/2 +1] - cutLeft.point[npl/2]) * v0) <= 0 )
+                        cutLeft.point[npl/2 +1] = cutLeft.point[npl/2];
                 }
                 else
-                {
-                    v = CVector3d( left.point[i] - left.point[i-1] );
-                    cutLeft.point[i] = left.point[i] + CMatrix::rot3d(2 , PI/2) * v.unit() *lw;
+                {   // compute other points
+                    cutLeft.point[i] = left.point[i] + CMatrix::rot3d( 2 , PI/2) * v2.unit() * lw;
+                    // TODO check position relative to mid side point                
                 }
             }
         }
         else
         { // upper left side is a point but not lower side
-            v2 = v1;
+            v2 = CVector3d( left.point[npl/2] - left.point[npl/2 -1] );
             for ( i = npl/2 +1 ; i < npl ; i++ )
-                cutLeft.point[i] = left.point[i] + CMatrix::rot3d(2 , PI/2) * v2.unit() *lw;
+                cutLeft.point[i] = left.point[i] + CMatrix::rot3d( 2 , PI/2) * v2.unit() * lw;
         }
     }
     else if ( v2.norm() >= minSize )
     {  // only lower left side is a point
-        v1 = v2;
-        if ( bw == 0 )
-            v = -v5;
-        else
-            v = CMatrix::rot3d(2 , PI/2) * v2;
+        v1 = CVector3d( left.point[npl/2 +1] - left.point[npl/2] );
+        for ( i = 0 ; i < npl/2  ; i++ )
+            cutLeft.point[i] = left.point[i] + CMatrix::rot3d( 2 , PI/2) * v1.unit() * lw;
 
-        for ( i = 0 ; i< npl/2  ; i++)
-            cutLeft.point[i] = left.point[i] + CMatrix::rot3d(2 , PI/2) * v.unit() *lw;
-
-        for ( i = npl/2 +1 ; i < npl -1; i++)
+        for ( i = npl/2 +1 ; i < npl -1 ; i++ )
         {
-            v = CVector3d( left.point[i] - left.point[i-1] );
-            cutLeft.point[i] = left.point[i] + CMatrix::rot3d(2 , PI/2) * v.unit() *lw;
+            v2 = CVector3d( left.point[i] - left.point[i-1] );
+            cutLeft.point[i] = left.point[i] + CMatrix::rot3d( 2 , PI/2) * v2.unit() * lw;
         }
     }
     else
     {  // complete left side is a point
         if ( bw == 0 )
-            v = -v6;
+            v = -v7;
         else
-            v = -( v5 + v6 );
+            v = -( v5 + v7 );
 
-        for ( i = 0 ; i< npl-1 ; i++)
+        for ( i = 0 ; i< npl ; i++)
             cutLeft.point[i] = left.point[i] + v.unit() * lw;
 
         v1 = CMatrix::rot3d(2,-PI/2) * v.unit();
         v2 = v1;
     }
 
-
     /** Move the basic right edge points to the cut line */
-    // right lower part
-    v0 = CVector3d( bottom.point[npb-1] - bottom.point[npb-2] );
     if ( v3.norm() >= minSize )
-    { // lower right side is not a point
-        for ( i = 0 ; i < npl/2 +1 ; i++ )
+    {  // lower right side is not a point 
+        for ( i = 0 ; i < npl/2 ; i++)
         {
-            if ( i == 0)
+            if ( i == 0 )
                 v = CVector3d( right.point[1] - right.point[0] );
             else
                 v = CVector3d( right.point[i] - right.point[i-1] );
 
-            cutRight.point[i] = right.point[i] + CMatrix::rot3d(2,-PI/2) * v.unit() *rw;
+            cutRight.point[i] = right.point[i] + CMatrix::rot3d( 2 , -PI/2) * v.unit() * rw;
         }
-    }
-    else
-    { // lower right is a point
-        for ( i = 0 ; i< npl/2 +1 ; i++ )
-            cutRight.point[i] = right.point[i] + v0.unit() * rw;
+        
+        v0 = CVector3d( right.point[npl/2] - right.point[npl/2 -1] );
+        Line1 = CSubSpace3d::line( cutRight.point[npl/2 -1] , v0 );
 
-        cutRight.point[0] = cutRight.point[0] + CMatrix::rot3d(2,-PI/2) * v0.unit() *(bw+.1);
-        v3 = CVector3d( cutRight.point[npl/2] - cutRight.point[0] );
-    }
-
-    // right upper part
-    v0 = CVector3d( top.point[npb-1] - top.point[npb-2] );
-    if ( v4.norm() > minSize )
-    { // upper right side is not a point
-        for ( i = npl/2 ; i < npl ; i++ )
-        {
-            if ( i == npl/2 )
+        if ( v4.norm() >= minSize )
+        {  // upper right side is not a point
+            for ( i = npl/2 +1 ; i < npl ; i++ )
             {
-                v0 = CVector3d( right.point[npl/2+1] - right.point[npl/2] ).unit();
-                v = v0 + CVector3d( right.point[npl/2] - right.point[npl/2-1] ).unit();
-                dw = rw /(v.unit() * v0.unit());
-                cutRight.point[i] = right.point[i] + CMatrix::rot3d(2,-PI/2) * v.unit() *dw;
+                v4 = CVector3d( right.point[i] - right.point[i-1] );
+                cutRight.point[i] = right.point[i] + CMatrix::rot3d( 2 , -PI/2) * v4.unit() * rw;
+                if ( i == npl/2 +1 )
+                {   // compute mid side break point
+                    Line2 = CSubSpace3d::line( cutRight.point[i] , v4 );
+                    Intersection = Line1.intersect(Line2);
+                    if (Intersection.getdim() == 0)
+                        cutRight.point[npl/2] = Intersection.getp();
+                    else throw "ERROR in CPanel::addHems = no mid right side intersection point";
+                    // check adjacent points relative to mid side point
+                    if ( (CVector3d(cutRight.point[npl/2] - cutRight.point[npl/2 -1]) * v0) <= 0 )
+                        cutRight.point[npl/2 -1] = cutRight.point[npl/2];
+                    if ( (CVector3d(cutRight.point[npl/2 +1] - cutRight.point[npl/2]) * v0) <= 0 )
+                        cutRight.point[npl/2 +1] = cutRight.point[npl/2];
+                }
+                else
+                {   // compute other points
+                    cutRight.point[i] = right.point[i] + CMatrix::rot3d( 2 , -PI/2) * v4.unit() * rw;
+                    // TODO check position relative to mid side point                
+                }
             }
-            else
-            {
-                v = CVector3d( right.point[i] - right.point[i-1] );
-                cutRight.point[i] = right.point[i] + CMatrix::rot3d(2,-PI/2) * v.unit() *rw;
-            }
+        }
+        else
+        { // upper right side is a point but not lower side
+            v4 = CVector3d( right.point[npl/2] - right.point[npl/2 -1] );
+            for ( i = npl/2 +1 ; i < npl ; i++ )
+                cutRight.point[i] = right.point[i] + CMatrix::rot3d( 2 , -PI/2) * v4.unit() * rw;
         }
     }
-    else
-    { // upper right is a point
-        for ( i = npl/2 +1 ; i < npl ; i++ )
-            cutRight.point[i] = right.point[i] + v0.unit() * rw;
+    else if ( v4.norm() >= minSize )
+    {  // only lower right side is a point
+        v3 = CVector3d( right.point[npl/2 +1] - right.point[npl/2] );
+        for ( i = 0 ; i < npl/2  ; i++ )
+            cutRight.point[i] = right.point[i] + CMatrix::rot3d( 2 , -PI/2) * v1.unit() * rw;
 
-        cutRight.point[npl-1] = cutRight.point[npl-1] + CMatrix::rot3d(2,PI/2) * v0.unit() *(tw+.1);
-        v4 = CVector3d( cutRight.point[npl-1] - cutRight.point[npl/2] );
-    }
-
-    /** Move the basic bottom edge points to the cut line */
-    if ( v5.norm() >= minSize && bw > 0 )
-    { // side is not a point and width of material is not small
-        for ( i = 0 ; i < npb ; i++ )
+        for ( i = npl/2 +1 ; i < npl -1 ; i++ )
         {
-            if ( i == 0 ) 
-                v = CVector3d( bottom.point[1] - bottom.point[0] );
-            else
-                v = CVector3d( bottom.point[i] - bottom.point[i-1] );
-            if ( v.norm() <= EPS ) 
-                throw CException ("CPanelLabel::addPanel : Move basic bottom edge v too small");
-
-            cutBottom.point[i] = bottom.point[i] + CMatrix::rot3d(2,-PI/2) * v.unit() *bw;
+            v4 = CVector3d( right.point[i] - right.point[i-1] );
+            cutRight.point[i] = right.point[i] + CMatrix::rot3d( 2 , -PI/2) * v4.unit() * rw;
         }
     }
     else
-    { // bottom cut is same as basic edge
-        for ( i = 0 ; i < npb ; i++ )
-            cutBottom.point[i] = bottom.point[i];
-    }
+    {  // complete right side is a point
+        if ( bw == 0 )
+            v = v6;
+        else
+            v = ( v6 + v8 );
 
-    /** Move the basic top edge points to the cut line */
-    if ( v6.norm() >= minSize && tw > 0 )
-    { // side is not a point and width of material is not small
-        for ( i = 0 ; i < npb ; i++ )
-        {
-            if ( i == 0 )
-                v = CVector3d( top.point[1] - top.point[0] );
-            else
-                v = CVector3d( top.point[i] - top.point[i-1] );
-            if ( v.norm() <= EPS ) 
-                throw CException ("CPanelLabel::addPanel : Move basic top edge v too small");
-            
-            cutTop.point[i] = top.point[i] + CMatrix::rot3d(2,PI/2) * v.unit() *tw;
-        }
-    }
-    else
-    { // top cut is same as basic edge
-        for ( i = 0 ; i < npb ; i++ )
-            cutTop.point[i] = top.point[i];
+        for ( i = 0 ; i< npl ; i++)
+            cutRight.point[i] = right.point[i] + v.unit() * rw;
+
+        v3 = CMatrix::rot3d(2 , PI/2) * v.unit();
+        v4 = v3;
     }
 
     /** Now we rejoin the 4 corners of the cut panel
-     * the case were all sides are nuls need to be handled
      */
-    /** Rejoining the bottom corners */ //////////////////////
-    if ( v5.norm() >= minSize )
+    
+    /// Rejoining the bottom corners
+    /// lower left
+    Line1 = CSubSpace3d::line( cutBottom.point[0] , v5 );
+    Line2 = CSubSpace3d::line( cutLeft.point[0] , v1 );
+    Intersection = Line1.intersect(Line2);
+    if (Intersection.getdim() == 0)
+        pt = Intersection.getp();
+    else throw "ERROR in CPanel::addHems = rejoining lower corner no left intersection point";
+
+    /* Adjust the lower left point [0] to be at intersection */
+    cutBottom.point[0] = pt;
+    cutLeft.point[0] = pt;
+
+    /* Scan the first few points of the cut edges to make sure
+     * that they are not on the wrong side of the point pt
+     */
+    for ( i = 0 ; i < npl/2 ; i++ )
     {
-        // bottom left
-        v = CVector3d( cutBottom.point[1] - cutBottom.point[0] );
-        if ( v.norm() <= EPS ) 
-	    throw CException ("CPanelLabel::addPanel : rejoining bottom1 v too small");
-        l1 = CSubSpace3d::line( cutBottom.point[0] , v );
-        l2 = CSubSpace3d::line( cutLeft.point[0] , v1 );
+        if ( (CVector3d( cutLeft.point[i] - pt) * v1 ) <= 0 )
+            cutLeft.point[i] = pt;
 
-        /* Compute the lower left intersection point of the cut edges */
-        pt = l1.intersect(l2).getp();
-
-        /* Adjust the lower left point [0] to be at intersection */
-        cutBottom.point[0] = pt;
-        cutLeft.point[0] = pt;
-
-        /* Scan the first few points of the cut edges to make sure
-        *  that they are not on the wrong side of the point pt
-        */
-        for ( i = 0 ; i < npl-1 ; i++ )
-        {
-            if ( (CVector3d( cutLeft.point[i] - pt) * v1 ) <= 0 )
-                cutLeft.point[i] = pt;
-
-            if ( (CVector3d( cutBottom.point[i] - pt) * v5 ) <= 0 )
-                cutBottom.point[i] = pt;
-        }
-
-        // lower right
-        v = CVector3d( cutBottom.point[npb-1] - cutBottom.point[npb-2] );
-        if ( v.norm() <= EPS ) 
-	    throw CException ("CPanelLabel::addPanel : rejoining bottom2 v too small");
-        l1 = CSubSpace3d::line( cutBottom.point[npb-1] , v );
-        
-        if ( v3.norm() >= minSize )
-        {
-            v = CVector3d( cutRight.point[1] - cutRight.point[0] );
-            if ( v.norm() <= EPS ) 
-                throw CException ("CPanelLabel::addPanel : rejoining bottom3 v too small");
-            l2 = CSubSpace3d::line( cutRight.point[0] , v );
-        }
-        else if ( v4.norm() >= minSize )
-        {
-            v = CVector3d( cutRight.point[npl/2+1] - cutRight.point[npl/2] );
-            if ( v.norm() <= EPS ) 
-                throw CException ("CPanelLabel::addPanel : rejoining bottom4 v too small");
-            l2 = CSubSpace3d::line( cutRight.point[npl/2] , v );
-        }
-        else if ( v6.norm() >= minSize )
-        {
-            v = CVector3d( cutTop.point[npb-1] - cutTop.point[npb-2] );
-            if ( v.norm() <= EPS ) 
-                throw CException ("CPanelLabel::addPanel : rejoining bottom5 v too small");
-            l2 = CSubSpace3d::line( cutTop.point[npb-1] , v );
-        }
-
-        /* Compute the intersection point of the cut edges */
-        pt = l1.intersect(l2).getp();
-        
-        /* Adjust the lower right point to be at intersection */
-        cutBottom.point[npb-1] = pt;
-        cutRight.point[0] = pt;
-        if ( (v3+v4).norm() < minSize )
-        {
-            for ( i = 1 ; i < npl ; i++ )
-                cutRight.point[i] = pt;
-        }
-        /* Scan the first few points of the cut edges to make sure
-           * that they are not on the wrong side of the point pt
-           */
-        for ( i = 1 ; i < npl/2 ; i++ )
-        {
-            if ( (CVector3d( cutRight.point[i] - pt) * v3 ) <= 0 )
-                cutRight.point[i] = pt;
-
-            if ( (CVector3d( cutBottom.point[npb-1-i] - pt) * v5 ) >= 0 )
-                cutBottom.point[npb-1-i] = pt;
-        }
-    }
-    else
-    { // bottom edge is a point
-        if ( v1.norm() >= minSize )
-        {
-            v = CVector3d( cutLeft.point[1] - cutLeft.point[0] );
-            if ( v.norm() <= EPS ) 
-                throw CException ("CPanelLabel::addPanel : rejoining bottom6 v too small");
-            l1 = CSubSpace3d::line( cutLeft.point[0] , v );
-        }
-        else if ( v2.norm() >= minSize )
-        {
-            v = CVector3d( cutLeft.point[npl/2+1] - cutLeft.point[npl/2] );
-            if ( v.norm() <= EPS ) 
-                throw CException ("CPanelLabel::addPanel : rejoining bottom7 v too small");
-            l1 = CSubSpace3d::line( cutLeft.point[npl/2] , v );
-        }
-
-        if ( v3.norm() >= minSize )
-        {
-            v = CVector3d( cutRight.point[1] - cutRight.point[0] );
-            if ( v.norm() <= EPS )
-                throw CException ("CPanelLabel::addPanel : rejoining bottom8 v too small");
-            l2 = CSubSpace3d::line( cutRight.point[0] , v );
-        }
-        else if ( v4.norm() >= minSize )
-        {
-            v = CVector3d( cutRight.point[npl/2+1] - cutRight.point[npl/2] );
-            if ( v.norm() <= EPS )
-                throw CException ("CPanelLabel::addPanel : rejoining bottom9 v too small");
-            l2 = CSubSpace3d::line( cutRight.point[npl/2] , v );
-        }
-
-        /* Compute the intersection point of the 2 side edges */
-        pt = l1.intersect(l2).getp();
-
-        for ( i = 0 ; i < npb ; i++ )
-        { /* Adjust the bottom edge to be at intersection */
+        if ( (CVector3d( cutBottom.point[i] - pt) * v5 ) <= 0 )
             cutBottom.point[i] = pt;
-        }
-
-        /* Adjust the lower left point [0] to be at intersection */
-        cutLeft.point[0] = pt;
-        for ( i = 1 ; i < npl/2 ; i++ )
-        { /* Scan the first few points of the cut edges to make sure
-             that they are not on the wrong side of the intersect point pt */
-            if ( (CVector3d( cutLeft.point[i] - pt) * v1 ) <= 0 )
-                cutLeft.point[i] = pt;
-        }
-
-        /* Adjust the lower right point to be at intersection */
-        cutRight.point[0] = pt;
-        /* Scan the first few points of the cut edges to make sure
-           that they are not on the wrong side of the intersect point pt */
-        for ( i = 1 ; i < npl/2 ; i++ )
-        {
-            if ( (CVector3d( cutRight.point[i] - pt) * v3 ) <= 0 )
-                cutRight.point[i] = pt;
-        }
-    } // end else bottom is a point
-
-
-    /** Rejoining top corners */ //////////////////////
-    if ( v6.norm() >= minSize )
-    {
-        // upper left
-        v = CVector3d( cutTop.point[1] - cutTop.point[0] );
-        if ( v.norm() <= EPS ) 
-            throw CException ("CPanelLabel::addPanel : rejoining top1 v too small");
-        l1 = CSubSpace3d::line( cutTop.point[0] , v );
-        l2 = CSubSpace3d::line( cutLeft.point[npl-1] , v2 );
-
-        /* Compute the intersection point of the cut edges */
-        pt = l1.intersect(l2).getp();
-
-        /* Adjust the upper left point to be at intersection */
-        cutTop.point[0] = pt;
-        cutLeft.point[npl-1] = pt;
-
-        /* Scan the first few points of the cut edges to make sure
-           * that they are not on the wrong side of the intersect point pt
-           */
-        for ( i = 0 ; i < npl -1 ; i++ )
-        {
-            if ( (CVector3d( cutLeft.point[npl-1-i] - pt) * v2 ) >= 0 )
-                cutLeft.point[npl-1-i] = pt;
-
-            if ( (CVector3d( cutTop.point[i] - pt) * v6 ) <= 0 )
-                cutTop.point[i] = pt;
-        }
-
-        // upper right
-        v = CVector3d( cutTop.point[npb-1] - cutTop.point[npb-2] );
-        if ( v.norm() <= EPS ) 
-            throw CException ("CPanelLabel::addPanel : rejoining top3 v too small");
-        l1 = CSubSpace3d::line( cutTop.point[npb-1] , v );
-        if ( v4.norm() >= minSize )
-        {
-            v = CVector3d( cutRight.point[npl-1] - cutRight.point[npl-2] );
-            if ( v.norm() <= EPS ) 
-                throw CException ("CPanelLabel::addPanel : rejoining top4 v too small");
-            l2 = CSubSpace3d::line( cutRight.point[npl-1] , v );
-        }
-        else if ( v3.norm() >= minSize )
-        {
-            v = CVector3d( cutRight.point[npl/2] - cutRight.point[npl/2-1] );
-            if ( v.norm() <= EPS ) 
-                throw CException ("CPanelLabel::addPanel : rejoining top5 v too small");
-            l2 = CSubSpace3d::line( cutRight.point[npl/2] , v );
-        }
-        else if ( v5.norm() >= minSize )
-        {
-            v = CVector3d( cutBottom.point[npb-1] - cutBottom.point[npb-2] );
-            if ( v.norm() <= EPS ) 
-                throw CException ("CPanelLabel::addPanel : rejoining top6 v too small");
-            l2 = CSubSpace3d::line( cutBottom.point[npb-1] , v );
-        }
-
-        /* Compute the intersection point of the cut edges */
-        pt = l1.intersect(l2).getp();
-        /* Adjust the upper right point to be at intersection */
-        cutTop.point[npb-1] = pt;
-        cutRight.point[npl-1] = pt;
-
-        /* Scan the first few points of the cut edges to make sure
-           * that they are not on the wrong side of the intersect point pt
-           */
-        for ( i = 1 ; i < npl/2 ; i++ )
-        {
-            if ( (CVector3d( cutRight.point[npl-1-i] - pt) * v4 ) >= 0 )
-                cutRight.point[npl-1-i] = pt;
-
-            if ( (CVector3d(cutTop.point[npb-1-i] - pt) * v6) >= 0 )
-                cutTop.point[npb-1-i] = pt;
-        }
     }
-    else
-    { // top edge is a point
-        if ( v2.norm() >= minSize )
-        {
-            v = CVector3d( cutLeft.point[npl-1] - cutLeft.point[npl-2] );
-            if ( v.norm() <= EPS ) 
-                throw CException ("CPanelLabel::addPanel : rejoining top7 v too small");
-            l1 = CSubSpace3d::line( cutLeft.point[npl-1] , v );
-        }
-        else if ( v1.norm() >= minSize )
-        {
-            v = CVector3d( cutLeft.point[npl/2] - cutLeft.point[npl/2 -1] );
-            if ( v.norm() <= EPS ) 
-                throw CException ("CPanelLabel::addPanel : rejoining top8 v too small");
-            l1 = CSubSpace3d::line( cutLeft.point[npl/2] , v );
-        }
+    
+    /// lower right
+    Line1 = CSubSpace3d::line( cutBottom.point[npb-1] , v6 );
+    Line2 = CSubSpace3d::line( cutRight.point[0] , v3 );
+    Intersection = Line1.intersect(Line2);
+    if (Intersection.getdim() == 0)
+        pt = Intersection.getp();
+    else throw "ERROR in CPanel::addHems = rejoining lower corner no right intersection point";
 
-        if ( v4.norm() >= minSize )
-        {
-            v = CVector3d( cutRight.point[npl-1] - cutRight.point[npl-2] );
-            if ( v.norm() <= EPS ) 
-                throw CException ("CPanelLabel::addPanel : rejoining top9 v too small");
-            l2 = CSubSpace3d::line( cutRight.point[npl-1] , v );
-        }
-        else if ( v3.norm() >= minSize )
-        {
-            v = CVector3d( cutRight.point[npl/2] - cutRight.point[npl/2-1] );
-            if ( v.norm() <= EPS ) 
-                throw CException ("CPanelLabel::addPanel : rejoining top10 v too small");
-            l2 = CSubSpace3d::line( cutRight.point[npl/2] , v );
-        }
+    /* Adjust the lower left point [0] to be at intersection */
+    cutBottom.point[npb-1] = pt;
+    cutRight.point[0] = pt;
+    
+    /* Scan the first few points of the cut edges to make sure
+     * that they are not on the wrong side of the point pt
+     */
+    for ( i = 1 ; i < npl/2 ; i++ )
+    {
+        if ( (CVector3d( cutRight.point[i] - pt) * v3 ) <= 0 )
+            cutRight.point[i] = pt;
+        if ( (CVector3d( cutBottom.point[npb-1-i] - pt) * v6 ) >= 0 )
+            cutBottom.point[npb-1-i] = pt;
+    }
 
-        /* Compute the intersection point of the 2 side edges */
-        pt = l1.intersect(l2).getp();
+    /// TODO Rejoining top corners 
+    /// upper left
+    Line1 = CSubSpace3d::line( cutTop.point[0] , v7 );
+    Line2 = CSubSpace3d::line( cutLeft.point[npl-1] , v2 );
+    Intersection = Line1.intersect(Line2);
+    if (Intersection.getdim() == 0)
+        pt = Intersection.getp();
+    else throw "ERROR in CPanel::addHems = rejoining upper corner no left intersection point";
 
-        /* Adjust the top edge to be at intersection */
-        for ( i = 0 ; i < npb ; i++ )
-        {
+    /* Adjust the upper left point to be at intersection */
+    cutTop.point[0] = pt;
+    cutLeft.point[npl-1] = pt;
+
+    /* Scan the first few points of the cut edges to make sure
+     * that they are not on the wrong side of the intersect point pt
+     */
+    for ( i = 0 ; i < npl/2 ; i++ )
+    {
+        if ( (CVector3d( cutLeft.point[npl -1 -i] - pt) * v2 ) >= 0 )
+            cutLeft.point[npl-1-i] = pt;
+        if ( (CVector3d( cutTop.point[i] - pt) * v7 ) <= 0 )
             cutTop.point[i] = pt;
-        }
+    }
 
-        /* Adjust the upper left point to be at intersection */
-        cutTop.point[0] = pt;
-        cutLeft.point[npl-1] = pt;
-
-        /* Scan the first few points of the cut edges to make sure
-           * that they are not on the wrong side of the intersect point pt
-           */
-        for ( i = 1 ; i < npl/2 ; i++ )
-        {
-            if ( (CVector3d(cutLeft.point[npl-1-i] - pt) * v2) >= 0 )
-                cutLeft.point[npl-1-i] = pt;
-        }
-
-        /* Adjust the upper right point to be at intersection */
+    /// upper right
+    Line1 = CSubSpace3d::line( cutTop.point[npb-1] , v8 );
+    Line2 = CSubSpace3d::line( cutRight.point[npl-1] , v4 );
+    Intersection = Line1.intersect(Line2);
+    if (Intersection.getdim() == 0)
+        pt = Intersection.getp();
+    else throw "ERROR in CPanel::addHems = rejoining upper corner no right intersection point";
+    
+    /* Adjust the upper right point to be at intersection */
         cutTop.point[npb-1] = pt;
         cutRight.point[npl-1] = pt;
 
-        /* Scan the first few points of the cut edges to make sure
-           * that they are not on the wrong side of the intersect point pt
-           */
-        for ( i = 1 ; i < npl/2 ; i++ )
-        {
-            if ( (CVector3d( cutRight.point[npl-1-i] - pt) * v4 ) >= 0 )
-                cutRight.point[npl-1-i] = pt;
-        }
-    } // end else top edge is a point
+    /* Scan the first few points of the cut edges to make sure
+     * that they are not on the wrong side of the intersect point pt
+     */
+    for ( i = 1 ; i < npl/2 ; i++ )
+    {
+        if ( (CVector3d( cutRight.point[npl-1-i] - pt) * v4 ) >= 0 )
+            cutRight.point[npl-1-i] = pt;
+
+        if ( (CVector3d(cutTop.point[npb-1-i] - pt) * v6) >= 0 )
+            cutTop.point[npb-1-i] = pt;
+    }
+    
 } //// end addHems ////////////////////////////////////////
 
 

@@ -113,14 +113,14 @@ CPoint3d CHullWorker::ptLowChine( const real &x )
     else
     {   // fwd part of chine
         x1 = 1 - ( x / xBmax );
-        z  = (.5 * BBW)  *(1- pow(x1 , BfwdShape));
+        z  = (.5 * BBW) * (1- pow(x1 , BfwdShape) );
     }
     
     // point pt with x input and z computed
-    CPoint3d pt = CPoint3d (x , y , z);
-    // define vertical line1 passing through point pt
+    CPoint3d pt = CPoint3d ( x , y , z );
+    // define vertical Line1 passing through point pt
     CSubSpace line1;
-    line1 =  CSubSpace3d::line (pt , CVector3d (0, 1, 0) );
+    line1 =  CSubSpace3d::line( pt , CVector3d (0,1,0) );
 
     // project pt vertically on chine plane
     CSubSpace Intersection1;
@@ -192,7 +192,7 @@ CPanelGroup CHullWorker::makeHull() //const
     plank1 = chine;
     
     /// Laying bottom panels
-    for ( j=0 ; j < npb ; j++)
+    for ( j = 0 ; j < npb ; j++ )
     {   
         plank1.bottom.point[j] =  chine.bottom.point[j];
         x = chine.bottom.point[j].x();
@@ -206,12 +206,12 @@ CPanelGroup CHullWorker::makeHull() //const
     hull.title = hullID;
     
     plank2 = plank1;
-    for ( j=0 ; j < npb ; j++)
+    for ( j = 0 ; j < npb ; j++ )
     {   // mirror points
         plank2.top.point[j].z() = -plank1.top.point[j].z(); 
         plank2.bottom.point[j].z() = -plank1.bottom.point[j].z();
     }
-    for ( j=0 ; j < npl ; j++)
+    for ( j = 0 ; j < npl ; j++ )
     {   // mirror points
         plank2.left.point[j].z() = -plank1.left.point[j].z();
         plank2.right.point[j].z() = -plank1.right.point[j].z();
@@ -235,14 +235,13 @@ CPanelGroup CHullWorker::makeHull() //const
     /// laying top side
     v1 = CVector3d( -cos(real(StemA) * PI/180) , sin(real(TopPlankA) * PI/180) , cos(real(TopPlankA) * PI/180) );
     
-    for ( j=0 ; j < npb ; j++)
+    for ( j = 0 ; j < npb ; j++ )
     {   
         plank1.bottom.point[j] =  chine.bottom.point[j];
         Line1 = CSubSpace3d::line( plank1.bottom.point[j] , v1 );
         Intersection1 = Line1.intersect(planeDeck);
         if (Intersection1.getdim() == 0)
-        {
-            // compute the vector vg which generate the side surface
+        {   // compute the vector vg which generate the side surface
             p1 = Intersection1.getp();
             vg = CVector3d(p1 - pt);
         }
@@ -255,12 +254,12 @@ CPanelGroup CHullWorker::makeHull() //const
     hull.panel.push_back(plank1);
     
     plank2 = plank1;
-    for ( j=0 ; j < npb ; j++)
+    for ( j = 0 ; j < npb ; j++ )
     {   // mirror points
         plank2.top.point[j].z() = -plank1.top.point[j].z(); 
         plank2.bottom.point[j].z() = -plank1.bottom.point[j].z();
     }
-    for ( j=0 ; j < npl ; j++)
+    for ( j = 0 ; j < npl ; j++ )
     {   // mirror points
         plank2.left.point[j].z() = -plank1.left.point[j].z();
         plank2.right.point[j].z() = -plank1.right.point[j].z();
@@ -268,7 +267,7 @@ CPanelGroup CHullWorker::makeHull() //const
     hull.panel.push_back(plank2);
     
     /// Laying deck
-    for ( j=0 ; j < npb ; j++)
+    for ( j = 0 ; j < npb ; j++ )
     {   
         deck1.bottom.point[j] = plank1.top.point[j]; 
         deck1.top.point[j] = deck1.bottom.point[j];
@@ -289,7 +288,7 @@ CPanelGroup CHullWorker::makeHull() //const
     j =  hull.panel.size() -1;
     pt0 = hull.panel[j].top.point[0];
        
-    for ( j=0; j < hull.panel.size(); j++ )
+    for ( j = 0 ; j < hull.panel.size() ; j++ )
     {
         hull.panel[j] = hull.panel[j] + CVector3d(-pt0);
     }
