@@ -517,22 +517,22 @@ void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real
         throw CException ("CPanelLabel::addPanel : basic panel edges v5 and v6 too small");
     
     if (v5.norm() < minSize )
-    {
+    {   // bottom side too small copy top
         v5 = v7.unit();
         v6 = v5;
     }
     else
-    {
+    {   // reset v5 to bottom left points
         v5 = CVector3d( bottom.point[1] - bottom.point[0] );
     }
     
     if (v7.norm() < minSize )
-    {
+    {   // top side too small copy bottom 
         v7 = v5.unit();
         v8 = v7;
     }
     else
-    {
+    {   // reset v7 to top left points
         v7 = CVector3d( top.point[1] - top.point[0] );
     }
     
@@ -634,9 +634,9 @@ void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real
     else
     {  // complete left side is a point
         if ( bw == 0 )
-            v = -v7;
+            v = -v5; // extend the bottom edge
         else
-            v = -( v5 + v7 );
+            v = -( v5.unit() + v7.unit() ); // extend in bissectrice
 
         for ( i = 0 ; i< npl ; i++)
             cutLeft.point[i] = left.point[i] + v.unit() * lw;
