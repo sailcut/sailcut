@@ -24,7 +24,7 @@
 enum subspaceflags_t { GEOCPP_FROM_BASE, GEOCPP_FROM_EQS };
 
 /** Class for describing subspaces of an euclidian vector space,
- * for example the empty space, points, lines and planes.
+ *  for example the empty space, points, lines and planes.
  */
 class CSubSpace
 {
@@ -32,32 +32,37 @@ private:
     CMatrix m;
     CVector p;
 public:
-    CSubSpace(unsigned int dim_space =3, unsigned int dim_sub =0);
+    CSubSpace( unsigned int dim_space =3, unsigned int dim_sub =0 );
     CSubSpace(const CVector &pi, const CMatrix &mi, subspaceflags_t createflags = GEOCPP_FROM_EQS);
+    
     /** Copy constructor */
-    CSubSpace(const CSubSpace &s) : m(s.m), p(s.p)
+    CSubSpace(const CSubSpace &s) : m(s.m) , p(s.p)
     {}
     ;
     CSubSpace intersect(const CSubSpace &) const;
     bool contains(const CVector &);
+    
     /** Return the dimension of the whole space. */
     unsigned int getncoord() const
     {
         return p.getdim();
     }
+    
     /** Return the subspace's dimension. */
     int getdim() const
     {
-        if (p.getdim()>0)
+        if (p.getdim() > 0)
             return p.getdim()-m.getnrow();
         else
             return -1;
     }
+    
     /** Accessor for the matrix. */
     const CMatrix& getm() const
     {
         return m;
     }
+    
     /** Accessor for the point. */
     const CVector& getp() const
     {

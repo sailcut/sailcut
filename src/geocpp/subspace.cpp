@@ -32,7 +32,7 @@
 CSubSpace::CSubSpace(unsigned int dim_space, unsigned int dim_sub)
         : p(dim_space)
 {
-    m=CMatrix(dim_sub,p.getdim());
+    m = CMatrix( dim_sub , p.getdim() );
 }
 
 
@@ -46,21 +46,21 @@ CSubSpace::CSubSpace(unsigned int dim_space, unsigned int dim_sub)
 CSubSpace::CSubSpace(const CVector &pi, const CMatrix &mi, subspaceflags_t createflags)
         : p(pi)
 {
-    switch (createflags)
+    switch ( createflags )
     {
     case GEOCPP_FROM_EQS:
         // equations are given in lines
-        if ( (mi.getnrow()>0) && (mi.getncol() != pi.getdim()) )
+        if ( (mi.getnrow() > 0) && (mi.getncol() != pi.getdim()) )
             throw CException("CSubSpace::CSubSpace(p,m,GEOCPP_FROM_EQS) : dimension mismatch between p and m");
 
         m = mi;
         break;
     case GEOCPP_FROM_BASE:
         // base is given in column format
-        if ( (mi.getncol()>0) && (mi.getnrow() != pi.getdim()) )
+        if ( (mi.getncol() > 0) && (mi.getnrow() != pi.getdim()) )
             throw CException("CSubSpace::CSubSpace(p,m,GEOCPP_FROM_BASE) : dimension mismatch between p and m");
 
-        m=mi.transp().kern(pi.getdim()).transp();
+        m = mi.transp().kern(pi.getdim()).transp();
         break;
     default:
         throw CException("CSubSpace::CSubspace(p,m,createflags) : unknown creation flags");
@@ -72,9 +72,9 @@ CSubSpace::CSubSpace(const CVector &pi, const CMatrix &mi, subspaceflags_t creat
  */
 bool CSubSpace::contains(const CVector &point)
 {
-    CVector prod=m*(point-p);
+    CVector prod = m*(point-p);
 
-    return (prod.norm() < EPS);
+    return ( prod.norm() < EPS );
 }
 
 
@@ -82,29 +82,29 @@ bool CSubSpace::contains(const CVector &point)
  */
 CSubSpace CSubSpace::intersect(const CSubSpace &h2) const
 {
-    if ((getdim()<0)||(h2.getdim()<0))
-        return CSubSpace(0,0);
+    if ( (getdim() < 0) || (h2.getdim() < 0) )
+        return CSubSpace(0 , 0);
 
-    if (p.getdim()!=h2.p.getdim())
+    if ( p.getdim() != h2.p.getdim() )
         throw CException("CSubSpace::intersect : dimension mismatch on points");
 
     CVector b1 = m*p;
     CVector b2 = h2.m*h2.p;
     CVector bb( m.getnrow() + h2.m.getnrow() );
     CMatrix mm( m.getnrow() + h2.m.getnrow(), p.getdim() );
-    for (unsigned int i=0; i < mm.getnrow(); i++)
+    for ( unsigned int i = 0 ; i < mm.getnrow() ; i++ )
     {
-        if (i<m.getnrow())
+        if ( i < m.getnrow() )
         {
-            for(unsigned int j = 0; j < mm.getncol(); j++)
+            for( unsigned int j = 0 ; j < mm.getncol() ; j++ )
                 mm(i,j) = m(i,j);
             bb.m_data[i] = b1.m_data[i];
         }
         else
         {
-            for(unsigned int j = 0; j < mm.getncol(); j++)
-                mm(i,j) = h2.m(i-m.getnrow(),j);
-            bb.m_data[i]=b2.m_data[i-m.getnrow()];
+            for( unsigned int j = 0 ; j < mm.getncol() ; j++ )
+                mm(i,j) = h2.m(i-m.getnrow() , j);
+            bb.m_data[i] = b2.m_data[i-m.getnrow()];
         }
     }
     //cout << "mm" << endl << mm << endl;
@@ -125,10 +125,10 @@ CSubSpace CSubSpace::intersect(const CSubSpace &h2) const
 ostream& operator<< (ostream &o, const CMatrix &m)
 {
     o << "[";
-    for (unsigned int i=0; i < m.getnrow(); i++)
+    for ( unsigned int i = 0 ; i < m.getnrow() ; i++ )
     {
         o << m.row(i);
-        if (i!=m.getnrow()-1)
+        if ( i != m.getnrow()-1 )
             o << endl;
     }
     o << "]";
@@ -160,7 +160,7 @@ ostream& operator<< (ostream &o, const CSubSpace &h)
         o << "dim=" << h.getdim() << endl;
     }
     o << "--------------------------------" << endl;
-    if (h.getdim()>=0)
+    if ( h.getdim() >= 0 )
     {
         o << "point:" << endl << h.getp() << endl;
         if (h.getdim()>0)
