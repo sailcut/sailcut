@@ -477,7 +477,6 @@ CPanel CPanel::reframe(enumAlign align) const
  */
 void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real &bw )
 {
-    // the panel will have hems added to its edges
     hasHems = true;
 
     CPoint3d pt(0,0,0);
@@ -501,7 +500,7 @@ void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real
     CVector3d v7 = CVector3d( top.point[npb-1] - top.point[0] );
     CVector3d v8 = CVector3d( top.point[npb-1] - top.point[npb-2] );
 
-    // copy the basic panel edge points to cut points as default
+    /** copy the basic panel edge points to cut points as default */
     for ( i = 0 ; i < npl ; i++ )
     {
         cutLeft.point[i] = left.point[i];
@@ -537,8 +536,8 @@ void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real
     }
     
     /** Move the basic bottom edge points to the cut line */
-    if ( v5.norm() >= minSize && bw > EPS )
-    { // side is not a point and width of material is not too small
+    if ( bw > EPS )
+    { // width of material is not too small
         for ( i = 0 ; i < npb ; i++ )
         {
             if ( i == 0 ) 
@@ -547,15 +546,15 @@ void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real
                 v = CVector3d( bottom.point[i] - bottom.point[i-1] );
             
             if ( v.norm() <= EPS ) 
-                throw CException ("CPanelLabel::addPanel : Move basic bottom edge v too small");
+                v = v5;
 
             cutBottom.point[i] = bottom.point[i] + CMatrix::rot3d(2,-PI/2) * v.unit() *bw;
         }
     }
 
     /** Move the basic top edge points to the cut line */
-    if ( v6.norm() >= minSize && tw > EPS )
-    { // side is not a point and width of material is not too small
+    if ( tw > EPS )
+    { // width of material is not too small
         for ( i = 0 ; i < npb ; i++ )
         {
             if ( i == 0 )
@@ -564,7 +563,7 @@ void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real
                 v = CVector3d( top.point[i] - top.point[i-1] );
             
             if ( v.norm() <= EPS ) 
-                throw CException ("CPanelLabel::addPanel : Move basic top edge v too small");
+                v = v7;
             
             cutTop.point[i] = top.point[i] + CMatrix::rot3d(2,PI/2) * v.unit() *tw;
         }
@@ -592,6 +591,7 @@ void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real
             {
                 v2 = CVector3d( left.point[i] - left.point[i-1] );
                 cutLeft.point[i] = left.point[i] + CMatrix::rot3d( 2 , PI/2) * v2.unit() * lw;
+                
                 if ( i == npl/2 +1 )
                 {   // compute mid side break point
                     Line2 = CSubSpace3d::line( cutLeft.point[i] , v2 );
@@ -608,7 +608,9 @@ void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real
                 else
                 {   // compute other points
                     cutLeft.point[i] = left.point[i] + CMatrix::rot3d( 2 , PI/2) * v2.unit() * lw;
-                    // TODO check position relative to mid side point                
+                    // check position relative to mid side point                
+                    if ( (CVector3d(cutLeft.point[i] - cutLeft.point[npl/2]) * v0) <= 0 )
+                        cutLeft.point[npl/2 +1] = cutLeft.point[npl/2];
                 }
             }
         }
@@ -683,7 +685,9 @@ void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real
                 else
                 {   // compute other points
                     cutRight.point[i] = right.point[i] + CMatrix::rot3d( 2 , -PI/2) * v4.unit() * rw;
-                    // TODO check position relative to mid side point                
+                    // check position relative to mid side point                
+                    if ( (CVector3d(cutRight.point[i] - cutRight.point[npl/2]) * v0) <= 0 )
+                        cutRight.point[npl/2 +1] = cutRight.point[npl/2];
                 }
             }
         }
@@ -720,10 +724,7 @@ void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real
         v4 = v3;
     }
 
-    /** Now we rejoin the 4 corners of the cut panel
-     */
-    
-    /// Rejoining the bottom corners
+    /** Rejoining the 4 corners of the cut panel */
     /// lower left
     Line1 = CSubSpace3d::line( cutBottom.point[0] , v5 );
     Line2 = CSubSpace3d::line( cutLeft.point[0] , v1 );
@@ -771,7 +772,6 @@ void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real
             cutBottom.point[npb-1-i] = pt;
     }
 
-    /// TODO Rejoining top corners 
     /// upper left
     Line1 = CSubSpace3d::line( cutTop.point[0] , v7 );
     Line2 = CSubSpace3d::line( cutLeft.point[npl-1] , v2 );
@@ -818,8 +818,8 @@ void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real
         if ( (CVector3d(cutTop.point[npb-1-i] - pt) * v6) >= 0 )
             cutTop.point[npb-1-i] = pt;
     }
-    
-} //// end addHems ////////////////////////////////////////
+        
+} /// end addHems ////////////////////////////////////////
 
 
 /** Rotates a panel around a point.
