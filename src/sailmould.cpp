@@ -308,23 +308,23 @@ CProfile CSailMould::interpol ( const real h ) const
         cout << "profile < 3 !!" << endl;
 
     CProfile p;
-    real pv=real(vertpos)/100;
+    real pv = real(vertpos) / 100;
     real hr;
 
-    if ( h <= 0 )   // below clew
+    if ( h < EPS )   // at or below clew
     {
         p = profile[0];
     }
-    else if (h < pv)   // below max depth
+    else if ( h < pv )   // below max depth
     {
-        hr = h /pv;
+        hr = h / pv;
         p = CProfile( profile[0].getDepth() + (profile[1].getDepth()-profile[0].getDepth()) * (1-(1-hr)*(1-hr)),
                       profile[0].getLeech() + (profile[1].getLeech()-profile[0].getLeech()) * hr,
                       profile[0].getLuff()  + (profile[1].getLuff()-profile[0].getLuff()) * hr );
     }
-    else if ( h < 1 )   // above max depth and below peak
+    else if ( h < 1-EPS )   // above max depth and below peak
     {
-        hr = (h-pv)/(1-pv);
+        hr = (h-pv) / (1-pv);
         p = CProfile( profile[1].getDepth() + (profile[2].getDepth()-profile[1].getDepth()) * hr*hr,
                       profile[1].getLeech() + (profile[2].getLeech()-profile[1].getLeech()) * hr,
                       profile[1].getLuff()  + (profile[2].getLuff()-profile[1].getLuff()) * hr );
