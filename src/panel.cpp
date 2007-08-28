@@ -231,8 +231,10 @@ real CPanel::height() const
 
 
 /** This routine returns the development of the panel.
- * The developed panel will be horizontal with its upper or lower edge
- * aligned to X axis depending on parameter "align"=ALIGN_TOP or ALIGN_BOTTOM
+ *  The developed panel will be horizontal with its upper or lower edge
+ *  aligned to X axis depending on parameter "align"=ALIGN_TOP or ALIGN_BOTTOM
+ *
+ *  @author Robert Laine alias Sailcuter
  */
 CPanel CPanel::develop(enumDevelopAlign align) const
 {
@@ -474,11 +476,12 @@ CPanel CPanel::reframe(enumAlign align) const
  *   tw = width to be added on top side
  *   rw = width to be added on right side
  *   bw = width to be added on bottom side
+ *
  */
 void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real &bw )
 {
     hasHems = true;
-
+    // printf(" hems lw= %f tw= %f rw= %f bw= %f \n" , lw, tw, rw, bw);
     CPoint3d pt(0,0,0);
     CVector3d v(1,0,0);
     CVector3d v0(1,0,0);
@@ -521,7 +524,7 @@ void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real
         v6 = v5;
     }
     else
-    {   // reset v5 to bottom left points
+    {   // reset v5 to bottom left point
         v5 = CVector3d( bottom.point[1] - bottom.point[0] );
     }
     
@@ -531,12 +534,12 @@ void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real
         v8 = v7;
     }
     else
-    {   // reset v7 to top left points
+    {   // reset v7 to top left point
         v7 = CVector3d( top.point[1] - top.point[0] );
     }
     
     /** Move the basic bottom edge points to the cut line */
-    if ( bw > EPS )
+    if ( bw >= EPS )
     { // width of material is not too small
         for ( i = 0 ; i < npb ; i++ )
         {
@@ -553,7 +556,7 @@ void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real
     }
 
     /** Move the basic top edge points to the cut line */
-    if ( tw > EPS )
+    if ( tw >= EPS )
     { // width of material is not too small
         for ( i = 0 ; i < npb ; i++ )
         {
@@ -562,7 +565,7 @@ void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real
             else
                 v = CVector3d( top.point[i] - top.point[i-1] );
             
-            if ( v.norm() <= EPS ) 
+            if ( v.norm() <= minSize ) 
                 v = v7;
             
             cutTop.point[i] = top.point[i] + CMatrix::rot3d(2,PI/2) * v.unit() *tw;
@@ -638,7 +641,7 @@ void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real
         if ( bw == 0 )
             v = -v5; // extend the bottom edge
         else
-            v = -( v5.unit() + v7.unit() ); // extend in bissectrice
+            v = -( v5.unit() + v7.unit() ); // extend in bissectrice top-bottom
 
         for ( i = 0 ; i< npl ; i++)
             cutLeft.point[i] = left.point[i] + v.unit() * lw;
@@ -799,6 +802,7 @@ void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real
     Line1 = CSubSpace3d::line( cutTop.point[npb-1] , v8 );
     Line2 = CSubSpace3d::line( cutRight.point[npl-1] , v4 );
     Intersection = Line1.intersect(Line2);
+    
     if (Intersection.getdim() == 0)
         pt = Intersection.getp();
     else throw "ERROR in CPanel::addHems = rejoining upper corner no right intersection point";

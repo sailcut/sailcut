@@ -67,7 +67,7 @@ CSailWorker::CSailWorker(const CSailDef &s) : CSailDef(s)
     v = CVector3d(0, gaffL, 0);  // initial vector gaff set on vertical
     peak = head + CMatrix::rot3d( 2 , (-asin(rake / luffL) - gaffDeg * PI / 180) ) * v;
     if ( fabs(peak.y() - head.y()) < minH )
-        peak.y() = head.y() + 1;
+        peak.y() = head.y() + 1; // to avoid case with gaff horizontal
         
     /* computing triangle tack-peak-clew */
     real aa, b, bb;
@@ -3120,7 +3120,9 @@ CPoint3d CSailWorker::AftIntersect( const CPoint3d& p1 ) const
                 d2 = leechR * RoundP( h2 , leechRP );
                 pt2 = pt3 - leechVP * d2;
             } 
+            
             v = CVector3d( pt2 - pt1 );
+            
             if ( v.norm() < minH )
                 pAft = pt2;
             else
@@ -3146,6 +3148,7 @@ real CSailWorker::Area()
     real surface = luffV.cross(footV).norm() / 2;
     surface = surface + leechV.cross(gaffV).norm() / 2;
     surface = surface + .75*(luffL*luffR + footL*footR + leechL*leechR + gaffL*gaffR);
+    
     return ( .01 * floor(surface /10000) );
 }
 
@@ -3200,6 +3203,7 @@ real CSailWorker::IRCwidth( const real &HL )
 
     w = 0;
     p3 = p1;
+    
     for (i=1; i<=imax; i++)
     {
         h1 = real(i) / imax;
@@ -3274,6 +3278,7 @@ real CSailWorker::SailWidth( const  real  &HL )
     
     w = 0;
     p3 = p1;
+    
     for (i = 1; i <= imax; i++)
     {
         h1 = real(i) / imax;
@@ -3281,7 +3286,6 @@ real CSailWorker::SailWidth( const  real  &HL )
         w = w + CVector3d(p - p3).norm();
         p3 = p;
     }
-    //
     return ( w );
 }
 
@@ -3294,7 +3298,7 @@ real CSailWorker::SailWidth( const  real  &HL )
 real CSailWorker::SailLP( )
 {
     unsigned int i, imax=10;
-    real h1=0,  w=0;
+    real h1=0, w=0;
     CPoint3d p, p1, p2, p3;
     //printf ("IRC height = %f \n", HL);
 
@@ -3302,8 +3306,8 @@ real CSailWorker::SailLP( )
     p1 = Zpoint( LuffIntersect(clew , luffVP) );
     p2 = clew;
 
-    w = 0;
     p3 = p1;
+    
     for ( i = 1 ; i <= imax ; i++ )
     {
         h1 = real(i) / imax;
@@ -3311,7 +3315,6 @@ real CSailWorker::SailLP( )
         w = w + CVector3d(p - p3).norm();
         p3 = p;
     }
-    //
     return ( w );
 }
 
@@ -3361,7 +3364,6 @@ real CSailWorker::LuffLength( const real &h )
         l = l + CVector3d(p3 - p1).norm();
         p1 = p3;
     }
-
     return ( l );
 }
 
@@ -3373,9 +3375,7 @@ real CSailWorker::LuffLength( const real &h )
  * @author Robert Laine
  */
 CPoint3d CSailWorker::FwdIntersect( const CPoint3d &p1 ) const
-{
-    //real x=0, y=0, z=0; // for debugging only
-    
+{    
     CPoint3d pFwd = p1; // forward intersection point initialised at p1
     CPoint3d pt1 = p1 , pt2 = p1 , pt3 = p1;
     CVector3d v = CVector3d(1,0,0);
@@ -3390,7 +3390,7 @@ CPoint3d CSailWorker::FwdIntersect( const CPoint3d &p1 ) const
     else
         pFwd = lineH.intersect(luff).getp();
             
-    if ( p1.y() < (tack.y() + minH) )  // point is at or below tack
+    if ( p1.y() < (tack.y() + EPS) )  // point is at or below tack
     {
         pFwd.x() = tack.x();  // set forward point on vertical below tack
         pFwd.z() = tack.z();
@@ -3404,18 +3404,19 @@ CPoint3d CSailWorker::FwdIntersect( const CPoint3d &p1 ) const
             // displace point to luff curve
             pt1 = pFwd + luffVP * d1;
             line1 = CSubSpace3d::line( pt1 , luffV );
-            
             pt2 = lineH.intersect(line1).getp();
+            
             v = CVector3d( pt2 - pt1 );
+            
             if ( v.norm() < minH )
                 pFwd = pt2;
             else
             {
                 pt3 = pFwd + v;
                 
-                if ( pt3.y() > (head.y() - minH) )
+                if ( pt3.y() > (head.y() - EPS) )
                     pt2 = head;
-                else if ( pt3.y() < (tack.y() + minH) )
+                else if ( pt3.y() < (tack.y() + EPS) )
                     pt2 = tack;
                 else
                 {   // move pt2 to luff curve 
@@ -3423,7 +3424,9 @@ CPoint3d CSailWorker::FwdIntersect( const CPoint3d &p1 ) const
                     d2 = luffR * RoundP( h2 , luffRP );
                     pt2 = pt3 + luffVP * d2;
                 }
+                
                 v = CVector3d( pt2 - pt1 );
+                
                 if ( v.norm() < minH )
                     pFwd = pt2;
                 else
@@ -3457,6 +3460,7 @@ CPoint3d CSailWorker::FwdIntersect( const CPoint3d &p1 ) const
                 line1 = CSubSpace3d::line( pt1 , gaffV );
                 
                 pt2 = lineH.intersect(line1).getp();
+                
                 v = CVector3d( pt2 - pt1 );
                 
                 if ( v.norm() < minH )
@@ -3464,6 +3468,7 @@ CPoint3d CSailWorker::FwdIntersect( const CPoint3d &p1 ) const
                 else
                 {
                     pt3 = pFwd + v;
+                    
                     if( pt3.y() >= peak.y() - EPS )
                         pt2 = peak;
                     else if ( pt3.y() <= (head.y() + EPS) )
@@ -3474,7 +3479,9 @@ CPoint3d CSailWorker::FwdIntersect( const CPoint3d &p1 ) const
                         d2 = gaffR * RoundP( h2 , gaffRP );
                         pt2 = pt3 + gaffVP * d2;
                     }
+                    
                     v = CVector3d( pt2 - pt1 );
+                    
                     if ( v.norm() < minH )
                         pFwd = pt2;
                     else
@@ -3506,95 +3513,70 @@ CPoint3d CSailWorker::FwdIntersect( const CPoint3d &p1 ) const
  */
 CPoint3d CSailWorker::FootIntersect( const CPoint3d &pt1, const CVector3d &v1 ) const
 {
-    if ( v1.norm() <= EPS )
+    if ( v1.norm() <= minH )
         throw CException("CSailDef::FootIntersect : input vector is nul");
         
-    CPoint3d p2 = pt1;
-    CPoint3d p0;
+    real h1=0, h2=0, d1=0, d2=0;
+    CPoint3d p0, p1, p2, p3;
+    CVector3d v = v1;
     /* useful straight lines */
-    CSubSpace ptv1 = CSubSpace3d::line(pt1 , v1);
+    CSubSpace line1 = CSubSpace3d::line( pt1 , v1 );
+    CSubSpace line2 = foot;
 
-    real h0=0;  /// a position on foot
-    real hr0=0;  // its relative position
-    real d0=0;   // its local depth of curve
-    real hr1=0;  // its relative position
-    real d1=0;   // its local depth
-    real hr2=0;  // its relative position
-    real d2=0;   // its local depth
-
-    /* find point p0 at intersection of straight foot with ptv1 */
-    if ( ptv1.intersect(foot).getdim() != 0 )
-        throw CException("CSailDef::FootIntersect-1 : intersection with foot is not a point!");
+    /* find point p0 at intersection of straight foot with line1 */
+    if ( line1.intersect(foot).getdim() != 0 )
+        throw CException("CSailDef::FootIntersect -1: intersection with foot is not a point!");
     else
-        p0 = ptv1.intersect(foot).getp();
+        p0 = line1.intersect(foot).getp();
         
-    if ( CVector3d(p0 - tack) * footV <= minH )
+    if ( CVector3d(p0 - tack) * footV < minH )
         p2 = tack;  // intersection left of tack
-    else if ( CVector3d(p0 - clew)*footV >= 0 )
+    else if ( CVector3d(p0 - clew) * footV >= 0 )
         p2 = clew;  // intersection right of clew
     else if ( fabs(footR) < 1)
         p2 = p0;    // foot is straight
     else
-    {  // intersection is on a curved foot
-        h0 = CVector3d(p0 - tack).norm();
-        hr0 = h0 / (footL); // relative position
-        d0 = footR * RoundP(hr0 , footRP); // local depth of foot curve
-
-        /* loop to converge on real foot point */
-        unsigned int j = 1;
-        real  dh1 = 0 , dh2 = 0;
-        CPoint3d p1 = p0;
-
-        d1 = d0; // initialise
-
-        for ( j = 1 ; j < 3 ; j++)
-        {   /* p1 is p0 moved on curve */
-            p1 = p0 + CMatrix::rot3d(2 , -PI/2) * footV.unit() * d1;
-            
-            // define a line parrallel to foot at distance d1
-            CSubSpace parallel = CSubSpace3d::line(p1, footV);
-            
-            // point intersection of ptv1 with parrallel
-            if (ptv1.intersect(parallel).getdim() != 0)
-                throw CException("CSailDef::FootIntersect-2 : intersection is not a point!");
-            else
-                p2 = ptv1.intersect(parallel).getp();
-            
-            dh2 = CVector3d(p2 - p0) * footV.unit(); // projection on foot
-            hr2 = (h0 + dh2) / (footL);
-            if ( hr2 <= minH )
-                d2 = 0;
-            else if ( hr2 >= 1 )
-                d2 = 0;
-            else
-                d2 = footR * RoundP(hr2 , footRP); // local depth of foot curve
-
-            dh1 = dh2 * d1 / (2*d1 - d2);
-            hr1 = (h0 + dh1) / (footL);
-            if ( hr1 <= 0 )
-                d1 = 0;
-            else if ( hr1 >= 1 )
-                d1 = 0;
-            else
-                d1 = footR * RoundP(hr1 , footRP); // local depth of foot curve
-        } // end FOR loop
-
-        /* final convergence on mean point */
-        d1 = (d1 + d2) / 2;
-        p1 = p0 + CMatrix::rot3d(2 , -PI/2) * footV.unit() * d1;
+    {   // intersection is on a curved foot
+        h1 = CVector3d(p0 - tack).norm() / footV.norm();
+        d1 = footR * RoundP( h1 , footRP ); // local depth of curve
+        p1 = p0 -footVP * d1;
+        line2 = CSubSpace3d::line( p1 , footV );
         
-        // define a line parrallel to leech at distance d1
-        CSubSpace parallel = CSubSpace3d::line(p1,  footV);
+        if ( line1.intersect(line2).getdim() != 0 )
+            throw CException("CSailworker::footIntersect -2: intersection is not a point!");
+        else
+            p2 = line1.intersect(line2).getp();
         
-        // point intersection of ptv1 with parrallel
-        p2 = ptv1.intersect(parallel).getp();
-            /* the case when the intersection is not a point needs to be handled */
-        if (ptv1.intersect(parallel).getdim() != 0)
-            throw CException("CSailDef::FootIntersect-3 : intersection is not a point!");
-    } // end IF ELSE
-
+        v = CVector3d( p2 - p1 );
+        
+        if ( v.norm() > minH )
+        {
+            p3 = p0 + v;
+            
+            if ( CVector3d(p3 - tack) * footV < minH )
+                p2 = tack;
+            else if (CVector3d(p3 - clew) * footV >= 0 )
+                p2 = clew;
+            else
+            {
+                h2 = CVector3d(p3 - tack).norm() / footV.norm();
+                d2 = footR * RoundP( h2 , footRP ); 
+                p2 = p3 -footVP * d2;
+            }
+            
+            v = CVector3d( p2 - p1 );
+            
+            if ( v.norm() < minH )
+                p2 = p1;
+            else
+            {
+                line2 = CSubSpace3d::line( p1 , v );
+                p2 = line1.intersect(line2).getp();
+            }
+        }
+    }
     return p2;
-} /////////////// FootIntersect ///////////////////////////////////////
+} /////////////// FootIntersect //////////////////////////////////
 
 
 /** Routine used for computing the real position of Gaff points.
@@ -3605,21 +3587,17 @@ CPoint3d CSailWorker::FootIntersect( const CPoint3d &pt1, const CVector3d &v1 ) 
  */
 CPoint3d CSailWorker::GaffIntersect( const CPoint3d &pt1, const CVector3d &v1 ) const
 {
-    if ( v1.norm() <= EPS )
+    if ( v1.norm() <= minH )
         throw CException("CSailDef::GaffIntersect : input vector is nul");
-    // real x=0, y=0, z=0; // for debugging only
+
+    real h1=0, h2=0, d1=0, d2=0;
     CPoint3d p0 , p1 , p2 , p3;
     CVector3d v = v1;
     /* useful straight lines */
     CSubSpace line1 = CSubSpace3d::line(pt1, v1);
     CSubSpace line2 = gaff;
-    
-    real h1=0;  //  relative position
-    real d1=0;   // local depth
-    real h2=0;  // its relative position
-    real d2=0;   // its local depth
 
-    /* find point p0 at intersection of straight gaff with ptv1 */
+    /* find point p0 at intersection of straight gaff with line1 */
     if (line1.intersect(gaff).getdim() != 0)
         throw CException("CSailDef::GaffIntersect-1 : intersection with gaff is not a point!");
     else
@@ -3637,7 +3615,7 @@ CPoint3d CSailWorker::GaffIntersect( const CPoint3d &pt1, const CVector3d &v1 ) 
         d1 = gaffR * RoundP(h1 , gaffRP); // local depth of gaff curve
         p1 = p0 + gaffVP * d1;
         // define a line parrallel to gaff at distance d1
-        CSubSpace line2 = CSubSpace3d::line( p1 , gaffV );
+        line2 = CSubSpace3d::line( p1 , gaffV );
         
         // point2 intersection of line1 with parrallel
         if (line1.intersect(line2).getdim() != 0)
@@ -3646,11 +3624,12 @@ CPoint3d CSailWorker::GaffIntersect( const CPoint3d &pt1, const CVector3d &v1 ) 
             p2 = line1.intersect(line2).getp();
         
         v = CVector3d( p2 - p1);
+        
         if ( v.norm() > minH ) 
         {    
             p3 = p0 + v;
             
-            if (CVector3d(p3 - head) * gaffV <= minH)
+            if (CVector3d(p3 - head) * gaffV < minH)
                 p2 = head;  // p3 left of head
             else if (CVector3d(p3 - peak) * gaffV >= 0 )
                 p2 = peak;  // p3 above peak
@@ -3659,17 +3638,19 @@ CPoint3d CSailWorker::GaffIntersect( const CPoint3d &pt1, const CVector3d &v1 ) 
                 h2 = CVector3d(p3 - head).norm() / (gaffV.norm() + minH);
                 d2 = gaffR * RoundP( h2 , gaffRP ); // local depth of gaff curve
                 p2 = p3 + gaffVP * d2;
-                v = CVector3d ( p2 - p1 );
-                if ( v.norm() < minH )
-                    p2 = p1;
-                else
-                {
-                    line2 = CSubSpace3d::line( p1 , v );
-                    p2 = line1.intersect(line2).getp(); 
-                }
             }
-        } 
-    } 
+            
+            v = CVector3d ( p2 - p1 );
+            
+            if ( v.norm() < minH )
+                p2 = p1;
+            else
+            {
+                line2 = CSubSpace3d::line( p1 , v );
+                p2 = line1.intersect(line2).getp(); 
+            }
+        }
+    }
     return p2;
 } //////////////// GaffIntersect //////////////////////////////////////////
 
@@ -3682,92 +3663,68 @@ CPoint3d CSailWorker::GaffIntersect( const CPoint3d &pt1, const CVector3d &v1 ) 
 */
 CPoint3d CSailWorker::LeechIntersect( const CPoint3d &pt1, const CVector3d &v1 ) const
 {
-    if ( v1.norm() <= EPS )
+    if ( v1.norm() <= minH )
         throw CException("CSailDef::LeechIntersect : input vector is nul");
         
-    // real x=0, y=0, z=0; // for debugging only
-    CPoint3d p2 = pt1;
-    CPoint3d p0;
+    real h1 = 0, h2 = 0, d1 = 0, d2 = 0;
+    CPoint3d p0 = pt1, p1 = pt1, p2 = pt1, p3 = pt1;
+    CVector3d v = v1;
     /* useful straight lines */
-    CSubSpace ptv1 = CSubSpace3d::line( pt1 , v1 );
+    CSubSpace line1 = CSubSpace3d::line( pt1 , v1 );
+    CSubSpace line2 = leech;
 
-    real h0=0;   /// a position on leech
-    real hr0=0;  // its relative position on leech
-    real d0=0;   // its local depth of leech curve
-    real hr1=0;  // its relative position
-    real d1=0;   // its local depth
-    real hr2=0;  // its relative position
-    real d2=0;   // its local depth
-
-    /* find point p0 at intersection of straight leech with ptv1 */
-    if (ptv1.intersect(leech).getdim() != 0)
+    /* find point p0 at intersection of straight leech with line1 */
+    if (line1.intersect(leech).getdim() != 0)
         throw CException("CSailDef::LeechIntersect-1 : intersection with leech is not a point!");
     else 
-        p0 = ptv1.intersect(leech).getp();
+        p0 = line1.intersect(leech).getp();
 
-    if ( CVector3d(p0 - clew) * leechV <= minH )
+    if ( CVector3d( p0 - clew ) * leechV <= EPS )
         p2 = clew;  // intersection below clew
-    else if (CVector3d(p0 - peak) * leechV >= 0 )
+    else if (CVector3d( p0 - peak ) * leechV >= 0 )
         p2 = peak;  // intersection above peak
     else if (fabs(leechR) < 1)
         p2 = p0;    // leech is straight
     else
-    {  // intersection is on curved leech
-        h0 = CVector3d(p0 - clew).norm();
-        hr0 = h0 / (leechV.norm()); // relative height
-        d0 = leechR * RoundP(hr0 , leechRP); // local depth of leech curve
-
-        /* loop to converge on real leech point */
-        real dh1 = 0, dh2 = 0;
-        CPoint3d p1 = p0;
-
-        d1 = d0; // initialise
-
-        for ( unsigned int j = 1; j < 3; j++)
-        {
-            p1 = p0 + CMatrix::rot3d(2, -PI/2) * leechV.unit() * d1;
-            
-            // define a line parrallel to leech at distance d1
-            CSubSpace parallel = CSubSpace3d::line( p1 , leechV );
-            
-            // point intersection of ptv1 with parrallel
-            if ( ptv1.intersect(parallel).getdim() != 0 )
-                throw CException("CSailDef::LeechIntersect-2 : intersection is not a point!");
-            else 
-                p2 = ptv1.intersect(parallel).getp();
-
-            dh2 = CVector3d(p2 - p0) * leechV.unit(); // projection on leech
-            hr2 = (h0 + dh2) / (leechV.norm());
-            if (hr2 <= 0)
-                d2 = 0;
-            else if (hr2 >= 1)
-                d2 = 0;
-            else
-                d2 = leechR * RoundP(hr2 , leechRP); // local depth of leech curve
-
-            dh1 = dh2 * d1 / (2 * d1 - d2);
-            hr1 = (h0 + dh1) / (leechV.norm());
-            if ( hr1 <= 0 )
-                d1 = 0;
-            else if ( hr2 >= 1 )
-                d1 = 0;
-            else
-                d1 = leechR * RoundP(hr1 , leechRP); // local depth of leech curve
-        } // end FOR loop
-
-        // final convergence on mean point
-        d1 = (d1 + d2) / 2;
-        p1 = p0 + CMatrix::rot3d(2 , -PI/2) * leechV.unit() * d1;
+    {   // intersection is on a curved leech
+        h1 = CVector3d(p0 - clew).norm() / leechV.norm();
+        d1 = leechR * RoundP( h1 , leechRP ); // local depth of curve
+        p1 = p0 -leechVP * d1;
+        line2 = CSubSpace3d::line( p1 , leechV );
         
-        // define a line parrallel to leech at distance d1
-        CSubSpace parallel = CSubSpace3d::line(p1 , leechV);
-        
-        // point intersection of ptv1 with parrallel
-        if ( ptv1.intersect(parallel).getdim() != 0 )
-            throw CException("CSailDef::LeechIntersect-3 : intersection is not a point!");
+        if ( line1.intersect(line2).getdim() != 0 )
+            throw CException("CSailworker::LeechIntersect -2: intersection is not a point!");
         else
-            p2 = ptv1.intersect(parallel).getp();
-    } 
+            p2 = line1.intersect(line2).getp();
+        
+        v = CVector3d( p2 - p1 );
+        
+        if ( v.norm() > minH )
+        {
+            p3 = p0 + v;
+            
+            if ( CVector3d(p3 - clew) * leechV <= EPS )
+                p2 = clew;
+            else if (CVector3d(p3 - peak) * leechV >= 0 )
+                p2 = peak;
+            else
+            {
+                h2 = CVector3d(p3 - clew).norm() / leechV.norm();
+                d2 = leechR * RoundP( h2 , leechRP );
+                p2 = p3 -leechVP * d2;
+            }
+            
+            v = CVector3d( p2 - p1 );
+            
+            if ( v.norm() < minH )
+                p2 = p1;
+            else
+            {
+                line2 = CSubSpace3d::line( p1 , v );
+                p2 = line1.intersect(line2).getp();
+            }
+        }
+    }
     return p2;
 } /////////// LeechIntersect ///////////////////////////////////////////
 
@@ -3780,94 +3737,70 @@ CPoint3d CSailWorker::LeechIntersect( const CPoint3d &pt1, const CVector3d &v1 )
  */
 CPoint3d CSailWorker::LuffIntersect( const CPoint3d &pt1, const CVector3d &v1 ) const
 {
-    if ( v1.norm() <= EPS )
+    if ( v1.norm() <= minH )
         throw CException("CSailDef::LuffIntersect : input vector is nul");
             
-    // real x=0, y=0, z=0; // for debugging only
-    CPoint3d p2 = pt1;
-    CPoint3d p0;
+    real h1 = 0, h2 = 0, d1 = 0, d2 = 0;
+    CPoint3d p0 = pt1, p1 = pt1, p2 = pt1, p3 = pt1;
+    CVector3d v = v1;
     /* useful straight lines */
-    CSubSpace ptv1 = CSubSpace3d::line(pt1 , v1);
+    CSubSpace line1 = CSubSpace3d::line( pt1 , v1 );
+    CSubSpace line2 = luff;
 
-    real h0=0;  // a position on luff
-    real hr0=0;  // its relative position on luff
-    real d0=0;  //  its local depth of luff curve
-    real hr1=0;  // its relative position on luff
-    real d1=0;  //  its local depth of luff curve
-    real hr2=0;  // its relative position on luff
-    real d2=0;  //  its local depth of luff curve
-
-    /* find point p0 at intersection of straight luff with ptv1 */
-    if (ptv1.intersect(luff).getdim() != 0)
+    /* find point p0 at intersection of straight leech with line1 */
+    if (line1.intersect(luff).getdim() != 0)
         throw CException("CSailDef::LuffIntersect-1 : intersection with luff is not a point!");
-    else
-        p0 = ptv1.intersect(luff).getp();
-        
-    if (CVector3d(p0 - tack) * luffV <= minH)
-        p2 = tack;  // intersection below tack
-    else if (CVector3d(p0 - head) * luffV >= 0 )
+    else 
+        p0 = line1.intersect(luff).getp();
+
+    if ( CVector3d( p0 - tack ) * luffV <= EPS )
+        p2 = clew;  // intersection below tack
+    else if (CVector3d( p0 - head ) * luffV >= 0 )
         p2 = head;  // intersection above head
     else if (fabs(luffR) < 1)
         p2 = p0;    // luff is straight
     else
-    {  // intersection is on curved luff
-        h0 = CVector3d(p0 - tack).norm();
-        hr0 = h0 / (luffV.norm()); // relative height
-        d0 = luffR * RoundP(hr0, luffRP); // local depth of luff curve
-
-        /* loop to converge on real luff point */
-        unsigned int j = 1;
-        real dh1 = 0, dh2 = 0;
-        CPoint3d p1 = p0;
-
-        d1 = d0; // initialise
-
-        for ( j = 1; j < 4; j++)
-        {
-            p1 = p0 + CMatrix::rot3d(2 , PI/2) * luffV.unit() * d1;
-            
-            // define a line parrallel to luff at distance d1
-            CSubSpace parallel = CSubSpace3d::line(p1 , luffV);
-            
-            // point intersection of ptv1 with parrallel to luff
-            if (ptv1.intersect(parallel).getdim() != 0)
-                throw CException("CSailDef::LuffIntersect-2 : intersection is not a point!");
-            else
-                p2 = ptv1.intersect(parallel).getp();
-            
-            dh2 = CVector3d(p2 - p0) * luffV.unit(); // projection on luff
-            hr2 = (h0+dh2) / (luffV.norm());
-            if (hr2 <= 0)
-                d2 = 0;
-            else if (hr2 >= 1)
-                d2 = 0;
-            else
-                d2 = luffR * RoundP(hr2 , luffRP); // local depth of luff curve
-
-            dh1 = dh2 * d1 / (2*d1-d2);
-            hr1 = (h0 + dh1) / (luffV.norm());
-            if (hr1 <= 0)
-                d1 = 0;
-            else if (hr2 >= 1)
-                d1 = 0;
-            else
-                d1 = luffR * RoundP(hr1, luffRP); // local depth of luff curve
-        } // end FOR loop
-
-        // final convergence on mean point
-        d1 = (d1 + d2) / 2;
-        p1 = p0 + CMatrix::rot3d(2 , PI/2) * luffV.unit() * d1;
-        // define a line parrallel to luff at distance d1
-        CSubSpace parallel = CSubSpace3d::line(p1 , luffV);
-        // point intersection of ptv1 with parrallel to luff
-        p2 = ptv1.intersect(parallel).getp();
+    {   // intersection is on a curved luff
+        h1 = CVector3d(p0 - tack).norm() / luffV.norm();
+        d1 = luffR * RoundP( h1 , luffRP ); // local depth of curve
+        p1 = p0 + luffVP * d1;
+        line2 = CSubSpace3d::line( p1 , luffV );
         
-        /* the case when the intersection is not a point needs to be handled */
-        if (ptv1.intersect(parallel).getdim() != 0)
-            throw CException("CSailDef::LuffIntersect-3 : intersection is not a point!");
-    } // end ELSE
+        if ( line1.intersect(line2).getdim() != 0 )
+            throw CException("CSailworker::LuffIntersect -2: intersection is not a point!");
+        else
+            p2 = line1.intersect(line2).getp();
+        
+        v = CVector3d( p2 - p1 );
+        
+        if ( v.norm() > minH )
+        {
+            p3 = p0 + v;
+            
+            if ( CVector3d(p3 - tack) * luffV <= EPS )
+                p2 = tack;
+            else if (CVector3d(p3 - head) * luffV >= 0 )
+                p2 = head;
+            else
+            {
+                h2 = CVector3d(p3 - tack).norm() / luffV.norm();
+                d2 = luffR * RoundP( h2 , luffRP );
+                p2 = p3 + luffVP * d2;
+            }
+            
+            v = CVector3d( p2 - p1 );
+            
+            if ( v.norm() < minH )
+                p2 = p1;
+            else
+            {
+                line2 = CSubSpace3d::line( p1 , v );
+                p2 = line1.intersect(line2).getp();
+            }
+        }
+    }
     return p2;
-} ////////////// LuffIntersect /////////////////////////////////////////
+} ////////////// LuffIntersect /////////////////////////////////
 
 
 /** Routine used for computing the intersection with mitre line.
@@ -3878,7 +3811,7 @@ CPoint3d CSailWorker::LuffIntersect( const CPoint3d &pt1, const CVector3d &v1 ) 
  */
 CPoint3d CSailWorker::MitreIntersect( const CPoint3d &pt1, const CVector3d &v1 ) const
 {
-    if ( v1.norm() <= EPS )
+    if ( v1.norm() <= minH )
         throw CException("CSailDef::MitreIntersect : input vector is nul");
     // real x=0, y=0, z=0; // for debugging only
     CPoint3d p2 = pt1;
@@ -3916,13 +3849,6 @@ CPoint3d CSailWorker::Zpoint( const CPoint3d &p1 ) const
     /* computing local cord of the profile */
     cord = CVector3d( pAft - pFwd ).norm();
     
-    /*if ( p1.x() < 5189 && p1.x() > 5188 )
-    {    
-        printf (" Zpoint x= %f y= %f cord= %f \n" , p1.x(), p1.y(), cord );
-        printf (" pFwd x= %f y= %f z= %f \n" , pFwd.x(), pFwd.y(), pFwd.z() );
-        printf (" pAft x= %f y= %f z= %f \n" , pAft.x(), pAft.y(), pAft.z() );
-    }*/
-    
     /* computing Z from normalised position on profile */
     if ( cord < 1 )   // to avoid division by cord = zero
     {
@@ -3932,6 +3858,7 @@ CPoint3d CSailWorker::Zpoint( const CPoint3d &p1 ) const
     else   // position on profile
     {
         pos = ( CVector3d( p1 - pFwd ).norm() ) / cord;
+        
         /* computing the relative height on the sail */
         real h1 = (p1.y() - tack.y()) / (peak.y() - tack.y());  // for mould
         
@@ -3950,7 +3877,7 @@ CPoint3d CSailWorker::Zpoint( const CPoint3d &p1 ) const
     
     if ( h2 >= 1 )    // above peak
         h2 = 1;
-    else if ( h2 < minH )   // below clew
+    else if ( h2 <= 0 )   // below clew
         h2 = 0;
 
     twist = ( h2 * twistDeg  + sheetDeg ) * PI / 180;
@@ -3967,6 +3894,17 @@ CPoint3d CSailWorker::Zpoint( const CPoint3d &p1 ) const
     /* applying the twist by rotating the profile around pivotX */
     p2.x() = pivotX + x * cos(twist) - z * sin(twist);
     p2.z() = x * sin(twist) + z * cos(twist);
+
+    /* 
+    if ( p1.x() < 2200 && p1.y() < 950 )
+    {    
+        printf (" Zpoint x= %f y= %f cord= %f \n" , p1.x(), p1.y(), cord );
+        printf (" pFwd x= %f y= %f z= %f \n" , pFwd.x(), pFwd.y(), pFwd.z() );
+        printf (" pAft x= %f y= %f z= %f \n" , pAft.x(), pAft.y(), pAft.z() );
+        printf (" p2 x= %f y= %f z= %f \n" , p2.x(), p2.y(), p2.z() );
+        printf(" -- \n");
+    }
+    */
 
     return p2;
 } /////////////// Zpoint ///////////////////////////////////////////////
