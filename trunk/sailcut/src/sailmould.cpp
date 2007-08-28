@@ -309,23 +309,32 @@ CProfile CSailMould::interpol ( const real h ) const
 
     CProfile p;
     real pv = real(vertpos) / 100;
+    real dpth = 0;
     real hr;
 
-    if ( h < EPS )   // at or below clew
+    if ( h < 0 )   // at or below clew
     {
-        p = profile[0];
+        /*p = profile[0];*/
+        hr = h / pv;
+        dpth = profile[0].getDepth() + (profile[1].getDepth()-profile[0].getDepth()) * hr;
+        if ( dpth < 0 ) dpth = 0;
+        p = CProfile( dpth, profile[0].getLeech() , profile[0].getLuff() );
     }
     else if ( h < pv )   // below max depth
     {
         hr = h / pv;
-        p = CProfile( profile[0].getDepth() + (profile[1].getDepth()-profile[0].getDepth()) * (1-(1-hr)*(1-hr)),
+        dpth = profile[0].getDepth() + (profile[1].getDepth()-profile[0].getDepth()) * (1-(1-hr)*(1-hr));
+        if ( dpth < 0 ) dpth = 0;
+        p = CProfile( dpth ,
                       profile[0].getLeech() + (profile[1].getLeech()-profile[0].getLeech()) * hr,
                       profile[0].getLuff()  + (profile[1].getLuff()-profile[0].getLuff()) * hr );
     }
-    else if ( h < 1-EPS )   // above max depth and below peak
+    else if ( h < 1 )   // above max depth and below peak
     {
         hr = (h-pv) / (1-pv);
-        p = CProfile( profile[1].getDepth() + (profile[2].getDepth()-profile[1].getDepth()) * hr*hr,
+        dpth = profile[1].getDepth() + (profile[2].getDepth()-profile[1].getDepth()) * hr*hr;
+        if ( dpth < 0 ) dpth = 0;
+        p = CProfile( dpth ,
                       profile[1].getLeech() + (profile[2].getLeech()-profile[1].getLeech()) * hr,
                       profile[1].getLuff()  + (profile[2].getLuff()-profile[1].getLuff()) * hr );
     }
