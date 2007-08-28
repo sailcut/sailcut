@@ -68,17 +68,17 @@ public:
     /** Set the depth */
     void setDepth( real ndepth )
     {
-        *this=CProfile(ndepth,kleech,kluff);
+        *this=CProfile( ndepth, kleech, kluff );
     }
     /** Set the leech */
     void setLeech( real nkleech )
     {
-        *this=CProfile(depth,nkleech,kluff);
+        *this=CProfile( depth, nkleech, kluff );
     }
     /** Set the luff */
     void setLuff( real nkluff )
     {
-        *this=CProfile(depth,kleech,nkluff);
+        *this=CProfile( depth, kleech, nkluff );
     }
 
 protected:
@@ -110,9 +110,10 @@ public:
     CSailMould & operator=( const CSailMould & );
     CProfile interpol( const real h ) const;
 
-    /** the mould's profiles (top, middle, bottom) */
+    /** the mould's profiles ( top, middle, bottom ) */
     //  CProfile profile[3];
     vector<CProfile> profile;
+    
     /** vertical position of profile[1] in percent */
     int vertpos;
 };
