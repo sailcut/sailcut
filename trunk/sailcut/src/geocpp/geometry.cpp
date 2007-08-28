@@ -160,7 +160,7 @@ CSubSpace CSubSpace2d::line(const CPoint2d &p, const CVector2d &v)
 CSubSpace CSubSpace3d::line(const CPoint3d &p, const CVector3d &v)
 {
     if (!v.norm())
-        throw CException("CSubSpace3d::line : vector cannot be zero");
+        throw CException("CSubSpace3d::line : input vector cannot be zero point ");
 
     return CSubSpace(p, v.matrix(), GEOCPP_FROM_BASE);
 }
