@@ -37,7 +37,7 @@
         <cppflags/>
         <ldflags/>
         <ccompilerbinary/>
-        <cxxcompilerbinary>&quot;ccache g++&quot;</cxxcompilerbinary>
+        <cxxcompilerbinary/>
         <f77compilerbinary/>
         <cflags/>
         <f77flags/>
