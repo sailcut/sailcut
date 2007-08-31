@@ -17,7 +17,7 @@
   </general>
   <kdevautoproject>
     <general>
-      <activetarget>sailcut/sailcut</activetarget>
+      <activetarget>src/sailcut</activetarget>
       <useconfiguration>debug</useconfiguration>
     </general>
     <run>
