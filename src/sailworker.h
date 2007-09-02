@@ -72,15 +72,16 @@ protected:
     CPanelGroup LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; // WING
 
     /** intersections with edges */
-    CPoint3d FwdIntersect( const CPoint3d &p1 ) const;
-    CPoint3d AftIntersect( const CPoint3d &p1 ) const;
+    CPoint3d FwdIntersect( const CPoint3d &pt1 ) const;
+    CPoint3d AftIntersect( const CPoint3d &pt1 ) const;
     CPoint3d FootIntersect( const CPoint3d &pt1, const CVector3d &v1 ) const;
     CPoint3d GaffIntersect( const CPoint3d &pt1, const CVector3d &v1 ) const;
     CPoint3d LeechIntersect( const CPoint3d &pt1, const CVector3d &v1 ) const;
     CPoint3d LuffIntersect( const CPoint3d &pt1, const CVector3d &v1 ) const;
     CPoint3d MitreIntersect( const CPoint3d &pt1, const CVector3d &v1 ) const;
+    
     /** mitre intersection point with luff */
-    CPoint3d mitrePt;
+    CPoint3d mitreLuffPt;
     
     /** depth at any point */
     CPoint3d Zpoint( const CPoint3d &p1 ) const;
@@ -105,15 +106,15 @@ protected:
     CVector3d mitreV;
     
     /** 3D foot straight line */
-    CSubSpace foot;
+    CSubSpace footLine;
     /** 3D gaff straight line */
-    CSubSpace gaff;
+    CSubSpace gaffLine;
     /** 3D leech straight line */
-    CSubSpace leech;
+    CSubSpace leechLine;
     /** 3D luff straight line */
-    CSubSpace luff;
+    CSubSpace luffLine;
     /** 3D mitre straight line */
-    CSubSpace mitre;
+    CSubSpace mitreLine;
 };
 
 #endif
