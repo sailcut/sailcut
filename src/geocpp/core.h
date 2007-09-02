@@ -24,7 +24,7 @@
 // types and constants
 typedef double real;
 
-const real EPS = 1E-13; // was 1E-14
+const real EPS = 1E-14; // was 1E-14
 const real PI = 3.14159265358979323846;
 
 /** Class for returning information about an exception.
