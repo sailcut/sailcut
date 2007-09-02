@@ -312,7 +312,7 @@ CProfile CSailMould::interpol ( const real h ) const
     real dpth = 0;
     real hr;
 
-    if ( h < 0 )   // at or below clew
+    if ( h <= 0 )   // at or below lower profile
     {
         /*p = profile[0];*/
         hr = h / pv;
