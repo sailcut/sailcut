@@ -486,24 +486,31 @@ void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real
     CVector3d v(1,0,0);
     CVector3d v0(1,0,0);
     CSubSpace Line1, Line2; // two lines 
-    CSubSpace Intersection;
     
     real minSize = 0.1;     // used to avoid computation near zero width side
     
     unsigned int i = 0;
     unsigned int npl = left.nbpoints(), npb = bottom.nbpoints();
     
-    // compute basic edges vectors
+    ///* compute basic edges vectors */
     CVector3d v1 = CVector3d( left.point[npl/2] - left.point[0] );
+      //  if ( v1.norm() == 0 ) cout << "AddHems v1=0 " << endl;
     CVector3d v2 = CVector3d( left.point[npl-1] - left.point[npl/2] );
+      //  if ( v2.norm() == 0 ) cout << "AddHems v2=0 " << endl;
     CVector3d v3 = CVector3d( right.point[npl/2] - right.point[0] );
+      //  if ( v3.norm() == 0 ) cout << "AddHems v3=0 " << endl;
     CVector3d v4 = CVector3d( right.point[npl-1] - right.point[npl/2] );
+      //  if ( v4.norm() == 0 ) cout << "AddHems v4=0 " << endl;
     CVector3d v5 = CVector3d( bottom.point[npb-1] - bottom.point[0] );
+      //  if ( v5.norm() == 0 ) cout << "AddHems v5=0 " << endl;
     CVector3d v6 = CVector3d( bottom.point[npb-1] - bottom.point[npb-2] );
+      //  if ( v6.norm() == 0 ) cout << "AddHems v6=0 " << endl;
     CVector3d v7 = CVector3d( top.point[npb-1] - top.point[0] );
+      //  if ( v7.norm() == 0 ) cout << "AddHems v7=0 " << endl;
     CVector3d v8 = CVector3d( top.point[npb-1] - top.point[npb-2] );
+      //  if ( v8.norm() == 0 ) cout << "AddHems v8=0 " << endl <<endl;
 
-    /** copy the basic panel edge points to cut points as default */
+    ///* copy the basic panel edge points to cut points as default */
     for ( i = 0 ; i < npl ; i++ )
     {
         cutLeft.point[i] = left.point[i];
@@ -538,7 +545,7 @@ void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real
         v7 = CVector3d( top.point[1] - top.point[0] );
     }
     
-    /** Move the basic bottom edge points to the cut line */
+    ///* Move the basic bottom edge points to the cut line */
     if ( bw >= EPS )
     { // width of material is not too small
         for ( i = 0 ; i < npb ; i++ )
@@ -555,7 +562,7 @@ void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real
         }
     }
 
-    /** Move the basic top edge points to the cut line */
+    ///* Move the basic top edge points to the cut line */
     if ( tw >= EPS )
     { // width of material is not too small
         for ( i = 0 ; i < npb ; i++ )
@@ -572,7 +579,7 @@ void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real
         }
     }
 
-    /** Move the basic left edge points to the cut line */
+    ///* Move the basic left edge points to the cut line */
     if ( v1.norm() >= minSize )
     {  // lower left side is not a point 
         for ( i = 0 ; i < npl/2 ; i++)
@@ -598,15 +605,16 @@ void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real
                 if ( i == npl/2 +1 )
                 {   // compute mid side break point
                     Line2 = CSubSpace3d::line( cutLeft.point[i] , v2 );
-                    Intersection = Line1.intersect(Line2);
-                    if (Intersection.getdim() == 0)
-                        cutLeft.point[npl/2] = Intersection.getp();
+                    
+                    if ( Line1.intersect(Line2).getdim() == 0 )
+                        cutLeft.point[npl/2] = Line1.intersect(Line2).getp();
                     else throw "ERROR in CPanel::addHems = no mid left side intersection point";
+                    
                     // check adjacent points relative to mid side point
                     if ( (CVector3d(cutLeft.point[npl/2] - cutLeft.point[npl/2 -1]) * v0) <= 0 )
-                        cutLeft.point[npl/2 -1] = cutLeft.point[npl/2];
+                        cutLeft.point[npl/2 -1] = cutLeft.point[npl/2 -2];
                     if ( (CVector3d(cutLeft.point[npl/2 +1] - cutLeft.point[npl/2]) * v0) <= 0 )
-                        cutLeft.point[npl/2 +1] = cutLeft.point[npl/2];
+                        cutLeft.point[npl/2 +1] = cutLeft.point[npl/2 +2];
                 }
                 else
                 {   // compute other points
@@ -645,21 +653,38 @@ void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real
 
         for ( i = 0 ; i< npl ; i++)
             cutLeft.point[i] = left.point[i] + v.unit() * lw;
-
+            
+        // if (v.norm() == 0) cout << "AddHems 10 v=0 v5="<< v5.norm()<< " v7="<< v7.norm()<< endl;
         v1 = CMatrix::rot3d(2,-PI/2) * v.unit();
         v2 = v1;
     }
 
-    /** Move the basic right edge points to the cut line */
+    ///* Move the basic right edge points to the cut line */
     if ( v3.norm() >= minSize )
     {  // lower right side is not a point 
         for ( i = 0 ; i < npl/2 ; i++)
         {
             if ( i == 0 )
-                v = CVector3d( right.point[1] - right.point[0] );
+            {
+                if ( right.point[i+1] != right.point[i] )
+                    v = CVector3d( right.point[i+1] - right.point[i] );
+                else if ( right.point[i+2] != right.point[i] )
+                    v = CVector3d( right.point[i+2] - right.point[i] );
+                else if ( right.point[i+3] != right.point[i] )
+                    v = CVector3d( right.point[i+3] - right.point[i] );
+                else if ( right.point[i+4] != right.point[i] )
+                    v = CVector3d( right.point[i+4] - right.point[i] );
+            }
             else
-                v = CVector3d( right.point[i] - right.point[i-1] );
-
+            {
+                if ( right.point[i] != right.point[i-1] )
+                    v = CVector3d( right.point[i] - right.point[i-1] );
+                else if ( right.point[i+1] != right.point[i] )
+                    v = CVector3d( right.point[i+1] - right.point[i] );
+                else if ( right.point[i+2] != right.point[i] )
+                    v = CVector3d( right.point[i+2] - right.point[i] );
+            }
+ 
             cutRight.point[i] = right.point[i] + CMatrix::rot3d( 2 , -PI/2) * v.unit() * rw;
         }
         
@@ -675,43 +700,51 @@ void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real
                 if ( i == npl/2 +1 )
                 {   // compute mid side break point
                     Line2 = CSubSpace3d::line( cutRight.point[i] , v4 );
-                    Intersection = Line1.intersect(Line2);
-                    if (Intersection.getdim() == 0)
-                        cutRight.point[npl/2] = Intersection.getp();
+                    
+                    if (Line1.intersect(Line2).getdim() == 0)
+                        cutRight.point[npl/2] = Line1.intersect(Line2).getp();
                     else throw "ERROR in CPanel::addHems = no mid right side intersection point";
+                    
                     // check adjacent points relative to mid side point
                     if ( (CVector3d(cutRight.point[npl/2] - cutRight.point[npl/2 -1]) * v0) <= 0 )
-                        cutRight.point[npl/2 -1] = cutRight.point[npl/2];
+                        cutRight.point[npl/2 -1] = cutRight.point[npl/2 -2];
                     if ( (CVector3d(cutRight.point[npl/2 +1] - cutRight.point[npl/2]) * v0) <= 0 )
-                        cutRight.point[npl/2 +1] = cutRight.point[npl/2];
+                        cutRight.point[npl/2 +1] = cutRight.point[npl/2 +2];
                 }
                 else
                 {   // compute other points
                     cutRight.point[i] = right.point[i] + CMatrix::rot3d( 2 , -PI/2) * v4.unit() * rw;
-                    // check position relative to mid side point                
-                    if ( (CVector3d(cutRight.point[i] - cutRight.point[npl/2]) * v0) <= 0 )
-                        cutRight.point[npl/2 +1] = cutRight.point[npl/2];
                 }
             }
         }
         else
         { // upper right side is a point but not lower side
-            v4 = CVector3d( right.point[npl/2] - right.point[npl/2 -1] );
+            v4 = CVector3d( right.point[npl-1] - right.point[npl-2] );
+ 
             for ( i = npl/2 +1 ; i < npl ; i++ )
                 cutRight.point[i] = right.point[i] + CMatrix::rot3d( 2 , -PI/2) * v4.unit() * rw;
         }
     }
     else if ( v4.norm() >= minSize )
-    {  // only lower right side is a point
-        v3 = CVector3d( right.point[npl/2 +1] - right.point[npl/2] );
+    {   // only lower right side is a point
+        v3 = v4;
+        //v3 = CVector3d( right.point[npl-2] - right.point[npl/2] );
+/*        if (v3.norm() == 0) 
+        {   
+                cout << "AddHems v3=0 : about to crash 13" << endl;
+            for ( i = 0 ; i < npl ; i++ )
+                cout << "pt " << i << " xyz= " << right.point[i] << endl;
+        }
+*/      
         for ( i = 0 ; i < npl/2  ; i++ )
-            cutRight.point[i] = right.point[i] + CMatrix::rot3d( 2 , -PI/2) * v1.unit() * rw;
+            cutRight.point[i] = right.point[i] + CMatrix::rot3d( 2 , -PI/2) * v4.unit() * rw;
 
-        for ( i = npl/2 +1 ; i < npl -1 ; i++ )
+        for ( i = npl/2 +1 ; i < npl ; i++ )
         {
-            v4 = CVector3d( right.point[i] - right.point[i-1] );
             cutRight.point[i] = right.point[i] + CMatrix::rot3d( 2 , -PI/2) * v4.unit() * rw;
         }
+        v4 = CVector3d( right.point[npl-1] - right.point[npl-2] );
+          //    if (v4.norm() == 0) cout << "AddHems v4=0 about to crash 13" << endl;
     }
     else
     {  // complete right side is a point
@@ -720,6 +753,8 @@ void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real
         else
             v = ( v6 + v8 );
 
+            if (v.norm() == 0) cout << "AddHems v=v6=0 or v=v6+v8=0 about to crash 14" << endl;
+        
         for ( i = 0 ; i< npl ; i++)
             cutRight.point[i] = right.point[i] + v.unit() * rw;
 
@@ -727,13 +762,18 @@ void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real
         v4 = v3;
     }
 
-    /** Rejoining the 4 corners of the cut panel */
+    ///* Rejoining the 4 corners of the cut panel */
     /// lower left
+    if (v5.norm() == 0) 
+        cout << "AddHems v5=0 about to crash 15" << endl;
     Line1 = CSubSpace3d::line( cutBottom.point[0] , v5 );
+    
+    if (v6.norm() == 0) 
+        cout << "AddHems v6=0 about to crash 16" << endl;
     Line2 = CSubSpace3d::line( cutLeft.point[0] , v1 );
-    Intersection = Line1.intersect(Line2);
-    if (Intersection.getdim() == 0)
-        pt = Intersection.getp();
+    
+    if (Line1.intersect(Line2).getdim() == 0)
+        pt = Line1.intersect(Line2).getp();
     else throw "ERROR in CPanel::addHems = rejoining lower corner no left intersection point";
 
     /* Adjust the lower left point [0] to be at intersection */
@@ -755,10 +795,10 @@ void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real
     /// lower right
     Line1 = CSubSpace3d::line( cutBottom.point[npb-1] , v6 );
     Line2 = CSubSpace3d::line( cutRight.point[0] , v3 );
-    Intersection = Line1.intersect(Line2);
-    if (Intersection.getdim() == 0)
-        pt = Intersection.getp();
-    else throw "ERROR in CPanel::addHems = rejoining lower corner no right intersection point";
+ 
+    if (Line1.intersect(Line2).getdim() == 0)
+        pt = Line1.intersect(Line2).getp();
+    else throw "ERROR in CPanel::addHems = rejoining lower corner no right intersection point"; 
 
     /* Adjust the lower left point [0] to be at intersection */
     cutBottom.point[npb-1] = pt;
@@ -778,9 +818,9 @@ void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real
     /// upper left
     Line1 = CSubSpace3d::line( cutTop.point[0] , v7 );
     Line2 = CSubSpace3d::line( cutLeft.point[npl-1] , v2 );
-    Intersection = Line1.intersect(Line2);
-    if (Intersection.getdim() == 0)
-        pt = Intersection.getp();
+    
+    if (Line1.intersect(Line2).getdim() == 0)
+        pt = Line1.intersect(Line2).getp();
     else throw "ERROR in CPanel::addHems = rejoining upper corner no left intersection point";
 
     /* Adjust the upper left point to be at intersection */
@@ -801,10 +841,9 @@ void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real
     /// upper right
     Line1 = CSubSpace3d::line( cutTop.point[npb-1] , v8 );
     Line2 = CSubSpace3d::line( cutRight.point[npl-1] , v4 );
-    Intersection = Line1.intersect(Line2);
     
-    if (Intersection.getdim() == 0)
-        pt = Intersection.getp();
+    if (Line1.intersect(Line2).getdim() == 0)
+        pt = Line1.intersect(Line2).getp();
     else throw "ERROR in CPanel::addHems = rejoining upper corner no right intersection point";
     
     /* Adjust the upper right point to be at intersection */
