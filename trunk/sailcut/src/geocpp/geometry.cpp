@@ -146,8 +146,10 @@ CRect3d CRect3d::join(const CRect3d& rect) const
 CSubSpace CSubSpace2d::line(const CPoint2d &p, const CVector2d &v)
 {
     if (!v.norm())
-        throw CException("CSubSpace2d::line : vector cannot be zero");
-
+    {
+        cout << "CSubSpace2d::line : Crash point = " << p << endl;
+        throw CException("CSubSpace2d::line : Input vector cannot be zero");
+    }
     return CSubSpace(p, v.matrix(), GEOCPP_FROM_BASE);
 }
 
@@ -160,8 +162,10 @@ CSubSpace CSubSpace2d::line(const CPoint2d &p, const CVector2d &v)
 CSubSpace CSubSpace3d::line(const CPoint3d &p, const CVector3d &v)
 {
     if (!v.norm())
-        throw CException("CSubSpace3d::line : input vector cannot be zero point ");
-
+    {
+        cout << "CSubSpace3d::line : Crash point = " << p << endl;
+        throw CException("CSubSpace3d::line : Input vector cannot be zero point ");
+    }
     return CSubSpace(p, v.matrix(), GEOCPP_FROM_BASE);
 }
 
@@ -175,8 +179,10 @@ CSubSpace CSubSpace3d::line(const CPoint3d &p, const CVector3d &v)
 CSubSpace CSubSpace3d::plane(const CPoint3d &p, const CVector3d &v1, const CVector3d& v2)
 {
     if (!v1.cross(v2).norm())
-        throw CException("CSubSpace3d::plane : vectors cannot be colinear");
-
+    {
+        cout << "CSubSpace3d::plane : Crash point = " << p << endl;
+        throw CException("CSubSpace3d::plane : 2 Vectors cannot be colinear");
+    }
     CMatrix m(3,2);
     for (int i = 0; i < 3; i++)
     {
