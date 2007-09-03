@@ -27,6 +27,7 @@
 class CPanelGroup;
 class CSeam;
 
+enum enumEdgeType { LUFF_EDGE, GAFF_EDGE, FOOT_EDGE, LEECH_EDGE };
 
 /** The CSailWorker class does all the sail-related calculations like laying the panels
  *  It is used to create the sail from its definition.
@@ -61,6 +62,8 @@ public:
 protected:
     // minimum relative height
     real minH ;
+    /** type of Edge */
+    enumEdgeType Edge;
     
     /** layout of sail's panels */
     CPanelGroup Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; // CROSS
@@ -72,6 +75,7 @@ protected:
     CPanelGroup LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; // WING
 
     /** intersections with edges */
+    CPoint3d EdgeIntersect( const CPoint3d &pt1, const CVector3d &v1, const enumEdgeType &Edge ) const;
     CPoint3d FwdIntersect( const CPoint3d &pt1 ) const;
     CPoint3d AftIntersect( const CPoint3d &pt1 ) const;
     CPoint3d FootIntersect( const CPoint3d &pt1, const CVector3d &v1 ) const;
