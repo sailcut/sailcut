@@ -42,7 +42,7 @@ CSailWorker::CSailWorker(const CSailDef &s) : CSailDef(s)
     real x = 0, headstay = 0;
 
     /* computing the coordinates of the 4 corners of the sail */
-    switch (sailType )
+    switch ( sailType )
     {
     case JIB:
         x = tackY * foreJ / foreI;
@@ -127,13 +127,13 @@ CPanelGroup CSailWorker::makeSail( CPanelGroup &flatsail , CPanelGroup &dispsail
 {
     CPanelGroup output;
 
-    switch (sailType )
+    switch ( sailType )
     {
     case WING:
         output = LayoutWing(flatsail , dispsail);
         break;
     default:
-        switch (sailCut)
+        switch ( sailCut )
         {
         case CROSS:
             output = Layout0(flatsail , dispsail);
@@ -3547,6 +3547,134 @@ CPoint3d CSailWorker::FwdIntersect( const CPoint3d &pt1 ) const
     }
     return pFwd;
 } ////////////// FwdIntersect /////////////////
+
+
+/** Routine used for computing the point position on a sail curved edge.
+ *  Return p2 a 3d point which is the intersection of the vector v1 
+ *  passing by pt1 point inside sail area with the Edge curve.
+ *
+ * @author Robert Laine
+ */
+CPoint3d CSailWorker::EdgeIntersect( const CPoint3d &pt1, const CVector3d &v1, const enumEdgeType &Edge ) const
+{
+    // Input line 
+    CSubSpace InputLine = CSubSpace3d::line( pt1 , v1 );
+    // Edge end points 
+    CPoint3d pEnd1, pEnd2;
+    // Edge Vector
+    CVector3d EdgeV;
+    // Edge perpendicular vector toward outside of sail
+    CVector3d EdgeVP;
+    // Edge round
+    real EdgeR;
+    // Edge round position from end1 toward end2
+    int EdgeRP;
+    
+    switch ( Edge )
+    {
+        case LUFF_EDGE:
+            pEnd1 = tack;
+            pEnd2 = head;
+            EdgeR = luffR;
+            EdgeRP = luffRP;
+            EdgeV = CVector3d( pEnd2 - pEnd1 );
+            EdgeVP = CMatrix::rot3d(2 , PI/2) * EdgeV.unit();
+            
+            break;
+            
+        case GAFF_EDGE:
+            pEnd1 = head;
+            pEnd2 = peak;
+            EdgeR = gaffR;
+            EdgeRP = gaffRP;
+            EdgeV = CVector3d( pEnd2 - pEnd1 );
+            EdgeVP = CMatrix::rot3d(2 , PI/2) * EdgeV.unit();
+            break;
+            
+        case FOOT_EDGE:
+            pEnd1 = tack;
+            pEnd2 = clew;
+            EdgeR = footR;
+            EdgeRP = footRP;
+            EdgeV = CVector3d( pEnd2 - pEnd1 );
+            EdgeVP = CMatrix::rot3d(2 , -PI/2) * EdgeV.unit();
+            break;
+            
+        case LEECH_EDGE:
+            pEnd1 = clew;
+            pEnd2 = peak;
+            EdgeR = leechR;
+            EdgeRP = leechRP;
+            EdgeV = CVector3d( pEnd2 - pEnd1 );
+            EdgeVP = CMatrix::rot3d(2 , -PI/2) * EdgeV.unit();
+            break;
+    }
+    
+    // Edge line 
+    CSubSpace Line2 = CSubSpace3d::line( pEnd1, EdgeV );
+    
+    real h1=0, h2=0, d1=0, d2=0;
+    CPoint3d p0 , p1 , p2 , p3;
+    CVector3d v;
+
+    // find point p0 at intersection of straight edge with input line 
+    if ( InputLine.intersect( Line2 ).getdim() == 0 )
+        p0 = InputLine.intersect( Line2 ).getp();
+    else throw CException("CSailDef::EdgeIntersect-1 : intersection with edge is not a point!");
+
+    if ( CVector3d(p0 - pEnd1) * EdgeV <= 0 )
+        p2 = pEnd1;  // intersection left of edge
+    else if ( CVector3d(p0 - pEnd2) * EdgeV >= 0 )
+        p2 = pEnd2;  // intersection right of edge
+    else if ( fabs(EdgeR) < 1 )
+        p2 = p0;    // edge is straight
+    else
+    {   // intersection is on curved edge
+        h1 = CVector3d(p0 - pEnd1).norm() / (EdgeV.norm() + EPS); // relative height
+        d1 = EdgeR * RoundP(h1 , EdgeRP); // local depth of edge curve
+        p1 = p0 + EdgeVP * d1;
+        
+        // define a line parrallel to edge at distance d1
+        Line2 = CSubSpace3d::line( p1 , EdgeV );
+        
+        // point2 intersection of input line with parrallel
+        if ( InputLine.intersect( Line2 ).getdim() == 0 )
+            p2 = InputLine.intersect( Line2 ).getp();
+        else throw CException("CSailDef::EdgeIntersect-2 : intersection is not a point!");
+
+        v = CVector3d( p2 - p1);
+        
+        if ( v.norm() >= EPS ) 
+        {    
+            // translate point0 on straight edge
+            p3 = p0 + v;
+            
+            if ( CVector3d(p3 - pEnd1) * EdgeV <= 0 )
+                p2 = pEnd1;  // p3 left of edge end
+            else if ( CVector3d(p3 - pEnd2) * EdgeV >= 0 )
+                p2 = pEnd2;  // p3 right of edge end
+            else 
+            {   // point is on edge curve
+                h2 = CVector3d(p3 - pEnd1).norm() / (EdgeV.norm() + EPS);
+                d2 = EdgeR * RoundP( h2 , EdgeRP ); // local depth of edge curve
+                p2 = p3 + EdgeVP * d2;
+            }
+            
+            v = CVector3d ( p2 - p1 );
+            
+            if ( v.norm() <= EPS )
+                p2 = p1;
+            else
+            {   // displaced point 2 and p1 are used for Line2
+                Line2 = CSubSpace3d::line( p1 , v );
+                // compute final inersection
+                p2 = InputLine.intersect( Line2 ).getp(); 
+            }
+        }
+    }
+    //
+    return p2;
+} //////////////// EdgeIntersect //////////////////////////////
 
 
 /** Routine used for computing the real position of foot points.
