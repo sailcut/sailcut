@@ -1052,6 +1052,7 @@ CSide& CSide::operator=(const CSide& s)
  *********************************************/
 
 /** Outputs a CPanel  to a stream.
+ *  exemple:  cout << panel[i];
  */
 ostream& operator<<(ostream& o , const CPanel &p)
 {
@@ -1072,6 +1073,7 @@ ostream& operator<<(ostream& o , const CPanel &p)
 }
 
 /** Outputs a CPanelLabel  to a stream.
+ *  exemple:  cout << panel[i].label;
  */
 ostream& operator<< (ostream &o , const CPanelLabel &lb)
 {
@@ -1084,6 +1086,7 @@ ostream& operator<< (ostream &o , const CPanelLabel &lb)
 }
 
 /** Outputs a CSide  to a stream.
+ *  exemple:  cout << panel[i].left;
  */
 ostream& operator<< (ostream &out, const CSide &s)
 {
