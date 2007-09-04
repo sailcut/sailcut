@@ -477,6 +477,7 @@ CPanel CPanel::reframe(enumAlign align) const
  *   rw = width to be added on right side
  *   bw = width to be added on bottom side
  *
+ * @author Robert Laine alias Sailcuter
  */
 void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real &bw )
 {
