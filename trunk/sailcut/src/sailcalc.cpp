@@ -26,7 +26,7 @@
  *  P is the position of the maximum round in percent of the edge length
  *  The curve is a parabola on either side of the point P
  *
- * @author Robert Laine
+ * @author Robert Laine alias Sailcuter
  */
 real RoundP( const real &x, const int &p )
 {
@@ -47,21 +47,21 @@ real RoundP( const real &x, const int &p )
         p1=0.99;
     
     // limit the computation of the domain 0..1
-    if (x <= 0.00001)
-        y=0;
-    else if (x >= 1)
-        y=0;
-    else if (x > p1)
+    if ( x <= 0 )
+        y = 0;
+    else if ( x >= 1 )
+        y = 0;
+    else if ( x > p1 )
     {
-        x1 = (x-p1) / (1-p1);
+        x1 = (x - p1) / (1 - p1);
         y  = 1 - x1 * x1;
     }
     else
     {
         x1 = 1 - x / p1;
-        y  = 1 - x1 * x1;
+        y  = 1 - (x1 * x1);
     }
-
+    //
     return y;
 }
 
@@ -70,7 +70,7 @@ real RoundP( const real &x, const int &p )
  *  Return the angle in radian opposite to side a of the triangle
  *  a b and c are the length of the sides of the triangle 
  * 
- *  @author Robert Laine
+ * @author Robert Laine alias Sailcuter
  */
 real Atriangle( const real &a, real const &b, const real &c )
 {
@@ -82,13 +82,13 @@ real Atriangle( const real &a, real const &b, const real &c )
     real per = 0, AA = 0;
     per = (a + b + c) / 2;
 
-    if (per < 2E-7)
+    if ( per <= EPS )
         AA = PI /3;
-    else if (fabs(per-a) < 2E-7 )
+    else if ( fabs(per-a) <= EPS )
         AA = PI;
     else
         AA = 2 * atan (sqrt ((per-b) * (per-c) / (per * (per-a)) ) ) ;
-
+    //
     return AA;
 }
 
@@ -97,7 +97,7 @@ real Atriangle( const real &a, real const &b, const real &c )
  *  Return the angle in radian at point pta of the triangle
  *  Triangle is defined by the 3d points pta, ptb, ptc
  * 
- *  @author Robert Laine
+ * @author Robert Laine alias Sailcuter
  */
 real Atriangle3d ( const CPoint3d &pta, const CPoint3d &ptb, const CPoint3d &ptc )
 {
@@ -106,34 +106,35 @@ real Atriangle3d ( const CPoint3d &pta, const CPoint3d &ptb, const CPoint3d &ptc
       Return the angle AA at the corner pta of the triangle
       The returned angle AA is expressed in Radians
     */
-    real AA, a=0, b=0, c=0, per=0;
+    real AA=0, a=0, b=0, c=0, per=0;
 
-    a = sqrt( (ptc.x()-ptb.x())*(ptc.x()-ptb.x())
-              +(ptc.y()-ptb.y())*(ptc.y()-ptb.y())
-              +(ptc.z()-ptb.z())*(ptc.z()-ptb.z()) );
-    b = sqrt( (pta.x()-ptc.x())*(pta.x()-ptc.x())
-              +(pta.y()-ptc.y())*(pta.y()-ptc.y())
-              +(pta.z()-ptc.z())*(pta.z()-ptc.z()) );
-    c = sqrt( (ptb.x()-pta.x())*(ptb.x()-pta.x())
-              +(ptb.y()-pta.y())*(ptb.y()-pta.y())
-              +(ptb.z()-pta.z())*(ptb.z()-pta.z()) );
+    a = sqrt( (ptc.x()-ptb.x()) * (ptc.x()-ptb.x())
+              +(ptc.y()-ptb.y()) * (ptc.y()-ptb.y())
+              +(ptc.z()-ptb.z()) * (ptc.z()-ptb.z()) );
+    b = sqrt( (pta.x()-ptc.x()) * (pta.x()-ptc.x())
+              +(pta.y()-ptc.y()) * (pta.y()-ptc.y())
+              +(pta.z()-ptc.z()) * (pta.z()-ptc.z()) );
+    c = sqrt( (ptb.x()-pta.x()) * (ptb.x()-pta.x())
+              +(ptb.y()-pta.y()) * (ptb.y()-pta.y())
+              +(ptb.z()-pta.z()) * (ptb.z()-pta.z()) );
+              
     per =(a + b + c)/2;
 
-    if (per < 2E-7)
+    if ( per <= EPS )
         AA = PI /3;
-    else if (fabs(per-a) < 2E-7 )
+    else if ( fabs(per-a) <= EPS )
         AA = PI;
     else
         AA = 2 * atan (sqrt ((per-b) * (per-c) / (per * (per-a)) ) ) ;
-
+    //
     return AA;
 }
 
 
 /** Compute the distance from a point pta
- *  to the line defined by the points ptb and ptc
+ *  to the line defined by the 2 points ptb and ptc
  *
- *  @author Robert Laine
+ * @author Robert Laine alias Sailcuter
  */
 real Distance3d(const CPoint3d &pta, const CPoint3d &ptb, const CPoint3d &ptc)
 {
@@ -148,12 +149,12 @@ real Distance3d(const CPoint3d &pta, const CPoint3d &ptb, const CPoint3d &ptc)
         The sign of d is negative if pta is right of the line.
     */
     real d;
-    CVector3d Va = CVector3d(pta-ptb);
-    CVector3d Vb = CVector3d(ptc-ptb).unit();
+    CVector3d Va = CVector3d( pta - ptb );
+    CVector3d Vb = CVector3d( ptc - ptb).unit();
     CVector3d Vd = Vb.cross(Va);
     d = Vd.norm();
-    if (Vd.z() <0)
+    if ( Vd.z() < 0 )
         d = -d;
-
+    //
     return d;
 }
