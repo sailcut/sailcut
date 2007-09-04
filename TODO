@@ -1,4 +1,10 @@
-Need to make sure that only most recent files opened stay in list
-
+4 sept 2007
+In the boat viewer the lower part of screen which contains 
+the tabs of all boat elements is too high and leave little 
+for boat display.
+Given screen ratio going toward 16/9 it will be better to 
+move the element tabs zone to the right side under the 
+display button
+ 
 EOF
 
