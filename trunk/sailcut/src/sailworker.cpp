@@ -3338,21 +3338,23 @@ real CSailWorker::SailLP( )
     unsigned int i, imax=10;
     real h1=0, w=0;
     CPoint3d p, p1, p2, p3;
-    //printf ("IRC height = %f \n", HL);
+    CVector3d v;
 
-    /// compute the distance to the real luff
     p1 = Zpoint( EdgeIntersect( LUFF_EDGE, clew , luffVP) );
-    p2 = clew;
-
-    p3 = p1;
+    v = CVector3d(clew - p1);
+    p2 = p1;
     
+    // compute the distance from the real luff to clew
     for ( i = 1 ; i <= imax ; i++ )
     {
         h1 = real(i) / imax;
-        p = Zpoint( p1 + CVector3d(p2 - p1) * h1 );
-        w = w + CVector3d(p - p3).norm();
-        p3 = p;
+        p =  p1 + v * h1 ;
+        p.z() = 0;
+        p3 = Zpoint( p );
+        w = w + CVector3d(p3 - p2).norm();
+        p2 = p3;
     }
+    //
     return ( w );
 }
 
@@ -3420,15 +3422,21 @@ CPoint3d CSailWorker::FwdIntersect( const CPoint3d &pt1 ) const
     CVector3d v = CVector3d(1,0,0);
     real h1=0, h2=0;  // relative position on luff/foot/gaff
     real d1=0, d2=0;  // local depth of forward curve
+    
     /* define horizontal line */
     CSubSpace lineH = CSubSpace3d::line( pt1 , CVector3d(1,0,0) ); 
     CSubSpace line2 = luffLine;
     
     if ( lineH.intersect(luffLine).getdim() == 0 )
         p0 = lineH.intersect(luffLine).getp();
-    else throw CException("CSailWorker::FwdIntersect 1: intersection with luff is not a point!");
-
-    /* WARNING = when working intersection points DO change only Fwd.x() but NOT Fwd.z() Fwd.y() */
+    else 
+    {   
+        cout << endl;
+        cout << "tack= " << tack << " / head= " << head << " / pt1= " << pt1 <<endl;
+        throw CException("CSailWorker::FwdIntersect 1: intersection with luff is not a point!");
+        
+    }
+    // WARNING = when working intersection points DO change only Fwd.x() but NOT Fwd.z() Fwd.y() 
     pFwd.x() = p0.x();
     pFwd.z() = 0;
     
@@ -3544,6 +3552,7 @@ CPoint3d CSailWorker::FwdIntersect( const CPoint3d &pt1 ) const
         pFwd.x() = peak.x(); // set forward point on vertical above peak
         //pFwd.z() = peak.z(); //
     }
+    //
     return pFwd;
 } ////////////// FwdIntersect /////////////////
 
