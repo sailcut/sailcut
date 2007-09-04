@@ -60,9 +60,7 @@ public:
     CPoint3d clew;
 
 protected:
-    // minimum relative height
-    real minH ;
-    /** type of Edge */
+    /** type of Edge of sail */
     enumEdgeType Edge;
     
     /** layout of sail's panels */
@@ -75,13 +73,9 @@ protected:
     CPanelGroup LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; // WING
 
     /** intersections with edges */
-    CPoint3d EdgeIntersect( const CPoint3d &pt1, const CVector3d &v1, const enumEdgeType &Edge ) const;
+    CPoint3d EdgeIntersect( const enumEdgeType &Edge, const CPoint3d &pt1, const CVector3d &v1 ) const;
     CPoint3d FwdIntersect( const CPoint3d &pt1 ) const;
     CPoint3d AftIntersect( const CPoint3d &pt1 ) const;
-    CPoint3d FootIntersect( const CPoint3d &pt1, const CVector3d &v1 ) const;
-    CPoint3d GaffIntersect( const CPoint3d &pt1, const CVector3d &v1 ) const;
-    CPoint3d LeechIntersect( const CPoint3d &pt1, const CVector3d &v1 ) const;
-    CPoint3d LuffIntersect( const CPoint3d &pt1, const CVector3d &v1 ) const;
     CPoint3d MitreIntersect( const CPoint3d &pt1, const CVector3d &v1 ) const;
     
     /** mitre intersection point with luff */
