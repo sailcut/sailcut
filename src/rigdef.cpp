@@ -27,7 +27,7 @@ CRigDef::CRigDef()
 {
     // default values for member variables are set here
     rigID = "Test rig 1";
-    foreI  = 5500;    // height of fore triangle
+    foreI  = 6500;    // height of fore triangle
     foreJ  = 2000;    // base of fore triangle
     MHeight = 8000;   // mast height
     MCord = 140;
@@ -44,17 +44,17 @@ CRigDef::CRigDef()
     //MShead = CVector3d(2200, 7000, 0);
 
     CSH = 7000;     // cap shroud height
-    CSB = 900;
-    LSB = 800;
+    CSB = 500;
+    LSB = 400;
     SPNB = 3;       // number of spreaders
     SPH[0] = 0;
     SPW[0] = CSB;
-    SPH[1] = 2000;
+    SPH[1] = 1800;
     SPW[1] = CSB;
-    SPH[2] = 4000;
-    SPW[2] = 700;
-    SPH[3] = 6000;
-    SPW[3] = 350;
+    SPH[2] = 3600;
+    SPW[2] = CSB -50;
+    SPH[3] = 5400;
+    SPW[3] = CSB -200;
 }
 
 
