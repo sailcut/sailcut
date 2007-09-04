@@ -3,6 +3,7 @@ Sailcut CAD 1.3.0
  * added hull definition : preliminary version not fully operational
  * improved - redesign user interface as a multiple document interface
  * improved - add shaded view to the boat viewer
+ * improved code readability is sailworker
  * fixed bug in leech length condition resulting in a crash
  * fixed - fix initialisation of shaded view (fixes empty view)
  * fixed bug of rounding of profile data
