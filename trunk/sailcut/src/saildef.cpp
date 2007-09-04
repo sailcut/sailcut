@@ -38,7 +38,7 @@ CSailDef::CSailDef()
 
     LOA    = 7000;   // length of hull in millimetre
     foreJ  = 2000;    // base of fore triangle
-    foreI  = 5500;    // height of fore triangle
+    foreI  = 6500;    // height of fore triangle
 
     tackX  = 1972;    // longitudinal distance of main sail tack from stem in millimetre
     tackY  = 750;     // height of sail tack above stem in millimetre
