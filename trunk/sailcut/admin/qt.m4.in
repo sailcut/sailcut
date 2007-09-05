@@ -345,7 +345,7 @@ AC_DEFUN([JWB_CHECK_QT],
     dnl prerequisites
     case "$host" in
       *-apple-darwin* )
-        LIB_QT="-framework Carbon -liconv -lz"
+        LIB_QT="-framework Carbon -liconv -lz -framework Cocoa"
         ;;
     esac
 
