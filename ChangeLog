@@ -1,12 +1,13 @@
 Sailcut CAD 1.3.0
- * added mast definition : fully operational
- * added hull definition : preliminary version not fully operational
+ * added - mast definition : fully operational
+ * added - hull definition : preliminary version not fully operational
  * improved - redesign user interface as a multiple document interface
  * improved - add shaded view to the boat viewer
- * improved code readability is sailworker
- * fixed bug in leech length condition resulting in a crash
- * fixed - fix initialisation of shaded view (fixes empty view)
- * fixed bug of rounding of profile data
+ * improved - code readability is sailworker
+ * fixed - bug in leech length condition resulting in a crash
+ * fixed - bug in initialisation of shaded view (should fix empty view)
+ * fixed - bug in rounding of profile data
+ * fixed - compilation on MacOS/X with Qt 4.3 (added -framework Cocoa)
 
 Sailcut CAD 1.2.4
  * fixed - remove offset at tack and clew in radial cut
