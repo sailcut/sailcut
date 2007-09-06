@@ -3097,82 +3097,23 @@ CPoint3d CSailWorker::AftIntersect( const CPoint3d& pt1 ) const
     // real x=0, y=0, z=0; // for debugging only
 
     CPoint3d pAft = pt1; // aft intersection point is initialised at p1
-    CPoint3d p0 = pt1;  // will be the intersection with straight leech
-    CPoint3d p1, p2, p3;
-    CVector3d v;
-    real h1=0, h2=0, d1=0, d2=0;
+    CVector3d vH = CVector3d( 1, 0, 0 );
     
-    /* define horizontal line */
-    CSubSpace lineH = CSubSpace3d::line( pt1 , CVector3d(1,0,0) ); 
-    
-    CSubSpace line2 = leechLine;
-    
-    /* compute intersection with straight leech 
-    if ( CVector3d( p0 - clew ) * leechV <= EPS )
-        p2 = clew;  // intersection below clew
-    else if (CVector3d( p0 - peak ) * leechV >= 0 )
-        p2 = peak;  // intersection above peak
-    
-    */
-    if ( lineH.intersect(leechLine).getdim() == 0 )
-        p0 = lineH.intersect(leechLine).getp();
-    else throw CException("CSailWorker::AftIntersect 1 : intersection with leech is not a point!"); 
-
-    /* WARNING when searching for intersection with curve DO NOT change pAft.y() and pAft.z()  */
-    pAft.x() = p0.x();
-    pAft.z() = 0;
-    
-    if ( CVector3d( p0 - peak ) * leechV >= 0 )  
-    {   // rear point above the peak, set li on vertical above peak
+    if ( pt1.y() >= peak.y() )
+    {   // rear point above the peak, set output on vertical above peak
         pAft.x() = peak.x();
-        // pAft.z() = peak.z();
     }
-    else if ( CVector3d( p0 - clew ) * leechV <= 0 )
-    {   // rear point on or below the clew, set li on vertical below clew
+    else if ( pt1.y() <= clew.y() )
+    {   // rear point on or below the clew, set output on vertical below clew
         pAft.x() = clew.x();
-        // pAft.z() = clew.z();
     }
-    else if ( fabs(leechR) > 1)
+    else 
     {   // move point on leech which is not straight
-        h1 = CVector3d( p0 - clew ).norm() / leechV.norm(); // the relative height on straight leech
-        d1 = leechR * RoundP( h1 , leechRP ); // local depth of leech curve
-        // compute first point on leech curve
-        p1 = p0 - leechVP * d1;
-        line2 = CSubSpace3d::line( p1 , leechV );
-        
-        p2 = lineH.intersect(line2).getp();
-        
-        v = CVector3d( p2 - p1 );
-        
-        if ( v.norm() > EPS )
-        {
-            p3 = p0 + v;
-        
-            if (CVector3d( p3 - peak ) * leechV >= 0 )
-                p2 = peak;
-            else if ( CVector3d( p3 - clew ) * leechV <= 0 )
-                p2 = clew;
-            else
-            {   // point2 moved back on real leech curve 
-                h2 = CVector3d( p3 - clew ).norm() / leechV.norm(); // the relative height on straight leech
-                d2 = leechR * RoundP( h2 , leechRP );
-                p2 = p3 - leechVP * d2;
-            } 
-            
-            v = CVector3d( p2 - p1 );
-            
-            if ( v.norm() > EPS )
-            {
-                line2 = CSubSpace3d::line( p1 , v );
-                
-                if ( lineH.intersect(line2).getdim() == 0 )
-                    p2 = lineH.intersect(line2).getp();
-                else throw CException("CSailWorker::AftIntersect 2 : intersection with leech is not a point!"); 
-            }
-        }
-        pAft.x() = p2.x();
-        // pAft.z() = p2.z();
+        pAft = EdgeIntersect( LEECH_EDGE, pt1, vH );
     } 
+    // ensure that Z=0
+    pAft.z() = 0;
+    //
     return pAft;
 } //////////////// AftIntersect //////////////////////////
 
@@ -3417,29 +3358,8 @@ real CSailWorker::LuffLength( const real &h )
 CPoint3d CSailWorker::FwdIntersect( const CPoint3d &pt1 ) const
 {    
     CPoint3d pFwd = pt1; // forward intersection point initialised at p1
-    CPoint3d p0 = pt1; // will be the point of intersection of horizontal with forward straight line
-    CPoint3d p1, p2, p3;
-    CVector3d v = CVector3d(1,0,0);
-    real h1=0, h2=0;  // relative position on luff/foot/gaff
-    real d1=0, d2=0;  // local depth of forward curve
-    
-    /* define horizontal line */
-    CSubSpace lineH = CSubSpace3d::line( pt1 , CVector3d(1,0,0) ); 
-    CSubSpace line2 = luffLine;
-    
-    if ( lineH.intersect(luffLine).getdim() == 0 )
-        p0 = lineH.intersect(luffLine).getp();
-    else 
-    {   
-        cout << endl;
-        cout << "tack= " << tack << " / head= " << head << " / pt1= " << pt1 <<endl;
-        throw CException("CSailWorker::FwdIntersect 1: intersection with luff is not a point!");
-        
-    }
-    // WARNING = when working intersection points DO change only Fwd.x() but NOT Fwd.z() Fwd.y() 
-    pFwd.x() = p0.x();
-    pFwd.z() = 0;
-    
+    CVector3d vH = CVector3d( 1, 0, 0 );
+
     if ( pt1.y() <= tack.y() )  // point is at or below tack
     {
         pFwd.x() = tack.x();  // set forward point on vertical below tack
@@ -3447,49 +3367,7 @@ CPoint3d CSailWorker::FwdIntersect( const CPoint3d &pt1 ) const
     }
     else if ( pt1.y() < head.y() ) // forward point is on luff curve
     {
-        p2 = p0;
-        if (fabs(luffR) > 1)
-        {
-            h1 = CVector3d( p0 - tack ).norm() / luffV.norm() ;
-            d1 = luffR * RoundP( h1 , luffRP );
-            // displace point to luff curve
-            p1 = p0 + luffVP * d1;
-            
-            line2 = CSubSpace3d::line( p1 , luffV );
-            p2 = lineH.intersect(line2).getp();
-            
-            v = CVector3d( p2 - p1 );
-            
-            if ( v.norm() > EPS )
-            {
-                p3 = p0 + v;
-                
-                if ( p3.y() >= head.y() )
-                    p2 = head;
-                else if ( p3.y() <= tack.y() )
-                    p2 = tack;
-                else
-                {   // move point 2 to luff curve 
-                    h2 = CVector3d( p2 - tack ).norm() / luffV.norm();
-                    d2 = luffR * RoundP( h2 , luffRP );
-                    p2 = p3 + luffVP * d2;
-                }
-                
-                v = CVector3d( p2 - p1 );
-                
-                if ( v.norm() <= EPS )
-                    p2 = p1;
-                else
-                {
-                    line2 = CSubSpace3d::line( p1 , v );
-                    if ( lineH.intersect(line2).getdim() == 0 )
-                        p2 = lineH.intersect(line2).getp();
-                    else throw CException("CSailWorker::FwdIntersect 2: intersection is not a point!");
-                }
-            }
-        }
-        pFwd.x() = p2.x();
-        // pFwd.z() = p2.z();
+        pFwd = EdgeIntersect( LUFF_EDGE, pt1, vH );
     }
     else if ( pt1.y() == head.y() )  // point exactly at head height
     {
@@ -3497,61 +3375,16 @@ CPoint3d CSailWorker::FwdIntersect( const CPoint3d &pt1 ) const
         // pFwd.z() = head.z();
     }
     else if ( pt1.y() < peak.y() )
-    {   // forward point is on gaff segment
-        if ( lineH.intersect(gaffLine).getdim() != 0 )
-        {   // case of non intersection of the two lines if parrallel
-            p2 = head;
-        }
-        else
-        {
-            p0 = lineH.intersect(gaffLine).getp();
-            p2 = p0;
-            if ( fabs( gaffR ) > 1 )
-            {
-                h1 = CVector3d( p0 - head ).norm() / gaffV.norm();
-                d1 = gaffR * RoundP( h1 , gaffRP );
-                p1 = p0 + gaffVP * d1;
-                line2 = CSubSpace3d::line( p1 , gaffV );
-                
-                p2 = lineH.intersect(line2).getp();
-                
-                v = CVector3d( p2 - p1 );
-                
-                if ( v.norm() > EPS )
-                {
-                    p3 = p0 + v;
-                    
-                    if( p3.y() >= peak.y() )
-                        p2 = peak;
-                    else if ( p3.y() <= head.y() )
-                        p2 = head;
-                    else
-                    {   // move point 2 to gaff curve 
-                        h2 = CVector3d( p3 - head ).norm() / gaffV.norm();
-                        d2 = gaffR * RoundP( h2 , gaffRP );
-                        p2 = p3 + gaffVP * d2;
-                    }
-                    
-                    v = CVector3d( p2 - p1 );
-                    
-                    if ( v.norm() > EPS )
-                    {
-                        line2 = CSubSpace3d::line( p1 , v );
-                        if ( lineH.intersect(line2).getdim() ==0 )
-                            p2 = lineH.intersect(line2).getp();
-                        else throw CException("CSailWorker::FwdIntersect 3: intersection is not a point!");
-                    }
-                }
-            }
-        }
-        pFwd.x() = p2.x();
-        // pFwd.z() = p2.z();
+    {   // forward point is on gaff 
+        pFwd = EdgeIntersect( GAFF_EDGE, pt1, vH );
     }
     else 
     { // point is above peak
         pFwd.x() = peak.x(); // set forward point on vertical above peak
         //pFwd.z() = peak.z(); //
     }
+    // Ensure Z = 0
+    pFwd.z() = 0;
     //
     return pFwd;
 } ////////////// FwdIntersect /////////////////
