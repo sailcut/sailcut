@@ -19,6 +19,6 @@
 	<key>CFBundleVersion</key>
 	<string>@VERSION@</string>
 	<key>CFBundleIconFile</key>
-	<string>sailcut</string>
+	<string>sailcut.icns</string>
 </dict>
 </plist>
