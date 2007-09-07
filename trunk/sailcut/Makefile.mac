@@ -18,7 +18,7 @@ mac-build-stamp:
 	  $(mac_configure) \
 	    --with-datadir=../Resources/Translations \
 	    --with-docdir=../Resources/Documentation \
-	    --with-icondir=..
+	    --with-icondir=../Resources
 	make -C $(mac_builddir)
 	touch $@
 

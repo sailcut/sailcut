@@ -8,6 +8,7 @@ Sailcut CAD 1.3.0
  * fixed - bug in initialisation of shaded view (should fix empty view)
  * fixed - bug in rounding of profile data
  * fixed - compilation on MacOS/X with Qt 4.3 (added -framework Cocoa)
+ * fixed - icon for MacOS/X
 
 Sailcut CAD 1.2.4
  * fixed - remove offset at tack and clew in radial cut
