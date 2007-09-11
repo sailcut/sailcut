@@ -99,14 +99,18 @@ void CSailDispGL::draw( const CPanelGroup &sail )
         if ( sail.type == HULL )
         {
             //  grey
-            glColor3f(.4, .5, .5);
+            glColor3f(.4, .5, .6);
+        } 
+        else if ( sail.type == RIG )
+        {
+            //  red
+            glColor3f(.9, .1, .1);
         }
         else
         {
             // alternate light yellow / yellow panels
             glColor3f(.9, .9, 0.4 + 0.4*(i % 2));
         }
-
         draw( sail.panel[i] );
     }
     for( i = 0; i < sail.child.size(); i++ )
