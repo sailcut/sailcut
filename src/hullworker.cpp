@@ -184,6 +184,11 @@ CPanelGroup CHullWorker::makeHull() //const
     CSubSpace Line1;
     CSubSpace Intersection1;
     
+    // create the hull type 
+    CPanelGroup hull;
+    hull.type = HULL; // used for color scheme in saildispgl
+    hull.title = hullID;
+    
     /* all the code has to be changed to start building the hull from the lower chine */
     unsigned int npl = chine.right.nbpoints();     // number of right/left points
     unsigned int npb = chine.bottom.nbpoints();   // number of bottom/top points
@@ -191,7 +196,7 @@ CPanelGroup CHullWorker::makeHull() //const
     deck1 = chine;
     plank1 = chine;
     
-    /// Laying bottom panels
+    // Laying bottom panels
     for ( j = 0 ; j < npb ; j++ )
     {   
         plank1.bottom.point[j] =  chine.bottom.point[j];
@@ -200,10 +205,6 @@ CPanelGroup CHullWorker::makeHull() //const
     }
     plank1.left.fill( plank1.bottom.point[0] , plank1.top.point[0] );
     plank1.right.fill( plank1.bottom.point[npb-1] , plank1.top.point[npb-1] );
-    
-    CPanelGroup hull(plank1);
-    hull.type = HULL;
-    hull.title = hullID;
     
     plank2 = plank1;
     for ( j = 0 ; j < npb ; j++ )
@@ -216,23 +217,11 @@ CPanelGroup CHullWorker::makeHull() //const
         plank2.left.point[j].z() = -plank1.left.point[j].z();
         plank2.right.point[j].z() = -plank1.right.point[j].z();
     }
+    // add the bottom planks to the hull
+    hull.panel.push_back(plank1);
     hull.panel.push_back(plank2);
     
-    /*// Laying chine plane panels
-    for ( j=0 ; j < npb ; j++)
-    {   // mirror points
-        deck1.top.point[j].z() = -deck1.top.point[j].z(); 
-        deck1.bottom.point[j].z() = -deck1.bottom.point[j].z();
-    }
-    for ( j=0 ; j < npl ; j++)
-    {   // mirror points
-        deck1.left.point[j].z() = -deck1.left.point[j].z();
-        deck1.right.point[j].z() = -deck1.right.point[j].z();
-    }
-    hull.panel.push_back(deck1);
-    */
-    
-    /// laying top side
+    // laying top side planks
     v1 = CVector3d( -cos(real(StemA) * PI/180) , sin(real(TopPlankA) * PI/180) , cos(real(TopPlankA) * PI/180) );
     
     for ( j = 0 ; j < npb ; j++ )
@@ -251,8 +240,6 @@ CPanelGroup CHullWorker::makeHull() //const
     plank1.left.fill( plank1.bottom.point[0] , plank1.top.point[0] );
     plank1.right.fill( plank1.bottom.point[npb-1] , plank1.top.point[npb-1] );
     
-    hull.panel.push_back(plank1);
-    
     plank2 = plank1;
     for ( j = 0 ; j < npb ; j++ )
     {   // mirror points
@@ -264,9 +251,11 @@ CPanelGroup CHullWorker::makeHull() //const
         plank2.left.point[j].z() = -plank1.left.point[j].z();
         plank2.right.point[j].z() = -plank1.right.point[j].z();
     }
+    // add the top side planks to the hull
+    hull.panel.push_back(plank1);
     hull.panel.push_back(plank2);
     
-    /// Laying deck
+    // Laying deck planks
     for ( j = 0 ; j < npb ; j++ )
     {   
         deck1.bottom.point[j] = plank1.top.point[j]; 
@@ -281,10 +270,11 @@ CPanelGroup CHullWorker::makeHull() //const
         deck2.left.fill(deck2.bottom.point[0] , deck2.top.point[0]);
         deck2.right.fill(deck2.bottom.point[npb-1] , deck2.top.point[npb-1]);
     }
+    // add the deck planks to the hull
     hull.panel.push_back(deck1);
     hull.panel.push_back(deck2);
         
-    /// translate the hull such that stem is at x=O, y=0, z=0 ///
+    // translate the hull such that stem is at x=O, y=0, z=0 ///
     j =  hull.panel.size() -1;
     pt0 = hull.panel[j].top.point[0];
        
