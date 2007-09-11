@@ -43,7 +43,7 @@ void CSailPainter::draw(const CSide &side)
  */
 void CSailPainter::draw(const CPanel &panel)
 {
-    setPen(Qt::blue);
+    //setPen(Qt::blue);
     draw(panel.left);
     draw(panel.right);
     draw(panel.top);
@@ -52,12 +52,14 @@ void CSailPainter::draw(const CPanel &panel)
     if (panel.hasHems)
     {
         setPen(Qt::red);
+        
         draw(panel.cutLeft);
         draw(panel.cutRight);
         draw(panel.cutTop);
-        draw(panel.cutBottom);
+        draw(panel.cutBottom); 
+    
+        setPen(Qt::black);
     }
-    setPen(Qt::black);
 }
 
 
@@ -74,10 +76,24 @@ void CSailPainter::draw(const CPanelLabel &label)
 void CSailPainter::draw(const CPanelGroup &sail)
 {
     unsigned int i;
+    
     for( i = 0; i < sail.panel.size(); i++ )
+    {   
+        if ( sail.type == HULL )
+            setPen(Qt::darkGreen);
+        else if ( sail.type == RIG )
+            setPen(Qt::darkRed);
+        else
+            setPen(Qt::blue);
+             
         draw(sail.panel[i]);
+    }
     for( i = 0; i < sail.child.size(); i++ )
         draw(sail.child[i]);
+        
+    // reset painter color 
+    setPen(Qt::black);
+        
 }
 
 
