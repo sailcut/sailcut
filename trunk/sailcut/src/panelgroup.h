@@ -22,7 +22,7 @@
 
 #include "panel.h"
 
-enum enumBoatObjType { SAIL, HULL };
+enum enumBoatObjType { SAIL, RIG, HULL };
 
 /** This class holds a collection of panels, for instance to represent
  *  a 3D or a developed sail.
