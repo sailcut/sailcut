@@ -44,6 +44,8 @@ CPanelGroup CRigWorker::makeRig() const
     real h = 0, cord;
     
     CPanelGroup rig;
+    rig.type = RIG; // used for color scheme in saildispgl
+    rig.title = rigID;
    
     /// add mast 
     cord = MCord / 2;
@@ -82,6 +84,7 @@ CPanelGroup CRigWorker::makeRig() const
     
         mast2.left.fill(mast2.bottom.point[0],mast2.top.point[0]); 
         mast2.right.fill(mast2.bottom.point[npb-1],mast2.top.point[npb-1]); 
+        // add mast to rig
         rig.panel.push_back(mast2);
     }
     
