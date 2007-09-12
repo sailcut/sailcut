@@ -124,7 +124,7 @@ void CFormBoat::setupMainWidget()
     tabs = new CSailViewerTabs(this);
     defpanel = new CBoatDefPanel(this);
 
-    QSplitter *splitter = new QSplitter(Qt::Vertical, this);
+    QSplitter *splitter = new QSplitter(Qt::Horizontal, this);
     splitter->addWidget(tabs);
     splitter->addWidget(defpanel);
 
