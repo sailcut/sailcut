@@ -100,16 +100,20 @@ CBoatElementWidget::CBoatElementWidget(QWidget *parent)
     iLayout->addWidget( lblFileStatic, 0, 0 );
     lblFile = new QLabel( grpInfo );
     iLayout->addWidget( lblFile, 0, 1 );
-    btnReload = new QPushButton(grpInfo);
-    iLayout->addWidget( btnReload, 0, 2);
+    
     lblNameStatic = new QLabel( grpInfo );
     iLayout->addWidget( lblNameStatic, 1, 0 );
     txtName = new QLineEdit( grpInfo );
     iLayout->addWidget( txtName, 1, 1 );
+    
+    btnReload = new QPushButton(grpInfo);
+    iLayout->addWidget( btnReload, 2, 1);
 
     wdgOrigin = new CVector3dWidget(grpInfo);
-    iLayout->addWidget(wdgOrigin, 2, 0, 1, 3);
-
+    iLayout->addWidget(wdgOrigin, 3, 0, 1, 3);
+    //iLayout->addItem( new QSpacerItem( 20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding ), 4, 1 );
+    
+    // add button below frame
     btnUpdate = new QPushButton(this);
     btnRemove = new QPushButton(this);
 
@@ -119,6 +123,9 @@ CBoatElementWidget::CBoatElementWidget(QWidget *parent)
     layout->addWidget(btnRemove, 1, 0);
     layout->addItem( new QSpacerItem( 20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum ), 1, 1 );
     layout->addWidget(btnUpdate, 1, 2);
+    
+    // pack everything upward
+    layout->addItem( new QSpacerItem( 20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding ), 2, 0 );
 
     languageChange();
 
@@ -134,7 +141,7 @@ CBoatElementWidget::CBoatElementWidget(QWidget *parent)
  */
 void CBoatElementWidget::languageChange()
 {
-    grpInfo->setTitle( tr( "Sail information" ) );
+    grpInfo->setTitle( tr( "Element information" ) );
     lblFileStatic->setText( tr("file") );
     lblNameStatic->setText( tr("name") );
     btnReload->setText( tr("Reload") );
