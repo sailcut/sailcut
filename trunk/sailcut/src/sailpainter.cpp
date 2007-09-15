@@ -57,7 +57,7 @@ void CSailPainter::draw(const CPanel &panel)
         draw(panel.cutRight);
         draw(panel.cutTop);
         draw(panel.cutBottom); 
-    
+        // reset pen color
         setPen(Qt::black);
     }
 }
@@ -67,6 +67,8 @@ void CSailPainter::draw(const CPanel &panel)
  */
 void CSailPainter::draw(const CPanelLabel &label)
 {
+    setPen(Qt::black);
+    
     drawTextCentered(label.origin, QStringList(label.name));
 }
 
@@ -91,13 +93,13 @@ void CSailPainter::draw(const CPanelGroup &sail)
     for( i = 0; i < sail.child.size(); i++ )
         draw(sail.child[i]);
         
-    // reset painter color 
+    // reset pen color 
     setPen(Qt::black);
         
 }
 
 
-/** Draws a complete sail.
+/** Draws a cross at a given Point position.
  */
 void CSailPainter::drawCross(const CPoint3d &p, const real size)
 {
@@ -110,6 +112,7 @@ void CSailPainter::drawCross(const CPoint3d &p, const real size)
  */
 void CSailPainter::drawTextCentered(const CPoint3d &p, const QString &str)
 {
+    setPen(Qt::black);
     drawTextCentered(p, QStringList(str));
 }
 
@@ -119,6 +122,7 @@ void CSailPainter::drawTextCentered(const CPoint3d &p, const QString &str)
 void CSailPainter::drawTextCentered(const CPoint3d &p, const QStringList &lst)
 {
     CVector3d dim = textSize(lst);
+    setPen(Qt::black);
 
     int i;
     real xPos = p.x() - 0.5 * dim.x();
@@ -137,6 +141,8 @@ void CSailPainter::drawTextCentered(const CPoint3d &p, const QStringList &lst)
 void CSailPainter::drawLabels(const CPanelGroup &sail)
 {
     unsigned int i;
+    setPen(Qt::black);
+    
     for ( i = 0; i < sail.panel.size(); i++ )
         draw(sail.panel[i].label);
     for ( i = 0; i < sail.child.size(); i++ )
