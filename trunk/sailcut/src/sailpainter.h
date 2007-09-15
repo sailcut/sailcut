@@ -40,8 +40,7 @@ public:
      * @param dev the paint device we are operating on
     */
     CSailPainter(QPaintDevice *dev) : QPainter(dev)
-    {}
-    ;
+    {};
 
     void draw(const CSide &side);
     void draw(const CPanel &panel);
