@@ -272,10 +272,38 @@ void CSailDoc::get
 {
     QDomElement e = findElement( parent, "CHullDef", name);
 
-    get
-        (e, d.hullID,"hullID" );
-    get
-        (e, d.DLOA,"LOA");
+    get( e, d.hullID, "hullID" );
+    
+    // bottom
+    get ( e, d.BLWL, "BLWL" );
+    get ( e, d.BfwdHeight, "BfwdHeight" );
+    get ( e, d.BaftHeight, "BaftHeight" );
+    get ( e, d.BSlopeA, "BSlopeA" );
+    get ( e, d.BBW, "BBW" );
+    get ( e, d.BBWPos, "BBWPos" );
+    get ( e, d.BaftW, "BaftW" );
+    get ( e, d.BDeadriseA, "BDeadriseA" );
+    get ( e, d.BSweepA, "BSweepA" );
+    get ( e, d.BfwdShape, "BfwdShape" );
+    get ( e, d.BaftShape, "BaftShape" );
+    
+    // deck
+    get( e, d.DfwdHeight, "DfwdHeight" );
+    get( e, d.DaftHeight, "DaftHeight" );
+    get( e, d.DSlopeA, "DSlopeA" );
+    
+    // stem
+    get( e, d.StemA, "StemA" );
+    
+    // transom
+    get( e, d.TransomA, "TransomA" );
+    
+    // side planks
+    get ( e, d.NBPlank, "NBPlank" );
+    get ( e, d.TopPlankA, "TopPlankA" );
+    get ( e, d.LowPlankA, "lowPlankA" );
+    // get ( e, d.AutoPlank, "AutoPlank" );
+    //
 }
 
 
@@ -293,77 +321,49 @@ void CSailDoc::get
     QDomElement e = findElement( parent, "CSailDef", name);
 
     /* sail cut and type */
-    get
-        (e, d.sailCut,"sailCut");
-    get
-        (e, d.sailType,"sailType");
+    get( e, d.sailCut, "sailCut" );
+    get( e, d.sailType, "sailType" );
 
     /* boat data */
-    get
-        (e, d.LOA,"LOA");
-    get
-        (e, d.foreI,"foreI");
-    get
-        (e, d.foreJ,"foreJ");
-    get
-        (e, d.tackX,"tackX");
-    get
-        (e, d.tackY,"tackY");
+    get( e, d.LOA, "LOA");
+    get( e, d.foreI, "foreI" );
+    get( e, d.foreJ, "foreJ" );
+    get( e, d.tackX, "tackX" );
+    get( e, d.tackY, "tackY" );
 
     /* sides of the sail */
-    get
-        (e, d.luffL,"luffL");
-    get
-        (e, d.rake,"rake");
-    get
-        (e, d.gaffDeg,"gaffDeg");
-    get
-        (e, d.gaffL,"gaffL");
-    get
-        (e, d.footL,"footL");
-    get
-        (e, d.leechL,"leechL");
+    get( e, d.luffL, "luffL" );
+    get( e, d.rake, "rake" );
+    get( e, d.gaffDeg, "gaffDeg" );
+    get( e, d.gaffL, "gaffL" );
+    get( e, d.footL, "footL" );
+    get( e, d.leechL, "leechL" );
 
     /* shape of sides */
-    get
-        (e, d.luffR,"luffR");
-    get
-        (e, d.gaffR,"gaffR");
-    get
-        (e, d.leechR,"leechR");
-    get
-        (e, d.footR,"footR");
+    get( e, d.luffR, "luffR" );
+    get( e, d.gaffR, "gaffR" );
+    get( e, d.leechR, "leechR" );
+    get( e, d.footR, "footR" );
 
-    get
-        (e, d.luffRP,"luffRP");
-    get
-        (e, d.gaffRP,"gaffRP");
-    get
-        (e, d.leechRP,"leechRP");
-    get
-        (e, d.footRP,"footRP");
+    get( e, d.luffRP, "luffRP" );
+    get( e, d.gaffRP, "gaffRP" );
+    get( e, d.leechRP, "leechRP" );
+    get( e, d.footRP, "footRP" );
 
     /* cloth width, seam and hems width */
-    get
-        (e, d.clothW, "clothW");
-    get
-        (e, d.seamW, "seamW");
-    get
-        (e, d.leechHemW, "leechHemW");
-    get
-        (e, d.hemsW, "hemsW");
+    get( e, d.clothW, "clothW" );
+    get( e, d.seamW, "seamW" );
+    get( e, d.leechHemW, "leechHemW" );
+    get( e, d.hemsW, "hemsW" );
 
     /* twist */
-    get
-        (e, d.twistDeg, "twistDeg");
+    get( e, d.twistDeg, "twistDeg" );
 
     /* mould */
-    get
-        (e, d.mould, "mould");
+    get( e, d.mould, "mould" );
 
     /* sheeting */
-    get
-        (e, d.sheetDeg, "sheetDeg");
+    get( e, d.sheetDeg, "sheetDeg" );
 
     /* NOTE : we maintain backward file format compatibility
      * by adding new members in the order they were introduced below
@@ -371,29 +371,28 @@ void CSailDoc::get
     try
     {
         /* sail ID */
-        get
-            (e, d.sailID,"sailID" );
+        get(e, d.sailID, "sailID" );
 
         /* radial cut parameters */
-        int temp=1;
+        int temp = 1;  // also used to convert unsigned integer
 
-        get
-            (e, temp, "nbSections");
+        get( e, temp, "nbSections" );
         d.nbSections = temp;       // radial sections
-        get
-            (e, temp, "nbGores");
+        
+        get( e, temp, "nbGores" );
         d.nbGores= temp;           // radial gores
-        get
-            (e, temp, "nbLuffGores");
+        
+        get( e, temp, "nbLuffGores" );
         d.nbLuffGores=temp;       // luff gores
-        //
-        get
-            (e, temp, "dihedralDeg");
-        d.dihedralDeg=temp;       // wing dihedral angle
+        
+        get( e, temp, "dihedralDeg" );
+        d.dihedralDeg = temp;       // wing dihedral angle
         //
     }
     catch (CException e)
-    {}
+    { 
+        // to avoid killing the program
+    }
 }
 
 
@@ -422,30 +421,21 @@ void CSailDoc::get
     ( const QDomNode &parent, CPanel &p, const QString &name )
 {
     QDomElement e = findElement( parent, "CPanel", name);
-    get
-        (e, p.top, "top");
-    get
-        (e, p.bottom, "bottom");
-    get
-        (e, p.left, "left");
-    get
-        (e, p.right, "right");
+    get( e, p.top, "top" );
+    get( e, p.bottom, "bottom" );
+    get( e, p.left, "left" );
+    get( e, p.right, "right" );
 
     int temp;
-    get
-        (e, temp, "hasHems");
+    get( e, temp, "hasHems" );
     p.hasHems = (temp != 0);
 
     if (p.hasHems)
     {
-        get
-            (e, p.cutTop, "cutTop");
-        get
-            (e, p.cutBottom, "cutBottom");
-        get
-            (e, p.cutLeft, "cutLeft");
-        get
-            (e, p.cutRight, "cutRight");
+        get( e, p.cutTop, "cutTop" );
+        get( e, p.cutBottom, "cutBottom" );
+        get( e, p.cutLeft, "cutLeft" );
+        get( e, p.cutRight, "cutRight" );
     }
 
 }
@@ -461,12 +451,9 @@ void CSailDoc::get
     ( const QDomNode &parent, CPanelGroup &g, const QString &name )
 {
     QDomElement e = findElement( parent, "CPanelGroup", name);
-    get
-        (e, g.title, "title");
-    get
-        (e, g.panel, "panel");
-    get
-        (e, g.child, "child");
+    get( e, g.title, "title" );
+    get( e, g.panel, "panel" );
+    get( e, g.child, "child" );
 }
 
 
@@ -481,12 +468,9 @@ void CSailDoc::get
 {
     QDomElement e = findElement( parent, "CProfile", name);
     real depth=0,kluff=0,kleech=0;
-    get
-        (e, depth, "depth");
-    get
-        (e, kleech, "kleech");
-    get
-        (e, kluff, "kluff");
+    get( e, depth, "depth" );
+    get( e, kleech, "kleech" );
+    get( e, kluff, "kluff" );
 
     p = CProfile(depth,kleech,kluff);
 }
@@ -517,14 +501,10 @@ void CSailDoc::get
     ( const QDomNode &parent, CBoatElement &s, const QString &name )
 {
     QDomElement e = findElement( parent, "CBoatElement", name);
-    get
-        (e, (CPanelGroup&)s, "panelgroup");
-    get
-        (e, s.type, "type");
-    get
-        (e, s.filename, "filename");
-    get
-        (e, s.origin, "origin");
+    get( e, (CPanelGroup&)s, "panelgroup" );
+    get( e, s.type, "type" );
+    get( e, s.filename, "filename" );
+    get( e, s.origin, "origin" );
 }
 
 
@@ -538,10 +518,8 @@ void CSailDoc::get
     ( const QDomNode &parent, CSailMould &m, const QString &name )
 {
     QDomElement e = findElement( parent, "CSailMould", name);
-    get
-        (e, m.vertpos, "vertpos");
-    get
-        (e, m.profile, "profile");
+    get( e, m.vertpos, "vertpos" );
+    get( e, m.profile, "profile" );
 }
 
 
@@ -557,18 +535,12 @@ void CSailDoc::get
     QDomElement e = findElement( parent, "CPrefs", name);
     try
     {
-        get
-            (e, p.language, "language");
-        get
-            (e, p.mruDocuments, "mruDocuments");
-        get
-            (e, p.helpWindowHeight, "helpWindowHeight");
-        get
-            (e, p.helpWindowWidth, "helpWindowWidth");
-        get
-            (e, p.mainWindowHeight, "mainWindowHeight");
-        get
-            (e, p.mainWindowWidth, "mainWindowWidth");
+        get ( e, p.language, "language" );
+        get ( e, p.mruDocuments, "mruDocuments" );
+        get ( e, p.helpWindowHeight, "helpWindowHeight" );
+        get ( e, p.helpWindowWidth, "helpWindowWidth" );
+        get ( e, p.mainWindowHeight, "mainWindowHeight" );
+        get ( e, p.mainWindowWidth, "mainWindowWidth" );
     }
     catch (CException e)
     {
@@ -587,8 +559,39 @@ void CSailDoc::get
     ( const QDomNode &parent, CRigDef &d, const QString &name )
 {
     QDomElement e = findElement( parent, "CRigDef", name);
-    get
-        (e, d.rigID,"rigID" );
+    
+    get ( e, d.rigID, "rigID" );
+    
+    // fore triangle
+    get ( e, d.foreI, "foreI" );
+    get ( e, d.foreJ, "foreJ" );
+    // mast
+    get ( e, d.MHeight, "MHeight" );
+    get ( e, d.MCord, "MCord" );
+    get ( e, d.MWidth, "MWidth" );
+    get ( e, d.MRakeM, "MRakeM" );
+    get ( e, d.MRakeD, "MRakeD" );
+    get ( e, d.MBase, "MBase" );
+    get ( e, d.MRnd, "MRnd" );
+    get ( e, d.MRndPos, "MRndPos" );
+    // shrouds
+    get ( e, d.CSH, "CSH" );
+    get ( e, d.CSB, "CSB" );
+    get ( e, d.LSB, "LSB" );
+    // spreaders
+    get ( e, d.SPNB, "SPNB" );
+    get ( e, d.SPH[0], "SPH0" );
+    get ( e, d.SPH[1], "SPH1" );
+    get ( e, d.SPH[2], "SPH2" );
+    get ( e, d.SPH[3], "SPH3" );
+    get ( e, d.SPW[0], "SPW0" );
+    get ( e, d.SPW[1], "SPW1" );
+    get ( e, d.SPW[2], "SPW2" );
+    get ( e, d.SPW[3], "SPW3" );
+    // mainsail data
+    get ( e, d.BAD, "BAD" );
+    get ( e, d.HAD, "HAD" );
+    //
 }
 
 
@@ -632,9 +635,9 @@ void CSailDoc::put( QDomNode &parent, const CPoint3d &p, const QString &name )
     QDomElement e = createElement("CPoint3d",name);
     parent.appendChild(e);
 
-    put(e, p.x(), "x");
-    put(e, p.y(), "y");
-    put(e, p.z(), "z");
+    put ( e, p.x(), "x" );
+    put ( e, p.y(), "y" );
+    put ( e, p.z(), "z" );
 }
 
 
@@ -722,9 +725,39 @@ void CSailDoc::put( QDomNode &parent, const CHullDef &d, const QString &name )
 {
     QDomElement e = createElement("CHullDef",name);
     parent.appendChild(e);
-
-    put(e, d.hullID, "hullID"); 
-    put(e, d.DLOA, "LOA");
+    
+    put ( e, d.hullID, "hullID" ); 
+    
+    // bottom
+    put ( e, d.BLWL, "BLWL" );
+    put ( e, d.BfwdHeight, "BfwdHeight" );
+    put ( e, d.BaftHeight, "BaftHeight" );
+    put ( e, d.BSlopeA, "BSlopeA" );
+    put ( e, d.BBW, "BBW" );
+    put ( e, d.BBWPos, "BBWPos" );
+    put ( e, d.BaftW, "BaftW" );
+    put ( e, d.BDeadriseA, "BDeadriseA" );
+    put ( e, d.BSweepA, "BSweepA" );
+    put ( e, d.BfwdShape, "BfwdShape" );
+    put ( e, d.BaftShape, "BaftShape" );
+    
+    // deck
+    put( e, d.DfwdHeight, "DfwdHeight" );
+    put( e, d.DaftHeight, "DaftHeight" );
+    put( e, d.DSlopeA, "DSlopeA" );
+    
+    // stem
+    put( e, d.StemA, "StemA" );
+    
+    // transom
+    put( e, d.TransomA, "TransomA" );
+    
+    // side planks
+    put ( e, d.NBPlank, "NBPlank" );
+    put ( e, d.TopPlankA, "TopPlankA" );
+    put ( e, d.LowPlankA, "lowPlankA" );
+    // put ( e, d.AutoPlank, "AutoPlank" );
+    //
 }
 
 
@@ -740,64 +773,66 @@ void CSailDoc::put( QDomNode &parent, const CSailDef &d, const QString &name )
     parent.appendChild(e);
 
     /* sail cut and type */
-    put(e, d.sailCut,"sailCut");
-    put(e, d.sailType,"sailType");
+    put (e, d.sailCut, "sailCut" );
+    put (e, d.sailType, "sailType" );
 
     /* boat data */
-    put(e, d.LOA,"LOA");
-    put(e, d.foreI,"foreI");
-    put(e, d.foreJ,"foreJ");
-    put(e, d.tackX,"tackX");
-    put(e, d.tackY,"tackY");
+    put (e, d.LOA, "LOA" );
+    put (e, d.foreI, "foreI" );
+    put (e, d.foreJ, "foreJ" );
+    put (e, d.tackX, "tackX" );
+    put (e, d.tackY, "tackY" );
 
     /* sides of the sail */
-    put(e, d.luffL,"luffL");
-    put(e, d.rake,"rake");
-    put(e, d.gaffDeg,"gaffDeg");
-    put(e, d.gaffL,"gaffL");
-    put(e, d.footL,"footL");
-    put(e, d.leechL,"leechL");
+    put ( e, d.luffL, "luffL" );
+    put( e, d.rake, "rake" );
+    put( e, d.gaffDeg, "gaffDeg" );
+    put( e, d.gaffL, "gaffL" );
+    put( e, d.footL, "footL" );
+    put( e, d.leechL, "leechL" );
 
     /* shape of sides */
-    put(e, d.luffR,"luffR");
-    put(e, d.gaffR,"gaffR");
-    put(e, d.leechR,"leechR");
-    put(e, d.footR,"footR");
+    put ( e, d.luffR, "luffR");
+    put ( e, d.gaffR, "gaffR");
+    put ( e, d.leechR, "leechR");
+    put ( e, d.footR, "footR");
 
-    put(e, d.luffRP,"luffRP");
-    put(e, d.gaffRP,"gaffRP");
-    put(e, d.leechRP,"leechRP");
-    put(e, d.footRP,"footRP");
+    put ( e, d.luffRP, "luffRP");
+    put ( e, d.gaffRP, "gaffRP");
+    put ( e, d.leechRP, "leechRP");
+    put ( e, d.footRP, "footRP");
 
     /* cloth width, seam and hems width */
-    put(e, d.clothW, "clothW");
-    put(e, d.seamW, "seamW");
-    put(e, d.leechHemW, "leechHemW");
-    put(e, d.hemsW, "hemsW");
+    put ( e, d.clothW, "clothW" );
+    put ( e, d.seamW, "seamW" );
+    put ( e, d.leechHemW, "leechHemW" );
+    put ( e, d.hemsW, "hemsW" );
 
     /* twist */
-    put(e, d.twistDeg, "twistDeg");
+    put ( e, d.twistDeg, "twistDeg");
     /* sheeting */
-    put(e, d.sheetDeg, "sheetDeg");
+    put ( e, d.sheetDeg, "sheetDeg");
 
     /* mould */
-    put(e, d.mould, "mould");
+    put ( e, d.mould, "mould");
 
     /* sail ID */
-    put(e, d.sailID, "sailID" );
+    put ( e, d.sailID, "sailID" );
 
     /* radial cut parameters */
-    int temp=1;
+    int temp = 1;
 
-    temp = d.nbSections;
-    put(e, temp, "nbSections");      // radial sections
-    temp =  d.nbGores;
-    put(e, temp, "nbGores");             // radial gores
-    temp =  d.nbLuffGores;
-    put(e, temp, "nbLuffGores");  // luff gores
+    temp = int(d.nbSections);
+    put ( e, temp, "nbSections");      // radial sections
+    
+    temp =  int(d.nbGores);
+    put ( e, temp, "nbGores");             // radial gores
+    
+    temp =  int(d.nbLuffGores);
+    put ( e, temp, "nbLuffGores");  // luff gores
     //
     temp =  int(d.dihedralDeg);
-    put(e, temp, "dihedralDeg");  // wing dihedral angle
+    put ( e, temp, "dihedralDeg");  // wing dihedral angle
     //
 }
 
@@ -809,7 +844,7 @@ void CSailDoc::put( QDomNode &parent, const CSide &s, const QString &name )
     QDomElement e = createElement("CSide",name);
     parent.appendChild(e);
 
-    put(e, s.point, "point");
+    put ( e, s.point, "point");
 }
 
 
@@ -820,19 +855,19 @@ void CSailDoc::put( QDomNode &parent, const CPanel &p, const QString &name )
     QDomElement e = createElement("CPanel",name);
     parent.appendChild(e);
 
-    put(e, p.left, "left");
-    put(e, p.top, "top");
-    put(e, p.right, "right");
-    put(e, p.bottom, "bottom");
+    put ( e, p.left, "left");
+    put ( e, p.top, "top");
+    put ( e, p.right, "right");
+    put ( e, p.bottom, "bottom");
 
-    put(e, p.hasHems, "hasHems");
+    put ( e, p.hasHems, "hasHems");
 
     if (p.hasHems)
     {
-        put(e, p.cutLeft, "cutLeft");
-        put(e, p.cutTop, "cutTop");
-        put(e, p.cutRight, "cutRight");
-        put(e, p.cutBottom, "cutBottom");
+        put ( e, p.cutLeft, "cutLeft");
+        put ( e, p.cutTop, "cutTop");
+        put ( e, p.cutRight, "cutRight");
+        put ( e, p.cutBottom, "cutBottom");
     }
 }
 
@@ -844,9 +879,9 @@ void CSailDoc::put( QDomNode &parent, const CPanelGroup &g, const QString &name 
     QDomElement e = createElement("CPanelGroup",name);
     parent.appendChild(e);
 
-    put(e, g.title, "title");
-    put(e, g.panel, "panel");
-    put(e, g.child, "child");
+    put ( e, g.title, "title");
+    put ( e, g.panel, "panel");
+    put ( e, g.child, "child");
 }
 
 
@@ -857,34 +892,9 @@ void CSailDoc::put( QDomNode &parent, const CProfile &p, const QString &name )
     QDomElement e = createElement("CProfile",name);
     parent.appendChild(e);
 
-    put(e, p.getDepth(), "depth");
-    put(e, p.getLeech(), "kleech");
-    put(e, p.getLuff(), "kluff");
-}
-
-
-/** Put a CBoatDef boat definition to an XML document.
- */
-void CSailDoc::put( QDomNode &parent, const CBoatDef &d, const QString &name )
-{
-    QDomElement e = createElement("CBoatDef",name);
-    parent.appendChild(e);
-
-    put(e, d.element, "element");
-}
-
-
-/** Put a CBoatElement sail to an XML document.
- */
-void CSailDoc::put( QDomNode &parent, const CBoatElement &s, const QString &name )
-{
-    QDomElement e = createElement("CBoatElement",name);
-    parent.appendChild(e);
-
-    put(e, s.filename, "filename");
-    put(e, s.type, "type");
-    put(e, s.origin, "origin");
-    put(e, (CPanelGroup&)s, "panelgroup");
+    put ( e, p.getDepth(), "depth");
+    put ( e, p.getLeech(), "kleech");
+    put ( e, p.getLuff(), "kluff");
 }
 
 
@@ -895,8 +905,33 @@ void CSailDoc::put( QDomNode &parent, const CSailMould &m, const QString &name )
     QDomElement e = createElement("CSailMould",name);
     parent.appendChild(e);
 
-    put(e, m.vertpos, "vertpos");
-    put(e, m.profile, "profile");
+    put ( e, m.vertpos, "vertpos");
+    put ( e, m.profile, "profile");
+}
+
+
+/** Put a CBoatDef boat definition to an XML document.
+ */
+void CSailDoc::put( QDomNode &parent, const CBoatDef &d, const QString &name )
+{
+    QDomElement e = createElement("CBoatDef",name);
+    parent.appendChild(e);
+
+    put ( e, d.element, "element");
+}
+
+
+/** Put a CBoatElement sail to an XML document.
+ */
+void CSailDoc::put( QDomNode &parent, const CBoatElement &s, const QString &name )
+{
+    QDomElement e = createElement("CBoatElement",name);
+    parent.appendChild(e);
+
+    put ( e, s.filename, "filename");
+    put ( e, s.type, "type");
+    put ( e, s.origin, "origin");
+    put ( e, (CPanelGroup&)s, "panelgroup");
 }
 
 
@@ -907,12 +942,12 @@ void CSailDoc::put( QDomNode &parent, const CPrefs& p, const QString& name)
     QDomElement e = createElement("CPrefs",name);
     parent.appendChild(e);
 
-    put(e, p.language, "language");
-    put(e, p.mruDocuments, "mruDocuments");
-    put(e, p.helpWindowHeight, "helpWindowHeight");
-    put(e, p.helpWindowWidth, "helpWindowWidth");
-    put(e, p.mainWindowHeight, "mainWindowHeight");
-    put(e, p.mainWindowWidth, "mainWindowWidth");
+    put ( e, p.language, "language");
+    put ( e, p.mruDocuments, "mruDocuments");
+    put ( e, p.helpWindowHeight, "helpWindowHeight");
+    put ( e, p.helpWindowWidth, "helpWindowWidth");
+    put ( e, p.mainWindowHeight, "mainWindowHeight");
+    put ( e, p.mainWindowWidth, "mainWindowWidth");
 }
 
 
@@ -922,8 +957,41 @@ void CSailDoc::put( QDomNode &parent, const CRigDef &d, const QString &name )
 {
     QDomElement e = createElement("CRigDef",name);
     parent.appendChild(e);
-
-    put(e, d.rigID, "rigID");
+    int temp = 1;
+    
+    put ( e, d.rigID, "rigID" );
+    
+    // fore triangle
+    put ( e, d.foreI, "foreI" );
+    put ( e, d.foreJ, "foreJ" );
+    // mast
+    put ( e, d.MHeight, "MHeight" );
+    put ( e, d.MCord, "MCord" );
+    put ( e, d.MWidth, "MWidth" );
+    put ( e, d.MRakeM, "MRakeM" );
+    put ( e, d.MRakeD, "MRakeD" );
+    put ( e, d.MBase, "MBase" );
+    put ( e, d.MRnd, "MRnd" );
+    put ( e, d.MRndPos, "MRndPos" );
+    // shrouds
+    put ( e, d.CSH, "CSH" );
+    put ( e, d.CSB, "CSB" );
+    put ( e, d.LSB, "LSB" );
+    // spreaders
+    temp = int(d.SPNB);
+    put ( e, temp, "SPNB" );
+    put ( e, d.SPH[0], "SPH0" );
+    put ( e, d.SPH[1], "SPH1" );
+    put ( e, d.SPH[2], "SPH2" );
+    put ( e, d.SPH[3], "SPH3" );
+    put ( e, d.SPW[0], "SPW0" );
+    put ( e, d.SPW[1], "SPW1" );
+    put ( e, d.SPW[2], "SPW2" );
+    put ( e, d.SPW[3], "SPW3" );
+    // mainsail data
+    put ( e, d.BAD, "BAD" );
+    put ( e, d.HAD, "HAD" );
+    //
 }
 
 
