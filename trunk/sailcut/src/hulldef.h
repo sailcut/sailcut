@@ -38,6 +38,7 @@ public:
 
     /** hull ID name */
     QString hullID;
+    
         //deck
     /** deck Length in millimeter */
     real DLOA;
@@ -46,17 +47,17 @@ public:
     /** deck aft height in millimeter */
     real DaftHeight;
     /** deck side slope angle in degree from horizontal */
-    unsigned int DSlopeA;
+    int DSlopeA;
     /** deck max beam width in millimeter */
     real DBW;
     /** deck aft width in millimeter */
     real DaftW;
     /** deck max beam width position in percent of deck length */
-    unsigned int DBWPos;
+    int DBWPos;
     /** stem angle in degree from horizontal */
-    unsigned int StemA;
+    int StemA;
     /** transom angle in degree from horizontal */
-    unsigned int TransomA;
+    int TransomA;
     
     	// bottom data
     /** bottom chine Length in millimeter */
@@ -66,32 +67,32 @@ public:
     /** bottom aft height in millimeter */
     real BaftHeight;
     /** bottom chine side slope angle in degree from horizontal */
-    unsigned int BSlopeA;
+    int BSlopeA;
     /** bottom chine max beam width in millimeter */
     real BBW;
     /** bottom chine aft width in millimeter */
     real BaftW;
     /** bottom chine max beam width position in percent of deck length */
-    unsigned int BBWPos;
+    int BBWPos;
     /** bottom plank dead rise angle in degree from horizontal */
-    unsigned int BDeadriseA;
+    int BDeadriseA;
     /** bottom sweep angle in degree forward of transverse axis */
-    unsigned int BSweepA;
+    int BSweepA;
     /** Lower chine forward shape */
-    unsigned int BfwdShape;
+    int BfwdShape;
     //* Lower chine aft shape */
-    unsigned int BaftShape;
+    int BaftShape;
     
         //planking data
     /** Number of side planks */
-    unsigned int NBPlank;
+    int NBPlank;
     /** auto planking chech box */
     bool AutoPlank;
     /** top plank angle in degree from horizontal */
-    unsigned int TopPlankA;
+    int TopPlankA;
     /** lower plank angle in degree from horizontal */
-    unsigned int LowPlankA;
-    
+    int LowPlankA;
+        //
 };
 
 #endif
