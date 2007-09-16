@@ -38,11 +38,6 @@ CRigDef::CRigDef()
     MRnd = 110;
     MRndPos = 50;
 
-    BAD = 750;      // height of boom 
-    //MStack = CVector3d(2100, 750 , 0);
-    HAD = 7000;
-    //MShead = CVector3d(2200, 7000, 0);
-
     CSH = 7000;     // cap shroud height
     CSB = 500;
     LSB = 400;
@@ -55,6 +50,12 @@ CRigDef::CRigDef()
     SPW[2] = CSB -50;
     SPH[3] = 5400;
     SPW[3] = CSB -200;
+    
+    BAD = 750;      // height of boom 
+    //MStack = CVector3d(2100, 750 , 0);
+    HAD = 7000;
+    //MShead = CVector3d(2200, 7000, 0);
+
 }
 
 
@@ -90,14 +91,14 @@ CRigDef & CRigDef::operator=( const CRigDef &copy )
     LSB = copy.LSB;
     SPNB = copy.SPNB;     // number of spreaders
     SPH[0] = copy.SPH[0];
-    SPW[0] = copy.SPW[0];
     SPH[1] = copy.SPH[1];
-    SPW[1] = copy.SPW[1];
     SPH[2] = copy.SPH[2];
-    SPW[2] = copy.SPW[2];
     SPH[3] = copy.SPH[3];
+    SPW[0] = copy.SPW[0];
+    SPW[1] = copy.SPW[1];
+    SPW[2] = copy.SPW[2];
     SPW[3] = copy.SPW[3];
-    
+    //
     return *this;
 }
 
