@@ -61,25 +61,29 @@ CFormRigDef::CFormRigDef( QWidget* parent, CRigDef * rigptr )
     txt_foreI->setText(QString::number(rigdef->foreI) );
     txt_foreJ->setText(QString::number(rigdef->foreJ) );
     txt_MH->setText(QString::number(rigdef->MHeight) );
+    txt_MC->setText(QString::number(rigdef->MCord) );
+    txt_MW->setText(QString::number(rigdef->MWidth) );
+    txt_MRnd->setText(QString::number(rigdef->MRnd) );
+    txt_MRkM->setText(QString::number(rigdef->MRakeM) );
+    spinBox_MRndPos->setValue(rigdef->MRndPos);
+    
     txt_CSH->setText(QString::number(rigdef->CSH) );
     txt_CSB->setText(QString::number(rigdef->CSB) );
     txt_LSB->setText(QString::number(rigdef->LSB) );
-    txt_MRnd->setText(QString::number(rigdef->MRnd) );
-    txt_MRkM->setText(QString::number(rigdef->MRakeM) );
-    txt_MC->setText(QString::number(rigdef->MCord) );
-    txt_MW->setText(QString::number(rigdef->MWidth) );
-    spinBox_MRndPos->setValue(rigdef->MRndPos);
+    
+    txt_SPH1->setText(QString::number(rigdef->SPH[1]) );
+    txt_SPH2->setText(QString::number(rigdef->SPH[2]) );
+    txt_SPH3->setText(QString::number(rigdef->SPH[3]) );
+    
+    txt_SPW1->setText(QString::number(rigdef->SPW[1]) );
+    txt_SPW2->setText(QString::number(rigdef->SPW[2]) );
+    txt_SPW3->setText(QString::number(rigdef->SPW[3]) );
+
     // display
     lbl_MRkD->setText(QString::number(rigdef->MRakeD) );
 
     spinBox_SPNB->setValue(rigdef->SPNB);
-    txt_SPH1->setText(QString::number(rigdef->SPH[1]) );
-    txt_SPW1->setText(QString::number(rigdef->SPW[1]) );
-    txt_SPH2->setText(QString::number(rigdef->SPH[2]) );
-    txt_SPW2->setText(QString::number(rigdef->SPW[2]) );
-    txt_SPH3->setText(QString::number(rigdef->SPH[3]) );
-    txt_SPW3->setText(QString::number(rigdef->SPW[3]) );
-
+    
     // variable changes triggering a check 
     txt_HAD->setText(QString::number(rigdef->HAD) );
     txt_BAD->setText(QString::number(rigdef->BAD) );
@@ -158,6 +162,9 @@ bool CFormRigDef::check()
 { 
     long I = 1, J = 1, L1 = 1, L2 = 1;
     bool flag = true;
+ 
+    unsigned int j, n;
+    
     QString txt;
     ///  create four palettes
     QPalette palStd, palHi, palLo, palRel;
@@ -406,37 +413,39 @@ bool CFormRigDef::check()
     CPoint3d p1, p2;
     real h=0, rd1 = 0, rd2 = 0;
     unsigned int rdPos = 49;
-    unsigned int i = 5;
+    j = 5;
     do 
     {
-        i++;
-        p1 = rigdef->MStack + MSluff*(real(i) / 50);
+        j++;
+        p1 = rigdef->MStack + MSluff*(real( j ) / 50);
         h = p1.y();
         p2 = worker.mastCenter( h ) + CVector3d(rigdef->MCord /2, 0, 0);
         rd2 = CVector3d(p1-p2).x();
 
         if (fabs(rd2) < fabs(rd1) )
-            rdPos = (i-1) * 2;
+            rdPos = (j - 1) * 2;
         else
             rd1 = rd2;
     }
-    while ( rd1 == rd2 && i < 45);
+    while ( rd1 == rd2 && j < 45);
 
     // display mainsail data
-    lbl_MS_TackX->setText(QString::number( int(round(rigdef->MStack.x()) ))); 
-    lbl_MS_TackY->setText(QString::number( int(rigdef->MStack.y()) ));
+    lbl_MS_TackX->setText( QString::number( int(round(rigdef->MStack.x()) ) ) ); 
+    lbl_MS_TackY->setText( QString::number( int(rigdef->MStack.y()) ));
     
-    lbl_MS_LuffL->setText(QString::number( int(round(MSluff.norm())) ));
-    lbl_MS_Rake->setText(QString::number( int(round(MSluff.x())) ));
+    lbl_MS_LuffL->setText( QString::number( int(round(MSluff.norm()) ) ) );
+    lbl_MS_Rake->setText( QString::number( int(round(MSluff.x()) ) ) );
 
-    lbl_MS_LuffR->setText(QString::number( round(rd1) ));
-    lbl_MS_LuffRP->setText(QString::number( rdPos ) +" %");
+    lbl_MS_LuffR->setText( QString::number( round(rd1) ) );
+    lbl_MS_LuffRP->setText( QString::number( rdPos ) +" %" );
 
     /// reading number of spreaders
     rigdef->SPNB = spinBox_SPNB->value();
-
-    /// checking shrouds height and length
+    n = rigdef->SPNB;
+    
+    /// checking shrouds height and shroud base width
     rigdef->CSH = txt_CSH->text().toDouble();
+    
     if ( rigdef->CSH > L1) // cap shroud above mast head
     {
         flag = false;
@@ -459,37 +468,43 @@ bool CFormRigDef::check()
         txt_foreI->setPalette(palStd);
         txt_CSH->setPalette(palStd);
     }
-    txt_CSH->setText(QString::number(rigdef->CSH));
+    txt_CSH->setText( QString::number(rigdef->CSH) );
     
     rigdef->LSB = txt_LSB->text().toDouble();
-    if (rigdef->LSB < (rigdef->CSH)/(10*(1 + rigdef->SPNB)) )
+    
+    if ( rigdef->LSB < rigdef->CSH / ( 10 * (1 + real(n)) ) )
     {
         flag = false;
         txt_LSB->setPalette(palLo);
         txt_CSH->setPalette(palRel);
-        rigdef->LSB = ceil((rigdef->CSH)/(10*(1 + rigdef->SPNB)));
+        rigdef->LSB = ceil( rigdef->CSH / ( 10 * (1 + real(n)) ) );
     }
-    else if (rigdef->LSB > ((rigdef->CSH)/(2 + rigdef->SPNB)) )
+    else if ( rigdef->LSB >  rigdef->CSH / (2 + real(n)) )
     {
         flag = false;
         txt_LSB->setPalette(palHi);
         txt_CSH->setPalette(palRel);
-        rigdef->LSB = floor((rigdef->CSH)/(2 + rigdef->SPNB));
+        rigdef->LSB = floor( rigdef->CSH / (2 + real(n)) );
     }
     else 
     {
         txt_CSH->setPalette(palStd);
         txt_LSB->setPalette(palStd);
     }
-    txt_LSB->setText(QString::number(rigdef->LSB));
+    txt_LSB->setText( QString::number(rigdef->LSB) );
     
     rigdef->CSB = txt_CSB->text().toDouble();
-    if (rigdef->CSB < rigdef->LSB )
+    
+    if ( n == 0 )
+    {
+        rigdef->CSB = rigdef->LSB;
+    }
+    else if (rigdef->CSB < rigdef->LSB )
     {
         flag = false;
         txt_CSB->setPalette(palLo);
         txt_LSB->setPalette(palRel);
-        rigdef->CSB = ceil(rigdef->LSB);
+        rigdef->CSB = ceil( rigdef->LSB );
     }
     else if (rigdef->CSB > (2 * rigdef->LSB))
     {
@@ -503,89 +518,111 @@ bool CFormRigDef::check()
         txt_CSB->setPalette(palStd);
         txt_LSB->setPalette(palStd);
     }
-    txt_CSB->setText(QString::number(rigdef->CSB));
+    txt_CSB->setText( QString::number(rigdef->CSB) );
     
     /// checking spreaders 
     rigdef->SPH[0] = 0;
-    rigdef->SPW[0] = rigdef->CSB;
+    rigdef->SPW[0] = rigdef->LSB;
+        
     rigdef->SPH[1] = txt_SPH1->text().toDouble();
-    
-    if (rigdef->SPH[1] < (rigdef->CSH)/(2 + rigdef->SPNB))
-    {
-        flag = false;
-        txt_CSH->setPalette(palRel);
-        txt_SPH1->setPalette(palLo);
-        rigdef->SPH[1] = ceil((rigdef->CSH)/(2 + rigdef->SPNB));
-    }
-    else if (rigdef->SPH[1] > ((rigdef->CSH)/(0.5 + rigdef->SPNB)) )
-    {
-        flag = false;
-        txt_CSH->setPalette(palRel);
-        txt_SPH1->setPalette(palHi);
-        rigdef->SPH[1] = floor((rigdef->CSH)/(0.5 + rigdef->SPNB));
-    }
-    else 
-    {
-        txt_CSH->setPalette(palStd);
-        txt_SPH1->setPalette(palStd);
-    }
-    txt_SPH1->setText(QString::number(rigdef->SPH[1]));
-    
-    rigdef->SPW[1] = txt_SPW1->text().toDouble();
-    
-    L2 = (long) (rigdef->CSH - rigdef->SPH[1]);
-    
     rigdef->SPH[2] = txt_SPH2->text().toDouble();
-    if (rigdef->SPNB>1 && rigdef->SPH[2] < (rigdef->SPH[1] +(L2 /(1 + rigdef->SPNB))) )
-    {
-        flag = false;
-        txt_SPH1->setPalette(palRel);
-        txt_SPH2->setPalette(palLo);
-        rigdef->SPH[2] = ceil(rigdef->SPH[1] +(L2 /(1 + rigdef->SPNB)) );
-    }
-    else if (rigdef->SPNB>1 && rigdef->SPH[2] > (rigdef->SPH[1] +(L2 /(rigdef->SPNB -.5))) )
-    {
-        flag = false;
-        txt_SPH1->setPalette(palRel);
-        txt_SPH2->setPalette(palHi);
-        rigdef->SPH[2] = floor(rigdef->SPH[1] + L2 /(rigdef->SPNB -.5) );
-    }
-    else 
-    {
-        txt_SPH1->setPalette(palStd);
-        txt_SPH2->setPalette(palStd);
-    }
-    txt_SPH2->setText(QString::number(rigdef->SPH[2]));
-    
-    rigdef->SPW[2] = txt_SPW2->text().toDouble();
-    
-    L2 = (long)(rigdef->CSH - rigdef->SPH[2]);
-    
     rigdef->SPH[3] = txt_SPH3->text().toDouble();
-    if (rigdef->SPNB>2 && rigdef->SPH[3] < (rigdef->SPH[2] + L2 /(rigdef->SPNB)) )
-    {
-        flag = false;
-        txt_SPH2->setPalette(palRel);
-        txt_SPH3->setPalette(palLo);
-        rigdef->SPH[3] = ceil(rigdef->SPH[2] + L2/(rigdef->SPNB));
-    }
-    else if (rigdef->SPNB>2 && rigdef->SPH[3] > (rigdef->CSH + L2/(rigdef->SPNB -1.5)) )
-    {
-        flag = false;
-        txt_SPH2->setPalette(palRel);
-        txt_SPH3->setPalette(palHi);
-        rigdef->SPH[3] = floor(rigdef->CSH + L2/(rigdef->SPNB -1.5));
-    }
-    else 
-    {
-        txt_SPH2->setPalette(palStd);
-        txt_SPH3->setPalette(palStd);
-    }
-    txt_SPH3->setText(QString::number(rigdef->SPH[3]));
-    
+        
+    rigdef->SPW[1] = txt_SPW1->text().toDouble();
+    rigdef->SPW[2] = txt_SPW2->text().toDouble();
     rigdef->SPW[3] = txt_SPW3->text().toDouble();
     
-    // return flag = true IF everything is OK
+    if ( n < 1 )
+    {   // no spreaders then reset to base of shrouds
+        for ( j = 1; j < 4; j++ )
+        {
+            rigdef->SPH[j] = rigdef->SPH[0];
+            rigdef->SPW[j] = rigdef->SPW[0]; 
+        }
+        txt_SPH1->setText( QString::number(rigdef->SPH[1]) );
+        txt_SPH2->setText( QString::number(rigdef->SPH[2]) );
+        txt_SPH3->setText( QString::number(rigdef->SPH[3]) );
+        
+        txt_SPW1->setText( QString::number(rigdef->SPW[1]) );
+        txt_SPW2->setText( QString::number(rigdef->SPW[2]) );
+        txt_SPW3->setText( QString::number(rigdef->SPW[3]) );
+    }
+    else
+    {
+        if ( rigdef->SPH[1] < rigdef->CSH / (2 + real(n)) )
+        {
+            flag = false;
+            txt_CSH->setPalette(palRel);
+            txt_SPH1->setPalette(palLo);
+            rigdef->SPH[1] = ceil( rigdef->CSH / (2 + real(n)) );
+        }
+        else if ( rigdef->SPH[1] > ( rigdef->CSH / (0.5 + real(n)) ) )
+        {
+            flag = false;
+            txt_CSH->setPalette(palRel);
+            txt_SPH1->setPalette(palHi);
+            rigdef->SPH[1] = floor( rigdef->CSH / (0.5 + real(n)) );
+        }
+        else 
+        {
+            txt_CSH->setPalette(palStd);
+            txt_SPH1->setPalette(palStd);
+        }
+        txt_SPH1->setText( QString::number(rigdef->SPH[1]) );
+    
+        L2 = (long) (rigdef->CSH - rigdef->SPH[1]);
+    
+        if ( n > 1 )
+        {
+            if ( rigdef->SPH[2] < ( rigdef->SPH[1] + L2 / (1 + real(n)) ) )
+            {
+                flag = false;
+                txt_SPH1->setPalette(palRel);
+                txt_SPH2->setPalette(palLo);
+                rigdef->SPH[2] = ceil( rigdef->SPH[1] + L2 /(1 + real(n) ) );
+            }
+            else if ( rigdef->SPNB>1 && rigdef->SPH[2] > (rigdef->SPH[1] + L2 / (real(n) -.5)) )
+            {
+                flag = false;
+                txt_SPH1->setPalette(palRel);
+                txt_SPH2->setPalette(palHi);
+                rigdef->SPH[2] = floor(rigdef->SPH[1] + L2 /(real(n) -.5) );
+            }
+            else 
+            {
+                txt_SPH1->setPalette(palStd);
+                txt_SPH2->setPalette(palStd);
+            }
+            txt_SPH2->setText( QString::number(rigdef->SPH[2]) );
+    
+            L2 = (long)(rigdef->CSH - rigdef->SPH[2]);
+            
+            if ( n > 2 )
+            {
+                if ( rigdef->SPH[3] < ( rigdef->SPH[2] + L2 / real(n) ) )
+                {
+                    flag = false;
+                    txt_SPH2->setPalette(palRel);
+                    txt_SPH3->setPalette(palLo);
+                    rigdef->SPH[3] = ceil( rigdef->SPH[2] + L2 / real(n) );
+                }
+                else if ( rigdef->SPH[3] > ( rigdef->CSH + L2 / (real(n) -1.5) ) )
+                {
+                    flag = false;
+                    txt_SPH2->setPalette(palRel);
+                    txt_SPH3->setPalette(palHi);
+                    rigdef->SPH[3] = floor( rigdef->CSH + L2/(real(n) -1.5) );
+                }
+                else 
+                {
+                    txt_SPH2->setPalette(palStd);
+                    txt_SPH3->setPalette(palStd);
+                }
+                txt_SPH3->setText( QString::number(rigdef->SPH[3]) );
+            }
+        }
+    }
+    // return flag = true  IF everything is OK
     return flag;
 }
 
