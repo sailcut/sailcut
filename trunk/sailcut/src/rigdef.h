@@ -59,7 +59,7 @@ public:
     /** mast round */
     real MRnd;
     /** mast round position */
-    unsigned int MRndPos;
+    int MRndPos;
 
     /** Boom height above deck */
     real BAD;
@@ -78,7 +78,7 @@ public:
     /** lower shroud base */
     real LSB;
     /** number of spreaders */
-    unsigned int SPNB;
+    int SPNB;
     /** spreader height */
     real SPH[4];
     /** spreader width */
