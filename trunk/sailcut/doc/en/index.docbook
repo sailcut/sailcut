@@ -18,12 +18,11 @@
 
 </articleinfo>
 
-<sect1 id="introduction">
 
+<sect1 id="introduction">
 <title>Introduction</title>
 
 <sect2>
-
 <title>About Sailcut CAD</title>
 
 <para>Sailcut is a software for designing boat sails and developing then into flat panels. Sails can be either 4 sided sails like for old timer gaff rig or 3 sided sails like jibs or main sails for Marconi rig.</para>
@@ -35,7 +34,6 @@
 </sect2>
 
 <sect2>
-
 <title>How to obtain Sailcut CAD?</title>
 
 <para>You can download the latest version of Sailcut CAD from the project&apos;s home page at <ulink url="http://sailcut.sourceforge.net/"/>. Sailcut CAD is made available both in binary (compiled for you) and in source code form.</para>
@@ -43,21 +41,18 @@
 </sect2>
 
 <sect2>
-
 <title>Technical information on the code</title>
 
 <para>Sailcut CAD is written with portability in mind. As such it is written in C++ and uses the Qt library from Trolltech for the graphical user interface. Sailcut CAD uses OpenGL to display the 3D view of the sail. Sailcut CAD is known to compile and run on GNU/Linux, Microsoft Windows and MacOS/X.</para>
 
 </sect2>
-
 </sect1>
 
-<sect1 id="s.using">
 
+<sect1 id="s.using">
 <title>Using Sailcut CAD</title>
 
 <sect2>
-
 <title>Upgrade notes</title>
 
 <para>As of release 0.6.5, Sailcut CAD uses different extensions for each file type instead of ending all files with &quot;.xml&quot;. If you wish to open sails created with a previous version of Sailcut CAD you should rename your sail definition file so that it ends with &quot;.saildef&quot;. When opening the resulting file, all data except for the mould will be preserved. Redefine your sail mould, then save the file.</para>
@@ -85,11 +80,10 @@
 </sect3>
 
 </sect2>
-
 </sect1>
 
-<sect1 id="s.creating">
 
+<sect1 id="s.sail">
 <title>Creating a sail</title>
 
 <para>When you start Sailcut CAD, you are presented with a default sail. At the top of the window you will find a number of roll down menus. The <guimenu>File</guimenu> menu is used for loading an existing sail, saving the parameters of the sail and Export the developed panels.</para>
@@ -101,7 +95,6 @@
 <para>You can display several sails on the same rig through the <guimenuitem>Rig</guimenuitem> entry of the <guimenu>View</guimenu> menu.</para>
 
 <sect2>
-
 <title>Dimensions dialog screen</title>
 
 <para>You can access the sail dimensions dialog from the <guimenuitem>Dimensions</guimenuitem> entry of the <guimenu>View</guimenu> menu</para>
@@ -115,10 +108,9 @@
 <para>When you have finished entering the dimensions, press <guibutton>OK</guibutton> to display the sail in 3D.</para>
 
 <sect3>
-
 <title>Rig geometry</title>
 
-<para>The first step is to select the type of sail you are going to work on, and enter the data defining the rig geometry and sail plan.</para>
+<para>The first step is to select the type of sail you are going to work on, and enter the data defining the rig geometry and sail plan such that the sail will have the proper orientation.</para>
 
 <para>Select the type of sail by pressing the corresponding Radio Button:</para>
 
@@ -144,10 +136,9 @@
 
 </itemizedlist>
 
-<para>The rig data are used for displaying the sails in their proper relative position with the <guilabel>rig viewer</guilabel>.</para>
+<para>The rig data are used for displaying the sails in their proper relative position with the rig.</para>
 
 <para>
-
 <figure id="fig.sailplan">
 
 <title>Sailcut plan definition</title>
@@ -157,13 +148,11 @@
 </mediaobject>
 
 </figure>
-
 </para>
 
 </sect3>
 
 <sect3>
-
 <title>Sail identifier</title>
 
 <para>You enter there a text describing the sail you are working on (maximum 40 characters spaces included).</para>
@@ -171,7 +160,6 @@
 </sect3>
 
 <sect3>
-
 <title>Sail dimensions</title>
 
 <para>This is where the dimensions of the sail are entered.</para>
@@ -185,7 +173,6 @@
 <para>The position of the round or roach is expressed in percentage of the side length starting from the lower or most leftward end of that edge.</para>
 
 <para>
-
 <figure id="fig.sail_edges">
 
 <title>Sailcut edges definition</title>
@@ -195,7 +182,6 @@
 </mediaobject>
 
 </figure>
-
 </para>
 
 <para>Dimensions and angles defining the sail plan are expressed in millimetre and degrees.</para>
@@ -211,7 +197,6 @@
 </sect3>
 
 <sect3>
-
 <title>Layout</title>
 
 <para>Click on the radio button corresponding to the desired layout of the sail. The layout of the panels does not affect the shape of the sail which is defined by its dimensions and its mould. </para>
@@ -259,7 +244,6 @@
 </itemizedlist>
 
 <para>
-
 <figure id="fig.head_gores_definition">
 
 <title>Radial cut gores definition</title>
@@ -269,13 +253,11 @@
 </mediaobject>
 
 </figure>
-
 </para>
 
 </sect3>
 
 <sect3>
-
 <title>Sail shape</title>
 
 <para>You enter there the depth of the sail at 3 levels, near the foot, in the middle of the sail(the exact position being defined in the mould screen) and near the top of the sail.</para>
@@ -287,7 +269,6 @@
 </sect3>
 
 <sect3>
-
 <title>Cloth</title>
 
 <para>Enter there the width of cloth used, the width of the seams between adjacent panels, the width of material to be added to the leech to make the leech hem and the width of material for the other edges hems.</para>
@@ -295,7 +276,6 @@
 <para><xref linkend="fig.sail_seams"/> describes the location of the various hems and seam width. Sailcut will compute the panels such that they fit within the declared cloth width including the seam and hems width as appropriate, except for a radial cut sail for which the width of each panels is computed from the number of radial panels entered.</para>
 
 <para>
-
 <figure id="fig.sail_seams">
 
 <title>Sailcut seams and hems definition</title>
@@ -305,15 +285,12 @@
 </mediaobject>
 
 </figure>
-
 </para>
 
 </sect3>
-
 </sect2>
 
 <sect2>
-
 <title>Mould dialog screen</title>
 
 <para>You can access the mould dialog from the <guimenuitem>Mould</guimenuitem> entry of the <guimenu>View</guimenu> menu.</para>
@@ -333,27 +310,6 @@
 </sect2>
 
 <sect2>
-
-<title>Rig viewer</title>
-
-<para>This viewer is used to display several sails on the same rig. It is accessed via the <guimenuitem>Rig</guimenuitem> entry of the main screen's <guimenu>View</guimenu> menu.</para>
-
-<para>The <guimenuitem>New</guimenuitem> entry of the <guimenu>File</guimenu> menu is used to purge the viewer.</para>
-
-<para>The <guimenuitem>Add sail</guimenuitem> entry of the <guimenu>File</guimenu> menu is used to add sails already created and saved with Sailcut.</para>
-
-<para>Once a sail is added to the rig viewer the sail information frame appears below and it is possible to translate the sail in the 3 directions by adding X-Y-Z displacement values. If you have misplaced a sail use the Reload button to recover the initial sail. You can also use the Remove button to eliminate a sail. 2 slides allows you to ratate the rig in azimuth and elevation and view the ig from any vantage point.</para>
-
-<para>The <guimenuitem>Save</guimenuitem> entry of the <guimenu>File</guimenu> menu is used to save a rig with a combination of sails.</para>
-
-<para>Rigs which have been saved can be later opened as an entity with the <guimenuitem>Open</guimenuitem> entry of the <guimenu>File</guimenu> menu.</para>
-
-<para>Note that the rig viewer window must be closed to allow you to return to the main screen of Sailcut.</para>
-
-</sect2>
-
-<sect2>
-
 <title>View controls</title>
 
 <para>It is possible to zoom, pan and rotate the sail in the view window:</para>
@@ -374,7 +330,7 @@
 
 <listitem>
 
-<para><guilabel>Zoom</guilabel> : to zoom in press CTRL + and to zoom out press CTRL -. You can also use the zoom buttons in the view controls or your mouse wheel to zoom in and out.</para>
+<para><guilabel>Zoom</guilabel> : to zoom in press CTRL + and to zoom out press CTRL -. You can also use the <guibutton>zoom</guibutton> buttons in the view controls or your mouse wheel to zoom in and out.</para>
 
 </listitem>
 
@@ -383,7 +339,6 @@
 </sect2>
 
 <sect2>
-
 <title>Sail panels development</title>
 
 <para>The developed sail is display by clicking on the <guilabel>Development</guilabel> tab from Sailcut CAD&apos;s main window. This presents you with a view of the developed (flat) panels of the sail. The view controls are the same as those of the main window. The blue line represents the edge of the finished panel (draw line) and the red line represents the outer edge taking into account the seam and hems width allowance (cut line).</para>
@@ -421,7 +376,6 @@
 </sect2>
 
 <sect2>
-
 <title>Loading and saving sails</title>
 
 <para>Once you have customised your sail, you can save it to a file by using the <guimenuitem>Save</guimenuitem> or <guimenuitem>Save As</guimenuitem> entries in the <guimenu>File</guimenu>. You can reload it by using the <guimenuitem>Open</guimenuitem> entry of the <guimenu>File</guimenu> next time you want to work on it.</para>
@@ -433,7 +387,6 @@
 </sect2>
 
 <sect2>
-
 <title>Exporting 3D sails</title>
 
 <para>In addition to Sailcut CAD&apos;s native file format, it is possible to export all the 3D points located on the edges and seams of the panels that make up a sail. You can export the three dimensional sail to the following file formats from the <guisubmenu>Export 3D sail</guisubmenu> submenu of the <guimenu>File</guimenu> menu:</para>
@@ -463,7 +416,6 @@
 </sect2>
 
 <sect2>
-
 <title>Printing data and drawings</title>
 
 <para>The <guisubmenu>Print</guisubmenu> submenu of the <guimenu>File</guimenu> menu offers various printout possibilities:</para>
@@ -493,7 +445,6 @@
 <para>The printout scaling is such that the sail drawing and the largest developed panel automatically fit in one page. For printing panels to a precise scale it is preferable to export the developed sail in a DXF file and use a CAD package to print the panels.</para>
 
 <para>
-
 <figure id="fig.develop_panel_drawing">
 
 <title>Developed panels drawing</title>
@@ -503,21 +454,133 @@
 </mediaobject> 
 
 </figure>
-
 </para>
 
 </sect2>
+</sect1>
+
+
+<sect1 id="s.rig">
+<title>Rig Design</title>
+
+<para>This module allow the design of a mast with up to 3 levels of spreaders. It is accessed via the <guisubmenu>Rig</guisubmenu> entry of the main screen's <guimenu>File</guimenu> <guisubmenu>New</guisubmenu>menu.</para>
+
+<para>The <guisubmenu>Save</guisubmenu> entry of the <guimenu>File</guimenu> menu is used to save a rig.</para>
+
+<para>Any Rig which has been saved can be later opened as an entity with the <guisubmenu>Open</guisubmenu> entry of the <guimenu>File</guimenu> menu and can be used as an element to constitute a boat.</para>
+
+<para>The controls of the viewer are identical to those of the sail viewer.</para>
+
+<sect2>
+<title>Rig dimensions</title>
+
+<para>You can modify the dimensions of the rig by using the <guimenuitem>Dimensions</guimenuitem> entry of the <guimenu>View</guimenu> menu.</para>
+
+<para>The definition of the various dimensions to be entered is given in the figure below. Please note that, in order to allow the design of sails independently from the design of the rig, the definition of the mast rake and mast curve are different from that of the sail luff rake and curve used in the sail design module. This rig module provides the data to be used when designing the mainsail which fit on the rig.</para>
+
+<para>
+<figure id="fig.rigplan">
+<title>Sailcut rig definition</title>
+
+<mediaobject>
+<imageobject><imagedata fileref="rigplan"/></imageobject>
+</mediaobject>
+</figure>
+</para>
+<para>The rig dimension screen is divided in boxes labeled:</para>
+
+<itemizedlist>
+<listitem>
+<para><guilabel>Fore triangle</guilabel></para>
+</listitem>
+
+<listitem>
+<para><guilabel>Mast</guilabel> </para> 
+</listitem>
+
+<listitem>
+<para><guilabel>Mainsail</guilabel>: see below the chapter about mainsail luff curve. </para>
+</listitem>
+
+<listitem>
+<para><guilabel>Shrouds</guilabel>: the base width of the lower shroud can be different from that of the cap (outer) shroud for boat where the jib is sheeted between the shrouds. </para>
+</listitem>
+
+<listitem>
+<para><guilabel>Spreaders</guilabel>: The number of spreaders can be from none (0) to maximum 3. If only no spreader is present, the outer shroud will be identical to the lower shroud. </para>
+</listitem>
+
+</itemizedlist>
+
+<para>Use the <guibutton>Check</guibutton> button any time after entering new data to perform a verification that the data entered are consistant with a reasonable rig design. The color of the fonts will tell you what too look for if there is an incompatibility between data entered. Red indicate a too high value, purple a too low value and blue signals the related parameter to be checked. </para>
+
+<para>Once you have entered all necessary data click on the <guibutton>OK</guibutton> button to close the rig dimensions window and display the rig. If there is an incompatibility in the data, the rig dimensions window will not close until it is corrected. </para>
+
+</sect2>
+
+<sect2>
+<title>Mainsail luff curve</title>
+
+<para>In most case users have designed sails independently from the design of a rig. However the user may wish to check a given sail is compatible with a rig. In the rig dimension screen, the box labeled <guilabel>Mainsail</guilabel> is used to compute the mainsail tack position and luff curve which will fit the rig. These data can be used for creating the corresponding mainsail or to verify that a mainsail will fit the rig.</para>
+
+<para>The only data to be entered is the height of the tack of the mainsail and Sailcut CAD will compute the other data.</para>
+
+</sect2>
+</sect1>
+
+
+<sect1 id="s.hull">
+<title>Hull Design</title>
+
+<para>This module allow the design of a hard chines hull. It is accessed via the <guisubmenu>Hull</guisubmenu> entry of the main screen's <guimenu>File</guimenu> <guisubmenu>New</guisubmenu>menu.</para>
+
+<para>Please note that this module is not yet fully operational, for the time being a single chine hull ouline will appear whatever the number of chine is entered.</para>
+
+<para>The <guimenuitem>Save</guimenuitem> entry of the <guimenu>File</guimenu> menu is used to save a hull.</para>
+
+<para>Any Hull which has been saved can be later opened as an entity with the <guimenuitem>Open</guimenuitem> entry of the <guimenu>File</guimenu> menu and can be used as an element to constitute a boat.</para>
+
+<para>The controls of the viewer are identical to those of the sail viewer.</para>
+
+<sect2>
+<title>Hull dimensions</title>
+
+<para>You can modify the dimensions of the hull by using the <guimenuitem>Dimensions</guimenuitem> entry of the <guimenu>View</guimenu> menu.</para>
+
+</sect2>
+</sect1>
+
+
+<sect1 id="s.boat">
+<title>Boat Design</title>
+
+<para>This Boat design module allow to assemble hull, rig and sails files created earlier to make a virtual boat. It is accessed via the <guisubmenu>Boat</guisubmenu> entry of the main screen's <guimenu>File</guimenu> <guisubmenu>New</guisubmenu>menu.</para>
+
+<para>The boat viewer is initially showing a black screen and files are added via the <guisubmenu>Add</guisubmenu> entry of the main screen's <guimenu>File</guimenu> menu. A new tab will appear with the details of the file selected and the element identification which was given at the time of creating the element (sail ID, Rig ID, Hull ID).</para>
+
+<para>The controls of the viewer are identical to those of the sail viewer.</para>
+
+<para>All boat elements will be displayed in the position entered at the time the element was created. Please remember that the point of coordinate X=0, Y=0, Z=0 is located at the forward end of the deck of the hull (stem).</para>
+
+<para>The boat elements can be individually shifted in X, Y or Z direction by entering the corresponding offset in the element tab and then clicking on the  <guibutton>Update</guibutton> button.</para>
+
+<para>A boat element can be removed by selecting the corresponding tab and then clicking on the <guibutton>Remove</guibutton> button.</para>
+
+<para> At any time, clicking on the <guibutton>Reload</guibutton> button will restore the corresponding element to its initial position.</para>
+
+<para>The <guisubmenu>Save</guisubmenu> entry of the <guimenu>File</guimenu> menu is used to save a boat with a combination of hull rig and sails.</para>
+
+<para>Any Boats which has been saved can be later opened as an entity with the <guisubmenu>Open</guisubmenu> entry of the <guimenu>File</guimenu> menu.</para>
 
 </sect1>
 
-<sect1 id="s.surface">
 
+<sect1 id="s.surface">
 <title>Sails surface formulation in Sailcut</title>
 
 <para>This section is a translation of the paper presented by Robert Lainé to the second Workshop Science Voile IRENAV in Brest, France on 21 May 2004.</para>
 
 <sect2>
-
 <title>History</title>
 
 <para>Sailcut software was initially written in 1978 in Basic language on a computer with 1.6 KB of memory, one line text screen and a small 32 columns text printer. Hence the necessity to keep the surface formulation simple for designing the sails which I built and used on my IOR ¼ton.</para>
@@ -527,7 +590,6 @@
 </sect2>
 
 <sect2>
-
 <title>Of the complexity of the definition of the surface of a sail</title>
 
 <para>A sail is a complex surface which sailmakers have historically defined by notions like depth at various height and position of the point of maximum depth along the local cord of the profile. This method of defining the surface of the sail by control points allows for an easy comparison of the shape between the intended design and reality. Unfortunately a large number of different surfaces can pass through these few control points. Then notions like the slope at the leading edge and trailing edge of the profiles were introduced to help sailmaker get a better control of the shape of the sail profile. Using interpolation between basic control points, with or without constraints on the tangents at the extremities of the profiles, to determine the depth of the sail in all points were too demanding for old days personal computer processing capability.</para>
@@ -537,7 +599,6 @@
 </sect2>
 
 <sect2>
-
 <title>Some Maths</title>
 
 <para>The coordinate system used is such that the plane X-Y contains the tack, the clew and the head of the luff. The X axis is horizontal and orientated positively from tack toward clew. The Y axis is vertical orientated upward and the Z axis (depth) is perpendicular to the X-Y plane. Profiles are defined by the intersection of the surface of the sail with an horizontal plane parallel to Z-X plane. The depth Z of any point of a given profile is a function of the local X ordinate normalised to the profile local cord as shown in <xref linkend="fig.coordinates_system"/>.</para>
@@ -628,7 +689,6 @@ curvature = z&quot; / (1+ z&apos;*z&apos;)^3/2</programlisting> <para>
 </sect2>
 
 <sect2>
-
 <title>Other aspects of the surface formulation</title>
 
 <para>The above basic mould is not sufficient to define a real sail. Indeed the luff, gaff, leech and foot of the sail are never straight and further more the sail profiles are always twisted from the foot to the top of the sail. I use the distance from the point of maximum round to the straight line and two arcs of parabola rejoining the adjacent corners to define the real edges of the sail. The profiles defined by the sail mould described above are resting on the real edges of the sail. The twist of the sail is finally obtained by applying to each profile a rotation around the leading edge end point.</para>
@@ -636,17 +696,15 @@ curvature = z&quot; / (1+ z&apos;*z&apos;)^3/2</programlisting> <para>
 <para>It is to be noted that this method of modelling the surface of sails gives shapes without bumps or hollows and guarantees that there is no inversion of camber in the profiles. The method is applicable to triangular and quadrangular sails and Sailcut is commonly used for designing old timers gaff sails.</para>
 
 </sect2>
-
 </sect1>
 
-<sect1 id="s.moreinfo">
 
+<sect1 id="s.moreinfo">
 <title>Where can I find more information about Sailcut CAD?</title>
 
 <para>The Sailcut CAD project lives at <ulink url="http://sailcut.sourceforge.net/"/>. This is where you will find links to all matters related to Sailcut CAD!</para>
 
 <sect2>
-
 <title>I think I found a bug, what should I do?</title>
 
 <para>Sailcut CAD is constantly under development and feedback from users is very welcome! If you think you found bug, visit Sailcut&apos;s homepage , you will find instructions in the &quot;Reporting a Bug&quot; section.</para>
@@ -654,7 +712,6 @@ curvature = z&quot; / (1+ z&apos;*z&apos;)^3/2</programlisting> <para>
 </sect2>
 
 <sect2>
-
 <title>I would like to help develop Sailcut CAD, what should I do?</title>
 
 <para>You can help us improve Sailcut even if you are not a programmer! Simply using Sailcut and reporting any bugs you might find is of considerable help to us. We are also looking for people to help keep translations up to date and to produce new translations. If you are interested in translating Sailcut into your native language, visit the Sailcut CAD homepage and send an email to the development mailing list!</para>
@@ -662,15 +719,13 @@ curvature = z&quot; / (1+ z&apos;*z&apos;)^3/2</programlisting> <para>
 <para>If you have some knowledge of C++ and are interested in making Sailcut CAD a better program, visit the Sailcut CAD homepage where you will find both snapshots of the Sailcut CAD code and how to access to the CVS repository. Once you have had a chance to familiarise yourself with the code, contact us via the forums or our mailing lists!</para>
 
 </sect2>
-
 </sect1>
 
-<sect1 id="s.formats">
 
+<sect1 id="s.formats">
 <title>File formats used by Sailcut CAD</title>
 
 <sect2 id="s.format_text_flat">
-
 <title>Text representation of developed sail</title>
 
 <para>This section describes the structure of the file generated by Sailcut CAD using the <guimenuitem>to TXT sail</guimenuitem> entry of the <guisubmenu>Export development</guisubmenu> submenu of the <guimenu>File</guimenu> menu. The extension of a text sail file is &quot;.txt&quot;.</para>
@@ -895,8 +950,8 @@ curvature = z&quot; / (1+ z&apos;*z&apos;)^3/2</programlisting> <para>
 
 </sect1>
 
-<sect1 id="s.copyright">
 
+<sect1 id="s.copyright">
 <title>Copyright</title>
 
 <para>Copyright (C) 1993-2006 Robert &amp; Jeremy Lainé.</para>
