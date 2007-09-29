@@ -24,6 +24,7 @@
 CPanelGroup::CPanelGroup( unsigned int nbpanels /* = 0 */)
 {
     panel.resize(nbpanels);
+    type = SAIL;
 }
 
 
