@@ -190,6 +190,30 @@ void CSailDoc::get
 }
 
 
+/** Reads an enumPanelGroupType from an XML document.
+ *
+ * @param parent the parent node
+ * @param t the enumPanelGroupType
+ * @param name the name of the value
+ */
+void CSailDoc::get
+    ( const QDomNode &parent, enumPanelGroupType &t, const QString &name )
+{
+    QDomElement e = findElement( parent, "enumPanelGroupType", name);
+    QString s = e.attributes().namedItem("value").nodeValue();
+
+    if (!s.compare("SAIL")) {
+        t = SAIL;
+    } else if (!s.compare("RIG")) {
+        t = RIG;
+    } else if (!s.compare("HULL")) {
+        t = HULL;
+    } else {
+        throw CException("unknown panel group type");
+    }
+}
+
+
 /** Reads an enumSailCut from an XML document.
  *
  * @param parent the parent node
@@ -454,6 +478,18 @@ void CSailDoc::get
     get( e, g.title, "title" );
     get( e, g.panel, "panel" );
     get( e, g.child, "child" );
+
+    /* NOTE : we maintain backward file format compatibility
+     * by adding new members in the order they were introduced below
+     */
+    try
+    {
+        get( e, g.type, "type" );
+    }
+    catch (CException e)
+    { 
+        // to avoid killing the program
+    }
 }
 
 
@@ -662,6 +698,28 @@ void CSailDoc::put( QDomNode &parent, const enumBoatElementType &t, const QStrin
         break;
     }
     QDomElement e = createElement("enumBoatElementType",name,value);
+    parent.appendChild(e);
+}
+
+
+/** Puts an enumPanelGroupType to an XML document.
+ */
+void CSailDoc::put( QDomNode &parent, const enumPanelGroupType &t, const QString &name )
+{
+    QString value;
+    switch (t)
+    {
+    case SAIL:
+        value = "SAIL";
+        break;
+    case RIG:
+        value = "RIG";
+        break;
+    case HULL:
+        value = "HULL";
+        break;
+    }
+    QDomElement e = createElement("enumPanelGroupType",name,value);
     parent.appendChild(e);
 }
 
@@ -882,6 +940,7 @@ void CSailDoc::put( QDomNode &parent, const CPanelGroup &g, const QString &name 
     put ( e, g.title, "title");
     put ( e, g.panel, "panel");
     put ( e, g.child, "child");
+    put ( e, g.type, "type");
 }
 
 

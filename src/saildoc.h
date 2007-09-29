@@ -55,11 +55,13 @@ public:
     void get
         (const QDomNode &parent, CPoint3d &p, const QString &name );
     void get
+        (const QDomNode &parent, enumBoatElementType &t, const QString &name );
+    void get
+        (const QDomNode &parent, enumPanelGroupType &t, const QString &name );
+    void get
         (const QDomNode &parent, enumSailCut &c, const QString &name );
     void get
         (const QDomNode &parent, enumSailType &t, const QString &name );
-    void get
-        (const QDomNode &parent, enumBoatElementType &t, const QString &name );
     void get
         (const QDomNode &parent, CHullDef &d, const QString &name );
     void get
@@ -113,6 +115,7 @@ public:
     void put(QDomNode &parent, const QString &s, const QString &name="" );
     void put(QDomNode &parent, const CPoint3d &p, const QString &name="" );
     void put(QDomNode &parent, const enumBoatElementType &t, const QString &name="");
+    void put(QDomNode &parent, const enumPanelGroupType &t, const QString &name="" );
     void put(QDomNode &parent, const enumSailCut &c, const QString &name="" );
     void put(QDomNode &parent, const enumSailType &t, const QString &name="" );
     void put(QDomNode &parent, const CBoatDef &d, const QString &name="" );
