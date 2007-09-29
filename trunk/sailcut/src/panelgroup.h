@@ -22,7 +22,7 @@
 
 #include "panel.h"
 
-enum enumBoatObjType { SAIL, RIG, HULL };
+enum enumPanelGroupType { SAIL, RIG, HULL };
 
 /** This class holds a collection of panels, for instance to represent
  *  a 3D or a developed sail.
@@ -44,7 +44,7 @@ public:
     vector<CPanelGroup> child;
     
     /** type of boat object */
-    enumBoatObjType type;
+    enumPanelGroupType type;
 
     // member functions
 public:
