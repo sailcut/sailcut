@@ -1,6 +1,6 @@
 include $(top_srcdir)/Makefile.common
 
-FIGS = coordinates_system.fig sailplan.fig sail_seams.fig sail_edges.fig develop_panel_drawing.fig head_gores_definition.fig
+FIGS = coordinates_system.fig sailplan.fig sail_seams.fig sail_edges.fig develop_panel_drawing.fig head_gores_definition.fig rigplan.fig
 
 htmldir = $(pkgdocdir)/html/en
 dist_html_DATA = index.html $(FIGS:.fig=.png)

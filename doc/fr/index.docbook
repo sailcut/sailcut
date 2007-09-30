@@ -4,154 +4,130 @@
 
 <articleinfo>
 
-<title>Manuel de Sailcut CAD</title>
+<title> Manuel de Sailcut CAD </title>
 
 <authorgroup>
-
-<author><firstname>Robert</firstname><surname>Lainé</surname></author>
-
-<author><firstname>Jeremy</firstname><surname>Lainé</surname></author>
-
+<author> <firstname>Robert</firstname> <surname>Lainé</surname> </author>
+<author> <firstname>Jeremy</firstname> <surname>Lainé</surname> </author>
 </authorgroup>
 
-<pubdate>Sailcut CAD 1.2.4 - 16 Octobre 2006</pubdate>
+<pubdate>Sailcut CAD 1.3.1 - 1 Octobre 2007</pubdate>
 
 </articleinfo>
 
 <sect1 id="s.introduction">
 
-<title>Introduction</title>
+<title> Introduction </title>
 
-<para>Ce manuel est en cours de rédaction.</para>
+<para>Ce manuel est en cours de rédaction. </para>
 
 <sect2>
+<title> A propos de Sailcut CAD </title>
 
-<title>A propos de Sailcut CAD</title>
+<para>Sailcut is est un logiciel de tracé de voiles et de développement à plat des laizes. Les voiles peuvent être à 3 cotés ou à 4 cotés pour les gréements anciens par exemple. </para>
 
-<para>Sailcut is est un logiciel de tracé de voiles et de développement à plat des laizes. Les voiles peuvent être à 3 cotés ou à 4 cotés pour les gréements anciens par exemple.</para>
+<para>La première version de Sailcut a été développée en 1978 et utilisée par Robert Lainé sur son 1/4 ton IOR &quot;Flying Sheep III&quot;. Sailcut est disponible sur la toile Internet depuis 1994 et est utilisé par beaucoup de professionels et amateurs maîtres voiliers, pour des bateaux de course, de croisière ou maquettes navigantes. </para>
 
-<para>La première version de Sailcut a été développée en 1978 et utilisée par Robert Lainé sur son 1/4 ton IOR &quot;Flying Sheep III&quot;. Sailcut est disponible sur la toile Internet depuis 1994 et est utilisé par beaucoup de professionels et amateurs maîtres voiliers, pour des bateaux de course, de croisière ou maquettes navigantes.</para>
-
-<para>Sailcut utilise une définition mathématique de la surface des voiles qui garantie que le profil de la voile sera lisse et aérodynamique.</para>
+<para>Sailcut utilise une définition mathématique de la surface des voiles qui garantie que le profil de la voile sera lisse et aérodynamique. </para>
 
 </sect2>
 
 <sect2>
+<title> Où obtenir Sailcut CAD? </title>
 
-<title>Où obtenir Sailcut CAD?</title>
-
-<para>Vous pouvez télécharger la dernière version de Sailcut CAD depuis la page du projet à <ulink url="http://sailcut.sourceforge.net/"/>. Sailcut CAD est disponible sous forme binaire (compilé pour vous) et code source.</para>
+<para>Vous pouvez télécharger la dernière version de Sailcut CAD depuis la page du projet à <ulink url="http://sailcut.sourceforge.net/"/>. Sailcut CAD est disponible sous forme binaire (compilé pour vous) et code source. </para>
 
 </sect2>
 
 <sect2>
+<title> Informations techniques sur le code </title>
 
-<title>Informations techniques sur le code</title>
-
-<para>Sailcut CAD est écrit dans le but d&apos;être portable. Le code est donc du C++ qui utilise la librairie Qt de Trolltech pour l&apos;interface graphique. Sailcut CAD utilise OpenGL pour tous les affichages 3D. Sailcut se compile et tourne sur GNU/Linux, Microsoft Windows et MacOS/X.</para>
+<para>Sailcut CAD est écrit dans le but d&apos;être portable. Le code est donc du C++ qui utilise la librairie Qt de Trolltech pour l&apos;interface graphique. Sailcut CAD utilise OpenGL pour tous les affichages 3D. Sailcut se compile et tourne sur GNU/Linux, Microsoft Windows et MacOS/X. </para>
 
 </sect2>
-
 </sect1>
 
 <sect1 id="s.using">
-
-<title>Utilisation de Sailcut CAD</title>
+<title> Utilisation de Sailcut CAD </title>
 
 <sect2>
+<title> Notes sur l&apos;utilisation de fichier de versions précédentes </title>
 
-<title>Notes sur l&apos;utilisation de fichier de versions précédentes</title>
-
-<para>A partir de la version 0.6.5 Sailcut CAD utilise des extensions de nom de fichier distincts au lieu de l&apos;extension générique &quot;.xml&quot;. Si vous souhaitez réutiliser des fichiers de données de voile de ce type vous devez les renommer avec l&apos;extension &quot;.saildef&quot;. Vous pourrez alors récupérer les données dimensionelles de la voile mais pas le moule que vous devrez redéfinir avant de sauvegarder les données.</para>
+<para>A partir de la version 0.6.5 Sailcut CAD utilise des extensions de nom de fichier distincts au lieu de l&apos;extension générique &quot;.xml&quot;. Si vous souhaitez réutiliser des fichiers de données de voile de ce type vous devez les renommer avec l&apos;extension &quot;.saildef&quot;. Vous pourrez alors récupérer les données dimensionelles de la voile mais pas le moule que vous devrez redéfinir avant de sauvegarder les données. </para>
 
 </sect2>
 
 <sect2>
-
-<title>Préférences utilisateur</title>
+<title> Préférences utilisateur </title>
 
 <sect3>
+<title> Fichier des préférences </title>
 
-<title>Fichier des préférences</title>
-
-<para>Vos préférences sount enregistrées dans le fichier <filename>.sailcutrc</filename>. Sur les plateformes Unix ce fichier est placé dans votre répertoire <filename>HOME</filename>. Sous Windows ce fichier se trouve généralement dans le répertoire <filename>Documents and Settings\UTILISATEUR</filename>.</para>
+<para>Vos préférences sount enregistrées dans le fichier <filename>.sailcutrc</filename>. Sur les plateformes Unix ce fichier est placé dans votre répertoire <filename>HOME</filename>. Sous Windows ce fichier se trouve généralement dans le répertoire <filename>Documents and Settings\UTILISATEUR</filename>. </para>
 
 </sect3>
 
 <sect3>
+<title> Internationalisation </title>
 
-<title>Internationalisation</title>
-
-<para>A partir de la version 0.6.5, Sailcut CAD est internationalisé. La traduction des interfaces utilisateur est disponibles dans plusieurs languages. Au démarrage Sailcut utilise la langue correspondante à vos paramètres locaux. Vous pouvez changer la langue en utilisant le sous-menu <guisubmenu>Langue</guisubmenu> du menu <guimenu>Vue</guimenu>.</para>
+<para>A partir de la version 0.6.5, Sailcut CAD est internationalisé. La traduction des interfaces utilisateur est disponibles dans plusieurs languages. Au démarrage Sailcut utilise la langue correspondante à vos paramètres locaux. Vous pouvez changer la langue en utilisant le sous-menu <guisubmenu>Langue</guisubmenu> du menu <guimenu>Vue</guimenu>. </para>
 
 </sect3>
-
 </sect2>
 
 </sect1>
 
 <sect1 id="s.creating">
+<title> Créer une voile </title>
 
-<title>Créer une voile</title>
+<para>Au lancement Sailcut CAD vous présente une voile par défaut. En haut de la fenêtre vous trouverez une série de menus déroulant. Le menu Fichier est utilisé pour le chargement d&apos;une voile existante, la sauvegarde des données et paramètres de la voile et l&apos;export des panneaux développés. </para>
 
-<para>Au lancement Sailcut CAD vous présente une voile par défaut. En haut de la fenêtre vous trouverez une série de menus déroulant. Le menu Fichier est utilisé pour le chargement d&apos;une voile existante, la sauvegarde des données et paramètres de la voile et l&apos;export des panneaux développés.</para>
+<para>Vous pouvez changer les dimensions de la voile à partir de l'entrée <guimenuitem>Dimensions</guimenuitem> du menu déroulant <guimenu>Vue</guimenu>. </para>
 
-<para>Vous pouvez changer les dimensions de la voile à partir de l'entrée <guimenuitem>Dimensions</guimenuitem> du menu déroulant <guimenu>Vue</guimenu>.</para>
+<para>Vous pouvez modifier le profil de la voile à partir de l'entrée <guimenuitem>Moule</guimenuitem> du menu déroulant <guimenu>Vue</guimenu>. </para>
 
-<para>Vous pouvez modifier le profil de la voile à partir de l'entrée <guimenuitem>Moule</guimenuitem> du menu déroulant <guimenu>Vue</guimenu>.</para>
-
-<para>Vous pouvez visualiser plusieurs voiles sur le même gréement à partir de l'entrée <guimenuitem>Gréement</guimenuitem> du menu déroulant <guimenu>Vue</guimenu>.</para>
+<para>Vous pouvez visualiser plusieurs voiles sur le même gréement à partir de l'entrée <guimenuitem>Gréement</guimenuitem> du menu déroulant <guimenu>Vue</guimenu>. </para>
 
 <sect2>
-
 <title>Définition de la voile</title>
 
 <para>Dans cette fenêtre vous définissez toutes les dimensions de la voile.</para>
 
 <para>Le programme est concu pour traiter les voiles triangulaires et quadrangulaires. Une voile triangulaire peut être vue comme une voile quadrangulaire dont le coté haut est très petit.</para>
 
-<para>La surface de la voile est générée à partir d&apos;un jeu d&apos;équations qui défini le profil de la voile à toutes les hauteurs. Ces profils reposent sur les bords de la voile qui sont eux même définis par leur longueur et le rond de ces bords, ainsi que par le vrillage de la voile. La fenêtre <guilabel>Définition de la voile</guilabel> est constituée de boites regroupant les divers paramètres de la voile.</para>
+<para>La surface de la voile est générée à partir d&apos;un jeu d&apos;équations qui défini le profil de la voile à toutes les hauteurs. Ces profils reposent sur les bords de la voile qui sont eux même définis par leur longueur et le rond de ces bords, ainsi que par le vrillage de la voile. La fenêtre <guilabel>Définition de la voile</guilabel> est constituée de boites regroupant les divers paramètres de la voile. </para>
 
-<para>Utilisez le bouton <guibutton>Calculer</guibutton> pour calculer et afficher des données auxiliaire et en particulier la largeur de la voile aux points spécifiés par la règle IRC. Cette opération peut aussi changer la couleur de certaines zones de saisie. La couleur est rouge c&apos; si la valeur est trop forte et jaune si elle est trop faible. La valeur elle même sera changée pour être à la limite acceptable.</para>
+<para>Utilisez le bouton <guibutton>Calculer</guibutton> pour calculer et afficher des données auxiliaire et en particulier la largeur de la voile aux points spécifiés par la règle IRC. Cette opération peut aussi changer la couleur de certaines zones de saisie. La couleur est rouge c&apos; si la valeur est trop forte et jaune si elle est trop faible. La valeur elle même sera changée pour être à la limite acceptable. </para>
 
-<para>Lorsque vous avez fini d&apos;entrer les données pressez le bouton <guibutton>OK</guibutton> pour afficher la voile en 3D.</para>
+<para>Lorsque vous avez fini d&apos;entrer les données pressez le bouton <guibutton>OK</guibutton> pour afficher la voile en 3D. </para>
 
 <sect3>
-
 <title>Géométrie du gréement</title>
 
-<para>La première étape est de choisir le type de voile sur laquelle vous voulez travailler et d&apos;entrer les dimensions du gréement et du pont du bateau.</para>
+<para>La première étape est de choisir le type de voile sur laquelle vous voulez travailler et d&apos;entrer les dimensions du gréement et du pont du bateau. </para>
 
-<para>Choisissez le type de voile en appuyant sur le bouton radio correspondant:</para>
+<para>Choisissez le type de voile en appuyant sur le bouton radio correspondant: </para>
 
 <itemizedlist>
 
 <listitem>
-
-<para><guilabel>Grand-voile</guilabel> pour toute voile montée sur un mât.</para>
-
+<para><guilabel>Grand-voile</guilabel> pour toute voile montée sur un mât. </para>
 </listitem>
 
 <listitem>
-
-<para><guilabel>Foc</guilabel> pour toute voile montée sur un étais fixe ou mobile.</para>
-
+<para><guilabel>Foc</guilabel> pour toute voile montée sur un étais fixe ou mobile. </para>
 </listitem>
 
 <listitem>
-
-<para><guilabel>Aile</guilabel> pour toute voile cerf-volant ou planneur symétrique par rapport à la bordure.</para>
-
+<para><guilabel>Aile</guilabel> pour toute voile cerf-volant ou planneur symétrique par rapport à la bordure. </para>
 </listitem>
 
 </itemizedlist>
 
-<para>Les dimensions du gréement sont utilisée pour que les voiles s&apos;affichent à la bonne position dans la fenêtre <guilabel>Gréement</guilabel>.</para>
+<para>Les dimensions du gréement sont utilisée pour que les voiles s&apos;affichent à la bonne position dans la fenêtre <guilabel>Gréement</guilabel>. </para>
 
 <para>
-
 <figure id="fig.sailplan">
-
 <title>Définition du plan des voiles dans Sailcut</title>
 
 <mediaobject>
@@ -159,37 +135,32 @@
 </mediaobject>
 
 </figure>
-
 </para>
 
 </sect3>
 
 <sect3>
-
 <title>Identifiant de la voile</title>
 
-<para>Vous pouvez attacher un nom explicite aux données de la voile (maximum 40 caractères espaces compris).</para>
+<para>Vous pouvez attacher un nom explicite aux données de la voile (maximum 40 caractères espaces compris). </para>
 
 </sect3>
 
 <sect3>
-
 <title>Dimensions de la voile</title>
 
-<para>C&apos;est içi que vous entrez les dimensions de la voile.</para>
+<para>C&apos;est içi que vous entrez les dimensions de la voile. </para>
 
-<para>Pour une Grand-voile la longueur minimum de la vergue est de 5mm. Cette vergue peut aussi être la têtière. Une longueur inférieur à 5mm sera corrigée automatiquement par Sailcut. L&apos;angle de la vergue par rapport au guindant est limité à 90 degrés.</para>
+<para>Pour une Grand-voile la longueur minimum de la vergue est de 5mm. Cette vergue peut aussi être la têtière. Une longueur inférieur à 5mm sera corrigée automatiquement par Sailcut. L&apos;angle de la vergue par rapport au guindant est limité à 90 degrés. </para>
 
 <para>Une valeur positive du rond de guindant, bordure, chute ou vergue fait que le bord de la voile est à l&apos;extérieur de la ligne droite joignant les coins correspondants.</para>
 
 <para>Un rond négatif revient à creuser le bord de la voile.</para>
 
-<para>Laposition du rond est exprimé en pourcentage de la longueur du bord correspondant, mesuré en partant du coin gauche ou bas de ce bord.</para>
+<para>Laposition du rond est exprimé en pourcentage de la longueur du bord correspondant, mesuré en partant du coin gauche ou bas de ce bord. </para>
 
 <para>
-
 <figure id="fig.sail_edges">
-
 <title>Définition des bords des laizes dans Sailcut</title>
 
 <mediaobject>
@@ -197,72 +168,56 @@
 </mediaobject>
 
 </figure>
-
 </para>
 
 <para>Les dimensions et les angles sont exprimés en millimètres et degrés.</para>
 
 <para>La longueur des bords ou de la diagonale d&apos;une voile est la distance en ligne droite dans l&apos;espace 3D entre les coins correspondants.</para>
 
-<para>Selon la forme de la voile, la longueur réelle d&apos;un bord de la voile finie telle que mesurée sur le plancher, peut être légèrement plus grande que celle entrée. Par exemple, pour une longueur de bordure entrée de 3600 mm, si le creux de la bordure est nul, ce sera aussi la distance à plat entre point d&apos;amure et d&apos;écoute. Si le creux de la voile au niveau de la bordure est de 10%, alors la distance à plat entre point d&apos;amure et d&apos;écoute sera 2.7% plus grande que la longueur entrée.</para>
+<para>Selon la forme de la voile, la longueur réelle d&apos;un bord de la voile finie telle que mesurée sur le plancher, peut être légèrement plus grande que celle entrée. Par exemple, pour une longueur de bordure entrée de 3600 mm, si le creux de la bordure est nul, ce sera aussi la distance à plat entre point d&apos;amure et d&apos;écoute. Si le creux de la voile au niveau de la bordure est de 10%, alors la distance à plat entre point d&apos;amure et d&apos;écoute sera 2.7% plus grande que la longueur entrée. </para>
 
-<para>Après avoir entré les dimensions de la voile, vous pouvez cliquer sur le bouton <guibutton>Calculer</guibutton> pour obtenir des informations supplémentaires, tel que les coordonnées des coins de la voile, la distance perpendiculaire LP mesurée du point d&apos;écoute au guindant anisi que les largeurs de la voile selon la règle de jauge IRC.</para>
+<para>Après avoir entré les dimensions de la voile, vous pouvez cliquer sur le bouton <guibutton>Calculer</guibutton> pour obtenir des informations supplémentaires, tel que les coordonnées des coins de la voile, la distance perpendiculaire LP mesurée du point d&apos;écoute au guindant anisi que les largeurs de la voile selon la règle de jauge IRC. </para>
 
-<para>Les coordonnées X-Y des coins de la voile sont utiles pour ajuster rapidement le plan de la voile. Si par exemple vous voyez que le point d&apos;écoute est trop haut ou trop bas par rapport au point d&apos;amure (valeur de Y), vous pouvez corriger cela en ajoutant ou retranchant la différence à la longueur de la chute.</para>
+<para>Les coordonnées X-Y des coins de la voile sont utiles pour ajuster rapidement le plan de la voile. Si par exemple vous voyez que le point d&apos;écoute est trop haut ou trop bas par rapport au point d&apos;amure (valeur de Y), vous pouvez corriger cela en ajoutant ou retranchant la différence à la longueur de la chute. </para>
 </sect3>
 
 <sect3>
-
 <title>Coupe</title>
 
-<para>Cliquez sur le bouton radio correspondant à la coupe de voile désirée. L&apos;arrangement des laizes n&apos;affecte pas la forme de la voile qui est définie par ses dimensions et son moule.</para>
+<para>Cliquez sur le bouton radio correspondant à la coupe de voile désirée. L&apos;arrangement des laizes n&apos;affecte pas la forme de la voile qui est définie par ses dimensions et son moule. </para>
 
-<para>Sauf pour la coupe radiale, le nombre de panneaux est déterminé automatiquement par la largeur du tissus et la largeur de couture entrés dans la boite <guilabel>Tissus</guilabel>.</para>
+<para>Sauf pour la coupe radiale, le nombre de panneaux est déterminé automatiquement par la largeur du tissus et la largeur de couture entrés dans la boite <guilabel>Tissus</guilabel>. </para>
 
 <itemizedlist>
 
 <listitem>
-
-<para>La coupe la plus courante est la <guilabel>Coupe transversale</guilabel>. Les laizes sont positionnées perpendiculairement à la ligne droite joignat le point d&apos;écoute au pic de la voile.</para>
-
+<para>La coupe la plus courante est la <guilabel>Coupe transversale</guilabel>. Les laizes sont positionnées perpendiculairement à la ligne droite joignat le point d&apos;écoute au pic de la voile. </para>
 </listitem>
 
 <listitem>
-
-<para>La <guilabel>Coupe twist</guilabel> est similaire à la coupe transversale sauf que les laizes du bas sont réorientées pour ne pas couper la bordure de la voile.</para>
-
+<para>La <guilabel>Coupe twist</guilabel> est similaire à la coupe transversale sauf que les laizes du bas sont réorientées pour ne pas couper la bordure de la voile. </para>
 </listitem>
 
 <listitem>
-
-<para>La <guilabel>Coupe horizontale</guilabel> positionne les laizes horizontalement. Cette option peut être utilisée pour visualiser la forme de la voile et pour sortir des fichiers de points 3D positionés dans des plans horizontaux pour être utilisés par des outils de calcul d&apos;écoulement de l&apos;air.</para>
-
+<para>La <guilabel>Coupe horizontale</guilabel> positionne les laizes horizontalement. Cette option peut être utilisée pour visualiser la forme de la voile et pour sortir des fichiers de points 3D positionés dans des plans horizontaux pour être utilisés par des outils de calcul d&apos;écoulement de l&apos;air. </para>
 </listitem>
 
 <listitem>
-
-<para>La <guilabel>Coupe verticale</guilabel> positionne les laizes parallélement à la chute. C&apos;est la coupe classique des grand-voiles de vieux gréements.</para>
-
+<para>La <guilabel>Coupe verticale</guilabel> positionne les laizes parallélement à la chute. C&apos;est la coupe classique des grand-voiles de vieux gréements. </para>
 </listitem>
 
 <listitem>
-
-<para>La <guilabel>Coupe mître</guilabel> est classiquement utilisée pour les génoas de vieux gréements. La voile est divisée en deux par une ligne joignant le point d&apos;écoute au milieu du guindant. Les laizes sont placées perpendiculairement à la bordure dans la moitié inférieure et perpendiculairement à la chute dans la moitiée supérieure.</para>
-
+<para>La <guilabel>Coupe mître</guilabel> est classiquement utilisée pour les génoas de vieux gréements. La voile est divisée en deux par une ligne joignant le point d&apos;écoute au milieu du guindant. Les laizes sont placées perpendiculairement à la bordure dans la moitié inférieure et perpendiculairement à la chute dans la moitiée supérieure. </para>
 </listitem>
 
 <listitem>
-
-<para>La <guilabel>Coupe radiale</guilabel> est surtout utilisée en compétition avec les laizes orientées selon les directions de contrainte maximum. Avant d&apos;utiliser cette coupe radiale il est important de bien comprendre la définition du nombre de sections, du nombre de fuseaux radiaux et du guindant (voir <xref linkend="fig.head_gores_definition"/>).</para>
-
+<para>La <guilabel>Coupe radiale</guilabel> est surtout utilisée en compétition avec les laizes orientées selon les directions de contrainte maximum. Avant d&apos;utiliser cette coupe radiale il est important de bien comprendre la définition du nombre de sections, du nombre de fuseaux radiaux et du guindant (voir <xref linkend="fig.head_gores_definition"/>). </para>
 </listitem>
 
 </itemizedlist>
 
 <para>
-
 <figure id="fig.head_gores_definition">
-
 <title>Définition des fuseaux radiaux dans Sailcut</title>
 
 <mediaobject>
@@ -270,35 +225,30 @@
 </mediaobject>
 
 </figure>
-
 </para>
 
 </sect3>
 
 <sect3>
-
 <title>Forme</title>
 
-<para>Vous entrez içi le creux de la voile à trois hauteurs dans la voile: à la bordure, au milieu (la position exacte est définie dans le moule de la voile) et en haut de la voile. Ces valeurs se retrouvent dans la fenêtre <guilabel>Moule de la voile</guilabel>.</para>
+<para>Vous entrez içi le creux de la voile à trois hauteurs dans la voile: à la bordure, au milieu (la position exacte est définie dans le moule de la voile) et en haut de la voile. Ces valeurs se retrouvent dans la fenêtre <guilabel>Moule de la voile</guilabel>. </para>
 
-<para>L&apos;angle de vrillage exprimé en degrés est l&apos;ouverture du haut de la voile par rapport à la bordure. Le vrillage est essentiel pour tenir compte de la différence de direction du vent apparent entre le bas de la voile et le haut. Quelque fois le vrillage des focs ou génoas est déterminé par le besoin de passer la chute en dehors des barres de flèche. Pour une grand-voile à vergue, le vrillage est aussi déterminé par la capacité du gréement à tenir la tension de la chute. Ceci fait que le vrillage de ces gréements est plus important que pour un gréement Bermudien. Dans tous les cas il est important d&apos;entre un angle de vrillage qui reflète la réalité de la forme de la voile sur le bateau dans les conditions de vent attendues.</para>
+<para>L&apos;angle de vrillage exprimé en degrés est l&apos;ouverture du haut de la voile par rapport à la bordure. Le vrillage est essentiel pour tenir compte de la différence de direction du vent apparent entre le bas de la voile et le haut. Quelque fois le vrillage des focs ou génoas est déterminé par le besoin de passer la chute en dehors des barres de flèche. Pour une grand-voile à vergue, le vrillage est aussi déterminé par la capacité du gréement à tenir la tension de la chute. Ceci fait que le vrillage de ces gréements est plus important que pour un gréement Bermudien. Dans tous les cas il est important d&apos;entre un angle de vrillage qui reflète la réalité de la forme de la voile sur le bateau dans les conditions de vent attendues. </para>
 
 <para>L&apos;angle d&apos;<guilabel>Ouverture</guilabel> est l&apos;angle que fait la ligne joignant le point d&apos;amure au point d&apos;écoute par rapport à l&apos;axe du bateau. Pour un foc la valeur minimum est de 5 degrés. Il est important de donner la bonne valeur de facon a ce que l&apos;ensemble grand-voile + foc soit bien positionnés dans la vue <guilabel>Gréement</guilabel>. ceci vous permettra de bien visualiser la fente entre le foc et la grand voile, comme sur le bateau. Il est a noter de cet angle d&apos;ouverture s&apos;ajoute au vrillage pour donner l&apos;angle du profile de la voile à toutes les hauteurs dans la voile.</para>
 
 </sect3>
 
 <sect3>
-
 <title>Tissus</title>
 
-<para>Entrez içi la largeur du tissus utilisé, la largeur de couture nécessaire pour assembler les laizes et les réservations de tissus pour faire les ourlets de chute et des autres bords de la voile.</para>
+<para>Entrez içi la largeur du tissus utilisé, la largeur de couture nécessaire pour assembler les laizes et les réservations de tissus pour faire les ourlets de chute et des autres bords de la voile. </para>
 
-<para>La figure <xref linkend="fig.sail_seams"/> donne la position des réservations pour couture et ourlets. Sailcut CAD va calculer la position des coutures pour que les laizes utilisent au maximum la largeur du tissus, sauf dans la coupe radiale ou la largeur des laizes dépend du nombre de fuseaux.</para>
+<para>La figure <xref linkend="fig.sail_seams"/> donne la position des réservations pour couture et ourlets. Sailcut CAD va calculer la position des coutures pour que les laizes utilisent au maximum la largeur du tissus, sauf dans la coupe radiale ou la largeur des laizes dépend du nombre de fuseaux. </para>
 
 <para>
-
 <figure id="fig.sail_seams">
-
 <title>Définition des coutures et ourlets dans Sailcut</title>
 
 <mediaobject>
@@ -306,42 +256,29 @@
 </mediaobject>
 
 </figure>
-
 </para>
 
 </sect3>
-
 </sect2>
 
 <sect2>
-
 <title>Moule de la voile</title>
 
-<para>La profondeur et la forme de la voile sont définies par trois profiles situés au niveau de la bordure, au milieu et en haut de la voile. Ces profiles peuvent être ajusté avec les 3 curseurs placé en dessous de chaque profile.</para>
+<para>La profondeur et la forme de la voile sont définies par trois profiles situés au niveau de la bordure, au milieu et en haut de la voile. Ces profiles peuvent être ajusté avec les 3 curseurs placé en dessous de chaque profile. </para>
 
-<para>La position du creux maximum de chaque profile est indiqué en dessous de la valeur du creux. Cette position dépend des coefficients de forme du guindant et de la chute, elle est exprimé par rapport à la corde de ce profile. Par exemple: 0.34 veut dire que le creux maximum du profile est situé à 34% de la corde en partant du guindant.</para>
+<para>La position du creux maximum de chaque profile est indiqué en dessous de la valeur du creux. Cette position dépend des coefficients de forme du guindant et de la chute, elle est exprimé par rapport à la corde de ce profile. Par exemple: 0.34 veut dire que le creux maximum du profile est situé à 34% de la corde en partant du guindant. </para>
 
 <para>La forme du profile coté guidant et coté chute peuvent être modifiés avec les curseurs correspondants. Dans le cas d&apos;une voile à bordure libre, il est recommandé de mettre le coefficient de forme guidant à 1 et celui de la chute à 0 pour avoir un arc de cercle.</para>
 
-<para>Sous les coefficients de forme du guidant et de la chute, les valeurs correspondantes de l&apos;angle d&apos;entrée et de sortie du profile sont affichées en degrés. Ces angles sont rapportés à la corde du profile. Pour obtenir l&apos;angle d&apos;entrée ou de sortie du profile par rapport à l&apos;axe du bateau il faut y ajouter l&apos;angle de vrillage du profile et l&apos;angle d&apos;ouverture de la voile. En particulier pour un foc il est utile de vérifier que l&apos;angle de sortie des profiles ajouté à l&apos;angle d&apos;ouverture de la voile ne donne pas une valeur trop négative (risque de renvois dans la grand-voile).</para>
+<para>Sous les coefficients de forme du guidant et de la chute, les valeurs correspondantes de l&apos;angle d&apos;entrée et de sortie du profile sont affichées en degrés. Ces angles sont rapportés à la corde du profile. Pour obtenir l&apos;angle d&apos;entrée ou de sortie du profile par rapport à l&apos;axe du bateau il faut y ajouter l&apos;angle de vrillage du profile et l&apos;angle d&apos;ouverture de la voile. En particulier pour un foc il est utile de vérifier que l&apos;angle de sortie des profiles ajouté à l&apos;angle d&apos;ouverture de la voile ne donne pas une valeur trop négative (risque de renvois dans la grand-voile). </para>
 
-<para>La position verticale du creux maximum de la voile peut être ajusté par le curseur vertical situé à la droite du panneau vertical de gauche.</para>
+<para>La position verticale du creux maximum de la voile peut être ajusté par le curseur vertical situé à la droite du panneau vertical de gauche. </para>
 
-<para>Afin d&apos;éviter que le haut de la voile ne se referme trop quand le vent augmente, il est recommandé de donner un coefficient de forme du guindant qui augmente avec la hauteur du profile et que par contre, le coefficient de forme de la chute diminue avec la hauteur du profile.</para>
-
-</sect2>
-
-<sect2>
-
-<title>Vue du Gréement</title>
-
-<para>Cette fenêtre permet de visualiser plusieurs voiles sur le même gréement. </para>
-<para>TODO</para>
+<para>Afin d&apos;éviter que le haut de la voile ne se referme trop quand le vent augmente, il est recommandé de donner un coefficient de forme du guindant qui augmente avec la hauteur du profile et que par contre, le coefficient de forme de la chute diminue avec la hauteur du profile. </para>
 
 </sect2>
 
 <sect2>
-
 <title>Controle des vues</title>
 
 <para>Il est possible de faire un zoom, déplacer (pan) ou tourner les voiles dans une zone d&apos;affichage graphique:</para>
@@ -349,21 +286,15 @@
 <itemizedlist>
 
 <listitem>
-
 <para><guilabel>Rotation</guilabel> : Vous pouvez tourner la voile en azimuth et élévation avec les curseurs situés au bord du panneau d&apos;affichage.</para>
-
 </listitem>
 
 <listitem>
-
 <para><guilabel>Déplacement</guilabel> : Cliquez sur un point de la voile pour le placer au centre de la zone d&apos;affichage graphique.</para>
-
 </listitem>
 
 <listitem>
-
-<para><guilabel>Zoom</guilabel>: Utilisez les touches CTRL + pour agrandir la vue et CTRL - pour la réduire. Vous pouvez aussi utiliser la molette de la souris pour ces fonctions de zoom avant et arrière.</para>
-
+<para><guilabel>Zoom</guilabel>: Utilisez les touches CTRL + pour agrandir la vue et CTRL - pour la réduire. Vous pouvez aussi utiliser la molette de la souris pour ces fonctions de zoom avant et arrière. </para>
 </listitem>
 
 </itemizedlist>
@@ -371,7 +302,6 @@
 </sect2>
 
 <sect2>
-
 <title>Développement des laizes</title>
 
 <para>Le développement de la voile s&apos;affiche en cliquant sur l&apos;onglet <guilabel>Développement</guilabel> de la fenêtre principale de Sailcut CAD. Les fonctions de controle de la vue sont les mêmes que pour la vue 3D. Les lignes bleues représentent les ligne de tracé des laizes et les ligne rouges les lignes de découpe prenant en compte les marges de couture.</para>
@@ -381,33 +311,23 @@
 <itemizedlist>
 
 <listitem>
-
 <para>Fichier pour table traçante Carlson Design avec l'entrée <guimenuitem>table traçante Carlson</guimenuitem>.</para>
-
 </listitem>
 
 <listitem>
-
 <para>Fichier AutoCAD DXF avec l'entrée <guimenuitem>DXF</guimenuitem>.</para>
-
 </listitem>
 
 <listitem>
-
 <para>Fichier pouvant être lu avec un éditeur de texte pour le traçage à la main avec l'entrée <guimenuitem>traçage manuel</guimenuitem>.</para>
-
 </listitem>
 
 <listitem>
-
 <para>Fichier XML de toutes les laizes avec l'entrée <guimenuitem>voile XML</guimenuitem> (voir <xref linkend="s.format_xml_sail"/> pour les détails du format du fichier).</para>
-
 </listitem>
 
 <listitem>
-
 <para>Fichier texte ASCII ordinaire de toutes les laizes avec l'entrée <guimenuitem>voile TXT</guimenuitem> (voir <xref linkend="s.format_text_sail"/> pour les détails du format du fichier).</para>
-
 </listitem>
 
 </itemizedlist>
@@ -415,7 +335,6 @@
 </sect2>
 
 <sect2>
-
 <title>Enregistrer et ouvrir les voiles</title>
 
 <para>Dès que vous avez créé une voile, vous pouvez enregistrer ses données dans un fichier avec les entrées <guimenuitem>Enregistrer</guimenuitem> ou <guimenuitem>Enregistrer sous</guimenuitem> du menu déroulant <guimenu>Fichier</guimenu>. Vous pouvez ensuite la recharger avec l'entrée <guimenuitem>Ouvrir</guimenuitem> la prochaine fois que vous voulez y retravailler.</para>
@@ -427,7 +346,6 @@
 </sect2>
 
 <sect2>
-
 <title>Exporter les voiles 3D</title>
 
 <para>En plus d&apos;enregistrer les caractéristiques des voiles comme ci-dessus, il est possible d&apos;exporter les points 3D situés sur les bords et les coutures de la voile. Ceci peut être fait dans les formats suivants à l'aide du sous-menu <guisubmenu>Export voile 3D</guisubmenu> du menu déroulant <guimenu>Fichier</guimenu>:</para>
@@ -435,21 +353,15 @@
 <itemizedlist>
 
 <listitem>
-
 <para>Fichier AutoCAD DXF avec l'entrée <guimenuitem>DXF</guimenuitem>.</para>
-
 </listitem>
 
 <listitem>
-
 <para>Fichier XML avec l'entrée <guimenuitem>voile XML</guimenuitem> (voir <xref linkend="s.format_xml_sail"/> pour les détails du format du fichier).</para>
-
 </listitem>
 
 <listitem>
-
 <para>Fichier texte ASCII ordinaire avec l'entrée <guimenuitem>voile TXT</guimenuitem> (voir <xref linkend="s.format_text_sail"/> pour les détails du format du fichier).</para>
-
 </listitem>
 
 </itemizedlist>
@@ -457,7 +369,6 @@
 </sect2>
 
 <sect2>
-
 <title>Imprimer les données et dessins</title>
 
 <para>Le sous-menu <guisubmenu>Imprimer</guisubmenu> du menu <guimenu>Fichier</guimenu> offre plusieurs possibilités d&apos;impression:</para>
@@ -465,21 +376,15 @@
 <itemizedlist>
 
 <listitem>
-
 <para>L'entrée <guimenuitem>donnés</guimenuitem> permet d'imprimer les caractéristiques de la voile.</para>
-
 </listitem>
 
 <listitem>
-
 <para>L'entrée <guimenuitem>dessin</guimenuitem> permet d'imprimer un dessin de la voile complète.</para>
-
 </listitem>
 
 <listitem>
-
 <para>L'entrée <guimenuitem>développement</guimenuitem> permet d'imprimer le dessin d&apos;une laize développée par page avec les coordonnées des points clés sur les bords. La définition des coordonnées des points clés est donnée dans <xref linkend="fig.develop_panel_drawing"/>. Les coordonnées  X,Y sont référencées au coin en bas à gauche du rectangle qui enveloppe la ligne de coupe de la laize. Les coordonnées dX,dY sont référencées à la ligne droite qui joint les extrémités du bord concerné. Le point dX = 0 (origine) est à l&apos;extrémité gauche du bord et les points avec des valeurs dY positives sont situés à gauche de la ligne droite joignant l&apos;origine (dX = 0) à l&apos;autre extrémité du bord concerné en partant de l&apos;origine du bord. </para>
-
 </listitem>
 
 </itemizedlist>
@@ -487,9 +392,7 @@
 <para>Le facteur d&apos;échelle d&apos;impression est tel que le dessin de la voile et de la laize la plus grande logent sur une page. Pour imprimer les laizes à échelle 1 ou autre, il est préferrable d&apos;exporter la voile au format DXF et d&apos;utiliser un logicile de CAO pour piloter l&apos;impression. </para>
 
 <para>
-
 <figure id="fig.develop_panel_drawing">
-
 <title>Dessin des laizes développées </title>
 
 <mediaobject>
@@ -497,21 +400,135 @@
 </mediaobject> 
 
 </figure>
-
 </para>
 
 </sect2>
 
 </sect1>
 
-<sect1 id="s.surface">
 
+<sect1 id="s.rig">
+<title>Rig Design</title>
+
+<para>This module allow the design of a mast with up to 3 levels of spreaders. It is accessed via the <guisubmenu>Rig</guisubmenu> entry of the main screen's <guimenu>File</guimenu> <guisubmenu>New</guisubmenu> menu.</para>
+
+<para>The <guisubmenu>Save</guisubmenu> entry of the <guimenu>File</guimenu> menu is used to save a rig.</para>
+
+<para>Any Rig which has been saved can be later opened as an entity with the <guisubmenu>Open</guisubmenu> entry of the <guimenu>File</guimenu> menu and can be used as an element to constitute a boat.</para>
+
+<para>The controls of the viewer are identical to those of the sail viewer.</para>
+
+<sect2>
+<title>Rig dimensions</title>
+
+<para>You can modify the dimensions of the rig by using the <guimenuitem>Dimensions</guimenuitem> entry of the <guimenu>View</guimenu> menu.</para>
+
+<para>The definition of the various dimensions to be entered is given in <xref linkend="fig.rigplan"/>. Please note that, in order to allow the design of sails independently from the design of the rig, the definition of the mast rake and mast curve are refered to the full mast length which are different from that of the sail luff rake and curve of the sail design module which are refered to the sail luff length. This rig module provides the data to be used when designing the mainsail which fit on the rig. </para>
+
+<para>
+<figure id="fig.rigplan">
+<title>Sailcut Rig definition</title>
+
+<mediaobject>
+<imageobject> <imagedata fileref="rigplan"/> </imageobject>
+</mediaobject>
+
+</figure>
+</para>
+<para>The rig dimension screen is divided in boxes labeled: </para>
+
+<itemizedlist>
+<listitem>
+<para><guilabel>Fore triangle</guilabel> </para>
+</listitem>
+
+<listitem>
+<para><guilabel>Mast</guilabel> </para> 
+</listitem>
+
+<listitem>
+<para><guilabel>Mainsail</guilabel>: see below the chapter about mainsail luff curve. </para>
+</listitem>
+
+<listitem>
+<para><guilabel>Shrouds</guilabel>: the base width of the lower shroud can be different from that of the cap (outer) shroud for boat where the jib is sheeted between the shrouds. </para>
+</listitem>
+
+<listitem>
+<para><guilabel>Spreaders</guilabel>: The number of spreaders can be from none (0) to maximum 3. If only no spreader is present, the outer shroud will be identical to the lower shroud. </para>
+</listitem>
+
+</itemizedlist>
+
+<para>Use the <guibutton>Check</guibutton> button any time after entering new data to perform a verification that the data entered are consistant with a reasonable rig design. The color of the fonts will tell you what too look for if there is an incompatibility between data entered. Red indicate a too high value, purple a too low value and blue signals the related parameter to be checked. </para>
+
+<para>Once you have entered all necessary data click on the <guibutton>OK</guibutton> button to close the rig dimensions window and display the rig. If there is an incompatibility in the data, the rig dimensions window will not close until it is corrected. </para>
+
+</sect2>
+
+<sect2>
+<title>Mainsail luff curve</title>
+
+<para>In most case users have designed sails independently from the design of a rig. However the user may wish to design a  sail compatible with a rig. In the rig dimensions screen, the box labeled <guilabel>Mainsail</guilabel> is used to compute the mainsail tack position and luff curve which will fit the rig. These data can be used for creating the corresponding mainsail or to verify that a mainsail luff curve will fit the rig. </para>
+
+<para>The only data to be entered are the height of the tack of the mainsail, the height of the head and Sailcut CAD will compute the other data. </para>
+
+</sect2>
+</sect1>
+
+
+<sect1 id="s.hull">
+<title>Hull Design</title>
+
+<para><emphasis>Please note that this module is not yet fully operational, for the time being a single chine hull ouline will appear whatever the number of chine is entered. </emphasis></para>
+
+<para>This module allow the design of a hard chines hull. It is accessed via the <guisubmenu>Hull</guisubmenu> entry of the main screen's <guimenu>File</guimenu> <guisubmenu>New</guisubmenu> menu. </para>
+
+<para>The <guimenuitem>Save</guimenuitem> entry of the <guimenu>File</guimenu> menu is used to save a hull. </para>
+
+<para>Any Hull which has been saved can be later opened as an entity with the <guimenuitem>Open</guimenuitem> entry of the <guimenu>File</guimenu> menu and can be used as an element to constitute a boat. </para>
+
+<para>The controls of the viewer are identical to those of the sail viewer. </para>
+
+<sect2>
+<title>Hull dimensions</title>
+
+<para>You can modify the dimensions of the hull by using the <guimenuitem>Dimensions</guimenuitem> entry of the <guimenu>View</guimenu> menu. </para>
+
+</sect2>
+</sect1>
+
+
+<sect1 id="s.boat">
+<title>Boat Design</title>
+
+<para>This Boat design module allow to assemble hull, rig and sails files created earlier to make a virtual boat. It is accessed via the <guisubmenu>Boat</guisubmenu> entry of the main screen's <guimenu>File</guimenu> <guisubmenu>New</guisubmenu> menu. </para>
+
+<para>The boat viewer is initially showing a black screen and files are added via the <guisubmenu>Add</guisubmenu> entry of the main screen's <guimenu>File</guimenu> menu. A new tab will appear with the details of the file selected and the element identification which was given at the time of creating the element (sail ID, Rig ID, Hull ID). </para>
+
+<para>The controls of the viewer are identical to those of the sail viewer. </para>
+
+<para>All boat elements will be displayed in the position entered at the time the element was created. Please remember that the point of coordinate X=0, Y=0, Z=0 is located at the forward end of the deck of the hull (stem). </para>
+
+<para>The boat elements can be individually shifted in X, Y or Z direction by entering the corresponding offset in the element tab and then clicking on the  <guibutton>Update</guibutton> button. </para>
+
+<para>A boat element can be removed by selecting the corresponding tab and then clicking on the <guibutton>Remove</guibutton> button. </para>
+
+<para> At any time, clicking on the <guibutton>Reload</guibutton> button will restore the corresponding element to its initial position. </para>
+
+<para>The <guisubmenu>Save</guisubmenu> entry of the <guimenu>File</guimenu> menu is used to save a boat with a combination of hull rig and sails. </para>
+
+<para>Any Boats which has been saved can be later opened as an entity with the <guisubmenu>Open</guisubmenu> entry of the <guimenu>File</guimenu> menu. </para>
+
+</sect1>
+
+
+<sect1 id="s.surface">
 <title>Modélisation de la surface des voiles dans Sailcut</title>
 
 <para>Papier présenté par Robert Lainé au 2ème Workshop Science Voile IRENAV à Brest, France, le 21 mai 2004</para>
 
 <sect2>
-
 <title>Historique</title>
 
 <para>Le logiciel de coupe de voile Sailcut a été développé initialement en 1978 en Basic sur un calculateur disposant d&apos;un écran avec une ligne de texte, une petite imprimante à 32 colonnes et seulement 1.6 ko de mémoire vive. D&apos;où la nécessité de faire simple pour modéliser la surface des voiles que je fabriquais et utilisais sur mon ¼ ton IOR.</para>
