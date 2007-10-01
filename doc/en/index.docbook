@@ -262,7 +262,7 @@
 </sect2>
 
 <sect2>
-<title> Mould dialog screen </title>
+<title>Mould dialog screen </title>
 
 <para>You can access the mould dialog from the <guimenuitem>Mould</guimenuitem> entry of the <guimenu>View</guimenu> menu. </para>
 
@@ -408,20 +408,11 @@
 <sect1 id="s.rig">
 <title> Rig Design </title>
 
-<para>This module allow the design of a mast with up to 3 levels of spreaders. It is accessed via the <guisubmenu>Rig</guisubmenu> entry of the main screen's <guimenu>File</guimenu> <guisubmenu>New</guisubmenu> menu.</para>
+<para>This module allow the design of a mast with up to 3 levels of spreaders. It is accessed via the <guimenuitem>Rig</guimenuitem> entry of the main screen's <guimenu>File</guimenu> <guisubmenu>New</guisubmenu> menu.</para>
 
-<para>The <guisubmenu>Save</guisubmenu> entry of the <guimenu>File</guimenu> menu is used to save a rig.</para>
+<para>The <guimenuitem>Dimensions</guimenuitem> entry of the <guimenu>View</guimenu> menu will display the screen from which you can enter and modify the dimensions of the rig. </para>
 
-<para>Any Rig which has been saved can be later opened as an entity with the <guisubmenu>Open</guisubmenu> entry of the <guimenu>File</guimenu> menu and can be used as an element to constitute a boat.</para>
-
-<para>The controls of the viewer are identical to those of the sail viewer.</para>
-
-<sect2>
-<title>Rig dimensions </title>
-
-<para>You can modify the dimensions of the rig by using the <guimenuitem>Dimensions</guimenuitem> entry of the <guimenu>View</guimenu> menu. </para>
-
-<para>The definition of the various dimensions to be entered is given in <xref linkend="fig.rigplan"/>. Please note that, in order to allow the design of sails independently from the design of the rig, the definition of the mast rake and mast curve are refered to the full mast length which are different from that of the sail luff rake and curve of the sail design module which are refered to the sail luff length. This rig module provides the data to be used when designing the mainsail which fit on the rig. </para>
+<para>The definition of the various dimensions is given in <xref linkend="fig.rigplan"/>. Please note that, in order to allow the design of sails independently from the design of the rig, the definition of the mast rake and mast curve are refered to the full mast length which are different from that of the sail luff rake and curve of the sail design module which are refered to the sail luff length. This rig module provides the data to be used when designing the mainsail which fit on the rig. </para>
 
 <para>
 <figure id="fig.rigplan">
@@ -433,34 +424,70 @@
 
 </figure>
 </para>
-<para>The rig dimension screen is divided in boxes labeled: </para>
 
-<itemizedlist>
-<listitem>
-<para><guilabel>Fore triangle</guilabel> </para>
-</listitem>
+<sect2>
+<title>Saving and Loading a rig file </title>
+<para>The <guimenuitem>Save</guimenuitem> entry of the <guimenu>File</guimenu> menu is used to save a rig.</para>
 
-<listitem>
-<para><guilabel>Mast</guilabel> </para> 
-</listitem>
+<para>Any Rig which has been saved can be later opened as an entity with the <guimenuitem>Open</guimenuitem> entry of the <guimenu>File</guimenu> menu and can be used as an element to constitute a boat.</para>
+</sect2>
 
-<listitem>
-<para><guilabel>Mainsail</guilabel>: see below the chapter about mainsail luff curve. </para>
-</listitem>
+<sect2> 
+<title>View control </title>
+<para>The controls of the viewer are identical to those of the sail viewer. You can rotate the rig with the sliders located around the graphic display, zoom with the mouse's wheel, pan with the mouse left click, view in wireframe or shaded surface modes. </para>
+</sect2>
 
-<listitem>
-<para><guilabel>Shrouds</guilabel>: the base width of the lower shroud can be different from that of the cap (outer) shroud for boat where the jib is sheeted between the shrouds. </para>
-</listitem>
+<sect2>
+<title>Rig dimensions </title>
 
-<listitem>
-<para><guilabel>Spreaders</guilabel>: The number of spreaders can be from none (0) to maximum 3. If only no spreader is present, the outer shroud will be identical to the lower shroud. </para>
-</listitem>
+<para>The <guimenuitem>Dimensions</guimenuitem> entry of the <guimenu>View</guimenu> menu display the rig dimension screen which is divided in boxes corresponding to the entities listed below. </para>
+<para>Note that angles are expressed in degrees and linear dimensions in millimetres. </para>
 
-</itemizedlist>
+<sect3>
+<title>Rig ID </title> 
+<para>A free text identifying or describing the rig can be entered in this box. The number of characteres is limited to 40. </para>
+</sect3>
 
-<para>Use the <guibutton>Check</guibutton> button any time after entering new data to perform a verification that the data entered are consistant with a reasonable rig design. The color of the fonts will tell you what too look for if there is an incompatibility between data entered. Red indicate a too high value, purple a too low value and blue signals the related parameter to be checked. </para>
+<sect3>
+<title>Fore triangle</title> 
+<para>The height <bold>= I</bold> and base <bold>= J</bold> of the fore triangle are entered in the corresponding fields. Note that the dimensions are measured in the vertical and horizontal directions. In particular be carefull when measuring the <bold>J</bold> dimension when the mast is inclined. </para>
+</sect3>
 
-<para>Once you have entered all necessary data click on the <guibutton>OK</guibutton> button to close the rig dimensions window and display the rig. If there is an incompatibility in the data, the rig dimensions window will not close until it is corrected. </para>
+<sect3>
+<title>Mast</title> 
+<para>The mast is assumed to have a constant section from foot to tip. The heights are refered to the stem fitting horizontal plane. </para> 
+<para><bold>Mast height = MH</bold> is the straight line height of the mast top above the stem. It shall be greater than J. </para>
+<para><bold>Mast round = MRnd</bold> is the maximum deviation from the straight line. </para>
+<para><bold>Mast round position = MRndPos</bold> spin box is used to enter the relative height of the point at which the mast round is measured. It is expressed in percentage of the mast height. </para>
+<para><bold>Mast rake = MRkM</bold> is the horizontal distance between the tip of the mast and its foot. Sailcut CAD will compute and display the corresponding mast rake angle = MRkD. </para>
+<para><bold>Mast cord = MC</bold> is the fore-aft width of the mast section.</para>
+<para><bold>Mast width = MW</bold> is the transverse width of the mast section.</para>
+</sect3>
+
+<sect3>
+<title>Mainsail</title>
+<para>See below the chapter about mainsail luff curve.  </para>
+</sect3>
+
+<sect3>
+<title>Shrouds</title>
+<para><bold>Cap shrouds height = CSH</bold> is the height of the point of attachment of the outer shroud to the mast. </para>
+<para><bold>Cap shrouds base width = CSB</bold> is the base width of the outer shroud measured from the central line. </para>
+<para><bold>Lower shrouds base width = LSB</bold> is the base width of the lower (inner) shroud which shall be smaller or equal to the cap shroud base width. </para>
+</sect3>
+
+<sect3>
+<title>Spreaders</title>
+<para><bold>Number of spreaders = SPNB</bold> can be from 0 (none) to maximum 3. If only no spreader is present, the outer shroud will be identical to the lower shroud. </para>
+<para><bold>Spreaders height SPH</bold> are entered in ascending order with 1 being the lowest. </para>
+<para><bold>Spreaders length SPW</bold> are measured from the ecentral line. </para>
+</sect3>
+
+<sect3>
+<title>Checking and validating data</title>
+<para>Use the <guibutton>Check</guibutton> button any time after entering new data to perform a verification that the data entered are consistant with a reasonable rig design and the ancillary data are computed. In case of inconsistancy between data, the color of the fonts will tell you which data is suspicious. Red indicate a too high value, purple a too low value and blue signals which related parameter is to be checked. </para>
+<para>Once you have entered all necessary data, click on the <guibutton>OK</guibutton> button to close the rig dimensions window and display it. If there is an incompatibility in the data, the dimensions window will not close until it is corrected. </para>
+</sect3>
 
 </sect2>
 
@@ -469,7 +496,7 @@
 
 <para>In most case users have designed sails independently from the design of a rig. However the user may wish to design a  sail compatible with a rig. In the rig dimensions screen, the box labeled <guilabel>Mainsail</guilabel> is used to compute the mainsail tack position and luff curve which will fit the rig. These data can be used for creating the corresponding mainsail or to verify that a mainsail luff curve will fit the rig. </para>
 
-<para>The only data to be entered are the height of the tack of the mainsail, the height of the head and Sailcut CAD will compute the other data. </para>
+<para>The only data to be entered are the mainsail <bold>tack height = BAD</bold> and <bold>head height = HAD</bold>. Sailcut CAD will compute the other data. </para>
 
 </sect2>
 </sect1>
@@ -482,18 +509,109 @@
 
 <para>This module allow the design of a hard chines hull. It is accessed via the <guisubmenu>Hull</guisubmenu> entry of the main screen's <guimenu>File</guimenu> <guisubmenu>New</guisubmenu> menu. </para>
 
-<para>The <guimenuitem>Save</guimenuitem> entry of the <guimenu>File</guimenu> menu is used to save a hull. </para>
+<sect2>
+<title>Saving and Loading a hull file </title>
+<para>The <guimenuitem>Save</guimenuitem> entry of the <guimenu>File</guimenu> menu is used to save a hull.</para>
 
-<para>Any Hull which has been saved can be later opened as an entity with the <guimenuitem>Open</guimenuitem> entry of the <guimenu>File</guimenu> menu and can be used as an element to constitute a boat. </para>
+<para>Any hull which has been saved can be later opened as an entity with the <guimenuitem>Open</guimenuitem> entry of the <guimenu>File</guimenu> menu and can be used as an element to constitute a boat.</para>
+</sect2>
 
-<para>The controls of the viewer are identical to those of the sail viewer. </para>
+<sect2> 
+<title>View control </title>
+<para>The controls of the viewer are identical to those of the sail viewer. You can rotate the hull with the sliders located around the graphic display, zoom with the mouse's wheel, pan with the mouse left click, view in wireframe or shaded surface modes. </para>
+</sect2>
 
 <sect2>
 <title>Hull dimensions </title>
+<para>You can modify the dimensions of the hull by using tab <guilabel>Deck and bottom</guilabel> of the screen <guimenuitem>Dimensions</guimenuitem> entry of the <guimenu>View</guimenu> menu. </para>
+<para>The <bold>deck and bottom</bold> screen is divided in boxes in which the various dimensions of the hull are entered. </para>
+<para>The hull is constructed upward from the bottom planks. The most important line is the chine which defines the outer edge of the bottom planks. The height are refered to any arbitrary horizontal datum plane located conveniently near the bottom of the hull. Angles are measured in degrees from the same horizontal datum plane. </para>
 
-<para>You can modify the dimensions of the hull by using the <guimenuitem>Dimensions</guimenuitem> entry of the <guimenu>View</guimenu> menu. </para>
+<sect3>
+<title>Hull ID </title>
+<para>A free text identifying or describing the hull being designed can be entered in this box. </para>
+</sect3>
+
+<sect3>
+<title>Deck </title>
+<para><bold>Forward height</bold> </para>
+<para><bold>Aft height</bold> </para>
+</sect3>
+
+<sect3>
+<title>Bottom </title>
+<para> </para>
+<para><bold>Length</bold> </para>
+<para><bold>Stem angle</bold> </para>
+<para><bold>Transom angle</bold> </para>
+<para><bold>Forward height</bold> </para>
+<para><bold>Chine angle</bold> </para>
+<para><bold>Aft height</bold> </para>
+<para><bold>Max width</bold> </para>
+<para><bold>Max width position</bold> </para>
+<para><bold>Aft width</bold> </para>
+<para><bold>Forward shape</bold> </para>
+<para><bold>Aft shape</bold> </para>
+<para><bold>Dead rise angle</bold> </para>
+<para><bold>Bottom sweep angle</bold> </para>
+</sect3>
+
+<sect3>
+<title>Planking </title>
+<para> </para>
+<para><bold>Number of planks</bold> </para>
+<para><bold>Automatic planking</bold> </para>
+<para><bold>Top plank angle</bold> </para>
+<para><bold>lower plank angle</bold> </para>
+</sect3>
+
+<sect3>
+<title>Checking and validating data </title>
+<para>Use the <guibutton>Check</guibutton> button any time after entering new data to perform a verification that the data entered are consistant with a reasonable hull design and the ancillary data are computed. In case of inconsistancy between data, the color of the fonts will tell you which data is suspicious. Red indicate a too high value, purple a too low value and blue signals which related parameter is to be checked. </para>
+<para>Once you have entered all necessary data, click on the <guibutton>OK</guibutton> button to close the hull dimensions window and display it. If there is an incompatibility in the data, the dimensions window will not close until it is corrected. </para> 
+</sect3>
 
 </sect2>
+
+<sect2>
+<title>Planks adjustment </title>
+<para>Individual side planks can be ajusted by using the tab <guilabel>Planks</guilabel> of the screen <guimenuitem>Dimensions</guimenuitem> entry of the <guimenu>View</guimenu> menu. </para>
+<para>The <bold>planks</bold> screen is divided in boxes in which the various dimensions of the hull are entered. </para>
+
+<sect3>
+<title>Forward height </title>
+<para> </para>
+</sect3>
+
+<sect3>
+<title>Aft height </title>
+<para> </para>
+</sect3>
+
+<sect3>
+<title>Plank angle </title>
+<para> </para>
+</sect3>
+
+<sect3>
+<title>Sweep angle </title>
+<para> </para>
+</sect3>
+
+<sect3>
+<title>Chine angle </title>
+<para> </para>
+</sect3>
+
+
+<sect3>
+<title>Checking and validating data </title>
+<para>Use the <guibutton>Check</guibutton> button any time after entering new data to perform a verification that the data entered are consistant with a reasonable hull design and the ancillary data are computed. In case of inconsistancy between data, the color of the fonts will tell you which data is suspicious. Red indicate a too high value, purple a too low value and blue signals which related parameter is to be checked. </para>
+<para>Once you have entered all necessary data, click on the <guibutton>OK</guibutton> button to close the hull dimensions window and display it. If there is an incompatibility in the data, the dimensions window will not close until it is corrected. </para> 
+</sect3>
+
+</sect2>
+
 </sect1>
 
 
