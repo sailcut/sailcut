@@ -103,7 +103,7 @@
 <sect3>
 <title> Rig geometry</title>
 
-<para>The first step is to select the type of sail you are going to work on, and enter the data defining the rig geometry and sail plan such that the sail will have the proper orientation. </para>
+<para>The first step is to select the type of sail you are going to work on, then enter the data defining the correspônding rig geometry and sail plan such that the sail will have the proper orientation. </para>
 
 <para>Select the type of sail by pressing the corresponding Radio Button: </para>
 
@@ -230,7 +230,7 @@
 </sect3>
 
 <sect3>
-<title>Sail shape </title>
+<title> Sail shape </title>
 
 <para>You enter there the depth of the sail at 3 levels, near the foot, in the middle of the sail(the exact position being defined in the mould screen) and near the top of the sail. </para>
 
@@ -241,7 +241,7 @@
 </sect3>
 
 <sect3>
-<title>Cloth</title>
+<title> Cloth </title>
 
 <para>Enter there the width of cloth used, the width of the seams between adjacent panels, the width of material to be added to the leech to make the leech hem and the width of material for the other edges hems. </para>
 
@@ -262,7 +262,7 @@
 </sect2>
 
 <sect2>
-<title>Mould dialog screen </title>
+<title> Mould dialog screen </title>
 
 <para>You can access the mould dialog from the <guimenuitem>Mould</guimenuitem> entry of the <guimenu>View</guimenu> menu. </para>
 
@@ -288,7 +288,7 @@
 <itemizedlist>
 
 <listitem>
-<para><guilabel>Rotation</guilabel> : you can control the rotation that is applied to the sail by using the elevation and azimuth sliders located at the edges of the pane.</para>
+<para><guilabel>Rotation</guilabel> : you can control the rotation that is applied to the sail by using the elevation and azimuth sliders located at the edges of the graphic pane.</para>
 </listitem>
 
 <listitem>
@@ -300,7 +300,6 @@
 </listitem>
 
 </itemizedlist>
-
 </sect2>
 
 <sect2>
@@ -329,11 +328,10 @@
 </listitem>
 
 </itemizedlist>
-
 </sect2>
 
 <sect2>
-<title>Loading and saving sails </title>
+<title> Loading and saving sails </title>
 
 <para>Once you have customised your sail, you can save it to a file by using the <guimenuitem>Save</guimenuitem> or <guimenuitem>Save As</guimenuitem> entries in the <guimenu>File</guimenu>. You can reload it by using the <guimenuitem>Open</guimenuitem> entry of the <guimenu>File</guimenu> next time you want to work on it. </para>
 
@@ -391,8 +389,7 @@
 
 <para>
 <figure id="fig.develop_panel_drawing">
-
-<title>Developed panels drawing</title>
+<title> Developed panels drawing </title>
 
 <mediaobject>
 <imageobject> <imagedata fileref="develop_panel_drawing"/> </imageobject>
@@ -404,9 +401,8 @@
 </sect2>
 </sect1>
 
-
 <sect1 id="s.rig">
-<title> Rig Design </title>
+<title> Creating a rig </title>
 
 <para>This module allow the design of a mast with up to 3 levels of spreaders. It is accessed via the <guimenuitem>Rig</guimenuitem> entry of the main screen's <guimenu>File</guimenu> <guisubmenu>New</guisubmenu> menu.</para>
 
@@ -416,7 +412,7 @@
 
 <para>
 <figure id="fig.rigplan">
-<title>Sailcut Rig definition </title>
+<title> Sailcut Rig definition </title>
 
 <mediaobject>
 <imageobject> <imagedata fileref="rigplan"/> </imageobject>
@@ -426,35 +422,37 @@
 </para>
 
 <sect2>
-<title>Saving and Loading a rig file </title>
+<title> Saving and Loading a rig file </title>
+
 <para>The <guimenuitem>Save</guimenuitem> entry of the <guimenu>File</guimenu> menu is used to save a rig.</para>
 
 <para>Any Rig which has been saved can be later opened as an entity with the <guimenuitem>Open</guimenuitem> entry of the <guimenu>File</guimenu> menu and can be used as an element to constitute a boat.</para>
 </sect2>
 
 <sect2> 
-<title>View control </title>
+<title> View controls </title>
+
 <para>The controls of the viewer are identical to those of the sail viewer. You can rotate the rig with the sliders located around the graphic display, zoom with the mouse's wheel, pan with the mouse left click, view in wireframe or shaded surface modes. </para>
 </sect2>
 
 <sect2>
-<title>Rig dimensions </title>
+<title> Rig dimensions </title>
 
 <para>The <guimenuitem>Dimensions</guimenuitem> entry of the <guimenu>View</guimenu> menu display the rig dimension screen which is divided in boxes corresponding to the entities listed below. </para>
 <para>Note that angles are expressed in degrees and linear dimensions in millimetres. </para>
 
 <sect3>
-<title>Rig ID </title> 
+<title> Rig ID </title> 
 <para>A free text identifying or describing the rig can be entered in this box. The number of characteres is limited to 40. </para>
 </sect3>
 
 <sect3>
-<title>Fore triangle</title> 
+<title> Fore triangle </title> 
 <para>The height <bold>= I</bold> and base <bold>= J</bold> of the fore triangle are entered in the corresponding fields. Note that the dimensions are measured in the vertical and horizontal directions. In particular be carefull when measuring the <bold>J</bold> dimension when the mast is inclined. </para>
 </sect3>
 
 <sect3>
-<title>Mast</title> 
+<title> Mast </title> 
 <para>The mast is assumed to have a constant section from foot to tip. The heights are refered to the stem fitting horizontal plane. </para> 
 <para><bold>Mast height = MH</bold> is the straight line height of the mast top above the stem. It shall be greater than J. </para>
 <para><bold>Mast round = MRnd</bold> is the maximum deviation from the straight line. </para>
@@ -465,26 +463,26 @@
 </sect3>
 
 <sect3>
-<title>Mainsail</title>
+<title> Mainsail </title>
 <para>See below the chapter about mainsail luff curve.  </para>
 </sect3>
 
 <sect3>
-<title>Shrouds</title>
+<title> Shrouds </title>
 <para><bold>Cap shrouds height = CSH</bold> is the height of the point of attachment of the outer shroud to the mast. </para>
 <para><bold>Cap shrouds base width = CSB</bold> is the base width of the outer shroud measured from the central line. </para>
 <para><bold>Lower shrouds base width = LSB</bold> is the base width of the lower (inner) shroud which shall be smaller or equal to the cap shroud base width. </para>
 </sect3>
 
 <sect3>
-<title>Spreaders</title>
+<title> Spreaders </title>
 <para><bold>Number of spreaders = SPNB</bold> can be from 0 (none) to maximum 3. If only no spreader is present, the outer shroud will be identical to the lower shroud. </para>
 <para><bold>Spreaders height SPH</bold> are entered in ascending order with 1 being the lowest. </para>
 <para><bold>Spreaders length SPW</bold> are measured from the ecentral line. </para>
 </sect3>
 
 <sect3>
-<title>Checking and validating data</title>
+<title> Checking and validating data </title>
 <para>Use the <guibutton>Check</guibutton> button any time after entering new data to perform a verification that the data entered are consistant with a reasonable rig design and the ancillary data are computed. In case of inconsistancy between data, the color of the fonts will tell you which data is suspicious. Red indicate a too high value, purple a too low value and blue signals which related parameter is to be checked. </para>
 <para>Once you have entered all necessary data, click on the <guibutton>OK</guibutton> button to close the rig dimensions window and display it. If there is an incompatibility in the data, the dimensions window will not close until it is corrected. </para>
 </sect3>
@@ -492,7 +490,7 @@
 </sect2>
 
 <sect2>
-<title>Mainsail luff curve </title>
+<title> Mainsail luff curve </title>
 
 <para>In most case users have designed sails independently from the design of a rig. However the user may wish to design a  sail compatible with a rig. In the rig dimensions screen, the box labeled <guilabel>Mainsail</guilabel> is used to compute the mainsail tack position and luff curve which will fit the rig. These data can be used for creating the corresponding mainsail or to verify that a mainsail luff curve will fit the rig. </para>
 
@@ -503,43 +501,46 @@
 
 
 <sect1 id="s.hull">
-<title> Hull Design </title>
+<title> Creating a hull </title>
 
 <para><emphasis>Please note that this module is not yet fully operational, for the time being a single chine hull ouline will appear whatever the number of chine is entered. </emphasis></para>
 
 <para>This module allow the design of a hard chines hull. It is accessed via the <guisubmenu>Hull</guisubmenu> entry of the main screen's <guimenu>File</guimenu> <guisubmenu>New</guisubmenu> menu. </para>
 
+<sect2> 
+<title> View controls </title>
+
+<para>The controls of the viewer are identical to those of the sail viewer. You can rotate the hull with the sliders located around the graphic display, zoom with the mouse's wheel, pan with the mouse left click, view in wireframe or shaded surface modes. </para>
+</sect2>
+
 <sect2>
-<title>Saving and Loading a hull file </title>
+<title> Saving and Loading a hull file </title>
+
 <para>The <guimenuitem>Save</guimenuitem> entry of the <guimenu>File</guimenu> menu is used to save a hull.</para>
 
 <para>Any hull which has been saved can be later opened as an entity with the <guimenuitem>Open</guimenuitem> entry of the <guimenu>File</guimenu> menu and can be used as an element to constitute a boat.</para>
 </sect2>
 
-<sect2> 
-<title>View control </title>
-<para>The controls of the viewer are identical to those of the sail viewer. You can rotate the hull with the sliders located around the graphic display, zoom with the mouse's wheel, pan with the mouse left click, view in wireframe or shaded surface modes. </para>
-</sect2>
-
 <sect2>
-<title>Hull dimensions </title>
+<title> Hull dimensions </title>
+
 <para>You can modify the dimensions of the hull by using tab <guilabel>Deck and bottom</guilabel> of the screen <guimenuitem>Dimensions</guimenuitem> entry of the <guimenu>View</guimenu> menu. </para>
 <para>The <bold>deck and bottom</bold> screen is divided in boxes in which the various dimensions of the hull are entered. </para>
 <para>The hull is constructed upward from the bottom planks. The most important line is the chine which defines the outer edge of the bottom planks. The height are refered to any arbitrary horizontal datum plane located conveniently near the bottom of the hull. Angles are measured in degrees from the same horizontal datum plane. </para>
 
 <sect3>
-<title>Hull ID </title>
+<title> Hull ID </title>
 <para>A free text identifying or describing the hull being designed can be entered in this box. </para>
 </sect3>
 
 <sect3>
-<title>Deck </title>
+<title> Deck </title>
 <para><bold>Forward height</bold> </para>
 <para><bold>Aft height</bold> </para>
 </sect3>
 
 <sect3>
-<title>Bottom </title>
+<title> Bottom </title>
 <para> </para>
 <para><bold>Length</bold> </para>
 <para><bold>Stem angle</bold> </para>
@@ -557,7 +558,7 @@
 </sect3>
 
 <sect3>
-<title>Planking </title>
+<title> Planking </title>
 <para> </para>
 <para><bold>Number of planks</bold> </para>
 <para><bold>Automatic planking</bold> </para>
@@ -566,76 +567,87 @@
 </sect3>
 
 <sect3>
-<title>Checking and validating data </title>
+<title> Checking and validating data </title>
 <para>Use the <guibutton>Check</guibutton> button any time after entering new data to perform a verification that the data entered are consistant with a reasonable hull design and the ancillary data are computed. In case of inconsistancy between data, the color of the fonts will tell you which data is suspicious. Red indicate a too high value, purple a too low value and blue signals which related parameter is to be checked. </para>
 <para>Once you have entered all necessary data, click on the <guibutton>OK</guibutton> button to close the hull dimensions window and display it. If there is an incompatibility in the data, the dimensions window will not close until it is corrected. </para> 
 </sect3>
-
 </sect2>
 
 <sect2>
-<title>Planks adjustment </title>
+<title> Planks adjustment </title>
 <para>Individual side planks can be ajusted by using the tab <guilabel>Planks</guilabel> of the screen <guimenuitem>Dimensions</guimenuitem> entry of the <guimenu>View</guimenu> menu. </para>
 <para>The <bold>planks</bold> screen is divided in boxes in which the various dimensions of the hull are entered. </para>
 
 <sect3>
-<title>Forward height </title>
+<title> Forward height </title>
 <para> </para>
 </sect3>
 
 <sect3>
-<title>Aft height </title>
+<title> Aft height </title>
 <para> </para>
 </sect3>
 
 <sect3>
-<title>Plank angle </title>
+<title> Plank angle </title>
 <para> </para>
 </sect3>
 
 <sect3>
-<title>Sweep angle </title>
+<title> Sweep angle </title>
 <para> </para>
 </sect3>
 
 <sect3>
-<title>Chine angle </title>
+<title> Chine angle </title>
 <para> </para>
 </sect3>
 
-
 <sect3>
-<title>Checking and validating data </title>
+<title> Checking and validating data </title>
 <para>Use the <guibutton>Check</guibutton> button any time after entering new data to perform a verification that the data entered are consistant with a reasonable hull design and the ancillary data are computed. In case of inconsistancy between data, the color of the fonts will tell you which data is suspicious. Red indicate a too high value, purple a too low value and blue signals which related parameter is to be checked. </para>
 <para>Once you have entered all necessary data, click on the <guibutton>OK</guibutton> button to close the hull dimensions window and display it. If there is an incompatibility in the data, the dimensions window will not close until it is corrected. </para> 
 </sect3>
-
 </sect2>
-
 </sect1>
 
 
 <sect1 id="s.boat">
-<title> Boat Design </title>
+<title> Creating a boat </title>
 
-<para>This Boat design module allow to assemble hull, rig and sails files created earlier to make a virtual boat. It is accessed via the <guisubmenu>Boat</guisubmenu> entry of the main screen's <guimenu>File</guimenu> <guisubmenu>New</guisubmenu> menu. </para>
+<para>This boat design module allows you to assemble hull, rig and sails files created earlier and make a virtual boat. It is accessed via the <guisubmenu>Boat</guisubmenu> entry of the main screen's <guimenu>File</guimenu> <guisubmenu>New</guisubmenu> menu. </para>
+
+<sect2> 
+<title> View controls </title>
+
+<para>The controls of the viewer are identical to those of the sail viewer. You can rotate the hull with the sliders located around the graphic display, zoom with the mouse's wheel, pan with the mouse left click, view in wireframe or shaded surface modes. </para>
+</sect2>
+
+<sect2>
+<title> Adding and removing boat elements </title>
 
 <para>The boat viewer is initially showing a black screen and files are added via the <guisubmenu>Add</guisubmenu> entry of the main screen's <guimenu>File</guimenu> menu. A new tab will appear with the details of the file selected and the element identification which was given at the time of creating the element (sail ID, Rig ID, Hull ID). </para>
 
-<para>The controls of the viewer are identical to those of the sail viewer. </para>
+<para>A boat element can be removed by selecting the corresponding tab and then clicking on the <guibutton>Remove</guibutton> button. </para>
+</sect2>
+
+<sect2>
+<title> Saving and loading a boat file </title>
+
+<para>The <guisubmenu>Save</guisubmenu> entry of the <guimenu>File</guimenu> menu is used to save the file of a boat with any combination of hull rig and sails. </para>
+
+<para>The file of a boat can be opened as an entity with the <guisubmenu>Open</guisubmenu> entry of the <guimenu>File</guimenu> menu. </para>
+</sect2>
+
+<sect2>
+<title> Shifting boat elements</title>
 
 <para>All boat elements will be displayed in the position entered at the time the element was created. Please remember that the point of coordinate X=0, Y=0, Z=0 is located at the forward end of the deck of the hull (stem). </para>
 
-<para>The boat elements can be individually shifted in X, Y or Z direction by entering the corresponding offset in the element tab and then clicking on the  <guibutton>Update</guibutton> button. </para>
-
-<para>A boat element can be removed by selecting the corresponding tab and then clicking on the <guibutton>Remove</guibutton> button. </para>
+<para>The boat elements can be individually shifted in X, Y or Z direction by adjusting the corresponding offset in the element spinbox, then clicking on the  <guibutton>Update</guibutton> button. </para>
 
 <para>At any time, clicking on the <guibutton>Reload</guibutton> button will restore the corresponding element to its initial position. </para>
-
-<para>The <guisubmenu>Save</guisubmenu> entry of the <guimenu>File</guimenu> menu is used to save a boat with a combination of hull rig and sails. </para>
-
-<para>Any Boats which has been saved can be later opened as an entity with the <guisubmenu>Open</guisubmenu> entry of the <guimenu>File</guimenu> menu. </para>
-
+</sect2>
 </sect1>
 
 
@@ -663,22 +675,19 @@
 </sect2>
 
 <sect2>
-<title>Some Maths</title>
+<title> Some Maths </title>
 
 <para>The coordinate system used is such that the plane X-Y contains the tack, the clew and the head of the luff. The X axis is horizontal and orientated positively from tack toward clew. The Y axis is vertical orientated upward and the Z axis (depth) is perpendicular to the X-Y plane. Profiles are defined by the intersection of the surface of the sail with an horizontal plane parallel to Z-X plane. The depth Z of any point of a given profile is a function of the local X ordinate normalised to the profile local cord as shown in <xref linkend="fig.coordinates_system"/>. </para>
 
 <para>
-
 <figure id="fig.coordinates_system">
-
-<title>Sailcut coordinate system</title>
+<title> Sailcut coordinate system </title>
 
 <mediaobject>
 <imageobject><imagedata fileref="coordinates_system"/> </imageobject>
 </mediaobject>
 
 </figure>
-
 </para>
 
 <para>The following equation is used to describe the second derivative of the profile function of X: </para>
@@ -754,7 +763,7 @@ curvature = z&quot; / (1+ z&apos;*z&apos;)^3/2
 </sect2>
 
 <sect2>
-<title>Other aspects of the surface formulation</title>
+<title> Other aspects of the surface formulation </title>
 
 <para>The above basic mould is not sufficient to define a real sail. Indeed the luff, gaff, leech and foot of the sail are never straight and further more the sail profiles are always twisted from the foot to the top of the sail. I use the distance from the point of maximum round to the straight line and two arcs of parabola rejoining the adjacent corners to define the real edges of the sail. The profiles defined by the sail mould described above are resting on the real edges of the sail. The twist of the sail is finally obtained by applying to each profile a rotation around the leading edge end point. </para>
 
@@ -765,7 +774,7 @@ curvature = z&quot; / (1+ z&apos;*z&apos;)^3/2
 
 
 <sect1 id="s.moreinfo">
-<title>Where can I find more information about Sailcut CAD?</title>
+<title> Where can I find more information about Sailcut CAD? </title>
 
 <para>The Sailcut CAD project lives at <ulink url="http://sailcut.sourceforge.net/"/>. This is where you will find links to all matters related to Sailcut CAD! </para>
 
@@ -777,7 +786,7 @@ curvature = z&quot; / (1+ z&apos;*z&apos;)^3/2
 </sect2>
 
 <sect2>
-<title>I would like to help develop Sailcut CAD, what should I do?</title>
+<title> I would like to help develop Sailcut CAD, what should I do? </title>
 
 <para>You can help us improve Sailcut even if you are not a programmer! Simply using Sailcut and reporting any bugs you might find is of considerable help to us. We are also looking for people to help keep translations up to date and to produce new translations. If you are interested in translating Sailcut into your native language, visit the Sailcut CAD homepage and send an email to the development mailing list! </para>
 
@@ -788,10 +797,10 @@ curvature = z&quot; / (1+ z&apos;*z&apos;)^3/2
 
 
 <sect1 id="s.formats">
-<title>File formats used by Sailcut CAD</title>
+<title> File formats used by Sailcut CAD </title>
 
 <sect2 id="s.format_text_flat">
-<title>Text representation of developed sail</title>
+<title> Text representation of developed sail </title>
 
 <para>This section describes the structure of the file generated by Sailcut CAD using the <guimenuitem>to TXT sail</guimenuitem> entry of the <guisubmenu>Export development</guisubmenu> submenu of the <guimenu>File</guimenu> menu. The extension of a text sail file is &quot;.txt&quot;.</para>
 
@@ -870,7 +879,7 @@ Test main sail cross cut (flat)   // name of the sail
 </sect2>
 
 <sect2 id="s.format_text_sail">
-<title>Text representation of 3D sail</title>
+<title> Text representation of 3D sail </title>
 
 <para>This section describes the structure of the file generated by Sailcut CAD using the menu <guimenuitem>to TXT sail</guimenuitem> entry of the <guisubmenu>Export 3D sail</guisubmenu> submenu of the <guimenu>File</guimenu> menu. The extension of a text sail file is &quot;.txt&quot;. </para>
 
@@ -928,7 +937,7 @@ Test main sail cross cut (3D)   // name of the sail
 </sect2>
 
 <sect2 id="s.format_xml_sail">
-<title>XML representation of a sail</title>
+<title> XML representation of a sail </title>
 
 <para>This describe the structure of the file generated by Sailcut using the menu <guimenuitem>to XML sail</guimenuitem> entry of the <guisubmenu>Export development</guisubmenu> or <guisubmenu>Export 3D sail</guisubmenu> submenus of the <guimenu>File</guimenu> menu. The extension of an XML sail file is &quot;.sail3d&quot;. </para>
 
@@ -1023,7 +1032,7 @@ Test main sail cross cut (3D)   // name of the sail
 </sect1>
 
 <sect1 id="s.copyright">
-<title>Copyright</title>
+<title> Copyright </title>
 
 <para>Copyright (C) 1993-2007 Robert &amp; Jeremy Lainé. </para>
 
