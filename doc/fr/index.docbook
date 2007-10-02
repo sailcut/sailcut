@@ -262,7 +262,7 @@
 </sect2>
 
 <sect2>
-<title>Moule de la voile</title>
+<title> Moule de la voile </title>
 
 <para>La profondeur et la forme de la voile sont définies par trois profiles situés au niveau de la bordure, au milieu et en haut de la voile. Ces profiles peuvent être ajusté avec les 3 curseurs placé en dessous de chaque profile. </para>
 
@@ -279,7 +279,7 @@
 </sect2>
 
 <sect2>
-<title>Controle des vues</title>
+<title> Controle des vues </title>
 
 <para>Il est possible de faire un zoom, déplacer (pan) ou tourner les voiles dans une zone d&apos;affichage graphique:</para>
 
@@ -302,7 +302,7 @@
 </sect2>
 
 <sect2>
-<title>Développement des laizes</title>
+<title> Développement des laizes </title>
 
 <para>Le développement de la voile s&apos;affiche en cliquant sur l&apos;onglet <guilabel>Développement</guilabel> de la fenêtre principale de Sailcut CAD. Les fonctions de controle de la vue sont les mêmes que pour la vue 3D. Les lignes bleues représentent les ligne de tracé des laizes et les ligne rouges les lignes de découpe prenant en compte les marges de couture.</para>
 
@@ -335,7 +335,7 @@
 </sect2>
 
 <sect2>
-<title>Enregistrer et ouvrir les voiles</title>
+<title> Enregistrer et ouvrir les voiles </title>
 
 <para>Dès que vous avez créé une voile, vous pouvez enregistrer ses données dans un fichier avec les entrées <guimenuitem>Enregistrer</guimenuitem> ou <guimenuitem>Enregistrer sous</guimenuitem> du menu déroulant <guimenu>Fichier</guimenu>. Vous pouvez ensuite la recharger avec l'entrée <guimenuitem>Ouvrir</guimenuitem> la prochaine fois que vous voulez y retravailler.</para>
 
@@ -346,7 +346,7 @@
 </sect2>
 
 <sect2>
-<title>Exporter les voiles 3D</title>
+<title> Exporter les voiles 3D </title>
 
 <para>En plus d&apos;enregistrer les caractéristiques des voiles comme ci-dessus, il est possible d&apos;exporter les points 3D situés sur les bords et les coutures de la voile. Ceci peut être fait dans les formats suivants à l'aide du sous-menu <guisubmenu>Export voile 3D</guisubmenu> du menu déroulant <guimenu>Fichier</guimenu>:</para>
 
@@ -369,7 +369,7 @@
 </sect2>
 
 <sect2>
-<title>Imprimer les données et dessins</title>
+<title> Imprimer les données et dessins </title>
 
 <para>Le sous-menu <guisubmenu>Imprimer</guisubmenu> du menu <guimenu>Fichier</guimenu> offre plusieurs possibilités d&apos;impression:</para>
 
@@ -403,31 +403,21 @@
 </para>
 
 </sect2>
-
 </sect1>
 
 
 <sect1 id="s.rig">
-<title>Rig Design</title>
+<title> Créer un gréement </title>
 
-<para>This module allow the design of a mast with up to 3 levels of spreaders. It is accessed via the <guisubmenu>Rig</guisubmenu> entry of the main screen's <guimenu>File</guimenu> <guisubmenu>New</guisubmenu> menu.</para>
+<para>This module allow the design of a mast with up to 3 levels of spreaders. It is accessed via the <guimenuitem>Rig</guimenuitem> entry of the main screen's <guimenu>File</guimenu> <guisubmenu>New</guisubmenu> menu.</para>
 
-<para>The <guisubmenu>Save</guisubmenu> entry of the <guimenu>File</guimenu> menu is used to save a rig.</para>
+<para>The <guimenuitem>Dimensions</guimenuitem> entry of the <guimenu>View</guimenu> menu will display the screen from which you can enter and modify the dimensions of the rig. </para>
 
-<para>Any Rig which has been saved can be later opened as an entity with the <guisubmenu>Open</guisubmenu> entry of the <guimenu>File</guimenu> menu and can be used as an element to constitute a boat.</para>
-
-<para>The controls of the viewer are identical to those of the sail viewer.</para>
-
-<sect2>
-<title>Rig dimensions</title>
-
-<para>You can modify the dimensions of the rig by using the <guimenuitem>Dimensions</guimenuitem> entry of the <guimenu>View</guimenu> menu.</para>
-
-<para>The definition of the various dimensions to be entered is given in <xref linkend="fig.rigplan"/>. Please note that, in order to allow the design of sails independently from the design of the rig, the definition of the mast rake and mast curve are refered to the full mast length which are different from that of the sail luff rake and curve of the sail design module which are refered to the sail luff length. This rig module provides the data to be used when designing the mainsail which fit on the rig. </para>
+<para>The definition of the various dimensions is given in <xref linkend="fig.rigplan"/>. Please note that, in order to allow the design of sails independently from the design of the rig, the definition of the mast rake and mast curve are refered to the full mast length which are different from that of the sail luff rake and curve of the sail design module which are refered to the sail luff length. This rig module provides the data to be used when designing the mainsail which fit on the rig. </para>
 
 <para>
 <figure id="fig.rigplan">
-<title>Sailcut Rig definition</title>
+<title> Définitions du gréement Sailcut </title>
 
 <mediaobject>
 <imageobject> <imagedata fileref="rigplan"/> </imageobject>
@@ -435,122 +425,262 @@
 
 </figure>
 </para>
-<para>The rig dimension screen is divided in boxes labeled: </para>
 
-<itemizedlist>
-<listitem>
-<para><guilabel>Fore triangle</guilabel> </para>
-</listitem>
+<sect2>
+<title> Saving and Loading a rig file </title>
 
-<listitem>
-<para><guilabel>Mast</guilabel> </para> 
-</listitem>
+<para>The <guimenuitem>Save</guimenuitem> entry of the <guimenu>File</guimenu> menu is used to save a rig.</para>
 
-<listitem>
-<para><guilabel>Mainsail</guilabel>: see below the chapter about mainsail luff curve. </para>
-</listitem>
+<para>Any Rig which has been saved can be later opened as an entity with the <guimenuitem>Open</guimenuitem> entry of the <guimenu>File</guimenu> menu and can be used as an element to constitute a boat.</para>
+</sect2>
 
-<listitem>
-<para><guilabel>Shrouds</guilabel>: the base width of the lower shroud can be different from that of the cap (outer) shroud for boat where the jib is sheeted between the shrouds. </para>
-</listitem>
+<sect2> 
+<title> View controls </title>
 
-<listitem>
-<para><guilabel>Spreaders</guilabel>: The number of spreaders can be from none (0) to maximum 3. If only no spreader is present, the outer shroud will be identical to the lower shroud. </para>
-</listitem>
+<para>The controls of the viewer are identical to those of the sail viewer. You can rotate the rig with the sliders located around the graphic display, zoom with the mouse's wheel, pan with the mouse left click, view in wireframe or shaded surface modes. </para>
+</sect2>
 
-</itemizedlist>
+<sect2>
+<title> Rig dimensions </title>
 
-<para>Use the <guibutton>Check</guibutton> button any time after entering new data to perform a verification that the data entered are consistant with a reasonable rig design. The color of the fonts will tell you what too look for if there is an incompatibility between data entered. Red indicate a too high value, purple a too low value and blue signals the related parameter to be checked. </para>
+<para>The <guimenuitem>Dimensions</guimenuitem> entry of the <guimenu>View</guimenu> menu display the rig dimension screen which is divided in boxes corresponding to the entities listed below. </para>
+<para>Note that angles are expressed in degrees and linear dimensions in millimetres. </para>
 
-<para>Once you have entered all necessary data click on the <guibutton>OK</guibutton> button to close the rig dimensions window and display the rig. If there is an incompatibility in the data, the rig dimensions window will not close until it is corrected. </para>
+<sect3>
+<title> Rig ID </title> 
+<para>A free text identifying or describing the rig can be entered in this box. The number of characteres is limited to 40. </para>
+</sect3>
+
+<sect3>
+<title> Fore triangle </title> 
+<para>The height <bold>= I</bold> and base <bold>= J</bold> of the fore triangle are entered in the corresponding fields. Note that the dimensions are measured in the vertical and horizontal directions. In particular be carefull when measuring the <bold>J</bold> dimension when the mast is inclined. </para>
+</sect3>
+
+<sect3>
+<title> Mast </title> 
+<para>The mast is assumed to have a constant section from foot to tip. The heights are refered to the stem fitting horizontal plane. </para> 
+<para><bold>Mast height = MH</bold> is the straight line height of the mast top above the stem. It shall be greater than J. </para>
+<para><bold>Mast round = MRnd</bold> is the maximum deviation from the straight line. </para>
+<para><bold>Mast round position = MRndPos</bold> spin box is used to enter the relative height of the point at which the mast round is measured. It is expressed in percentage of the mast height. </para>
+<para><bold>Mast rake = MRkM</bold> is the horizontal distance between the tip of the mast and its foot. Sailcut CAD will compute and display the corresponding mast rake angle = MRkD. </para>
+<para><bold>Mast cord = MC</bold> is the fore-aft width of the mast section.</para>
+<para><bold>Mast width = MW</bold> is the transverse width of the mast section.</para>
+</sect3>
+
+<sect3>
+<title> Mainsail </title>
+<para>See below the chapter about mainsail luff curve.  </para>
+</sect3>
+
+<sect3>
+<title> Shrouds </title>
+<para><bold>Cap shrouds height = CSH</bold> is the height of the point of attachment of the outer shroud to the mast. </para>
+<para><bold>Cap shrouds base width = CSB</bold> is the base width of the outer shroud measured from the central line. </para>
+<para><bold>Lower shrouds base width = LSB</bold> is the base width of the lower (inner) shroud which shall be smaller or equal to the cap shroud base width. </para>
+</sect3>
+
+<sect3>
+<title> Spreaders </title>
+<para><bold>Number of spreaders = SPNB</bold> can be from 0 (none) to maximum 3. If only no spreader is present, the outer shroud will be identical to the lower shroud. </para>
+<para><bold>Spreaders height SPH</bold> are entered in ascending order with 1 being the lowest. </para>
+<para><bold>Spreaders length SPW</bold> are measured from the ecentral line. </para>
+</sect3>
+
+<sect3>
+<title> Checking and validating data </title>
+<para>Use the <guibutton>Check</guibutton> button any time after entering new data to perform a verification that the data entered are consistant with a reasonable rig design and the ancillary data are computed. In case of inconsistancy between data, the color of the fonts will tell you which data is suspicious. Red indicate a too high value, purple a too low value and blue signals which related parameter is to be checked. </para>
+<para>Once you have entered all necessary data, click on the <guibutton>OK</guibutton> button to close the rig dimensions window and display it. If there is an incompatibility in the data, the dimensions window will not close until it is corrected. </para>
+</sect3>
 
 </sect2>
 
 <sect2>
-<title>Mainsail luff curve</title>
+<title> Mainsail luff curve </title>
 
 <para>In most case users have designed sails independently from the design of a rig. However the user may wish to design a  sail compatible with a rig. In the rig dimensions screen, the box labeled <guilabel>Mainsail</guilabel> is used to compute the mainsail tack position and luff curve which will fit the rig. These data can be used for creating the corresponding mainsail or to verify that a mainsail luff curve will fit the rig. </para>
 
-<para>The only data to be entered are the height of the tack of the mainsail, the height of the head and Sailcut CAD will compute the other data. </para>
+<para>The only data to be entered are the mainsail <bold>tack height = BAD</bold> and <bold>head height = HAD</bold>. Sailcut CAD will compute the other data. </para>
 
 </sect2>
 </sect1>
 
 
 <sect1 id="s.hull">
-<title>Hull Design</title>
+<title> Créer une coque </title>
 
 <para><emphasis>Please note that this module is not yet fully operational, for the time being a single chine hull ouline will appear whatever the number of chine is entered. </emphasis></para>
 
 <para>This module allow the design of a hard chines hull. It is accessed via the <guisubmenu>Hull</guisubmenu> entry of the main screen's <guimenu>File</guimenu> <guisubmenu>New</guisubmenu> menu. </para>
 
-<para>The <guimenuitem>Save</guimenuitem> entry of the <guimenu>File</guimenu> menu is used to save a hull. </para>
+<sect2> 
+<title> View controls </title>
 
-<para>Any Hull which has been saved can be later opened as an entity with the <guimenuitem>Open</guimenuitem> entry of the <guimenu>File</guimenu> menu and can be used as an element to constitute a boat. </para>
-
-<para>The controls of the viewer are identical to those of the sail viewer. </para>
+<para>The controls of the viewer are identical to those of the sail viewer. You can rotate the hull with the sliders located around the graphic display, zoom with the mouse's wheel, pan with the mouse left click, view in wireframe or shaded surface modes. </para>
+</sect2>
 
 <sect2>
-<title>Hull dimensions</title>
+<title> Saving and Loading a hull file </title>
 
-<para>You can modify the dimensions of the hull by using the <guimenuitem>Dimensions</guimenuitem> entry of the <guimenu>View</guimenu> menu. </para>
+<para>The <guimenuitem>Save</guimenuitem> entry of the <guimenu>File</guimenu> menu is used to save a hull.</para>
 
+<para>Any hull which has been saved can be later opened as an entity with the <guimenuitem>Open</guimenuitem> entry of the <guimenu>File</guimenu> menu and can be used as an element to constitute a boat.</para>
+</sect2>
+
+<sect2>
+<title> Hull dimensions </title>
+
+<para>You can modify the dimensions of the hull by using tab <guilabel>Deck and bottom</guilabel> of the screen <guimenuitem>Dimensions</guimenuitem> entry of the <guimenu>View</guimenu> menu. </para>
+<para>The <bold>deck and bottom</bold> screen is divided in boxes in which the various dimensions of the hull are entered. </para>
+<para>The hull is constructed upward from the bottom planks. The most important line is the chine which defines the outer edge of the bottom planks. The height are refered to any arbitrary horizontal datum plane located conveniently near the bottom of the hull. Angles are measured in degrees from the same horizontal datum plane. </para>
+
+<sect3>
+<title> Hull ID </title>
+<para>A free text identifying or describing the hull being designed can be entered in this box. </para>
+</sect3>
+
+<sect3>
+<title> Deck </title>
+<para><bold>Forward height</bold> </para>
+<para><bold>Aft height</bold> </para>
+</sect3>
+
+<sect3>
+<title> Bottom </title>
+<para> </para>
+<para><bold>Length</bold> </para>
+<para><bold>Stem angle</bold> </para>
+<para><bold>Transom angle</bold> </para>
+<para><bold>Forward height</bold> </para>
+<para><bold>Chine angle</bold> </para>
+<para><bold>Aft height</bold> </para>
+<para><bold>Max width</bold> </para>
+<para><bold>Max width position</bold> </para>
+<para><bold>Aft width</bold> </para>
+<para><bold>Forward shape</bold> </para>
+<para><bold>Aft shape</bold> </para>
+<para><bold>Dead rise angle</bold> </para>
+<para><bold>Bottom sweep angle</bold> </para>
+</sect3>
+
+<sect3>
+<title> Planking </title>
+<para> </para>
+<para><bold>Number of planks</bold> </para>
+<para><bold>Automatic planking</bold> </para>
+<para><bold>Top plank angle</bold> </para>
+<para><bold>lower plank angle</bold> </para>
+</sect3>
+
+<sect3>
+<title> Checking and validating data </title>
+<para>Use the <guibutton>Check</guibutton> button any time after entering new data to perform a verification that the data entered are consistant with a reasonable hull design and the ancillary data are computed. In case of inconsistancy between data, the color of the fonts will tell you which data is suspicious. Red indicate a too high value, purple a too low value and blue signals which related parameter is to be checked. </para>
+<para>Once you have entered all necessary data, click on the <guibutton>OK</guibutton> button to close the hull dimensions window and display it. If there is an incompatibility in the data, the dimensions window will not close until it is corrected. </para> 
+</sect3>
+</sect2>
+
+<sect2>
+<title> Planks adjustment </title>
+<para>Individual side planks can be ajusted by using the tab <guilabel>Planks</guilabel> of the screen <guimenuitem>Dimensions</guimenuitem> entry of the <guimenu>View</guimenu> menu. </para>
+<para>The <bold>planks</bold> screen is divided in boxes in which the various dimensions of the hull are entered. </para>
+
+<sect3>
+<title> Forward height </title>
+<para> </para>
+</sect3>
+
+<sect3>
+<title> Aft height </title>
+<para> </para>
+</sect3>
+
+<sect3>
+<title> Plank angle </title>
+<para> </para>
+</sect3>
+
+<sect3>
+<title> Sweep angle </title>
+<para> </para>
+</sect3>
+
+<sect3>
+<title> Chine angle </title>
+<para> </para>
+</sect3>
+
+<sect3>
+<title> Checking and validating data </title>
+<para>Use the <guibutton>Check</guibutton> button any time after entering new data to perform a verification that the data entered are consistant with a reasonable hull design and the ancillary data are computed. In case of inconsistancy between data, the color of the fonts will tell you which data is suspicious. Red indicate a too high value, purple a too low value and blue signals which related parameter is to be checked. </para>
+<para>Once you have entered all necessary data, click on the <guibutton>OK</guibutton> button to close the hull dimensions window and display it. If there is an incompatibility in the data, the dimensions window will not close until it is corrected. </para> 
+</sect3>
 </sect2>
 </sect1>
 
 
 <sect1 id="s.boat">
-<title>Boat Design</title>
+<title> Créer un bateau </title>
 
-<para>This Boat design module allow to assemble hull, rig and sails files created earlier to make a virtual boat. It is accessed via the <guisubmenu>Boat</guisubmenu> entry of the main screen's <guimenu>File</guimenu> <guisubmenu>New</guisubmenu> menu. </para>
+<para>This boat design module allows you to assemble hull, rig and sails files created earlier and make a virtual boat. It is accessed via the <guisubmenu>Boat</guisubmenu> entry of the main screen's <guimenu>File</guimenu> <guisubmenu>New</guisubmenu> menu. </para>
+
+<sect2> 
+<title> View controls </title>
+
+<para>The controls of the viewer are identical to those of the sail viewer. You can rotate the hull with the sliders located around the graphic display, zoom with the mouse's wheel, pan with the mouse left click, view in wireframe or shaded surface modes. </para>
+</sect2>
+
+<sect2>
+<title> Ajouter et enlever les éléments d'un bateau </title>
 
 <para>The boat viewer is initially showing a black screen and files are added via the <guisubmenu>Add</guisubmenu> entry of the main screen's <guimenu>File</guimenu> menu. A new tab will appear with the details of the file selected and the element identification which was given at the time of creating the element (sail ID, Rig ID, Hull ID). </para>
 
-<para>The controls of the viewer are identical to those of the sail viewer. </para>
+<para>A boat element can be removed by selecting the corresponding tab and then clicking on the <guibutton>Remove</guibutton> button. </para>
+</sect2>
+
+<sect2>
+<title> Sauvegarder et charger un bateau </title>
+
+<para>The <guisubmenu>Save</guisubmenu> entry of the <guimenu>File</guimenu> menu is used to save a boat with any combination of hull, rig and sails. </para>
+
+<para>Any Boats which has been saved can be later opened as an entity with the <guisubmenu>Open</guisubmenu> entry of the <guimenu>File</guimenu> menu. </para>
+</sect2>
+
+<sect2>
+<title> Shifting boat elements</title>
 
 <para>All boat elements will be displayed in the position entered at the time the element was created. Please remember that the point of coordinate X=0, Y=0, Z=0 is located at the forward end of the deck of the hull (stem). </para>
 
-<para>The boat elements can be individually shifted in X, Y or Z direction by entering the corresponding offset in the element tab and then clicking on the  <guibutton>Update</guibutton> button. </para>
+<para>The boat elements can be individually shifted in X, Y or Z direction by adjusting the corresponding offset in the element spinbox, then clicking on the  <guibutton>Update</guibutton> button. </para>
 
-<para>A boat element can be removed by selecting the corresponding tab and then clicking on the <guibutton>Remove</guibutton> button. </para>
-
-<para> At any time, clicking on the <guibutton>Reload</guibutton> button will restore the corresponding element to its initial position. </para>
-
-<para>The <guisubmenu>Save</guisubmenu> entry of the <guimenu>File</guimenu> menu is used to save a boat with a combination of hull rig and sails. </para>
-
-<para>Any Boats which has been saved can be later opened as an entity with the <guisubmenu>Open</guisubmenu> entry of the <guimenu>File</guimenu> menu. </para>
-
+<para>At any time, clicking on the <guibutton>Reload</guibutton> button will restore the corresponding element to its initial position. </para>
+</sect2>
 </sect1>
 
 
 <sect1 id="s.surface">
-<title>Modélisation de la surface des voiles dans Sailcut</title>
+<title> Modélisation de la surface des voiles dans Sailcut </title>
 
-<para>Papier présenté par Robert Lainé au 2ème Workshop Science Voile IRENAV à Brest, France, le 21 mai 2004</para>
+<para>Papier présenté par Robert Lainé au 2ème Workshop Science Voile IRENAV à Brest, France, le 21 mai 2004. </para>
 
 <sect2>
-<title>Historique</title>
+<title> Historique </title>
 
-<para>Le logiciel de coupe de voile Sailcut a été développé initialement en 1978 en Basic sur un calculateur disposant d&apos;un écran avec une ligne de texte, une petite imprimante à 32 colonnes et seulement 1.6 ko de mémoire vive. D&apos;où la nécessité de faire simple pour modéliser la surface des voiles que je fabriquais et utilisais sur mon ¼ ton IOR.</para>
+<para>Le logiciel de coupe de voile Sailcut a été développé initialement en 1978 en Basic sur un calculateur disposant d&apos;un écran avec une ligne de texte, une petite imprimante à 32 colonnes et seulement 1.6 ko de mémoire vive. D&apos;où la nécessité de faire simple pour modéliser la surface des voiles que je fabriquais et utilisais sur mon ¼ ton IOR. </para>
 
-<para>Ce cycle court &quot;conception=&gt;fabrication=&gt;utilisation=&gt;correction&quot; sans contrainte commerciale d&apos;adaptation aux habitudes de travail des voileries m&apos;a permis de converger rapidement sur une modélisation compacte et robuste de la surface des voiles. Plus tard l&apos;utilisation de Sailcut par des voileries a contribué à l&apos;ajout d&apos;interfaces graphiques au noyau Sailcut mais ceci est une autre histoire... Depuis 1993 la version Visual Basic de Sailcut est disponible sur Internet à <ulink url="http://www.sailcut.com/"/> et depuis 2003, le code source de Sailcut récrit en C++ est disponible à <ulink url="http://sailcut.sourceforge.net/"/>. Pour des raisons de protection de la propriété intellectuelle, le nom Sailcut est déposé mais l&apos;auteur maintient l&apos;accès libre et gratuit au logiciel Sailcut.</para>
+<para>Ce cycle court &quot;conception=&gt;fabrication=&gt;utilisation=&gt;correction&quot; sans contrainte commerciale d&apos;adaptation aux habitudes de travail des voileries m&apos;a permis de converger rapidement sur une modélisation compacte et robuste de la surface des voiles. Plus tard l&apos;utilisation de Sailcut par des voileries a contribué à l&apos;ajout d&apos;interfaces graphiques au noyau Sailcut mais ceci est une autre histoire... Depuis 1993 la version Visual Basic de Sailcut est disponible sur Internet à <ulink url="http://www.sailcut.com/"/> et depuis 2003, le code source de Sailcut récrit en C++ est disponible à <ulink url="http://sailcut.sourceforge.net/"/>. Pour des raisons de protection de la propriété intellectuelle, le nom Sailcut est déposé mais l&apos;auteur maintient l&apos;accès libre et gratuit au logiciel Sailcut. </para>
 
 </sect2>
 
 <sect2>
+<title> Problématique de la définition de la surface d&apos;une voile </title>
 
-<title>Problématique de la définition de la surface d&apos;une voile</title>
+<para>Une voile est une surface complexe que les voileries définissaient historiquement par des notions telles que le creux à différentes hauteurs et la position du creux maximum sur la corde locale. Cette manière de définir la voile par des points de contrôle permet de faire facilement une corrélation visuelle entre le modèle et la voile réelle sur le bateau. Malheureusement par quelques points peuvent passer un grand nombre de surfaces plus ou moins bosselées. Ensuite des notions telles que la pente au bord d&apos;attaque et au bord de fuite furent introduites pour améliorer le contrôle du maître voilier sur la forme du profil de la voile. Ces méthodes menaient à des calculs d&apos;interpolation assez lourds pour trouver le creux en tous points d&apos;une voile, calculs dépassant la capacité des calculateurs personnels d&apos;antan. </para>
 
-<para>Une voile est une surface complexe que les voileries définissaient historiquement par des notions telles que le creux à différentes hauteurs et la position du creux maximum sur la corde locale. Cette manière de définir la voile par des points de contrôle permet de faire facilement une corrélation visuelle entre le modèle et la voile réelle sur le bateau. Malheureusement par quelques points peuvent passer un grand nombre de surfaces plus ou moins bosselées. Ensuite des notions telles que la pente au bord d&apos;attaque et au bord de fuite furent introduites pour améliorer le contrôle du maître voilier sur la forme du profil de la voile. Ces méthodes menaient à des calculs d&apos;interpolation assez lourds pour trouver le creux en tous points d&apos;une voile, calculs dépassant la capacité des calculateurs personnels d&apos;antan.</para>
+<para>Dès le début de mes activités sportives en voile, je me suis intéressé à l&apos;aérodynamique de la voile. La lecture du livre <citetitle>Theory of wings sections</citetitle> m&apos;a convaincu que ce qui comptait le plus dans la qualité d&apos;un profil était la répartition de la courbure le long du profil. La définition d&apos;un profil par son creux maximum, la position du creux et des segments de fonctions quadratiques ou cubiques me semblait suspecte. Plutôt que de chercher à reproduire des voiles existantes, j&apos;ai cherché à produire une loi de courbure raisonnablement aérodynamique sur toute la surface de la voile. La première approche a été de modéliser directement la courbure mais cela nécessitait de traiter simultanément les dérivées premières et secondes en tous points et donc trop de calculs pour mon petit ordinateur. Navigant à l&apos;époque en mer du Nord dans des conditions assez musclées pour mon ¼ ton, un de mes objectifs était d&apos;obtenir une forme de profil ayant un pic de pression avancé pour combattre la tendance du creux à reculer quand le vent augmente. J&apos;ai finalement choisi une équation définissant la dérivée seconde du profil et me donnant une évolution continue de celle-ci et contrôlée par seulement deux paramètres. </para>
 
-<para>Dès le début de mes activités sportives en voile, je me suis intéressé à l&apos;aérodynamique de la voile. La lecture du livre <citetitle>Theory of wings sections</citetitle> m&apos;a convaincu que ce qui comptait le plus dans la qualité d&apos;un profil était la répartition de la courbure le long du profil. La définition d&apos;un profil par son creux maximum, la position du creux et des segments de fonctions quadratiques ou cubiques me semblait suspecte. Plutôt que de chercher à reproduire des voiles existantes, j&apos;ai cherché à produire une loi de courbure raisonnablement aérodynamique sur toute la surface de la voile. La première approche a été de modéliser directement la courbure mais cela nécessitait de traiter simultanément les dérivées premières et secondes en tous points et donc trop de calculs pour mon petit ordinateur. Navigant à l&apos;époque en mer du Nord dans des conditions assez musclées pour mon ¼ ton, un de mes objectifs était d&apos;obtenir une forme de profil ayant un pic de pression avancé pour combattre la tendance du creux à reculer quand le vent augmente. J&apos;ai finalement choisi une équation définissant la dérivée seconde du profil et me donnant une évolution continue de celle-ci et contrôlée par seulement deux paramètres.</para>
-
-<para>Le système de coordonnées choisi est tel que le plan X-Y contient le point d&apos;amure, le point d&apos;écoute et la tête du guindant. L&apos;axe X est horizontal du point d&apos;amure vers le point d&apos;écoute, l&apos;axe Y est vertical vers le haut et l&apos;axe Z transverse au plan X-Y. Les profils sont définis comme l&apos;intersection de la surface de la voile avec un plan horizontal Y-Z. Le Z d&apos;un point d&apos;un profil donné est donc une fonction de l&apos;abscisse X normalisée par rapport à la longueur de la corde locale comme montré dans <xref linkend="fig.coordinates_system"/>.</para>
+<para>Le système de coordonnées choisi est tel que le plan X-Y contient le point d&apos;amure, le point d&apos;écoute et la tête du guindant. L&apos;axe X est horizontal du point d&apos;amure vers le point d&apos;écoute, l&apos;axe Y est vertical vers le haut et l&apos;axe Z transverse au plan X-Y. Les profils sont définis comme l&apos;intersection de la surface de la voile avec un plan horizontal Y-Z. Le Z d&apos;un point d&apos;un profil donné est donc une fonction de l&apos;abscisse X normalisée par rapport à la longueur de la corde locale comme montré dans <xref linkend="fig.coordinates_system"/>. </para>
 
 <para>
-
 <figure id="fig.coordinates_system">
-
 <title>Système de coordonnées de Sailcut</title>
 
 <mediaobject>
@@ -558,16 +688,27 @@
 </mediaobject>
 
 </figure>
-
 </para>
 
-<para>L&apos;équation retenue pour décrire la dérivée seconde du profil est:</para>
+<para>L&apos;équation retenue pour décrire la dérivée seconde du profil est: </para>
 
-<programlisting>Z&apos;&apos; = K * ( -A * (1 - X)^AV - AR * X)</programlisting> <para>Ce qui donne par intégration la pente du profil :</para>
+<programlisting>
+Z&apos;&apos; = K * ( -A * (1 - X)^AV - AR * X)
+</programlisting> 
 
-<programlisting>Z&apos; = K * ( A * (1 - X)^(AV + 1) / (AV +1) - AR/2 * X^2 + C )</programlisting> <para>Et enfin le profil après une seconde intégration :</para>
+<para>Ce qui donne par intégration la pente du profil : </para>
 
-<programlisting>Z = K * ( -A * (1 - X)^(AV + 2) / (( AV + 2) * (AV +1)) - AR/6 * X^3 + C * X + B )</programlisting> <para>Pour satisfaire les conditions (X=0, Z=0) et (X=1, Z=0) on prend :</para>
+<programlisting>
+Z&apos; = K * ( A * (1 - X)^(AV + 1) / (AV +1) - AR/2 * X^2 + C )
+</programlisting> 
+
+<para>Et enfin le profil après une seconde intégration : </para>
+
+<programlisting>
+Z = K * ( -A * (1 - X)^(AV + 2) / (( AV + 2) * (AV +1)) - AR/6 * X^3 + C * X + B )
+</programlisting> 
+
+<para>Pour satisfaire les conditions (X=0, Z=0) et (X=1, Z=0) on prend : </para>
 
 <programlisting>B = A / ((AV + 2) * (AV + 1))
 C = AR / 6 - B</programlisting> <para>Le maximum de Z est trouvé quand Z&apos; = 0, ce qui permet ensuite de calculer K pour que ce Z maximum soit celui souhaité (creux du profil).</para>
@@ -578,14 +719,17 @@ C = AR / 6 - B</programlisting> <para>Le maximum de Z est trouvé quand Z&apos; 
 
 <para>Le tableau ci dessous donne un exemple de profil obtenu avec la formulation ci dessus.</para>
 
-<programlisting>AV = 5.00
+<programlisting>
+AV = 5.00
 AR = 0.02
 K = 2.94
 A = 2.25
 B = 0.054
 C =-0.050
-curvature = z&quot; / (1+ z&apos;*z&apos;)^3/2</programlisting> <para>
+curvature = z&quot; / (1+ z&apos;*z&apos;)^3/2
+</programlisting> 
 
+<para>
 <informaltable>
 
 <tgroup cols="5" colsep="1" rowsep="1">
@@ -621,7 +765,6 @@ curvature = z&quot; / (1+ z&apos;*z&apos;)^3/2</programlisting> <para>
 </tgroup>
 
 </informaltable>
-
 </para>
 
 <para>Ayant défini une formulation simple pour les profils, il suffit de faire varier les valeurs du creux et des coefficients AV et AR en fonction de la hauteur du profil dans la voile. Pour la bordure qui est un arc de cercle, les coefficients AV et AR sont nuls et seul le creux est défini par l&apos;utilisateur. Un profil dit de creux maximum est positionné autour de la ½ hauteur de la voile et les valeurs de AV et AR sont ajustées par l&apos;utilisateur pour obtenir la forme désirée. Le profil haut de la voile est défini de la même manière. Pour tout autre profil intermédiaire la valeur du creux est interpolée par une fonction parabolique et la valeur des coefficients AV et AR est interpolée linéairement entre celles des profils de référence.</para>
@@ -631,70 +774,61 @@ curvature = z&quot; / (1+ z&apos;*z&apos;)^3/2</programlisting> <para>
 <para>Notez que dans le logiciel Sailcut, la valeur affichée pour le coefficiend de forme du guidant est directement le coefficient AV alors que pour la chute la valeur affichée est 50 fois le coefficient AV des équations ci-dessus, ceci afin que les utilisateurs travaillent avec des chiffres plus simples que des valeurs à la deuxième ou troisième décimales.</para>
 
 <sect3>
-
-<title>Autres aspects de la modélisation</title>
+<title> Autres aspects de la modélisation </title>
 
 <para>Le moule ci dessus ne suffit pas pour faire une vraie voile. En effet les bords d&apos;une voile sont rarement droits et de plus la voile présente un certain vrillage des profils entre le haut et le bas. Pour définir la forme des bords j&apos;utilise maintenant une formulation avec un point représentant le rond maximum du bord, c&apos;est à dire l&apos;écart maximum du bord réel par rapport à la ligne droite joignant les coins adjacents, et deux arcs de parabole qui joignent le point de rond maximum aux coins de la voile. Les profils s&apos;appuient sur ces bords de la voile. Le vrillage de la voile est obtenu par une rotation des profils autour de leur extrémité coté guindant. L&apos;angle de rotation est proportionnel à la hauteur du profil.</para>
 
-<para>Il est à noter que cette méthode de modélisation de la surface des voiles permet de construire une voile ayant une forme sans bosses ou méplats, ni possibilité d&apos;inversion de cambrure des profils, ceci avec peu de paramètres et des calculs simples. La méthode est applicable aussi bien aux voiles triangulaires qu&apos;aux voiles à quatre cotés et Sailcut est utilisé régulièrement pour des vieux gréements.</para>
+<para>Il est à noter que cette méthode de modélisation de la surface des voiles permet de construire une voile ayant une forme sans bosses ou méplats, ni possibilité d&apos;inversion de cambrure des profils, ceci avec peu de paramètres et des calculs simples. La méthode est applicable aussi bien aux voiles triangulaires qu&apos;aux voiles à quatre cotés et Sailcut est utilisé régulièrement pour des vieux gréements. </para>
 
 </sect3>
-
 </sect2>
-
 </sect1>
 
 <sect1 id="s.moreinfo">
-
-<title>Plus d&apos;informations sur Sailcut CAD</title>
+<title> Plus d&apos;informations sur Sailcut CAD </title>
 
 <para>TODO</para>
 
 </sect1>
 
 <sect1 id="s.formats">
-
-<title>Formats de fichiers de Sailcut CAD</title>
+<title> Formats de fichiers de Sailcut CAD </title>
 
 <sect2 id="s.format_text_flat">
-
-<title>Text representation of developed sail</title>
+<title> Text representation of developed sail </title>
 
 <para>TODO</para>
 
 </sect2>
 
 <sect2 id="s.format_text_sail">
-
-<title>Text representation of 3D sail</title>
+<title> Text representation of 3D sail </title>
 
 <para>TODO</para>
 
 </sect2>
 
 <sect2 id="s.format_xml_sail">
-
-<title>XML representation of a sail</title>
+<title> XML representation of a sail </title>
 
 </sect2>
 
 </sect1>
 
 <sect1 id="s.copyright">
+<title> Copyright </title>
 
-<title>Copyright</title>
+<para>Copyright (C) 1993-2007 Robert &amp; Jeremy Lainé. </para>
 
-<para>Copyright (C) 1993-2006 Robert &amp; Jeremy Lainé.</para>
+<para>Sailcut est une marque déposée par Robert Lainé. </para>
 
-<para>Sailcut est une marque déposée par Robert Lainé.</para>
+<para>Ce logiciel est libre; vous pouvez le redistribuer et le modifier selon les termes de la licence GNU General Public Licence telle que publiée par la Free Software Fondation version 2 ou autre version plus récente. Voyez <ulink url="http://www.fsf.org/"/> pour les termes de cette licence. </para>
 
-<para>Ce logiciel est libre; vous pouvez le redistribuer et le modifier selon les termes de la licence GNU General Public Licence telle que publiée par la Free Software Fondation version 2 ou autre version plus récente. Voyez <ulink url="http://www.fsf.org/"/> pour les termes de cette licence.</para>
+<para>Ce logiciel est distribué avec l&apos;éspoir qu&apos;il vous soit utile mais SANS AUCUNE GARANTIE même implicite quand son utilisation. Voyez les termes de la licence GNU pour plus de détail. </para>
 
-<para>Ce logiciel est distribué avec l&apos;éspoir qu&apos;il vous soit utile mais SANS AUCUNE GARANTIE même implicite quand son utilisation. Voyez les termes de la licence GNU pour plus de détail.</para>
+<para>Vous devriez avoir une copie de la licence GNU General Public Licence avec ce logiciel, si ce n&apos;est pas le cas demandez la à Free Software Fondation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA. </para>
 
-<para>Vous devriez avoir une copie de la licence GNU General Public Licence avec ce logiciel, si ce n&apos;est pas le cas demandez la à Free Software Fondation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.</para>
-
-<para><emphasis>Les auteurs apprécieraient que les publications sur des voiles conçues avec Sailcut comportent une reconnaissance de leur travail. Merci par avance.</emphasis></para> 
+<para><emphasis>Les auteurs apprécieraient que les publications sur des voiles conçues avec Sailcut comportent une reconnaissance de leur travail. Merci par avance.</emphasis> </para> 
 
 </sect1>
 
