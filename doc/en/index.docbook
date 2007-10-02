@@ -448,18 +448,18 @@
 
 <sect3>
 <title> Fore triangle </title> 
-<para>The height <bold>= I</bold> and base <bold>= J</bold> of the fore triangle are entered in the corresponding fields. Note that the dimensions are measured in the vertical and horizontal directions. In particular be carefull when measuring the <bold>J</bold> dimension when the mast is inclined. </para>
+<para>The height <emphasis>= I</emphasis> and base <emphasis>= J</emphasis> of the fore triangle are entered in the corresponding fields. Note that the dimensions are measured in the vertical and horizontal directions. In particular be carefull when measuring the <emphasis>J</emphasis> dimension when the mast is inclined. </para>
 </sect3>
 
 <sect3>
 <title> Mast </title> 
 <para>The mast is assumed to have a constant section from foot to tip. The heights are refered to the stem fitting horizontal plane. </para> 
-<para><bold>Mast height = MH</bold> is the straight line height of the mast top above the stem. It shall be greater than J. </para>
-<para><bold>Mast round = MRnd</bold> is the maximum deviation from the straight line. </para>
-<para><bold>Mast round position = MRndPos</bold> spin box is used to enter the relative height of the point at which the mast round is measured. It is expressed in percentage of the mast height. </para>
-<para><bold>Mast rake = MRkM</bold> is the horizontal distance between the tip of the mast and its foot. Sailcut CAD will compute and display the corresponding mast rake angle = MRkD. </para>
-<para><bold>Mast cord = MC</bold> is the fore-aft width of the mast section.</para>
-<para><bold>Mast width = MW</bold> is the transverse width of the mast section.</para>
+<para><emphasis>Mast height = MH</emphasis> is the straight line height of the mast top above the stem. It shall be greater than J. </para>
+<para><emphasis>Mast round = MRnd</emphasis> is the maximum deviation from the straight line. </para>
+<para><emphasis>Mast round position = MRndPos</emphasis> spin box is used to enter the relative height of the point at which the mast round is measured. It is expressed in percentage of the mast height. </para>
+<para><emphasis>Mast rake = MRkM</emphasis> is the horizontal distance between the tip of the mast and its foot. Sailcut CAD will compute and display the corresponding mast rake angle = MRkD. </para>
+<para><emphasis>Mast cord = MC</emphasis> is the fore-aft width of the mast section.</para>
+<para><emphasis>Mast width = MW</emphasis> is the transverse width of the mast section.</para>
 </sect3>
 
 <sect3>
@@ -469,16 +469,16 @@
 
 <sect3>
 <title> Shrouds </title>
-<para><bold>Cap shrouds height = CSH</bold> is the height of the point of attachment of the outer shroud to the mast. </para>
-<para><bold>Cap shrouds base width = CSB</bold> is the base width of the outer shroud measured from the central line. </para>
-<para><bold>Lower shrouds base width = LSB</bold> is the base width of the lower (inner) shroud which shall be smaller or equal to the cap shroud base width. </para>
+<para><emphasis>Cap shrouds height = CSH</emphasis> is the height of the point of attachment of the outer shroud to the mast. </para>
+<para><emphasis>Cap shrouds base width = CSB</emphasis> is the base width of the outer shroud measured from the central line. </para>
+<para><emphasis>Lower shrouds base width = LSB</emphasis> is the base width of the lower (inner) shroud which shall be smaller or equal to the cap shroud base width. </para>
 </sect3>
 
 <sect3>
 <title> Spreaders </title>
-<para><bold>Number of spreaders = SPNB</bold> can be from 0 (none) to maximum 3. If only no spreader is present, the outer shroud will be identical to the lower shroud. </para>
-<para><bold>Spreaders height SPH</bold> are entered in ascending order with 1 being the lowest. </para>
-<para><bold>Spreaders length SPW</bold> are measured from the ecentral line. </para>
+<para><emphasis>Number of spreaders = SPNB</emphasis> can be from 0 (none) to maximum 3. If only no spreader is present, the outer shroud will be identical to the lower shroud. </para>
+<para><emphasis>Spreaders height SPH</emphasis> are entered in ascending order with 1 being the lowest. </para>
+<para><emphasis>Spreaders length SPW</emphasis> are measured from the ecentral line. </para>
 </sect3>
 
 <sect3>
@@ -494,7 +494,7 @@
 
 <para>In most case users have designed sails independently from the design of a rig. However the user may wish to design a  sail compatible with a rig. In the rig dimensions screen, the box labeled <guilabel>Mainsail</guilabel> is used to compute the mainsail tack position and luff curve which will fit the rig. These data can be used for creating the corresponding mainsail or to verify that a mainsail luff curve will fit the rig. </para>
 
-<para>The only data to be entered are the mainsail <bold>tack height = BAD</bold> and <bold>head height = HAD</bold>. Sailcut CAD will compute the other data. </para>
+<para>The only data to be entered are the mainsail <emphasis>tack height = BAD</emphasis> and <emphasis>head height = HAD</emphasis>. Sailcut CAD will compute the other data. </para>
 
 </sect2>
 </sect1>
@@ -525,7 +525,7 @@
 <title> Hull dimensions </title>
 
 <para>You can modify the dimensions of the hull by using tab <guilabel>Deck and bottom</guilabel> of the screen <guimenuitem>Dimensions</guimenuitem> entry of the <guimenu>View</guimenu> menu. </para>
-<para>The <bold>deck and bottom</bold> screen is divided in boxes in which the various dimensions of the hull are entered. </para>
+<para>The <emphasis>deck and bottom</emphasis> screen is divided in boxes in which the various dimensions of the hull are entered. </para>
 <para>The hull is constructed upward from the bottom planks. The most important line is the chine which defines the outer edge of the bottom planks. The height are refered to any arbitrary horizontal datum plane located conveniently near the bottom of the hull. Angles are measured in degrees from the same horizontal datum plane. </para>
 
 <sect3>
@@ -535,35 +535,35 @@
 
 <sect3>
 <title> Deck </title>
-<para><bold>Forward height</bold> </para>
-<para><bold>Aft height</bold> </para>
+<para><emphasis>Forward height</emphasis> </para>
+<para><emphasis>Aft height</emphasis> </para>
 </sect3>
 
 <sect3>
 <title> Bottom </title>
 <para> </para>
-<para><bold>Length</bold> </para>
-<para><bold>Stem angle</bold> </para>
-<para><bold>Transom angle</bold> </para>
-<para><bold>Forward height</bold> </para>
-<para><bold>Chine angle</bold> </para>
-<para><bold>Aft height</bold> </para>
-<para><bold>Max width</bold> </para>
-<para><bold>Max width position</bold> </para>
-<para><bold>Aft width</bold> </para>
-<para><bold>Forward shape</bold> </para>
-<para><bold>Aft shape</bold> </para>
-<para><bold>Dead rise angle</bold> </para>
-<para><bold>Bottom sweep angle</bold> </para>
+<para><emphasis>Length</emphasis> </para>
+<para><emphasis>Stem angle</emphasis> </para>
+<para><emphasis>Transom angle</emphasis> </para>
+<para><emphasis>Forward height</emphasis> </para>
+<para><emphasis>Chine angle</emphasis> </para>
+<para><emphasis>Aft height</emphasis> </para>
+<para><emphasis>Max width</emphasis> </para>
+<para><emphasis>Max width position</emphasis> </para>
+<para><emphasis>Aft width</emphasis> </para>
+<para><emphasis>Forward shape</emphasis> </para>
+<para><emphasis>Aft shape</emphasis> </para>
+<para><emphasis>Dead rise angle</emphasis> </para>
+<para><emphasis>Bottom sweep angle</emphasis> </para>
 </sect3>
 
 <sect3>
 <title> Planking </title>
 <para> </para>
-<para><bold>Number of planks</bold> </para>
-<para><bold>Automatic planking</bold> </para>
-<para><bold>Top plank angle</bold> </para>
-<para><bold>lower plank angle</bold> </para>
+<para><emphasis>Number of planks</emphasis> </para>
+<para><emphasis>Automatic planking</emphasis> </para>
+<para><emphasis>Top plank angle</emphasis> </para>
+<para><emphasis>lower plank angle</emphasis> </para>
 </sect3>
 
 <sect3>
@@ -576,7 +576,7 @@
 <sect2>
 <title> Planks adjustment </title>
 <para>Individual side planks can be ajusted by using the tab <guilabel>Planks</guilabel> of the screen <guimenuitem>Dimensions</guimenuitem> entry of the <guimenu>View</guimenu> menu. </para>
-<para>The <bold>planks</bold> screen is divided in boxes in which the various dimensions of the hull are entered. </para>
+<para>The <emphasis>planks</emphasis> screen is divided in boxes in which the various dimensions of the hull are entered. </para>
 
 <sect3>
 <title> Forward height </title>
