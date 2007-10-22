@@ -3410,7 +3410,7 @@ CPoint3d CSailWorker::EdgeIntersect( const enumEdgeType &Edge, const CPoint3d &p
     // Edge perpendicular vector toward outside of sail
     CVector3d vpEdge;
     // Edge round
-    real EdgeR;
+    real EdgeR = 0;
     // Edge round position from end1 toward end2
     int EdgeRP;
     
@@ -3423,7 +3423,6 @@ CPoint3d CSailWorker::EdgeIntersect( const enumEdgeType &Edge, const CPoint3d &p
             EdgeRP = luffRP;
             vEdge = CVector3d( pEnd2 - pEnd1 );
             vpEdge = CMatrix::rot3d(2 , PI/2) * vEdge.unit();
-            
             break;
             
         case GAFF_EDGE:
