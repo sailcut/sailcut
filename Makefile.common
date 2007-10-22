@@ -12,7 +12,7 @@
 %.xpm: %.svg
 	$(INKSCAPE) -z --file=$< --export-png=$*.tmp.png --export-width=32 --export-height=32
 	$(PNGTOPNM) -alpha $*.tmp.png > $*.tmp.alpha
-	$(PNGTOPNM) $*.tmp.png | $(PPMTOXPM) -alpha $*.tmp.alpha -name $*_xpm > $@
+	$(PNGTOPNM) $*.tmp.png | $(PPMTOXPM) -alpha $*.tmp.alpha -name $*_xpm | sed -e 's/static char/static const char/g' > $@
 	rm -f $*.tmp.*
 
 # XML DocBook output
