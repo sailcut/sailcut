@@ -141,6 +141,21 @@ void CSailDoc::get
 }
 
 
+/** Reads an unsigned int value from an XML document.
+ *
+ * @param parent the parent node
+ * @param i the unsigned integer
+ * @param name the name of the value
+ */
+void CSailDoc::get
+    ( const QDomNode &parent, unsigned int &i, const QString &name )
+{
+    int temp;
+    get(parent, temp, name);
+    i = temp;
+}
+
+
 /** Reads a real value from an XML document.
  *
  * @param parent the parent node
@@ -397,21 +412,17 @@ void CSailDoc::get
         /* sail ID */
         get(e, d.sailID, "sailID" );
 
-        /* radial cut parameters */
-        int temp = 1;  // also used to convert unsigned integer
-
-        get( e, temp, "nbSections" );
-        d.nbSections = temp;       // radial sections
+        /* radial sections */
+        get( e, d.nbSections, "nbSections" );
         
-        get( e, temp, "nbGores" );
-        d.nbGores= temp;           // radial gores
+        /* radial gores */
+        get( e, d.nbGores, "nbGores" );
         
-        get( e, temp, "nbLuffGores" );
-        d.nbLuffGores=temp;       // luff gores
+        /* luff gores */
+        get( e, d.nbLuffGores, "nbLuffGores" );
         
-        get( e, temp, "dihedralDeg" );
-        d.dihedralDeg = temp;       // wing dihedral angle
-        //
+        /* wing dihedral angle */
+        get( e, d.dihedralDeg, "dihedralDeg" );
     }
     catch (CException e)
     { 
@@ -646,6 +657,14 @@ void CSailDoc::put( QDomNode &parent, const int &i, const QString &name )
 }
 
 
+/** Puts an unsigned int value to an XML document.
+ */
+void CSailDoc::put( QDomNode &parent, const unsigned int &i, const QString &name )
+{
+    put(parent, int(i), name);
+}
+
+
 /** Puts a real value to an XML document.
  */
 void CSailDoc::put( QDomNode &parent, const real &r, const QString &name )
@@ -877,21 +896,17 @@ void CSailDoc::put( QDomNode &parent, const CSailDef &d, const QString &name )
     /* sail ID */
     put ( e, d.sailID, "sailID" );
 
-    /* radial cut parameters */
-    int temp = 1;
-
-    temp = int(d.nbSections);
-    put ( e, temp, "nbSections");      // radial sections
+    /* radial sections */
+    put ( e, d.nbSections, "nbSections");
     
-    temp =  int(d.nbGores);
-    put ( e, temp, "nbGores");             // radial gores
+    /* radial gores */
+    put ( e, d.nbGores, "nbGores");
     
-    temp =  int(d.nbLuffGores);
-    put ( e, temp, "nbLuffGores");  // luff gores
-    //
-    temp =  int(d.dihedralDeg);
-    put ( e, temp, "dihedralDeg");  // wing dihedral angle
-    //
+    /* luff gores */
+    put ( e, d.nbLuffGores, "nbLuffGores");
+    
+    /* wing dihedral angle */
+    put ( e, d.dihedralDeg, "dihedralDeg");
 }
 
 
@@ -1016,7 +1031,6 @@ void CSailDoc::put( QDomNode &parent, const CRigDef &d, const QString &name )
 {
     QDomElement e = createElement("CRigDef",name);
     parent.appendChild(e);
-    int temp = 1;
     
     put ( e, d.rigID, "rigID" );
     
@@ -1037,8 +1051,7 @@ void CSailDoc::put( QDomNode &parent, const CRigDef &d, const QString &name )
     put ( e, d.CSB, "CSB" );
     put ( e, d.LSB, "LSB" );
     // spreaders
-    temp = int(d.SPNB);
-    put ( e, temp, "SPNB" );
+    put ( e, d.SPNB, "SPNB" );
     put ( e, d.SPH[0], "SPH0" );
     put ( e, d.SPH[1], "SPH1" );
     put ( e, d.SPH[2], "SPH2" );
