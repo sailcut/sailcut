@@ -67,7 +67,7 @@ public:
 private:
     QList<CSailTreeItem*> childItems;
     QList<QVariant> itemData;
-    char **itemIcon;
+    const char **itemIcon;
     CSailTreeItem *parentItem;
 };
 #endif
