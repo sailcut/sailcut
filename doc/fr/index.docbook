@@ -149,7 +149,7 @@
 <sect3>
 <title>Dimensions de la voile</title>
 
-<para>C&apos;est içi que vous entrez les dimensions de la voile. </para>
+<para>C&apos;est i&ccedil;i que vous entrez les dimensions de la voile. </para>
 
 <para>Pour une Grand-voile la longueur minimum de la vergue est de 5mm. Cette vergue peut aussi être la têtière. Une longueur inférieur à 5mm sera corrigée automatiquement par Sailcut. L&apos;angle de la vergue par rapport au guindant est limité à 90 degrés. </para>
 
@@ -232,7 +232,7 @@
 <sect3>
 <title>Forme</title>
 
-<para>Vous entrez içi le creux de la voile à trois hauteurs dans la voile: à la bordure, au milieu (la position exacte est définie dans le moule de la voile) et en haut de la voile. Ces valeurs se retrouvent dans la fenêtre <guilabel>Moule de la voile</guilabel>. </para>
+<para>Vous entrez i&ccedil;i le creux de la voile à trois hauteurs dans la voile: à la bordure, au milieu (la position exacte est définie dans le moule de la voile) et en haut de la voile. Ces valeurs se retrouvent dans la fenêtre <guilabel>Moule de la voile</guilabel>. </para>
 
 <para>L&apos;angle de vrillage exprimé en degrés est l&apos;ouverture du haut de la voile par rapport à la bordure. Le vrillage est essentiel pour tenir compte de la différence de direction du vent apparent entre le bas de la voile et le haut. Quelque fois le vrillage des focs ou génoas est déterminé par le besoin de passer la chute en dehors des barres de flèche. Pour une grand-voile à vergue, le vrillage est aussi déterminé par la capacité du gréement à tenir la tension de la chute. Ceci fait que le vrillage de ces gréements est plus important que pour un gréement Bermudien. Dans tous les cas il est important d&apos;entre un angle de vrillage qui reflète la réalité de la forme de la voile sur le bateau dans les conditions de vent attendues. </para>
 
@@ -243,7 +243,7 @@
 <sect3>
 <title>Tissus</title>
 
-<para>Entrez içi la largeur du tissus utilisé, la largeur de couture nécessaire pour assembler les laizes et les réservations de tissus pour faire les ourlets de chute et des autres bords de la voile. </para>
+<para>Entrez i&ccedil;i la largeur du tissus utilisé, la largeur de couture nécessaire pour assembler les laizes et les réservations de tissus pour faire les ourlets de chute et des autres bords de la voile. </para>
 
 <para>La figure <xref linkend="fig.sail_seams"/> donne la position des réservations pour couture et ourlets. Sailcut CAD va calculer la position des coutures pour que les laizes utilisent au maximum la largeur du tissus, sauf dans la coupe radiale ou la largeur des laizes dépend du nombre de fuseaux. </para>
 
@@ -311,7 +311,7 @@
 <itemizedlist>
 
 <listitem>
-<para>Fichier pour table traçante Carlson Design avec l'entrée <guimenuitem>table traçante Carlson</guimenuitem>.</para>
+<para>Fichier pour table tra&ccedil;ante Carlson Design avec l'entrée <guimenuitem>table tra&ccedil;ante Carlson</guimenuitem>.</para>
 </listitem>
 
 <listitem>
@@ -319,7 +319,7 @@
 </listitem>
 
 <listitem>
-<para>Fichier pouvant être lu avec un éditeur de texte pour le traçage à la main avec l'entrée <guimenuitem>traçage manuel</guimenuitem>.</para>
+<para>Fichier pouvant être lu avec un éditeur de texte pour le tra&ccedil;age à la main avec l'entrée <guimenuitem>tra&ccedil;age manuel</guimenuitem>.</para>
 </listitem>
 
 <listitem>
@@ -409,11 +409,11 @@
 <sect1 id="s.rig">
 <title> Créer un gréement </title>
 
-<para>This module allow the design of a mast with up to 3 levels of spreaders. It is accessed via the <guimenuitem>Rig</guimenuitem> entry of the main screen's <guimenu>File</guimenu> <guisubmenu>New</guisubmenu> menu.</para>
+<para>Ce module permet de dessiner un mât avec jusqu'à 3 niveaux de barres de flèche. On y accède avec l'entrée <guimenuitem>Gréement</guimenuitem> du menu principal <guimenu>Fichier</guimenu> <guisubmenu>Nouveau</guisubmenu>.</para>
 
-<para>The <guimenuitem>Dimensions</guimenuitem> entry of the <guimenu>View</guimenu> menu will display the screen from which you can enter and modify the dimensions of the rig. </para>
+<para>L'entrée <guimenuitem>Dimensions</guimenuitem> du menu <guimenu>Vue</guimenu> affiche l'écran à partir duquel vous pouvez saisir et modifier les dimensions du gréement. </para>
 
-<para>The definition of the various dimensions is given in <xref linkend="fig.rigplan"/>. Please note that, in order to allow the design of sails independently from the design of the rig, the definition of the mast rake and mast curve are refered to the full mast length which are different from that of the sail luff rake and curve of the sail design module which are refered to the sail luff length. This rig module provides the data to be used when designing the mainsail which fit on the rig. </para>
+<para>La définition des diverses dimensions est donnée dans la figure <xref linkend="fig.rigplan"/>. Veuillez noter que pour assurer que l'on puisse définir des voiles indépendament du gréement, la définition de la quête et de la courbure du mât  se réfère à la hauteur complète du mât alors que dans la grandvoile, la courbe du guindant et son inclinaison sont rapportées à la longeur du guindant. Le module du gréement permet de calculer ces dernières données en partant de la hauteur du point d'amure et de la hauteur de la têtière. </para>
 
 <para>
 <figure id="fig.rigplan">
@@ -427,79 +427,79 @@
 </para>
 
 <sect2>
-<title> Saving and Loading a rig file </title>
+<title> Sauvegarder et Charger un fichier de gréement </title>
 
-<para>The <guimenuitem>Save</guimenuitem> entry of the <guimenu>File</guimenu> menu is used to save a rig.</para>
+<para>L'entrée <guimenuitem>Sauvegarder</guimenuitem> du menu <guimenu>Fichier</guimenu> est utilisée pour sauvegarder les données d'un gréement. </para>
 
-<para>Any Rig which has been saved can be later opened as an entity with the <guimenuitem>Open</guimenuitem> entry of the <guimenu>File</guimenu> menu and can be used as an element to constitute a boat.</para>
+<para>Tout gréement qui est sauvegardé peut ensuite être chargé en utilisant l'entrée <guimenuitem>Ouvrir</guimenuitem> du menu <guimenu>Fichier</guimenu> et peut être utilisé comme élément constitutif d'un bateau. </para>
 </sect2>
 
 <sect2> 
-<title> View controls </title>
+<title> Contrôle des vues </title>
 
-<para>The controls of the viewer are identical to those of the sail viewer. You can rotate the rig with the sliders located around the graphic display, zoom with the mouse's wheel, pan with the mouse left click, view in wireframe or shaded surface modes. </para>
+<para>Le contrôle des vues est identiques à celui de l'écran graphique des voiles. Vous pouvez fare tourner le gréement avec les curseurs situés au bord de la fenêtre graphique, faire un zoom avec la roulette de la souris, recentrer la vue avec un clic gauche sur un point, afficher le gréement en surfaces colorées ou vue fil de fer. </para>
 </sect2>
 
 <sect2>
-<title> Rig dimensions </title>
+<title> Dimensions d'un gréement </title>
 
-<para>The <guimenuitem>Dimensions</guimenuitem> entry of the <guimenu>View</guimenu> menu display the rig dimension screen which is divided in boxes corresponding to the entities listed below. </para>
-<para>Note that angles are expressed in degrees and linear dimensions in millimetres. </para>
+<para>L'entrée <guimenuitem>Dimensions</guimenuitem> du menu <guimenu>Vue</guimenu> affiche l'écran avec les dimensions du gréement. Cet écran est divisé en cadres correspondants aux entités listées ci dessous. </para>
+<para>Veillez noter que les angles sont exprimés en degrés et les dimensions linéaires en millimètres. </para>
 
 <sect3>
-<title> Rig ID </title> 
-<para>A free text identifying or describing the rig can be entered in this box. The number of characteres is limited to 40. </para>
+<title> Gréement ID </title> 
+<para>Un texte libre identifiant ou décrivant le gréement. Le nombre de caractères est limité à 40. </para>
 </sect3>
 
 <sect3>
-<title> Fore triangle </title> 
-<para>The height <emphasis>= I</emphasis> and base <emphasis>= J</emphasis> of the fore triangle are entered in the corresponding fields. Note that the dimensions are measured in the vertical and horizontal directions. In particular be carefull when measuring the <emphasis>J</emphasis> dimension when the mast is inclined. </para>
+<title> Triangle avant </title> 
+<para>La hauteur <emphasis>= I</emphasis> et la base <emphasis>= J</emphasis> du triangle avant sont entrées dans les cjhamps correspondants. Notez que ces dimensions sont prises selon la verticale et l'horizontale. Soyez attentifs à la mesure de  <emphasis>J</emphasis> quand le mât est incliné. </para>
 </sect3>
 
 <sect3>
-<title> Mast </title> 
-<para>The mast is assumed to have a constant section from foot to tip. The heights are refered to the stem fitting horizontal plane. </para> 
-<para><emphasis>Mast height = MH</emphasis> is the straight line height of the mast top above the stem. It shall be greater than J. </para>
-<para><emphasis>Mast round = MRnd</emphasis> is the maximum deviation from the straight line. </para>
-<para><emphasis>Mast round position = MRndPos</emphasis> spin box is used to enter the relative height of the point at which the mast round is measured. It is expressed in percentage of the mast height. </para>
-<para><emphasis>Mast rake = MRkM</emphasis> is the horizontal distance between the tip of the mast and its foot. Sailcut CAD will compute and display the corresponding mast rake angle = MRkD. </para>
-<para><emphasis>Mast cord = MC</emphasis> is the fore-aft width of the mast section.</para>
-<para><emphasis>Mast width = MW</emphasis> is the transverse width of the mast section.</para>
+<title> Mât </title> 
+<para>Le mât a une section constante du haut en bas. Les hauteurs sont référencées au plan horizontal passant par la ferrure d"étrave. </para> 
+<para><emphasis>Hauteur du mât = MH</emphasis> hauteur du sommet du mât, elle doit être supérieure à J. </para>
+<para><emphasis>Rond du mât = MRnd</emphasis> déviation maximum par rapport à la ligne droite joingant le sommet du ma à son pied. </para>
+<para><emphasis>Position du rond du mât = MRndPos</emphasis> spin box permettant d'entrer la hauteur relative du point de rond maximum, exprimé en pourcentage de la hauteur du mât. </para>
+<para><emphasis>Quête du mât = MRkM</emphasis> distance horizontale entre le sommet du mât et son pied. Sailcut CAD calcul en degré l'inclinaison correspondante du mât = MRkD. </para>
+<para><emphasis>Corde du mât = MC</emphasis> dimension avant-arrière du profile de mât. </para>
+<para><emphasis>Largeur du mât = MW</emphasis> dimension transversse du profile du mât.</para>
 </sect3>
 
 <sect3>
-<title> Mainsail </title>
-<para>See below the chapter about mainsail luff curve.  </para>
+<title> Grandvoile </title>
+<para>Voir plus loin le paragraphe à propos de la courbe du guindant de la grandvoile.  </para>
 </sect3>
 
 <sect3>
-<title> Shrouds </title>
-<para><emphasis>Cap shrouds height = CSH</emphasis> is the height of the point of attachment of the outer shroud to the mast. </para>
-<para><emphasis>Cap shrouds base width = CSB</emphasis> is the base width of the outer shroud measured from the central line. </para>
-<para><emphasis>Lower shrouds base width = LSB</emphasis> is the base width of the lower (inner) shroud which shall be smaller or equal to the cap shroud base width. </para>
+<title> Haubans </title>
+<para><emphasis>Hauteur hauban de tête = CSH</emphasis> hauteur du point de fixation de ce hauban sur le mât. </para>
+<para><emphasis>Base hauban de tête = CSB</emphasis> distance de la cadène du hauban de tête à la ligne centrale du pont. </para>
+<para><emphasis>Base bas hauban = LSB</emphasis> distance de la cadène du bas hauban à la ligne centrale du pont. Doit être inférieure ou égale à la base du hauban de tête. </para>
 </sect3>
 
 <sect3>
-<title> Spreaders </title>
-<para><emphasis>Number of spreaders = SPNB</emphasis> can be from 0 (none) to maximum 3. If only no spreader is present, the outer shroud will be identical to the lower shroud. </para>
-<para><emphasis>Spreaders height SPH</emphasis> are entered in ascending order with 1 being the lowest. </para>
-<para><emphasis>Spreaders length SPW</emphasis> are measured from the ecentral line. </para>
+<title> Barres de flèche </title>
+<para><emphasis>Nombre de barres de flèche = SPNB</emphasis> peut être de 0 (pas de barre de flèche) à 3. Si il n'y a pas de barre de flèche alors la base du hauban de tête est égale à celle du bas hauban. </para>
+<para><emphasis>Hauteur barre de flèche SPH</emphasis> mesurées depuis le plan horizontal de référence, elles doivent être entrées dans l'ordre ascendant, 1 etant la barre la plus basse. </para>
+<para><emphasis>Longeur barre de flèche SPW</emphasis> mesurée depuis la ligne centrale du mât. </para>
 </sect3>
 
 <sect3>
-<title> Checking and validating data </title>
-<para>Use the <guibutton>Check</guibutton> button any time after entering new data to perform a verification that the data entered are consistant with a reasonable rig design and the ancillary data are computed. In case of inconsistancy between data, the color of the fonts will tell you which data is suspicious. Red indicate a too high value, purple a too low value and blue signals which related parameter is to be checked. </para>
-<para>Once you have entered all necessary data, click on the <guibutton>OK</guibutton> button to close the rig dimensions window and display it. If there is an incompatibility in the data, the dimensions window will not close until it is corrected. </para>
+<title> Vérifier et Valider les données </title>
+<para>Utilisez le bouton <guibutton>Vérifier</guibutton> pour afficher les données auxilliaires et vérifier que les données entrées sont cohérentes avec une géometrie raisonable du gréement. En cas d'anomalie dans les données, la couleur ds caractères douteux vous indique le type d'anomalie. Rouge indique une valeur trop forte, mauve une valeur trop faible et bleu indique les données en relation avec l'anomalie et qui doivent être vérifiées. </para>
+<para>Une fois que vous avez entré le données, cliquer sur le bouton <guibutton>OK</guibutton> pour fermer l'écran dimensions et afficher le dessin. L'écran dimensions ne se fermera qu'une fois toutes les anomalies de dimensions corrigées. </para>
 </sect3>
 
 </sect2>
 
 <sect2>
-<title> Mainsail luff curve </title>
+<title> Courbe de guindant de la Grandvoile </title>
 
-<para>In most case users have designed sails independently from the design of a rig. However the user may wish to design a  sail compatible with a rig. In the rig dimensions screen, the box labeled <guilabel>Mainsail</guilabel> is used to compute the mainsail tack position and luff curve which will fit the rig. These data can be used for creating the corresponding mainsail or to verify that a mainsail luff curve will fit the rig. </para>
+<para>Dans certains cas, vous aurez dessiné des voiles indépendemment du gréement et défini la courbe du guindant à partir d'observations de celle ci sur un bateau. Il se peut aussi que vous vouliez définir une grand voile qui se monte sur un gréement dont les dimensions sont entrées dans le module gréement de Sailcut. Le cadre <guilabel>Grandvoile</guilabel> permet de calculer la position exacte du point d'amure de la grandvoile, de la têtière, la quête du guidant et sa courbe correspondant au mât. Ces données sont à entrer dans le module voile ou peuvent être utilisées pour vérifier si une voile correspond à un mât. </para>
 
-<para>The only data to be entered are the mainsail <emphasis>tack height = BAD</emphasis> and <emphasis>head height = HAD</emphasis>. Sailcut CAD will compute the other data. </para>
+<para>Les seules données à entrer sont <emphasis>hauteur amure = BAD</emphasis> et <emphasis>hauteur têtière = HAD</emphasis>. Sailcut CAD calcule les autres valeurs. </para>
 
 </sect2>
 </sect1>
@@ -508,44 +508,45 @@
 <sect1 id="s.hull">
 <title> Créer une coque </title>
 
-<para><emphasis>Please note that this module is not yet fully operational, for the time being a single chine hull ouline will appear whatever the number of chine is entered. </emphasis></para>
+<para><emphasis>Veuillez noter que ce module n'est pas complètement opérationel, seul un bouchain apparaitra pour toutes les coques. </emphasis></para>
 
-<para>This module allow the design of a hard chines hull. It is accessed via the <guisubmenu>Hull</guisubmenu> entry of the main screen's <guimenu>File</guimenu> <guisubmenu>New</guisubmenu> menu. </para>
+<para>Ce module permet de dessiner un coque à bouchains vifs. On y accède avec l'entrée <guisubmenu>Coque</guisubmenu> du menu principal <guimenu>Fichier</guimenu> <guisubmenu>Nouveau</guisubmenu>. </para>
 
 <sect2> 
-<title> View controls </title>
+<title> Contrôle des vues </title>
 
-<para>The controls of the viewer are identical to those of the sail viewer. You can rotate the hull with the sliders located around the graphic display, zoom with the mouse's wheel, pan with the mouse left click, view in wireframe or shaded surface modes. </para>
+<para>Le contrôle des vues est identiques à celui de l'écran graphique des voiles. Vous pouvez faire tourner la coque avec les curseurs situés au bord de la fenêtre graphique, faire un zoom avec la roulette de la souris, recentrer la vue avec un clic gauche sur un point, afficher la coque en surfaces colorées ou vue fil de fer. </para>
 </sect2>
 
 <sect2>
-<title> Saving and Loading a hull file </title>
+<title> Sauvegarder et Charger un fichier de coque </title>
 
-<para>The <guimenuitem>Save</guimenuitem> entry of the <guimenu>File</guimenu> menu is used to save a hull.</para>
+<para>L'entrée <guimenuitem>Sauvegarder</guimenuitem> du menu <guimenu>Fichier</guimenu> est utilisée pour sauvegarder les données d'une coque. </para>
 
-<para>Any hull which has been saved can be later opened as an entity with the <guimenuitem>Open</guimenuitem> entry of the <guimenu>File</guimenu> menu and can be used as an element to constitute a boat.</para>
+<para>Toute coque qui est sauvegardée peut ensuite être chargée en utilisant l'entrée <guimenuitem>Ouvrir</guimenuitem> du menu <guimenu>Fichier</guimenu> et peut être utilisé comme élément constitutif d'un bateau. </para>
 </sect2>
 
 <sect2>
-<title> Hull dimensions </title>
+<title> Dimensions d'une coque </title>
 
-<para>You can modify the dimensions of the hull by using tab <guilabel>Deck and bottom</guilabel> of the screen <guimenuitem>Dimensions</guimenuitem> entry of the <guimenu>View</guimenu> menu. </para>
-<para>The <emphasis>deck and bottom</emphasis> screen is divided in boxes in which the various dimensions of the hull are entered. </para>
-<para>The hull is constructed upward from the bottom planks. The most important line is the chine which defines the outer edge of the bottom planks. The height are refered to any arbitrary horizontal datum plane located conveniently near the bottom of the hull. Angles are measured in degrees from the same horizontal datum plane. </para>
+<para>Vous pouvez accéder aux dimensions de la coque avec l'onglet <guilabel>Pont et Fond</guilabel> (entrée <guimenuitem>Dimensions</guimenuitem> du menu <guimenu>Vue</guimenu>). </para>
+<para>L'écran est divisé en cadres correspondant au diverses dimensions de la coque. </para>
+<para>La coque est construite en partant du fond et en montant vers le pont. La ligne la plus importante est le bouchain qui défini le bord extérieur du fond. </para>
+<para> Les hauteurs sont prises par rapport à un plan horizontal arbitraire souvent placé au point le plus bas du fond. Les angles sont mesurés en degrés par rapport à ce plan horizontal. </para>
 
 <sect3>
-<title> Hull ID </title>
-<para>A free text identifying or describing the hull being designed can be entered in this box. </para>
+<title> Coque ID </title>
+<para>Un texte identifiant ou décrivant la coque est entré dans ce cadre. </para>
 </sect3>
 
 <sect3>
-<title> Deck </title>
-<para><emphasis>Forward height</emphasis> </para>
-<para><emphasis>Aft height</emphasis> </para>
+<title> Pont </title>
+<para><emphasis>Hauteur avant</emphasis> </para>
+<para><emphasis>Hauteur arrière</emphasis> </para>
 </sect3>
 
 <sect3>
-<title> Bottom </title>
+<title> Fond </title>
 <para> </para>
 <para><emphasis>Length</emphasis> </para>
 <para><emphasis>Stem angle</emphasis> </para>
@@ -563,7 +564,7 @@
 </sect3>
 
 <sect3>
-<title> Planking </title>
+<title> Bordé </title>
 <para> </para>
 <para><emphasis>Number of planks</emphasis> </para>
 <para><emphasis>Automatic planking</emphasis> </para>
@@ -572,9 +573,9 @@
 </sect3>
 
 <sect3>
-<title> Checking and validating data </title>
-<para>Use the <guibutton>Check</guibutton> button any time after entering new data to perform a verification that the data entered are consistant with a reasonable hull design and the ancillary data are computed. In case of inconsistancy between data, the color of the fonts will tell you which data is suspicious. Red indicate a too high value, purple a too low value and blue signals which related parameter is to be checked. </para>
-<para>Once you have entered all necessary data, click on the <guibutton>OK</guibutton> button to close the hull dimensions window and display it. If there is an incompatibility in the data, the dimensions window will not close until it is corrected. </para> 
+<title> Vérifier et Valider les données </title>
+<para>Utilisez le bouton <guibutton>Vérifier</guibutton> pour afficher les données auxilliaires et vérifier que les données entrées sont cohérentes avec une géometrie raisonable de la coque. En cas d'anomalie dans les données, la couleur ds caractères douteux vous indique le type d'anomalie. Rouge indique une valeur trop forte, mauve une valeur trop faible et bleu indique les données en relation avec l'anomalie et qui doivent être vérifiées. </para>
+<para>Une fois que vous avez entré le données, cliquer sur le bouton <guibutton>OK</guibutton> pour fermer l'écran dimensions et afficher le dessin. L'écran dimensions ne se fermera qu'une fois toutes les anomalies de dimensions corrigées. </para>
 </sect3>
 </sect2>
 
@@ -608,11 +609,6 @@
 <para> </para>
 </sect3>
 
-<sect3>
-<title> Checking and validating data </title>
-<para>Use the <guibutton>Check</guibutton> button any time after entering new data to perform a verification that the data entered are consistant with a reasonable hull design and the ancillary data are computed. In case of inconsistancy between data, the color of the fonts will tell you which data is suspicious. Red indicate a too high value, purple a too low value and blue signals which related parameter is to be checked. </para>
-<para>Once you have entered all necessary data, click on the <guibutton>OK</guibutton> button to close the hull dimensions window and display it. If there is an incompatibility in the data, the dimensions window will not close until it is corrected. </para> 
-</sect3>
 </sect2>
 </sect1>
 
@@ -620,40 +616,41 @@
 <sect1 id="s.boat">
 <title> Créer un bateau </title>
 
-<para>This boat design module allows you to assemble hull, rig and sails files created earlier and make a virtual boat. It is accessed via the <guisubmenu>Boat</guisubmenu> entry of the main screen's <guimenu>File</guimenu> <guisubmenu>New</guisubmenu> menu. </para>
+<para>Ce module permet d'assembler un bateau virtuel à partir de fichiers de coque, mât et voiles. On y accède avec l'entrée <guisubmenu>Bateau</guisubmenu> du menu principal <guimenu>Fichier</guimenu> <guisubmenu>Nouveau</guisubmenu>. </para>
 
 <sect2> 
-<title> View controls </title>
+<title> Contrôle des vues </title>
 
-<para>The controls of the viewer are identical to those of the sail viewer. You can rotate the hull with the sliders located around the graphic display, zoom with the mouse's wheel, pan with the mouse left click, view in wireframe or shaded surface modes. </para>
+<para>Le contrôle des vues est identiques à celui de l'écran graphique des voiles. Vous pouvez faire tourner le bateau avec les curseurs situés au bord de la fenêtre graphique, faire un zoom avec la roulette de la souris, recentrer la vue avec un clic gauche sur un point, afficher le bateau en surfaces colorées ou vue fil de fer. </para>
 </sect2>
 
 <sect2>
 <title> Ajouter et enlever les éléments d'un bateau </title>
 
-<para>The boat viewer is initially showing a black screen and files are added via the <guisubmenu>Add</guisubmenu> entry of the main screen's <guimenu>File</guimenu> menu. A new tab will appear with the details of the file selected and the element identification which was given at the time of creating the element (sail ID, Rig ID, Hull ID). </para>
+<para>L'affichage graphique est initialement noir et on ajoute les fichiers des éléments avec l'entrée <guisubmenu>Ajouter</guisubmenu> du menu principal <guimenu>Fichier</guimenu>. Un nouvel onglet apparaitra pour chaque élément ajouté avec les détails du fichier chargé et le texte d'identification donné au moment de la création du fichier (Voile ID, Grément ID, Coque ID). </para>
 
-<para>A boat element can be removed by selecting the corresponding tab and then clicking on the <guibutton>Remove</guibutton> button. </para>
+<para>Un élément de bateau peut être enlevé en choisissant l'onglet correspondant et en suite en cliquant sur le bouton <guibutton>Enlever</guibutton>. </para>
 </sect2>
 
 <sect2>
 <title> Sauvegarder et charger un bateau </title>
 
-<para>The <guisubmenu>Save</guisubmenu> entry of the <guimenu>File</guimenu> menu is used to save a boat with any combination of hull, rig and sails. </para>
+<para>L'entrée <guisubmenu>Sauvegarder</guisubmenu> du menu principal <guimenu>Fichier</guimenu> est utilisé pour sauvegarder les données d'un bateau constitué de n'importe quelle combinaison de coque, mât et voiles. </para>
 
-<para>Any Boats which has been saved can be later opened as an entity with the <guisubmenu>Open</guisubmenu> entry of the <guimenu>File</guimenu> menu. </para>
+<para>Un bateau sauvegarder peut ensuite être chargé avec l'entrée <guisubmenu>Ouvrir</guisubmenu> du menu principal <guimenu>Fichier</guimenu>. </para>
 </sect2>
 
 <sect2>
-<title> Shifting boat elements</title>
+<title> Déplacer un élément du bateau </title>
 
-<para>All boat elements will be displayed in the position entered at the time the element was created. Please remember that the point of coordinate X=0, Y=0, Z=0 is located at the forward end of the deck of the hull (stem). </para>
+<para>Chaque élément constitutif sera affiché initialement à la position donnée au moment de la création du fichier correspondant. Veuillez vous souvenir que le point origine des coordonnées X=0, Y=0, Z=0 est placé à l'éxtrémité avant du pont de la coque (étrave). </para>
 
-<para>The boat elements can be individually shifted in X, Y or Z direction by adjusting the corresponding offset in the element spinbox, then clicking on the  <guibutton>Update</guibutton> button. </para>
+<para>Les éléments peuvent être individuellement déplacés en X, Y or Z en ajustant les spinbox des onglets correspondant, puis en cliquant sur le bouton <guibutton>Mise à jour</guibutton>. </para>
 
-<para>At any time, clicking on the <guibutton>Reload</guibutton> button will restore the corresponding element to its initial position. </para>
+<para>A tout instant, un clique sur le bouton <guibutton>Recharger</guibutton> replacera l'élément correspondant à sa position initiale. </para>
 </sect2>
 </sect1>
+
 
 
 <sect1 id="s.surface">
@@ -828,7 +825,7 @@ curvature = z&quot; / (1+ z&apos;*z&apos;)^3/2
 
 <para>Vous devriez avoir une copie de la licence GNU General Public Licence avec ce logiciel, si ce n&apos;est pas le cas demandez la à Free Software Fondation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA. </para>
 
-<para><emphasis>Les auteurs apprécieraient que les publications sur des voiles conçues avec Sailcut comportent une reconnaissance de leur travail. Merci par avance.</emphasis> </para> 
+<para><emphasis>Les auteurs apprécieraient que les publications sur des voiles con&ccedil;ues avec Sailcut comportent une reconnaissance de leur travail. Merci par avance.</emphasis> </para> 
 
 </sect1>
 
