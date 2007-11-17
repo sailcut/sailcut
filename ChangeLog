@@ -1,5 +1,6 @@
 Sailcut CAD 1.3.1
- * fixed - save the type of boat elements (fixes display of saved boats)
+ * fixed - save all the type of boat elements (fixes display of saved boats)
+ * improved - manual in french
  * improved - manual in english
  * improved - use 3 colors grading for Sail panels
  * improved - use red color for Rig and blue color for hull
