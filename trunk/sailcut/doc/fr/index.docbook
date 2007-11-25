@@ -548,28 +548,28 @@
 <sect3>
 <title> Fond </title>
 <para> </para>
-<para><emphasis>Length</emphasis> </para>
-<para><emphasis>Stem angle</emphasis> </para>
-<para><emphasis>Transom angle</emphasis> </para>
-<para><emphasis>Forward height</emphasis> </para>
-<para><emphasis>Chine angle</emphasis> </para>
-<para><emphasis>Aft height</emphasis> </para>
-<para><emphasis>Max width</emphasis> </para>
-<para><emphasis>Max width position</emphasis> </para>
-<para><emphasis>Aft width</emphasis> </para>
-<para><emphasis>Forward shape</emphasis> </para>
-<para><emphasis>Aft shape</emphasis> </para>
-<para><emphasis>Dead rise angle</emphasis> </para>
-<para><emphasis>Bottom sweep angle</emphasis> </para>
+<para><emphasis>Longeur</emphasis> </para>
+<para><emphasis>Inclinaison de l'étrave</emphasis> </para>
+<para><emphasis>Inclinaison du tableau</emphasis> </para>
+<para><emphasis>Hauteur avant</emphasis> </para>
+<para><emphasis>Angle du bouchain</emphasis> </para>
+<para><emphasis>Hauteur arrière</emphasis> </para>
+<para><emphasis>Bau maximum</emphasis> </para>
+<para><emphasis>Position du bau max</emphasis> </para>
+<para><emphasis>Largeur arrière</emphasis> </para>
+<para><emphasis>Forme avant</emphasis> </para>
+<para><emphasis>Forme arrière</emphasis> </para>
+<para><emphasis>Inclinaison du fond</emphasis> </para>
+<para><emphasis>Angulation longitudinale du fond</emphasis> </para>
 </sect3>
 
 <sect3>
 <title> Bordé </title>
 <para> </para>
-<para><emphasis>Number of planks</emphasis> </para>
-<para><emphasis>Automatic planking</emphasis> </para>
-<para><emphasis>Top plank angle</emphasis> </para>
-<para><emphasis>lower plank angle</emphasis> </para>
+<para><emphasis>Nombre de bordés</emphasis> </para>
+<para><emphasis>Bordage automatique</emphasis> </para>
+<para><emphasis>Inclinaison du bordé haut</emphasis> </para>
+<para><emphasis>Inclinaison du bordé bas</emphasis> </para>
 </sect3>
 
 <sect3>
@@ -580,32 +580,32 @@
 </sect2>
 
 <sect2>
-<title> Planks adjustment </title>
-<para>Individual side planks can be ajusted by using the tab <guilabel>Planks</guilabel> of the screen <guimenuitem>Dimensions</guimenuitem> entry of the <guimenu>View</guimenu> menu. </para>
-<para>The <emphasis>planks</emphasis> screen is divided in boxes in which the various dimensions of the hull are entered. </para>
+<title> Ajustement des bordés </title>
+<para>Les bordés peuvent être ajustés individuellement en cliquant l'onglet <guilabel>Bordés</guilabel> de l'écran <guimenuitem>Dimensions</guimenuitem> entry of the <guimenu>View</guimenu> menu. </para>
+<para>L'écran <emphasis>bordés</emphasis> est divisé en zones dans lesquelles les diverses dimensions sont entrées. </para>
 
 <sect3>
-<title> Forward height </title>
+<title> Hauteur avant </title>
 <para> </para>
 </sect3>
 
 <sect3>
-<title> Aft height </title>
+<title> Hauteur arrière </title>
 <para> </para>
 </sect3>
 
 <sect3>
-<title> Plank angle </title>
+<title> Inclinaison du bordé </title>
 <para> </para>
 </sect3>
 
 <sect3>
-<title> Sweep angle </title>
+<title> Angulation longitudinale </title>
 <para> </para>
 </sect3>
 
 <sect3>
-<title> Chine angle </title>
+<title> Angle du bouchain </title>
 <para> </para>
 </sect3>
 
