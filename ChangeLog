@@ -1,10 +1,10 @@
 Sailcut CAD 1.3.1
  * fixed - save all the type of boat elements (fixes display of saved boats)
- * improved - manual in french
- * improved - manual in english
- * improved - use 3 colors grading for Sail panels
- * improved - use red color for Rig and blue color for hull
- * added - file save and open for Rig and Hull
+ * improved - manual in French
+ * improved - manual in English
+ * improved - use 3 colors grading for sail panels
+ * improved - use red color for rig and blue color for hull
+ * added - file save and open for rig and hull
 
 Sailcut CAD 1.3.0
  * added - mast definition : fully operational
