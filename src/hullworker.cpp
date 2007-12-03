@@ -31,11 +31,7 @@ CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
     xBmax = real(DBWPos) * BLWL / 100; 
     ptFwdDeck = CPoint3d( 0 , DfwdHeight , 0 ); 
     CPoint3d p1, p2;
-    /* print debug
-        QString txt;
-        txt = "point " + QString::number (j)+" ----   x = " + QString::number (p2.x()) + "  y = " + QString::number (p2.y()) + "  z = "+ QString::number (p2.z());
-        qDebug ( txt.toLocal8Bit() );
-    */
+    
     // compute the vertical central plane
     CVector3d v1 = CVector3d( 1 , 0 , 0 );
     CVector3d v2 = CVector3d( 0 , 1 , 0 );
