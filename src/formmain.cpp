@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 1993-2006 Robert & Jeremy Laine
+ * Copyright (C) 1993-2007 Robert & Jeremy Laine
  * See AUTHORS file for a full list of contributors.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -322,7 +322,7 @@ void CFormMain::slotAbout()
 #endif
                         "</h2>"
                         "<p>Sailcut is a software for designing boat sails<br/>"
-                        "(C) 1993-2006 Robert & Jeremy Laine"
+                        "(C) 1993-2007 Robert & Jeremy Laine"
 
                         "<p>For more information, visit the project's page at <a href=\"http://sailcut.sourceforge.net/\">http://sailcut.sourceforge.net/</a>.</p>"
 
