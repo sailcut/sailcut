@@ -61,7 +61,6 @@ CFormBoat::CFormBoat(CPrefs *myPrefs, QWidget *parent)
 void CFormBoat::add(const QString &newfile)
 {
     CBoatElement element;
-    qDebug(newfile.toLocal8Bit());
 
     if (CSailDefXmlWriter().isDocument(newfile)) {
         CSailDef saildef = CSailDefXmlWriter().read(newfile);
@@ -79,8 +78,7 @@ void CFormBoat::add(const QString &newfile)
         (CPanelGroup&)element = CPanelGroupXmlWriter().read(newfile);
         element.type = PANELGROUP;
     } else {
-        qDebug("unknown document type");
-        return;
+        throw CException("CFormBoat::add : unknown document type");
     }
     element.filename = newfile;
     def.element.push_back(element);

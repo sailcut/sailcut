@@ -87,7 +87,6 @@ void CLabelProfile::paintEvent( QPaintEvent *)
         x = real(i) / (nbpoints -1);
         z = profile->z(x);
 
-        //qDebug( "( " + QString::number(x) + ", " + QString::number(z) + " )" );
         next = QPoint( int(x * scale) , int(z * scale) );
         painter.drawLine(prev , next);
         prev = next;

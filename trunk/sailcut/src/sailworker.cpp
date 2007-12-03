@@ -25,12 +25,6 @@
 /* To enable debugging */
 // #define DEBUG 1 
 
-/*  print debug 
-    QString txt;
-    txt = "point 1 ----   x=" + QString::number (p1.x() ) + "  y=" + QString::number (p1.y() ) + "  z="+ QString::number (p1.z() );
-    qDebug ( txt.toLocal8Bit() );
-*/
-
 
 /** The constructor does some preliminary calculations to set
  *  internal variables.
