@@ -32,7 +32,7 @@ using namespace std;
  * @param argc
  * @param argv
  */
-CSailApp::CSailApp(int argc, char* argv[]) :
+CSailApp::CSailApp(int &argc, char** argv) :
         QApplication(argc, argv)
 {
     // create and install translators
