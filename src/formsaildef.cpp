@@ -248,7 +248,7 @@ void CFormSailDef::setSailType( enumSailType type )
         break;
 
     case WING:
-#ifdef
+#ifdef DEBUG
         cout << "setSailType( WING )" << endl;
 #endif        
         radioWing->setChecked( true );
