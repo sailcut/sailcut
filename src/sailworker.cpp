@@ -22,6 +22,9 @@
 
 #define MAX_PANELS 210
 
+/* To enable debugging */
+// #define DEBUG 1 
+
 /*  print debug 
     QString txt;
     txt = "point 1 ----   x=" + QString::number (p1.x() ) + "  y=" + QString::number (p1.y() ) + "  z="+ QString::number (p1.z() );
@@ -412,13 +415,15 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
                     {    lay.panel[0].bottom.point[k] = EdgeIntersect( FOOT_EDGE, lay.panel[0].bottom.point[k], CVector3d(0,-1,0));
                     }
                 }
-/*                if ( npanel == 1 )
+
+#ifdef DEBUG
+                if ( npanel == 1 )
                 { 
                     cout << "Crosscut foot after adding curve" << endl;
                     for( k = 0 ; k < npb ; k++)
-                    cout << "pt="<< k << " xyz=" << lay.panel[0].bottom.point[k] << endl;                    
+                        cout << "pt="<< k << " xyz=" << lay.panel[0].bottom.point[k] << endl;                    
                 } 
-*/
+#endif
             }  /// end else normal panel ///////////////////////
 
             ///* Now we go over all the points and calculate their z */
@@ -431,15 +436,17 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
             for( k = 0 ; k < npb ; k++ )
                 lay.panel[npanel-1].bottom.point[k] = Zpoint(lay.panel[npanel-1].bottom.point[k]);
 
-/*                if ( npanel == 1 )
-                { // move bottom side of first panel to foot curve
-                    cout << "Crosscut foot after Z " << endl;
-                    for( k = 0 ; k < npb ; k++)
-                    cout << "pt="<< k << " xyz=" << lay.panel[0].bottom.point[k] << endl;
+#ifdef DEBUG
+            if ( npanel == 1 )
+            { // move bottom side of first panel to foot curve
+                cout << "Crosscut foot after Z " << endl;
+                for( k = 0 ; k < npb ; k++)
+                  cout << "pt="<< k << " xyz=" << lay.panel[0].bottom.point[k] << endl;
 
-                    cout << "---end Z foot----   DO LOOP=" << cnt << endl;
-                } 
-*/                
+                cout << "---end Z foot----   DO LOOP=" << cnt << endl;
+            } 
+#endif
+
             ///* Now we develop the current panel */
             if ( npanel == 1 )
             {
@@ -692,16 +699,14 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
                     seamVT = CVector3d( p1[npanel] - p2[npanel] ).unit();
                     seamLT = CSubSpace3d::line(p2[npanel] , seamVT);
                     ip = seamLT.intersect(luffLine).getp();
-                
-/*                  {
+#ifdef DEBUG 
                     cout << "Seam 1 LUFF CORRECTION DO LOOP = " << cnt << endl;
                     cout << " ip = " << ip << endl;
                     cout << "p1[0] " << p1[0] << "  p2[0] " << p2[0] << " type "<< t1[0] << t2[0] << endl;
                     cout << "p1[1] " << p1[1] << "  p2[1] " << p2[1] << " type "<< t1[1] << t2[1] << endl;
                     cout << "seam VT = " << seamVT << endl;
                     cout << "--- " << endl;
-                    }
-*/
+#endif
                 }
                 else if (CVector3d(ip - head) * luffV > 0)
                 {   // seam intersects gaff
@@ -762,14 +767,14 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
                  */
                 lay.panel[npanel-1].top.fill(lay.panel[npanel-1].left.point[npl-1], lay.panel[npanel-1].right.point[npl-1]);
                 lay.panel[npanel-1].bottom.fill(lay.panel[npanel-1].left.point[0], lay.panel[npanel-1].right.point[0]);
-
-/*                if ( npanel == 1 )
+#ifdef DEBUG
+                if ( npanel == 1 )
                 { 
                     cout << "Twist foot straight  - LOOP= "<< cnt << endl;
                     for( k = 0 ; k < npb ; k++)
-                    cout << "pt="<< k << " Bottom xyz= " << lay.panel[0].bottom.point[k] << " Top xyz= " << lay.panel[0].top.point[k] << endl;                    
+                        cout << "pt="<< k << " Bottom xyz= " << lay.panel[0].bottom.point[k] << " Top xyz= " << lay.panel[0].top.point[k] << endl;                    
                 } 
-*/
+#endif
 
                 /* Below is the code for the intermediate points of the bottom side of first panel
                  */
@@ -825,16 +830,17 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
             else
                 dev.panel[npanel-1].addHems(hemsW, seamW, leechHemW, 0);
 
-                if ( npanel == 1 )
-                { // move bottom side of first panel to foot curve
-                    cout << "Twist foot after adding seams " << endl;
-                    for( k = 0 ; k < npb ; k++)
+#ifdef DEBUG
+            if ( npanel == 1 )
+            { // move bottom side of first panel to foot curve
+                cout << "Twist foot after adding seams " << endl;
+                for( k = 0 ; k < npb ; k++)
                     cout << "pt="<< k << " xyz=" << dev.panel[0].bottom.point[k] << endl;
 
-                    cout << "------END LOOP="<< cnt << endl;
-                } 
+                cout << "------END LOOP="<< cnt << endl;
+            }
+#endif	
  
-
             ///* Now we check the width of developed panel */
             ymax = dev.panel[npanel-1].height();
             exc = ymax - clothW;
