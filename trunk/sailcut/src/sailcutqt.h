@@ -38,7 +38,7 @@ class QUrl;
 class CSailApp : public QApplication
 {
 public:
-    CSailApp(int argc, char* argv[]);
+    CSailApp(int &argc, char** argv);
 
     static QUrl findHandbook(const QString locale);
     void loadTranslation(const QString locale);

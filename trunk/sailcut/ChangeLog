@@ -1,4 +1,5 @@
 Sailcut CAD 1.3.1
+ * fixed - fix a crash on startup (seen on Linux 64-bit)
  * fixed - save all the type of boat elements (fixes display of saved boats)
  * improved - manual in French
  * improved - manual in English
