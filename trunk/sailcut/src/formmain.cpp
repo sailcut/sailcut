@@ -56,7 +56,9 @@ CFormMain::CFormMain(CSailApp *myApp, QWidget *parent)
     // locate Handbook
     app->loadTranslation(prefs->language);
     handbook = app->findHandbook(prefs->language);
-    qDebug("handbook : %s", (const char*)handbook.toString().toLocal8Bit());
+#ifdef DEBUG    
+    cout << "handbook : " << (const char*)handbook.toString().toLocal8Bit() << endl;
+#endif
 
     // create main widget
     setupMainWidget();

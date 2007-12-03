@@ -115,7 +115,7 @@ void CSailApp::readPrefs()
     }
     catch (CException e)
     {
-        qDebug("Could not read preferences");
+        cout << "CSailApp::readPrefs : could not read preferences" << endl;
     }
 }
 
@@ -131,6 +131,6 @@ void CSailApp::writePrefs()
     }
     catch (CException e)
     {
-        qDebug("Could not write preferences");
+        cout << "CSailApp::writePrefs : could not write preferences" << endl;
     }
 }
