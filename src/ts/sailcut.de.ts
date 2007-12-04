@@ -5,32 +5,37 @@
     <message>
         <location filename="../boatdef-panel.cpp" line="137"/>
         <source>Sail information</source>
-        <translation type="unfinished">Information des Segels</translation>
+        <translation type="obsolete">Information des Segels</translation>
     </message>
     <message>
-        <location filename="../boatdef-panel.cpp" line="138"/>
+        <location filename="../boatdef-panel.cpp" line="145"/>
         <source>file</source>
         <translation type="unfinished">Datei</translation>
     </message>
     <message>
-        <location filename="../boatdef-panel.cpp" line="139"/>
+        <location filename="../boatdef-panel.cpp" line="146"/>
         <source>name</source>
         <translation type="unfinished">Bezeichnung</translation>
     </message>
     <message>
-        <location filename="../boatdef-panel.cpp" line="140"/>
+        <location filename="../boatdef-panel.cpp" line="147"/>
         <source>Reload</source>
         <translation type="unfinished">neu laden</translation>
     </message>
     <message>
-        <location filename="../boatdef-panel.cpp" line="141"/>
+        <location filename="../boatdef-panel.cpp" line="148"/>
         <source>Remove</source>
         <translation type="unfinished">Entfernen</translation>
     </message>
     <message>
-        <location filename="../boatdef-panel.cpp" line="142"/>
+        <location filename="../boatdef-panel.cpp" line="149"/>
         <source>Update</source>
         <translation type="unfinished">Aktualisieren</translation>
+    </message>
+    <message>
+        <location filename="../boatdef-panel.cpp" line="144"/>
+        <source>Element information</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -77,22 +82,22 @@
 <context>
     <name>CFormBoat</name>
     <message>
-        <location filename="../formboat.cpp" line="97"/>
+        <location filename="../formboat.cpp" line="95"/>
         <source>boat</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../formboat.cpp" line="98"/>
+        <location filename="../formboat.cpp" line="96"/>
         <source>&amp;Add</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../formboat.cpp" line="99"/>
+        <location filename="../formboat.cpp" line="97"/>
         <source>file</source>
         <translation type="unfinished">Datei</translation>
     </message>
     <message>
-        <location filename="../formboat.cpp" line="160"/>
+        <location filename="../formboat.cpp" line="158"/>
         <source>Open</source>
         <translation type="unfinished">Öffnen</translation>
     </message>
@@ -374,27 +379,27 @@
         <translation type="obsolete">&amp;XML Segel</translation>
     </message>
     <message>
-        <location filename="../formmain.cpp" line="129"/>
+        <location filename="../formmain.cpp" line="131"/>
         <source>&amp;New</source>
         <translation>&amp;Neu</translation>
     </message>
     <message>
-        <location filename="../formmain.cpp" line="134"/>
+        <location filename="../formmain.cpp" line="136"/>
         <source>&amp;Open</source>
         <translation>Ö&amp;ffnen</translation>
     </message>
     <message>
-        <location filename="../formmain.cpp" line="136"/>
+        <location filename="../formmain.cpp" line="138"/>
         <source>&amp;Save</source>
         <translation>&amp;Speichern</translation>
     </message>
     <message>
-        <location filename="../formmain.cpp" line="137"/>
+        <location filename="../formmain.cpp" line="139"/>
         <source>Save &amp;As</source>
         <translation>Speichern &amp;unter</translation>
     </message>
     <message>
-        <location filename="../formmain.cpp" line="139"/>
+        <location filename="../formmain.cpp" line="141"/>
         <source>&amp;Quit</source>
         <translation>Be&amp;enden</translation>
     </message>
@@ -419,22 +424,22 @@
         <translation type="obsolete">&amp;Rigg</translation>
     </message>
     <message>
-        <location filename="../formmain.cpp" line="127"/>
+        <location filename="../formmain.cpp" line="129"/>
         <source>&amp;File</source>
         <translation>&amp;Datei</translation>
     </message>
     <message>
-        <location filename="../formmain.cpp" line="142"/>
+        <location filename="../formmain.cpp" line="144"/>
         <source>&amp;View</source>
         <translation>&amp;Ansicht</translation>
     </message>
     <message>
-        <location filename="../formmain.cpp" line="153"/>
+        <location filename="../formmain.cpp" line="155"/>
         <source>&amp;Help</source>
         <translation>&amp;Hilfe</translation>
     </message>
     <message>
-        <location filename="../formmain.cpp" line="317"/>
+        <location filename="../formmain.cpp" line="319"/>
         <source>About Sailcut CAD</source>
         <translation>Über Sailcut CAD</translation>
     </message>
@@ -449,22 +454,22 @@
         <translation type="obsolete">Beim Schreiben in die gewählte Datei ist ein Fehler aufgetreten</translation>
     </message>
     <message>
-        <location filename="../formmain.cpp" line="155"/>
+        <location filename="../formmain.cpp" line="157"/>
         <source>About &amp;Qt</source>
         <translation>Über &amp;Qt</translation>
     </message>
     <message>
-        <location filename="../formmain.cpp" line="156"/>
+        <location filename="../formmain.cpp" line="158"/>
         <source>About &amp;Sailcut CAD</source>
         <translation>Über &amp;Sailcut CAD</translation>
     </message>
     <message>
-        <location filename="../formmain.cpp" line="143"/>
+        <location filename="../formmain.cpp" line="145"/>
         <source>Language</source>
         <translation>Sprache</translation>
     </message>
     <message>
-        <location filename="../formmain.cpp" line="135"/>
+        <location filename="../formmain.cpp" line="137"/>
         <source>Open &amp;recent</source>
         <translation>Zuletzt geöffnete P&amp;rojekte</translation>
     </message>
@@ -479,7 +484,7 @@
         <translation type="obsolete">&amp;Carlson Plotter</translation>
     </message>
     <message>
-        <location filename="../formmain.cpp" line="154"/>
+        <location filename="../formmain.cpp" line="156"/>
         <source>Sailcut CAD &amp;Handbook</source>
         <translation>Sailcut CAD &amp;Handbuch</translation>
     </message>
@@ -504,17 +509,17 @@
         <translation type="obsolete">neu erstelltes Segel</translation>
     </message>
     <message>
-        <location filename="../formmain.cpp" line="203"/>
+        <location filename="../formmain.cpp" line="205"/>
         <source>loaded &apos;%1&apos;</source>
         <translation>geladen &apos;%1&apos;</translation>
     </message>
     <message>
-        <location filename="../formmain.cpp" line="206"/>
+        <location filename="../formmain.cpp" line="208"/>
         <source>error loading &apos;%1&apos;</source>
         <translation>Fehler beim Laden von &apos;%1&apos; </translation>
     </message>
     <message>
-        <location filename="../formmain.cpp" line="478"/>
+        <location filename="../formmain.cpp" line="480"/>
         <source>wrote &apos;%1&apos;</source>
         <translation>gespeichert &apos;%1&apos;</translation>
     </message>
@@ -814,57 +819,57 @@
         <translation type="obsolete">ins &amp;Hand-Plotterformat </translation>
     </message>
     <message>
-        <location filename="../formmain.cpp" line="130"/>
+        <location filename="../formmain.cpp" line="132"/>
         <source>sail</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../formmain.cpp" line="131"/>
+        <location filename="../formmain.cpp" line="133"/>
         <source>hull</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../formmain.cpp" line="132"/>
+        <location filename="../formmain.cpp" line="134"/>
         <source>rig</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../formmain.cpp" line="133"/>
+        <location filename="../formmain.cpp" line="135"/>
         <source>boat</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../formmain.cpp" line="146"/>
+        <location filename="../formmain.cpp" line="148"/>
         <source>&amp;Window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../formmain.cpp" line="147"/>
+        <location filename="../formmain.cpp" line="149"/>
         <source>&amp;Close</source>
         <translation type="unfinished">Be&amp;enden</translation>
     </message>
     <message>
-        <location filename="../formmain.cpp" line="148"/>
+        <location filename="../formmain.cpp" line="150"/>
         <source>Close &amp;All</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../formmain.cpp" line="149"/>
+        <location filename="../formmain.cpp" line="151"/>
         <source>&amp;Tile</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../formmain.cpp" line="150"/>
+        <location filename="../formmain.cpp" line="152"/>
         <source>&amp;Cascade</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../formmain.cpp" line="195"/>
+        <location filename="../formmain.cpp" line="197"/>
         <source>unknown document type &apos;%1&apos;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../formmain.cpp" line="435"/>
+        <location filename="../formmain.cpp" line="437"/>
         <source>Open</source>
         <translation type="unfinished">Öffnen</translation>
     </message>
@@ -1522,27 +1527,27 @@
 <context>
     <name>CFormSailDef</name>
     <message>
-        <location filename="../formsaildef.cpp" line="1087"/>
+        <location filename="../formsaildef.cpp" line="1090"/>
         <source>Sail corners coordinates</source>
         <translation>Eckpunktkoordinaten des Segels</translation>
     </message>
     <message>
-        <location filename="../formsaildef.cpp" line="1088"/>
+        <location filename="../formsaildef.cpp" line="1091"/>
         <source>tack</source>
         <translation>Segelhals</translation>
     </message>
     <message>
-        <location filename="../formsaildef.cpp" line="1089"/>
+        <location filename="../formsaildef.cpp" line="1092"/>
         <source>clew</source>
         <translation>Schothorn</translation>
     </message>
     <message>
-        <location filename="../formsaildef.cpp" line="1090"/>
+        <location filename="../formsaildef.cpp" line="1093"/>
         <source>head</source>
         <translation>Kopf</translation>
     </message>
     <message>
-        <location filename="../formsaildef.cpp" line="1091"/>
+        <location filename="../formsaildef.cpp" line="1094"/>
         <source>peak</source>
         <translation>Nock</translation>
     </message>
@@ -1552,7 +1557,7 @@
         <translation type="obsolete">IRC - Breite</translation>
     </message>
     <message>
-        <location filename="../formsaildef.cpp" line="1096"/>
+        <location filename="../formsaildef.cpp" line="1099"/>
         <source>Sail width measurements </source>
         <translation type="unfinished"></translation>
     </message>
@@ -2223,32 +2228,32 @@
 <context>
     <name>CWidgetProfile</name>
     <message>
-        <location filename="../widgetprofile.cpp" line="244"/>
+        <location filename="../widgetprofile.cpp" line="243"/>
         <source>%</source>
         <translation>%</translation>
     </message>
     <message>
-        <location filename="../widgetprofile.cpp" line="242"/>
+        <location filename="../widgetprofile.cpp" line="241"/>
         <source>Luff shape</source>
         <translation>Vorliekform</translation>
     </message>
     <message>
-        <location filename="../widgetprofile.cpp" line="243"/>
+        <location filename="../widgetprofile.cpp" line="242"/>
         <source>Depth</source>
         <translation>Tiefe</translation>
     </message>
     <message>
-        <location filename="../widgetprofile.cpp" line="245"/>
+        <location filename="../widgetprofile.cpp" line="244"/>
         <source>Leech shape</source>
         <translation>Achterliekform</translation>
     </message>
     <message>
-        <location filename="../widgetprofile.cpp" line="249"/>
+        <location filename="../widgetprofile.cpp" line="248"/>
         <source>degrees</source>
         <translation>°</translation>
     </message>
     <message>
-        <location filename="../widgetprofile.cpp" line="248"/>
+        <location filename="../widgetprofile.cpp" line="247"/>
         <source>cord</source>
         <translation>Schnur</translation>
     </message>
