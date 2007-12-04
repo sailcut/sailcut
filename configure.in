@@ -1,25 +1,17 @@
-# Original Author was Kalle@kde.org
-# I lifted it in some mater. (Stephan Kulow)
-# I used much code from Janos Farkas
-
-dnl Process this file with autoconf to produce a configure script.
-
-AC_INIT(acinclude.m4) dnl a source file from your sub dir
-
-dnl This is so we can use kde-common
+dnl Initialise autoconf
+AC_INIT(sailcut, 1.3.2pre1)
+AC_CONFIG_SRCDIR(acinclude.m4)
 AC_CONFIG_AUX_DIR(admin)
-
-dnl This ksh/zsh feature conflicts with `cd blah ; pwd`
-unset CDPATH
 
 dnl Checking host/target/build systems, for make, install etc.
 AC_CANONICAL_SYSTEM 
 dnl Perform program name transformation
 AC_ARG_PROGRAM
 
-dnl Automake doc recommends to do this only here. (Janos)
-AM_INIT_AUTOMAKE(sailcut,1.3.1)
+dnl Initialise automake
+AM_INIT_AUTOMAKE
 
+dnl Set default prefix
 AC_PREFIX_DEFAULT(/usr/local)
 if test "x$prefix" = "xNONE"; then
   prefix=$ac_default_prefix
@@ -29,7 +21,7 @@ fi
 dnl generate the config header
 AM_CONFIG_HEADER(config.h) dnl at the distribution this done
 
-dnl Checks for programs.
+dnl Checks for programs
 AC_PROG_CXX
 AC_ENABLE_SHARED(yes)
 AC_ENABLE_STATIC(no)
@@ -42,8 +34,8 @@ AC_CHECK_PROG(INKSCAPE, inkscape, inkscape)
 AC_CHECK_PROG(XSLTPROC, xsltproc, xsltproc)
 AC_CHECK_PROG(DBLATEX, dblatex, dblatex)
 
-dnl Enable exceptions support, make compiler verbose
-CXXFLAGS="$CXXFLAGS $USE_EXCEPTIONS -W -Wall" 
+dnl Make compiler verbose
+CXXFLAGS="$CXXFLAGS -W -Wall" 
 
 dnl Check Qt stuff
 JWB_CHECK_QT(,AC_MSG_ERROR([Qt was not found!]))
