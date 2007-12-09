@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1">
+<!DOCTYPE TS><TS version="1.1" language="en_GB">
 <context>
     <name>CBoatElementWidget</name>
     <message>
@@ -35,7 +35,7 @@
     <message>
         <location filename="../boatdef-panel.cpp" line="144"/>
         <source>Element information</source>
-        <translation type="unfinished"></translation>
+        <translation>Information sur l&apos;élément</translation>
     </message>
 </context>
 <context>
