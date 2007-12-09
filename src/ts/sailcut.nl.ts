@@ -288,7 +288,7 @@
     <message>
         <location filename="../formhulldefbase.ui" line="1774"/>
         <source>Check</source>
-        <translation type="unfinished"></translation>
+        <translation>Controleren</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="1781"/>
@@ -1208,12 +1208,12 @@
     <message>
         <location filename="../formrigdefbase.ui" line="674"/>
         <source>Fore triangle base</source>
-        <translation type="unfinished">Voordriehoek basis</translation>
+        <translation>Voordriehoek basis</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="681"/>
         <source>Fore triangle hoist</source>
-        <translation type="unfinished">Voordriehoek hoogte</translation>
+        <translation>Voordriehoek hoogte</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="691"/>
@@ -1433,7 +1433,7 @@
     <message>
         <location filename="../formrigdefbase.ui" line="1538"/>
         <source>Check</source>
-        <translation type="unfinished"></translation>
+        <translation>Controleren</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1572"/>
