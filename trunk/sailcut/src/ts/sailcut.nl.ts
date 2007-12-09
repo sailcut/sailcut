@@ -10,32 +10,32 @@
     <message>
         <location filename="../boatdef-panel.cpp" line="145"/>
         <source>file</source>
-        <translation type="unfinished">bestand</translation>
+        <translation>bestand</translation>
     </message>
     <message>
         <location filename="../boatdef-panel.cpp" line="146"/>
         <source>name</source>
-        <translation type="unfinished">naam</translation>
+        <translation>naam</translation>
     </message>
     <message>
         <location filename="../boatdef-panel.cpp" line="147"/>
         <source>Reload</source>
-        <translation type="unfinished">Opnieuw laden</translation>
+        <translation>Opnieuw laden</translation>
     </message>
     <message>
         <location filename="../boatdef-panel.cpp" line="148"/>
         <source>Remove</source>
-        <translation type="unfinished">Verwijderen</translation>
+        <translation>Verwijderen</translation>
     </message>
     <message>
         <location filename="../boatdef-panel.cpp" line="149"/>
         <source>Update</source>
-        <translation type="unfinished">Verversen</translation>
+        <translation>Verversen</translation>
     </message>
     <message>
         <location filename="../boatdef-panel.cpp" line="144"/>
         <source>Element information</source>
-        <translation type="unfinished"></translation>
+        <translation>Deel informatie</translation>
     </message>
 </context>
 <context>
@@ -66,17 +66,17 @@
     <message>
         <location filename="../filewriter.h" line="66"/>
         <source>Open</source>
-        <translation type="unfinished">Openen</translation>
+        <translation>Openen</translation>
     </message>
     <message>
         <location filename="../filewriter.h" line="88"/>
         <source>There was an error reading from the selected file.</source>
-        <translation type="unfinished">Er is een fout opgetreden bij het lezen van het bestand.</translation>
+        <translation>Er is een fout opgetreden bij het lezen van het bestand.</translation>
     </message>
     <message>
         <location filename="../filewriter.h" line="105"/>
         <source>Save</source>
-        <translation type="unfinished">Opslaan</translation>
+        <translation>Opslaan</translation>
     </message>
 </context>
 <context>
@@ -84,22 +84,22 @@
     <message>
         <location filename="../formboat.cpp" line="95"/>
         <source>boat</source>
-        <translation type="unfinished"></translation>
+        <translation>boot</translation>
     </message>
     <message>
         <location filename="../formboat.cpp" line="96"/>
         <source>&amp;Add</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Toevoegen</translation>
     </message>
     <message>
         <location filename="../formboat.cpp" line="97"/>
         <source>file</source>
-        <translation type="unfinished">bestand</translation>
+        <translation>bestand</translation>
     </message>
     <message>
         <location filename="../formboat.cpp" line="158"/>
         <source>Open</source>
-        <translation type="unfinished">Openen</translation>
+        <translation>Openen</translation>
     </message>
 </context>
 <context>
@@ -115,12 +115,12 @@
     <message>
         <location filename="../formhull.cpp" line="57"/>
         <source>hull</source>
-        <translation type="unfinished"></translation>
+        <translation>romp</translation>
     </message>
     <message>
         <location filename="../formhull.cpp" line="58"/>
         <source>&amp;Dimensions</source>
-        <translation type="unfinished">&amp;Afmetingen</translation>
+        <translation>&amp;Afmetingen</translation>
     </message>
 </context>
 <context>
@@ -128,162 +128,162 @@
     <message>
         <location filename="../formhulldefbase.ui" line="20"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Dialoog</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="42"/>
         <source>Deck and bottom</source>
-        <translation type="unfinished"></translation>
+        <translation>Dek en bodem</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="60"/>
         <source>Planking</source>
-        <translation type="unfinished"></translation>
+        <translation>Panelen</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="72"/>
         <source>Automatic planking</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatische panelen</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="123"/>
         <source>lower plank angle</source>
-        <translation type="unfinished"></translation>
+        <translation>Onderste paneel hoek</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="187"/>
         <source>top plank angle</source>
-        <translation type="unfinished"></translation>
+        <translation>Bovenste paneel hoek</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="194"/>
         <source>Number of planks</source>
-        <translation type="unfinished"></translation>
+        <translation>Aantal panelen</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="212"/>
         <source>Bottom</source>
-        <translation type="unfinished"></translation>
+        <translation>Bodem</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="269"/>
         <source>Bottom sweep angle</source>
-        <translation type="unfinished"></translation>
+        <translation>Bodem hoek</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="290"/>
         <source>%</source>
-        <translation type="unfinished">%</translation>
+        <translation>%</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="402"/>
         <source>Max Width</source>
-        <translation type="unfinished"></translation>
+        <translation>Max Breedte</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="611"/>
         <source>Forward shape</source>
-        <translation type="unfinished"></translation>
+        <translation>Boeg vorm</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="618"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>Lengte</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="633"/>
         <source>Forward height </source>
-        <translation type="unfinished"></translation>
+        <translation>Boeg hoogte</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="640"/>
         <source>Max Width position</source>
-        <translation type="unfinished"></translation>
+        <translation>Max Breedte positie</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="662"/>
         <source>Stem angle</source>
-        <translation type="unfinished"></translation>
+        <translation>Boeg hoek</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="669"/>
         <source>Transom angle</source>
-        <translation type="unfinished"></translation>
+        <translation>Spiegel hoek</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="1639"/>
         <source>Aft height</source>
-        <translation type="unfinished"></translation>
+        <translation>Achtersteven hoogte</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="691"/>
         <source>Aft width</source>
-        <translation type="unfinished"></translation>
+        <translation>Achtersteven breedte</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="698"/>
         <source>Aft shape</source>
-        <translation type="unfinished"></translation>
+        <translation>Achtersteven vorm</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="760"/>
         <source>Hull name</source>
-        <translation type="unfinished"></translation>
+        <translation>Romp naam</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="770"/>
         <source>Deck</source>
-        <translation type="unfinished"></translation>
+        <translation>Dek</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="1646"/>
         <source>Forward height</source>
-        <translation type="unfinished"></translation>
+        <translation>Boeg hoogte</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="891"/>
         <source>Plank 5</source>
-        <translation type="unfinished"></translation>
+        <translation>Paneel 5</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="1618"/>
         <source>Chine angle</source>
-        <translation type="unfinished"></translation>
+        <translation>Kim hoek</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="1625"/>
         <source>Sweep angle</source>
-        <translation type="unfinished"></translation>
+        <translation>Zeeg hoek</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="1632"/>
         <source>Plank angle</source>
-        <translation type="unfinished"></translation>
+        <translation>Paneel hoek</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="1034"/>
         <source>Plank 4</source>
-        <translation type="unfinished"></translation>
+        <translation>Paneel 4</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="1177"/>
         <source>Plank 3</source>
-        <translation type="unfinished"></translation>
+        <translation>Paneel 3</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="1320"/>
         <source>Plank 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Paneel 2</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="1463"/>
         <source>Plank 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Paneel 1</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="1606"/>
         <source>Plank 6</source>
-        <translation type="unfinished"></translation>
+        <translation>Paneel 6</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="1774"/>
@@ -293,22 +293,22 @@
     <message>
         <location filename="../formhulldefbase.ui" line="1781"/>
         <source>OK</source>
-        <translation type="unfinished">OK</translation>
+        <translation>OK</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="1788"/>
         <source>Cancel</source>
-        <translation type="unfinished">Opheffen</translation>
+        <translation>Opheffen</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="1817"/>
         <source>Dimensions are in millimeters and angles in degrees measured from horizontal</source>
-        <translation type="unfinished"></translation>
+        <translation>Afmetingen in millimeters en hoeken in graden t.o.v. horizontaal</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="879"/>
         <source>Planks</source>
-        <translation type="unfinished"></translation>
+        <translation>Panelen</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="395"/>
@@ -338,7 +338,7 @@
     <message>
         <location filename="../formhulldefbase.ui" line="604"/>
         <source>Dead rise angle</source>
-        <translation type="unfinished"></translation>
+        <translation>Bodem hoek</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="745"/>
@@ -358,7 +358,7 @@
     <message>
         <location filename="../formhulldefbase.ui" line="861"/>
         <source>Side angle</source>
-        <translation type="unfinished"></translation>
+        <translation>Dolboord hoek</translation>
     </message>
 </context>
 <context>
@@ -846,57 +846,57 @@
     <message>
         <location filename="../formmain.cpp" line="132"/>
         <source>sail</source>
-        <translation type="unfinished"></translation>
+        <translation>Zeil</translation>
     </message>
     <message>
         <location filename="../formmain.cpp" line="133"/>
         <source>hull</source>
-        <translation type="unfinished"></translation>
+        <translation>romp</translation>
     </message>
     <message>
         <location filename="../formmain.cpp" line="134"/>
         <source>rig</source>
-        <translation type="unfinished"></translation>
+        <translation>tuigage</translation>
     </message>
     <message>
         <location filename="../formmain.cpp" line="135"/>
         <source>boat</source>
-        <translation type="unfinished"></translation>
+        <translation>boot</translation>
     </message>
     <message>
         <location filename="../formmain.cpp" line="148"/>
         <source>&amp;Window</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Venster</translation>
     </message>
     <message>
         <location filename="../formmain.cpp" line="149"/>
         <source>&amp;Close</source>
-        <translation type="unfinished">&amp;Sluiten</translation>
+        <translation>&amp;Sluiten</translation>
     </message>
     <message>
         <location filename="../formmain.cpp" line="150"/>
         <source>Close &amp;All</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;All vensters sluiten</translation>
     </message>
     <message>
         <location filename="../formmain.cpp" line="151"/>
         <source>&amp;Tile</source>
-        <translation type="unfinished"></translation>
+        <translation>Rangschikken</translation>
     </message>
     <message>
         <location filename="../formmain.cpp" line="152"/>
         <source>&amp;Cascade</source>
-        <translation type="unfinished"></translation>
+        <translation>Getrapt</translation>
     </message>
     <message>
         <location filename="../formmain.cpp" line="197"/>
         <source>unknown document type &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Onbekend bestandstype &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../formmain.cpp" line="437"/>
         <source>Open</source>
-        <translation type="unfinished">Openen</translation>
+        <translation>Openen</translation>
     </message>
 </context>
 <context>
@@ -947,7 +947,7 @@
     <message>
         <location filename="../formpanelgroup.cpp" line="56"/>
         <source>panels</source>
-        <translation type="unfinished"></translation>
+        <translation>Panelen</translation>
     </message>
 </context>
 <context>
@@ -1020,12 +1020,12 @@
     <message>
         <location filename="../formrig.cpp" line="59"/>
         <source>rig</source>
-        <translation type="unfinished"></translation>
+        <translation>tuigage</translation>
     </message>
     <message>
         <location filename="../formrig.cpp" line="60"/>
         <source>&amp;Dimensions</source>
-        <translation type="unfinished">&amp;Afmetingen</translation>
+        <translation>&amp;Afmetingen</translation>
     </message>
 </context>
 <context>
@@ -1033,22 +1033,22 @@
     <message>
         <location filename="../formrigdefbase.ui" line="20"/>
         <source>Rig dimensions</source>
-        <translation type="unfinished"></translation>
+        <translation>Tuigage afmetingen</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="53"/>
         <source>Cancel</source>
-        <translation type="unfinished">Opheffen</translation>
+        <translation>Opheffen</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="68"/>
         <source>OK</source>
-        <translation type="unfinished">OK</translation>
+        <translation>OK</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="75"/>
         <source>Spreaders</source>
-        <translation type="unfinished"></translation>
+        <translation>Zalingen</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="122"/>
@@ -1058,12 +1058,12 @@
     <message>
         <location filename="../formrigdefbase.ui" line="129"/>
         <source>Number of spreaders</source>
-        <translation type="unfinished"></translation>
+        <translation>Aantal zalingen</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="147"/>
         <source>Spreader height</source>
-        <translation type="unfinished"></translation>
+        <translation>Zaling hoogte</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="173"/>
@@ -1098,7 +1098,7 @@
     <message>
         <location filename="../formrigdefbase.ui" line="255"/>
         <source>Spreader length</source>
-        <translation type="unfinished"></translation>
+        <translation>Zaling lengte</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="267"/>
@@ -1133,12 +1133,12 @@
     <message>
         <location filename="../formrigdefbase.ui" line="350"/>
         <source>Shrouds</source>
-        <translation type="unfinished"></translation>
+        <translation>Stagen</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="376"/>
         <source>Cap shroud base width</source>
-        <translation type="unfinished"></translation>
+        <translation>Topstagen basis breedte</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="397"/>
@@ -1148,7 +1148,7 @@
     <message>
         <location filename="../formrigdefbase.ui" line="418"/>
         <source>Lower shroud base width </source>
-        <translation type="unfinished"></translation>
+        <translation>Onderstagen basis breedte</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="439"/>
@@ -1168,7 +1168,7 @@
     <message>
         <location filename="../formrigdefbase.ui" line="508"/>
         <source>Cap shroud height</source>
-        <translation type="unfinished"></translation>
+        <translation>Topstagen hoogte</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="529"/>
@@ -1183,7 +1183,7 @@
     <message>
         <location filename="../formrigdefbase.ui" line="587"/>
         <source>Fore triangle</source>
-        <translation type="unfinished"></translation>
+        <translation>Voordriehoek</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="626"/>
@@ -1208,22 +1208,22 @@
     <message>
         <location filename="../formrigdefbase.ui" line="674"/>
         <source>Fore triangle base</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Voordriehoek basis</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="681"/>
         <source>Fore triangle hoist</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Voordriehoek hoogte</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="691"/>
         <source>Mast</source>
-        <translation type="unfinished"></translation>
+        <translation>Mast</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="703"/>
         <source>Mast width</source>
-        <translation type="unfinished"></translation>
+        <translation>Mastdikte</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="710"/>
@@ -1248,7 +1248,7 @@
     <message>
         <location filename="../formrigdefbase.ui" line="756"/>
         <source>Mast cord</source>
-        <translation type="unfinished"></translation>
+        <translation>Mastbuiging</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="766"/>
@@ -1263,7 +1263,7 @@
     <message>
         <location filename="../formrigdefbase.ui" line="783"/>
         <source>Mast rake angle</source>
-        <translation type="unfinished"></translation>
+        <translation>Mast helling hoek</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="804"/>
@@ -1278,7 +1278,7 @@
     <message>
         <location filename="../formrigdefbase.ui" line="840"/>
         <source>Mast rake</source>
-        <translation type="unfinished">Mast helling</translation>
+        <translation>Mast helling</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="847"/>
@@ -1293,7 +1293,7 @@
     <message>
         <location filename="../formrigdefbase.ui" line="892"/>
         <source>Mast height</source>
-        <translation type="unfinished"></translation>
+        <translation>Mast hoogte</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="899"/>
@@ -1308,7 +1308,7 @@
     <message>
         <location filename="../formrigdefbase.ui" line="927"/>
         <source>Mast round</source>
-        <translation type="unfinished"></translation>
+        <translation>Mast buiging</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="934"/>
@@ -1318,12 +1318,12 @@
     <message>
         <location filename="../formrigdefbase.ui" line="955"/>
         <source>Mast round position </source>
-        <translation type="unfinished"></translation>
+        <translation>Mast buiging positie</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1015"/>
         <source>Mainsail</source>
-        <translation type="unfinished">Grootzeil</translation>
+        <translation>Grootzeil</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1044"/>
@@ -1363,7 +1363,7 @@
     <message>
         <location filename="../formrigdefbase.ui" line="1209"/>
         <source>Tack</source>
-        <translation type="unfinished"></translation>
+        <translation>Halshoek</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1249"/>
@@ -1378,12 +1378,12 @@
     <message>
         <location filename="../formrigdefbase.ui" line="1288"/>
         <source>Luff length </source>
-        <translation type="unfinished"></translation>
+        <translation>Voorlijk lengte</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1309"/>
         <source>Luff round</source>
-        <translation type="unfinished">Voorlijk ronding</translation>
+        <translation>Voorlijk ronding</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1333"/>
@@ -1398,12 +1398,12 @@
     <message>
         <location filename="../formrigdefbase.ui" line="1372"/>
         <source>Luff rake</source>
-        <translation type="unfinished"></translation>
+        <translation>Voorlijk helling</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1409"/>
         <source>Tack height </source>
-        <translation type="unfinished"></translation>
+        <translation>Halshoek hoogte</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1430"/>
@@ -1418,7 +1418,7 @@
     <message>
         <location filename="../formrigdefbase.ui" line="1476"/>
         <source>Head height</source>
-        <translation type="unfinished"></translation>
+        <translation>Top hoogte</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1491"/>
@@ -1438,17 +1438,17 @@
     <message>
         <location filename="../formrigdefbase.ui" line="1572"/>
         <source>All dimensions are in millimeter and angles in degrees</source>
-        <translation type="unfinished"></translation>
+        <translation>All afmetingen in millimeters en hoeken in graden</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1602"/>
         <source>Rig ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Tuigage ID</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1618"/>
         <source>Description of rig</source>
-        <translation type="unfinished"></translation>
+        <translation>Tuigage beschrijving</translation>
     </message>
 </context>
 <context>
@@ -1456,97 +1456,97 @@
     <message>
         <location filename="../formsail.cpp" line="69"/>
         <source>sail</source>
-        <translation type="unfinished"></translation>
+        <translation>Zeil</translation>
     </message>
     <message>
         <location filename="../formsail.cpp" line="72"/>
         <source>&amp;Print</source>
-        <translation type="unfinished">&amp;Print</translation>
+        <translation>&amp;Print</translation>
     </message>
     <message>
         <location filename="../formsail.cpp" line="73"/>
         <source>data</source>
-        <translation type="unfinished">data</translation>
+        <translation>data</translation>
     </message>
     <message>
         <location filename="../formsail.cpp" line="74"/>
         <source>drawing</source>
-        <translation type="unfinished">tekening</translation>
+        <translation>tekening</translation>
     </message>
     <message>
         <location filename="../formsail.cpp" line="99"/>
         <source>development</source>
-        <translation type="unfinished">banen</translation>
+        <translation>banen</translation>
     </message>
     <message>
         <location filename="../formsail.cpp" line="78"/>
         <source>E&amp;xport 3D sail</source>
-        <translation type="unfinished">3D zeil e&amp;xporteren</translation>
+        <translation>3D zeil e&amp;xporteren</translation>
     </message>
     <message>
         <location filename="../formsail.cpp" line="86"/>
         <source>to &amp;DXF</source>
-        <translation type="unfinished">naar &amp;DXF</translation>
+        <translation>naar &amp;DXF</translation>
     </message>
     <message>
         <location filename="../formsail.cpp" line="89"/>
         <source>to &amp;TXT sail</source>
-        <translation type="unfinished">naar &amp;TXT zeil</translation>
+        <translation>naar &amp;TXT zeil</translation>
     </message>
     <message>
         <location filename="../formsail.cpp" line="90"/>
         <source>to &amp;XML sail</source>
-        <translation type="unfinished">naar &amp;XML zeil</translation>
+        <translation>naar &amp;XML zeil</translation>
     </message>
     <message>
         <location filename="../formsail.cpp" line="84"/>
         <source>Export &amp;development</source>
-        <translation type="unfinished">Zeil&amp;banen exporteren</translation>
+        <translation>Zeil&amp;banen exporteren</translation>
     </message>
     <message>
         <location filename="../formsail.cpp" line="85"/>
         <source>to &amp;Carlson plotter</source>
-        <translation type="unfinished">naar &amp;Carlson plotter</translation>
+        <translation>naar &amp;Carlson plotter</translation>
     </message>
     <message>
         <location filename="../formsail.cpp" line="88"/>
         <source>to &amp;Hand-plotting format</source>
-        <translation type="unfinished">naar &amp;Handmatige plotgegevens</translation>
+        <translation>naar &amp;Handmatige plotgegevens</translation>
     </message>
     <message>
         <location filename="../formsail.cpp" line="93"/>
         <source>&amp;Dimensions</source>
-        <translation type="unfinished">&amp;Afmetingen</translation>
+        <translation>&amp;Afmetingen</translation>
     </message>
     <message>
         <location filename="../formsail.cpp" line="94"/>
         <source>&amp;Mould</source>
-        <translation type="unfinished">&amp;Vorm</translation>
+        <translation>&amp;Vorm</translation>
     </message>
     <message>
         <location filename="../formsail.cpp" line="95"/>
         <source>&amp;Patches</source>
-        <translation type="unfinished">&amp;Hoekverstevigingen</translation>
+        <translation>&amp;Hoekverstevigingen</translation>
     </message>
     <message>
         <location filename="../formsail.cpp" line="365"/>
         <source>error</source>
-        <translation type="unfinished">fout</translation>
+        <translation>fout</translation>
     </message>
     <message>
         <location filename="../formsail.cpp" line="312"/>
         <source>There was a data printing error</source>
-        <translation type="unfinished">Er is een fout opgetreden bij het printen van de data</translation>
+        <translation>Er is een fout opgetreden bij het printen</translation>
     </message>
     <message>
         <location filename="../formsail.cpp" line="339"/>
         <source>There was a development printing error</source>
-        <translation type="unfinished">Er is een fout opgetreden bij het printen van banen</translation>
+        <translation>Er is een fout opgetreden bij het printen</translation>
     </message>
     <message>
         <location filename="../formsail.cpp" line="365"/>
         <source>There was a drawing printing error</source>
-        <translation type="unfinished">Er is een fout opgetreden bij het printen van het tekening</translation>
+        <translation>Er is een fout opgetreden bij het printen</translation>
     </message>
 </context>
 <context>
@@ -1584,7 +1584,7 @@
     <message>
         <location filename="../formsaildef.cpp" line="1099"/>
         <source>Sail width measurements </source>
-        <translation type="unfinished"></translation>
+        <translation>Zeilbreedte afmetingen</translation>
     </message>
 </context>
 <context>
@@ -2242,12 +2242,12 @@
     <message>
         <location filename="../sailviewer-tabs.cpp" line="64"/>
         <source>shaded view</source>
-        <translation type="unfinished">3D model</translation>
+        <translation>3D model</translation>
     </message>
     <message>
         <location filename="../sailviewer-tabs.cpp" line="66"/>
         <source>wireframe view</source>
-        <translation type="unfinished">draadmodel</translation>
+        <translation>draadmodel</translation>
     </message>
 </context>
 <context>
@@ -2280,7 +2280,7 @@
     <message>
         <location filename="../widgetprofile.cpp" line="247"/>
         <source>cord</source>
-        <translation type="unfinished"></translation>
+        <translation>Koorde</translation>
     </message>
 </context>
 <context>
