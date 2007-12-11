@@ -20,6 +20,7 @@
 #define GEOCPP_VECTOR_H
 
 #include <geocpp/core.h>
+#include <cstring>
 #include <iostream>
 
 using namespace std;
