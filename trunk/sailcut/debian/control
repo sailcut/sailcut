@@ -2,8 +2,9 @@ Source: sailcut
 Section: graphics
 Priority: optional
 Maintainer: Jeremy Lainé <jeremy.laine@m4x.org> 
-Standards-Version: 3.7.2
+Standards-Version: 3.7.3
 Build-Depends: cdbs, debhelper (>= 5), libqt4-dev (>= 4.2.0)
+Homepage: http://sailcut.sourceforge.net
 
 Package: sailcut
 Architecture: any
@@ -17,8 +18,6 @@ Description: A sail design and plotting software
  .
  Sailcut CAD's user interface is available in English, French, Dutch, 
  German, Italian, Norwegian, Portuguese, Danish and Russian.
- .
- Homepage: http://sailcut.sourceforge.net/
 
 Package: sailcut-doc
 Architecture: all
