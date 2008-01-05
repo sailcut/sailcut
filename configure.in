@@ -39,7 +39,8 @@ CXXFLAGS="$CXXFLAGS -W -Wall"
 
 dnl Check Qt stuff
 JWB_CHECK_QT(,AC_MSG_ERROR([Qt was not found!]))
-JWB_HAVE_QTXML(,AC_MSG_ERROR([QtXml was not found!]))
+JWB_CHECK_QT_MODULE(QtSvg,,AC_MSG_ERROR([QtSvg was not found!]))
+JWB_CHECK_QT_MODULE(QtXml,,AC_MSG_ERROR([QtXml was not found!]))
 
 dnl Check OpenGL support
 JWB_HAVE_QTOPENGL
