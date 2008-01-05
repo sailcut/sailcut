@@ -278,6 +278,29 @@ AC_DEFUN([JWB_PATH_QT_MODULE],
 
 
 dnl ------------------------------------------------------------------------
+dnl Check a Qt module
+dnl ------------------------------------------------------------------------
+dnl
+AC_DEFUN([JWB_CHECK_QT_MODULE],
+[
+  JWB_PATH_QT_MODULE($1,[LIB_]translit($1,'a-z','A-Z'),
+    [ac_have_qt_module=yes],
+    [ac_have_qt_module=no])
+  
+  AC_MSG_CHECKING([for $1])
+  if test "$ac_have_qt_module" = "yes"; then
+    AC_MSG_RESULT([yes])
+    AC_DEFINE([HAVE_]translit($1,'a-z','A-Z'), 1, [Defines if you have $1])
+    $2
+  else
+    AC_MSG_RESULT([no])
+    $3
+  fi
+  AC_SUBST([LIB_]translit($1,'a-z','A-Z'))
+])
+
+
+dnl ------------------------------------------------------------------------
 dnl Check whether the QtOpenGL module of Qt is available
 dnl ------------------------------------------------------------------------
 dnl
@@ -303,28 +326,6 @@ AC_DEFUN([JWB_HAVE_QTOPENGL],
   
   AC_SUBST(LIB_QTOPENGL)
 ])
-
-
-dnl ------------------------------------------------------------------------
-dnl Check whether the QtOpenGL module of Qt is available
-dnl ------------------------------------------------------------------------
-dnl
-AC_DEFUN([JWB_HAVE_QTXML],
-[
-  JWB_PATH_QT_MODULE(QtXml,LIB_QTXML,[ac_have_qtxml=yes],[ac_have_qtxml=no])
-
-  AC_MSG_CHECKING([for QtXml])
-  if test "$ac_have_qtxml" = "yes"; then
-    AC_MSG_RESULT([yes])
-    AC_DEFINE(HAVE_QTXML, 1, [Defines if you have QtXml])
-    $1
-  else
-    AC_MSG_RESULT([no])
-    $2
-  fi
-  AC_SUBST(LIB_QTXML)
-])
-
 
 
 dnl ------------------------------------------------------------------------
