@@ -966,7 +966,7 @@ CSide::CSide( const CSide &s )
  */
 void CSide::fill( const CPoint3d &p1 , const CPoint3d &p2 )
 {
-    switch ( point.size() )
+    switch ( size() )
     {
     case 0:
         return;
@@ -975,8 +975,8 @@ void CSide::fill( const CPoint3d &p1 , const CPoint3d &p2 )
         return;
     }
 
-    for( unsigned int i = 0 ; i < point.size() ; i++ )
-        point[i] = p1 + ( p2 - p1 ) * ( real(i) / (point.size() -1) );
+    for( unsigned int i = 0 ; i < size() ; i++ )
+        point[i] = p1 + ( p2 - p1 ) * ( real(i) / (size() -1) );
 }
 
 
@@ -984,7 +984,7 @@ void CSide::fill( const CPoint3d &p1 , const CPoint3d &p2 )
  */
 void CSide::fill( const CPoint3d &p1 , const CPoint3d &p2 , const CPoint3d &p3 )
 {
-    switch ( point.size() )
+    switch ( size() )
     {
     case 0:
         return;
@@ -997,13 +997,13 @@ void CSide::fill( const CPoint3d &p1 , const CPoint3d &p2 , const CPoint3d &p3 )
         return;
     }
 
-    unsigned int n1  = int( point.size() ) / 2;
-    for( unsigned int i = 0 ; i < point.size() ; i++ )
+    unsigned int n1  = int( size() ) / 2;
+    for( unsigned int i = 0 ; i < size() ; i++ )
     {
         if ( i <= n1 )
             point[i] = p1 + (p2 - p1) * (real(i) / n1);
         else
-            point[i] = p2 + (p3 - p2) * (real(i - n1) / (point.size() -n1 -1) );
+            point[i] = p2 + (p3 - p2) * (real(i - n1) / (size() -n1 -1) );
     }
 }
 
@@ -1012,9 +1012,9 @@ void CSide::fill( const CPoint3d &p1 , const CPoint3d &p2 , const CPoint3d &p3 )
  */
 CSide CSide::rotate( const CPoint3d &p, const CMatrix &m ) const
 {
-    CSide s( point.size() );
+    CSide s( size() );
 
-    for ( unsigned int i = 0 ; i < point.size() ; i++ )
+    for ( unsigned int i = 0 ; i < size() ; i++ )
         s[i] = p + m * (point[i] - p);
 
     return s;
@@ -1026,8 +1026,8 @@ CSide CSide::rotate( const CPoint3d &p, const CMatrix &m ) const
  */
 CSide CSide::operator+ (const CVector3d &transl) const
 {
-    CSide ret( point.size() );
-    for ( unsigned int i = 0 ; i < point.size() ; i++ )
+    CSide ret( size() );
+    for ( unsigned int i = 0 ; i < size() ; i++ )
         ret[i] = transl + point[i];
     return ret;
 }
