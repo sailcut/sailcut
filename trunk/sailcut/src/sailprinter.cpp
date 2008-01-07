@@ -56,6 +56,7 @@ CSailPrinter::CSailPrinter(QPrinter *printer, unsigned int fontsize)
 void CSailPrinter::init(unsigned int fontsize)
 {
     painter.setFont(QFont("times", fontsize));
+    showLabels = true;
 
     // half inch margin on top and left
     xPos = painter.device()->logicalDpiX() / 2;
@@ -254,38 +255,6 @@ void CSailPrinter::printSailData(const CSailDef &saildef)
 }
 
 
-/** Print a label with a line to a point.
- *
- * @param pDisp the display point coordinates
- * @param lst a list of lines of text to print
- * @param angle
- */
-void CSailPrinter::printArrowLabel(const CPoint3d &pDisp, const QStringList &lst, const real angle)
-{
-    CVector3d textDim = painter.textSize(lst);
-
-    CVector3d v = CMatrix::rot3d(2, angle) * CVector3d(1, 0, 0);
-    CPoint3d arrowEnd = pDisp + real(2 * painter.fontMetrics().height()) * v;
-
-    // the distance from the arrow end to the center of the text box
-    real dist;
-    if (fabs(v.x() * textDim.y()) < fabs(textDim.x() * v.y()))
-    {
-        // the arrow touches the text box on the top or bottom sides
-        dist = fabs(textDim.y() / (2.0 * sin(angle)));
-    }
-    else
-    {
-        // the arrow touches the text box on the left or right sides
-        dist = fabs(textDim.x() / (2.0 * cos(angle)));
-    }
-    CPoint3d textCenter = arrowEnd + 1.2 * dist * v;
-
-    painter.drawLine(int(pDisp.x()), -int(pDisp.y()), int(arrowEnd.x()), -int(arrowEnd.y()));
-    painter.drawTextCentered(textCenter, lst);
-}
-
-
 /** Print a point's coordinates.
  *
  * @param pDisp the display point coordinates
@@ -298,7 +267,7 @@ void CSailPrinter::printCoord(const CPoint3d &pDisp, const CPoint3d &pValue, con
     QStringList lst;
     lst.append(QString("X=") + QString::number(pValue.x(), 'f', 1));
     lst.append(QString("Y=") + QString::number(pValue.y(), 'f', 1));
-    printArrowLabel(pDisp, lst, angle);
+    painter.drawArrowLabel(pDisp, lst, angle);
 }
 
 
@@ -314,7 +283,7 @@ void CSailPrinter::printDelta(const CPoint3d &pDisp, const CVector3d &vValue, re
     QStringList lst;
     lst.append(QString("dX=") + QString::number(vValue.x(), 'f', 1));
     lst.append(QString("dY=") + QString::number(vValue.y(), 'f', 1));
-    printArrowLabel(pDisp, lst, angle);
+    painter.drawArrowLabel(pDisp, lst, angle);
 }
 
 
@@ -357,8 +326,11 @@ void CSailPrinter::printSailDevel(const CPanelGroup &flatsail)
         printCoord(rp.min, CPoint3d(0,0,0), PI );
 
         // print the current panel number
-        painter.drawTextCentered(currentPanel.centroid(), currentPanel.label.name);
-        painter.setPen(Qt::blue);
+        if (showLabels)
+        {
+            painter.drawTextCentered(currentPanel.centroid(), currentPanel.label.name);
+            painter.setPen(Qt::blue);
+        }
 
         /* add coordinates of inner lines */
         // top fwd corners
@@ -450,5 +422,6 @@ void CSailPrinter::printSailDrawing(const CPanelGroup &sail)
     painter.setFontSize(10, zoom);
 
     painter.draw(printSail);
-    painter.drawLabels(printSail);
+    if (showLabels)
+        painter.drawLabels(printSail);
 }
