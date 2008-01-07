@@ -26,6 +26,7 @@
 #include "sailwriter-carlson.h"
 #include "sailwriter-dxf.h"
 #include "sailwriter-hand.h"
+#include "sailwriter-svg.h"
 #include "sailwriter-txt.h"
 
 #include <QLayout>
@@ -77,6 +78,7 @@ void CFormSail::languageChange()
     // export 3d submenu
     menuExport3d->setTitle( tr("E&xport 3D sail") );
     actionExport3dDXF->setText( tr("to &DXF") );
+    actionExport3dSVG->setText( tr("to &SVG") );
     actionExport3dTXT->setText( tr("to &TXT sail") );
     actionExport3dXML->setText( tr("to &XML sail") );
 
@@ -131,6 +133,7 @@ void CFormSail::setupMenuBar()
     // export 3d submenu
     menuExport3d = new QMenu(this);
     actionExport3dDXF = menuExport3d->addAction("", this, SLOT( slotExportDXF() ) );
+    actionExport3dSVG = menuExport3d->addAction("", this, SLOT( slotExportSVG() ) );
     actionExport3dTXT = menuExport3d->addAction("", this, SLOT( slotExportTXT() ) );
     actionExport3dXML = menuExport3d->addAction("", this, SLOT( slotExportXML() ) );
     extraFileMenus.push_back(menuExport3d);
@@ -198,6 +201,15 @@ void CFormSail::slotDef()
 void CFormSail::slotExportDXF()
 {
     CSailDxfWriter3d().writeDialog(sail);
+}
+
+
+/**
+ * Exports the 3D sail to an SVG file.
+ */
+void CFormSail::slotExportSVG()
+{
+    CSailSvgWriter().writeDialog(sail);
 }
 
 

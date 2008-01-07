@@ -50,6 +50,7 @@ noinst_HEADERS =  \
 	sailwriter-carlson.h \
 	sailwriter-dxf.h \
 	sailwriter-hand.h \
+	sailwriter-svg.h \
 	sailwriter-txt.h \
 	sailwriter-xml.h \
 	widgetprofile.h \
@@ -126,13 +127,14 @@ sailcut_SOURCES = \
 	sailwriter-carlson.cpp \
 	sailwriter-dxf.cpp \
 	sailwriter-hand.cpp \
+	sailwriter-svg.cpp \
 	sailwriter-txt.cpp \
 	widgetprofile.cpp \
 	widgetprofilevert.cpp
 nodist_sailcut_SOURCES = $(BUILT_SOURCES)
 
 sailcut_LDFLAGS = $(QT_LDFLAGS) $(X_LDFLAGS) $(GL_LDFLAGS)
-sailcut_LDADD   = geocpp/libgeocpp.a $(LIB_QT) $(LIB_QTXML) $(LIB_QTOPENGL) $(GLLIB)
+sailcut_LDADD   = geocpp/libgeocpp.a $(LIB_QT) $(LIB_QTSVG) $(LIB_QTXML) $(LIB_QTOPENGL) $(GLLIB)
 
 # rules for Qt metasources
 ui_%.h: %.ui
