@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 1993-2007 Robert & Jeremy Laine
+ * Copyright (C) 1993-2008 Robert & Jeremy Laine
  * See AUTHORS file for a full list of contributors.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -96,6 +96,38 @@ void CSailPainter::draw(const CPanelGroup &sail)
     // reset pen color 
     setPen(Qt::black);
         
+}
+
+
+/** Print a label with a line to a point.
+ *
+ * @param pDisp the display point coordinates
+ * @param lst a list of lines of text to print
+ * @param angle
+ */
+void CSailPainter::drawArrowLabel(const CPoint3d &pDisp, const QStringList &lst, const real angle)
+{
+    CVector3d textDim = textSize(lst);
+
+    CVector3d v = CMatrix::rot3d(2, angle) * CVector3d(1, 0, 0);
+    CPoint3d arrowEnd = pDisp + real(2 * fontMetrics().height()) * v;
+
+    // the distance from the arrow end to the center of the text box
+    real dist;
+    if (fabs(v.x() * textDim.y()) < fabs(textDim.x() * v.y()))
+    {
+        // the arrow touches the text box on the top or bottom sides
+        dist = fabs(textDim.y() / (2.0 * sin(angle)));
+    }
+    else
+    {
+        // the arrow touches the text box on the left or right sides
+        dist = fabs(textDim.x() / (2.0 * cos(angle)));
+    }
+    CPoint3d textCenter = arrowEnd + 1.2 * dist * v;
+
+    drawLine(int(pDisp.x()), -int(pDisp.y()), int(arrowEnd.x()), -int(arrowEnd.y()));
+    drawTextCentered(textCenter, lst);
 }
 
 
