@@ -36,7 +36,6 @@ public:
     CSailPrinter(QPrinter *printer, unsigned int fontsize = 10);
     CSailPrinter(QPaintDevice *pd, unsigned int fontsize = 10);
 
-    void init(unsigned int fontsize);
     bool newPage();
     real printHeader(const QString title);
     real printDataSection(const QString title);
@@ -44,11 +43,14 @@ public:
     void printSailData(const CSailDef &saildef);
     void printSailDevel(const CPanelGroup &flatsail);
     void printSailDrawing(const CPanelGroup &sail);
-    void printArrowLabel(const CPoint3d &pDisp, const QStringList &lst, const real angle);
     void printCoord(const CPoint3d &pDisp, const CPoint3d &pValue, const real angle);
     void printDelta(const CPoint3d &pDisp, const CVector3d &vValue, const real angle);
 
+    void setShowLabels(bool show) { showLabels = show; };
+
 protected:
+    void init(unsigned int fontsize);
+
     /** painter to draw sail objects */
     CSailPainter painter;
     /** current X position when printing text */
@@ -57,6 +59,8 @@ protected:
     real yPos;
     /** is the area we are writing to a QPrinter? */
     bool isPrinter;
+    /** should the labels be printed? */
+    bool showLabels;
 };
 
 #endif
