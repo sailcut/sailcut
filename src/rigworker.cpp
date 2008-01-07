@@ -39,8 +39,8 @@ CPanelGroup CRigWorker::makeRig() const
     CVector3d v1(1, 0, 0), vm(0, 1, 0);
     CPanel mast1, mast2; // half mast section
     unsigned int i = 0, j = 0;
-    //unsigned int npl = mast1.left.nbpoints();   // number of right/left points
-    unsigned int npb = mast1.bottom.nbpoints(); // number of bottom/top points
+    //unsigned int npl = mast1.left.size();   // number of right/left points
+    unsigned int npb = mast1.bottom.size(); // number of bottom/top points
     real h = 0, cord;
     
     CPanelGroup rig;

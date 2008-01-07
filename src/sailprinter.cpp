@@ -338,23 +338,23 @@ void CSailPrinter::printSailDevel(const CPanelGroup &flatsail)
         printCoord(currentPanel.top.point[npt], flatsail.panel[i].top.point[npt], 2*PI/3 );
 
         // top  middle
-        npt = int ( (currentPanel.top.nbpoints() -1) /2 );
+        npt = int ( (currentPanel.top.size() -1) /2 );
         if ( CVector3d(flatsail.panel[i].top.point[npt]-flatsail.panel[i].top.point[0]).norm() > 5 )
         {
-            dx = CVector3d( flatsail.panel[i].top.point[npt] - flatsail.panel[i].top.point[0] ) * CVector3d( flatsail.panel[i].top.point[flatsail.panel[i].top.nbpoints() -1] - flatsail.panel[i].top.point[0] ).unit();
-            dy = Distance3d(flatsail.panel[i].top.point[npt] , flatsail.panel[i].top.point[0] , flatsail.panel[i].top.point[flatsail.panel[i].top.nbpoints()-1] );
+            dx = CVector3d( flatsail.panel[i].top.point[npt] - flatsail.panel[i].top.point[0] ) * CVector3d( flatsail.panel[i].top.point[flatsail.panel[i].top.size() -1] - flatsail.panel[i].top.point[0] ).unit();
+            dy = Distance3d(flatsail.panel[i].top.point[npt] , flatsail.panel[i].top.point[0] , flatsail.panel[i].top.point[flatsail.panel[i].top.size()-1] );
             printDelta(currentPanel.top.point[npt], CVector3d(dx, dy, 0), PI/2);
         }
 
         // top aft corner
-        npt = currentPanel.top.nbpoints() -1;
+        npt = currentPanel.top.size() -1;
         if ( CVector3d(flatsail.panel[i].top.point[npt]-flatsail.panel[i].top.point[0]).norm() > 5 )
         {
             printCoord(currentPanel.top.point[npt], flatsail.panel[i].top.point[npt], PI/3);
         }
 
         // right middle
-        npt = (currentPanel.right.nbpoints() -1)/2;
+        npt = (currentPanel.right.size() -1)/2;
         printCoord(currentPanel.right.point[npt], flatsail.panel[i].right.point[npt], 0);
 
         // bottom left corner
@@ -364,35 +364,35 @@ void CSailPrinter::printSailDevel(const CPanelGroup &flatsail)
             printCoord(currentPanel.bottom.point[npt], flatsail.panel[i].bottom.point[npt], -2*PI/3 );
 
             // mid left
-            npt = (currentPanel.left.nbpoints() -1)/2;
+            npt = (currentPanel.left.size() -1)/2;
             printCoord(currentPanel.left.point[npt], flatsail.panel[i].left.point[npt], PI );
             if ( i == flatsail.panel.size() )
             {
-                npt = 1+(currentPanel.left.nbpoints() -1)/2;
+                npt = 1+(currentPanel.left.size() -1)/2;
                 printCoord(currentPanel.left.point[npt], flatsail.panel[i].left.point[npt], 2*PI/3 );
             }
         }
 
         // bottom intermediate fwd
-        npt = int ( (currentPanel.bottom.nbpoints() -1) /5 );
-        dx = CVector3d(  flatsail.panel[i].bottom.point[npt] -  flatsail.panel[i].bottom.point[0] ) * CVector3d(  flatsail.panel[i].bottom.point[ flatsail.panel[i].bottom.nbpoints() -1] -  flatsail.panel[i].bottom.point[0] ).unit();
-        dy = Distance3d( flatsail.panel[i].bottom.point[npt] ,  flatsail.panel[i].bottom.point[0] ,  flatsail.panel[i].bottom.point[ flatsail.panel[i].bottom.nbpoints()-1] );
+        npt = int ( (currentPanel.bottom.size() -1) /5 );
+        dx = CVector3d(  flatsail.panel[i].bottom.point[npt] -  flatsail.panel[i].bottom.point[0] ) * CVector3d(  flatsail.panel[i].bottom.point[ flatsail.panel[i].bottom.size() -1] -  flatsail.panel[i].bottom.point[0] ).unit();
+        dy = Distance3d( flatsail.panel[i].bottom.point[npt] ,  flatsail.panel[i].bottom.point[0] ,  flatsail.panel[i].bottom.point[ flatsail.panel[i].bottom.size()-1] );
         printDelta(currentPanel.bottom.point[npt], CVector3d(dx, dy, 0), -5*PI/8 );
 
         // bottom intermediate middle
-        npt = int ( (currentPanel.bottom.nbpoints() -1) /2 );
-        dx = CVector3d(  flatsail.panel[i].bottom.point[npt] -  flatsail.panel[i].bottom.point[0] ) * CVector3d(  flatsail.panel[i].bottom.point[ flatsail.panel[i].bottom.nbpoints() -1] -  flatsail.panel[i].bottom.point[0] ).unit();
-        dy = Distance3d( flatsail.panel[i].bottom.point[npt] ,  flatsail.panel[i].bottom.point[0] ,  flatsail.panel[i].bottom.point[ flatsail.panel[i].bottom.nbpoints()-1] );
+        npt = int ( (currentPanel.bottom.size() -1) /2 );
+        dx = CVector3d(  flatsail.panel[i].bottom.point[npt] -  flatsail.panel[i].bottom.point[0] ) * CVector3d(  flatsail.panel[i].bottom.point[ flatsail.panel[i].bottom.size() -1] -  flatsail.panel[i].bottom.point[0] ).unit();
+        dy = Distance3d( flatsail.panel[i].bottom.point[npt] ,  flatsail.panel[i].bottom.point[0] ,  flatsail.panel[i].bottom.point[ flatsail.panel[i].bottom.size()-1] );
         printDelta(currentPanel.bottom.point[npt], CVector3d(dx, dy, 0), -PI/2 );
 
         // bottom intermediate aft
-        npt = int ( (currentPanel.bottom.nbpoints() -1) *4/5 );
-        dx = CVector3d(  flatsail.panel[i].bottom.point[npt] -  flatsail.panel[i].bottom.point[0] ) * CVector3d(  flatsail.panel[i].bottom.point[ flatsail.panel[i].bottom.nbpoints() -1] -  flatsail.panel[i].bottom.point[0] ).unit();
-        dy = Distance3d( flatsail.panel[i].bottom.point[npt] ,  flatsail.panel[i].bottom.point[0] ,  flatsail.panel[i].bottom.point[ flatsail.panel[i].bottom.nbpoints()-1] );
+        npt = int ( (currentPanel.bottom.size() -1) *4/5 );
+        dx = CVector3d(  flatsail.panel[i].bottom.point[npt] -  flatsail.panel[i].bottom.point[0] ) * CVector3d(  flatsail.panel[i].bottom.point[ flatsail.panel[i].bottom.size() -1] -  flatsail.panel[i].bottom.point[0] ).unit();
+        dy = Distance3d( flatsail.panel[i].bottom.point[npt] ,  flatsail.panel[i].bottom.point[0] ,  flatsail.panel[i].bottom.point[ flatsail.panel[i].bottom.size()-1] );
         printDelta(currentPanel.bottom.point[npt], CVector3d(dx, dy, 0), -3*PI/8 );
 
         // bottom aft corner
-        npt = currentPanel.bottom.nbpoints() -1;
+        npt = currentPanel.bottom.size() -1;
         printCoord(currentPanel.bottom.point[npt], flatsail.panel[i].bottom.point[npt], -PI/3 );
 
         // reset pen color

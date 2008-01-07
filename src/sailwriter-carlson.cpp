@@ -136,55 +136,55 @@ void CSailCarlsonWriter::writePanel(ofstream &out, const CPanel &panel) const
     writePanelHeader(out, panel);
 
     ////  header for draw line
-    writeDraw (out, left.nbpoints()+top.nbpoints()+right.nbpoints()+btm.nbpoints());
+    writeDraw (out, left.size()+top.size()+right.size()+btm.size());
 
     // left edge
-    for (i = 0; i < left.nbpoints(); i++)
+    for (i = 0; i < left.size(); i++)
     {
         writePoint( out, left.point[i] );
     }
 
     // panel top edge
-    for (i = 0; i < top.nbpoints(); i++)
+    for (i = 0; i < top.size(); i++)
     {
         writePoint( out, top.point[i] );
     }
 
     // panel right edge
-    for (j = right.nbpoints() -1; j> -1; j--)
+    for (j = right.size() -1; j> -1; j--)
     {
         writePoint( out, right.point[j] );
     }
 
     //// panel bottom edge
-    for (j = btm.nbpoints() -1; j > -1; j--)
+    for (j = btm.size() -1; j > -1; j--)
     {
         writePoint( out, btm.point[j] );
     }
 
     ////  header for cut line
-    writeCut ( out, left.nbpoints()+top.nbpoints()+right.nbpoints()+btm.nbpoints() );
+    writeCut ( out, left.size()+top.size()+right.size()+btm.size() );
 
     // left edge
-    for (i = 0; i < left.nbpoints(); i++)
+    for (i = 0; i < left.size(); i++)
     {
         writePoint( out, cleft.point[i] );
     }
 
     // panel top edge
-    for (i = 0; i < top.nbpoints(); i++)
+    for (i = 0; i < top.size(); i++)
     {
         writePoint( out, ctop.point[i] );
     }
 
     // panel right edge
-    for (j = right.nbpoints() -1; j > - 1; j--)
+    for (j = right.size() -1; j > - 1; j--)
     {
         writePoint( out, cright.point[j] );
     }
 
     // panel bottom edge
-    for (j = btm.nbpoints() -1; j > -1; j--)
+    for (j = btm.size() -1; j > -1; j--)
     {
         writePoint( out, cbtm.point[j] );
     }

@@ -56,7 +56,7 @@ void CSailDispGL::draw( const CPanel &panel )
     unsigned int i;
 
     glBegin(GL_TRIANGLE_STRIP);
-    for (i =0; i < panel.top.nbpoints(); i++)
+    for (i =0; i < panel.top.size(); i++)
     {
         pt = panel.top.point[i];
         glVertex3d(pt.x(),pt.y(),pt.z());
@@ -66,9 +66,9 @@ void CSailDispGL::draw( const CPanel &panel )
     glEnd();
 
     glBegin(GL_TRIANGLE_FAN);
-    pt = (panel.left.point[0]+panel.left.point[panel.left.nbpoints()-1])*0.5;
+    pt = (panel.left.point[0]+panel.left.point[panel.left.size()-1])*0.5;
     glVertex3d(pt.x(),pt.y(),pt.z());
-    for (i =0; i < panel.left.nbpoints(); i++)
+    for (i =0; i < panel.left.size(); i++)
     {
         pt = panel.left.point[i];
         glVertex3d(pt.x(),pt.y(),pt.z());
@@ -76,9 +76,9 @@ void CSailDispGL::draw( const CPanel &panel )
     glEnd();
 
     glBegin(GL_TRIANGLE_FAN);
-    pt = (panel.right.point[0]+panel.right.point[panel.right.nbpoints()-1])*0.5;
+    pt = (panel.right.point[0]+panel.right.point[panel.right.size()-1])*0.5;
     glVertex3d(pt.x(),pt.y(),pt.z());
-    for (i =0; i < panel.right.nbpoints(); i++)
+    for (i =0; i < panel.right.size(); i++)
     {
         pt = panel.right.point[i];
         glVertex3d(pt.x(),pt.y(),pt.z());

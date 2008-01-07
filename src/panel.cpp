@@ -141,7 +141,7 @@ CRect3d CPanel::boundingRect() const
 
     for ( unsigned int s = 0 ; s < 4 ; s++ )
     {
-        for ( unsigned int i = 0 ; i < sarray[s]->nbpoints() ; i++ )
+        for ( unsigned int i = 0 ; i < sarray[s]->size() ; i++ )
         {
             CPoint3d curPoint = sarray[s]->point[i];
             for ( unsigned int j = 0 ; j < 3 ; j++ )
@@ -171,7 +171,7 @@ CPoint3d CPanel::centroid() const
 
     for ( unsigned int s = 0; s < 4; s++ )
     {
-        for ( unsigned int i = 0 ; i < sarray[s]->nbpoints() ; i++ )
+        for ( unsigned int i = 0 ; i < sarray[s]->size() ; i++ )
         {
             p = sarray[s]->point[i];
             if (( nbDiffPoints == 0) || ( p != prev ) )
@@ -205,7 +205,7 @@ real CPanel::height() const
     switch (hasHems)
     {
     case true:
-        for ( i = 0 ; i < top.nbpoints() ; i++ )
+        for ( i = 0 ; i < top.size() ; i++ )
         {
             if ( cutTop.point[i].y() > ymax )
                 ymax = cutTop.point[i].y();
@@ -214,7 +214,7 @@ real CPanel::height() const
             //printf ("CUT pt i %d ymax %f ymin %f \n", i, ymax, ymin);
         }
     case false:
-        for ( i = 0 ; i < top.nbpoints() ; i++ )
+        for ( i = 0 ; i < top.size() ; i++ )
         {
             if ( top.point[i].y() > ymax )
                 ymax = top.point[i].y();
@@ -239,8 +239,8 @@ real CPanel::height() const
 CPanel CPanel::develop(enumDevelopAlign align) const
 {
     CPanel flatpanel;
-    unsigned int npl = left.nbpoints();   // number of right/left points
-    unsigned int npb = bottom.nbpoints(); // number of top/bottom points
+    unsigned int npl = left.size();   // number of right/left points
+    unsigned int npb = bottom.size(); // number of top/bottom points
     unsigned int i;
     real a = 0, b = 0, c = 0; // sides of triangle
     real CC = 0;  // angle opposite to side c of triangle
@@ -381,8 +381,8 @@ void CPanel::placeLabel()
 CPanel CPanel::reframe(enumAlign align) const
 {
     CPanel ret;
-    unsigned int npl = left.nbpoints();   // number of right/left points
-    unsigned int npb = bottom.nbpoints();  // number of top/bottom points
+    unsigned int npl = left.size();   // number of right/left points
+    unsigned int npb = bottom.size();  // number of top/bottom points
     unsigned int i;
     real xm=11111, ym=11111;
 
@@ -491,7 +491,7 @@ void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real
     real minSize = 0.1;     // used to avoid computation near zero width side
     
     unsigned int i = 0;
-    unsigned int npl = left.nbpoints(), npb = bottom.nbpoints();
+    unsigned int npl = left.size(), npb = bottom.size();
     
     ///* compute basic edges vectors */
     CVector3d v1 = CVector3d( left.point[npl/2] - left.point[0] );
@@ -1091,7 +1091,7 @@ ostream& operator<< (ostream &o , const CPanelLabel &lb)
  */
 ostream& operator<< (ostream &out, const CSide &s)
 {
-    for ( unsigned int i = 0 ; i < s.nbpoints() ; i++ )
+    for ( unsigned int i = 0 ; i < s.size() ; i++ )
     {
         out << "#" << i << "\t" << s.point[i] << endl;
     }

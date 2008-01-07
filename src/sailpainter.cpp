@@ -26,11 +26,11 @@ void CSailPainter::draw(const CSide &side)
 {
     QPoint prev, next;
 
-    if (side.nbpoints() < 2)
+    if (side.size() < 2)
         return;
 
     prev = QPoint( int(side.point[0].x()), -int(side.point[0].y()) );
-    for( unsigned i = 1; i < side.nbpoints(); i++)
+    for( unsigned i = 1; i < side.size(); i++)
     {
         next = QPoint( int(side.point[i].x()), -int(side.point[i].y()) );
         drawLine(prev, next);

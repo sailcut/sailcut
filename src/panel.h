@@ -94,7 +94,7 @@ public:
     void fill( const CPoint3d &, const CPoint3d &, const CPoint3d & );
 
     /** Accessor for the number of points. */
-    unsigned int nbpoints() const
+    unsigned int size() const
     {
         return point.size();
     };

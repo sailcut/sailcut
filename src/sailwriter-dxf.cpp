@@ -298,7 +298,7 @@ void CSailDxfWriter2d::writePanel(ofstream &out, const CPanel &panel, unsigned i
     pt = left.point[0];
     writeVertex(out, pt, layer);
 
-    for (i = 1; i < left.nbpoints(); i++)
+    for (i = 1; i < left.size(); i++)
     {
         V= left.point[i] - pt;
         if (V.norm()> EPS)
@@ -309,7 +309,7 @@ void CSailDxfWriter2d::writePanel(ofstream &out, const CPanel &panel, unsigned i
     }
 
     // panel top edge
-    for (i = 0; i < top.nbpoints(); i++)
+    for (i = 0; i < top.size(); i++)
     {
         V = top.point[i] - pt;
         if (V.norm() > EPS)
@@ -320,7 +320,7 @@ void CSailDxfWriter2d::writePanel(ofstream &out, const CPanel &panel, unsigned i
     }
 
     // panel right edge
-    for (j = right.nbpoints()-1; j > - 1; j--)
+    for (j = right.size()-1; j > - 1; j--)
     {
         V = right.point[j] - pt;
         if (V.norm() > EPS)
@@ -331,7 +331,7 @@ void CSailDxfWriter2d::writePanel(ofstream &out, const CPanel &panel, unsigned i
     }
 
     // panel bottom edge
-    for (j = btm.nbpoints()-1; j > -1; j--)
+    for (j = btm.size()-1; j > -1; j--)
     {
         V = btm.point[j] - pt;
         if (V.norm() > EPS)
@@ -353,7 +353,7 @@ void CSailDxfWriter2d::writePanel(ofstream &out, const CPanel &panel, unsigned i
     pt = cleft.point[0];
     writeVertex(out, pt, layer);
 
-    for (i = 1; i < left.nbpoints(); i++)
+    for (i = 1; i < left.size(); i++)
     {
         V= cleft.point[i] - pt;
         if (V.norm()> EPS)
@@ -364,7 +364,7 @@ void CSailDxfWriter2d::writePanel(ofstream &out, const CPanel &panel, unsigned i
     }
 
     // panel top edge
-    for (i = 0; i < top.nbpoints(); i++)
+    for (i = 0; i < top.size(); i++)
     {
         V = ctop.point[i] - pt;
         if (V.norm() > EPS)
@@ -375,7 +375,7 @@ void CSailDxfWriter2d::writePanel(ofstream &out, const CPanel &panel, unsigned i
     }
 
     // panel right edge
-    for (j = right.nbpoints()-1; j > - 1; j--)
+    for (j = right.size()-1; j > - 1; j--)
     {
         V = cright.point[j] - pt;
         if (V.norm() > EPS)
@@ -386,7 +386,7 @@ void CSailDxfWriter2d::writePanel(ofstream &out, const CPanel &panel, unsigned i
     }
 
     // panel bottom edge
-    for (j = btm.nbpoints()-1; j > -1; j--)
+    for (j = btm.size()-1; j > -1; j--)
     {
         V = cbtm.point[j] - pt;
         if (V.norm() > EPS)
@@ -489,20 +489,20 @@ void CSailDxfWriter3d::writePanel(ofstream &out, const CPanel &panel, unsigned i
     unsigned int i=0;
 
     // left triangle fan
-    pt = (left.point[0]+left.point[left.nbpoints()-1])*0.5;
-    for (i = 1; i < left.nbpoints(); i++)
+    pt = (left.point[0]+left.point[left.size()-1])*0.5;
+    for (i = 1; i < left.size(); i++)
         writeFace(out, pt, left.point[i-1], left.point[i], layer);
 
     // panel triangle strip
-    for (i = 1; i < top.nbpoints(); i++)
+    for (i = 1; i < top.size(); i++)
     {
         writeFace(out, top.point[i-1], btm.point[i-1], top.point[i], layer);
         writeFace(out, top.point[i], btm.point[i], btm.point[i-1], layer);
     }
 
     // right triangle fan
-    pt = (right.point[0]+right.point[right.nbpoints()-1])*0.5;
-    for (i = 1; i < right.nbpoints(); i++)
+    pt = (right.point[0]+right.point[right.size()-1])*0.5;
+    for (i = 1; i < right.size(); i++)
         writeFace(out, pt, right.point[i-1], right.point[i], layer);
 }
 
