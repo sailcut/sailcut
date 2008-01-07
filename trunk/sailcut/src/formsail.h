@@ -49,6 +49,7 @@ protected slots:
 
     virtual void slotDef();
     virtual void slotExportDXF();
+    virtual void slotExportSVG();
     virtual void slotExportTXT();
     virtual void slotExportXML();
     virtual void slotExportFlatCarlson();
@@ -82,6 +83,8 @@ protected:
 
     /** export 3D sail to DXF */
     QAction *actionExport3dDXF;
+    /** export 3D sail to SVG */
+    QAction *actionExport3dSVG;
     /** export 3D sail to text */
     QAction *actionExport3dTXT;
     /** export 3D sail to XML */
