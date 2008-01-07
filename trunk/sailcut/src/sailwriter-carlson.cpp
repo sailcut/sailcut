@@ -141,25 +141,25 @@ void CSailCarlsonWriter::writePanel(ofstream &out, const CPanel &panel) const
     // left edge
     for (i = 0; i < left.size(); i++)
     {
-        writePoint( out, left.point[i] );
+        writePoint( out, left[i] );
     }
 
     // panel top edge
     for (i = 0; i < top.size(); i++)
     {
-        writePoint( out, top.point[i] );
+        writePoint( out, top[i] );
     }
 
     // panel right edge
     for (j = right.size() -1; j> -1; j--)
     {
-        writePoint( out, right.point[j] );
+        writePoint( out, right[j] );
     }
 
     //// panel bottom edge
     for (j = btm.size() -1; j > -1; j--)
     {
-        writePoint( out, btm.point[j] );
+        writePoint( out, btm[j] );
     }
 
     ////  header for cut line
@@ -168,25 +168,25 @@ void CSailCarlsonWriter::writePanel(ofstream &out, const CPanel &panel) const
     // left edge
     for (i = 0; i < left.size(); i++)
     {
-        writePoint( out, cleft.point[i] );
+        writePoint( out, cleft[i] );
     }
 
     // panel top edge
     for (i = 0; i < top.size(); i++)
     {
-        writePoint( out, ctop.point[i] );
+        writePoint( out, ctop[i] );
     }
 
     // panel right edge
     for (j = right.size() -1; j > - 1; j--)
     {
-        writePoint( out, cright.point[j] );
+        writePoint( out, cright[j] );
     }
 
     // panel bottom edge
     for (j = btm.size() -1; j > -1; j--)
     {
-        writePoint( out, cbtm.point[j] );
+        writePoint( out, cbtm[j] );
     }
 }
 

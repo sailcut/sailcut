@@ -29,10 +29,10 @@ void CSailPainter::draw(const CSide &side)
     if (side.size() < 2)
         return;
 
-    prev = QPoint( int(side.point[0].x()), -int(side.point[0].y()) );
+    prev = QPoint( int(side[0].x()), -int(side[0].y()) );
     for( unsigned i = 1; i < side.size(); i++)
     {
-        next = QPoint( int(side.point[i].x()), -int(side.point[i].y()) );
+        next = QPoint( int(side[i].x()), -int(side[i].y()) );
         drawLine(prev, next);
         prev = next;
     }

@@ -442,7 +442,7 @@ void CSailDoc::get
 {
     QDomElement e = findElement( parent, "CSide", name);
     get
-        (e, s.point, "point");
+        (e, s.points(), "point");
 }
 
 
@@ -917,7 +917,7 @@ void CSailDoc::put( QDomNode &parent, const CSide &s, const QString &name )
     QDomElement e = createElement("CSide",name);
     parent.appendChild(e);
 
-    put ( e, s.point, "point");
+    put ( e, s.points(), "point");
 }
 
 

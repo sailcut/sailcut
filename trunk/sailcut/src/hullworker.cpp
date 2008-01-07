@@ -84,9 +84,9 @@ CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
     chine.right.fill( ptAftChine , ptCentreChine );    // transom
     for ( j=0 ; j < npb ; j++)
     {   // move point to edge of deck
-        p1 = chine.bottom.point[j];        
+        p1 = chine.bottom[j];        
         p2 = ptLowChine( p1.x() );
-        chine.bottom.point[j] = p2;
+        chine.bottom[j] = p2;
     }
 }
 
@@ -195,23 +195,23 @@ CPanelGroup CHullWorker::makeHull() //const
     // Laying bottom panels
     for ( j = 0 ; j < npb ; j++ )
     {   
-        plank1.bottom.point[j] =  chine.bottom.point[j];
-        x = chine.bottom.point[j].x();
-        plank1.top.point[j] = ptKeel( x );
+        plank1.bottom[j] =  chine.bottom[j];
+        x = chine.bottom[j].x();
+        plank1.top[j] = ptKeel( x );
     }
-    plank1.left.fill( plank1.bottom.point[0] , plank1.top.point[0] );
-    plank1.right.fill( plank1.bottom.point[npb-1] , plank1.top.point[npb-1] );
+    plank1.left.fill( plank1.bottom[0] , plank1.top[0] );
+    plank1.right.fill( plank1.bottom[npb-1] , plank1.top[npb-1] );
     
     plank2 = plank1;
     for ( j = 0 ; j < npb ; j++ )
     {   // mirror points
-        plank2.top.point[j].z() = -plank1.top.point[j].z(); 
-        plank2.bottom.point[j].z() = -plank1.bottom.point[j].z();
+        plank2.top[j].z() = -plank1.top[j].z(); 
+        plank2.bottom[j].z() = -plank1.bottom[j].z();
     }
     for ( j = 0 ; j < npl ; j++ )
     {   // mirror points
-        plank2.left.point[j].z() = -plank1.left.point[j].z();
-        plank2.right.point[j].z() = -plank1.right.point[j].z();
+        plank2.left[j].z() = -plank1.left[j].z();
+        plank2.right[j].z() = -plank1.right[j].z();
     }
     // add the bottom planks to the hull
     hull.panel.push_back(plank1);
@@ -222,8 +222,8 @@ CPanelGroup CHullWorker::makeHull() //const
     
     for ( j = 0 ; j < npb ; j++ )
     {   
-        plank1.bottom.point[j] =  chine.bottom.point[j];
-        Line1 = CSubSpace3d::line( plank1.bottom.point[j] , v1 );
+        plank1.bottom[j] =  chine.bottom[j];
+        Line1 = CSubSpace3d::line( plank1.bottom[j] , v1 );
         Intersection1 = Line1.intersect(planeDeck);
         if (Intersection1.getdim() == 0)
         {   // compute the vector vg which generate the side surface
@@ -231,21 +231,21 @@ CPanelGroup CHullWorker::makeHull() //const
             vg = CVector3d(p1 - pt);
         }
         else throw "ERROR in CHullWorker::makeHull() Intersection 1 top side is not a point" ;
-        plank1.top.point[j] = p1;
+        plank1.top[j] = p1;
     }
-    plank1.left.fill( plank1.bottom.point[0] , plank1.top.point[0] );
-    plank1.right.fill( plank1.bottom.point[npb-1] , plank1.top.point[npb-1] );
+    plank1.left.fill( plank1.bottom[0] , plank1.top[0] );
+    plank1.right.fill( plank1.bottom[npb-1] , plank1.top[npb-1] );
     
     plank2 = plank1;
     for ( j = 0 ; j < npb ; j++ )
     {   // mirror points
-        plank2.top.point[j].z() = -plank1.top.point[j].z(); 
-        plank2.bottom.point[j].z() = -plank1.bottom.point[j].z();
+        plank2.top[j].z() = -plank1.top[j].z(); 
+        plank2.bottom[j].z() = -plank1.bottom[j].z();
     }
     for ( j = 0 ; j < npl ; j++ )
     {   // mirror points
-        plank2.left.point[j].z() = -plank1.left.point[j].z();
-        plank2.right.point[j].z() = -plank1.right.point[j].z();
+        plank2.left[j].z() = -plank1.left[j].z();
+        plank2.right[j].z() = -plank1.right[j].z();
     }
     // add the top side planks to the hull
     hull.panel.push_back(plank1);
@@ -254,17 +254,17 @@ CPanelGroup CHullWorker::makeHull() //const
     // Laying deck planks
     for ( j = 0 ; j < npb ; j++ )
     {   
-        deck1.bottom.point[j] = plank1.top.point[j]; 
-        deck1.top.point[j] = deck1.bottom.point[j];
-        deck1.top.point[j].z() = 0; 
-        deck1.left.fill(deck1.bottom.point[0] , deck1.top.point[0]);
-        deck1.right.fill(deck1.bottom.point[npb-1] , deck1.top.point[npb-1]);
+        deck1.bottom[j] = plank1.top[j]; 
+        deck1.top[j] = deck1.bottom[j];
+        deck1.top[j].z() = 0; 
+        deck1.left.fill(deck1.bottom[0] , deck1.top[0]);
+        deck1.right.fill(deck1.bottom[npb-1] , deck1.top[npb-1]);
         
-        deck2.bottom.point[j] = plank2.top.point[j];
-        deck2.top.point[j] = deck2.bottom.point[j];
-        deck2.top.point[j].z() = 0;
-        deck2.left.fill(deck2.bottom.point[0] , deck2.top.point[0]);
-        deck2.right.fill(deck2.bottom.point[npb-1] , deck2.top.point[npb-1]);
+        deck2.bottom[j] = plank2.top[j];
+        deck2.top[j] = deck2.bottom[j];
+        deck2.top[j].z() = 0;
+        deck2.left.fill(deck2.bottom[0] , deck2.top[0]);
+        deck2.right.fill(deck2.bottom[npb-1] , deck2.top[npb-1]);
     }
     // add the deck planks to the hull
     hull.panel.push_back(deck1);
@@ -272,7 +272,7 @@ CPanelGroup CHullWorker::makeHull() //const
         
     // translate the hull such that stem is at x=O, y=0, z=0 ///
     j =  hull.panel.size() -1;
-    pt0 = hull.panel[j].top.point[0];
+    pt0 = hull.panel[j].top[0];
        
     for ( j = 0 ; j < hull.panel.size() ; j++ )
     {

@@ -106,8 +106,8 @@ void CPanelGroup::plotLabels()
 
         panel[i].label.height = 5;
         // position the label and orientate it
-        panel[i].label.origin = panel[i].bottom.point[2];
-        panel[i].label.direction = CVector3d( panel[i].bottom.point[3]- panel[i].bottom.point[2]);
+        panel[i].label.origin = panel[i].bottom[2];
+        panel[i].label.direction = CVector3d( panel[i].bottom[3]- panel[i].bottom[2]);
     }
 }
 

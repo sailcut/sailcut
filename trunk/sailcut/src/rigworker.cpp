@@ -58,8 +58,8 @@ CPanelGroup CRigWorker::makeRig() const
         {
             v1 = CVector3d(cos(PI * real(j) /(npb-1)), 0, sin(PI * real(j) /(npb-1) ) );
             v1.z() = v1.z() * MWidth / MCord;
-            mast1.top.point[j] = p0 + cord * v1;
-            mast2.top.point[j] = p0 - cord *v1;
+            mast1.top[j] = p0 + cord * v1;
+            mast2.top[j] = p0 - cord *v1;
         }
     
     // all other sections of mast
@@ -73,16 +73,16 @@ CPanelGroup CRigWorker::makeRig() const
         {
             v1 = CVector3d(cos(PI * real(j) /(npb-1)), 0, sin(PI * real(j) /(npb-1) ) );
             v1.z() = v1.z() * MWidth / MCord;
-            mast1.bottom.point[j] = mast1.top.point[j];
-            mast2.bottom.point[j] = mast2.top.point[j];
-            mast1.top.point[j] = p2 + cord *v1;
-            mast2.top.point[j] = p2 - cord * v1;
+            mast1.bottom[j] = mast1.top[j];
+            mast2.bottom[j] = mast2.top[j];
+            mast1.top[j] = p2 + cord *v1;
+            mast2.top[j] = p2 - cord * v1;
         }
-        mast1.left.fill(mast1.bottom.point[0],mast1.top.point[0]); 
-        mast1.right.fill(mast1.bottom.point[npb-1],mast1.top.point[npb-1]); 
+        mast1.left.fill(mast1.bottom[0],mast1.top[0]); 
+        mast1.right.fill(mast1.bottom[npb-1],mast1.top[npb-1]); 
     
-        mast2.left.fill(mast2.bottom.point[0],mast2.top.point[0]); 
-        mast2.right.fill(mast2.bottom.point[npb-1],mast2.top.point[npb-1]); 
+        mast2.left.fill(mast2.bottom[0],mast2.top[0]); 
+        mast2.right.fill(mast2.bottom[npb-1],mast2.top[npb-1]); 
         // add mast panel to rig
         rig.panel.push_back(mast1);
         rig.panel.push_back(mast2);
@@ -98,12 +98,12 @@ CPanelGroup CRigWorker::makeRig() const
         {
             v1 = CVector3d(cos(PI * real(j) /(npb-1)), sin(PI * real(j) /(npb-1) ), 0 );
             v1.y() = v1.y() / 2;
-            mast1.bottom.point[j] = p2 + cord * v1;
-            mast1.bottom.point[j] = mast1.bottom.point[j] + CVector3d(0 , 0 , -SPW[i]); 
-            mast1.top.point[j] = mast1.bottom.point[j] + CVector3d(0 , 0 , 2*SPW[i]); 
+            mast1.bottom[j] = p2 + cord * v1;
+            mast1.bottom[j] = mast1.bottom[j] + CVector3d(0 , 0 , -SPW[i]); 
+            mast1.top[j] = mast1.bottom[j] + CVector3d(0 , 0 , 2*SPW[i]); 
         }
-        mast1.left.fill(mast1.bottom.point[0],mast1.top.point[0]); 
-        mast1.right.fill(mast1.bottom.point[npb-1],mast1.top.point[npb-1]); 
+        mast1.left.fill(mast1.bottom[0],mast1.top[0]); 
+        mast1.right.fill(mast1.bottom[npb-1],mast1.top[npb-1]); 
         
         rig.panel.push_back(mast1);
         
@@ -123,50 +123,50 @@ CPanelGroup CRigWorker::makeRig() const
         {
             p2 = mastCenter( SPH[i] );
             // make +Z shroud
-            mast1.bottom.point[0] = p1 + cord * CVector3d (1,0,0) + CVector3d(0,0,SPW[i-1]);
-            mast1.top.point[0] = p1 - cord * CVector3d(1,0,0) + CVector3d(0,0,SPW[i-1]); 
-            mast1.bottom.point[npb-1] = p2 + cord * CVector3d (1,0,0) + CVector3d(0,0,MWidth/2);
-            mast1.top.point[npb-1] = p2 - cord * CVector3d(1,0,0) + CVector3d(0,0,MWidth/2); 
+            mast1.bottom[0] = p1 + cord * CVector3d (1,0,0) + CVector3d(0,0,SPW[i-1]);
+            mast1.top[0] = p1 - cord * CVector3d(1,0,0) + CVector3d(0,0,SPW[i-1]); 
+            mast1.bottom[npb-1] = p2 + cord * CVector3d (1,0,0) + CVector3d(0,0,MWidth/2);
+            mast1.top[npb-1] = p2 - cord * CVector3d(1,0,0) + CVector3d(0,0,MWidth/2); 
 
-            mast1.bottom.fill(mast1.bottom.point[0],mast1.bottom.point[npb-1]); 
-            mast1.top.fill(mast1.top.point[0],mast1.top.point[npb-1]); 
-            mast1.left.fill(mast1.bottom.point[0],mast1.top.point[0]); 
-            mast1.right.fill(mast1.bottom.point[npb-1],mast1.top.point[npb-1]); 
+            mast1.bottom.fill(mast1.bottom[0],mast1.bottom[npb-1]); 
+            mast1.top.fill(mast1.top[0],mast1.top[npb-1]); 
+            mast1.left.fill(mast1.bottom[0],mast1.top[0]); 
+            mast1.right.fill(mast1.bottom[npb-1],mast1.top[npb-1]); 
             // make -Z symetrical 
-            mast2.bottom.point[0] = p1 + cord * CVector3d (1,0,0) - CVector3d(0,0,SPW[i-1]);
-            mast2.top.point[0] = p1 - cord * CVector3d(1,0,0) - CVector3d(0,0,SPW[i-1]); 
-            mast2.bottom.point[npb-1] = p2 + cord * CVector3d (1,0,0) - CVector3d(0,0,MWidth/2);
-            mast2.top.point[npb-1] = p2 - cord * CVector3d(1,0,0) - CVector3d(0,0,MWidth/2);
+            mast2.bottom[0] = p1 + cord * CVector3d (1,0,0) - CVector3d(0,0,SPW[i-1]);
+            mast2.top[0] = p1 - cord * CVector3d(1,0,0) - CVector3d(0,0,SPW[i-1]); 
+            mast2.bottom[npb-1] = p2 + cord * CVector3d (1,0,0) - CVector3d(0,0,MWidth/2);
+            mast2.top[npb-1] = p2 - cord * CVector3d(1,0,0) - CVector3d(0,0,MWidth/2);
 
-            mast2.bottom.fill(mast2.bottom.point[0],mast2.bottom.point[npb-1]);
-            mast2.top.fill(mast2.top.point[0],mast2.top.point[npb-1]); 
-            mast2.left.fill(mast2.bottom.point[0],mast2.top.point[0]); 
-            mast2.right.fill(mast2.bottom.point[npb-1],mast2.top.point[npb-1]);
+            mast2.bottom.fill(mast2.bottom[0],mast2.bottom[npb-1]);
+            mast2.top.fill(mast2.top[0],mast2.top[npb-1]); 
+            mast2.left.fill(mast2.bottom[0],mast2.top[0]); 
+            mast2.right.fill(mast2.bottom[npb-1],mast2.top[npb-1]);
             // add inner shrouds to rig
             rig.panel.push_back(mast1);
             rig.panel.push_back(mast2);
             
             // add outer shroud to tip of spreaders
             // make +Z shroud
-            mast1.bottom.point[0] = p1 + cord * CVector3d (1,0,0) + CVector3d(0,0,SPW[i-1]);
-            mast1.top.point[0] = p1 - cord * CVector3d(1,0,0) + CVector3d(0,0,SPW[i-1]); 
-            mast1.bottom.point[npb-1] = p2 + cord * CVector3d (1,0,0) + CVector3d(0,0,SPW[i]);
-            mast1.top.point[npb-1] = p2 - cord * CVector3d(1,0,0) + CVector3d(0,0,SPW[i]); 
+            mast1.bottom[0] = p1 + cord * CVector3d (1,0,0) + CVector3d(0,0,SPW[i-1]);
+            mast1.top[0] = p1 - cord * CVector3d(1,0,0) + CVector3d(0,0,SPW[i-1]); 
+            mast1.bottom[npb-1] = p2 + cord * CVector3d (1,0,0) + CVector3d(0,0,SPW[i]);
+            mast1.top[npb-1] = p2 - cord * CVector3d(1,0,0) + CVector3d(0,0,SPW[i]); 
 
-            mast1.bottom.fill(mast1.bottom.point[0],mast1.bottom.point[npb-1]); 
-            mast1.top.fill(mast1.top.point[0],mast1.top.point[npb-1]); 
-            mast1.left.fill(mast1.bottom.point[0],mast1.top.point[0]); 
-            mast1.right.fill(mast1.bottom.point[npb-1],mast1.top.point[npb-1]); 
+            mast1.bottom.fill(mast1.bottom[0],mast1.bottom[npb-1]); 
+            mast1.top.fill(mast1.top[0],mast1.top[npb-1]); 
+            mast1.left.fill(mast1.bottom[0],mast1.top[0]); 
+            mast1.right.fill(mast1.bottom[npb-1],mast1.top[npb-1]); 
             // make -Z symetrical
-            mast2.bottom.point[0] = p1 + cord * CVector3d (1,0,0) - CVector3d(0,0,SPW[i-1]);
-            mast2.top.point[0] = p1 - cord * CVector3d(1,0,0) - CVector3d(0,0,SPW[i-1]); 
-            mast2.bottom.point[npb-1] = p2 + cord * CVector3d (1,0,0) - CVector3d(0,0,SPW[i]);
-            mast2.top.point[npb-1] = p2 - cord * CVector3d(1,0,0) - CVector3d(0,0,SPW[i]); 
+            mast2.bottom[0] = p1 + cord * CVector3d (1,0,0) - CVector3d(0,0,SPW[i-1]);
+            mast2.top[0] = p1 - cord * CVector3d(1,0,0) - CVector3d(0,0,SPW[i-1]); 
+            mast2.bottom[npb-1] = p2 + cord * CVector3d (1,0,0) - CVector3d(0,0,SPW[i]);
+            mast2.top[npb-1] = p2 - cord * CVector3d(1,0,0) - CVector3d(0,0,SPW[i]); 
 
-            mast2.bottom.fill(mast2.bottom.point[0],mast2.bottom.point[npb-1]); 
-            mast2.top.fill(mast2.top.point[0],mast2.top.point[npb-1]); 
-            mast2.left.fill(mast2.bottom.point[0],mast2.top.point[0]); 
-            mast2.right.fill(mast2.bottom.point[npb-1],mast2.top.point[npb-1]); 
+            mast2.bottom.fill(mast2.bottom[0],mast2.bottom[npb-1]); 
+            mast2.top.fill(mast2.top[0],mast2.top[npb-1]); 
+            mast2.left.fill(mast2.bottom[0],mast2.top[0]); 
+            mast2.right.fill(mast2.bottom[npb-1],mast2.top[npb-1]); 
             // add outer shroud to rig
             rig.panel.push_back(mast1);
             rig.panel.push_back(mast2);
@@ -177,25 +177,25 @@ CPanelGroup CRigWorker::makeRig() const
     // add cap shroud bit which is also the only shroud if n==0
         p2 = mastCenter( CSH );
         // make +Z
-        mast1.bottom.point[0] = p1 + cord * CVector3d (1,0,0) + CVector3d(0,0,SPW[i-1]);
-        mast1.top.point[0] = p1 - cord * CVector3d(1,0,0) + CVector3d(0,0,SPW[i-1]); 
-        mast1.bottom.point[npb-1] = p2 + cord * CVector3d (1,0,0) + CVector3d(0,0,MWidth/2);
-        mast1.top.point[npb-1] = p2 - cord * CVector3d(1,0,0) + CVector3d(0,0,MWidth/2); 
+        mast1.bottom[0] = p1 + cord * CVector3d (1,0,0) + CVector3d(0,0,SPW[i-1]);
+        mast1.top[0] = p1 - cord * CVector3d(1,0,0) + CVector3d(0,0,SPW[i-1]); 
+        mast1.bottom[npb-1] = p2 + cord * CVector3d (1,0,0) + CVector3d(0,0,MWidth/2);
+        mast1.top[npb-1] = p2 - cord * CVector3d(1,0,0) + CVector3d(0,0,MWidth/2); 
 
-        mast1.bottom.fill(mast1.bottom.point[0],mast1.bottom.point[npb-1]); 
-        mast1.top.fill(mast1.top.point[0],mast1.top.point[npb-1]); 
-        mast1.left.fill(mast1.bottom.point[0],mast1.top.point[0]); 
-        mast1.right.fill(mast1.bottom.point[npb-1],mast1.top.point[npb-1]); 
+        mast1.bottom.fill(mast1.bottom[0],mast1.bottom[npb-1]); 
+        mast1.top.fill(mast1.top[0],mast1.top[npb-1]); 
+        mast1.left.fill(mast1.bottom[0],mast1.top[0]); 
+        mast1.right.fill(mast1.bottom[npb-1],mast1.top[npb-1]); 
         // make -Z symetrical 
-        mast2.bottom.point[0] = p1 + cord * CVector3d (1,0,0) - CVector3d(0,0,SPW[i-1]);
-        mast2.top.point[0] = p1 - cord * CVector3d(1,0,0) - CVector3d(0,0,SPW[i-1]); 
-        mast2.bottom.point[npb-1] = p2 + cord * CVector3d (1,0,0) - CVector3d(0,0,MWidth/2);
-        mast2.top.point[npb-1] = p2 - cord * CVector3d(1,0,0) - CVector3d(0,0,MWidth/2); 
+        mast2.bottom[0] = p1 + cord * CVector3d (1,0,0) - CVector3d(0,0,SPW[i-1]);
+        mast2.top[0] = p1 - cord * CVector3d(1,0,0) - CVector3d(0,0,SPW[i-1]); 
+        mast2.bottom[npb-1] = p2 + cord * CVector3d (1,0,0) - CVector3d(0,0,MWidth/2);
+        mast2.top[npb-1] = p2 - cord * CVector3d(1,0,0) - CVector3d(0,0,MWidth/2); 
 
-        mast2.bottom.fill(mast2.bottom.point[0],mast2.bottom.point[npb-1]); 
-        mast2.top.fill(mast2.top.point[0],mast2.top.point[npb-1]); 
-        mast2.left.fill(mast2.bottom.point[0],mast2.top.point[0]); 
-        mast2.right.fill(mast2.bottom.point[npb-1],mast2.top.point[npb-1]); 
+        mast2.bottom.fill(mast2.bottom[0],mast2.bottom[npb-1]); 
+        mast2.top.fill(mast2.top[0],mast2.top[npb-1]); 
+        mast2.left.fill(mast2.bottom[0],mast2.top[0]); 
+        mast2.right.fill(mast2.bottom[npb-1],mast2.top[npb-1]); 
         // add cap shroud to rig
         rig.panel.push_back(mast1);
         rig.panel.push_back(mast2);

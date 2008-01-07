@@ -295,15 +295,15 @@ void CSailDxfWriter2d::writePanel(ofstream &out, const CPanel &panel, unsigned i
     writePolyline(out, layer, 5); // color 5=blue
 
     // left edge
-    pt = left.point[0];
+    pt = left[0];
     writeVertex(out, pt, layer);
 
     for (i = 1; i < left.size(); i++)
     {
-        V= left.point[i] - pt;
+        V= left[i] - pt;
         if (V.norm()> EPS)
         {
-            pt = left.point[i];
+            pt = left[i];
             writeVertex(out, pt, layer);
         }
     }
@@ -311,10 +311,10 @@ void CSailDxfWriter2d::writePanel(ofstream &out, const CPanel &panel, unsigned i
     // panel top edge
     for (i = 0; i < top.size(); i++)
     {
-        V = top.point[i] - pt;
+        V = top[i] - pt;
         if (V.norm() > EPS)
         {
-            pt = top.point[i];
+            pt = top[i];
             writeVertex(out, pt, layer);
         }
     }
@@ -322,10 +322,10 @@ void CSailDxfWriter2d::writePanel(ofstream &out, const CPanel &panel, unsigned i
     // panel right edge
     for (j = right.size()-1; j > - 1; j--)
     {
-        V = right.point[j] - pt;
+        V = right[j] - pt;
         if (V.norm() > EPS)
         {
-            pt = right.point[j];
+            pt = right[j];
             writeVertex(out, pt, layer);
         }
     }
@@ -333,15 +333,15 @@ void CSailDxfWriter2d::writePanel(ofstream &out, const CPanel &panel, unsigned i
     // panel bottom edge
     for (j = btm.size()-1; j > -1; j--)
     {
-        V = btm.point[j] - pt;
+        V = btm[j] - pt;
         if (V.norm() > EPS)
         {
-            pt = btm.point[j];
+            pt = btm[j];
             writeVertex(out, pt, layer);
         }
     }
     // close the circuit to start point
-    pt = left.point[0];
+    pt = left[0];
     writeVertex(out, pt, layer);
 
     writeAtom(out, 0, "SEQEND"); // end draw line
@@ -350,15 +350,15 @@ void CSailDxfWriter2d::writePanel(ofstream &out, const CPanel &panel, unsigned i
     writePolyline(out, layer, 1); // color 1=red
 
     // left edge
-    pt = cleft.point[0];
+    pt = cleft[0];
     writeVertex(out, pt, layer);
 
     for (i = 1; i < left.size(); i++)
     {
-        V= cleft.point[i] - pt;
+        V= cleft[i] - pt;
         if (V.norm()> EPS)
         {
-            pt = cleft.point[i];
+            pt = cleft[i];
             writeVertex(out, pt, layer);
         }
     }
@@ -366,10 +366,10 @@ void CSailDxfWriter2d::writePanel(ofstream &out, const CPanel &panel, unsigned i
     // panel top edge
     for (i = 0; i < top.size(); i++)
     {
-        V = ctop.point[i] - pt;
+        V = ctop[i] - pt;
         if (V.norm() > EPS)
         {
-            pt = ctop.point[i];
+            pt = ctop[i];
             writeVertex(out, pt, layer);
         }
     }
@@ -377,10 +377,10 @@ void CSailDxfWriter2d::writePanel(ofstream &out, const CPanel &panel, unsigned i
     // panel right edge
     for (j = right.size()-1; j > - 1; j--)
     {
-        V = cright.point[j] - pt;
+        V = cright[j] - pt;
         if (V.norm() > EPS)
         {
-            pt = cright.point[j];
+            pt = cright[j];
             writeVertex(out, pt, layer);
         }
     }
@@ -388,15 +388,15 @@ void CSailDxfWriter2d::writePanel(ofstream &out, const CPanel &panel, unsigned i
     // panel bottom edge
     for (j = btm.size()-1; j > -1; j--)
     {
-        V = cbtm.point[j] - pt;
+        V = cbtm[j] - pt;
         if (V.norm() > EPS)
         {
-            pt = cbtm.point[j];
+            pt = cbtm[j];
             writeVertex(out, pt, layer);
         }
     }
     // close the circuit to start point
-    pt = cleft.point[0];
+    pt = cleft[0];
     writeVertex(out, pt, layer);
 
     writeAtom(out, 0, "SEQEND"); // end cut line
@@ -489,21 +489,21 @@ void CSailDxfWriter3d::writePanel(ofstream &out, const CPanel &panel, unsigned i
     unsigned int i=0;
 
     // left triangle fan
-    pt = (left.point[0]+left.point[left.size()-1])*0.5;
+    pt = (left[0]+left[left.size()-1])*0.5;
     for (i = 1; i < left.size(); i++)
-        writeFace(out, pt, left.point[i-1], left.point[i], layer);
+        writeFace(out, pt, left[i-1], left[i], layer);
 
     // panel triangle strip
     for (i = 1; i < top.size(); i++)
     {
-        writeFace(out, top.point[i-1], btm.point[i-1], top.point[i], layer);
-        writeFace(out, top.point[i], btm.point[i], btm.point[i-1], layer);
+        writeFace(out, top[i-1], btm[i-1], top[i], layer);
+        writeFace(out, top[i], btm[i], btm[i-1], layer);
     }
 
     // right triangle fan
-    pt = (right.point[0]+right.point[right.size()-1])*0.5;
+    pt = (right[0]+right[right.size()-1])*0.5;
     for (i = 1; i < right.size(); i++)
-        writeFace(out, pt, right.point[i-1], right.point[i], layer);
+        writeFace(out, pt, right[i-1], right[i], layer);
 }
 
 
