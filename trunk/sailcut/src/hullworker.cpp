@@ -75,8 +75,8 @@ CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
      
     /* laying lower chine panel */ 
     unsigned int j;
-    //unsigned int npl = deck.right.nbpoints();   // number of right/left points
-    unsigned int npb = chine.bottom.nbpoints();   // number of bottom/top points
+    //unsigned int npl = deck.right.size();   // number of right/left points
+    unsigned int npb = chine.bottom.size();   // number of bottom/top points
     
     chine.top.fill( ptFwdChine , ptCentreChine );      // centre line
     chine.bottom.fill( ptFwdChine , ptAftChine );      // edge
@@ -186,8 +186,8 @@ CPanelGroup CHullWorker::makeHull() //const
     hull.title = hullID;
     
     /* all the code has to be changed to start building the hull from the lower chine */
-    unsigned int npl = chine.right.nbpoints();     // number of right/left points
-    unsigned int npb = chine.bottom.nbpoints();   // number of bottom/top points
+    unsigned int npl = chine.right.size();     // number of right/left points
+    unsigned int npb = chine.bottom.size();   // number of bottom/top points
     
     deck1 = chine;
     plank1 = chine;

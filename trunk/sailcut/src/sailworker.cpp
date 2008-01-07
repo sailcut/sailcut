@@ -189,8 +189,8 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
 
     /* create number of panels */
     unsigned int npanel = 1;
-    unsigned int npl = lay.panel[0].right.nbpoints();   // number of right/left points
-    unsigned int npb = lay.panel[0].bottom.nbpoints();  // number of bottom/top points
+    unsigned int npl = lay.panel[0].right.size();   // number of right/left points
+    unsigned int npb = lay.panel[0].bottom.size();  // number of bottom/top points
 
     unsigned int j = 0, k = 0, cnt = 0;
     bool flag = false;  // to check if top of sail is reached
@@ -574,8 +574,8 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
 
     /* create number of panels */
     unsigned int npanel = 1;
-    unsigned int npl = lay.panel[0].right.nbpoints();  // number of right/left points
-    unsigned int npb = lay.panel[0].bottom.nbpoints(); // number of bottom/top points
+    unsigned int npl = lay.panel[0].right.size();  // number of right/left points
+    unsigned int npb = lay.panel[0].bottom.size(); // number of bottom/top points
 
     unsigned int j = 0, k = 0, cnt = 0;
     bool flag = false;
@@ -925,8 +925,8 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
 
     /* create number of panels */
     unsigned int npanel = 1;
-    unsigned int npl = lay.panel[0].right.nbpoints();  // number of right/left points
-    unsigned int npb = lay.panel[0].bottom.nbpoints(); // number of bottom/top points
+    unsigned int npl = lay.panel[0].right.size();  // number of right/left points
+    unsigned int npb = lay.panel[0].bottom.size(); // number of bottom/top points
 
     unsigned int j=0, k=0, cnt=0;
     bool flag=false;
@@ -1186,8 +1186,8 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
 
     /* create number of panels */
     unsigned int npanel=1, np=1;
-    unsigned int npl= lay.panel[0].right.nbpoints();   // number of right/left points
-    unsigned int npb= lay.panel[0].bottom.nbpoints(); // number of bottom/top points
+    unsigned int npl= lay.panel[0].right.size();   // number of right/left points
+    unsigned int npb= lay.panel[0].bottom.size(); // number of bottom/top points
 
     /* angle of the half wing from X-Y plane */
     real alfa = (180 - dihedralDeg) * PI/360;
@@ -1567,8 +1567,8 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
 
     /* create number of panels */
     unsigned int npanel = 1;
-    unsigned int npl = lay.panel[0].right.nbpoints();  // number of right/left points
-    unsigned int npb = lay.panel[0].bottom.nbpoints();  // number of bottom/top points
+    unsigned int npl = lay.panel[0].right.size();  // number of right/left points
+    unsigned int npb = lay.panel[0].bottom.size();  // number of bottom/top points
     unsigned int nps[10];   // number of panels per sections
 
     /* create arrays t1 and t2 of type of intersection
@@ -2115,8 +2115,8 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
 
     /* create number of panels */
     unsigned int npanel=1;
-    unsigned int npl= lay.panel[0].right.nbpoints();  // number of right/left points
-    unsigned int npb= lay.panel[0].bottom.nbpoints();  // number of bottom/top points
+    unsigned int npl= lay.panel[0].right.size();  // number of right/left points
+    unsigned int npb= lay.panel[0].bottom.size();  // number of bottom/top points
     unsigned int nps[10];   // number of panels per sections
 
     /* create arrays t1 and t2 of type of intersection
@@ -2617,8 +2617,8 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
 
     /* create number of panels */
     unsigned int npanelFoot = 1, npanel = 1;
-    unsigned int npl= lay.panel[0].right.nbpoints();  // number of right/left points
-    unsigned int npb= lay.panel[0].bottom.nbpoints(); // number of bottom/top points
+    unsigned int npl= lay.panel[0].right.size();  // number of right/left points
+    unsigned int npb= lay.panel[0].bottom.size(); // number of bottom/top points
 
     unsigned int j = 0, k = 0, cnt = 0;
     bool flag = false;
