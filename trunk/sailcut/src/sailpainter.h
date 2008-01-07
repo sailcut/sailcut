@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 1993-2007 Robert & Jeremy Laine
+ * Copyright (C) 1993-2008 Robert & Jeremy Laine
  * See AUTHORS file for a full list of contributors.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -46,6 +46,7 @@ public:
     void draw(const CPanel &panel);
     void draw(const CPanelGroup &sail);
     void draw(const CPanelLabel &label);
+    void drawArrowLabel(const CPoint3d &pDisp, const QStringList &lst, const real angle);
     void drawCross(const CPoint3d &p, const real size);
     void drawTextCentered(const CPoint3d &p, const QString &str);
     void drawTextCentered(const CPoint3d &p, const QStringList &lst);
