@@ -4,6 +4,12 @@ AM_CPPFLAGS = \
 	-I$(top_srcdir) $(QT_INCLUDES) $(X_INCLUDES) $(GLINC) \
 	-DSAILCUT_DOCDIR=\"$(pkgdocdir)\" -DSAILCUT_DATADIR=\"$(pkgdatadir)\"
 
+noinst_PROGRAMS = sailtest
+
+sailtest_SOURCES = panel.cpp panelgroup.cpp saildef.cpp sailcalc.cpp sailmould.cpp sailworker.cpp sailtest.cpp
+sailtest_LDFLAGS = $(QT_LDFLAGS)
+sailtest_LDADD   = geocpp/libgeocpp.a $(LIB_QT)
+
 bin_PROGRAMS = sailcut
 
 # these are the headers
