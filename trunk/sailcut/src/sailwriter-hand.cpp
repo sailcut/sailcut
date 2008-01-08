@@ -40,21 +40,21 @@ void CSailHandWriter::write(const CPanelGroup &sail, const QString &filename) co
     // TODO : modify code to write actual hand output
     //
     // sail is the sail, loop over its panels
-    for(unsigned int i=0; i < sail.panel.size(); i++)
+    for(unsigned int i=0; i < sail.size(); i++)
     {
         myOut << "===== CPanel : " << i << " ====" << endl;
-        myOut << sail.panel[i].label;
-        myOut << "== CSide : left ==" << endl << sail.panel[i].left;
-        myOut << "== CSide : top ==" << endl << sail.panel[i].top;
-        myOut << "== CSide : right ==" << endl << sail.panel[i].right;
-        myOut << "== CSide : bottom ==" << endl << sail.panel[i].bottom;
+        myOut << sail[i].label;
+        myOut << "== CSide : left ==" << endl << sail[i].left;
+        myOut << "== CSide : top ==" << endl << sail[i].top;
+        myOut << "== CSide : right ==" << endl << sail[i].right;
+        myOut << "== CSide : bottom ==" << endl << sail[i].bottom;
 
-        if (sail.panel[i].hasHems)
+        if (sail[i].hasHems)
         {
-            myOut << "== CSide : cutLeft ==" << endl << sail.panel[i].cutLeft;
-            myOut << "== CSide : cutTop ==" << endl << sail.panel[i].cutTop;
-            myOut << "== CSide : cutRight ==" << endl << sail.panel[i].cutRight;
-            myOut << "== CSide : cutBottom ==" << endl << sail.panel[i].cutBottom;
+            myOut << "== CSide : cutLeft ==" << endl << sail[i].cutLeft;
+            myOut << "== CSide : cutTop ==" << endl << sail[i].cutTop;
+            myOut << "== CSide : cutRight ==" << endl << sail[i].cutRight;
+            myOut << "== CSide : cutBottom ==" << endl << sail[i].cutBottom;
         }
     }
 

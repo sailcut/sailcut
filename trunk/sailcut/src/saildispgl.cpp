@@ -94,7 +94,7 @@ void CSailDispGL::draw( const CPanel &panel )
 void CSailDispGL::draw( const CPanelGroup &sail )
 {
     unsigned int i;
-    for( i = 0; i < sail.panel.size(); i++ )
+    for( i = 0; i < sail.size(); i++ )
     {
         if ( sail.type == HULL )
         {
@@ -111,7 +111,7 @@ void CSailDispGL::draw( const CPanelGroup &sail )
             // sail color alternate dark yellow / yellow panels / white
             glColor3f( .8, .7 + 0.05*(i % 3), 0.4 + 0.2*(i % 3));
         }
-        draw( sail.panel[i] );
+        draw( sail[i] );
     }
     for( i = 0; i < sail.child.size(); i++ )
         draw( sail.child[i] );

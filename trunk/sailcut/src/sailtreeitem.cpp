@@ -37,7 +37,7 @@ CSailTreeItem::CSailTreeItem(const CPanelGroup &data, QString name, CSailTreeIte
     itemData << name;
     itemIcon = panelgroup_xpm;
     appendChild(new CSailTreeItem(data.title, "title", this));
-    appendChild(new CSailTreeItem(data.panel, "panel", this));
+    appendChild(new CSailTreeItem((vector<CPanel>)(data), "panel", this));
     if (data.child.size() > 0)
         appendChild(new CSailTreeItem(data.child, "child", this));
 }

@@ -81,7 +81,7 @@ void CSailCarlsonWriter::writePanelHeader(ofstream &out, const CPanel &panel) co
     real xoff =0 , yoff = 0, rtx=0; // position and text rotation from x axis.
     xoff= panel.label.origin.x();
     yoff= panel.label.origin.y();
-    //rtx = atn2(  xoff= panel.label.direction.y(),  xoff= _sail.panel[panel].label.direction.x());
+    //rtx = atn2(  xoff= panel.label.direction.y(),  xoff= _sail[panel].label.direction.x());
 
     out << "panel, "<< string(panel.label.name.toLocal8Bit()) <<", "<<pencolor<<", "<< xoff<<", "<<yoff<<", "<<rtx<<", "<<htx << CRLF;
 }
@@ -103,8 +103,8 @@ void CSailCarlsonWriter::write(const CPanelGroup &sail, const QString &filename)
     out << "Sailcut Carlson plotter development: Test1" << CRLF;
 
     unsigned int pn = 0;
-    for (pn = 0; pn < sail.panel.size(); pn++)
-        writePanel( out, sail.panel[pn] );
+    for (pn = 0; pn < sail.size(); pn++)
+        writePanel( out, sail[pn] );
 
     out << "EOF" << CRLF;
     out.close();

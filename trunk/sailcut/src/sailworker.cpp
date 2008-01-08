@@ -189,8 +189,8 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
 
     /* create number of panels */
     unsigned int npanel = 1;
-    unsigned int npl = lay.panel[0].right.size();   // number of right/left points
-    unsigned int npb = lay.panel[0].bottom.size();  // number of bottom/top points
+    unsigned int npl = lay[0].right.size();   // number of right/left points
+    unsigned int npb = lay[0].bottom.size();  // number of bottom/top points
 
     unsigned int j = 0, k = 0, cnt = 0;
     bool flag = false;  // to check if top of sail is reached
@@ -265,43 +265,43 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
                     p1[npanel] = head;
                     t1[npanel] = 2; // set on luff
                     // left points on foot-tack-luff
-                    lay.panel[npanel-1].left.fill(p1[npanel-1], tack, p1[npanel]);
+                    lay[npanel-1].left.fill(p1[npanel-1], tack, p1[npanel]);
                     for ( k = 0 ; k < npl / 2 ; k++)
-                        lay.panel[npanel-1].left[k] = EdgeIntersect( FOOT_EDGE, lay.panel[npanel-1].left[k] , seamV);
+                        lay[npanel-1].left[k] = EdgeIntersect( FOOT_EDGE, lay[npanel-1].left[k] , seamV);
                     for ( k = npl / 2 +1 ; k < npl ; k++)
-                        lay.panel[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay.panel[npanel-1].left[k] , seamV);
+                        lay[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].left[k] , seamV);
                 }
                 else if ( t1[npanel-1] == 2 )
                 { // left points on luff
                     p1[npanel] = head;
                     t1[npanel] = 2;
-                    lay.panel[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
+                    lay[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
                     for ( k = 0 ; k < npl ; k++)
-                        lay.panel[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay.panel[npanel-1].left[k], seamV);
+                        lay[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].left[k], seamV);
                 }
                 else
                 { // left points on gaff
                     p1[npanel] = p1[npanel-1];
                     t1[npanel] = 3;
-                    lay.panel[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
+                    lay[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
                     for ( k = 0 ; k < npl ; k++)
-                        lay.panel[npanel-1].left[k] = EdgeIntersect( GAFF_EDGE, lay.panel[npanel-1].left[k], seamV);
+                        lay[npanel-1].left[k] = EdgeIntersect( GAFF_EDGE, lay[npanel-1].left[k], seamV);
                 }
 
                 // fill right points on leech
-                lay.panel[npanel-1].right.fill(p2[npanel-1],p2[npanel]);
+                lay[npanel-1].right.fill(p2[npanel-1],p2[npanel]);
                 for ( k = 0 ; k < npl ; k++)
-                    lay.panel[npanel-1].right[k]=EdgeIntersect( LEECH_EDGE, lay.panel[npanel-1].right[k], seamV);
+                    lay[npanel-1].right[k]=EdgeIntersect( LEECH_EDGE, lay[npanel-1].right[k], seamV);
 
                 // fill bottom points
-                lay.panel[npanel-1].bottom.fill(lay.panel[npanel-1].left[0], lay.panel[npanel-1].right[0]);
+                lay[npanel-1].bottom.fill(lay[npanel-1].left[0], lay[npanel-1].right[0]);
 
                 // fill top  points
-                lay.panel[npanel-1].top.fill(lay.panel[npanel-1].left[npl-1], lay.panel[npanel-1].right[npl-1]);
+                lay[npanel-1].top.fill(lay[npanel-1].left[npl-1], lay[npanel-1].right[npl-1]);
 
                 // move all top points of top panel to gaff curve
                 for( k = 1 ; k < npb -1 ; k++)
-                    lay.panel[npanel -1].top[k] = EdgeIntersect( GAFF_EDGE, lay.panel[npanel-1].top[k], CVector3d (head.y()-peak.y(),peak.x()-head.x(),0));
+                    lay[npanel -1].top[k] = EdgeIntersect( GAFF_EDGE, lay[npanel-1].top[k], CVector3d (head.y()-peak.y(),peak.x()-head.x(),0));
                 ////// end peak panel /////
             }
             else   // normal panel  ///////////////////////////
@@ -351,37 +351,37 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
                 */
                 if ( t1[npanel-1] == 1  &&  t1[npanel] == 1 )
                 {   // full foot
-                    lay.panel[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
+                    lay[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
                     for ( k = 0 ; k < npl ; k++)
-                        lay.panel[npanel-1].left[k] = EdgeIntersect( FOOT_EDGE, lay.panel[npanel-1].left[k], seamV);
+                        lay[npanel-1].left[k] = EdgeIntersect( FOOT_EDGE, lay[npanel-1].left[k], seamV);
                 }
                 else if ( t1[npanel-1] == 2  &&  t1[npanel] == 2 )
                 {   // full luff
-                    lay.panel[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
+                    lay[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
                     for ( k = 0 ; k < npl ; k++)
-                        lay.panel[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay.panel[npanel-1].left[k] , seamV);
+                        lay[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].left[k] , seamV);
                 }
                 else if ( t1[npanel-1] == 3  &&  t1[npanel] == 3 )
                 {   // full gaff
-                    lay.panel[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
+                    lay[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
                     for ( k = 0 ; k < npl ; k++)
-                        lay.panel[npanel-1].left[k] = EdgeIntersect( GAFF_EDGE, lay.panel[npanel-1].left[k] , seamV);
+                        lay[npanel-1].left[k] = EdgeIntersect( GAFF_EDGE, lay[npanel-1].left[k] , seamV);
                 }
                 else if ( (t1[npanel-1] == 1) && (t1[npanel] == 2) )
                 {   // foot-tack-luff
-                    lay.panel[npanel-1].left.fill(p1[npanel-1], tack, p1[npanel]);
+                    lay[npanel-1].left.fill(p1[npanel-1], tack, p1[npanel]);
                     for ( k = 0 ; k < npl / 2 ; k++)
-                        lay.panel[npanel-1].left[k] = EdgeIntersect( FOOT_EDGE, lay.panel[npanel-1].left[k], seamV);
+                        lay[npanel-1].left[k] = EdgeIntersect( FOOT_EDGE, lay[npanel-1].left[k], seamV);
                     for ( k = npl / 2 +1 ; k < npl ; k++)
-                        lay.panel[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay.panel[npanel-1].left[k], seamV);
+                        lay[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].left[k], seamV);
                 }
                 else if ( (t1[npanel-1] == 2) && (t1[npanel] == 3) )
                 {   // luff-head-gaff
-                    lay.panel[npanel-1].left.fill(p1[npanel-1], head, p1[npanel]);
+                    lay[npanel-1].left.fill(p1[npanel-1], head, p1[npanel]);
                     for ( k = 0 ; k < npl/2 ; k++)
-                        lay.panel[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay.panel[npanel-1].left[k], seamV);
+                        lay[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].left[k], seamV);
                     for ( k = npl / 2 +1 ; k < npl ; k++)
-                        lay.panel[npanel-1].left[k] = EdgeIntersect( GAFF_EDGE, lay.panel[npanel-1].left[k], seamV);
+                        lay[npanel-1].left[k] = EdgeIntersect( GAFF_EDGE, lay[npanel-1].left[k], seamV);
                 } // end IF ELSE for left side
 
                 /* Below is the code for the intermediate points of the right side
@@ -391,22 +391,22 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
                 if ( CVector3d( p2[npanel] - p2[npanel-1] ) * leechV < 0) 
                     p2[npanel] = p2[npanel-1];
                 
-                lay.panel[npanel-1].right.fill(p2[npanel-1] , p2[npanel]);
+                lay[npanel-1].right.fill(p2[npanel-1] , p2[npanel]);
                 for ( k = 0 ; k < npl ; k++)
-                    lay.panel[npanel-1].right[k] = EdgeIntersect( LEECH_EDGE, lay.panel[npanel-1].right[k], seamV);
+                    lay[npanel-1].right[k] = EdgeIntersect( LEECH_EDGE, lay[npanel-1].right[k], seamV);
 
                 /* Below is the code for the intermediate points of the top and bottom sides.
                 *  The first point is identical to the last point of the left side
                 *  The last point is identical to the last point of the right side
                 */
-                lay.panel[npanel-1].top.fill( lay.panel[npanel-1].left[npl-1] , lay.panel[npanel-1].right[npl-1] );
-                lay.panel[npanel-1].bottom.fill( lay.panel[npanel-1].left[0] , lay.panel[npanel-1].right[0] );
+                lay[npanel-1].top.fill( lay[npanel-1].left[npl-1] , lay[npanel-1].right[npl-1] );
+                lay[npanel-1].bottom.fill( lay[npanel-1].left[0] , lay[npanel-1].right[0] );
 
                 /* Below is the code for the intermediate points of the bottom side of first panel  */
                 if ( npanel == 1 )
                 { // move bottom side of first panel to foot curve
                     for( k = 1 ; k < npb -1 ; k++)
-                    {    lay.panel[0].bottom[k] = EdgeIntersect( FOOT_EDGE, lay.panel[0].bottom[k], CVector3d(0,-1,0));
+                    {    lay[0].bottom[k] = EdgeIntersect( FOOT_EDGE, lay[0].bottom[k], CVector3d(0,-1,0));
                     }
                 }
 
@@ -415,27 +415,27 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
                 { 
                     cout << "Crosscut foot after adding curve" << endl;
                     for( k = 0 ; k < npb ; k++)
-                        cout << "pt="<< k << " xyz=" << lay.panel[0].bottom[k] << endl;                    
+                        cout << "pt="<< k << " xyz=" << lay[0].bottom[k] << endl;                    
                 } 
 #endif
             }  /// end else normal panel ///////////////////////
 
             ///* Now we go over all the points and calculate their z */
             for( k = 0 ; k < npl ; k++ )
-                lay.panel[npanel-1].left[k] = Zpoint(lay.panel[npanel-1].left[k]);
+                lay[npanel-1].left[k] = Zpoint(lay[npanel-1].left[k]);
             for( k = 0 ; k < npl ; k++ )
-                lay.panel[npanel-1].right[k] = Zpoint(lay.panel[npanel-1].right[k]);
+                lay[npanel-1].right[k] = Zpoint(lay[npanel-1].right[k]);
             for( k = 0 ; k < npb ; k++ )
-                lay.panel[npanel-1].top[k] = Zpoint(lay.panel[npanel-1].top[k]);
+                lay[npanel-1].top[k] = Zpoint(lay[npanel-1].top[k]);
             for( k = 0 ; k < npb ; k++ )
-                lay.panel[npanel-1].bottom[k] = Zpoint(lay.panel[npanel-1].bottom[k]);
+                lay[npanel-1].bottom[k] = Zpoint(lay[npanel-1].bottom[k]);
 
 #ifdef DEBUG
             if ( npanel == 1 )
             { // move bottom side of first panel to foot curve
                 cout << "Crosscut foot after Z " << endl;
                 for( k = 0 ; k < npb ; k++)
-                  cout << "pt="<< k << " xyz=" << lay.panel[0].bottom[k] << endl;
+                  cout << "pt="<< k << " xyz=" << lay[0].bottom[k] << endl;
 
                 cout << "---end Z foot----   DO LOOP=" << cnt << endl;
             } 
@@ -444,14 +444,14 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
             ///* Now we develop the current panel */
             if ( npanel == 1 )
             {
-                dev.panel[npanel-1] = lay.panel[npanel-1].develop(ALIGN_TOP);
+                dev[npanel-1] = lay[npanel-1].develop(ALIGN_TOP);
             }
             else
             {
-                dev.panel[npanel-1] = lay.panel[npanel-1].develop(ALIGN_BOTTOM);
+                dev[npanel-1] = lay[npanel-1].develop(ALIGN_BOTTOM);
                 // add deviation of previous panel top edge to bottom edge
                 for( k = 1; k < npb-1; k ++ )
-                    dev.panel[npanel-1].bottom[k] = dev.panel[npanel-1].bottom[k] + deviaPrev[k];
+                    dev[npanel-1].bottom[k] = dev[npanel-1].bottom[k] + deviaPrev[k];
             }
 
             /* Now we compute and store the deviation of top edge of
@@ -460,26 +460,26 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
             */
             if ( flag == false )
             {
-                vb= CMatrix::rot3d(2,PI/2) * CVector3d(dev.panel[npanel-1].top[npb-1] - dev.panel[npanel-1].top[0]).unit();
+                vb= CMatrix::rot3d(2,PI/2) * CVector3d(dev[npanel-1].top[npb-1] - dev[npanel-1].top[0]).unit();
                 for( k = 1 ; k < npb -1 ; k ++)
                 {
-                    vk= CVector3d (dev.panel[npanel-1].top[k] - dev.panel[npanel-1].top[0]);
+                    vk= CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
                     v= vb * -(vk*vb);
                     deviation[k] = v;
-                    dev.panel[npanel-1].top[k] = dev.panel[npanel-1].top[k] + deviation[k];
+                    dev[npanel-1].top[k] = dev[npanel-1].top[k] + deviation[k];
                 }
             }
 
             /* Add the seam and hems allowance */
             if ( npanel == 1 )
-                dev.panel[npanel-1].addHems(hemsW, seamW, leechHemW, hemsW);
+                dev[npanel-1].addHems(hemsW, seamW, leechHemW, hemsW);
             else if ( flag == true )
-                dev.panel[npanel-1].addHems(hemsW, hemsW, leechHemW, 0);
+                dev[npanel-1].addHems(hemsW, hemsW, leechHemW, 0);
             else
-                dev.panel[npanel-1].addHems(hemsW, seamW, leechHemW, 0);
+                dev[npanel-1].addHems(hemsW, seamW, leechHemW, 0);
 
             /* Check the width of developed panel */
-            ymax = dev.panel[npanel-1].height();
+            ymax = dev[npanel-1].height();
             exc = ymax-clothW;
 
             exb = exb + .8 * exc +1; // sum previous correction + 80% of current excess of width
@@ -502,7 +502,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
         /** Now we reposition the developed panel such that
         *  bottom minimum is Y=0 AND left is X=0
         */
-        dev.panel[npanel-1] = dev.panel[npanel-1].reframe(LOW_LEFT);
+        dev[npanel-1] = dev[npanel-1].reframe(LOW_LEFT);
 
         /// check if peak has been reached to break off */
         if ( flag == true )
@@ -517,14 +517,14 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
     CPanelGroup sail(npanel);
 
     for( j = 0 ; j < npanel ; j ++)
-        sail.panel[j] = lay.panel[j];
+        sail[j] = lay[j];
 
     /** copying the developed sail */
     flatsail = CPanelGroup(npanel);
 
     for ( j = 0 ; j < npanel ; j++)
     {
-        flatsail.panel[j] = dev.panel[j];
+        flatsail[j] = dev[j];
     }
 
     /** preparing the displays version of the developed sail */
@@ -532,21 +532,21 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
 
     for ( j = 1 ; j < npanel ; j++)
     {
-        top = dispsail.panel[j-1].top[0];
-        bot = dispsail.panel[j].bottom[0];
+        top = dispsail[j-1].top[0];
+        bot = dispsail[j].bottom[0];
 
         // rotation to align bottom of panel to top of previous panel
-        x = dispsail.panel[j-1].top[npb-1].x() - top.x();
-        y = dispsail.panel[j-1].top[npb-1].y() - top.y();
+        x = dispsail[j-1].top[npb-1].x() - top.x();
+        y = dispsail[j-1].top[npb-1].y() - top.y();
         CC = atan2(y , x);
-        dispsail.panel[j] = dispsail.panel[j].rotate(bot,CMatrix::rot3d(2,CC));
+        dispsail[j] = dispsail[j].rotate(bot,CMatrix::rot3d(2,CC));
 
         // translation v to align panel bottom edge origin to previous panel upper edge origin
         v = CVector3d ( top - CPoint3d(0,0,0) );
         v.x() = v.x() - bot.x();
         v.y() = v.y() + 2 * seamW +20; // adding offset to separate panels vertically
 
-        dispsail.panel[j] = dispsail.panel[j] + v;
+        dispsail[j] = dispsail[j] + v;
     }
 
     return sail;
@@ -574,8 +574,8 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
 
     /* create number of panels */
     unsigned int npanel = 1;
-    unsigned int npl = lay.panel[0].right.size();  // number of right/left points
-    unsigned int npb = lay.panel[0].bottom.size(); // number of bottom/top points
+    unsigned int npl = lay[0].right.size();  // number of right/left points
+    unsigned int npb = lay[0].bottom.size(); // number of bottom/top points
 
     unsigned int j = 0, k = 0, cnt = 0;
     bool flag = false;
@@ -649,33 +649,33 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
                 { // left points on luff
                     p1[npanel] = head;
                     t1[npanel] = 2;
-                    lay.panel[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
+                    lay[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
                     for ( k = 0; k < npl; k++ )
-                        lay.panel[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay.panel[npanel-1].left[k], seamV);
+                        lay[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].left[k], seamV);
                 }
                 else
                 { // left points on gaff
                     p1[npanel] = p1[npanel-1];
                     t1[npanel] = 3;
-                    lay.panel[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
+                    lay[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
                     for ( k = 0; k < npl; k++ )
-                        lay.panel[npanel-1].left[k] = EdgeIntersect( GAFF_EDGE, lay.panel[npanel-1].left[k], seamV);
+                        lay[npanel-1].left[k] = EdgeIntersect( GAFF_EDGE, lay[npanel-1].left[k], seamV);
                 }
 
                 // fill right points on leech
-                lay.panel[npanel-1].right.fill(p2[npanel-1] , p2[npanel]);
+                lay[npanel-1].right.fill(p2[npanel-1] , p2[npanel]);
                 for ( k = 0; k < npl; k++ )
-                    lay.panel[npanel-1].right[k] = EdgeIntersect( LEECH_EDGE, lay.panel[npanel-1].right[k], seamV);
+                    lay[npanel-1].right[k] = EdgeIntersect( LEECH_EDGE, lay[npanel-1].right[k], seamV);
 
                 // fill bottom points
-                lay.panel[npanel-1].bottom.fill(lay.panel[npanel-1].left[0], lay.panel[npanel-1].right[0]);
+                lay[npanel-1].bottom.fill(lay[npanel-1].left[0], lay[npanel-1].right[0]);
 
                 // fill top  points
-                lay.panel[npanel-1].top.fill(lay.panel[npanel-1].left[npl-1], lay.panel[npanel-1].right[npl-1]);
+                lay[npanel-1].top.fill(lay[npanel-1].left[npl-1], lay[npanel-1].right[npl-1]);
 
                 // move all top points to gaff curve
                 for( k=1; k < npb-1; k++ )
-                    lay.panel[npanel-1].top[k] = EdgeIntersect( GAFF_EDGE, lay.panel[npanel-1].top[k], CVector3d (head.y()-peak.y() , peak.x()-head.x() , 0));
+                    lay[npanel-1].top[k] = EdgeIntersect( GAFF_EDGE, lay[npanel-1].top[k], CVector3d (head.y()-peak.y() , peak.x()-head.x() , 0));
 
                 ///// end peak panel //////
             }
@@ -724,24 +724,24 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
                  */
                 if (t1[npanel-1] == 2 && t1[npanel] == 2)
                 { // full luff
-                    lay.panel[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
+                    lay[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
 
                     for ( k = 0; k < npl; k++ )
-                        lay.panel[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay.panel[npanel-1].left[k], seamVT);
+                        lay[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].left[k], seamVT);
                 }
                 else if (t1[npanel-1] == 3 && t1[npanel] == 3)
                 { // full gaff
-                    lay.panel[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
+                    lay[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
                     for ( k = 0; k < npl; k++ )
-                        lay.panel[npanel-1].left[k] = EdgeIntersect( GAFF_EDGE, lay.panel[npanel-1].left[k], seamV);
+                        lay[npanel-1].left[k] = EdgeIntersect( GAFF_EDGE, lay[npanel-1].left[k], seamV);
                 }
                 else if ((t1[npanel-1] ==2 ) && (t1[npanel] == 3))
                 { // luff-head-gaff
-                    lay.panel[npanel-1].left.fill(p1[npanel-1] , head, p1[npanel]);
+                    lay[npanel-1].left.fill(p1[npanel-1] , head, p1[npanel]);
                     for ( k = 0; k < npl/2; k++ )
-                        lay.panel[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay.panel[npanel-1].left[k], seamV);
+                        lay[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].left[k], seamV);
                     for ( k = npl/2 +1; k < npl; k++ )
-                        lay.panel[npanel-1].left[k] = EdgeIntersect( GAFF_EDGE, lay.panel[npanel-1].left[k], seamV);
+                        lay[npanel-1].left[k] = EdgeIntersect( GAFF_EDGE, lay[npanel-1].left[k], seamV);
                 } // end IF ELSE for left side
 
                 /* Below is the code for the intermediate points of the right side
@@ -751,22 +751,22 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
                 if ( CVector3d( p2[npanel] - p2[npanel-1] ) * leechV < 0 ) 
                     p2[npanel] = p2[npanel-1];
                 
-                lay.panel[npanel-1].right.fill(p2[npanel-1] , p2[npanel]);
+                lay[npanel-1].right.fill(p2[npanel-1] , p2[npanel]);
                 for ( k = 0; k < npl; k++ )
-                    lay.panel[npanel-1].right[k] = EdgeIntersect( LEECH_EDGE, lay.panel[npanel-1].right[k], seamV);
+                    lay[npanel-1].right[k] = EdgeIntersect( LEECH_EDGE, lay[npanel-1].right[k], seamV);
 
                 /* Below is the code for the intermediate points of the top and bottom sides.
                  *  The first point is identical to the last point of the left side
                  *  The last point is identical to the last point of the right side
                  */
-                lay.panel[npanel-1].top.fill(lay.panel[npanel-1].left[npl-1], lay.panel[npanel-1].right[npl-1]);
-                lay.panel[npanel-1].bottom.fill(lay.panel[npanel-1].left[0], lay.panel[npanel-1].right[0]);
+                lay[npanel-1].top.fill(lay[npanel-1].left[npl-1], lay[npanel-1].right[npl-1]);
+                lay[npanel-1].bottom.fill(lay[npanel-1].left[0], lay[npanel-1].right[0]);
 #ifdef DEBUG
                 if ( npanel == 1 )
                 { 
                     cout << "Twist foot straight  - LOOP= "<< cnt << endl;
                     for( k = 0 ; k < npb ; k++)
-                        cout << "pt="<< k << " Bottom xyz= " << lay.panel[0].bottom[k] << " Top xyz= " << lay.panel[0].top[k] << endl;                    
+                        cout << "pt="<< k << " Bottom xyz= " << lay[0].bottom[k] << " Top xyz= " << lay[0].top[k] << endl;                    
                 } 
 #endif
 
@@ -775,30 +775,30 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
                 if ( npanel == 1 )
                 { // move bottom side of first panel to foot curve
                     for( k = 1 ; k < npb-1 ; k++ )
-                        lay.panel[0].bottom[k] = EdgeIntersect( FOOT_EDGE,  lay.panel[0].bottom[k] , footVP );
+                        lay[0].bottom[k] = EdgeIntersect( FOOT_EDGE,  lay[0].bottom[k] , footVP );
                 }
                 
             } /// end else normal panel ///////////////////////
 
             ///* Now we go over all the points and calculate their z */
             for( k = 0; k < npl; k++ )
-                lay.panel[npanel-1].left[k] = Zpoint(lay.panel[npanel-1].left[k]);
+                lay[npanel-1].left[k] = Zpoint(lay[npanel-1].left[k]);
             for( k = 0; k < npl; k++ )
-                lay.panel[npanel-1].right[k] = Zpoint(lay.panel[npanel-1].right[k]);
+                lay[npanel-1].right[k] = Zpoint(lay[npanel-1].right[k]);
             for( k = 0; k < npb; k++ )
-                lay.panel[npanel-1].top[k] = Zpoint(lay.panel[npanel-1].top[k]);
+                lay[npanel-1].top[k] = Zpoint(lay[npanel-1].top[k]);
             for( k = 0; k < npb; k++ )
-                lay.panel[npanel-1].bottom[k] = Zpoint(lay.panel[npanel-1].bottom[k]);
+                lay[npanel-1].bottom[k] = Zpoint(lay[npanel-1].bottom[k]);
 
             ///* Now we develop the current panel */
             if ( npanel == 1 )
-                dev.panel[npanel-1] = lay.panel[npanel-1].develop(ALIGN_TOP);
+                dev[npanel-1] = lay[npanel-1].develop(ALIGN_TOP);
             else
             {
-                dev.panel[npanel-1] = lay.panel[npanel-1].develop(ALIGN_BOTTOM);
+                dev[npanel-1] = lay[npanel-1].develop(ALIGN_BOTTOM);
                 // add deviation of previous panel top edge to this bottom edge
                 for( k = 1 ; k < npb-1 ; k++ )
-                    dev.panel[npanel-1].bottom[k] = dev.panel[npanel-1].bottom[k] + deviaPrev[k];
+                    dev[npanel-1].bottom[k] = dev[npanel-1].bottom[k] + deviaPrev[k];
             }
 
             /** Now we compute and store the deviation of top edge of developed panel
@@ -806,37 +806,37 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
              */
             if (flag == false)
             {
-                vb= CMatrix::rot3d(2,PI/2) * CVector3d(dev.panel[npanel-1].top[npb-1] - dev.panel[npanel-1].top[0]).unit();
+                vb= CMatrix::rot3d(2,PI/2) * CVector3d(dev[npanel-1].top[npb-1] - dev[npanel-1].top[0]).unit();
                 for( k = 1 ; k < npb-1 ; k++ )
                 {
-                    vk= CVector3d (dev.panel[npanel-1].top[k] - dev.panel[npanel-1].top[0]);
+                    vk= CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
                     v= vb * -(vk * vb);
                     deviation[k] = v;
-                    dev.panel[npanel-1].top[k] = dev.panel[npanel-1].top[k] + deviation[k];
+                    dev[npanel-1].top[k] = dev[npanel-1].top[k] + deviation[k];
                 }
             }
 
             ///* Now we add the seam and hems allowance */
             if (npanel == 1)
-                dev.panel[npanel-1].addHems(hemsW, seamW, leechHemW, hemsW);
+                dev[npanel-1].addHems(hemsW, seamW, leechHemW, hemsW);
             else if(flag == true)
-                dev.panel[npanel-1].addHems(hemsW, hemsW, leechHemW, 0);
+                dev[npanel-1].addHems(hemsW, hemsW, leechHemW, 0);
             else
-                dev.panel[npanel-1].addHems(hemsW, seamW, leechHemW, 0);
+                dev[npanel-1].addHems(hemsW, seamW, leechHemW, 0);
 
 #ifdef DEBUG
             if ( npanel == 1 )
             { // move bottom side of first panel to foot curve
                 cout << "Twist foot after adding seams " << endl;
                 for( k = 0 ; k < npb ; k++)
-                    cout << "pt="<< k << " xyz=" << dev.panel[0].bottom[k] << endl;
+                    cout << "pt="<< k << " xyz=" << dev[0].bottom[k] << endl;
 
                 cout << "------END LOOP="<< cnt << endl;
             }
 #endif	
  
             ///* Now we check the width of developed panel */
-            ymax = dev.panel[npanel-1].height();
+            ymax = dev[npanel-1].height();
             exc = ymax - clothW;
 
             exb = exb +.8 * exc +1;
@@ -856,7 +856,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
         /** Now we reposition the developed panel such that
          *  bottom minimum is Y=0 AND most left point is X=0
          */
-        dev.panel[npanel-1] = dev.panel[npanel-1].reframe(LOW_LEFT);
+        dev[npanel-1] = dev[npanel-1].reframe(LOW_LEFT);
 
         ///* check if peak has been reached to break off */
         if ( flag == true )
@@ -870,34 +870,34 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
     /** copying the sails for display **** */
     CPanelGroup sail(npanel);
     for( j = 0; j < npanel; j++ )
-        sail.panel[j] = lay.panel[j];
+        sail[j] = lay[j];
 
     /** copying the developed sail */
     flatsail = CPanelGroup(npanel);
 
     for (j = 0; j < npanel; j++ )
-        flatsail.panel[j] = dev.panel[j];
+        flatsail[j] = dev[j];
 
     /** preparing the displays version of the developed sail */
     dispsail = flatsail;
 
     for ( j = 1; j < npanel; j++ )
     {
-        top = dispsail.panel[j-1].top[0];
-        bot = dispsail.panel[j].bottom[0];
+        top = dispsail[j-1].top[0];
+        bot = dispsail[j].bottom[0];
 
         // rotation to align bottom of panel to top of previous panel
-        x = dispsail.panel[j-1].top[npb-1].x() - top.x();
-        y = dispsail.panel[j-1].top[npb-1].y() - top.y();
+        x = dispsail[j-1].top[npb-1].x() - top.x();
+        y = dispsail[j-1].top[npb-1].y() - top.y();
         CC = atan2(y,x);
-        dispsail.panel[j] = dispsail.panel[j].rotate(bot,CMatrix::rot3d(2,CC));
+        dispsail[j] = dispsail[j].rotate(bot,CMatrix::rot3d(2,CC));
 
         // translation v to align panel bottom edge origin to previous panel upper edge origin
         v = top;
         v.x() -= bot.x();
         v.y() += 2 * seamW +20; // adding offset to separate panels vertically
 
-        dispsail.panel[j] = dispsail.panel[j] + v;
+        dispsail[j] = dispsail[j] + v;
     }
 
     return sail;
@@ -925,8 +925,8 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
 
     /* create number of panels */
     unsigned int npanel = 1;
-    unsigned int npl = lay.panel[0].right.size();  // number of right/left points
-    unsigned int npb = lay.panel[0].bottom.size(); // number of bottom/top points
+    unsigned int npl = lay[0].right.size();  // number of right/left points
+    unsigned int npb = lay[0].bottom.size(); // number of bottom/top points
 
     unsigned int j=0, k=0, cnt=0;
     bool flag=false;
@@ -1024,64 +1024,64 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
             if ( t2[npanel-1] == 2 && t2[npanel] == 2 )
             {
                 // printf ("full luff \n");
-                lay.panel[npanel-1].right.fill(p2[npanel-1], p2[npanel]);
+                lay[npanel-1].right.fill(p2[npanel-1], p2[npanel]);
                 for ( k = 0; k < npl; k++ )
-                    lay.panel[npanel-1].right[k] = EdgeIntersect( LUFF_EDGE, lay.panel[npanel-1].right[k], seamV);
+                    lay[npanel-1].right[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].right[k], seamV);
             }
             else if ( t2[npanel-1] == 3 && t2[npanel] == 2 )
             {
                 // printf ("gaff-head-luff \n");
-                lay.panel[npanel-1].right.fill(p2[npanel-1], head, p2[npanel]);
+                lay[npanel-1].right.fill(p2[npanel-1], head, p2[npanel]);
 
                 for ( k = 0; k < npl/2; k++ )
-                    lay.panel[npanel-1].right[k] = EdgeIntersect( GAFF_EDGE, lay.panel[npanel-1].right[k], seamV);
+                    lay[npanel-1].right[k] = EdgeIntersect( GAFF_EDGE, lay[npanel-1].right[k], seamV);
 
                 for ( k = npl/2+1; k < npl; k++ )
-                    lay.panel[npanel-1].right[k] = EdgeIntersect( LUFF_EDGE, lay.panel[npanel-1].right[k], seamV);
+                    lay[npanel-1].right[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].right[k], seamV);
             }
             else
             {
                 // printf ("full gaff \n");
-                lay.panel[npanel-1].right.fill(p2[npanel-1], p2[npanel]);
+                lay[npanel-1].right.fill(p2[npanel-1], p2[npanel]);
 
                 for ( k = 0; k < npl; k++ )
-                    lay.panel[npanel-1].right[k] = EdgeIntersect( GAFF_EDGE, lay.panel[npanel-1].right[k], seamV);
+                    lay[npanel-1].right[k] = EdgeIntersect( GAFF_EDGE, lay[npanel-1].right[k], seamV);
             }
             //// fill left side points which are all on foot
-            lay.panel[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
+            lay[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
             for ( k = 0; k < npl; k++ )
-                lay.panel[npanel-1].left[k] = EdgeIntersect( FOOT_EDGE, lay.panel[npanel-1].left[k], leechV);
+                lay[npanel-1].left[k] = EdgeIntersect( FOOT_EDGE, lay[npanel-1].left[k], leechV);
 
             // fill bottom points
-            lay.panel[npanel-1].bottom.fill(lay.panel[npanel-1].left[0], lay.panel[npanel-1].right[0]);
+            lay[npanel-1].bottom.fill(lay[npanel-1].left[0], lay[npanel-1].right[0]);
             if ( npanel == 1 )
             {
                 // bottom is on the leech
                 for ( k = 0; k < npb; k++ )
-                    lay.panel[npanel-1].bottom[k] = EdgeIntersect( LEECH_EDGE, lay.panel[npanel-1].bottom[k], leechVP);
+                    lay[npanel-1].bottom[k] = EdgeIntersect( LEECH_EDGE, lay[npanel-1].bottom[k], leechVP);
             }
 
             //// fill top side points on seam
-            lay.panel[npanel-1].top.fill(lay.panel[npanel-1].left[npl-1], lay.panel[npanel-1].right[npl-1]);
+            lay[npanel-1].top.fill(lay[npanel-1].left[npl-1], lay[npanel-1].right[npl-1]);
             /* Now we go over all the points and calculate their z */
             for( k = 0; k < npl; k ++ )
-                lay.panel[npanel-1].left[k] = Zpoint(lay.panel[npanel-1].left[k]);
+                lay[npanel-1].left[k] = Zpoint(lay[npanel-1].left[k]);
             for( k = 0; k < npl; k ++ )
-                lay.panel[npanel-1].right[k] = Zpoint(lay.panel[npanel-1].right[k]);
+                lay[npanel-1].right[k] = Zpoint(lay[npanel-1].right[k]);
             for( k = 0; k < npb; k ++ )
-                lay.panel[npanel-1].top[k] = Zpoint(lay.panel[npanel-1].top[k]);
+                lay[npanel-1].top[k] = Zpoint(lay[npanel-1].top[k]);
             for( k = 0; k < npb; k ++ )
-                lay.panel[npanel-1].bottom[k] = Zpoint(lay.panel[npanel-1].bottom[k]);
+                lay[npanel-1].bottom[k] = Zpoint(lay[npanel-1].bottom[k]);
 
             /** Now we develop the current panel */
             if ( npanel == 1 )
-                dev.panel[npanel-1] = lay.panel[npanel-1].develop(ALIGN_TOP);
+                dev[npanel-1] = lay[npanel-1].develop(ALIGN_TOP);
             else
             {
-                dev.panel[npanel-1] = lay.panel[npanel-1].develop(ALIGN_BOTTOM);
+                dev[npanel-1] = lay[npanel-1].develop(ALIGN_BOTTOM);
                 // add deviation of previous panel top edge to bottom edge
                 for( k = 1; k < npb-1; k ++ )
-                    dev.panel[npanel-1].bottom[k] = dev.panel[npanel-1].bottom[k] + deviaPrev[k];
+                    dev[npanel-1].bottom[k] = dev[npanel-1].bottom[k] + deviaPrev[k];
             }
 
             /** Now we compute the deviation of top edge of developed panel
@@ -1089,26 +1089,26 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
             */
             if ( flag == false )
             {
-                vb = CMatrix::rot3d(2,PI/2)*CVector3d(dev.panel[npanel-1].top[npb-1] -dev.panel[npanel-1].top[0]).unit();
+                vb = CMatrix::rot3d(2,PI/2)*CVector3d(dev[npanel-1].top[npb-1] -dev[npanel-1].top[0]).unit();
                 for( k = 1; k < npb-1; k ++)
                 {
-                    vk = CVector3d (dev.panel[npanel-1].top[k] - dev.panel[npanel-1].top[0]);
+                    vk = CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
                     v = vb * -(vk*vb);
                     deviation[k] = v;
-                    dev.panel[npanel-1].top[k] = dev.panel[npanel-1].top[k] + deviation[k];
+                    dev[npanel-1].top[k] = dev[npanel-1].top[k] + deviation[k];
                 }
             }
 
             /** Now we add the seam and hems allowance */
             if ( npanel == 1 )
-                dev.panel[npanel-1].addHems(hemsW, seamW, hemsW, leechHemW);
+                dev[npanel-1].addHems(hemsW, seamW, hemsW, leechHemW);
             else if( flag == true )
-                dev.panel[npanel-1].addHems(hemsW, hemsW, hemsW, 0);
+                dev[npanel-1].addHems(hemsW, hemsW, hemsW, 0);
             else
-                dev.panel[npanel-1].addHems(hemsW, seamW, hemsW, 0);
+                dev[npanel-1].addHems(hemsW, seamW, hemsW, 0);
 
             /** Now we check the width of developed panel */
-            ymax = dev.panel[npanel-1].height();
+            ymax = dev[npanel-1].height();
             exc = ymax - clothW; // current excess of width
 
             exb = exb + .8 * exc +1; // sum previous correction + 80% of current excess of width +1mm
@@ -1122,7 +1122,7 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
             deviaPrev[k] = deviation[k];
 
         /** Now we reposition the developed panel such that bottom left is X=0 Y=0 */
-        dev.panel[npanel-1] = dev.panel[npanel-1].reframe(LOW_LEFT);
+        dev[npanel-1] = dev[npanel-1].reframe(LOW_LEFT);
 
         /** check if peak has been reached to break off */
         if ( flag == true )
@@ -1137,28 +1137,28 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
     /* copying the sails for display */
     CPanelGroup sail( npanel );
     for( j = 0; j < npanel; j++ )
-        sail.panel[j] = lay.panel[j];
+        sail[j] = lay[j];
 
     /** copying the developed sail into flatsail */
     flatsail = CPanelGroup( npanel );
 
     for ( j = 0; j < npanel; j++ )
-        flatsail.panel[j] = dev.panel[j];
+        flatsail[j] = dev[j];
 
     /** preparing the displays version of the developed sail */
     dispsail = flatsail;
 
     for ( j = 1; j < npanel; j++ )
     {
-        top = dispsail.panel[j-1].top[0];
-        bot = dispsail.panel[j].bottom[0];
+        top = dispsail[j-1].top[0];
+        bot = dispsail[j].bottom[0];
 
         // translation v to align panel bottom edge origin to previous panel upper edge origin
         v = top;
         v.x() -= bot.x();
         v.y() += 2 * seamW +10; // adding offset to separate panels vertically
 
-        dispsail.panel[j] = dispsail.panel[j] + v;
+        dispsail[j] = dispsail[j] + v;
     }
 
     return sail;
@@ -1186,8 +1186,8 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
 
     /* create number of panels */
     unsigned int npanel=1, np=1;
-    unsigned int npl= lay.panel[0].right.size();   // number of right/left points
-    unsigned int npb= lay.panel[0].bottom.size(); // number of bottom/top points
+    unsigned int npl= lay[0].right.size();   // number of right/left points
+    unsigned int npb= lay[0].bottom.size(); // number of bottom/top points
 
     /* angle of the half wing from X-Y plane */
     real alfa = (180 - dihedralDeg) * PI/360;
@@ -1253,43 +1253,43 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
                 p1[npanel] = head;
                 t1[npanel] = 2; // set on luff
                 // left points on foot-tack-luff
-                lay.panel[npanel-1].left.fill(p1[npanel-1], tack, p1[npanel]);
+                lay[npanel-1].left.fill(p1[npanel-1], tack, p1[npanel]);
                 for ( k = 0; k < npl/2; k++ )
-                    lay.panel[npanel-1].left[k] = EdgeIntersect( FOOT_EDGE, lay.panel[npanel-1].left[k], seamV);
+                    lay[npanel-1].left[k] = EdgeIntersect( FOOT_EDGE, lay[npanel-1].left[k], seamV);
                 for ( k = npl/2 +1; k < npl; k++ )
-                    lay.panel[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay.panel[npanel-1].left[k], seamV);
+                    lay[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].left[k], seamV);
             }
             else if (t1[npanel-1] == 2)
             { // left points on luff
                 p1[npanel] = head;
                 t1[npanel] = 2;
-                lay.panel[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
+                lay[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
                 for ( k = 0; k < npl; k++ )
-                    lay.panel[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay.panel[npanel-1].left[k], seamV);
+                    lay[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].left[k], seamV);
             }
             else
             { // left points on gaff
                 p1[npanel] = p1[npanel-1];
                 t1[npanel] = 3;
-                lay.panel[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
+                lay[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
                 for ( k = 0; k < npl; k++ )
-                    lay.panel[npanel-1].left[k] = EdgeIntersect( GAFF_EDGE, lay.panel[npanel-1].left[k], seamV);
+                    lay[npanel-1].left[k] = EdgeIntersect( GAFF_EDGE, lay[npanel-1].left[k], seamV);
             }
 
             // fill right points on leech
-            lay.panel[npanel-1].right.fill(p2[npanel-1],p2[npanel]);
+            lay[npanel-1].right.fill(p2[npanel-1],p2[npanel]);
             for ( k = 0; k < npl; k++ )
-                lay.panel[npanel-1].right[k] = EdgeIntersect( LEECH_EDGE, lay.panel[npanel-1].right[k], seamV);
+                lay[npanel-1].right[k] = EdgeIntersect( LEECH_EDGE, lay[npanel-1].right[k], seamV);
 
             // fill bottom points
-            lay.panel[npanel-1].bottom.fill(lay.panel[npanel-1].left[0], lay.panel[npanel-1].right[0]);
+            lay[npanel-1].bottom.fill(lay[npanel-1].left[0], lay[npanel-1].right[0]);
 
             // fill top  points
-            lay.panel[npanel-1].top.fill(lay.panel[npanel-1].left[npl-1], lay.panel[npanel-1].right[npl-1]);
+            lay[npanel-1].top.fill(lay[npanel-1].left[npl-1], lay[npanel-1].right[npl-1]);
 
             // move all top points of top panel to gaff curve
             for( k = 1; k < npb-1; k++ )
-                lay.panel[npanel-1].top[k] = EdgeIntersect( GAFF_EDGE, lay.panel[npanel-1].top[k], CVector3d (head.y()-peak.y(),peak.x()-head.x(),0));
+                lay[npanel-1].top[k] = EdgeIntersect( GAFF_EDGE, lay[npanel-1].top[k], CVector3d (head.y()-peak.y(),peak.x()-head.x(),0));
 
             /// end peak panel
         }
@@ -1343,102 +1343,102 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
             if ( t1[npanel-1] == 1 && t1[npanel] == 1 )
             {
                 // full foot
-                lay.panel[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
+                lay[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
                 for ( k = 0; k < npl; k++ )
-                    lay.panel[npanel-1].left[k] = EdgeIntersect( FOOT_EDGE, lay.panel[npanel-1].left[k], seamV);
+                    lay[npanel-1].left[k] = EdgeIntersect( FOOT_EDGE, lay[npanel-1].left[k], seamV);
             }
             else if ( t1[npanel-1] == 2 && t1[npanel] == 2 )
             {
                 // full luff
-                lay.panel[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
+                lay[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
                 for ( k = 0; k < npl; k++ )
-                    lay.panel[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay.panel[npanel-1].left[k], seamV);
+                    lay[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].left[k], seamV);
             }
             else if ( t1[npanel-1] == 3 && t1[npanel] == 3 )
             {
                 // full gaff
-                lay.panel[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
+                lay[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
                 for ( k = 0; k < npl; k++ )
-                    lay.panel[npanel-1].left[k] = EdgeIntersect( GAFF_EDGE, lay.panel[npanel-1].left[k], seamV);
+                    lay[npanel-1].left[k] = EdgeIntersect( GAFF_EDGE, lay[npanel-1].left[k], seamV);
             }
             else if ( t1[npanel-1] == 1 && t1[npanel] == 2 )
             {
                 // foot-tack-luff
-                lay.panel[npanel-1].left.fill(p1[npanel-1], tack, p1[npanel]);
+                lay[npanel-1].left.fill(p1[npanel-1], tack, p1[npanel]);
                 for ( k = 0; k < npl/2; k++ )
-                    lay.panel[npanel-1].left[k] = EdgeIntersect( FOOT_EDGE, lay.panel[npanel-1].left[k], seamV);
+                    lay[npanel-1].left[k] = EdgeIntersect( FOOT_EDGE, lay[npanel-1].left[k], seamV);
                 for ( k = npl/2 +1; k < npl; k++ )
-                    lay.panel[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay.panel[npanel-1].left[k], seamV);
+                    lay[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].left[k], seamV);
             }
             else if ( t1[npanel-1] == 2 && t1[npanel] == 3 )
             {
                 // luff-head-gaff
-                lay.panel[npanel-1].left.fill(p1[npanel-1], head, p1[npanel]);
+                lay[npanel-1].left.fill(p1[npanel-1], head, p1[npanel]);
                 for ( k = 0; k < npl / 2; k++ )
-                    lay.panel[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay.panel[npanel-1].left[k], seamV);
+                    lay[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].left[k], seamV);
                 for ( k = npl/2 +1; k < npl; k++ )
-                    lay.panel[npanel-1].left[k] = EdgeIntersect( GAFF_EDGE, lay.panel[npanel-1].left[k], seamV);
+                    lay[npanel-1].left[k] = EdgeIntersect( GAFF_EDGE, lay[npanel-1].left[k], seamV);
             } // end IF ELSE for left side
 
             /* Below is the code for the intermediate points of the right side
             *  which are all on the leech for a crosscut layout.
             */
-            lay.panel[npanel-1].right.fill(p2[npanel-1],p2[npanel]);
+            lay[npanel-1].right.fill(p2[npanel-1],p2[npanel]);
             for ( k = 0; k < npl; k++ )
-                lay.panel[npanel-1].right[k] = EdgeIntersect( LEECH_EDGE, lay.panel[npanel-1].right[k], seamV);
+                lay[npanel-1].right[k] = EdgeIntersect( LEECH_EDGE, lay[npanel-1].right[k], seamV);
 
             /* Below is the code for the intermediate points of the top and bottom sides.
             *  The first point is identical to the last point of the left side
             *  The last point is identical to the last point of the right side
             */
-            lay.panel[npanel-1].top.fill(lay.panel[npanel-1].left[npl-1], lay.panel[npanel-1].right[npl-1]);
-            lay.panel[npanel-1].bottom.fill(lay.panel[npanel-1].left[0], lay.panel[npanel-1].right[0]);
+            lay[npanel-1].top.fill(lay[npanel-1].left[npl-1], lay[npanel-1].right[npl-1]);
+            lay[npanel-1].bottom.fill(lay[npanel-1].left[0], lay[npanel-1].right[0]);
 
             /* Below is the code for the intermediate points of the bottom side of first panel  */
             if ( npanel == 1 )
             { // move bottom side of first panel to foot curve
                 for( k = 1; k < npb -1; k++ )
-                    lay.panel[0].bottom[k] = EdgeIntersect( FOOT_EDGE, lay.panel[0].bottom[k], CVector3d(0,-1,0));
+                    lay[0].bottom[k] = EdgeIntersect( FOOT_EDGE, lay[0].bottom[k], CVector3d(0,-1,0));
             }
         } //// end else normal panel ///////////////////////
 
         /* Now we go over all the points and calculate their z */
         for( k = 0 ; k < npl ; k++ )
-            lay.panel[npanel-1].left[k] = Zpoint( lay.panel[npanel-1].left[k] );
+            lay[npanel-1].left[k] = Zpoint( lay[npanel-1].left[k] );
 
         for( k = 0 ; k < npl ; k++ )
-            lay.panel[npanel-1].right[k] = Zpoint( lay.panel[npanel-1].right[k] );
+            lay[npanel-1].right[k] = Zpoint( lay[npanel-1].right[k] );
 
         for( k = 0 ; k < npb ; k++ )
-            lay.panel[npanel-1].top[k] = Zpoint( lay.panel[npanel-1].top[k] );
+            lay[npanel-1].top[k] = Zpoint( lay[npanel-1].top[k] );
 
         for( k = 0 ; k < npb ; k++ )
-            lay.panel[npanel-1].bottom[k] = Zpoint( lay.panel[npanel-1].bottom[k] ) ;
+            lay[npanel-1].bottom[k] = Zpoint( lay[npanel-1].bottom[k] ) ;
 
         /* Now we rotate the panel by the dihedral angle */
-        lay.panel[npanel-1] = lay.panel[npanel-1].rotate(tack , CMatrix::rot3d(0 , alfa) );
+        lay[npanel-1] = lay[npanel-1].rotate(tack , CMatrix::rot3d(0 , alfa) );
 
         /* and if it is the first panel we cut the foot to tack level */
         if ( npanel == 1 )
         {
             for( k=0; k < npb-1; k++ )
-                lay.panel[0].bottom[k].y() = tack.y();
+                lay[0].bottom[k].y() = tack.y();
                 
-            lay.panel[0].left[0].y() = tack.y();
-            lay.panel[0].right[0].y() = tack.y();
+            lay[0].left[0].y() = tack.y();
+            lay[0].right[0].y() = tack.y();
         }
 
         /* Now we develop the current panel */
         if ( npanel == 1 )
         {
-            dev.panel[npanel-1] = lay.panel[npanel-1].develop(ALIGN_TOP);
+            dev[npanel-1] = lay[npanel-1].develop(ALIGN_TOP);
         }
         else
         {
-            dev.panel[npanel-1] = lay.panel[npanel-1].develop(ALIGN_BOTTOM);
+            dev[npanel-1] = lay[npanel-1].develop(ALIGN_BOTTOM);
             // add deviation of previous panel top edge to bottom edge
             for( k = 1; k < npb-1; k ++ )
-                dev.panel[npanel-1].bottom[k] = dev.panel[npanel-1].bottom[k] + deviaPrev[k];
+                dev[npanel-1].bottom[k] = dev[npanel-1].bottom[k] + deviaPrev[k];
         }
 
         /* Now we compute and store the deviation of top edge of
@@ -1447,23 +1447,23 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
         */
         if ( flag == false )
         {
-            vb= CMatrix::rot3d(2,PI/2)*CVector3d(dev.panel[npanel-1].top[npb-1] -dev.panel[npanel-1].top[0]).unit();
+            vb= CMatrix::rot3d(2,PI/2)*CVector3d(dev[npanel-1].top[npb-1] -dev[npanel-1].top[0]).unit();
             for( k = 1; k < npb-1; k ++ )
             {
-                vk= CVector3d (dev.panel[npanel-1].top[k] - dev.panel[npanel-1].top[0]);
+                vk= CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
                 v= vb * -(vk*vb);
                 deviation[k] = v;
-                dev.panel[npanel-1].top[k] = dev.panel[npanel-1].top[k] + deviation[k];
+                dev[npanel-1].top[k] = dev[npanel-1].top[k] + deviation[k];
             }
         }
 
         ///* Now we add the seam and hems allowance */
         if ( npanel == 1 )
-            dev.panel[npanel-1].addHems(hemsW, seamW, leechHemW, seamW);
+            dev[npanel-1].addHems(hemsW, seamW, leechHemW, seamW);
         else if ( flag == true )
-            dev.panel[npanel-1].addHems(hemsW, hemsW, leechHemW, 0);
+            dev[npanel-1].addHems(hemsW, hemsW, leechHemW, 0);
         else
-            dev.panel[npanel-1].addHems(hemsW, seamW, leechHemW, 0);
+            dev[npanel-1].addHems(hemsW, seamW, leechHemW, 0);
         
         /* now we reset the previous panel deviation to the current panel */ 
         for ( k = 0; k < npb; k++ )
@@ -1472,7 +1472,7 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
         /* Now we reposition the developed panel such that
         *  bottom minimum is Y=0 AND left is X=0
         */
-        dev.panel[npanel-1] = dev.panel[npanel-1].reframe(LOW_LEFT);
+        dev[npanel-1] = dev[npanel-1].reframe(LOW_LEFT);
 
         ///* check if peak has been reached to break off */
         if ( flag == true )
@@ -1487,18 +1487,18 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
     for ( j = 0; j < np +1; j++ )
     {
         npanel++;
-        lay.panel[npanel] = lay.panel[j];
-        dev.panel[npanel] = dev.panel[j];
+        lay[npanel] = lay[j];
+        dev[npanel] = dev[j];
 
         for ( k = 0 ; k < npb ; k++ )
         {
-            lay.panel[npanel].top[k].y() = -lay.panel[npanel].top[k].y();
-            lay.panel[npanel].bottom[k].y() = -lay.panel[npanel].bottom[k].y();
+            lay[npanel].top[k].y() = -lay[npanel].top[k].y();
+            lay[npanel].bottom[k].y() = -lay[npanel].bottom[k].y();
         }
         for ( k = 0 ; k < npl ; k++ )
         {
-            lay.panel[npanel].left[k].y() = -lay.panel[npanel].left[k].y();
-            lay.panel[npanel].right[k].y() = -lay.panel[npanel].right[k].y();
+            lay[npanel].left[k].y() = -lay[npanel].left[k].y();
+            lay[npanel].right[k].y() = -lay[npanel].right[k].y();
         }
     }
 
@@ -1506,14 +1506,14 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
     CPanelGroup sail( 2 * npanel +1 );
 
     for( j = 0; j < npanel; j++ )
-        sail.panel[j] = lay.panel[j];
+        sail[j] = lay[j];
 
     /** copying the developed sail */
     flatsail = CPanelGroup( 2 * npanel +1);
 
     for ( j = 0; j < npanel; j++ )
     {
-        flatsail.panel[j] = dev.panel[j];
+        flatsail[j] = dev[j];
     }
 
     /** preparing the displays version of the developed sail */
@@ -1521,21 +1521,21 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
 
     for ( j = 1; j < npanel; j++ )
     {
-        top = dispsail.panel[j-1].top[0];
-        bot = dispsail.panel[j].bottom[0];
+        top = dispsail[j-1].top[0];
+        bot = dispsail[j].bottom[0];
 
         // rotation to align bottom of panel to top of previous panel
-        x = dispsail.panel[j-1].top[npb-1].x()-top.x();
-        y = dispsail.panel[j-1].top[npb-1].y()-top.y();
+        x = dispsail[j-1].top[npb-1].x()-top.x();
+        y = dispsail[j-1].top[npb-1].y()-top.y();
         CC= atan2(y,x);
-        dispsail.panel[j] = dispsail.panel[j].rotate(bot,CMatrix::rot3d(2,CC));
+        dispsail[j] = dispsail[j].rotate(bot,CMatrix::rot3d(2,CC));
 
         // translation v to align panel bottom edge origin to previous panel upper edge origin
         v = CVector3d ( top - CPoint3d(0,0,0) );
         v.x() = v.x() - bot.x();
         v.y() = v.y() + 2*seamW + 25;  // adding offset to separate panels vertically
 
-        dispsail.panel[j] = dispsail.panel[j] + v;
+        dispsail[j] = dispsail[j] + v;
     }
     ///
     return sail;
@@ -1567,8 +1567,8 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
 
     /* create number of panels */
     unsigned int npanel = 1;
-    unsigned int npl = lay.panel[0].right.size();  // number of right/left points
-    unsigned int npb = lay.panel[0].bottom.size();  // number of bottom/top points
+    unsigned int npl = lay[0].right.size();  // number of right/left points
+    unsigned int npb = lay[0].bottom.size();  // number of bottom/top points
     unsigned int nps[10];   // number of panels per sections
 
     /* create arrays t1 and t2 of type of intersection
@@ -1673,16 +1673,16 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
                 pt1 = luffH[h];
                 pt2 = luffH[h-1];
 
-                lay.panel[npanel].bottom.fill( pt1, pt2 );
+                lay[npanel].bottom.fill( pt1, pt2 );
 
                 for ( k = 1 ; k < npb -1 ; k++)
-                    lay.panel[npanel].bottom[k] = EdgeIntersect( LUFF_EDGE, lay.panel[npanel].bottom[k] , CVector3d( luffH[h-1] - leechH[h-1] ) );
+                    lay[npanel].bottom[k] = EdgeIntersect( LUFF_EDGE, lay[npanel].bottom[k] , CVector3d( luffH[h-1] - leechH[h-1] ) );
             }
             else
             { // copy previous points
                 pt1 = pt3;
                 pt2= pt4;
-                lay.panel[npanel].bottom.fill( pt1, pt2 );
+                lay[npanel].bottom.fill( pt1, pt2 );
             }
 
             // we compute the top end points
@@ -1693,37 +1693,37 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
             pt4 = luffH[h-1] + CVector3d( luffCatenary[h-1] - luffH[h-1] ) * (real(j) / ngLuff);
 
             // we fill the other edges
-            lay.panel[npanel].top.fill( pt3 , pt4 );
-            lay.panel[npanel].left.fill( pt1 , pt3 );
-            lay.panel[npanel].right.fill( pt2 , pt4 );
+            lay[npanel].top.fill( pt3 , pt4 );
+            lay[npanel].left.fill( pt1 , pt3 );
+            lay[npanel].right.fill( pt2 , pt4 );
 
             if ( h == nbSections )
             {
                 for ( k = 1; k < npl -1; k++ )
-                    lay.panel[npanel].left[k] = EdgeIntersect( GAFF_EDGE, lay.panel[npanel].left[k] , gaffVP );
+                    lay[npanel].left[k] = EdgeIntersect( GAFF_EDGE, lay[npanel].left[k] , gaffVP );
             }
 
             // We compute Z
             for( k = 0; k < npl; k ++ )
-                lay.panel[npanel].left[k] = Zpoint( lay.panel[npanel].left[k] );
+                lay[npanel].left[k] = Zpoint( lay[npanel].left[k] );
             for( k = 0; k < npl; k ++ )
-                lay.panel[npanel].right[k] = Zpoint( lay.panel[npanel].right[k] );
+                lay[npanel].right[k] = Zpoint( lay[npanel].right[k] );
             for( k = 0; k < npb; k ++ )
-                lay.panel[npanel].top[k] = Zpoint( lay.panel[npanel].top[k] );
+                lay[npanel].top[k] = Zpoint( lay[npanel].top[k] );
             for( k = 0; k < npb; k ++ )
-                lay.panel[npanel].bottom[k] = Zpoint( lay.panel[npanel].bottom[k] );
+                lay[npanel].bottom[k] = Zpoint( lay[npanel].bottom[k] );
 
             // We develop the current panel
-            dev.panel[npanel] = lay.panel[npanel].develop(ALIGN_TOP);
+            dev[npanel] = lay[npanel].develop(ALIGN_TOP);
 
 
             // We add the seams and hems allowance
             if ( h == nbSections  &&  j == 1 )
-                dev.panel[npanel].addHems(hemsW, seamW, 0, hemsW);
+                dev[npanel].addHems(hemsW, seamW, 0, hemsW);
             else if ( j == 1 )
-                dev.panel[npanel].addHems(seamW, seamW, 0, hemsW);
+                dev[npanel].addHems(seamW, seamW, 0, hemsW);
             else
-                dev.panel[npanel].addHems(seamW, seamW, 0, 0);
+                dev[npanel].addHems(seamW, seamW, 0, 0);
 
             nps[h]++;
             npanel++;
@@ -1773,35 +1773,35 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
                 }
 
                 // we fill the 4 edges
-                lay.panel[npanel].left.fill( pt1 , pt3 );
-                lay.panel[npanel].right.fill( pt2 , pt4 );
-                lay.panel[npanel].bottom.fill( pt1 , pt2 );
-                lay.panel[npanel].top.fill( pt3 , pt4 );
+                lay[npanel].left.fill( pt1 , pt3 );
+                lay[npanel].right.fill( pt2 , pt4 );
+                lay[npanel].bottom.fill( pt1 , pt2 );
+                lay[npanel].top.fill( pt3 , pt4 );
 
                 if ( h == nbSections )
                 {
                     for ( k = 1; k < npl-1; k++ )
-                        lay.panel[npanel].left[k] = EdgeIntersect( GAFF_EDGE, lay.panel[npanel].left[k] , gaffVP );
+                        lay[npanel].left[k] = EdgeIntersect( GAFF_EDGE, lay[npanel].left[k] , gaffVP );
                 }
 
                 // we compute Z
                 for( k = 0; k < npl; k++ )
-                    lay.panel[npanel].left[k] = Zpoint( lay.panel[npanel].left[k] );
+                    lay[npanel].left[k] = Zpoint( lay[npanel].left[k] );
                 for( k = 0; k < npl; k++ )
-                    lay.panel[npanel].right[k] = Zpoint( lay.panel[npanel].right[k] );
+                    lay[npanel].right[k] = Zpoint( lay[npanel].right[k] );
                 for( k = 0; k < npb; k++ )
-                    lay.panel[npanel].top[k] = Zpoint( lay.panel[npanel].top[k] );
+                    lay[npanel].top[k] = Zpoint( lay[npanel].top[k] );
                 for( k = 0; k < npb; k++ )
-                    lay.panel[npanel].bottom[k] = Zpoint( lay.panel[npanel].bottom[k] );
+                    lay[npanel].bottom[k] = Zpoint( lay[npanel].bottom[k] );
 
                 // We develop the current panel
-                dev.panel[npanel] = lay.panel[npanel].develop(ALIGN_TOP);
+                dev[npanel] = lay[npanel].develop(ALIGN_TOP);
 
                 // We add the seams and hems allowance
                 if ( h == nbSections )
-                    dev.panel[npanel].addHems(hemsW, seamW, 0, 0);
+                    dev[npanel].addHems(hemsW, seamW, 0, 0);
                 else
-                    dev.panel[npanel].addHems(seamW, seamW, 0, 0);
+                    dev[npanel].addHems(seamW, seamW, 0, 0);
 
                 nps[h]++;
                 npanel++;
@@ -1820,29 +1820,29 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
 
                 ptCentre = pt3; // memorise last point on horizontal seam 1
 
-                lay.panel[npanel].left.fill(pt1 , pt3);
-                lay.panel[npanel].right.fill(pt2 , pt4);
-                lay.panel[npanel].bottom.fill(pt1 , pt2);
-                lay.panel[npanel].top.fill(pt3 , pt4);
+                lay[npanel].left.fill(pt1 , pt3);
+                lay[npanel].right.fill(pt2 , pt4);
+                lay[npanel].bottom.fill(pt1 , pt2);
+                lay[npanel].top.fill(pt3 , pt4);
 
                 // compute Z
                 for( k = 0; k < npl; k ++ )
-                    lay.panel[npanel].left[k] = Zpoint( lay.panel[npanel].left[k] );
+                    lay[npanel].left[k] = Zpoint( lay[npanel].left[k] );
 
                 for( k = 0; k < npl; k ++ )
-                    lay.panel[npanel].right[k] = Zpoint( lay.panel[npanel].right[k] );
+                    lay[npanel].right[k] = Zpoint( lay[npanel].right[k] );
 
                 for( k = 0; k < npb; k ++ )
-                    lay.panel[npanel].top[k] = Zpoint( lay.panel[npanel].top[k] );
+                    lay[npanel].top[k] = Zpoint( lay[npanel].top[k] );
 
                 for( k = 0; k < npb; k ++ )
-                    lay.panel[npanel].bottom[k] = Zpoint( lay.panel[npanel].bottom[k] );
+                    lay[npanel].bottom[k] = Zpoint( lay[npanel].bottom[k] );
 
                 // We develop the current panel
-                dev.panel[npanel] = lay.panel[npanel].develop(ALIGN_TOP);
+                dev[npanel] = lay[npanel].develop(ALIGN_TOP);
 
                 // We add the seams allowance
-                dev.panel[npanel].addHems(seamW, seamW, 0, 0);
+                dev[npanel].addHems(seamW, seamW, 0, 0);
 
                 nps[h]++;
                 npanel++;
@@ -1862,39 +1862,39 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
                 pt3 = ptCentre + CVector3d (ptFoot - ptCentre) * (real(j) / a);
                 pt4 = pt2;
 
-                lay.panel[npanel].left.fill( pt1 , pt3 );
-                lay.panel[npanel].right.fill( pt2 , pt4 );
-                lay.panel[npanel].bottom.fill( pt1 , pt2 );
-                lay.panel[npanel].top.fill( pt3 , pt4 );
+                lay[npanel].left.fill( pt1 , pt3 );
+                lay[npanel].right.fill( pt2 , pt4 );
+                lay[npanel].bottom.fill( pt1 , pt2 );
+                lay[npanel].top.fill( pt3 , pt4 );
 
                 // compute Z
                 for( k = 0; k < npl; k ++)
-                    lay.panel[npanel].left[k] = Zpoint( lay.panel[npanel].left[k] );
+                    lay[npanel].left[k] = Zpoint( lay[npanel].left[k] );
 
                 for( k = 0; k < npl; k ++)
-                    lay.panel[npanel].right[k] = Zpoint( lay.panel[npanel].right[k] );
+                    lay[npanel].right[k] = Zpoint( lay[npanel].right[k] );
 
                 for( k = 0; k < npb; k ++)
-                    lay.panel[npanel].bottom[k] = Zpoint( lay.panel[npanel].bottom[k] );
+                    lay[npanel].bottom[k] = Zpoint( lay[npanel].bottom[k] );
 
                 for( k = 0; k < npb; k ++)
                 {
                     if ( j == a )
-                        pt0 = EdgeIntersect( FOOT_EDGE,  lay.panel[npanel].top[k] , CVector3d( ptFoot- ptCentre ) );
+                        pt0 = EdgeIntersect( FOOT_EDGE,  lay[npanel].top[k] , CVector3d( ptFoot- ptCentre ) );
                     else
-                        pt0 = lay.panel[npanel].top[k];
+                        pt0 = lay[npanel].top[k];
 
-                    lay.panel[npanel].top[k] = Zpoint( pt0 );
+                    lay[npanel].top[k] = Zpoint( pt0 );
                 }
 
                 // We develop the current panel
-                dev.panel[npanel] = lay.panel[npanel].develop(ALIGN_TOP);
+                dev[npanel] = lay[npanel].develop(ALIGN_TOP);
 
                 // We add the seams and hems allowance
                 if ( j == a )
-                    dev.panel[npanel].addHems(seamW, hemsW, 0, 0);
+                    dev[npanel].addHems(seamW, hemsW, 0, 0);
                 else
-                    dev.panel[npanel].addHems(seamW, seamW, 0, 0);
+                    dev[npanel].addHems(seamW, seamW, 0, 0);
 
                 nps[h]++;
                 npanel++;
@@ -1908,39 +1908,39 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
                 pt3 = ptFoot + CVector3d ( ptCentre - ptFoot ) * (real(j) / a);
                 pt4 = pt2;
 
-                lay.panel[npanel].left.fill( pt1, pt3 );
-                lay.panel[npanel].right.fill( pt2, pt4 );
-                lay.panel[npanel].bottom.fill( pt1, pt2 );
-                lay.panel[npanel].top.fill( pt3, pt4 );
+                lay[npanel].left.fill( pt1, pt3 );
+                lay[npanel].right.fill( pt2, pt4 );
+                lay[npanel].bottom.fill( pt1, pt2 );
+                lay[npanel].top.fill( pt3, pt4 );
 
                 // compute Z
                 for( k = 0; k < npl; k ++)
-                    lay.panel[npanel].left[k] = Zpoint( lay.panel[npanel].left[k] );
+                    lay[npanel].left[k] = Zpoint( lay[npanel].left[k] );
 
                 for( k = 0; k < npl; k ++)
-                    lay.panel[npanel].right[k] = Zpoint( lay.panel[npanel].right[k] );
+                    lay[npanel].right[k] = Zpoint( lay[npanel].right[k] );
 
                 for( k = 0; k < npb; k ++)
-                    lay.panel[npanel].top[k] = Zpoint( lay.panel[npanel].top[k] );
+                    lay[npanel].top[k] = Zpoint( lay[npanel].top[k] );
 
                 for( k = 0; k < npb; k ++)
                 {
                     if ( j == 1 )
-                        pt0 = EdgeIntersect( FOOT_EDGE,  lay.panel[npanel].bottom[k] , CVector3d( ptFoot- ptCentre ) );
+                        pt0 = EdgeIntersect( FOOT_EDGE,  lay[npanel].bottom[k] , CVector3d( ptFoot- ptCentre ) );
                     else
-                        pt0 = lay.panel[npanel].bottom[k];
+                        pt0 = lay[npanel].bottom[k];
 
-                    lay.panel[npanel].bottom[k] = Zpoint( pt0 );
+                    lay[npanel].bottom[k] = Zpoint( pt0 );
                 }
 
                 // We develop the current panel
-                dev.panel[npanel] = lay.panel[npanel].develop(ALIGN_TOP);
+                dev[npanel] = lay[npanel].develop(ALIGN_TOP);
 
                 // We add the seams and hems allowance
                 if ( j == 1 )
-                    dev.panel[npanel].addHems(0, seamW, 0, hemsW);
+                    dev[npanel].addHems(0, seamW, 0, hemsW);
                 else
-                    dev.panel[npanel].addHems(0, seamW, 0, 0);
+                    dev[npanel].addHems(0, seamW, 0, 0);
 
                 nps[h]++;
                 npanel++;
@@ -1955,29 +1955,29 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
                 pt3 = luffCatenary[h] + CVector3d( leechCatenary[h] - luffCatenary[h] ) * (real(j) / ng1);
                 pt4 = pt2;
 
-                lay.panel[npanel].left.fill( pt1, pt3 );
-                lay.panel[npanel].right.fill( pt2, pt4 );
-                lay.panel[npanel].bottom.fill( pt1, pt2 );
-                lay.panel[npanel].top.fill( pt3, pt4 );
+                lay[npanel].left.fill( pt1, pt3 );
+                lay[npanel].right.fill( pt2, pt4 );
+                lay[npanel].bottom.fill( pt1, pt2 );
+                lay[npanel].top.fill( pt3, pt4 );
 
                 // compute Z
                 for( k = 0; k < npl; k ++)
-                    lay.panel[npanel].left[k] = Zpoint( lay.panel[npanel].left[k] );
+                    lay[npanel].left[k] = Zpoint( lay[npanel].left[k] );
 
                 for( k = 0; k < npl; k ++)
-                    lay.panel[npanel].right[k] = Zpoint( lay.panel[npanel].right[k] );
+                    lay[npanel].right[k] = Zpoint( lay[npanel].right[k] );
 
                 for( k = 0; k < npb; k ++)
-                    lay.panel[npanel].top[k] = Zpoint( lay.panel[npanel].top[k] );
+                    lay[npanel].top[k] = Zpoint( lay[npanel].top[k] );
 
                 for( k = 0; k < npb; k ++)
-                    lay.panel[npanel].bottom[k] = Zpoint( lay.panel[npanel].bottom[k] );
+                    lay[npanel].bottom[k] = Zpoint( lay[npanel].bottom[k] );
 
                 // We develop the current panel
-                dev.panel[npanel] = lay.panel[npanel].develop(ALIGN_TOP);
+                dev[npanel] = lay[npanel].develop(ALIGN_TOP);
 
                 // We add the seams allowance
-                dev.panel[npanel].addHems(seamW, seamW, 0, 0);
+                dev[npanel].addHems(seamW, seamW, 0, 0);
 
                 nps[h]++;
                 npanel++;
@@ -1999,43 +1999,43 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
 
             pt4 = leechCatenary[h-1] + CVector3d( leechH[h-1] - leechCatenary[h-1] ) * (real(j) / (nbGores - ngLuff -1) );
 
-            lay.panel[npanel].bottom.fill( pt1, pt2 );
-            lay.panel[npanel].top.fill( pt3, pt4 );
-            lay.panel[npanel].left.fill( pt1, pt3 );
-            lay.panel[npanel].right.fill( pt2, pt4 );
+            lay[npanel].bottom.fill( pt1, pt2 );
+            lay[npanel].top.fill( pt3, pt4 );
+            lay[npanel].left.fill( pt1, pt3 );
+            lay[npanel].right.fill( pt2, pt4 );
 
             if ( h == nbSections )
             {
                 for ( k = 1; k < npl -1; k++ )
-                    lay.panel[npanel].left[k] = EdgeIntersect( GAFF_EDGE, lay.panel[npanel].left[k] , gaffVP );
+                    lay[npanel].left[k] = EdgeIntersect( GAFF_EDGE, lay[npanel].left[k] , gaffVP );
             }
 
             if ( j == nbGores - ngLuff -1)
             {
                 for ( k = 1; k < npb -1; k++ )
-                    lay.panel[npanel].top[k] = EdgeIntersect( LEECH_EDGE, lay.panel[npanel].top[k] , CVector3d(luffH[h-1]-leechH[h-1]) );
+                    lay[npanel].top[k] = EdgeIntersect( LEECH_EDGE, lay[npanel].top[k] , CVector3d(luffH[h-1]-leechH[h-1]) );
             }
 
             // we compute Z
             for( k = 0; k < npl; k ++ )
-                lay.panel[npanel].left[k] = Zpoint( lay.panel[npanel].left[k] );
+                lay[npanel].left[k] = Zpoint( lay[npanel].left[k] );
             for( k = 0; k < npl; k ++ )
-                lay.panel[npanel].right[k] = Zpoint( lay.panel[npanel].right[k] );
+                lay[npanel].right[k] = Zpoint( lay[npanel].right[k] );
             for( k = 0; k < npb; k ++ )
-                lay.panel[npanel].top[k] = Zpoint( lay.panel[npanel].top[k] );
+                lay[npanel].top[k] = Zpoint( lay[npanel].top[k] );
             for( k = 0; k < npb; k ++ )
-                lay.panel[npanel].bottom[k] = Zpoint( lay.panel[npanel].bottom[k] );
+                lay[npanel].bottom[k] = Zpoint( lay[npanel].bottom[k] );
 
             // We develop the current panel
-            dev.panel[npanel] = lay.panel[npanel].develop(ALIGN_TOP);
+            dev[npanel] = lay[npanel].develop(ALIGN_TOP);
 
             // We add the seams and hems allowance
             if ( h == nbSections  &&  j == nbGores-ngLuff-1)
-                dev.panel[npanel].addHems(hemsW, leechHemW, 0, 0);
+                dev[npanel].addHems(hemsW, leechHemW, 0, 0);
             else if (j == nbGores - ngLuff -1)
-                dev.panel[npanel].addHems(seamW, leechHemW, 0, 0);
+                dev[npanel].addHems(seamW, leechHemW, 0, 0);
             else
-                dev.panel[npanel].addHems(seamW, seamW, 0, 0);
+                dev[npanel].addHems(seamW, seamW, 0, 0);
 
             nps[h]++;
             npanel++;
@@ -2045,13 +2045,13 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
     /** copying 3d lay into 3d sail */
     CPanelGroup sail(npanel);
     for( j = 0 ; j < npanel ; j ++)
-        sail.panel[j] = lay.panel[j];
+        sail[j] = lay[j];
 
     /** copying from temporary developed sail into flatsail */
     flatsail = CPanelGroup(npanel);
 
     for ( j = 0; j < npanel; j++ )
-        flatsail.panel[j] = dev.panel[j];
+        flatsail[j] = dev[j];
 
     /** preparing the displays version of the developed sail */
     dispsail = flatsail;
@@ -2074,9 +2074,9 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
         }
 
         // translation v to stack panel above previous panel
-        dispsail.panel[j] = dispsail.panel[j] + v;
+        dispsail[j] = dispsail[j] + v;
 
-        CRect3d pRect = dispsail.panel[j].boundingRect();
+        CRect3d pRect = dispsail[j].boundingRect();
         ym = pRect.height();
         v.y() += ym + 2*seamW +20; // adding offset to separate next panel vertically
 
@@ -2115,8 +2115,8 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
 
     /* create number of panels */
     unsigned int npanel=1;
-    unsigned int npl= lay.panel[0].right.size();  // number of right/left points
-    unsigned int npb= lay.panel[0].bottom.size();  // number of bottom/top points
+    unsigned int npl= lay[0].right.size();  // number of right/left points
+    unsigned int npb= lay[0].bottom.size();  // number of bottom/top points
     unsigned int nps[10];   // number of panels per sections
 
     /* create arrays t1 and t2 of type of intersection
@@ -2209,15 +2209,15 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
             {
                 pt1 = luffH[h];
                 pt2 = luffH[h-1];
-                lay.panel[npanel].bottom.fill(pt1 , pt2);
+                lay[npanel].bottom.fill(pt1 , pt2);
                 for (k=1; k<npb-1; k++)
-                    lay.panel[npanel].bottom[k] = EdgeIntersect( LUFF_EDGE, lay.panel[npanel].bottom[k], CVector3d(luffH[h-1]-leechH[h-1]) );
+                    lay[npanel].bottom[k] = EdgeIntersect( LUFF_EDGE, lay[npanel].bottom[k], CVector3d(luffH[h-1]-leechH[h-1]) );
             }
             else
             {
                 pt1 = pt3;
                 pt2= pt4;
-                lay.panel[npanel].bottom.fill(pt1 , pt2);
+                lay[npanel].bottom.fill(pt1 , pt2);
             }
 
             pt3 = luffH[h] + CVector3d(luffCatenary[h]-luffH[h]) * (real(j)/ngLuff);
@@ -2225,37 +2225,37 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
                 pt3 = EdgeIntersect( GAFF_EDGE,  pt3, gaffVP );
             pt4 = luffH[h-1] + CVector3d(luffCatenary[h-1]-luffH[h-1]) * (real(j)/ngLuff);
 
-            lay.panel[npanel].top.fill(pt3, pt4);
-            lay.panel[npanel].left.fill(pt1 , pt3);
-            lay.panel[npanel].right.fill(pt2 , pt4);
+            lay[npanel].top.fill(pt3, pt4);
+            lay[npanel].left.fill(pt1 , pt3);
+            lay[npanel].right.fill(pt2 , pt4);
 
             if (h == nbSections)
             {
                 for (k=1; k<npl-1; k++)
-                    lay.panel[npanel].left[k] = EdgeIntersect( GAFF_EDGE, lay.panel[npanel].left[k], gaffVP );
+                    lay[npanel].left[k] = EdgeIntersect( GAFF_EDGE, lay[npanel].left[k], gaffVP );
             }
 
             // compute Z
             for( k = 0; k < npl; k ++)
-                lay.panel[npanel].left[k] = Zpoint(lay.panel[npanel].left[k]);
+                lay[npanel].left[k] = Zpoint(lay[npanel].left[k]);
             for( k = 0; k < npl; k ++)
-                lay.panel[npanel].right[k] = Zpoint(lay.panel[npanel].right[k]);
+                lay[npanel].right[k] = Zpoint(lay[npanel].right[k]);
             for( k = 0; k < npb; k ++)
-                lay.panel[npanel].top[k] = Zpoint(lay.panel[npanel].top[k]);
+                lay[npanel].top[k] = Zpoint(lay[npanel].top[k]);
             for( k = 0; k < npb; k ++)
-                lay.panel[npanel].bottom[k] = Zpoint(lay.panel[npanel].bottom[k]);
+                lay[npanel].bottom[k] = Zpoint(lay[npanel].bottom[k]);
 
             // We develop the current panel
-            dev.panel[npanel] = lay.panel[npanel].develop(ALIGN_TOP);
+            dev[npanel] = lay[npanel].develop(ALIGN_TOP);
 
 
             // We add the seams and hems allowance
             if (h == nbSections && j == 1)
-                dev.panel[npanel].addHems(hemsW, seamW, 0, hemsW);
+                dev[npanel].addHems(hemsW, seamW, 0, hemsW);
             else if (j == 1)
-                dev.panel[npanel].addHems(seamW, seamW, 0, hemsW);
+                dev[npanel].addHems(seamW, seamW, 0, hemsW);
             else
-                dev.panel[npanel].addHems(seamW, seamW, 0, 0);
+                dev[npanel].addHems(seamW, seamW, 0, 0);
 
             nps[h]++;
             npanel++;
@@ -2298,35 +2298,35 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
                     }
                 }
 
-                lay.panel[npanel].left.fill(pt1 , pt3);
-                lay.panel[npanel].right.fill(pt2 , pt4);
-                lay.panel[npanel].bottom.fill(pt1 , pt2);
-                lay.panel[npanel].top.fill(pt3 , pt4);
+                lay[npanel].left.fill(pt1 , pt3);
+                lay[npanel].right.fill(pt2 , pt4);
+                lay[npanel].bottom.fill(pt1 , pt2);
+                lay[npanel].top.fill(pt3 , pt4);
 
                 if (h == nbSections)
                 {
                     for (k=1; k<npl-1; k++)
-                        lay.panel[npanel].left[k] = EdgeIntersect( GAFF_EDGE, lay.panel[npanel].left[k], gaffVP );
+                        lay[npanel].left[k] = EdgeIntersect( GAFF_EDGE, lay[npanel].left[k], gaffVP );
                 }
 
                 // compute Z
                 for( k = 0; k < npl; k ++)
-                    lay.panel[npanel].left[k] = Zpoint(lay.panel[npanel].left[k]);
+                    lay[npanel].left[k] = Zpoint(lay[npanel].left[k]);
                 for( k = 0; k < npl; k ++)
-                    lay.panel[npanel].right[k] = Zpoint(lay.panel[npanel].right[k]);
+                    lay[npanel].right[k] = Zpoint(lay[npanel].right[k]);
                 for( k = 0; k < npb; k ++)
-                    lay.panel[npanel].top[k] = Zpoint(lay.panel[npanel].top[k]);
+                    lay[npanel].top[k] = Zpoint(lay[npanel].top[k]);
                 for( k = 0; k < npb; k ++)
-                    lay.panel[npanel].bottom[k] = Zpoint(lay.panel[npanel].bottom[k]);
+                    lay[npanel].bottom[k] = Zpoint(lay[npanel].bottom[k]);
 
                 // We develop the current panel
-                dev.panel[npanel] = lay.panel[npanel].develop(ALIGN_TOP);
+                dev[npanel] = lay[npanel].develop(ALIGN_TOP);
 
                 // We add the seams and hems allowance
                 if (h == nbSections)
-                    dev.panel[npanel].addHems(hemsW, seamW, 0, 0);
+                    dev[npanel].addHems(hemsW, seamW, 0, 0);
                 else
-                    dev.panel[npanel].addHems(seamW, seamW, 0, 0);
+                    dev[npanel].addHems(seamW, seamW, 0, 0);
 
                 nps[h]++;
                 npanel++;
@@ -2346,26 +2346,26 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
 
                 ptCentre = pt3; // memorise last point on horizontal seam 1
 
-                lay.panel[npanel].left.fill(pt1 , pt3);
-                lay.panel[npanel].right.fill(pt2 , pt4);
-                lay.panel[npanel].bottom.fill(pt1 , pt2);
-                lay.panel[npanel].top.fill(pt3 , pt4);
+                lay[npanel].left.fill(pt1 , pt3);
+                lay[npanel].right.fill(pt2 , pt4);
+                lay[npanel].bottom.fill(pt1 , pt2);
+                lay[npanel].top.fill(pt3 , pt4);
 
                 // compute Z
                 for( k = 0; k < npl; k ++)
-                    lay.panel[npanel].left[k] = Zpoint(lay.panel[npanel].left[k]);
+                    lay[npanel].left[k] = Zpoint(lay[npanel].left[k]);
                 for( k = 0; k < npl; k ++)
-                    lay.panel[npanel].right[k] = Zpoint(lay.panel[npanel].right[k]);
+                    lay[npanel].right[k] = Zpoint(lay[npanel].right[k]);
                 for( k = 0; k < npb; k ++)
-                    lay.panel[npanel].top[k] = Zpoint(lay.panel[npanel].top[k]);
+                    lay[npanel].top[k] = Zpoint(lay[npanel].top[k]);
                 for( k = 0; k < npb; k ++)
-                    lay.panel[npanel].bottom[k] = Zpoint(lay.panel[npanel].bottom[k]);
+                    lay[npanel].bottom[k] = Zpoint(lay[npanel].bottom[k]);
 
                 // We develop the current panel
-                dev.panel[npanel] = lay.panel[npanel].develop(ALIGN_TOP);
+                dev[npanel] = lay[npanel].develop(ALIGN_TOP);
 
                 // We add the seams allowance
-                dev.panel[npanel].addHems(seamW, seamW, 0, 0);
+                dev[npanel].addHems(seamW, seamW, 0, 0);
 
                 nps[h]++;
                 npanel++;
@@ -2385,34 +2385,34 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
                 pt3 = ptCentre + CVector3d (ptFoot - ptCentre)*(real(j)/a);
                 pt4 = pt2;
 
-                lay.panel[npanel].left.fill(pt1 , pt3);
-                lay.panel[npanel].right.fill(pt2 , pt4);
-                lay.panel[npanel].bottom.fill(pt1 , pt2);
-                lay.panel[npanel].top.fill(pt3 , pt4);
+                lay[npanel].left.fill(pt1 , pt3);
+                lay[npanel].right.fill(pt2 , pt4);
+                lay[npanel].bottom.fill(pt1 , pt2);
+                lay[npanel].top.fill(pt3 , pt4);
 
                 // compute Z
                 for( k = 0; k < npl; k ++)
-                    lay.panel[npanel].left[k] = Zpoint(lay.panel[npanel].left[k]);
+                    lay[npanel].left[k] = Zpoint(lay[npanel].left[k]);
                 for( k = 0; k < npl; k ++)
-                    lay.panel[npanel].right[k] = Zpoint(lay.panel[npanel].right[k]);
+                    lay[npanel].right[k] = Zpoint(lay[npanel].right[k]);
                 for( k = 0; k < npb; k ++)
                 {
-                    pt0 = lay.panel[npanel].top[k];
+                    pt0 = lay[npanel].top[k];
                     if (j == a)
-                        pt0 = EdgeIntersect( FOOT_EDGE, lay.panel[npanel].top[k], footVP);
-                    lay.panel[npanel].top[k] = Zpoint(pt0);
+                        pt0 = EdgeIntersect( FOOT_EDGE, lay[npanel].top[k], footVP);
+                    lay[npanel].top[k] = Zpoint(pt0);
                 }
                 for( k = 0; k < npb; k ++)
-                    lay.panel[npanel].bottom[k] = Zpoint(lay.panel[npanel].bottom[k]);
+                    lay[npanel].bottom[k] = Zpoint(lay[npanel].bottom[k]);
 
                 // We develop the current panel
-                dev.panel[npanel] = lay.panel[npanel].develop(ALIGN_TOP);
+                dev[npanel] = lay[npanel].develop(ALIGN_TOP);
 
                 // We add the seams and hems allowance
                 if (j == a)
-                    dev.panel[npanel].addHems(seamW, hemsW, 0, 0);
+                    dev[npanel].addHems(seamW, hemsW, 0, 0);
                 else
-                    dev.panel[npanel].addHems(seamW, seamW, 0, 0);
+                    dev[npanel].addHems(seamW, seamW, 0, 0);
 
                 nps[h]++;
                 npanel++;
@@ -2426,34 +2426,34 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
                 pt3 = ptFoot + CVector3d (ptCentre - ptFoot)*(real(j)/(a));
                 pt4 = pt2;
 
-                lay.panel[npanel].left.fill(pt1 , pt3);
-                lay.panel[npanel].right.fill(pt2 , pt4);
-                lay.panel[npanel].bottom.fill(pt1 , pt2);
-                lay.panel[npanel].top.fill(pt3 , pt4);
+                lay[npanel].left.fill(pt1 , pt3);
+                lay[npanel].right.fill(pt2 , pt4);
+                lay[npanel].bottom.fill(pt1 , pt2);
+                lay[npanel].top.fill(pt3 , pt4);
 
                 // compute Z
                 for( k = 0; k < npl; k ++)
-                    lay.panel[npanel].left[k] = Zpoint(lay.panel[npanel].left[k]);
+                    lay[npanel].left[k] = Zpoint(lay[npanel].left[k]);
                 for( k = 0; k < npl; k ++)
-                    lay.panel[npanel].right[k] = Zpoint(lay.panel[npanel].right[k]);
+                    lay[npanel].right[k] = Zpoint(lay[npanel].right[k]);
                 for( k = 0; k < npb; k ++)
-                    lay.panel[npanel].top[k] = Zpoint(lay.panel[npanel].top[k]);
+                    lay[npanel].top[k] = Zpoint(lay[npanel].top[k]);
                 for( k = 0; k < npb; k ++)
                 {
-                    pt0 = lay.panel[npanel].bottom[k];
+                    pt0 = lay[npanel].bottom[k];
                     if (j == 1)
-                        pt0 = EdgeIntersect( FOOT_EDGE, lay.panel[npanel].bottom[k], footVP);
-                    lay.panel[npanel].bottom[k] = Zpoint(lay.panel[npanel].bottom[k]);
+                        pt0 = EdgeIntersect( FOOT_EDGE, lay[npanel].bottom[k], footVP);
+                    lay[npanel].bottom[k] = Zpoint(lay[npanel].bottom[k]);
                 }
 
                 // We develop the current panel
-                dev.panel[npanel] = lay.panel[npanel].develop(ALIGN_TOP);
+                dev[npanel] = lay[npanel].develop(ALIGN_TOP);
 
                 // We add the seams and hems allowance
                 if (j == 1)
-                    dev.panel[npanel].addHems(0, seamW, 0, hemsW);
+                    dev[npanel].addHems(0, seamW, 0, hemsW);
                 else
-                    dev.panel[npanel].addHems(0, seamW, 0, 0);
+                    dev[npanel].addHems(0, seamW, 0, 0);
 
                 nps[h]++;
                 npanel++;
@@ -2468,26 +2468,26 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
                 pt3 = luffCatenary[h] + CVector3d(leechCatenary[h]-luffCatenary[h])*(real(j)/ng1);
                 pt4 = pt2;
 
-                lay.panel[npanel].left.fill(pt1 , pt3);
-                lay.panel[npanel].right.fill(pt2 , pt4);
-                lay.panel[npanel].bottom.fill(pt1 , pt2);
-                lay.panel[npanel].top.fill(pt3 , pt4);
+                lay[npanel].left.fill(pt1 , pt3);
+                lay[npanel].right.fill(pt2 , pt4);
+                lay[npanel].bottom.fill(pt1 , pt2);
+                lay[npanel].top.fill(pt3 , pt4);
 
                 // compute Z
                 for( k = 0; k < npl; k ++)
-                    lay.panel[npanel].left[k] = Zpoint(lay.panel[npanel].left[k]);
+                    lay[npanel].left[k] = Zpoint(lay[npanel].left[k]);
                 for( k = 0; k < npl; k ++)
-                    lay.panel[npanel].right[k] = Zpoint(lay.panel[npanel].right[k]);
+                    lay[npanel].right[k] = Zpoint(lay[npanel].right[k]);
                 for( k = 0; k < npb; k ++)
-                    lay.panel[npanel].top[k] = Zpoint(lay.panel[npanel].top[k]);
+                    lay[npanel].top[k] = Zpoint(lay[npanel].top[k]);
                 for( k = 0; k < npb; k ++)
-                    lay.panel[npanel].bottom[k] = Zpoint(lay.panel[npanel].bottom[k]);
+                    lay[npanel].bottom[k] = Zpoint(lay[npanel].bottom[k]);
 
                 // We develop the current panel
-                dev.panel[npanel] = lay.panel[npanel].develop(ALIGN_TOP);
+                dev[npanel] = lay[npanel].develop(ALIGN_TOP);
 
                 // We add the seams allowance
-                dev.panel[npanel].addHems(seamW, seamW, 0, 0);
+                dev[npanel].addHems(seamW, seamW, 0, 0);
 
                 nps[h]++;
                 npanel++;
@@ -2506,43 +2506,43 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
                 pt3 = EdgeIntersect( GAFF_EDGE,  pt3, gaffVP );
             pt4 = leechCatenary[h-1] + CVector3d(leechH[h-1]-leechCatenary[h-1]) * (real(j)/(nbGores-ngLuff-1) );
 
-            lay.panel[npanel].bottom.fill(pt1 , pt2);
-            lay.panel[npanel].top.fill(pt3 , pt4);
-            lay.panel[npanel].left.fill(pt1 , pt3);
-            lay.panel[npanel].right.fill(pt2 , pt4);
+            lay[npanel].bottom.fill(pt1 , pt2);
+            lay[npanel].top.fill(pt3 , pt4);
+            lay[npanel].left.fill(pt1 , pt3);
+            lay[npanel].right.fill(pt2 , pt4);
 
             if (h == nbSections)
             {
                 for (k=1; k<npl-1; k++)
-                    lay.panel[npanel].left[k] = EdgeIntersect( GAFF_EDGE, lay.panel[npanel].left[k], gaffVP );
+                    lay[npanel].left[k] = EdgeIntersect( GAFF_EDGE, lay[npanel].left[k], gaffVP );
             }
 
             if (j == nbGores-ngLuff-1)
             {
                 for (k=1; k<npb-1; k++)
-                    lay.panel[npanel].top[k] = EdgeIntersect( LEECH_EDGE, lay.panel[npanel].top[k], CVector3d(luffH[h-1]-leechH[h-1]) );
+                    lay[npanel].top[k] = EdgeIntersect( LEECH_EDGE, lay[npanel].top[k], CVector3d(luffH[h-1]-leechH[h-1]) );
             }
 
             // compute Z
             for( k = 0; k < npl; k ++)
-                lay.panel[npanel].left[k] = Zpoint(lay.panel[npanel].left[k]);
+                lay[npanel].left[k] = Zpoint(lay[npanel].left[k]);
             for( k = 0; k < npl; k ++)
-                lay.panel[npanel].right[k] = Zpoint(lay.panel[npanel].right[k]);
+                lay[npanel].right[k] = Zpoint(lay[npanel].right[k]);
             for( k = 0; k < npb; k ++)
-                lay.panel[npanel].top[k] = Zpoint(lay.panel[npanel].top[k]);
+                lay[npanel].top[k] = Zpoint(lay[npanel].top[k]);
             for( k = 0; k < npb; k ++)
-                lay.panel[npanel].bottom[k] = Zpoint(lay.panel[npanel].bottom[k]);
+                lay[npanel].bottom[k] = Zpoint(lay[npanel].bottom[k]);
 
             // We develop the current panel
-            dev.panel[npanel] = lay.panel[npanel].develop(ALIGN_TOP);
+            dev[npanel] = lay[npanel].develop(ALIGN_TOP);
 
             // We add the seams and hems allowance
             if ( h == nbSections && j == nbGores-ngLuff-1)
-                dev.panel[npanel].addHems(hemsW, leechHemW, 0, 0);
+                dev[npanel].addHems(hemsW, leechHemW, 0, 0);
             else if (j == nbGores-ngLuff-1)
-                dev.panel[npanel].addHems(seamW, leechHemW, 0, 0);
+                dev[npanel].addHems(seamW, leechHemW, 0, 0);
             else
-                dev.panel[npanel].addHems(seamW, seamW, 0, 0);
+                dev[npanel].addHems(seamW, seamW, 0, 0);
 
             nps[h]++;
             npanel++;
@@ -2552,13 +2552,13 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
     /** copying 3d sail lay into sail */
     CPanelGroup sail(npanel);
     for( j = 0; j < npanel; j ++)
-        sail.panel[j] = lay.panel[j];
+        sail[j] = lay[j];
 
     /** copy from temporary developed sail into flatsail */
     flatsail = CPanelGroup(npanel);
 
     for (j=0; j < npanel; j++)
-        flatsail.panel[j] = dev.panel[j];
+        flatsail[j] = dev[j];
 
     /** preparing the displays version of the developed sail */
     dispsail = flatsail;
@@ -2581,9 +2581,9 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
         }
 
         // translation v to stack panel above previous panel
-        dispsail.panel[j] = dispsail.panel[j] + v;
+        dispsail[j] = dispsail[j] + v;
 
-        CRect3d pRect = dispsail.panel[j].boundingRect();
+        CRect3d pRect = dispsail[j].boundingRect();
         ym = pRect.height();
         v.y() += ym+ 2*seamW +20; // adding offset to separate next panel vertically
 
@@ -2617,8 +2617,8 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
 
     /* create number of panels */
     unsigned int npanelFoot = 1, npanel = 1;
-    unsigned int npl= lay.panel[0].right.size();  // number of right/left points
-    unsigned int npb= lay.panel[0].bottom.size(); // number of bottom/top points
+    unsigned int npl= lay[0].right.size();  // number of right/left points
+    unsigned int npb= lay[0].bottom.size(); // number of bottom/top points
 
     unsigned int j = 0, k = 0, cnt = 0;
     bool flag = false;
@@ -2713,53 +2713,53 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
             //// fill right side points
             if ( t2[npanel-1] == 2 && t2[npanel] == 2 )
             { // printf ("full luff \n");
-                lay.panel[npanel-1].right.fill(p2[npanel-1] , p2[npanel]);
+                lay[npanel-1].right.fill(p2[npanel-1] , p2[npanel]);
                 for (k=0; k<npl; k++)
-                    lay.panel[npanel-1].right[k] = EdgeIntersect( LUFF_EDGE, lay.panel[npanel-1].right[k], footVP);
+                    lay[npanel-1].right[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].right[k], footVP);
             }
             else if ( (t2[npanel-1] == 5) && (t2[npanel] == 2) )
             { // printf ("mitre-luff \n");
-                lay.panel[npanel-1].right.fill(p2[npanel-1] , mitreLuffPt, p2[npanel]);
+                lay[npanel-1].right.fill(p2[npanel-1] , mitreLuffPt, p2[npanel]);
 
                 for ( k = npl/2 +1 ; k<npl ; k++ )
-                    lay.panel[npanel-1].right[k] = EdgeIntersect( LUFF_EDGE, lay.panel[npanel-1].right[k], footVP);
+                    lay[npanel-1].right[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].right[k], footVP);
             }
             else
             { // printf ("full mitre \n");
-                lay.panel[npanel-1].right.fill(p2[npanel-1], p2[npanel]);
+                lay[npanel-1].right.fill(p2[npanel-1], p2[npanel]);
             }
 
             //// fill left side points which are all on foot
-            lay.panel[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
+            lay[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
             for ( k = 0 ; k < npl ; k++ )
-                lay.panel[npanel-1].left[k] = EdgeIntersect( FOOT_EDGE, lay.panel[npanel-1].left[k], footVP);
+                lay[npanel-1].left[k] = EdgeIntersect( FOOT_EDGE, lay[npanel-1].left[k], footVP);
 
             //// fill the intermediate points of bottom side
-            lay.panel[npanel-1].bottom.fill(lay.panel[npanel-1].left[0] , lay.panel[npanel-1].right[0]);
+            lay[npanel-1].bottom.fill(lay[npanel-1].left[0] , lay[npanel-1].right[0]);
 
             //// fill the intermediate points of top side on seam
-            lay.panel[npanel-1].top.fill(lay.panel[npanel-1].left[npl-1] , lay.panel[npanel-1].right[npl-1]);
+            lay[npanel-1].top.fill(lay[npanel-1].left[npl-1] , lay[npanel-1].right[npl-1]);
             if ( flag == true && t2[npanel] == 5 )
             {
                 for ( k = 0 ; k < npb ; k++ )
-                    lay.panel[npanel-1].top[k] = EdgeIntersect( LUFF_EDGE, lay.panel[npanel-1].top[k] , footV);
+                    lay[npanel-1].top[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].top[k] , footV);
             }
             
             ///* Now we go over all the points of the foot panel and calculate their z */
             for( k = 0 ; k < npl ; k++ )
-                lay.panel[npanel-1].left[k] = Zpoint(lay.panel[npanel-1].left[k]);
+                lay[npanel-1].left[k] = Zpoint(lay[npanel-1].left[k]);
             for( k = 0 ; k < npl ; k++ )
-                lay.panel[npanel-1].right[k] = Zpoint(lay.panel[npanel-1].right[k]);
+                lay[npanel-1].right[k] = Zpoint(lay[npanel-1].right[k]);
             for( k = 0 ; k < npb ; k++ )
-                lay.panel[npanel-1].top[k] = Zpoint(lay.panel[npanel-1].top[k]);
+                lay[npanel-1].top[k] = Zpoint(lay[npanel-1].top[k]);
             for( k = 0 ; k < npb ; k++ )
-                lay.panel[npanel-1].bottom[k] = Zpoint(lay.panel[npanel-1].bottom[k]);
+                lay[npanel-1].bottom[k] = Zpoint(lay[npanel-1].bottom[k]);
 
             /*if (npanel == 1)
             {
             for ( k=0 ; k<5 ; k++)
             {
-                pt = lay.panel[npanel-1].top[k];
+                pt = lay[npanel-1].top[k];
                 printf ("Panel %d Pt %d  x= %f  y= %f  z= %f \n", npanel-1, k, pt.x(), pt.y(), pt.z()); // send to console
             }
             printf (" --- \n");
@@ -2767,13 +2767,13 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
             
             /** Now we develop the current foot panel */
             if ( npanel == 1 )
-                dev.panel[npanel-1] = lay.panel[npanel-1].develop(ALIGN_TOP);
+                dev[npanel-1] = lay[npanel-1].develop(ALIGN_TOP);
             else
             {
-                dev.panel[npanel-1] = lay.panel[npanel-1].develop(ALIGN_BOTTOM);
+                dev[npanel-1] = lay[npanel-1].develop(ALIGN_BOTTOM);
                 // add deviation of previous panel top edge to bottom edge
                 for( k = 1 ; k < npb-1 ; k++ )
-                    dev.panel[npanel-1].bottom[k] = dev.panel[npanel-1].bottom[k] + deviaPrev[k];
+                    dev[npanel-1].bottom[k] = dev[npanel-1].bottom[k] + deviaPrev[k];
             }
 
             /* Now we compute the deviation of top edge of developed panel
@@ -2781,24 +2781,24 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
              */
             if ( flag == false )
             {
-                vb= CMatrix::rot3d(2,PI/2)*CVector3d(dev.panel[npanel-1].top[npb-1] -dev.panel[npanel-1].top[0]).unit();
+                vb= CMatrix::rot3d(2,PI/2)*CVector3d(dev[npanel-1].top[npb-1] -dev[npanel-1].top[0]).unit();
                 for( k = 1 ; k < npb-1 ; k++ )
                 {
-                    vk = CVector3d (dev.panel[npanel-1].top[k] - dev.panel[npanel-1].top[0]);
+                    vk = CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
                     v = vb * -(vk * vb);
                     deviation[k] = v;
-                    dev.panel[npanel-1].top[k] = dev.panel[npanel-1].top[k] + deviation[k];
+                    dev[npanel-1].top[k] = dev[npanel-1].top[k] + deviation[k];
                 }
             }
 
             ///** Now we add the seam and hems allowance to the foot panels*/
             if ( flag == true )
-                dev.panel[npanel-1].addHems(hemsW, hemsW, 0, 0);
+                dev[npanel-1].addHems(hemsW, hemsW, 0, 0);
             else
-                dev.panel[npanel-1].addHems(hemsW, seamW, 0, 0);
+                dev[npanel-1].addHems(hemsW, seamW, 0, 0);
 
             ///** Now we check the width of developed foot panel */
-            ymax = dev.panel[npanel-1].height();
+            ymax = dev[npanel-1].height();
             exc = ymax - clothW; // current excess of width
 
             exb = exb + .8 * exc + 1; // sum previous correction + 80% of current excess of width +1mm
@@ -2814,7 +2814,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
             deviaPrev[k] = deviation[k];
 
         /** Now we reposition the developed panel such that bottom left is X=0 Y=0 */
-        dev.panel[npanel-1] = dev.panel[npanel-1].reframe(LOW_LEFT);
+        dev[npanel-1] = dev[npanel-1].reframe(LOW_LEFT);
 
         ///** check if peak has been reached to break off */
         if ( flag == true )
@@ -2860,42 +2860,42 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
                     p1[npanel] = head;
                     t1[npanel] = 2; // set on luff
                     // left points on mitrePt-head
-                    lay.panel[npanel-1].left.fill(p1[npanel-1] , mitreLuffPt , p1[npanel]);
+                    lay[npanel-1].left.fill(p1[npanel-1] , mitreLuffPt , p1[npanel]);
 
                     for ( k = npl/2 +1 ; k < npl ; k++ )
-                        lay.panel[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay.panel[npanel-1].left[k], leechVP);
+                        lay[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].left[k], leechVP);
                 }
                 else if ( t1[npanel-1] == 2 )
                 { // left points on luff
                     p1[npanel] = head;
                     t1[npanel] = 2;
-                    lay.panel[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
+                    lay[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
                     for (k=0; k<npl; k++)
-                        lay.panel[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay.panel[npanel-1].left[k], leechVP);
+                        lay[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].left[k], leechVP);
                 }
                 else
                 { // left points on gaff
                     p1[npanel] = p1[npanel-1];
                     t1[npanel] = 3;
-                    lay.panel[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
+                    lay[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
                     for ( k = 0 ; k < npl ; k++ )
-                        lay.panel[npanel-1].left[k] = EdgeIntersect( GAFF_EDGE, lay.panel[npanel-1].left[k], leechVP);
+                        lay[npanel-1].left[k] = EdgeIntersect( GAFF_EDGE, lay[npanel-1].left[k], leechVP);
                 }
 
                 //// fill right points on leech
-                lay.panel[npanel-1].right.fill(p2[npanel-1],p2[npanel]);
+                lay[npanel-1].right.fill(p2[npanel-1],p2[npanel]);
                 for ( k = 0 ; k < npl ; k++ )
-                    lay.panel[npanel-1].right[k] = EdgeIntersect( LEECH_EDGE, lay.panel[npanel-1].right[k], leechVP);
+                    lay[npanel-1].right[k] = EdgeIntersect( LEECH_EDGE, lay[npanel-1].right[k], leechVP);
 
                 //// fill bottom points
-                lay.panel[npanel-1].bottom.fill(lay.panel[npanel-1].left[0], lay.panel[npanel-1].right[0]);
+                lay[npanel-1].bottom.fill(lay[npanel-1].left[0], lay[npanel-1].right[0]);
 
                 //// fill top  points
-                lay.panel[npanel-1].top.fill(lay.panel[npanel-1].left[npl-1], lay.panel[npanel-1].right[npl-1]);
+                lay[npanel-1].top.fill(lay[npanel-1].left[npl-1], lay[npanel-1].right[npl-1]);
 
                 // move all top points of top panel to gaff curve
                 for( k = 1 ; k < npb-1 ; k++ )
-                    lay.panel[npanel-1].top[k] = EdgeIntersect( GAFF_EDGE, lay.panel[npanel-1].top[k], CVector3d (head.y()-peak.y() , peak.x()-head.x() , 0));
+                    lay[npanel-1].top[k] = EdgeIntersect( GAFF_EDGE, lay[npanel-1].top[k], CVector3d (head.y()-peak.y() , peak.x()-head.x() , 0));
                 ////// end peak panel /////
             }
             else
@@ -2935,69 +2935,69 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
                  */
                 if ( t1[npanel-1] == 2 && t1[npanel] == 2 )
                 { // full luff
-                    lay.panel[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
+                    lay[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
                     for ( k = 0 ; k < npl ; k++ )
-                        lay.panel[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay.panel[npanel-1].left[k], leechVP);
+                        lay[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].left[k], leechVP);
                 }
                 else if ( t1[npanel-1] == 3 && t1[npanel] == 3 )
                 { // full gaff
-                    lay.panel[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
+                    lay[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
                     for ( k = 0 ; k < npl ; k++ )
-                        lay.panel[npanel-1].left[k] = EdgeIntersect( GAFF_EDGE, lay.panel[npanel-1].left[k] , leechVP);
+                        lay[npanel-1].left[k] = EdgeIntersect( GAFF_EDGE, lay[npanel-1].left[k] , leechVP);
                 }
                 else if ( (t1[npanel-1] == 2) && (t1[npanel] == 3) )
                 { // luff-head-gaff
-                    lay.panel[npanel-1].left.fill(p1[npanel-1] , head , p1[npanel]);
+                    lay[npanel-1].left.fill(p1[npanel-1] , head , p1[npanel]);
                     for ( k = 0 ; k < npl/2 ; k++ )
-                        lay.panel[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay.panel[npanel-1].left[k] , leechVP);
+                        lay[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].left[k] , leechVP);
                     for ( k = npl/2 +1 ; k < npl ; k++ )
-                        lay.panel[npanel-1].left[k] = EdgeIntersect( GAFF_EDGE, lay.panel[npanel-1].left[k] , leechVP);
+                        lay[npanel-1].left[k] = EdgeIntersect( GAFF_EDGE, lay[npanel-1].left[k] , leechVP);
                 } // end IF ELSE for left side
                 else if ( (t1[npanel-1] == 5) && (t1[npanel] == 2) )
                 { // mitre-luff
-                    lay.panel[npanel-1].left.fill(p1[npanel-1] , mitreLuffPt , p1[npanel]);
+                    lay[npanel-1].left.fill(p1[npanel-1] , mitreLuffPt , p1[npanel]);
                     for ( k = 0 ; k < npl/2 ; k++ )
-                        lay.panel[npanel-1].left[k] = MitreIntersect(lay.panel[npanel-1].left[k] , leechVP);
+                        lay[npanel-1].left[k] = MitreIntersect(lay[npanel-1].left[k] , leechVP);
                     for (k=npl/2+1; k<npl; k++)
-                        lay.panel[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay.panel[npanel-1].left[k] , leechVP);
+                        lay[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].left[k] , leechVP);
                 }
                 else
                 { // full mitre
-                    lay.panel[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
+                    lay[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
                 }
 
                 //// Fill the intermediate points of the right side
-                lay.panel[npanel-1].right.fill(p2[npanel-1] , p2[npanel]);
+                lay[npanel-1].right.fill(p2[npanel-1] , p2[npanel]);
                 for ( k = 0 ; k < npl ; k++ )
-                    lay.panel[npanel-1].right[k] = EdgeIntersect( LEECH_EDGE, lay.panel[npanel-1].right[k] , leechVP);
+                    lay[npanel-1].right[k] = EdgeIntersect( LEECH_EDGE, lay[npanel-1].right[k] , leechVP);
 
                 //// Fill the intermediate points of the top side of the leech panel
-                lay.panel[npanel-1].top.fill(lay.panel[npanel-1].left[npl-1] , lay.panel[npanel-1].right[npl-1]);
+                lay[npanel-1].top.fill(lay[npanel-1].left[npl-1] , lay[npanel-1].right[npl-1]);
 
                 //// Fill the intermediate points of the bottom side of leech panel
-                lay.panel[npanel-1].bottom.fill(lay.panel[npanel-1].left[0] , lay.panel[npanel-1].right[0]);
+                lay[npanel-1].bottom.fill(lay[npanel-1].left[0] , lay[npanel-1].right[0]);
 
             } //// end else normal panel ///////////////////////
 
             /** Now we go over all the points of the leech panel and calculate their z */
             for( k = 0 ; k < npl ; k++ )
-                lay.panel[npanel-1].left[k] = Zpoint(lay.panel[npanel-1].left[k]);
+                lay[npanel-1].left[k] = Zpoint(lay[npanel-1].left[k]);
             for( k = 0 ; k < npl ; k++ )
-                lay.panel[npanel-1].right[k] = Zpoint(lay.panel[npanel-1].right[k]);
+                lay[npanel-1].right[k] = Zpoint(lay[npanel-1].right[k]);
             for( k = 0 ; k < npb ; k++ )
-                lay.panel[npanel-1].top[k] = Zpoint(lay.panel[npanel-1].top[k]);
+                lay[npanel-1].top[k] = Zpoint(lay[npanel-1].top[k]);
             for( k = 0 ; k < npb ; k++ )
-                lay.panel[npanel-1].bottom[k] = Zpoint(lay.panel[npanel-1].bottom[k]);
+                lay[npanel-1].bottom[k] = Zpoint(lay[npanel-1].bottom[k]);
 
             /** Now we develop the current leech panel */
             if ( npanel == npanelFoot +1 )
-                dev.panel[npanel-1] = lay.panel[npanel-1].develop(ALIGN_TOP);
+                dev[npanel-1] = lay[npanel-1].develop(ALIGN_TOP);
             else
             {
-                dev.panel[npanel-1] = lay.panel[npanel-1].develop(ALIGN_BOTTOM);
+                dev[npanel-1] = lay[npanel-1].develop(ALIGN_BOTTOM);
                 // add deviation of previous panel top edge to bottom edge
                 for( k = 1 ; k < npb -1 ; k++ )
-                    dev.panel[npanel-1].bottom[k] = dev.panel[npanel-1].bottom[k] + deviaPrev[k];
+                    dev[npanel-1].bottom[k] = dev[npanel-1].bottom[k] + deviaPrev[k];
             }
 
             /* Now we compute the deviation of top edge of the developed leech panel
@@ -3005,24 +3005,24 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
              */
             if ( flag == false )
             {
-                vb = CMatrix::rot3d(2,PI/2)*CVector3d(dev.panel[npanel-1].top[npb-1] -dev.panel[npanel-1].top[0]).unit();
+                vb = CMatrix::rot3d(2,PI/2)*CVector3d(dev[npanel-1].top[npb-1] -dev[npanel-1].top[0]).unit();
                 for( k = 1 ; k < npb -1 ; k++ )
                 {
-                    vk = CVector3d (dev.panel[npanel-1].top[k] - dev.panel[npanel-1].top[0]);
+                    vk = CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
                     v = vb * -(vk * vb);
                     deviation[k] = v;
-                    dev.panel[npanel-1].top[k] = dev.panel[npanel-1].top[k] + deviation[k];
+                    dev[npanel-1].top[k] = dev[npanel-1].top[k] + deviation[k];
                 }
             }
 
             /* Now we add the seam and hems allowance to leech panels*/
             if ( flag == true )
-                dev.panel[npanel-1].addHems(seamW, hemsW, leechHemW, 0);
+                dev[npanel-1].addHems(seamW, hemsW, leechHemW, 0);
             else
-                dev.panel[npanel-1].addHems(seamW, seamW, leechHemW, 0);
+                dev[npanel-1].addHems(seamW, seamW, leechHemW, 0);
 
             /* Now we check the width of developed leech panel */
-            ymax =  dev.panel[npanel-1].height();
+            ymax =  dev[npanel-1].height();
             exc = ymax - clothW;
 
             exb = exb + .8 * exc +1; // sum previous correction + 80% of current excess of width
@@ -3041,7 +3041,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
             deviaPrev[k] = deviation[k];
 
         /* Now we reposition the developed panel such that bottom left is X=0 Y=0 */
-        dev.panel[npanel-1] = dev.panel[npanel-1].reframe(LOW_LEFT);
+        dev[npanel-1] = dev[npanel-1].reframe(LOW_LEFT);
 
         /* check if peak has been reached to break off */
         if ( flag == true )
@@ -3055,28 +3055,28 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
     /** copying the sails for display */
     CPanelGroup sail(npanel);
     for( j = 0; j < npanel; j++ )
-        sail.panel[j] = lay.panel[j];
+        sail[j] = lay[j];
 
     /** copying the developed sail into flatsail */
     flatsail = CPanelGroup(npanel);
 
     for ( j = 0 ; j < npanel ; j++ )
-        flatsail.panel[j] = dev.panel[j];
+        flatsail[j] = dev[j];
 
     /** preparing the displays version of the developed sail */
     dispsail = flatsail;
 
     for ( j = 1 ; j < npanel ; j++ )
     {
-        top = dispsail.panel[j-1].top[0];
-        bot = dispsail.panel[j].bottom[0];
+        top = dispsail[j-1].top[0];
+        bot = dispsail[j].bottom[0];
 
         // translation v to align panel bottom edge origin to previous panel upper edge origin
         v = top;
         v.x() -= bot.x();
         v.y() += 2 * seamW +10; // adding offset to separate panels vertically
 
-        dispsail.panel[j] = dispsail.panel[j] + v;
+        dispsail[j] = dispsail[j] + v;
     }
 
     return sail;

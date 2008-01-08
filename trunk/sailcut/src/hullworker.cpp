@@ -214,8 +214,8 @@ CPanelGroup CHullWorker::makeHull() //const
         plank2.right[j].z() = -plank1.right[j].z();
     }
     // add the bottom planks to the hull
-    hull.panel.push_back(plank1);
-    hull.panel.push_back(plank2);
+    hull.push_back(plank1);
+    hull.push_back(plank2);
     
     // laying top side planks
     v1 = CVector3d( -cos(real(StemA) * PI/180) , sin(real(TopPlankA) * PI/180) , cos(real(TopPlankA) * PI/180) );
@@ -248,8 +248,8 @@ CPanelGroup CHullWorker::makeHull() //const
         plank2.right[j].z() = -plank1.right[j].z();
     }
     // add the top side planks to the hull
-    hull.panel.push_back(plank1);
-    hull.panel.push_back(plank2);
+    hull.push_back(plank1);
+    hull.push_back(plank2);
     
     // Laying deck planks
     for ( j = 0 ; j < npb ; j++ )
@@ -267,16 +267,16 @@ CPanelGroup CHullWorker::makeHull() //const
         deck2.right.fill(deck2.bottom[npb-1] , deck2.top[npb-1]);
     }
     // add the deck planks to the hull
-    hull.panel.push_back(deck1);
-    hull.panel.push_back(deck2);
+    hull.push_back(deck1);
+    hull.push_back(deck2);
         
     // translate the hull such that stem is at x=O, y=0, z=0 ///
-    j =  hull.panel.size() -1;
-    pt0 = hull.panel[j].top[0];
+    j =  hull.size() -1;
+    pt0 = hull[j].top[0];
        
-    for ( j = 0 ; j < hull.panel.size() ; j++ )
+    for ( j = 0 ; j < hull.size() ; j++ )
     {
-        hull.panel[j] = hull.panel[j] + CVector3d(-pt0);
+        hull[j] = hull[j] + CVector3d(-pt0);
     }
     return hull;
 }

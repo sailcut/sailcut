@@ -84,8 +84,8 @@ CPanelGroup CRigWorker::makeRig() const
         mast2.left.fill(mast2.bottom[0],mast2.top[0]); 
         mast2.right.fill(mast2.bottom[npb-1],mast2.top[npb-1]); 
         // add mast panel to rig
-        rig.panel.push_back(mast1);
-        rig.panel.push_back(mast2);
+        rig.push_back(mast1);
+        rig.push_back(mast2);
     }
     
     // add spreaders //
@@ -105,12 +105,12 @@ CPanelGroup CRigWorker::makeRig() const
         mast1.left.fill(mast1.bottom[0],mast1.top[0]); 
         mast1.right.fill(mast1.bottom[npb-1],mast1.top[npb-1]); 
         
-        rig.panel.push_back(mast1);
+        rig.push_back(mast1);
         
         // make symetrical by rotation
         mast1 = mast1.rotate(p2 , CMatrix::rot3d(2, PI) );
         
-        rig.panel.push_back(mast1);
+        rig.push_back(mast1);
     }
     
     // add shrouds //
@@ -143,8 +143,8 @@ CPanelGroup CRigWorker::makeRig() const
             mast2.left.fill(mast2.bottom[0],mast2.top[0]); 
             mast2.right.fill(mast2.bottom[npb-1],mast2.top[npb-1]);
             // add inner shrouds to rig
-            rig.panel.push_back(mast1);
-            rig.panel.push_back(mast2);
+            rig.push_back(mast1);
+            rig.push_back(mast2);
             
             // add outer shroud to tip of spreaders
             // make +Z shroud
@@ -168,8 +168,8 @@ CPanelGroup CRigWorker::makeRig() const
             mast2.left.fill(mast2.bottom[0],mast2.top[0]); 
             mast2.right.fill(mast2.bottom[npb-1],mast2.top[npb-1]); 
             // add outer shroud to rig
-            rig.panel.push_back(mast1);
-            rig.panel.push_back(mast2);
+            rig.push_back(mast1);
+            rig.push_back(mast2);
         
             p1 = p2;
         }
@@ -197,8 +197,8 @@ CPanelGroup CRigWorker::makeRig() const
         mast2.left.fill(mast2.bottom[0],mast2.top[0]); 
         mast2.right.fill(mast2.bottom[npb-1],mast2.top[npb-1]); 
         // add cap shroud to rig
-        rig.panel.push_back(mast1);
-        rig.panel.push_back(mast2);
+        rig.push_back(mast1);
+        rig.push_back(mast2);
     //    
     return rig;
 }
