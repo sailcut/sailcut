@@ -78,53 +78,21 @@ public:
 
 /** This class describes a side of a panel
  */
-class CSide
+class CSide : public vector<CPoint3d>
 {
 public:
     CSide( unsigned int = 1 );
-    CSide( const CSide& );
-    //   ~CSide();
 
 public:
     void fill( const CPoint3d &, const CPoint3d & );
     void fill( const CPoint3d &, const CPoint3d &, const CPoint3d & );
-
-    /** Accessor for the points array. DO NOT USE. */
-    vector<CPoint3d>& points()
-    {
-        return point;
-    }
-    /** Constant accessor for the points array. DO NOT USE. */
-    const vector<CPoint3d>& points() const
-    {
-        return point;
-    }
-
-    /** Accessor for the number of points. */
-    unsigned int size() const
-    {
-        return point.size();
-    };
 
     /** function for rotating a side. */
     CSide rotate( const CPoint3d &, const CMatrix &) const;
 
     // operators
     CSide operator+ (const CVector3d &) const;
-    CSide& operator= (const CSide &);
-    CPoint3d& operator[](const unsigned int i)
-    {
-        return point[i];
-    }
-    const CPoint3d& operator[](const unsigned int i) const
-    {
-        return point[i];
-    }
     friend ostream& operator<< (ostream &, const CSide &);
-
-protected:
-    /** the points that make up the side */
-    vector<CPoint3d> point;
 };
 
 
