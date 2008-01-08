@@ -23,7 +23,7 @@
  */
 CPanelGroup::CPanelGroup( unsigned int nbpanels /* = 0 */)
 {
-    panel.resize(nbpanels);
+    resize(nbpanels);
     type = SAIL;
 }
 
@@ -31,9 +31,9 @@ CPanelGroup::CPanelGroup( unsigned int nbpanels /* = 0 */)
 /** Copy constructor.
  */
 CPanelGroup::CPanelGroup( const CPanelGroup& s )
+  : vector<CPanel>(s)
 {
     title = s.title;
-    panel = s.panel;
     child = s.child;
     type = s.type;
 }
@@ -43,8 +43,8 @@ CPanelGroup::CPanelGroup( const CPanelGroup& s )
  */
 CPanelGroup::CPanelGroup( const CPanel& p )
 {
-    panel.resize(1);
-    panel[0] = p;
+    resize(1);
+    at(0) = p;
 }
 
 
@@ -56,11 +56,11 @@ CRect3d CPanelGroup::boundingRect() const
     bool rect_filled = 0;
     unsigned int i;
 
-    if ( panel.size() > 0 )
+    if ( size() > 0 )
     {
-        rect = panel[0].boundingRect();
-        for( i = 1; i < panel.size(); i++ )
-            rect = rect.join( panel[i].boundingRect() );
+        rect = at(0).boundingRect();
+        for( i = 1; i < size(); i++ )
+            rect = rect.join( at(i).boundingRect() );
         rect_filled = 1;
     }
 
@@ -83,12 +83,12 @@ CRect3d CPanelGroup::boundingRect() const
  */
 void CPanelGroup::placeLabels()
 {
-    for (unsigned int i = 0; i < panel.size(); i++)
+    for (unsigned int i = 0; i < size(); i++)
     {
         char buffer[32];
         sprintf(buffer, "%i", i);
-        panel[i].label.name = buffer;
-        panel[i].placeLabel();
+        at(i).label.name = buffer;
+        at(i).placeLabel();
     }
 }
 
@@ -98,16 +98,16 @@ void CPanelGroup::placeLabels()
  */
 void CPanelGroup::plotLabels()
 {
-    for (unsigned int i = 0; i < panel.size(); i++)
+    for (unsigned int i = 0; i < size(); i++)
     {
         char buffer[32];
         sprintf(buffer, "%i", i);
-        panel[i].label.name = buffer;
+        at(i).label.name = buffer;
 
-        panel[i].label.height = 5;
+        at(i).label.height = 5;
         // position the label and orientate it
-        panel[i].label.origin = panel[i].bottom[2];
-        panel[i].label.direction = CVector3d( panel[i].bottom[3]- panel[i].bottom[2]);
+        at(i).label.origin = at(i).bottom[2];
+        at(i).label.direction = CVector3d( at(i).bottom[3]- at(i).bottom[2]);
     }
 }
 
@@ -118,8 +118,8 @@ CPanelGroup CPanelGroup::rotate( const CPoint3d &p, const CMatrix &m ) const
 {
     unsigned int i;
     CPanelGroup ret = *this;
-    for (i = 0; i < panel.size(); i++ )
-        ret.panel[i] = panel[i].rotate(p,m);
+    for (i = 0; i < size(); i++ )
+        ret[i] = at(i).rotate(p,m);
     for (i = 0; i < child.size(); i++ )
         ret.child[i] = child[i].rotate(p,m);
     return ret;
@@ -133,8 +133,8 @@ CPanelGroup& CPanelGroup::operator=(const CPanelGroup& s)
     if (&s == this)
         return *this;
 
+    this->vector<CPanel>::operator=(s);
     title = s.title;
-    panel = s.panel;
     child = s.child;
     type = s.type;
 
@@ -148,8 +148,8 @@ CPanelGroup CPanelGroup::operator+(const CVector3d& transl) const
 {
     unsigned int i;
     CPanelGroup ret = *this;
-    for (i = 0; i < panel.size(); i++)
-        ret.panel[i] = ret.panel[i] + transl;
+    for (i = 0; i < size(); i++)
+        ret[i] = ret[i] + transl;
     for (i = 0; i < child.size(); i++)
         ret.child[i] = ret.child[i] + transl;
     return ret;
@@ -161,10 +161,10 @@ CPanelGroup CPanelGroup::operator+(const CVector3d& transl) const
 ostream& operator<<(ostream &o, const CPanelGroup &s)
 {
     unsigned int i;
-    for(i = 0; i < s.panel.size(); i++)
+    for(i = 0; i < s.size(); i++)
     {
         o << "===== CPanel : " << i << " ====" << endl;
-        o << s.panel[i] << endl;
+        o << s[i] << endl;
     }
     for(i = 0; i < s.child.size(); i++)
     {

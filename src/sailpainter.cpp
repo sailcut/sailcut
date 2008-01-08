@@ -79,7 +79,7 @@ void CSailPainter::draw(const CPanelGroup &sail)
 {
     unsigned int i;
     
-    for( i = 0; i < sail.panel.size(); i++ )
+    for( i = 0; i < sail.size(); i++ )
     {   
         if ( sail.type == HULL )
             setPen(Qt::darkGreen);
@@ -88,7 +88,7 @@ void CSailPainter::draw(const CPanelGroup &sail)
         else
             setPen(Qt::blue);
              
-        draw(sail.panel[i]);
+        draw(sail[i]);
     }
     for( i = 0; i < sail.child.size(); i++ )
         draw(sail.child[i]);
@@ -175,8 +175,8 @@ void CSailPainter::drawLabels(const CPanelGroup &sail)
     unsigned int i;
     setPen(Qt::black);
     
-    for ( i = 0; i < sail.panel.size(); i++ )
-        draw(sail.panel[i].label);
+    for ( i = 0; i < sail.size(); i++ )
+        draw(sail[i].label);
     for ( i = 0; i < sail.child.size(); i++ )
         drawLabels(sail.child[i]);
 }

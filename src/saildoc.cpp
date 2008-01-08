@@ -485,8 +485,8 @@ void CSailDoc::get
     ( const QDomNode &parent, CPanelGroup &g, const QString &name )
 {
     QDomElement e = findElement( parent, "CPanelGroup", name);
+    get_vector(e, g, "panel");
     get(e, g.title, "title");
-    get_vector(e, g.panel, "panel");
     get_vector(e, g.child, "child");
 
     /* NOTE : we maintain backward file format compatibility
@@ -950,8 +950,8 @@ void CSailDoc::put(QDomNode &parent, const CPanelGroup &g, const QString &name )
     QDomElement e = createElement("CPanelGroup",name);
     parent.appendChild(e);
 
+    put_vector(e, g, "panel");
     put(e, g.title, "title");
-    put_vector(e, g.panel, "panel");
     put_vector(e, g.child, "child");
     put(e, g.type, "type");
 }

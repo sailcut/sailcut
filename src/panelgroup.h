@@ -27,7 +27,7 @@ enum enumPanelGroupType { SAIL, RIG, HULL };
 /** This class holds a collection of panels, for instance to represent
  *  a 3D or a developed sail.
  */
-class CPanelGroup
+class CPanelGroup : public vector<CPanel>
 {
 public:
     CPanelGroup( unsigned int = 0 );
@@ -36,9 +36,6 @@ public:
 
     /** title of this panel group */
     QString title;
-
-    /** the panels in this group */
-    vector<CPanel> panel;
 
     /** children of this group */
     vector<CPanelGroup> child;
