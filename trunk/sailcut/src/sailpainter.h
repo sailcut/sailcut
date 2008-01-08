@@ -42,7 +42,6 @@ public:
     CSailPainter(QPaintDevice *dev) : QPainter(dev)
     {};
 
-    void draw(const CSide &side);
     void draw(const CPanel &panel);
     void draw(const CPanelGroup &sail);
     void draw(const CPanelLabel &label);

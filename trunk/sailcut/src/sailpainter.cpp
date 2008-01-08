@@ -20,14 +20,10 @@
 #include "sailpainter.h"
 #include "panelgroup.h"
 
-/** Draws a side of a sail.
- */
-void CSailPainter::draw(const CSide &side)
+QPolygonF& operator<<(QPolygonF &poly, const CPoint3d &p)
 {
-    QPolygonF poly;
-    for( unsigned i = 0; i < side.size(); i++)
-        poly << QPointF(side[i].x(), -side[i].y());
-    drawPolyline(poly);
+    poly << QPointF(p.x(), - p.y());
+    return poly;
 }
 
 
@@ -36,19 +32,35 @@ void CSailPainter::draw(const CSide &side)
 void CSailPainter::draw(const CPanel &panel)
 {
     //setPen(Qt::blue);
-    draw(panel.left);
-    draw(panel.right);
-    draw(panel.top);
-    draw(panel.bottom);
+    CSide::const_iterator iter;
+    CSide::const_reverse_iterator riter;
+
+    QPolygonF poly;
+    for (iter = panel.bottom.begin(); iter != panel.bottom.end(); iter++)
+        poly << *iter;
+    for (iter = panel.right.begin(); iter != panel.right.end(); iter++)
+        poly << *iter;
+    for (riter = panel.top.rbegin(); riter != panel.top.rend(); riter++)
+        poly << *riter;
+    for (riter = panel.left.rbegin(); riter != panel.left.rend(); riter++)
+        poly << *riter;
+    drawPolyline(poly);
 
     if (panel.hasHems)
     {
         setPen(Qt::red);
-        
-        draw(panel.cutLeft);
-        draw(panel.cutRight);
-        draw(panel.cutTop);
-        draw(panel.cutBottom); 
+
+        poly = QPolygonF();
+        for (iter = panel.cutBottom.begin(); iter != panel.cutBottom.end(); iter++)
+            poly << *iter;
+        for (iter = panel.cutRight.begin(); iter != panel.cutRight.end(); iter++)
+            poly << *iter;
+        for (riter = panel.cutTop.rbegin(); riter != panel.cutTop.rend(); riter++)
+            poly << *riter;
+        for (riter = panel.cutLeft.rbegin(); riter != panel.cutLeft.rend(); riter++)
+            poly << *riter;
+        drawPolyline(poly);
+
         // reset pen color
         setPen(Qt::black);
     }
