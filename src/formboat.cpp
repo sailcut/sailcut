@@ -81,7 +81,7 @@ void CFormBoat::add(const QString &newfile)
         throw CException("CFormBoat::add : unknown document type");
     }
     element.filename = newfile;
-    def.element.push_back(element);
+    def.push_back(element);
     setDef(def);
 }
 

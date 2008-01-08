@@ -48,15 +48,11 @@ public:
  *
  * @see CBoatElement
  */
-class CBoatDef
+class CBoatDef : public vector<CBoatElement>
 {
 public:
     CBoatDef();
-
     CPanelGroup makePanelGroup() const;
-
-    /** the collection of elements that makes up the boat */
-    vector<CBoatElement> element;
 };
 
 #endif

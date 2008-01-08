@@ -532,7 +532,7 @@ void CSailDoc::get
     ( const QDomNode &parent, CBoatDef &d, const QString &name )
 {
     QDomElement e = findElement( parent, "CBoatDef", name);
-    get_vector(e, d.element, "element");
+    get_vector(e, d, "element");
 }
 
 
@@ -989,7 +989,7 @@ void CSailDoc::put(QDomNode &parent, const CBoatDef &d, const QString &name )
     QDomElement e = createElement("CBoatDef",name);
     parent.appendChild(e);
 
-    put_vector(e, d.element, "element");
+    put_vector(e, d, "element");
 }
 
 
