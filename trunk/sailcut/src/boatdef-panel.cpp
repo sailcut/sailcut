@@ -255,17 +255,17 @@ void CBoatDefPanel::setDef(const CBoatDef& newdef)
     }
 
     def = newdef;
-    elementwidget.resize(def.element.size());
+    elementwidget.resize(def.size());
 
-    for ( i = 0; i < def.element.size(); i++)
+    for ( i = 0; i < def.size(); i++)
     {
         elementwidget[i] = new CBoatElementWidget(0);
-        elementwidget[i]->setElement(def.element[i]);
+        elementwidget[i]->setElement(def[i]);
 
         connect(elementwidget[i], SIGNAL(signalRemove()), this, SLOT(slotRemove()));
         connect(elementwidget[i], SIGNAL(signalUpdate(const CBoatElement&)), this, SLOT(slotUpdate(const CBoatElement&)));
 
-        tabs->addTab(elementwidget[i], def.element[i].title);
+        tabs->addTab(elementwidget[i], def[i].title);
     }
 
     if (elementwidget.size() > 0)
@@ -284,7 +284,7 @@ void CBoatDefPanel::slotRemove()
     tabs->removeTab(tabIndex);
     delete elementwidget[tabIndex];
     elementwidget.erase(elementwidget.begin()+tabIndex);
-    def.element.erase(def.element.begin()+tabIndex);
+    def.erase(def.begin()+tabIndex);
     signalUpdate(def);
 }
 
@@ -298,8 +298,8 @@ void CBoatDefPanel::slotUpdate(const CBoatElement& newelement)
 {
     int tabIndex = tabs->currentIndex();
 
-    def.element[tabIndex] = newelement;
-    tabs->setTabText(tabIndex, def.element[tabIndex].title);
+    def[tabIndex] = newelement;
+    tabs->setTabText(tabIndex, def[tabIndex].title);
     signalUpdate(def);
 }
 

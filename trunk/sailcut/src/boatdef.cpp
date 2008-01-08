@@ -31,8 +31,8 @@ CPanelGroup CBoatDef::makePanelGroup() const
 {
     CPanelGroup output;
 
-    for (unsigned int i = 0; i < element.size(); i++)
-        output.child.push_back(element[i] + element[i].origin);
+    for (unsigned int i = 0; i < size(); i++)
+        output.child.push_back(at(i) + at(i).origin);
 
     return output;
 }
