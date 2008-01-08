@@ -87,30 +87,6 @@ public:
     void get
         (const QDomNode &parent, CRigDef &d, const QString &name );
 
-    /** Reads a vector of elements from an XML document.
-     *
-     * @param parent the parent node
-     * @param v the vector
-     * @param name the name of the vector
-     */
-    template<class myType>
-    void get
-        (QDomNode &parent, vector<myType>& v, const QString &name="")
-    {
-        QDomElement e = findElement( parent, "vector", name);
-        if ( e.isNull() )
-            throw CException("CSailDoc::get(vector) : did not find requested element");
-
-        unsigned int size =   e.attributes().namedItem("size").nodeValue().toInt();
-        v.resize(size);
-
-        for ( unsigned int i = 0; i < size; i++)
-        {
-            get
-                (e, v[i], QString::number(i));
-        }
-    };
-
     // output
     void put(QDomNode &parent, const int &i, const QString &name ="" );
     void put(QDomNode &parent, const unsigned int &i, const QString &name ="" );
@@ -133,6 +109,36 @@ public:
     void put(QDomNode &parent, const CPrefs &p, const QString &name="" );
     void put(QDomNode &parent, const CRigDef &d, const QString &name="" );
 
+    void toFile(const QString &filename);
+
+    /** the toplevel element */
+    QDomElement top;
+
+protected:
+    /** Reads a vector of elements from an XML document.
+     *
+     * @param parent the parent node
+     * @param v the vector
+     * @param name the name of the vector
+     */
+    template<class myType>
+    void get_vector
+        (QDomNode &parent, vector<myType>& v, const QString &name="")
+    {
+        QDomElement e = findElement( parent, "vector", name);
+        if ( e.isNull() )
+            throw CException("CSailDoc::get(vector) : did not find requested element");
+
+        unsigned int size =   e.attributes().namedItem("size").nodeValue().toInt();
+        v.resize(size);
+
+        for ( unsigned int i = 0; i < size; i++)
+        {
+            get
+                (e, v[i], QString::number(i));
+        }
+    };
+
     /** Writes a vector of elements to an XML document.
      *
      * @param parent the parent node
@@ -140,7 +146,7 @@ public:
      * @param name the name of the vector
      */
     template<class myType>
-    void put(QDomNode &parent, const vector<myType>& v, const QString &name="")
+    void put_vector(QDomNode &parent, const vector<myType>& v, const QString &name="")
     {
         QDomElement e = createElement("vector",name);
         e.setAttribute("size", (unsigned int)v.size());
@@ -149,10 +155,6 @@ public:
         for(unsigned int i =0; i<v.size(); i++)
             put(e, v[i], QString::number(i));
     };
-    void toFile(const QString &filename);
-
-    /** the toplevel element */
-    QDomElement top;
 };
 
 

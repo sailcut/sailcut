@@ -47,10 +47,10 @@ CSailTreeItem::CSailTreeItem(const CPanel &data, QString name, CSailTreeItem *pa
     parentItem = parent;
     itemData << name;
     itemIcon = panel_xpm;
-    appendChild(new CSailTreeItem(data.left.points(), "left", this));
-    appendChild(new CSailTreeItem(data.right.points(), "right", this));
-    appendChild(new CSailTreeItem(data.top.points(), "top", this));
-    appendChild(new CSailTreeItem(data.bottom.points(), "bottom", this));
+    appendChild(new CSailTreeItem(data.left, "left", this));
+    appendChild(new CSailTreeItem(data.right, "right", this));
+    appendChild(new CSailTreeItem(data.top, "top", this));
+    appendChild(new CSailTreeItem(data.bottom, "bottom", this));
 }
 
 CSailTreeItem::CSailTreeItem(const CPoint3d &data, QString name, CSailTreeItem *parent)

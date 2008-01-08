@@ -950,15 +950,7 @@ CPanel& CPanel::operator= (const CPanel &p)
  */
 CSide::CSide( unsigned int nbpoints /* = 1 */)
 {
-    point.resize(nbpoints);
-}
-
-
-/** Copy constructor.
- */
-CSide::CSide( const CSide &s )
-{
-    point = s.point;
+    resize(nbpoints);
 }
 
 
@@ -971,12 +963,12 @@ void CSide::fill( const CPoint3d &p1 , const CPoint3d &p2 )
     case 0:
         return;
     case 1:
-        point[0] = p1;
+        at(0) = p1;
         return;
     }
 
     for( unsigned int i = 0 ; i < size() ; i++ )
-        point[i] = p1 + ( p2 - p1 ) * ( real(i) / (size() -1) );
+        at(i) = p1 + ( p2 - p1 ) * ( real(i) / (size() -1) );
 }
 
 
@@ -989,11 +981,11 @@ void CSide::fill( const CPoint3d &p1 , const CPoint3d &p2 , const CPoint3d &p3 )
     case 0:
         return;
     case 1:
-        point[0] = p1;
+        at(0) = p1;
         return;
     case 2:
-        point[0] = p1;
-        point[1] = p3;
+        at(0) = p1;
+        at(1) = p3;
         return;
     }
 
@@ -1001,9 +993,9 @@ void CSide::fill( const CPoint3d &p1 , const CPoint3d &p2 , const CPoint3d &p3 )
     for( unsigned int i = 0 ; i < size() ; i++ )
     {
         if ( i <= n1 )
-            point[i] = p1 + (p2 - p1) * (real(i) / n1);
+            at(i) = p1 + (p2 - p1) * (real(i) / n1);
         else
-            point[i] = p2 + (p3 - p2) * (real(i - n1) / (size() -n1 -1) );
+            at(i) = p2 + (p3 - p2) * (real(i - n1) / (size() -n1 -1) );
     }
 }
 
@@ -1015,7 +1007,7 @@ CSide CSide::rotate( const CPoint3d &p, const CMatrix &m ) const
     CSide s( size() );
 
     for ( unsigned int i = 0 ; i < size() ; i++ )
-        s[i] = p + m * (point[i] - p);
+        s[i] = p + m * (at(i) - p);
 
     return s;
 }
@@ -1028,21 +1020,8 @@ CSide CSide::operator+ (const CVector3d &transl) const
 {
     CSide ret( size() );
     for ( unsigned int i = 0 ; i < size() ; i++ )
-        ret[i] = transl + point[i];
+        ret[i] = transl + at(i);
     return ret;
-}
-
-
-/** Performs an assigment.
- */
-CSide& CSide::operator=(const CSide& s)
-{
-    if (&s == this)
-        return *this;
-
-    point = s.point;
-
-    return *this;
 }
 
 

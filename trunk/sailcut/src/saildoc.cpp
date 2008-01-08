@@ -441,8 +441,7 @@ void CSailDoc::get
     ( const QDomNode &parent, CSide &s, const QString &name )
 {
     QDomElement e = findElement( parent, "CSide", name);
-    get
-        (e, s.points(), "point");
+    get_vector( e, s, "point");
 }
 
 
@@ -487,8 +486,8 @@ void CSailDoc::get
 {
     QDomElement e = findElement( parent, "CPanelGroup", name);
     get( e, g.title, "title" );
-    get( e, g.panel, "panel" );
-    get( e, g.child, "child" );
+    get_vector( e, g.panel, "panel" );
+    get_vector( e, g.child, "child" );
 
     /* NOTE : we maintain backward file format compatibility
      * by adding new members in the order they were introduced below
@@ -533,8 +532,7 @@ void CSailDoc::get
     ( const QDomNode &parent, CBoatDef &d, const QString &name )
 {
     QDomElement e = findElement( parent, "CBoatDef", name);
-    get
-        (e, d.element, "element");
+    get_vector(e, d.element, "element");
 }
 
 
@@ -566,7 +564,7 @@ void CSailDoc::get
 {
     QDomElement e = findElement( parent, "CSailMould", name);
     get( e, m.vertpos, "vertpos" );
-    get( e, m.profile, "profile" );
+    get_vector( e, m.profile, "profile" );
 }
 
 
@@ -583,7 +581,7 @@ void CSailDoc::get
     try
     {
         get ( e, p.language, "language" );
-        get ( e, p.mruDocuments, "mruDocuments" );
+        get_vector ( e, p.mruDocuments, "mruDocuments" );
         get ( e, p.helpWindowHeight, "helpWindowHeight" );
         get ( e, p.helpWindowWidth, "helpWindowWidth" );
         get ( e, p.mainWindowHeight, "mainWindowHeight" );
@@ -917,7 +915,7 @@ void CSailDoc::put( QDomNode &parent, const CSide &s, const QString &name )
     QDomElement e = createElement("CSide",name);
     parent.appendChild(e);
 
-    put ( e, s.points(), "point");
+    put_vector(e, s, "point");
 }
 
 
@@ -953,8 +951,8 @@ void CSailDoc::put( QDomNode &parent, const CPanelGroup &g, const QString &name 
     parent.appendChild(e);
 
     put ( e, g.title, "title");
-    put ( e, g.panel, "panel");
-    put ( e, g.child, "child");
+    put_vector(e, g.panel, "panel");
+    put_vector(e, g.child, "child");
     put ( e, g.type, "type");
 }
 
@@ -980,7 +978,7 @@ void CSailDoc::put( QDomNode &parent, const CSailMould &m, const QString &name )
     parent.appendChild(e);
 
     put ( e, m.vertpos, "vertpos");
-    put ( e, m.profile, "profile");
+    put_vector ( e, m.profile, "profile");
 }
 
 
@@ -991,7 +989,7 @@ void CSailDoc::put( QDomNode &parent, const CBoatDef &d, const QString &name )
     QDomElement e = createElement("CBoatDef",name);
     parent.appendChild(e);
 
-    put ( e, d.element, "element");
+    put_vector ( e, d.element, "element");
 }
 
 
@@ -1017,7 +1015,7 @@ void CSailDoc::put( QDomNode &parent, const CPrefs& p, const QString& name)
     parent.appendChild(e);
 
     put ( e, p.language, "language");
-    put ( e, p.mruDocuments, "mruDocuments");
+    put_vector ( e, p.mruDocuments, "mruDocuments");
     put ( e, p.helpWindowHeight, "helpWindowHeight");
     put ( e, p.helpWindowWidth, "helpWindowWidth");
     put ( e, p.mainWindowHeight, "mainWindowHeight");
