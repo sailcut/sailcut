@@ -24,18 +24,10 @@
  */
 void CSailPainter::draw(const CSide &side)
 {
-    QPoint prev, next;
-
-    if (side.size() < 2)
-        return;
-
-    prev = QPoint( int(side[0].x()), -int(side[0].y()) );
-    for( unsigned i = 1; i < side.size(); i++)
-    {
-        next = QPoint( int(side[i].x()), -int(side[i].y()) );
-        drawLine(prev, next);
-        prev = next;
-    }
+    QPolygonF poly;
+    for( unsigned i = 0; i < side.size(); i++)
+        poly << QPointF(side[i].x(), -side[i].y());
+    drawPolyline(poly);
 }
 
 
