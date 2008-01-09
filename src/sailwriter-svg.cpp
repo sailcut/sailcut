@@ -17,10 +17,14 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
+// for HAVE_QSVGGENERATOR
+#include "sailcutqt.h"
+
 #include "sailwriter-svg.h"
 #include "sailprinter.h"
+#ifdef HAVE_QSVGGENERATOR
 #include <QSvgGenerator>
-
+#endif
 
 /** Write sail to SVG format.
  *
@@ -28,6 +32,7 @@
  */
 void CSailSvgWriter::write(const CPanelGroup &sail, const QString &filename) const
 {
+#ifdef HAVE_QSVGGENERATOR
     // SVG generator
     QSvgGenerator generator;
     generator.setFileName(filename);
@@ -35,5 +40,6 @@ void CSailSvgWriter::write(const CPanelGroup &sail, const QString &filename) con
     CSailPrinter printer(&generator);
     printer.setShowLabels(false);
     printer.printSailDrawing(sail);
+#endif
 }
 
