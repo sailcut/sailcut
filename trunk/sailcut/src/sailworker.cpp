@@ -421,14 +421,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
             }  /// end else normal panel ///////////////////////
 
             ///* Now we go over all the points and calculate their z */
-            for( k = 0 ; k < npl ; k++ )
-                lay[npanel-1].left[k] = Zpoint(lay[npanel-1].left[k]);
-            for( k = 0 ; k < npl ; k++ )
-                lay[npanel-1].right[k] = Zpoint(lay[npanel-1].right[k]);
-            for( k = 0 ; k < npb ; k++ )
-                lay[npanel-1].top[k] = Zpoint(lay[npanel-1].top[k]);
-            for( k = 0 ; k < npb ; k++ )
-                lay[npanel-1].bottom[k] = Zpoint(lay[npanel-1].bottom[k]);
+            lay[npanel-1] = Zpanel(lay[npanel-1]);
 
 #ifdef DEBUG
             if ( npanel == 1 )
@@ -781,14 +774,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
             } /// end else normal panel ///////////////////////
 
             ///* Now we go over all the points and calculate their z */
-            for( k = 0; k < npl; k++ )
-                lay[npanel-1].left[k] = Zpoint(lay[npanel-1].left[k]);
-            for( k = 0; k < npl; k++ )
-                lay[npanel-1].right[k] = Zpoint(lay[npanel-1].right[k]);
-            for( k = 0; k < npb; k++ )
-                lay[npanel-1].top[k] = Zpoint(lay[npanel-1].top[k]);
-            for( k = 0; k < npb; k++ )
-                lay[npanel-1].bottom[k] = Zpoint(lay[npanel-1].bottom[k]);
+            lay[npanel-1] = Zpanel(lay[npanel-1]);
 
             ///* Now we develop the current panel */
             if ( npanel == 1 )
@@ -1064,14 +1050,7 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
             //// fill top side points on seam
             lay[npanel-1].top.fill(lay[npanel-1].left[npl-1], lay[npanel-1].right[npl-1]);
             /* Now we go over all the points and calculate their z */
-            for( k = 0; k < npl; k ++ )
-                lay[npanel-1].left[k] = Zpoint(lay[npanel-1].left[k]);
-            for( k = 0; k < npl; k ++ )
-                lay[npanel-1].right[k] = Zpoint(lay[npanel-1].right[k]);
-            for( k = 0; k < npb; k ++ )
-                lay[npanel-1].top[k] = Zpoint(lay[npanel-1].top[k]);
-            for( k = 0; k < npb; k ++ )
-                lay[npanel-1].bottom[k] = Zpoint(lay[npanel-1].bottom[k]);
+            lay[npanel-1] = Zpanel(lay[npanel-1]);
 
             /** Now we develop the current panel */
             if ( npanel == 1 )
@@ -1403,17 +1382,7 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
         } //// end else normal panel ///////////////////////
 
         /* Now we go over all the points and calculate their z */
-        for( k = 0 ; k < npl ; k++ )
-            lay[npanel-1].left[k] = Zpoint( lay[npanel-1].left[k] );
-
-        for( k = 0 ; k < npl ; k++ )
-            lay[npanel-1].right[k] = Zpoint( lay[npanel-1].right[k] );
-
-        for( k = 0 ; k < npb ; k++ )
-            lay[npanel-1].top[k] = Zpoint( lay[npanel-1].top[k] );
-
-        for( k = 0 ; k < npb ; k++ )
-            lay[npanel-1].bottom[k] = Zpoint( lay[npanel-1].bottom[k] ) ;
+        lay[npanel-1] = Zpanel(lay[npanel-1]);
 
         /* Now we rotate the panel by the dihedral angle */
         lay[npanel-1] = lay[npanel-1].rotate(tack , CMatrix::rot3d(0 , alfa) );
@@ -1704,14 +1673,7 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
             }
 
             // We compute Z
-            for( k = 0; k < npl; k ++ )
-                lay[npanel].left[k] = Zpoint( lay[npanel].left[k] );
-            for( k = 0; k < npl; k ++ )
-                lay[npanel].right[k] = Zpoint( lay[npanel].right[k] );
-            for( k = 0; k < npb; k ++ )
-                lay[npanel].top[k] = Zpoint( lay[npanel].top[k] );
-            for( k = 0; k < npb; k ++ )
-                lay[npanel].bottom[k] = Zpoint( lay[npanel].bottom[k] );
+            lay[npanel] = Zpanel(lay[npanel]);
 
             // We develop the current panel
             dev[npanel] = lay[npanel].develop(ALIGN_TOP);
@@ -1784,15 +1746,8 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
                         lay[npanel].left[k] = EdgeIntersect( GAFF_EDGE, lay[npanel].left[k] , gaffVP );
                 }
 
-                // we compute Z
-                for( k = 0; k < npl; k++ )
-                    lay[npanel].left[k] = Zpoint( lay[npanel].left[k] );
-                for( k = 0; k < npl; k++ )
-                    lay[npanel].right[k] = Zpoint( lay[npanel].right[k] );
-                for( k = 0; k < npb; k++ )
-                    lay[npanel].top[k] = Zpoint( lay[npanel].top[k] );
-                for( k = 0; k < npb; k++ )
-                    lay[npanel].bottom[k] = Zpoint( lay[npanel].bottom[k] );
+                ///* Now we go over all the points and calculate their z */
+                lay[npanel] = Zpanel(lay[npanel]);
 
                 // We develop the current panel
                 dev[npanel] = lay[npanel].develop(ALIGN_TOP);
@@ -1826,17 +1781,7 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
                 lay[npanel].top.fill(pt3 , pt4);
 
                 // compute Z
-                for( k = 0; k < npl; k ++ )
-                    lay[npanel].left[k] = Zpoint( lay[npanel].left[k] );
-
-                for( k = 0; k < npl; k ++ )
-                    lay[npanel].right[k] = Zpoint( lay[npanel].right[k] );
-
-                for( k = 0; k < npb; k ++ )
-                    lay[npanel].top[k] = Zpoint( lay[npanel].top[k] );
-
-                for( k = 0; k < npb; k ++ )
-                    lay[npanel].bottom[k] = Zpoint( lay[npanel].bottom[k] );
+                lay[npanel] = Zpanel(lay[npanel]);
 
                 // We develop the current panel
                 dev[npanel] = lay[npanel].develop(ALIGN_TOP);
@@ -1961,17 +1906,7 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
                 lay[npanel].top.fill( pt3, pt4 );
 
                 // compute Z
-                for( k = 0; k < npl; k ++)
-                    lay[npanel].left[k] = Zpoint( lay[npanel].left[k] );
-
-                for( k = 0; k < npl; k ++)
-                    lay[npanel].right[k] = Zpoint( lay[npanel].right[k] );
-
-                for( k = 0; k < npb; k ++)
-                    lay[npanel].top[k] = Zpoint( lay[npanel].top[k] );
-
-                for( k = 0; k < npb; k ++)
-                    lay[npanel].bottom[k] = Zpoint( lay[npanel].bottom[k] );
+                lay[npanel] = Zpanel(lay[npanel]);
 
                 // We develop the current panel
                 dev[npanel] = lay[npanel].develop(ALIGN_TOP);
@@ -2017,14 +1952,7 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
             }
 
             // we compute Z
-            for( k = 0; k < npl; k ++ )
-                lay[npanel].left[k] = Zpoint( lay[npanel].left[k] );
-            for( k = 0; k < npl; k ++ )
-                lay[npanel].right[k] = Zpoint( lay[npanel].right[k] );
-            for( k = 0; k < npb; k ++ )
-                lay[npanel].top[k] = Zpoint( lay[npanel].top[k] );
-            for( k = 0; k < npb; k ++ )
-                lay[npanel].bottom[k] = Zpoint( lay[npanel].bottom[k] );
+            lay[npanel] = Zpanel(lay[npanel]);
 
             // We develop the current panel
             dev[npanel] = lay[npanel].develop(ALIGN_TOP);
@@ -2236,14 +2164,7 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
             }
 
             // compute Z
-            for( k = 0; k < npl; k ++)
-                lay[npanel].left[k] = Zpoint(lay[npanel].left[k]);
-            for( k = 0; k < npl; k ++)
-                lay[npanel].right[k] = Zpoint(lay[npanel].right[k]);
-            for( k = 0; k < npb; k ++)
-                lay[npanel].top[k] = Zpoint(lay[npanel].top[k]);
-            for( k = 0; k < npb; k ++)
-                lay[npanel].bottom[k] = Zpoint(lay[npanel].bottom[k]);
+            lay[npanel] = Zpanel(lay[npanel]);
 
             // We develop the current panel
             dev[npanel] = lay[npanel].develop(ALIGN_TOP);
@@ -2310,14 +2231,7 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
                 }
 
                 // compute Z
-                for( k = 0; k < npl; k ++)
-                    lay[npanel].left[k] = Zpoint(lay[npanel].left[k]);
-                for( k = 0; k < npl; k ++)
-                    lay[npanel].right[k] = Zpoint(lay[npanel].right[k]);
-                for( k = 0; k < npb; k ++)
-                    lay[npanel].top[k] = Zpoint(lay[npanel].top[k]);
-                for( k = 0; k < npb; k ++)
-                    lay[npanel].bottom[k] = Zpoint(lay[npanel].bottom[k]);
+                lay[npanel] = Zpanel(lay[npanel]);
 
                 // We develop the current panel
                 dev[npanel] = lay[npanel].develop(ALIGN_TOP);
@@ -2352,14 +2266,7 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
                 lay[npanel].top.fill(pt3 , pt4);
 
                 // compute Z
-                for( k = 0; k < npl; k ++)
-                    lay[npanel].left[k] = Zpoint(lay[npanel].left[k]);
-                for( k = 0; k < npl; k ++)
-                    lay[npanel].right[k] = Zpoint(lay[npanel].right[k]);
-                for( k = 0; k < npb; k ++)
-                    lay[npanel].top[k] = Zpoint(lay[npanel].top[k]);
-                for( k = 0; k < npb; k ++)
-                    lay[npanel].bottom[k] = Zpoint(lay[npanel].bottom[k]);
+                lay[npanel] = Zpanel(lay[npanel]);
 
                 // We develop the current panel
                 dev[npanel] = lay[npanel].develop(ALIGN_TOP);
@@ -2474,14 +2381,7 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
                 lay[npanel].top.fill(pt3 , pt4);
 
                 // compute Z
-                for( k = 0; k < npl; k ++)
-                    lay[npanel].left[k] = Zpoint(lay[npanel].left[k]);
-                for( k = 0; k < npl; k ++)
-                    lay[npanel].right[k] = Zpoint(lay[npanel].right[k]);
-                for( k = 0; k < npb; k ++)
-                    lay[npanel].top[k] = Zpoint(lay[npanel].top[k]);
-                for( k = 0; k < npb; k ++)
-                    lay[npanel].bottom[k] = Zpoint(lay[npanel].bottom[k]);
+                lay[npanel] = Zpanel(lay[npanel]);
 
                 // We develop the current panel
                 dev[npanel] = lay[npanel].develop(ALIGN_TOP);
@@ -2524,14 +2424,7 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
             }
 
             // compute Z
-            for( k = 0; k < npl; k ++)
-                lay[npanel].left[k] = Zpoint(lay[npanel].left[k]);
-            for( k = 0; k < npl; k ++)
-                lay[npanel].right[k] = Zpoint(lay[npanel].right[k]);
-            for( k = 0; k < npb; k ++)
-                lay[npanel].top[k] = Zpoint(lay[npanel].top[k]);
-            for( k = 0; k < npb; k ++)
-                lay[npanel].bottom[k] = Zpoint(lay[npanel].bottom[k]);
+            lay[npanel] = Zpanel(lay[npanel]);
 
             // We develop the current panel
             dev[npanel] = lay[npanel].develop(ALIGN_TOP);
@@ -2746,14 +2639,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
             }
             
             ///* Now we go over all the points of the foot panel and calculate their z */
-            for( k = 0 ; k < npl ; k++ )
-                lay[npanel-1].left[k] = Zpoint(lay[npanel-1].left[k]);
-            for( k = 0 ; k < npl ; k++ )
-                lay[npanel-1].right[k] = Zpoint(lay[npanel-1].right[k]);
-            for( k = 0 ; k < npb ; k++ )
-                lay[npanel-1].top[k] = Zpoint(lay[npanel-1].top[k]);
-            for( k = 0 ; k < npb ; k++ )
-                lay[npanel-1].bottom[k] = Zpoint(lay[npanel-1].bottom[k]);
+            lay[npanel-1] = Zpanel(lay[npanel-1]);
 
             /*if (npanel == 1)
             {
@@ -2980,14 +2866,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
             } //// end else normal panel ///////////////////////
 
             /** Now we go over all the points of the leech panel and calculate their z */
-            for( k = 0 ; k < npl ; k++ )
-                lay[npanel-1].left[k] = Zpoint(lay[npanel-1].left[k]);
-            for( k = 0 ; k < npl ; k++ )
-                lay[npanel-1].right[k] = Zpoint(lay[npanel-1].right[k]);
-            for( k = 0 ; k < npb ; k++ )
-                lay[npanel-1].top[k] = Zpoint(lay[npanel-1].top[k]);
-            for( k = 0 ; k < npb ; k++ )
-                lay[npanel-1].bottom[k] = Zpoint(lay[npanel-1].bottom[k]);
+            lay[npanel-1] = Zpanel(lay[npanel-1]);
 
             /** Now we develop the current leech panel */
             if ( npanel == npanelFoot +1 )
@@ -3613,4 +3492,29 @@ CPoint3d CSailWorker::Zpoint( const CPoint3d &p1 ) const
 
     return p2;
 } /////////////// Zpoint ///////////////////////////////////////////////
+
+
+/** Routine used for computing the Z of all the points of a panel.
+ *
+ *  Returns a CPanel with all its Z's modified.
+*/
+CPanel CSailWorker::Zpanel( const CPanel &p1 ) const
+{
+    CPanel ret = p1;
+    unsigned int k;
+
+    for (k = 0; k < ret.left.size(); k++)
+        ret.left[k] = Zpoint(ret.left[k]);
+
+    for (k = 0; k < ret.right.size(); k++)
+        ret.right[k] = Zpoint(ret.right[k]);
+
+    for (k = 0; k < ret.top.size(); k++)
+        ret.top[k] = Zpoint(ret.top[k]);
+
+    for (k = 0; k < ret.bottom.size(); k++)
+        ret.bottom[k] = Zpoint(ret.bottom[k]);
+
+    return ret;
+}
 
