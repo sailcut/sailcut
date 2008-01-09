@@ -83,6 +83,8 @@ protected:
     
     /** depth at any point */
     CPoint3d Zpoint( const CPoint3d &p1 ) const;
+    /** depth for all points */
+    CPanel Zpanel( const CPanel &p1 ) const;
 
     /** foot vector */
     CVector3d footV;
