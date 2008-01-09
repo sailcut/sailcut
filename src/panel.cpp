@@ -380,7 +380,6 @@ void CPanel::placeLabel()
  */
 CPanel CPanel::reframe(enumAlign align) const
 {
-    CPanel ret;
     unsigned int npl = left.size();   // number of right/left points
     unsigned int npb = bottom.size();  // number of top/bottom points
     unsigned int i;
@@ -455,19 +454,7 @@ CPanel CPanel::reframe(enumAlign align) const
         }
     }
 
-    ret.left = left + CVector3d( -xm , -ym , 0 );
-    ret.top = top + CVector3d( -xm , -ym , 0 );
-    ret.right = right + CVector3d( -xm , -ym , 0 );
-    ret.bottom = bottom + CVector3d( -xm , -ym , 0 );
-
-    ret.cutLeft = cutLeft + CVector3d( -xm , -ym , 0 );
-    ret.cutTop = cutTop + CVector3d( -xm , -ym , 0 );
-    ret.cutRight = cutRight + CVector3d( -xm , -ym , 0 );
-    ret.cutBottom = cutBottom + CVector3d( -xm , -ym , 0 );
-
-    ret.hasHems = hasHems;
-
-    return ret;
+    return (*this + CVector3d( -xm , -ym , 0 ));
 }
 
 /** Add the cloth for stitching to the edges of the panel.
