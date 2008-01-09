@@ -21,6 +21,9 @@
 #include "formsaildef.h"
 #include "formmould.h"
 
+// for HAVE_QSVGGENERATOR
+#include "sailcutqt.h"
+
 #include "sailprinter.h"
 #include "sailworker.h"
 #include "sailwriter-carlson.h"
@@ -78,7 +81,9 @@ void CFormSail::languageChange()
     // export 3d submenu
     menuExport3d->setTitle( tr("E&xport 3D sail") );
     actionExport3dDXF->setText( tr("to &DXF") );
+#ifdef HAVE_QSVGGENERATOR
     actionExport3dSVG->setText( tr("to &SVG") );
+#endif
     actionExport3dTXT->setText( tr("to &TXT sail") );
     actionExport3dXML->setText( tr("to &XML sail") );
 
@@ -133,7 +138,9 @@ void CFormSail::setupMenuBar()
     // export 3d submenu
     menuExport3d = new QMenu(this);
     actionExport3dDXF = menuExport3d->addAction("", this, SLOT( slotExportDXF() ) );
+#ifdef HAVE_QSVGGENERATOR
     actionExport3dSVG = menuExport3d->addAction("", this, SLOT( slotExportSVG() ) );
+#endif
     actionExport3dTXT = menuExport3d->addAction("", this, SLOT( slotExportTXT() ) );
     actionExport3dXML = menuExport3d->addAction("", this, SLOT( slotExportXML() ) );
     extraFileMenus.push_back(menuExport3d);
@@ -209,7 +216,9 @@ void CFormSail::slotExportDXF()
  */
 void CFormSail::slotExportSVG()
 {
+#ifdef HAVE_QSVGGENERATOR
     CSailSvgWriter().writeDialog(sail);
+#endif
 }
 
 
