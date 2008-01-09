@@ -1812,25 +1812,14 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
                 lay[npanel].bottom.fill( pt1 , pt2 );
                 lay[npanel].top.fill( pt3 , pt4 );
 
-                // compute Z
-                for( k = 0; k < npl; k ++)
-                    lay[npanel].left[k] = Zpoint( lay[npanel].left[k] );
-
-                for( k = 0; k < npl; k ++)
-                    lay[npanel].right[k] = Zpoint( lay[npanel].right[k] );
-
-                for( k = 0; k < npb; k ++)
-                    lay[npanel].bottom[k] = Zpoint( lay[npanel].bottom[k] );
-
-                for( k = 0; k < npb; k ++)
+                if ( j == a )
                 {
-                    if ( j == a )
-                        pt0 = EdgeIntersect( FOOT_EDGE,  lay[npanel].top[k] , CVector3d( ptFoot- ptCentre ) );
-                    else
-                        pt0 = lay[npanel].top[k];
-
-                    lay[npanel].top[k] = Zpoint( pt0 );
+                    for (k = 0; k < lay[npanel].top.size(); k++)
+                        lay[npanel].top[k] = EdgeIntersect(FOOT_EDGE, lay[npanel].top[k], CVector3d(ptFoot - ptCentre));
                 }
+
+                // compute Z
+                lay[npanel] = Zpanel(lay[npanel]);
 
                 // We develop the current panel
                 dev[npanel] = lay[npanel].develop(ALIGN_TOP);
@@ -1858,25 +1847,14 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
                 lay[npanel].bottom.fill( pt1, pt2 );
                 lay[npanel].top.fill( pt3, pt4 );
 
-                // compute Z
-                for( k = 0; k < npl; k ++)
-                    lay[npanel].left[k] = Zpoint( lay[npanel].left[k] );
-
-                for( k = 0; k < npl; k ++)
-                    lay[npanel].right[k] = Zpoint( lay[npanel].right[k] );
-
-                for( k = 0; k < npb; k ++)
-                    lay[npanel].top[k] = Zpoint( lay[npanel].top[k] );
-
-                for( k = 0; k < npb; k ++)
+                if ( j == 1 )
                 {
-                    if ( j == 1 )
-                        pt0 = EdgeIntersect( FOOT_EDGE,  lay[npanel].bottom[k] , CVector3d( ptFoot- ptCentre ) );
-                    else
-                        pt0 = lay[npanel].bottom[k];
-
-                    lay[npanel].bottom[k] = Zpoint( pt0 );
+                    for (k = 0; k < lay[npanel].bottom.size(); k++)
+                        lay[npanel].bottom[k] = EdgeIntersect(FOOT_EDGE, lay[npanel].bottom[k], CVector3d(ptFoot - ptCentre));
                 }
+
+                // compute Z
+                lay[npanel] = Zpanel(lay[npanel]);
 
                 // We develop the current panel
                 dev[npanel] = lay[npanel].develop(ALIGN_TOP);
@@ -2297,20 +2275,14 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
                 lay[npanel].bottom.fill(pt1 , pt2);
                 lay[npanel].top.fill(pt3 , pt4);
 
-                // compute Z
-                for( k = 0; k < npl; k ++)
-                    lay[npanel].left[k] = Zpoint(lay[npanel].left[k]);
-                for( k = 0; k < npl; k ++)
-                    lay[npanel].right[k] = Zpoint(lay[npanel].right[k]);
-                for( k = 0; k < npb; k ++)
+                if (j == a)
                 {
-                    pt0 = lay[npanel].top[k];
-                    if (j == a)
-                        pt0 = EdgeIntersect( FOOT_EDGE, lay[npanel].top[k], footVP);
-                    lay[npanel].top[k] = Zpoint(pt0);
+                    for (k = 0; k < lay[npanel].top.size(); k++)
+                        lay[npanel].top[k] = EdgeIntersect(FOOT_EDGE, lay[npanel].top[k], footVP);
                 }
-                for( k = 0; k < npb; k ++)
-                    lay[npanel].bottom[k] = Zpoint(lay[npanel].bottom[k]);
+
+                // compute Z
+                lay[npanel] = Zpanel(lay[npanel]);
 
                 // We develop the current panel
                 dev[npanel] = lay[npanel].develop(ALIGN_TOP);
@@ -2338,20 +2310,14 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
                 lay[npanel].bottom.fill(pt1 , pt2);
                 lay[npanel].top.fill(pt3 , pt4);
 
-                // compute Z
-                for( k = 0; k < npl; k ++)
-                    lay[npanel].left[k] = Zpoint(lay[npanel].left[k]);
-                for( k = 0; k < npl; k ++)
-                    lay[npanel].right[k] = Zpoint(lay[npanel].right[k]);
-                for( k = 0; k < npb; k ++)
-                    lay[npanel].top[k] = Zpoint(lay[npanel].top[k]);
-                for( k = 0; k < npb; k ++)
+                if (j == 1)
                 {
-                    pt0 = lay[npanel].bottom[k];
-                    if (j == 1)
-                        pt0 = EdgeIntersect( FOOT_EDGE, lay[npanel].bottom[k], footVP);
-                    lay[npanel].bottom[k] = Zpoint(lay[npanel].bottom[k]);
+                    for (k = 0; k < lay[npanel].bottom.size(); k++)
+                        lay[npanel].bottom[k] = EdgeIntersect(FOOT_EDGE, lay[npanel].bottom[k], footVP);
                 }
+
+                // compute Z
+                lay[npanel] = Zpanel(lay[npanel]);
 
                 // We develop the current panel
                 dev[npanel] = lay[npanel].develop(ALIGN_TOP);
