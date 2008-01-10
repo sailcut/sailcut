@@ -60,11 +60,11 @@ CSailTreeItem::CSailTreeItem(const CPoint3d &data, QString name, CSailTreeItem *
     itemData << name << data.x() << data.y() << data.z();
 }
 
-CSailTreeItem::CSailTreeItem(const QString &data, QString name, CSailTreeItem *parent)
+CSailTreeItem::CSailTreeItem(const string &data, QString name, CSailTreeItem *parent)
 {
     parentItem = parent;
     itemIcon = NULL;
-    itemData << name << data;
+    itemData << name << QString::fromStdString(data);
 }
 
 CSailTreeItem::~CSailTreeItem()

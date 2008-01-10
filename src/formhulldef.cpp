@@ -42,7 +42,7 @@ CFormHullDef::CFormHullDef( QWidget* parent, CHullDef * hullptr )
        the user clicks OK */
     hulldef = hullptr;
     
-    txt_HullID->setText(QString(hulldef->hullID));
+    txt_HullID->setText(QString::fromStdString(hulldef->hullID));
     /// deck parameters
     txt_BLWL->setText( QString::number(hulldef->BLWL) );
     txt_DfwdHeight->setText( QString::number(hulldef->DfwdHeight) );
@@ -143,7 +143,7 @@ bool CFormHullDef::check()
         txt_HullID->setPalette(palStd);
         txt_HullID->setText(QString(txt));
     }
-    hulldef->hullID = txt;
+    hulldef->hullID = txt.toStdString();
     
     /// check bottom data
     hulldef->BLWL = txt_BLWL->text().toDouble(); // length waterline

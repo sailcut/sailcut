@@ -171,6 +171,21 @@ void CSailDoc::get
 }
 
 
+/** Reads a std::string value from an XML document.
+ *
+ * @param parent the parent node
+ * @param s the string
+ * @param name the name of the string
+ */
+void CSailDoc::get
+    ( const QDomNode &parent, string &s, const QString &name )
+{
+    QDomElement e = findElement( parent, "string", name);
+    QDomNamedNodeMap attr = e.attributes();
+    s = attr.namedItem("value").nodeValue().toStdString();
+}
+
+
 /** Reads a QString string value from an XML document.
  *
  * @param parent the parent node
@@ -672,11 +687,20 @@ void CSailDoc::put(QDomNode &parent, const real &r, const QString &name )
 }
 
 
-/** Puts a QString string value to an XML document.
+/** Puts a std::string value to an XML document.
+ */
+void CSailDoc::put(QDomNode &parent, const string &s, const QString &name )
+{
+    QDomElement e = createElement("string", name, QString::fromStdString(s));
+    parent.appendChild(e);
+}
+
+
+/** Puts a QString value to an XML document.
  */
 void CSailDoc::put(QDomNode &parent, const QString &s, const QString &name )
 {
-    QDomElement e = createElement("string",name,s);
+    QDomElement e = createElement("string", name, s);
     parent.appendChild(e);
 }
 

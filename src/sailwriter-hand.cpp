@@ -35,7 +35,7 @@ void CSailHandWriter::write(const CPanelGroup &sail, const QString &filename) co
         throw CException("CSailWriter::write : unable to write to specified file");
 
     // write the name of the sail
-    myOut << string(sail.title.toLocal8Bit()) << endl;
+    myOut << sail.title << endl;
 
     // TODO : modify code to write actual hand output
     //

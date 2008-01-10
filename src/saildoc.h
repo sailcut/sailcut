@@ -53,6 +53,8 @@ public:
     void get
         (const QDomNode &parent, real &r, const QString &name );
     void get
+        (const QDomNode &parent, string &s, const QString &name );
+    void get
         (const QDomNode &parent, QString &s, const QString &name );
     void get
         (const QDomNode &parent, CPoint3d &p, const QString &name );
@@ -91,6 +93,7 @@ public:
     void put(QDomNode &parent, const int &i, const QString &name ="" );
     void put(QDomNode &parent, const unsigned int &i, const QString &name ="" );
     void put(QDomNode &parent, const real &r, const QString &name ="" );
+    void put(QDomNode &parent, const string &s, const QString &name="" );
     void put(QDomNode &parent, const QString &s, const QString &name="" );
     void put(QDomNode &parent, const CPoint3d &p, const QString &name="" );
     void put(QDomNode &parent, const enumBoatElementType &t, const QString &name="");

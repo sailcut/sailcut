@@ -57,7 +57,7 @@ CFormRigDef::CFormRigDef( QWidget* parent, CRigDef * rigptr )
     connect( txt_HAD, SIGNAL( lostFocus() ), this, SLOT( slotChanged() ) );
     connect( txt_BAD, SIGNAL( textChanged(const QString&) ), this, SLOT( slotChanged() ) );
 
-    txt_RigID->setText(QString(rigdef->rigID) );
+    txt_RigID->setText(QString::fromStdString(rigdef->rigID) );
     txt_foreI->setText(QString::number(rigdef->foreI) );
     txt_foreJ->setText(QString::number(rigdef->foreJ) );
     txt_MH->setText(QString::number(rigdef->MHeight) );
@@ -190,7 +190,7 @@ bool CFormRigDef::check()
         txt_RigID->setPalette(palStd);
         txt_RigID->setText(QString(txt));
     }
-    rigdef->rigID = txt;
+    rigdef->rigID = txt.toStdString();
     
     /// checking fore triangle
     rigdef->foreI = txt_foreI->text().toDouble();
