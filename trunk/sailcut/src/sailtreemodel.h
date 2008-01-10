@@ -38,7 +38,7 @@ public:
         rootData << "Name" << "x" << "y" << "z";
         rootItem = new CSailTreeItem(rootData);
         rootItem->appendChild(new CSailTreeItem(data, name, rootItem));
-    };
+    }
     ~CSailTreeModel();
 
     QVariant data(const QModelIndex &index, int role) const;
