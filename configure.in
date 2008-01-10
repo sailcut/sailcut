@@ -76,5 +76,6 @@ AC_CONFIG_FILES([ doc/fr/Makefile ])
 AC_CONFIG_FILES([ icons/Makefile ])
 AC_CONFIG_FILES([ src/Makefile ])
 AC_CONFIG_FILES([ src/geocpp/Makefile ])
+AC_CONFIG_FILES([ src/sailcpp/Makefile ])
 AC_CONFIG_FILES([ src/ts/Makefile ])
 AC_OUTPUT
