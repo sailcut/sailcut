@@ -223,13 +223,10 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
     CVector3d vk(0, 0, 0);
 
     /* create variable for edge correction */
-    CVector3d deviation [npb];
-    CVector3d deviaPrev [npb];
-    for ( k = 0 ; k < npb ; k++)
-    {
-        deviation[k] = CVector3d(0, 0, 0); // set all deviations to zero
-        deviaPrev[k] = deviation [k];
-    }
+    vector<CVector3d> deviation;
+    deviation.resize(npb);
+    vector<CVector3d> deviaPrev;
+    deviaPrev.resize(npb);
 
     real CC = 0, x = 0, y = 0;
 
@@ -478,8 +475,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
         while ( exc > 0  &&  cnt < 9 );
         /* loop as long the excess of width is positive AND counter < 9 */
 
-        for ( k = 0 ; k < npb ; k++)
-            deviaPrev[k] = deviation[k];
+        deviaPrev = deviation; 
 
         /** Now we reposition the developed panel such that
         *  bottom minimum is Y=0 AND left is X=0
@@ -588,13 +584,10 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
     CVector3d vk(0, 0, 0);
 
     /* create variable for edge correction */
-    CVector3d deviation [npb];
-    CVector3d deviaPrev [npb];
-    for ( k = 0; k < npb; k++ )
-    {
-        deviation[k] = CVector3d(0,0,0); // set all deviations to zero
-        deviaPrev[k] = deviation[k];
-    }
+    vector<CVector3d> deviation;
+    deviation.resize(npb);
+    vector<CVector3d> deviaPrev;
+    deviaPrev.resize(npb);
 
     /* create variable to monitor excess over cloth width */
     real CC=0, x=0, y=0;
@@ -818,8 +811,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
         while ( exc > 0 && cnt < 9 );
         /* loop as long the excess of width is positive AND counter < 9 */
 
-        for ( k = 0; k < npb; k++ )
-            deviaPrev[k] = deviation[k];
+        deviaPrev = deviation;
 
         /** Now we reposition the developed panel such that
          *  bottom minimum is Y=0 AND most left point is X=0
@@ -924,13 +916,10 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
     CVector3d vk(0, 0, 0);
 
     /* create variable for panel width correction */
-    CVector3d deviation [npb];
-    CVector3d deviaPrev [npb];
-    for ( k = 0; k < npb; k++ )
-    {
-        deviation[k] = CVector3d(0,0,0); // set all deviations to zero
-        deviaPrev[k] = deviation[k];
-    }
+    vector<CVector3d> deviation;
+    deviation.resize(npb);
+    vector<CVector3d> deviaPrev;
+    deviaPrev.resize(npb);
 
     /* seam 0 is on the leech of the sail ending at the peak */
     p1[0] = clew; // initialised at tack point
@@ -1074,8 +1063,7 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
         while ( exc > 0 && cnt < 9 );
         /* loop as long the excess of width is positive AND counter < 9 */
 
-        for ( k = 0; k < npb; k++ )
-            deviaPrev[k] = deviation[k];
+        deviaPrev = deviation;
 
         /** Now we reposition the developed panel such that bottom left is X=0 Y=0 */
         dev[npanel-1] = dev[npanel-1].reframe(LOW_LEFT);
@@ -1175,13 +1163,10 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
     CVector3d vk(0, 0, 0);
 
     /* create variable for edge correction */
-    CVector3d deviation [npb];
-    CVector3d deviaPrev [npb];
-    for ( k = 0; k < npb; k++ )
-    {
-        deviation[k] = CVector3d(0, 0, 0); // set all deviations to zero
-        deviaPrev[k] = deviation[k];
-    }
+    vector<CVector3d> deviation;
+    deviation.resize(npb);
+    vector<CVector3d> deviaPrev;
+    deviaPrev.resize(npb);
 
     /* create variable to monitor excess over cloth width */
     real CC=0, x=0, y=0;
@@ -1412,8 +1397,7 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
             dev[npanel-1].addHems(hemsW, seamW, leechHemW, 0);
         
         /* now we reset the previous panel deviation to the current panel */ 
-        for ( k = 0; k < npb; k++ )
-            deviaPrev[k] = deviation[k];
+        deviaPrev = deviation;
 
         /* Now we reposition the developed panel such that
         *  bottom minimum is Y=0 AND left is X=0
@@ -1534,9 +1518,8 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
     CVector3d vk(0, 0, 0);
 
     /* create variable for edge correction */
-    CVector3d deviation [npb];
-    for ( k = 0 ; k < npb ; k++)
-        deviation[k] = CVector3d(0, 0, 0); // set all deviations to zero
+    vector<CVector3d> deviation;
+    deviation.resize(npb);
 
     /** Create arrays of points at horizontal seams ends (10 maximum) */
     CPoint3d luffH[10];    // point at the luff end of the horizontal seam
@@ -2019,9 +2002,8 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
     CVector3d vk(0, 0, 0);
 
     /* create variable for edge correction */
-    CVector3d deviation [npb];
-    for ( k = 0; k < npb ; k++ )
-        deviation[k] = CVector3d(0, 0, 0); // set all deviations to zero
+    vector<CVector3d> deviation;
+    deviation.resize(npb);
 
     /* Create arrays of points at horizontal seams ends 10 maximum */
     CPoint3d luffH[10];    // point at the luff end of the horizontal seam
@@ -2483,13 +2465,10 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
     CVector3d vk(0, 0, 0);
 
     /* create variable for edge correction */
-    CVector3d deviation [npb];
-    CVector3d deviaPrev [npb];
-    for ( k = 0 ; k < npb ; k++)
-    {
-        deviation[k] = CVector3d (0,0,0); // set all deviations to zero
-        deviaPrev[k] = deviation[k];
-    }
+    vector<CVector3d> deviation;
+    deviation.resize(npb);
+    vector<CVector3d> deviaPrev;
+    deviaPrev.resize(npb);
 
     /* seam 0 is on the foot of the sail ending at the clew */
     p1[0] = clew; // initialised at clew point
@@ -2632,8 +2611,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
         while ( exc > 0 && cnt < 9 );
         /* loop as long the excess of width is positive AND counter < 9 */
 
-        for ( k = 0 ; k < npb ; k++ )
-            deviaPrev[k] = deviation[k];
+        deviaPrev = deviation;
 
         /** Now we reposition the developed panel such that bottom left is X=0 Y=0 */
         dev[npanel-1] = dev[npanel-1].reframe(LOW_LEFT);
