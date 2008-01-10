@@ -23,14 +23,14 @@
 #define MAX_PANELS 210
 
 /* To enable debugging */
-// #define DEBUG 1 
+// #define DEBUG 1
 
 
 /** The constructor does some preliminary calculations to set
  *  internal variables.
  */
 CSailWorker::CSailWorker(const CSailDef &s) : CSailDef(s)
-{ 
+{
     /* first compute the coordinates of the corner of the sail */
     CVector3d v, v1;
     real x = 0, headstay = 0;
@@ -59,12 +59,12 @@ CSailWorker::CSailWorker(const CSailDef &s) : CSailDef(s)
     head = tack + CVector3d(rake, stupid_hack, 0);
 
     v = CVector3d(0, gaffL, 0);  // initial vector gaff set on vertical
-    
+
     peak = head + CMatrix::rot3d( 2 , (-asin(rake / luffL) - gaffDeg * PI / 180) ) * v;
-    
+
     if ( fabs(peak.y() - head.y()) < 1 )
         peak.y() = head.y() + 1; // to avoid case with gaff horizontal
-        
+
     /* computing triangle tack-peak-clew */
     real aa, b, bb;
     bb = atan2(peak.y() - tack.y() , peak.x() - tack.x() );
@@ -237,7 +237,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
     t2[0] = 4;    // type=4=leech intersection
 
     /** Start laying the panels from the foot upward to the peak */
-    for ( npanel = 1 ; npanel < MAX_PANELS -1 ; npanel++)
+    for (npanel = 1 ; npanel < MAX_PANELS -1 ; npanel++)
     {
         real exc = 0; // current excess of width
         real exb = 0; // total correction
@@ -261,9 +261,9 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
                     t1[npanel] = 2; // set on luff
                     // left points on foot-tack-luff
                     lay[npanel-1].left.fill(p1[npanel-1], tack, p1[npanel]);
-                    for ( k = 0 ; k < npl / 2 ; k++)
+                    for (k = 0 ; k < npl / 2 ; k++)
                         lay[npanel-1].left[k] = EdgeIntersect( FOOT_EDGE, lay[npanel-1].left[k] , seamV);
-                    for ( k = npl / 2 +1 ; k < npl ; k++)
+                    for (k = npl / 2 +1 ; k < npl ; k++)
                         lay[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].left[k] , seamV);
                 }
                 else if ( t1[npanel-1] == 2 )
@@ -271,7 +271,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
                     p1[npanel] = head;
                     t1[npanel] = 2;
                     lay[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
-                    for ( k = 0 ; k < npl ; k++)
+                    for (k = 0 ; k < npl ; k++)
                         lay[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].left[k], seamV);
                 }
                 else
@@ -279,13 +279,13 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
                     p1[npanel] = p1[npanel-1];
                     t1[npanel] = 3;
                     lay[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
-                    for ( k = 0 ; k < npl ; k++)
+                    for (k = 0 ; k < npl ; k++)
                         lay[npanel-1].left[k] = EdgeIntersect( GAFF_EDGE, lay[npanel-1].left[k], seamV);
                 }
 
                 // fill right points on leech
                 lay[npanel-1].right.fill(p2[npanel-1],p2[npanel]);
-                for ( k = 0 ; k < npl ; k++)
+                for (k = 0 ; k < npl ; k++)
                     lay[npanel-1].right[k]=EdgeIntersect( LEECH_EDGE, lay[npanel-1].right[k], seamV);
 
                 // fill bottom points
@@ -295,7 +295,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
                 lay[npanel-1].top.fill(lay[npanel-1].left[npl-1], lay[npanel-1].right[npl-1]);
 
                 // move all top points of top panel to gaff curve
-                for( k = 1 ; k < npb -1 ; k++)
+                for (k = 1 ; k < npb -1 ; k++)
                     lay[npanel -1].top[k] = EdgeIntersect( GAFF_EDGE, lay[npanel-1].top[k], CVector3d (head.y()-peak.y(),peak.x()-head.x(),0));
                 ////// end peak panel /////
             }
@@ -347,47 +347,47 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
                 if ( t1[npanel-1] == 1  &&  t1[npanel] == 1 )
                 {   // full foot
                     lay[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
-                    for ( k = 0 ; k < npl ; k++)
+                    for (k = 0 ; k < npl ; k++)
                         lay[npanel-1].left[k] = EdgeIntersect( FOOT_EDGE, lay[npanel-1].left[k], seamV);
                 }
                 else if ( t1[npanel-1] == 2  &&  t1[npanel] == 2 )
                 {   // full luff
                     lay[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
-                    for ( k = 0 ; k < npl ; k++)
+                    for (k = 0 ; k < npl ; k++)
                         lay[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].left[k] , seamV);
                 }
                 else if ( t1[npanel-1] == 3  &&  t1[npanel] == 3 )
                 {   // full gaff
                     lay[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
-                    for ( k = 0 ; k < npl ; k++)
+                    for (k = 0 ; k < npl ; k++)
                         lay[npanel-1].left[k] = EdgeIntersect( GAFF_EDGE, lay[npanel-1].left[k] , seamV);
                 }
                 else if ( (t1[npanel-1] == 1) && (t1[npanel] == 2) )
                 {   // foot-tack-luff
                     lay[npanel-1].left.fill(p1[npanel-1], tack, p1[npanel]);
-                    for ( k = 0 ; k < npl / 2 ; k++)
+                    for (k = 0 ; k < npl / 2 ; k++)
                         lay[npanel-1].left[k] = EdgeIntersect( FOOT_EDGE, lay[npanel-1].left[k], seamV);
-                    for ( k = npl / 2 +1 ; k < npl ; k++)
+                    for (k = npl / 2 +1 ; k < npl ; k++)
                         lay[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].left[k], seamV);
                 }
                 else if ( (t1[npanel-1] == 2) && (t1[npanel] == 3) )
                 {   // luff-head-gaff
                     lay[npanel-1].left.fill(p1[npanel-1], head, p1[npanel]);
-                    for ( k = 0 ; k < npl/2 ; k++)
+                    for (k = 0 ; k < npl/2 ; k++)
                         lay[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].left[k], seamV);
-                    for ( k = npl / 2 +1 ; k < npl ; k++)
+                    for (k = npl / 2 +1 ; k < npl ; k++)
                         lay[npanel-1].left[k] = EdgeIntersect( GAFF_EDGE, lay[npanel-1].left[k], seamV);
                 } // end IF ELSE for left side
 
                 /* Below is the code for the intermediate points of the right side
                 *  which are all on the leech for a crosscut layout.
                 */
-                // first check if upper point is not below lower point 
-                if ( CVector3d( p2[npanel] - p2[npanel-1] ) * leechV < 0) 
+                // first check if upper point is not below lower point
+                if ( CVector3d( p2[npanel] - p2[npanel-1] ) * leechV < 0)
                     p2[npanel] = p2[npanel-1];
-                
+
                 lay[npanel-1].right.fill(p2[npanel-1] , p2[npanel]);
-                for ( k = 0 ; k < npl ; k++)
+                for (k = 0 ; k < npl ; k++)
                     lay[npanel-1].right[k] = EdgeIntersect( LEECH_EDGE, lay[npanel-1].right[k], seamV);
 
                 /* Below is the code for the intermediate points of the top and bottom sides.
@@ -400,18 +400,19 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
                 /* Below is the code for the intermediate points of the bottom side of first panel  */
                 if ( npanel == 1 )
                 { // move bottom side of first panel to foot curve
-                    for( k = 1 ; k < npb -1 ; k++)
-                    {    lay[0].bottom[k] = EdgeIntersect( FOOT_EDGE, lay[0].bottom[k], CVector3d(0,-1,0));
+                    for (k = 1 ; k < npb -1 ; k++)
+                    {
+                        lay[0].bottom[k] = EdgeIntersect( FOOT_EDGE, lay[0].bottom[k], CVector3d(0,-1,0));
                     }
                 }
 
 #ifdef DEBUG
                 if ( npanel == 1 )
-                { 
+                {
                     cout << "Crosscut foot after adding curve" << endl;
-                    for( k = 0 ; k < npb ; k++)
-                        cout << "pt="<< k << " xyz=" << lay[0].bottom[k] << endl;                    
-                } 
+                    for (k = 0 ; k < npb ; k++)
+                        cout << "pt="<< k << " xyz=" << lay[0].bottom[k] << endl;
+                }
 #endif
             }  /// end else normal panel ///////////////////////
 
@@ -422,11 +423,11 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
             if ( npanel == 1 )
             { // move bottom side of first panel to foot curve
                 cout << "Crosscut foot after Z " << endl;
-                for( k = 0 ; k < npb ; k++)
-                  cout << "pt="<< k << " xyz=" << lay[0].bottom[k] << endl;
+                for (k = 0 ; k < npb ; k++)
+                    cout << "pt="<< k << " xyz=" << lay[0].bottom[k] << endl;
 
                 cout << "---end Z foot----   DO LOOP=" << cnt << endl;
-            } 
+            }
 #endif
 
             ///* Now we develop the current panel */
@@ -438,7 +439,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
             {
                 dev[npanel-1] = lay[npanel-1].develop(ALIGN_BOTTOM);
                 // add deviation of previous panel top edge to bottom edge
-                for( k = 1; k < npb-1; k ++ )
+                for (k = 1; k < npb-1; k ++)
                     dev[npanel-1].bottom[k] = dev[npanel-1].bottom[k] + deviaPrev[k];
             }
 
@@ -449,7 +450,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
             if ( flag == false )
             {
                 vb= CMatrix::rot3d(2,PI/2) * CVector3d(dev[npanel-1].top[npb-1] - dev[npanel-1].top[0]).unit();
-                for( k = 1 ; k < npb -1 ; k ++)
+                for (k = 1 ; k < npb -1 ; k ++)
                 {
                     vk= CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
                     v= vb * -(vk*vb);
@@ -475,7 +476,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
         while ( exc > 0  &&  cnt < 9 );
         /* loop as long the excess of width is positive AND counter < 9 */
 
-        deviaPrev = deviation; 
+        deviaPrev = deviation;
 
         /** Now we reposition the developed panel such that
         *  bottom minimum is Y=0 AND left is X=0
@@ -486,7 +487,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
         if ( flag == true )
             break;
     }  /// loop FOR next seam //////////////
-    
+
 
     if ( npanel == MAX_PANELS-1 )
         throw CException("CSailDef::Layout0 : got to MAX_PANELS without reaching head, do increase cloth width ");
@@ -494,13 +495,13 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
     /** copying the sails for display */
     CPanelGroup sail(npanel);
 
-    for( j = 0 ; j < npanel ; j ++)
+    for (j = 0 ; j < npanel ; j ++)
         sail[j] = lay[j];
 
     /** copying the developed sail */
     flatsail = CPanelGroup(npanel);
 
-    for ( j = 0 ; j < npanel ; j++)
+    for (j = 0 ; j < npanel ; j++)
     {
         flatsail[j] = dev[j];
     }
@@ -508,7 +509,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
     /** preparing the displays version of the developed sail */
     dispsail = flatsail;
 
-    for ( j = 1 ; j < npanel ; j++)
+    for (j = 1 ; j < npanel ; j++)
     {
         top = dispsail[j-1].top[0];
         bot = dispsail[j].bottom[0];
@@ -604,10 +605,10 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
         real exb = 0; // total correction
         real exc = 0; // current excess of width
         cnt = 0;
-        
+
         /** Loop for optimising the seam position to fit cloth width */
-        do  
-        { 
+        do
+        {
             cnt++;
             p2[npanel] = p2[npanel-1] + leechV.unit() * (clothW - seamW - exb);
             t2[npanel] = 4; // type2=4=leech intersection for all horizontally cut panels
@@ -624,7 +625,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
                     p1[npanel] = head;
                     t1[npanel] = 2;
                     lay[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
-                    for ( k = 0; k < npl; k++ )
+                    for (k = 0; k < npl; k++)
                         lay[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].left[k], seamV);
                 }
                 else
@@ -632,13 +633,13 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
                     p1[npanel] = p1[npanel-1];
                     t1[npanel] = 3;
                     lay[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
-                    for ( k = 0; k < npl; k++ )
+                    for (k = 0; k < npl; k++)
                         lay[npanel-1].left[k] = EdgeIntersect( GAFF_EDGE, lay[npanel-1].left[k], seamV);
                 }
 
                 // fill right points on leech
                 lay[npanel-1].right.fill(p2[npanel-1] , p2[npanel]);
-                for ( k = 0; k < npl; k++ )
+                for (k = 0; k < npl; k++)
                     lay[npanel-1].right[k] = EdgeIntersect( LEECH_EDGE, lay[npanel-1].right[k], seamV);
 
                 // fill bottom points
@@ -648,7 +649,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
                 lay[npanel-1].top.fill(lay[npanel-1].left[npl-1], lay[npanel-1].right[npl-1]);
 
                 // move all top points to gaff curve
-                for( k=1; k < npb-1; k++ )
+                for (k=1; k < npb-1; k++)
                     lay[npanel-1].top[k] = EdgeIntersect( GAFF_EDGE, lay[npanel-1].top[k], CVector3d (head.y()-peak.y() , peak.x()-head.x() , 0));
 
                 ///// end peak panel //////
@@ -659,7 +660,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
                 if ( seamL.intersect(luffLine).getdim() == 0 )
                     ip = seamL.intersect(luffLine).getp();
                 else throw CException("CSailDef::Layout1-1 : twist intersection of seam and luff is not a point!");
-                
+
                 if ( CVector3d( (ip - luffV.unit() * (seamW + clothW/5) ) - p1[npanel-1] ) * luffV < 0 )
                 {   // seam intersects luff below previous panel luff point + 1/5 clothW
                     p1[npanel] = p1[npanel-1] + luffV.unit() * (seamW + clothW/5);
@@ -667,7 +668,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
                     seamVT = CVector3d( p1[npanel] - p2[npanel] ).unit();
                     seamLT = CSubSpace3d::line(p2[npanel] , seamVT);
                     ip = seamLT.intersect(luffLine).getp();
-#ifdef DEBUG 
+#ifdef DEBUG
                     cout << "Seam 1 LUFF CORRECTION DO LOOP = " << cnt << endl;
                     cout << " ip = " << ip << endl;
                     cout << "p1[0] " << p1[0] << "  p2[0] " << p2[0] << " type "<< t1[0] << t2[0] << endl;
@@ -700,33 +701,33 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
                 { // full luff
                     lay[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
 
-                    for ( k = 0; k < npl; k++ )
+                    for (k = 0; k < npl; k++)
                         lay[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].left[k], seamVT);
                 }
                 else if (t1[npanel-1] == 3 && t1[npanel] == 3)
                 { // full gaff
                     lay[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
-                    for ( k = 0; k < npl; k++ )
+                    for (k = 0; k < npl; k++)
                         lay[npanel-1].left[k] = EdgeIntersect( GAFF_EDGE, lay[npanel-1].left[k], seamV);
                 }
                 else if ((t1[npanel-1] ==2 ) && (t1[npanel] == 3))
                 { // luff-head-gaff
                     lay[npanel-1].left.fill(p1[npanel-1] , head, p1[npanel]);
-                    for ( k = 0; k < npl/2; k++ )
+                    for (k = 0; k < npl/2; k++)
                         lay[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].left[k], seamV);
-                    for ( k = npl/2 +1; k < npl; k++ )
+                    for (k = npl/2 +1; k < npl; k++)
                         lay[npanel-1].left[k] = EdgeIntersect( GAFF_EDGE, lay[npanel-1].left[k], seamV);
                 } // end IF ELSE for left side
 
                 /* Below is the code for the intermediate points of the right side
                  *  which are all on the leech for a twist cut layout.
                  */
-                // first check if upper point is not below lower point 
-                if ( CVector3d( p2[npanel] - p2[npanel-1] ) * leechV < 0 ) 
+                // first check if upper point is not below lower point
+                if ( CVector3d( p2[npanel] - p2[npanel-1] ) * leechV < 0 )
                     p2[npanel] = p2[npanel-1];
-                
+
                 lay[npanel-1].right.fill(p2[npanel-1] , p2[npanel]);
-                for ( k = 0; k < npl; k++ )
+                for (k = 0; k < npl; k++)
                     lay[npanel-1].right[k] = EdgeIntersect( LEECH_EDGE, lay[npanel-1].right[k], seamV);
 
                 /* Below is the code for the intermediate points of the top and bottom sides.
@@ -737,21 +738,21 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
                 lay[npanel-1].bottom.fill(lay[npanel-1].left[0], lay[npanel-1].right[0]);
 #ifdef DEBUG
                 if ( npanel == 1 )
-                { 
+                {
                     cout << "Twist foot straight  - LOOP= "<< cnt << endl;
-                    for( k = 0 ; k < npb ; k++)
-                        cout << "pt="<< k << " Bottom xyz= " << lay[0].bottom[k] << " Top xyz= " << lay[0].top[k] << endl;                    
-                } 
+                    for (k = 0 ; k < npb ; k++)
+                        cout << "pt="<< k << " Bottom xyz= " << lay[0].bottom[k] << " Top xyz= " << lay[0].top[k] << endl;
+                }
 #endif
 
                 /* Below is the code for the intermediate points of the bottom side of first panel
                  */
                 if ( npanel == 1 )
                 { // move bottom side of first panel to foot curve
-                    for( k = 1 ; k < npb-1 ; k++ )
+                    for (k = 1 ; k < npb-1 ; k++)
                         lay[0].bottom[k] = EdgeIntersect( FOOT_EDGE,  lay[0].bottom[k] , footVP );
                 }
-                
+
             } /// end else normal panel ///////////////////////
 
             ///* Now we go over all the points and calculate their z */
@@ -764,7 +765,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
             {
                 dev[npanel-1] = lay[npanel-1].develop(ALIGN_BOTTOM);
                 // add deviation of previous panel top edge to this bottom edge
-                for( k = 1 ; k < npb-1 ; k++ )
+                for (k = 1 ; k < npb-1 ; k++)
                     dev[npanel-1].bottom[k] = dev[npanel-1].bottom[k] + deviaPrev[k];
             }
 
@@ -774,7 +775,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
             if (flag == false)
             {
                 vb= CMatrix::rot3d(2,PI/2) * CVector3d(dev[npanel-1].top[npb-1] - dev[npanel-1].top[0]).unit();
-                for( k = 1 ; k < npb-1 ; k++ )
+                for (k = 1 ; k < npb-1 ; k++)
                 {
                     vk= CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
                     v= vb * -(vk * vb);
@@ -786,7 +787,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
             /* Add the seam and hems allowance */
             if (npanel == 1)
                 dev[npanel-1].addHems(hemsW, seamW, leechHemW, hemsW);
-            else if(flag == true)
+            else if (flag == true)
                 dev[npanel-1].addHems(hemsW, hemsW, leechHemW, 0);
             else
                 dev[npanel-1].addHems(hemsW, seamW, leechHemW, 0);
@@ -795,13 +796,13 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
             if ( npanel == 1 )
             { // move bottom side of first panel to foot curve
                 cout << "Twist foot after adding seams " << endl;
-                for( k = 0 ; k < npb ; k++)
+                for (k = 0 ; k < npb ; k++)
                     cout << "pt="<< k << " xyz=" << dev[0].bottom[k] << endl;
 
                 cout << "------END LOOP="<< cnt << endl;
             }
-#endif	
- 
+#endif
+
             /* Check the width of developed panel */
             exc = dev[npanel-1].boundingRect().height() - clothW;
 
@@ -829,19 +830,19 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
 
     /** copying the sails for display **** */
     CPanelGroup sail(npanel);
-    for( j = 0; j < npanel; j++ )
+    for (j = 0; j < npanel; j++)
         sail[j] = lay[j];
 
     /** copying the developed sail */
     flatsail = CPanelGroup(npanel);
 
-    for (j = 0; j < npanel; j++ )
+    for (j = 0; j < npanel; j++)
         flatsail[j] = dev[j];
 
     /** preparing the displays version of the developed sail */
     dispsail = flatsail;
 
-    for ( j = 1; j < npanel; j++ )
+    for (j = 1; j < npanel; j++)
     {
         top = dispsail[j-1].top[0];
         bot = dispsail[j].bottom[0];
@@ -928,7 +929,7 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
     t2[0] = 3;    // type=4=leech intersection
 
     /** Start laying the panels from the leech toward the tack */
-    for ( npanel = 1; npanel < MAX_PANELS-1; npanel++ )
+    for (npanel = 1; npanel < MAX_PANELS-1; npanel++)
     {
         real exb = 0; // total correction
         real exc = 0; // current excess of width
@@ -956,10 +957,10 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
                 flag = true; /// set FLAG to get out of FOR
             }
             else
-            {   // normal panel 
+            {   // normal panel
                 if ( seamL.intersect(gaffLine).getdim() == 0 )
                     p2[npanel] = seamL.intersect(gaffLine).getp();
-                else throw CException("CSailDef::Layout vertical-2 : intersection of seam and gaff is not a point!"); 
+                else throw CException("CSailDef::Layout vertical-2 : intersection of seam and gaff is not a point!");
 
                 if ( CVector3d(p2[npanel]-head) * gaffV > 0 )
                     t2[npanel] = 3;
@@ -978,7 +979,7 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
             {
                 // printf ("full luff \n");
                 lay[npanel-1].right.fill(p2[npanel-1], p2[npanel]);
-                for ( k = 0; k < npl; k++ )
+                for (k = 0; k < npl; k++)
                     lay[npanel-1].right[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].right[k], seamV);
             }
             else if ( t2[npanel-1] == 3 && t2[npanel] == 2 )
@@ -986,10 +987,10 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
                 // printf ("gaff-head-luff \n");
                 lay[npanel-1].right.fill(p2[npanel-1], head, p2[npanel]);
 
-                for ( k = 0; k < npl/2; k++ )
+                for (k = 0; k < npl/2; k++)
                     lay[npanel-1].right[k] = EdgeIntersect( GAFF_EDGE, lay[npanel-1].right[k], seamV);
 
-                for ( k = npl/2+1; k < npl; k++ )
+                for (k = npl/2+1; k < npl; k++)
                     lay[npanel-1].right[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].right[k], seamV);
             }
             else
@@ -997,12 +998,12 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
                 // printf ("full gaff \n");
                 lay[npanel-1].right.fill(p2[npanel-1], p2[npanel]);
 
-                for ( k = 0; k < npl; k++ )
+                for (k = 0; k < npl; k++)
                     lay[npanel-1].right[k] = EdgeIntersect( GAFF_EDGE, lay[npanel-1].right[k], seamV);
             }
             //// fill left side points which are all on foot
             lay[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
-            for ( k = 0; k < npl; k++ )
+            for (k = 0; k < npl; k++)
                 lay[npanel-1].left[k] = EdgeIntersect( FOOT_EDGE, lay[npanel-1].left[k], leechV);
 
             // fill bottom points
@@ -1010,7 +1011,7 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
             if ( npanel == 1 )
             {
                 // bottom is on the leech
-                for ( k = 0; k < npb; k++ )
+                for (k = 0; k < npb; k++)
                     lay[npanel-1].bottom[k] = EdgeIntersect( LEECH_EDGE, lay[npanel-1].bottom[k], leechVP);
             }
 
@@ -1026,7 +1027,7 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
             {
                 dev[npanel-1] = lay[npanel-1].develop(ALIGN_BOTTOM);
                 // add deviation of previous panel top edge to bottom edge
-                for( k = 1; k < npb-1; k ++ )
+                for (k = 1; k < npb-1; k ++)
                     dev[npanel-1].bottom[k] = dev[npanel-1].bottom[k] + deviaPrev[k];
             }
 
@@ -1036,7 +1037,7 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
             if ( flag == false )
             {
                 vb = CMatrix::rot3d(2,PI/2)*CVector3d(dev[npanel-1].top[npb-1] -dev[npanel-1].top[0]).unit();
-                for( k = 1; k < npb-1; k ++)
+                for (k = 1; k < npb-1; k ++)
                 {
                     vk = CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
                     v = vb * -(vk*vb);
@@ -1048,7 +1049,7 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
             /* Add the seam and hems allowance */
             if ( npanel == 1 )
                 dev[npanel-1].addHems(hemsW, seamW, hemsW, leechHemW);
-            else if( flag == true )
+            else if ( flag == true )
                 dev[npanel-1].addHems(hemsW, hemsW, hemsW, 0);
             else
                 dev[npanel-1].addHems(hemsW, seamW, hemsW, 0);
@@ -1059,7 +1060,7 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
             /* Sum previous correction + 80% of current excess of width + 1mm */
             exb += .8 * exc + 1;
 
-        } 
+        }
         while ( exc > 0 && cnt < 9 );
         /* loop as long the excess of width is positive AND counter < 9 */
 
@@ -1080,19 +1081,19 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
 
     /* copying the sails for display */
     CPanelGroup sail( npanel );
-    for( j = 0; j < npanel; j++ )
+    for (j = 0; j < npanel; j++)
         sail[j] = lay[j];
 
     /** copying the developed sail into flatsail */
     flatsail = CPanelGroup( npanel );
 
-    for ( j = 0; j < npanel; j++ )
+    for (j = 0; j < npanel; j++)
         flatsail[j] = dev[j];
 
     /** preparing the displays version of the developed sail */
     dispsail = flatsail;
 
-    for ( j = 1; j < npanel; j++ )
+    for (j = 1; j < npanel; j++)
     {
         top = dispsail[j-1].top[0];
         bot = dispsail[j].bottom[0];
@@ -1195,9 +1196,9 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
                 t1[npanel] = 2; // set on luff
                 // left points on foot-tack-luff
                 lay[npanel-1].left.fill(p1[npanel-1], tack, p1[npanel]);
-                for ( k = 0; k < npl/2; k++ )
+                for (k = 0; k < npl/2; k++)
                     lay[npanel-1].left[k] = EdgeIntersect( FOOT_EDGE, lay[npanel-1].left[k], seamV);
-                for ( k = npl/2 +1; k < npl; k++ )
+                for (k = npl/2 +1; k < npl; k++)
                     lay[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].left[k], seamV);
             }
             else if (t1[npanel-1] == 2)
@@ -1205,7 +1206,7 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
                 p1[npanel] = head;
                 t1[npanel] = 2;
                 lay[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
-                for ( k = 0; k < npl; k++ )
+                for (k = 0; k < npl; k++)
                     lay[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].left[k], seamV);
             }
             else
@@ -1213,13 +1214,13 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
                 p1[npanel] = p1[npanel-1];
                 t1[npanel] = 3;
                 lay[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
-                for ( k = 0; k < npl; k++ )
+                for (k = 0; k < npl; k++)
                     lay[npanel-1].left[k] = EdgeIntersect( GAFF_EDGE, lay[npanel-1].left[k], seamV);
             }
 
             // fill right points on leech
             lay[npanel-1].right.fill(p2[npanel-1],p2[npanel]);
-            for ( k = 0; k < npl; k++ )
+            for (k = 0; k < npl; k++)
                 lay[npanel-1].right[k] = EdgeIntersect( LEECH_EDGE, lay[npanel-1].right[k], seamV);
 
             // fill bottom points
@@ -1229,12 +1230,12 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
             lay[npanel-1].top.fill(lay[npanel-1].left[npl-1], lay[npanel-1].right[npl-1]);
 
             // move all top points of top panel to gaff curve
-            for( k = 1; k < npb-1; k++ )
+            for (k = 1; k < npb-1; k++)
                 lay[npanel-1].top[k] = EdgeIntersect( GAFF_EDGE, lay[npanel-1].top[k], CVector3d (head.y()-peak.y(),peak.x()-head.x(),0));
 
             /// end peak panel
         }
-        else        
+        else
         {   /// normal panel  /////
             /* find position of luff/seam intersection relative to tack and head */
             if ( seamL.intersect(luffLine).getdim() == 0 )
@@ -1285,39 +1286,39 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
             {
                 // full foot
                 lay[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
-                for ( k = 0; k < npl; k++ )
+                for (k = 0; k < npl; k++)
                     lay[npanel-1].left[k] = EdgeIntersect( FOOT_EDGE, lay[npanel-1].left[k], seamV);
             }
             else if ( t1[npanel-1] == 2 && t1[npanel] == 2 )
             {
                 // full luff
                 lay[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
-                for ( k = 0; k < npl; k++ )
+                for (k = 0; k < npl; k++)
                     lay[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].left[k], seamV);
             }
             else if ( t1[npanel-1] == 3 && t1[npanel] == 3 )
             {
                 // full gaff
                 lay[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
-                for ( k = 0; k < npl; k++ )
+                for (k = 0; k < npl; k++)
                     lay[npanel-1].left[k] = EdgeIntersect( GAFF_EDGE, lay[npanel-1].left[k], seamV);
             }
             else if ( t1[npanel-1] == 1 && t1[npanel] == 2 )
             {
                 // foot-tack-luff
                 lay[npanel-1].left.fill(p1[npanel-1], tack, p1[npanel]);
-                for ( k = 0; k < npl/2; k++ )
+                for (k = 0; k < npl/2; k++)
                     lay[npanel-1].left[k] = EdgeIntersect( FOOT_EDGE, lay[npanel-1].left[k], seamV);
-                for ( k = npl/2 +1; k < npl; k++ )
+                for (k = npl/2 +1; k < npl; k++)
                     lay[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].left[k], seamV);
             }
             else if ( t1[npanel-1] == 2 && t1[npanel] == 3 )
             {
                 // luff-head-gaff
                 lay[npanel-1].left.fill(p1[npanel-1], head, p1[npanel]);
-                for ( k = 0; k < npl / 2; k++ )
+                for (k = 0; k < npl / 2; k++)
                     lay[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].left[k], seamV);
-                for ( k = npl/2 +1; k < npl; k++ )
+                for (k = npl/2 +1; k < npl; k++)
                     lay[npanel-1].left[k] = EdgeIntersect( GAFF_EDGE, lay[npanel-1].left[k], seamV);
             } // end IF ELSE for left side
 
@@ -1325,7 +1326,7 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
             *  which are all on the leech for a crosscut layout.
             */
             lay[npanel-1].right.fill(p2[npanel-1],p2[npanel]);
-            for ( k = 0; k < npl; k++ )
+            for (k = 0; k < npl; k++)
                 lay[npanel-1].right[k] = EdgeIntersect( LEECH_EDGE, lay[npanel-1].right[k], seamV);
 
             /* Below is the code for the intermediate points of the top and bottom sides.
@@ -1338,7 +1339,7 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
             /* Below is the code for the intermediate points of the bottom side of first panel  */
             if ( npanel == 1 )
             { // move bottom side of first panel to foot curve
-                for( k = 1; k < npb -1; k++ )
+                for (k = 1; k < npb -1; k++)
                     lay[0].bottom[k] = EdgeIntersect( FOOT_EDGE, lay[0].bottom[k], CVector3d(0,-1,0));
             }
         } //// end else normal panel ///////////////////////
@@ -1352,9 +1353,9 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
         /* and if it is the first panel we cut the foot to tack level */
         if ( npanel == 1 )
         {
-            for( k=0; k < npb-1; k++ )
+            for (k=0; k < npb-1; k++)
                 lay[0].bottom[k].y() = tack.y();
-                
+
             lay[0].left[0].y() = tack.y();
             lay[0].right[0].y() = tack.y();
         }
@@ -1368,7 +1369,7 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
         {
             dev[npanel-1] = lay[npanel-1].develop(ALIGN_BOTTOM);
             // add deviation of previous panel top edge to bottom edge
-            for( k = 1; k < npb-1; k ++ )
+            for (k = 1; k < npb-1; k ++)
                 dev[npanel-1].bottom[k] = dev[npanel-1].bottom[k] + deviaPrev[k];
         }
 
@@ -1379,7 +1380,7 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
         if ( flag == false )
         {
             vb= CMatrix::rot3d(2,PI/2)*CVector3d(dev[npanel-1].top[npb-1] -dev[npanel-1].top[0]).unit();
-            for( k = 1; k < npb-1; k ++ )
+            for (k = 1; k < npb-1; k ++)
             {
                 vk= CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
                 v= vb * -(vk*vb);
@@ -1395,8 +1396,8 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
             dev[npanel-1].addHems(hemsW, hemsW, leechHemW, 0);
         else
             dev[npanel-1].addHems(hemsW, seamW, leechHemW, 0);
-        
-        /* now we reset the previous panel deviation to the current panel */ 
+
+        /* now we reset the previous panel deviation to the current panel */
         deviaPrev = deviation;
 
         /* Now we reposition the developed panel such that
@@ -1414,18 +1415,18 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
 
     /** creating the symetrical panels */
     np = npanel;
-    for ( j = 0; j < np +1; j++ )
+    for (j = 0; j < np +1; j++)
     {
         npanel++;
         lay[npanel] = lay[j];
         dev[npanel] = dev[j];
 
-        for ( k = 0 ; k < npb ; k++ )
+        for (k = 0 ; k < npb ; k++)
         {
             lay[npanel].top[k].y() = -lay[npanel].top[k].y();
             lay[npanel].bottom[k].y() = -lay[npanel].bottom[k].y();
         }
-        for ( k = 0 ; k < npl ; k++ )
+        for (k = 0 ; k < npl ; k++)
         {
             lay[npanel].left[k].y() = -lay[npanel].left[k].y();
             lay[npanel].right[k].y() = -lay[npanel].right[k].y();
@@ -1435,13 +1436,13 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
     /** copying the sails for display */
     CPanelGroup sail( 2 * npanel +1 );
 
-    for( j = 0; j < npanel; j++ )
+    for (j = 0; j < npanel; j++)
         sail[j] = lay[j];
 
     /** copying the developed sail */
     flatsail = CPanelGroup( 2 * npanel +1);
 
-    for ( j = 0; j < npanel; j++ )
+    for (j = 0; j < npanel; j++)
     {
         flatsail[j] = dev[j];
     }
@@ -1449,7 +1450,7 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
     /** preparing the displays version of the developed sail */
     dispsail = flatsail;
 
-    for ( j = 1; j < npanel; j++ )
+    for (j = 1; j < npanel; j++)
     {
         top = dispsail[j-1].top[0];
         bot = dispsail[j].bottom[0];
@@ -1532,7 +1533,7 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
     leechH[h] = clew;
     seamH[h] = footLine;
 
-    for ( h = 1; h < nbSections; h++ )
+    for (h = 1; h < nbSections; h++)
     {
         pt1 = tack + luffV * (real(h) / nbSections );
         pt2 = clew + leechV * (real(h) / nbSections );
@@ -1566,7 +1567,7 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
     leechCatenary[nbSections] = pt0; // top of leech catenary
 
     // other points on both catenaries
-    for ( h = nbSections-1 ; h > 0 ; h--)
+    for (h = nbSections-1 ; h > 0 ; h--)
     {
         pt0 = tack + footV*(real(h) / real(nbSections))*(real(ngLuff) / real(nbGores));
         seamL = CSubSpace3d::line(luffCatenary[h+1], CVector3d(pt0 - luffCatenary[h+1]));
@@ -1591,11 +1592,11 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
     ng1 = 0;  // initialise number of central panels
 
     /** Sweeping the sail from the top section downward to the foot */
-    for (h = nbSections; h > 0; h-- )
+    for (h = nbSections; h > 0; h--)
     {
         nps[h] = 0;  // counter of panels in current section
         /** Cutting the luff side panels */
-        for ( j = 1; j <= ngLuff; j++)
+        for (j = 1; j <= ngLuff; j++)
         {
             if ( j == 1 )
             { // place bottom end points on luff catenary
@@ -1604,7 +1605,7 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
 
                 lay[npanel].bottom.fill( pt1, pt2 );
 
-                for ( k = 1 ; k < npb -1 ; k++)
+                for (k = 1 ; k < npb -1 ; k++)
                     lay[npanel].bottom[k] = EdgeIntersect( LUFF_EDGE, lay[npanel].bottom[k] , CVector3d( luffH[h-1] - leechH[h-1] ) );
             }
             else
@@ -1628,7 +1629,7 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
 
             if ( h == nbSections )
             {
-                for ( k = 1; k < npl -1; k++ )
+                for (k = 1; k < npl -1; k++)
                     lay[npanel].left[k] = EdgeIntersect( GAFF_EDGE, lay[npanel].left[k] , gaffVP );
             }
 
@@ -1666,7 +1667,7 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
             pt4 = luffCatenary[h-1];
 
             // we now compute the other points
-            for ( j = 1; j <= ng1; j++ )
+            for (j = 1; j <= ng1; j++)
             {
                 pt1 = pt3;
                 pt2 = pt4;
@@ -1702,7 +1703,7 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
 
                 if ( h == nbSections )
                 {
-                    for ( k = 1; k < npl-1; k++ )
+                    for (k = 1; k < npl-1; k++)
                         lay[npanel].left[k] = EdgeIntersect( GAFF_EDGE, lay[npanel].left[k] , gaffVP );
                 }
 
@@ -1722,10 +1723,10 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
                 npanel++;
             }
         }
-	else  // h = 1 middle panels of bottom section 
+        else  // h = 1 middle panels of bottom section
         {
             // luff side central
-            for ( j = 1; j <= (ng1 / 2); j++ )
+            for (j = 1; j <= (ng1 / 2); j++)
             {
                 pt1 = luffCatenary[h] + CVector3d( leechCatenary[h] - luffCatenary[h] ) * (real(j-1) / ng1);
                 pt2 = tack;
@@ -1760,7 +1761,7 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
             if (a < 2)
                 a = 2;
 
-            for ( j = 1 ; j <= a ; j++)
+            for (j = 1 ; j <= a ; j++)
             {   // from center to foot
                 pt1 = ptCentre + CVector3d (ptFoot - ptCentre) * (real(j-1) / a);
                 pt2 = tack;
@@ -1795,7 +1796,7 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
             }
 
             // leech side lower central
-            for ( j = 1; j <= a; j++)
+            for (j = 1; j <= a; j++)
             {   // from foot to center
                 pt1 = ptFoot + CVector3d ( ptCentre - ptFoot ) * (real(j-1) / a );
                 pt2 = clew;
@@ -1830,7 +1831,7 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
             }
 
             // leech side central
-            for ( j = ng1/2 +1 ; j <= ng1 ; j++)
+            for (j = ng1/2 +1 ; j <= ng1 ; j++)
             {
                 pt1 = luffCatenary[h] + CVector3d( leechCatenary[h] - luffCatenary[h] ) * (real(j-1) / ng1);
                 pt2 = clew ;
@@ -1858,7 +1859,7 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
         }
 
         /** cutting the leech side panels */
-        for ( j = 1; j < (nbGores - ngLuff); j++)
+        for (j = 1; j < (nbGores - ngLuff); j++)
         {
             pt1 = leechCatenary[h] + CVector3d( leechH[h] - leechCatenary[h] ) * (real(j-1) / (nbGores - ngLuff -1) );
             if ( h == nbSections )
@@ -1879,13 +1880,13 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
 
             if ( h == nbSections )
             {
-                for ( k = 1; k < npl -1; k++ )
+                for (k = 1; k < npl -1; k++)
                     lay[npanel].left[k] = EdgeIntersect( GAFF_EDGE, lay[npanel].left[k] , gaffVP );
             }
 
             if ( j == nbGores - ngLuff -1)
             {
-                for ( k = 1; k < npb -1; k++ )
+                for (k = 1; k < npb -1; k++)
                     lay[npanel].top[k] = EdgeIntersect( LEECH_EDGE, lay[npanel].top[k] , CVector3d(luffH[h-1]-leechH[h-1]) );
             }
 
@@ -1910,13 +1911,13 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
 
     /** copying 3d lay into 3d sail */
     CPanelGroup sail(npanel);
-    for( j = 0 ; j < npanel ; j ++)
+    for (j = 0 ; j < npanel ; j ++)
         sail[j] = lay[j];
 
     /** copying from temporary developed sail into flatsail */
     flatsail = CPanelGroup(npanel);
 
-    for ( j = 0; j < npanel; j++ )
+    for (j = 0; j < npanel; j++)
         flatsail[j] = dev[j];
 
     /** preparing the displays version of the developed sail */
@@ -1927,7 +1928,7 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
     xm = 0;
     ym = 0;
 
-    for ( j = 0; j < npanel; j++)
+    for (j = 0; j < npanel; j++)
     {
         if ( k == nps[h] )
         {
@@ -2011,7 +2012,7 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
     CSubSpace seamH[10];   // corresponding seam lines
     CSubSpace seamL;  // a seam line
 
-    for ( h=0; h<nbSections; h++)  // one more horizontal line than nbSections
+    for (h=0; h<nbSections; h++)  // one more horizontal line than nbSections
     {
         pt1 = tack + luffV * (real(h) / nbSections );
         pt2 = clew + leechV * (real(h) / nbSections );
@@ -2041,7 +2042,7 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
     pt0 = head + gaffV * ( real(ngLuff+1) / real(nbGores) );
     leechCatenary[nbSections] = pt0; // top of leech catenary
 
-    for ( h = nbSections-1; h > 0; h-- )
+    for (h = nbSections-1; h > 0; h--)
     {
         pt0 = tack + footV*(real(h) / real(2* nbSections));
         seamL = CSubSpace3d::line(luffCatenary[h+1], CVector3d(pt0 - luffCatenary[h+1]));
@@ -2369,7 +2370,7 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
 
     /** copying 3d sail lay into sail */
     CPanelGroup sail(npanel);
-    for( j = 0; j < npanel; j ++)
+    for (j = 0; j < npanel; j ++)
         sail[j] = lay[j];
 
     /** copy from temporary developed sail into flatsail */
@@ -2477,16 +2478,16 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
     t2[0] = 5;    // type=5=mitre intersection
 
     /** start by cutting the foot panels perpendicular to the foot */
-    for ( npanel = 1 ; npanel < (MAX_PANELS / 2) -1 ; npanel++ )
+    for (npanel = 1 ; npanel < (MAX_PANELS / 2) -1 ; npanel++)
     {
         real exb = 0; // total correction
         real exc = 0; // current excess of width
         cnt = 0;
         //if (npanel==3) flag=true;
-        
+
         /** Loop for optimising the seam position to fit cloth width */
         do
-        {   
+        {
             cnt++;
             pt = p1[npanel-1] - (clothW - seamW - exb) * footV.unit();
             seamL = CSubSpace3d::line( pt , footVP );
@@ -2509,7 +2510,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
                 flag = true; // set to get out of FOR
             }
             else
-            { // normal panel 
+            { // normal panel
                 p2[npanel] = seamL.intersect(mitreLine).getp();
                 if ( CVector3d(p2[npanel] - mitreLuffPt) * mitreV > EPS )
                 {
@@ -2533,7 +2534,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
             { // printf ("mitre-luff \n");
                 lay[npanel-1].right.fill(p2[npanel-1] , mitreLuffPt, p2[npanel]);
 
-                for ( k = npl/2 +1 ; k<npl ; k++ )
+                for (k = npl/2 +1 ; k<npl ; k++)
                     lay[npanel-1].right[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].right[k], footVP);
             }
             else
@@ -2543,7 +2544,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
 
             //// fill left side points which are all on foot
             lay[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
-            for ( k = 0 ; k < npl ; k++ )
+            for (k = 0 ; k < npl ; k++)
                 lay[npanel-1].left[k] = EdgeIntersect( FOOT_EDGE, lay[npanel-1].left[k], footVP);
 
             //// fill the intermediate points of bottom side
@@ -2553,23 +2554,23 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
             lay[npanel-1].top.fill(lay[npanel-1].left[npl-1] , lay[npanel-1].right[npl-1]);
             if ( flag == true && t2[npanel] == 5 )
             {
-                for ( k = 0 ; k < npb ; k++ )
+                for (k = 0 ; k < npb ; k++)
                     lay[npanel-1].top[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].top[k] , footV);
             }
-            
+
             ///* Now we go over all the points of the foot panel and calculate their z */
             lay[npanel-1] = Zpanel(lay[npanel-1]);
 
             /*if (npanel == 1)
             {
-            for ( k=0 ; k<5 ; k++)
+            for (k=0 ; k<5 ; k++)
             {
                 pt = lay[npanel-1].top[k];
                 printf ("Panel %d Pt %d  x= %f  y= %f  z= %f \n", npanel-1, k, pt.x(), pt.y(), pt.z()); // send to console
             }
             printf (" --- \n");
             }*/
-            
+
             /** Now we develop the current foot panel */
             if ( npanel == 1 )
                 dev[npanel-1] = lay[npanel-1].develop(ALIGN_TOP);
@@ -2577,7 +2578,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
             {
                 dev[npanel-1] = lay[npanel-1].develop(ALIGN_BOTTOM);
                 // add deviation of previous panel top edge to bottom edge
-                for( k = 1 ; k < npb-1 ; k++ )
+                for (k = 1 ; k < npb-1 ; k++)
                     dev[npanel-1].bottom[k] = dev[npanel-1].bottom[k] + deviaPrev[k];
             }
 
@@ -2587,7 +2588,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
             if ( flag == false )
             {
                 vb= CMatrix::rot3d(2,PI/2)*CVector3d(dev[npanel-1].top[npb-1] -dev[npanel-1].top[0]).unit();
-                for( k = 1 ; k < npb-1 ; k++ )
+                for (k = 1 ; k < npb-1 ; k++)
                 {
                     vk = CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
                     v = vb * -(vk * vb);
@@ -2635,15 +2636,15 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
     *   and determine the total number of panels.
     */
     flag = false;
-    for ( npanel = npanel +1 ; npanel < MAX_PANELS -1 ; npanel++ )
+    for (npanel = npanel +1 ; npanel < MAX_PANELS -1 ; npanel++)
     {
         real exb = 0; // total correction
         real exc = 0; // current excess of width
         cnt = 0; // counter of iterations
-        
-        /** Loop for optimising the seam position to fit cloth width */        
+
+        /** Loop for optimising the seam position to fit cloth width */
         do
-        {   
+        {
             cnt++;
             p2[npanel] = p2[npanel-1] + (clothW -seamW -exb) * leechV.unit();
             t2[npanel] = 4; // type2=4=leech intersection for all horizontally cut panels
@@ -2662,7 +2663,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
                     // left points on mitrePt-head
                     lay[npanel-1].left.fill(p1[npanel-1] , mitreLuffPt , p1[npanel]);
 
-                    for ( k = npl/2 +1 ; k < npl ; k++ )
+                    for (k = npl/2 +1 ; k < npl ; k++)
                         lay[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].left[k], leechVP);
                 }
                 else if ( t1[npanel-1] == 2 )
@@ -2678,13 +2679,13 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
                     p1[npanel] = p1[npanel-1];
                     t1[npanel] = 3;
                     lay[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
-                    for ( k = 0 ; k < npl ; k++ )
+                    for (k = 0 ; k < npl ; k++)
                         lay[npanel-1].left[k] = EdgeIntersect( GAFF_EDGE, lay[npanel-1].left[k], leechVP);
                 }
 
                 //// fill right points on leech
                 lay[npanel-1].right.fill(p2[npanel-1],p2[npanel]);
-                for ( k = 0 ; k < npl ; k++ )
+                for (k = 0 ; k < npl ; k++)
                     lay[npanel-1].right[k] = EdgeIntersect( LEECH_EDGE, lay[npanel-1].right[k], leechVP);
 
                 //// fill bottom points
@@ -2694,7 +2695,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
                 lay[npanel-1].top.fill(lay[npanel-1].left[npl-1], lay[npanel-1].right[npl-1]);
 
                 // move all top points of top panel to gaff curve
-                for( k = 1 ; k < npb-1 ; k++ )
+                for (k = 1 ; k < npb-1 ; k++)
                     lay[npanel-1].top[k] = EdgeIntersect( GAFF_EDGE, lay[npanel-1].top[k], CVector3d (head.y()-peak.y() , peak.x()-head.x() , 0));
                 ////// end peak panel /////
             }
@@ -2736,27 +2737,27 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
                 if ( t1[npanel-1] == 2 && t1[npanel] == 2 )
                 { // full luff
                     lay[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
-                    for ( k = 0 ; k < npl ; k++ )
+                    for (k = 0 ; k < npl ; k++)
                         lay[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].left[k], leechVP);
                 }
                 else if ( t1[npanel-1] == 3 && t1[npanel] == 3 )
                 { // full gaff
                     lay[npanel-1].left.fill(p1[npanel-1] , p1[npanel]);
-                    for ( k = 0 ; k < npl ; k++ )
+                    for (k = 0 ; k < npl ; k++)
                         lay[npanel-1].left[k] = EdgeIntersect( GAFF_EDGE, lay[npanel-1].left[k] , leechVP);
                 }
                 else if ( (t1[npanel-1] == 2) && (t1[npanel] == 3) )
                 { // luff-head-gaff
                     lay[npanel-1].left.fill(p1[npanel-1] , head , p1[npanel]);
-                    for ( k = 0 ; k < npl/2 ; k++ )
+                    for (k = 0 ; k < npl/2 ; k++)
                         lay[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].left[k] , leechVP);
-                    for ( k = npl/2 +1 ; k < npl ; k++ )
+                    for (k = npl/2 +1 ; k < npl ; k++)
                         lay[npanel-1].left[k] = EdgeIntersect( GAFF_EDGE, lay[npanel-1].left[k] , leechVP);
                 } // end IF ELSE for left side
                 else if ( (t1[npanel-1] == 5) && (t1[npanel] == 2) )
                 { // mitre-luff
                     lay[npanel-1].left.fill(p1[npanel-1] , mitreLuffPt , p1[npanel]);
-                    for ( k = 0 ; k < npl/2 ; k++ )
+                    for (k = 0 ; k < npl/2 ; k++)
                         lay[npanel-1].left[k] = MitreIntersect(lay[npanel-1].left[k] , leechVP);
                     for (k=npl/2+1; k<npl; k++)
                         lay[npanel-1].left[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].left[k] , leechVP);
@@ -2768,7 +2769,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
 
                 //// Fill the intermediate points of the right side
                 lay[npanel-1].right.fill(p2[npanel-1] , p2[npanel]);
-                for ( k = 0 ; k < npl ; k++ )
+                for (k = 0 ; k < npl ; k++)
                     lay[npanel-1].right[k] = EdgeIntersect( LEECH_EDGE, lay[npanel-1].right[k] , leechVP);
 
                 //// Fill the intermediate points of the top side of the leech panel
@@ -2789,7 +2790,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
             {
                 dev[npanel-1] = lay[npanel-1].develop(ALIGN_BOTTOM);
                 // add deviation of previous panel top edge to bottom edge
-                for( k = 1 ; k < npb -1 ; k++ )
+                for (k = 1 ; k < npb -1 ; k++)
                     dev[npanel-1].bottom[k] = dev[npanel-1].bottom[k] + deviaPrev[k];
             }
 
@@ -2799,7 +2800,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
             if ( flag == false )
             {
                 vb = CMatrix::rot3d(2,PI/2)*CVector3d(dev[npanel-1].top[npb-1] -dev[npanel-1].top[0]).unit();
-                for( k = 1 ; k < npb -1 ; k++ )
+                for (k = 1 ; k < npb -1 ; k++)
                 {
                     vk = CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
                     v = vb * -(vk * vb);
@@ -2823,7 +2824,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
         while ( exc > 0 && cnt < 9 );
         /* loop as long the excess of width is positive AND counter < 9 */
 
-        for ( k = 0 ; k < npb ; k++ )
+        for (k = 0 ; k < npb ; k++)
             deviaPrev[k] = deviation[k];
 
         /* Now we reposition the developed panel such that bottom left is X=0 Y=0 */
@@ -2840,19 +2841,19 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
 
     /** copying the sails for display */
     CPanelGroup sail(npanel);
-    for( j = 0; j < npanel; j++ )
+    for (j = 0; j < npanel; j++)
         sail[j] = lay[j];
 
     /** copying the developed sail into flatsail */
     flatsail = CPanelGroup(npanel);
 
-    for ( j = 0 ; j < npanel ; j++ )
+    for (j = 0 ; j < npanel ; j++)
         flatsail[j] = dev[j];
 
     /** preparing the displays version of the developed sail */
     dispsail = flatsail;
 
-    for ( j = 1 ; j < npanel ; j++ )
+    for (j = 1 ; j < npanel ; j++)
     {
         top = dispsail[j-1].top[0];
         bot = dispsail[j].bottom[0];
@@ -2884,7 +2885,7 @@ CPoint3d CSailWorker::AftIntersect( const CPoint3d& pt1 ) const
 
     CPoint3d pAft = pt1; // aft intersection point is initialised at p1
     CVector3d vH = CVector3d( 1, 0, 0 );
-    
+
     if ( pt1.y() >= peak.y() )
     {   // rear point above the peak, set output on vertical above peak
         pAft.x() = peak.x();
@@ -2893,10 +2894,10 @@ CPoint3d CSailWorker::AftIntersect( const CPoint3d& pt1 ) const
     {   // rear point on or below the clew, set output on vertical below clew
         pAft.x() = clew.x();
     }
-    else 
+    else
     {   // move point on leech which is not straight
         pAft = EdgeIntersect( LEECH_EDGE, pt1, vH );
-    } 
+    }
     // ensure that Z=0
     pAft.z() = 0;
     //
@@ -2913,7 +2914,7 @@ real CSailWorker::Area()
     real surface = luffV.cross(footV).norm() / 2;
     surface = surface + leechV.cross(gaffV).norm() / 2;
     surface = surface + .75*(luffL*luffR + footL*footR + leechL*leechR + gaffL*gaffR);
-    
+
     return ( .01 * floor(surface /10000) );
 }
 
@@ -2963,12 +2964,12 @@ real CSailWorker::IRCwidth( const real &HL )
     /// compute the shortest distance to the real luff
     p1 = clew + leechV*h2;
     p2 = Zpoint(EdgeIntersect( LEECH_EDGE, p1, leechVP));
-    
+
     p1 = Zpoint(EdgeIntersect( LUFF_EDGE, p2, luffVP));
 
     w = 0;
     p3 = p1;
-    
+
     for (i = 1; i <= imax; i++)
     {
         h1 = real(i) / imax;
@@ -3037,13 +3038,13 @@ real CSailWorker::SailWidth( const  real  &HL )
     /// compute the shortest distance real leech to the real luff
     p = clew + leechV * h2;
     p2 = Zpoint(EdgeIntersect( LEECH_EDGE, p , leechVP) );
-    
+
     p = tack + luffV * h1;
     p1 = Zpoint(EdgeIntersect( LUFF_EDGE, p , luffVP) );
-    
+
     w = 0;
     p3 = p1;
-    
+
     for (i = 1; i <= imax; i++)
     {
         h1 = real(i) / imax;
@@ -3070,9 +3071,9 @@ real CSailWorker::SailLP( )
     p1 = Zpoint( EdgeIntersect( LUFF_EDGE, clew , luffVP) );
     v = CVector3d(clew - p1);
     p2 = p1;
-    
+
     // compute the distance from the real luff to clew
-    for ( i = 1 ; i <= imax ; i++ )
+    for (i = 1 ; i <= imax ; i++)
     {
         h1 = real(i) / imax;
         p =  p1 + v * h1 ;
@@ -3099,7 +3100,7 @@ real CSailWorker::LeechLength( const real &h )
 
     p1 = clew;
 
-    for ( i = 1; i <= imax; i++ )
+    for (i = 1; i <= imax; i++)
     {
         h1= real(i) / imax;
         p2 = clew + leechV * (h * h1);
@@ -3123,7 +3124,7 @@ real CSailWorker::LuffLength( const real &h )
     CPoint3d p1=tack, p2, p3;
     real l=0, h1=0;
 
-    for ( i = 1 ; i < imax ; i++ )
+    for (i = 1 ; i < imax ; i++)
     {
         h1= real(i) / imax;
         p2 = tack + luffV * (h * h1);
@@ -3142,7 +3143,7 @@ real CSailWorker::LuffLength( const real &h )
  * @author Robert Laine alias Sailcuter
  */
 CPoint3d CSailWorker::FwdIntersect( const CPoint3d &pt1 ) const
-{    
+{
     CPoint3d pFwd = pt1; // forward intersection point initialised at p1
     CVector3d vH = CVector3d( 1, 0, 0 );
 
@@ -3161,10 +3162,10 @@ CPoint3d CSailWorker::FwdIntersect( const CPoint3d &pt1 ) const
         // pFwd.z() = head.z();
     }
     else if ( pt1.y() < peak.y() )
-    {   // forward point is on gaff 
+    {   // forward point is on gaff
         pFwd = EdgeIntersect( GAFF_EDGE, pt1, vH );
     }
-    else 
+    else
     { // point is above peak
         pFwd.x() = peak.x(); // set forward point on vertical above peak
         //pFwd.z() = peak.z(); //
@@ -3177,7 +3178,7 @@ CPoint3d CSailWorker::FwdIntersect( const CPoint3d &pt1 ) const
 
 
 /** Routine used for computing the point position on a sail curved edge.
- *  Return p2 a 3d point which is the intersection of the vector v1 
+ *  Return p2 a 3d point which is the intersection of the vector v1
  *  passing by pt1 point inside sail area with the Edge curve.
  *
  * @author Robert Laine alias Sailcuter
@@ -3186,10 +3187,10 @@ CPoint3d CSailWorker::EdgeIntersect( const enumEdgeType &Edge, const CPoint3d &p
 {
     if ( v1.norm() <= EPS )
         throw CException("CSailWorker::EdgeIntersect : input vector is nul");
-    
-    // Input line 
+
+    // Input line
     CSubSpace InputLine = CSubSpace3d::line( pt1 , v1 );
-    // Edge end points 
+    // Edge end points
     CPoint3d pEnd1, pEnd2;
     // Edge Vector
     CVector3d vEdge;
@@ -3199,54 +3200,54 @@ CPoint3d CSailWorker::EdgeIntersect( const enumEdgeType &Edge, const CPoint3d &p
     real EdgeR = 0;
     // Edge round position from end1 toward end2
     int EdgeRP;
-    
+
     switch ( Edge )
     {
-        case LUFF_EDGE:
-            pEnd1 = tack;
-            pEnd2 = head;
-            EdgeR = luffR;
-            EdgeRP = luffRP;
-            vEdge = CVector3d( pEnd2 - pEnd1 );
-            vpEdge = CMatrix::rot3d(2 , PI/2) * vEdge.unit();
-            break;
-            
-        case GAFF_EDGE:
-            pEnd1 = head;
-            pEnd2 = peak;
-            EdgeR = gaffR;
-            EdgeRP = gaffRP;
-            vEdge = CVector3d( pEnd2 - pEnd1 );
-            vpEdge = CMatrix::rot3d(2 , PI/2) * vEdge.unit();
-            break;
-            
-        case FOOT_EDGE:
-            pEnd1 = tack;
-            pEnd2 = clew;
-            EdgeR = footR;
-            EdgeRP = footRP;
-            vEdge = CVector3d( pEnd2 - pEnd1 );
-            vpEdge = CMatrix::rot3d(2 , -PI/2) * vEdge.unit();
-            break;
-            
-        case LEECH_EDGE:
-            pEnd1 = clew;
-            pEnd2 = peak;
-            EdgeR = leechR;
-            EdgeRP = leechRP;
-            vEdge = CVector3d( pEnd2 - pEnd1 );
-            vpEdge = CMatrix::rot3d(2 , -PI/2) * vEdge.unit();
-            break;
+    case LUFF_EDGE:
+        pEnd1 = tack;
+        pEnd2 = head;
+        EdgeR = luffR;
+        EdgeRP = luffRP;
+        vEdge = CVector3d( pEnd2 - pEnd1 );
+        vpEdge = CMatrix::rot3d(2 , PI/2) * vEdge.unit();
+        break;
+
+    case GAFF_EDGE:
+        pEnd1 = head;
+        pEnd2 = peak;
+        EdgeR = gaffR;
+        EdgeRP = gaffRP;
+        vEdge = CVector3d( pEnd2 - pEnd1 );
+        vpEdge = CMatrix::rot3d(2 , PI/2) * vEdge.unit();
+        break;
+
+    case FOOT_EDGE:
+        pEnd1 = tack;
+        pEnd2 = clew;
+        EdgeR = footR;
+        EdgeRP = footRP;
+        vEdge = CVector3d( pEnd2 - pEnd1 );
+        vpEdge = CMatrix::rot3d(2 , -PI/2) * vEdge.unit();
+        break;
+
+    case LEECH_EDGE:
+        pEnd1 = clew;
+        pEnd2 = peak;
+        EdgeR = leechR;
+        EdgeRP = leechRP;
+        vEdge = CVector3d( pEnd2 - pEnd1 );
+        vpEdge = CMatrix::rot3d(2 , -PI/2) * vEdge.unit();
+        break;
     }
-    
-    // Edge line 
+
+    // Edge line
     CSubSpace Line2 = CSubSpace3d::line( pEnd1, vEdge );
-    
+
     real h1=0, h2=0, d1=0, d2=0;
     CPoint3d p0 , p1 , p2 , p3;
     CVector3d v;
 
-    // find point p0 at intersection of straight edge with input line 
+    // find point p0 at intersection of straight edge with input line
     if ( InputLine.intersect( Line2 ).getdim() == 0 )
     {
         p0 = InputLine.intersect( Line2 ).getp();
@@ -3263,33 +3264,33 @@ CPoint3d CSailWorker::EdgeIntersect( const enumEdgeType &Edge, const CPoint3d &p
         h1 = CVector3d(p0 - pEnd1).norm() / (vEdge.norm() + EPS); // relative height
         d1 = EdgeR * RoundP(h1 , EdgeRP); // local depth of edge curve
         p1 = p0 + vpEdge * d1;
-        
+
         // define a line parrallel to edge at distance d1
         Line2 = CSubSpace3d::line( p1 , vEdge );
-        
+
         // point2 at intersection of input line with parrallel to edge is always valid
         p2 = InputLine.intersect( Line2 ).getp();
 
         v = CVector3d( p2 - p1);
-        
-        if ( v.norm() >= EPS ) 
-        {    
+
+        if ( v.norm() >= EPS )
+        {
             // translate point0 on straight edge
             p3 = p0 + v;
-            
+
             if ( CVector3d(p3 - pEnd1) * vEdge <= 0 )
                 p2 = pEnd1;  // p3 left of edge end
             else if ( CVector3d(p3 - pEnd2) * vEdge >= 0 )
                 p2 = pEnd2;  // p3 right of edge end
-            else 
+            else
             {   // point is on edge curve
                 h2 = CVector3d(p3 - pEnd1).norm() / (vEdge.norm() + EPS);
                 d2 = EdgeR * RoundP( h2 , EdgeRP ); // local depth of edge curve
                 p2 = p3 + vpEdge * d2;
             }
-            
+
             v = CVector3d ( p2 - p1 );
-            
+
             if ( v.norm() <= EPS )
                 // keep p1 which is strictly on input line
                 p2 = p1;
@@ -3297,7 +3298,7 @@ CPoint3d CSailWorker::EdgeIntersect( const enumEdgeType &Edge, const CPoint3d &p
             {   // displaced point 2 and p1 are used for Line2
                 Line2 = CSubSpace3d::line( p1 , v );
                 // compute final intersection point p2
-                p2 = InputLine.intersect( Line2 ).getp(); 
+                p2 = InputLine.intersect( Line2 ).getp();
             }
         }
     }
@@ -3350,7 +3351,7 @@ CPoint3d CSailWorker::Zpoint( const CPoint3d &p1 ) const
 
     /* computing local cord of the profile */
     cord = CVector3d( pAft - pFwd ).norm();
-    
+
     /* computing Z from normalised position on profile */
     if ( cord < 1 )   // to avoid division by cord = zero
     {
@@ -3360,10 +3361,10 @@ CPoint3d CSailWorker::Zpoint( const CPoint3d &p1 ) const
     else   // position on profile
     {
         pos = ( CVector3d( p1 - pFwd ).norm() ) / cord;
-        
+
         /* computing the relative height on the sail */
         real h1 = (p1.y() - tack.y()) / (peak.y() - tack.y());  // for mould
-        
+
         /* Now computing actual Z  including twist and sheeting angle
         *  kluff, kleech, depth coefficient used in z1=f(pos, h1) of the
         *  sailmould are interpolated between the respective profile[0..2].
@@ -3373,10 +3374,10 @@ CPoint3d CSailWorker::Zpoint( const CPoint3d &p1 ) const
         */
         z = cord * mould.interpol( h1 ).z(pos);
     }
-    
+
     /* computing the twist from the relative height on straight leech */
-    real h2 = ( p1.y() - clew.y() ) / leechV.y(); 
-    
+    real h2 = ( p1.y() - clew.y() ) / leechV.y();
+
     if ( h2 >= 1 )    // above peak
         h2 = 1;
     else if ( h2 <= 0 )   // below clew

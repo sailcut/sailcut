@@ -50,8 +50,8 @@ CRigDef::CRigDef()
     SPW[2] = CSB -50;
     SPH[3] = 5400;
     SPW[3] = CSB -200;
-    
-    BAD = 750;      // height of boom 
+
+    BAD = 750;      // height of boom
     //MStack = CVector3d(2100, 750 , 0);
     HAD = 7000;
     //MShead = CVector3d(2200, 7000, 0);
@@ -60,7 +60,7 @@ CRigDef::CRigDef()
 
 
 /** Assignment operator.
- * 
+ *
  * @param copy the rig definition to copy from
  * @return CRigDef&
  */
@@ -80,12 +80,12 @@ CRigDef & CRigDef::operator=( const CRigDef &copy )
     MBase = copy.MBase;
     MRnd = copy.MRnd;     // mast round
     MRndPos = copy.MRndPos;
-    
+
     BAD = copy.BAD;
     HAD = copy.HAD;
     //MStack = copy.MStack;
     //MShead = copy.MShead;
-    
+
     CSH = copy.CSH;       // outer shroud height
     CSB = copy.CSB;
     LSB = copy.LSB;

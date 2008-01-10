@@ -33,19 +33,19 @@ real RoundP( const real &x, const int &p )
     /*
       X (0..1) is the relative position of the point along the edge
       P is the integer position of the maximum round in percent of the edge length
-      The curve is a parabola on either side of the point P 
+      The curve is a parabola on either side of the point P
       Return Y (0..1) is the value of the normalised round at position X
     */
 
     real p1 = .5, x1 = 0 , y = 0;
 
-    p1 = real(p) / 100; 
+    p1 = real(p) / 100;
     // limit the position of maximum round of side
     if (p1 < 0.01)
         p1=0.01;
     if (p1 > 0.99)
         p1=0.99;
-    
+
     // limit the computation of the domain 0..1
     if ( x <= 0 )
         y = 0;
@@ -68,8 +68,8 @@ real RoundP( const real &x, const int &p )
 
 /** Compute the angle of a 2D triangle from its 3 sides length
  *  Return the angle in radian opposite to side a of the triangle
- *  a b and c are the length of the sides of the triangle 
- * 
+ *  a b and c are the length of the sides of the triangle
+ *
  * @author Robert Laine alias Sailcuter
  */
 real Atriangle( const real &a, real const &b, const real &c )
@@ -96,7 +96,7 @@ real Atriangle( const real &a, real const &b, const real &c )
 /** Compute the angle of a 3D triangle from its 3 corner points
  *  Return the angle in radian at point pta of the triangle
  *  Triangle is defined by the 3d points pta, ptb, ptc
- * 
+ *
  * @author Robert Laine alias Sailcuter
  */
 real Atriangle3d ( const CPoint3d &pta, const CPoint3d &ptb, const CPoint3d &ptc )
@@ -117,7 +117,7 @@ real Atriangle3d ( const CPoint3d &pta, const CPoint3d &ptb, const CPoint3d &ptc
     c = sqrt( (ptb.x()-pta.x()) * (ptb.x()-pta.x())
               +(ptb.y()-pta.y()) * (ptb.y()-pta.y())
               +(ptb.z()-pta.z()) * (ptb.z()-pta.z()) );
-              
+
     per =(a + b + c)/2;
 
     if ( per <= EPS )

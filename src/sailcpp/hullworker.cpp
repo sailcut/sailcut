@@ -20,48 +20,48 @@
 #include "hullworker.h"
 
 
-/** The constructor does some preliminary lower chine calculations 
+/** The constructor does some preliminary lower chine calculations
  *  to set internal variables
  *  and compute lower chine plane.
  */
 CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
 {
     ptFwdChine = CPoint3d( 0 , BfwdHeight , 0 );
-    ptAftChine = CPoint3d( BLWL , BaftHeight , BaftW/2 ); // transom end of lower chine 
-    xBmax = real(DBWPos) * BLWL / 100; 
-    ptFwdDeck = CPoint3d( 0 , DfwdHeight , 0 ); 
+    ptAftChine = CPoint3d( BLWL , BaftHeight , BaftW/2 ); // transom end of lower chine
+    xBmax = real(DBWPos) * BLWL / 100;
+    ptFwdDeck = CPoint3d( 0 , DfwdHeight , 0 );
     CPoint3d p1, p2;
-    
+
     // compute the vertical central plane
     CVector3d v1 = CVector3d( 1 , 0 , 0 );
     CVector3d v2 = CVector3d( 0 , 1 , 0 );
     planeCentral = CSubSpace3d::plane( ptFwdChine , v1 , v2 );
-    
+
     /// compute the lower Chine plane
     // vector v1 is sideway tilt of chine
     v1 = CVector3d( 0 , -sin(real(BSlopeA)*PI/180) , cos(real(BSlopeA)*PI/180) );
     // vector v2 is fore-aft slope of chine
     v2 = CVector3d( ptAftChine - ptFwdChine );
     planeLowChine = CSubSpace3d::plane( ptFwdChine , v1 , v2 );
-    
+
     /// compute the Deck plane
     // vector v1 is sideway tilt of deck
     v1 = CVector3d( 0 , -sin(real(DSlopeA)*PI/180) , cos(real(DSlopeA)*PI/180) );
     // vector v2 is fore-aft slope of deck
     v2 = CVector3d( BLWL , DaftHeight-DfwdHeight , 0 );
     planeDeck = CSubSpace3d::plane( ptFwdDeck , v1 , v2 );
-     
+
     /// compute the transom plane
     // vector v1 is parallel to Z axis = perpendicular to central plane
-    v1 = CVector3d( 0 , 0 , 1 ); 
+    v1 = CVector3d( 0 , 0 , 1 );
     // vector v2 is in inclined transom plane
     v2 = CVector3d( cos(real(TransomA) * PI/180) , sin(real(TransomA) * PI/180) , 0 );
     planeTransom = CSubSpace3d::plane( ptAftChine , v1 , v2 );
-    
+
     // compute intersection line between chine plane and transom
     CSubSpace Line1;
     Line1 = planeLowChine.intersect(planeTransom);
-    
+
     // compute intersection point of line1 with central plane located at aft width
     CSubSpace Intersection2;
     if (Line1.getdim() == 1)
@@ -72,19 +72,19 @@ CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
         else throw "ERROR in hullworker constructor = no low chine aft  point";
     }
     else throw "ERROR in hullworker constructor = intersection chine plane and transom is not a line";
-     
-    /* laying lower chine panel */ 
+
+    /* laying lower chine panel */
     unsigned int j;
     //unsigned int npl = deck.right.size();   // number of right/left points
     unsigned int npb = chine.bottom.size();   // number of bottom/top points
-    
+
     chine.top.fill( ptFwdChine , ptCentreChine );      // centre line
     chine.bottom.fill( ptFwdChine , ptAftChine );      // edge
     chine.left.fill( ptFwdChine , ptFwdChine );        // stem
     chine.right.fill( ptAftChine , ptCentreChine );    // transom
-    for ( j=0 ; j < npb ; j++)
+    for (j=0 ; j < npb ; j++)
     {   // move point to edge of deck
-        p1 = chine.bottom[j];        
+        p1 = chine.bottom[j];
         p2 = ptLowChine( p1.x() );
         chine.bottom[j] = p2;
     }
@@ -100,7 +100,7 @@ CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
 CPoint3d CHullWorker::ptLowChine( const real &x )
 {
     real x1 = 0 , y = 0 , z = 0;
-    
+
     if (x > xBmax)
     {   // aft part of chine
         x1 = (x - xBmax) / (ptAftChine.x() - xBmax);
@@ -111,7 +111,7 @@ CPoint3d CHullWorker::ptLowChine( const real &x )
         x1 = 1 - ( x / xBmax );
         z  = (.5 * BBW) * (1- pow(x1 , BfwdShape) );
     }
-    
+
     // point pt with x input and z computed
     CPoint3d pt = CPoint3d ( x , y , z );
     // define vertical Line1 passing through point pt
@@ -121,18 +121,18 @@ CPoint3d CHullWorker::ptLowChine( const real &x )
     // project pt vertically on chine plane
     CSubSpace Intersection1;
     Intersection1 = planeLowChine.intersect(line1);
-    
+
     if (Intersection1.getdim() == 0 )
         pt = Intersection1.getp();
     else
         throw "ERROR in CHullWorker::ptLowChine intersection is not a point";
-    
+
     return pt;
 }
 
 
 /** Return the 3D point at the keel function of x
- *  x is the absisse of the corresponding point on the lower chine 
+ *  x is the absisse of the corresponding point on the lower chine
  *
  * @author Robert Laine
  */
@@ -142,7 +142,7 @@ CPoint3d CHullWorker::ptKeel( const real &x )
     CVector3d v1;
     // point pt with x input and z computed
     pt = ptLowChine ( x );
-    
+
     // vector with deadrise and sweep
     v1 = CVector3d( tan( real(BSweepA) * PI/180) , tan( real(BDeadriseA) * PI/180) , 1 );
 
@@ -153,12 +153,12 @@ CPoint3d CHullWorker::ptKeel( const real &x )
     // project pt on central plane
     CSubSpace Intersection1;
     Intersection1 = planeCentral.intersect(line1);
-    
+
     if (Intersection1.getdim() == 0 )
         pt = Intersection1.getp();
     else
         throw "ERROR in CHullWorker::ptKeel intersection is not a point";
-    
+
     return pt;
 }
 
@@ -175,40 +175,40 @@ CPanelGroup CHullWorker::makeHull() //const
     real x;
     CPoint3d pt , pt0 , p1 , p2 , p3 , p4;
     CVector3d v1 , v2 , v3 , vg;
-    
+
     CSubSpace Plane1;
     CSubSpace Line1;
     CSubSpace Intersection1;
-    
-    // create the hull type 
+
+    // create the hull type
     CPanelGroup hull;
     hull.type = HULL; // used for color scheme in saildispgl
     hull.title = hullID;
-    
+
     /* all the code has to be changed to start building the hull from the lower chine */
     unsigned int npl = chine.right.size();     // number of right/left points
     unsigned int npb = chine.bottom.size();   // number of bottom/top points
-    
+
     deck1 = chine;
     plank1 = chine;
-    
+
     // Laying bottom panels
-    for ( j = 0 ; j < npb ; j++ )
-    {   
+    for (j = 0 ; j < npb ; j++)
+    {
         plank1.bottom[j] =  chine.bottom[j];
         x = chine.bottom[j].x();
         plank1.top[j] = ptKeel( x );
     }
     plank1.left.fill( plank1.bottom[0] , plank1.top[0] );
     plank1.right.fill( plank1.bottom[npb-1] , plank1.top[npb-1] );
-    
+
     plank2 = plank1;
-    for ( j = 0 ; j < npb ; j++ )
+    for (j = 0 ; j < npb ; j++)
     {   // mirror points
-        plank2.top[j].z() = -plank1.top[j].z(); 
+        plank2.top[j].z() = -plank1.top[j].z();
         plank2.bottom[j].z() = -plank1.bottom[j].z();
     }
-    for ( j = 0 ; j < npl ; j++ )
+    for (j = 0 ; j < npl ; j++)
     {   // mirror points
         plank2.left[j].z() = -plank1.left[j].z();
         plank2.right[j].z() = -plank1.right[j].z();
@@ -216,12 +216,12 @@ CPanelGroup CHullWorker::makeHull() //const
     // add the bottom planks to the hull
     hull.push_back(plank1);
     hull.push_back(plank2);
-    
+
     // laying top side planks
     v1 = CVector3d( -cos(real(StemA) * PI/180) , sin(real(TopPlankA) * PI/180) , cos(real(TopPlankA) * PI/180) );
-    
-    for ( j = 0 ; j < npb ; j++ )
-    {   
+
+    for (j = 0 ; j < npb ; j++)
+    {
         plank1.bottom[j] =  chine.bottom[j];
         Line1 = CSubSpace3d::line( plank1.bottom[j] , v1 );
         Intersection1 = Line1.intersect(planeDeck);
@@ -235,14 +235,14 @@ CPanelGroup CHullWorker::makeHull() //const
     }
     plank1.left.fill( plank1.bottom[0] , plank1.top[0] );
     plank1.right.fill( plank1.bottom[npb-1] , plank1.top[npb-1] );
-    
+
     plank2 = plank1;
-    for ( j = 0 ; j < npb ; j++ )
+    for (j = 0 ; j < npb ; j++)
     {   // mirror points
-        plank2.top[j].z() = -plank1.top[j].z(); 
+        plank2.top[j].z() = -plank1.top[j].z();
         plank2.bottom[j].z() = -plank1.bottom[j].z();
     }
-    for ( j = 0 ; j < npl ; j++ )
+    for (j = 0 ; j < npl ; j++)
     {   // mirror points
         plank2.left[j].z() = -plank1.left[j].z();
         plank2.right[j].z() = -plank1.right[j].z();
@@ -250,16 +250,16 @@ CPanelGroup CHullWorker::makeHull() //const
     // add the top side planks to the hull
     hull.push_back(plank1);
     hull.push_back(plank2);
-    
+
     // Laying deck planks
-    for ( j = 0 ; j < npb ; j++ )
-    {   
-        deck1.bottom[j] = plank1.top[j]; 
+    for (j = 0 ; j < npb ; j++)
+    {
+        deck1.bottom[j] = plank1.top[j];
         deck1.top[j] = deck1.bottom[j];
-        deck1.top[j].z() = 0; 
+        deck1.top[j].z() = 0;
         deck1.left.fill(deck1.bottom[0] , deck1.top[0]);
         deck1.right.fill(deck1.bottom[npb-1] , deck1.top[npb-1]);
-        
+
         deck2.bottom[j] = plank2.top[j];
         deck2.top[j] = deck2.bottom[j];
         deck2.top[j].z() = 0;
@@ -269,12 +269,12 @@ CPanelGroup CHullWorker::makeHull() //const
     // add the deck planks to the hull
     hull.push_back(deck1);
     hull.push_back(deck2);
-        
+
     // translate the hull such that stem is at x=O, y=0, z=0 ///
     j =  hull.size() -1;
     pt0 = hull[j].top[0];
-       
-    for ( j = 0 ; j < hull.size() ; j++ )
+
+    for (j = 0 ; j < hull.size() ; j++)
     {
         hull[j] = hull[j] + CVector3d(-pt0);
     }

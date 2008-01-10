@@ -31,7 +31,7 @@ CPanelGroup::CPanelGroup( unsigned int nbpanels /* = 0 */)
 /** Copy constructor.
  */
 CPanelGroup::CPanelGroup( const CPanelGroup& s )
-  : vector<CPanel>(s)
+        : vector<CPanel>(s)
 {
     title = s.title;
     child = s.child;
@@ -59,7 +59,7 @@ CRect3d CPanelGroup::boundingRect() const
     if ( size() > 0 )
     {
         rect = at(0).boundingRect();
-        for( i = 1; i < size(); i++ )
+        for (i = 1; i < size(); i++)
             rect = rect.join( at(i).boundingRect() );
         rect_filled = 1;
     }
@@ -70,8 +70,8 @@ CRect3d CPanelGroup::boundingRect() const
             rect = rect.join( child[0].boundingRect() );
         else
             rect = child[0].boundingRect();
-        
-        for( i = 1; i < child.size(); i++ )
+
+        for (i = 1; i < child.size(); i++)
             rect = rect.join( child[i].boundingRect() );
     }
     return rect;
@@ -118,9 +118,9 @@ CPanelGroup CPanelGroup::rotate( const CPoint3d &p, const CMatrix &m ) const
 {
     unsigned int i;
     CPanelGroup ret = *this;
-    for (i = 0; i < size(); i++ )
+    for (i = 0; i < size(); i++)
         ret[i] = at(i).rotate(p,m);
-    for (i = 0; i < child.size(); i++ )
+    for (i = 0; i < child.size(); i++)
         ret.child[i] = child[i].rotate(p,m);
     return ret;
 }
@@ -161,12 +161,12 @@ CPanelGroup CPanelGroup::operator+(const CVector3d& transl) const
 ostream& operator<<(ostream &o, const CPanelGroup &s)
 {
     unsigned int i;
-    for(i = 0; i < s.size(); i++)
+    for (i = 0; i < s.size(); i++)
     {
         o << "===== CPanel : " << i << " ====" << endl;
         o << s[i] << endl;
     }
-    for(i = 0; i < s.child.size(); i++)
+    for (i = 0; i < s.child.size(); i++)
     {
         o << "===== child CPanelGroup : " << i << " ====" << endl;
         o << s.child[i] << endl;

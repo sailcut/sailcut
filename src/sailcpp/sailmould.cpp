@@ -25,9 +25,9 @@ using namespace std;
 /**************************************************************************
                              CProfile class
 ***************************************************************************
- 
+
                        construction / destruction
- 
+
 **************************************************************************/
 
 /** The constructor.
@@ -43,9 +43,9 @@ CProfile::CProfile( real rDepth, real rLeech, real rLuff)
 }
 
 /**************************************************************************
- 
+
                                operators
- 
+
 **************************************************************************/
 
 /** Assignment operator.
@@ -69,9 +69,9 @@ CProfile& CProfile::operator=( const CProfile &copy )
 
 
 /**************************************************************************
- 
+
                             member functions
- 
+
 **************************************************************************/
 
 /** Compute the depth of the profile at a point located at dX along the cord
@@ -103,7 +103,7 @@ real CProfile::z( real dX )
         z = 0;
     else if (dX >= 1)  /* point is outside profile range */
         z = 0;
-    else 
+    else
     { /* point is inside profile range */
         /* compute depth normalisation coefficient */
         kd = depth / zmax;
@@ -143,12 +143,12 @@ real CProfile::slope( real dX )
         x = 0;
     else if (x >= 1)  /* point is outside profile range */
         x = 1;
-    
+
     /* compute depth normalisation coefficient */
     kd = depth / zmax;
     /* compute real slope dz at point dX */
     dz = kd * ( a * pow(1-x,kluff+1) / (kluff+1) - kleech/2 * pow(x,2) + c );
-    
+
     return dz;
 }
 
@@ -182,7 +182,7 @@ real CProfile::camber( real dX )
         x = 0;
     else if (x >= 1)  /* point is outside profile range */
         x = 1;
-    
+
     /* compute depth normalisation coefficient */
     kd = depth / zmax;
     /* compute real slope dz at point dX */
@@ -191,10 +191,10 @@ real CProfile::camber( real dX )
     d2z = kd * ( -a * pow(1-x,kluff) - kleech * x );
     /* compute real camber at point dX */
     camb = d2z / pow((1 + pow(dz,2)),1.5);
-    
+
     return camb;
 }
-    
+
 /** Compute the absiss x of the point of maximum depth of a profile
  *
  * @author Robert Laine
@@ -252,9 +252,9 @@ void CProfile::calcMax()
 /**************************************************************************
                              CSailMould class
 ***************************************************************************
- 
+
                        construction / destruction
- 
+
 **************************************************************************/
 
 /**  Set the default vertical position of max depth
@@ -271,9 +271,9 @@ CSailMould::CSailMould()
 
 
 /**************************************************************************
- 
+
                                operators
- 
+
 **************************************************************************/
 
 /** Assignment operator.
@@ -294,9 +294,9 @@ CSailMould & CSailMould::operator=( const CSailMould &copy )
 
 
 /**************************************************************************
- 
+
                             member functions
- 
+
 **************************************************************************/
 
 /** Interpolate the depth and coefficients of the profile at height h
@@ -304,7 +304,7 @@ CSailMould & CSailMould::operator=( const CSailMould &copy )
  */
 CProfile CSailMould::interpol ( const real h ) const
 {
-    if( profile.size() < 3)
+    if ( profile.size() < 3)
         cout << "profile < 3 !!" << endl;
 
     CProfile p;
