@@ -20,7 +20,7 @@
 #ifndef HULLDEF_H
 #define HULLDEF_H
 
-#include <QString>
+#include <string>
 #include <geocpp/geocpp.h>
 
 
@@ -37,7 +37,7 @@ public:
     CHullDef & operator=( const CHullDef & );
 
     /** hull ID name */
-    QString hullID;
+    string hullID;
     
         //deck
     /** deck Length in millimeter */

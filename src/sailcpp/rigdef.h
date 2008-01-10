@@ -20,7 +20,7 @@
 #ifndef RIGDEF_H
 #define RIGDEF_H
 
-#include <QString>
+#include <string>
 #include <geocpp/geocpp.h>
 
 
@@ -37,7 +37,7 @@ public:
     CRigDef & operator=( const CRigDef & );
 
     /** rig ID name */
-    QString rigID;
+    string rigID;
     /** fore triangle hoist*/
     real foreI;
     /** fore triangle base*/
