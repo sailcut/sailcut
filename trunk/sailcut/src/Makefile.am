@@ -1,4 +1,4 @@
-SUBDIRS = geocpp ts
+SUBDIRS = geocpp boatcpp ts
 
 AM_CPPFLAGS = \
 	-I$(top_srcdir) $(QT_INCLUDES) $(X_INCLUDES) $(GLINC) \
