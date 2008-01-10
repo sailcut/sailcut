@@ -50,7 +50,7 @@ void CSailDisp::resetZoomCenter()
 {
     center = baseRect.center();
     zoom = 0.8;
-    logicalRect = calcLRect(viewRect, baseRect);
+    logicalRect = calcLRect(viewRect, baseRect, center, zoom);
 }
 
 
@@ -86,7 +86,7 @@ void CSailDisp::setAngle( real azimuth, real elevation )
 void CSailDisp::setCenter( CPoint3d newCenter )
 {
     center = newCenter;
-    logicalRect = calcLRect(viewRect, baseRect);
+    logicalRect = calcLRect(viewRect, baseRect, center, zoom);
 }
 
 
@@ -106,7 +106,7 @@ void CSailDisp::setObject( const CPanelGroup &obj )
     center = baseRect.center();
 
     calcDispObject();
-    logicalRect = calcLRect(viewRect, baseRect);
+    logicalRect = calcLRect(viewRect, baseRect, center, zoom);
 }
 
 
@@ -115,7 +115,7 @@ void CSailDisp::setObject( const CPanelGroup &obj )
 void CSailDisp::setViewRect( const CRect3d &rect )
 {
     viewRect = rect;
-    logicalRect = calcLRect(viewRect, baseRect);
+    logicalRect = calcLRect(viewRect, baseRect, center, zoom);
 }
 
 
@@ -126,7 +126,7 @@ void CSailDisp::setViewRect( const CRect3d &rect )
 void CSailDisp::setZoom(real newZoom)
 {
     zoom = newZoom;
-    logicalRect = calcLRect(viewRect, baseRect);
+    logicalRect = calcLRect(viewRect, baseRect, center, zoom);
 }
 
 

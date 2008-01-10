@@ -38,11 +38,14 @@ public:
     void redraw();
 
 protected:
-
     void mousePressEvent ( QMouseEvent * );
     void paintEvent( QPaintEvent * );
     void resizeEvent( QResizeEvent * );
     void wheelEvent( QWheelEvent *event);
+
+private:
+    /** Has the area been resized since last redraw */
+    bool wasResized;
 };
 
 #endif

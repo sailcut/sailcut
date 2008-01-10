@@ -18,6 +18,7 @@
  */
 
 #include "widgetprofilevert.h"
+#include "sailcalc.h"
 #include "sailmould.h"
 
 #include <QGroupBox>
@@ -37,7 +38,7 @@
  * @param ptr pointer to the CSailMould
  */
 CLabelProfileVert::CLabelProfileVert( QWidget *parent, CSailMould *ptr)
-        : QLabel(parent), CDispArea(0.9), mould(ptr)
+        : QLabel(parent), mould(ptr), wasResized(true)
 {
     // set the background to white
     QPalette pal = palette();
@@ -57,16 +58,15 @@ void CLabelProfileVert::paintEvent( QPaintEvent *)
     QRect vRect = painter.viewport();
     painter.eraseRect(vRect);
 
+    CRect3d objRect;
+    objRect.max = CPoint3d(0.2, 1);
+
     if ( wasResized )
     {
         CRect3d viewRect;
         viewRect.max = CPoint3d(vRect.width(), vRect.height());
 
-        CRect3d objRect;
-        objRect.max = CPoint3d(0.2, 1);
-        center = objRect.center();
-
-        m_lRect = calcLRect(viewRect, objRect);
+        m_lRect = calcLRect(viewRect, objRect, objRect.center(), 0.8);
         wasResized = 0;
     }
 
@@ -77,7 +77,7 @@ void CLabelProfileVert::paintEvent( QPaintEvent *)
     real scale =  vRect.height() / m_lRect.height();
 
     // do a translation to have from z=0 to z=scale centered
-    painter.translate( (m_lRect.width() / 2 - center.x()) * scale,  vRect.height() + (center.y() - m_lRect.height()/2) * scale );
+    painter.translate( (m_lRect.width() / 2 - objRect.center().x()) * scale,  vRect.height() + (objRect.center().y() - m_lRect.height()/2) * scale );
 
     // flip coordinate system to have the y axis pointing up
     painter.scale(1,-1);

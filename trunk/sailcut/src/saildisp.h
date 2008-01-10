@@ -21,8 +21,7 @@
 #define SAILDISP_H
 
 #include "panelgroup.h"
-#include <geocpp/geocpp.h>
-#include "disparea.h"
+#include "sailcalc.h"
 
 
 /** A generic display area for a panel group.
@@ -30,7 +29,7 @@
  * @see CSailDispLabel
  * @see CSailDispGL
  */
-class CSailDisp : public CDispArea
+class CSailDisp
 {
 public:
     CSailDisp();
@@ -69,6 +68,12 @@ private:
 protected:
     /** Rotated copy of the objects */
     CPanelGroup dispObject;
+
+    /** The center of the viewing area, in logical coordinates */
+    CPoint3d center;
+
+    /** The zoom factor for the view */
+    real zoom;
 
 private:    
     /** Rotation matrix for the view */

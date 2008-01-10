@@ -163,7 +163,7 @@ real Distance3d(const CPoint3d &pta, const CPoint3d &ptb, const CPoint3d &ptc)
 /** Calculates logical viewport rectangle to match
  *  the ratio of the device viewport.
  */
-CRect3d calcLRect(const CRect3d& viewRect, const CRect3d& objRect, real zoom, const CPoint3d center)
+CRect3d calcLRect(const CRect3d& viewRect, const CRect3d& objRect, const CPoint3d center, real zoom )
 {
     CRect3d lRect;
 

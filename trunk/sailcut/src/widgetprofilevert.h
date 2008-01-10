@@ -22,7 +22,7 @@
 
 #include <QWidget>
 #include <QLabel>
-#include "disparea.h"
+#include <geocpp/geocpp.h>
 
 class QLabel;
 class QSpinBox;
@@ -37,7 +37,7 @@ class CRect3d;
 
 /** Drawing area for the vertical repartition.
  */
-class CLabelProfileVert : public QLabel, CDispArea
+class CLabelProfileVert : public QLabel
 {
 public:
     CLabelProfileVert(QWidget *, CSailMould *);
@@ -46,11 +46,15 @@ protected:
     void paintEvent( QPaintEvent *);
     void resizeEvent( QResizeEvent * );
 
-    /** the CSailMould we are displaying */
+private:
+    /** The CSailMould we are displaying */
     CSailMould *mould;
 
-    /** the logical viewport */
+    /** The logical viewport */
     CRect3d m_lRect;
+
+    /** Has the area been resized since last redraw */
+    bool wasResized;
 };
 
 

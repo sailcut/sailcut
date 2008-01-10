@@ -24,7 +24,7 @@
 #include "sailcalc.h"
 #include "saildef.h"
 #include "panelgroup.h"
-#include "disparea.h"
+#include "sailcalc.h"
 
 
 /** Construct a new CSailPrinter.
@@ -264,8 +264,7 @@ void CSailPrinter::printSailDevel(const CPanelGroup &flatsail)
     // calculate logical rectangle
     real zoom = 0.8;
     CRect3d flatrect = flatsail.boundingRect();
-    CDispArea disparea(zoom, flatrect.center());
-    CRect3d logicalRect = disparea.calcLRect(painter.viewRect(), flatrect);
+    CRect3d logicalRect = calcLRect(painter.viewRect(), flatrect, flatrect.center(), zoom);
 
     // print the panels out one by one
     for (unsigned int i = 0; i < flatsail.size(); i++)
@@ -306,8 +305,7 @@ void CSailPrinter::printSailDrawing(const CPanelGroup &sail)
 
     // calculate logical rectangle
     real zoom = 0.8;
-    CDispArea disparea(zoom);
-    CRect3d logicalRect = disparea.calcLRect(painter.viewRect(), printSail.boundingRect());
+    CRect3d logicalRect = calcLRect(painter.viewRect(), printSail.boundingRect(), CPoint3d(0,0,0), zoom);
     
     // set coordinate system to match the logical viewport
     painter.setWindow(logicalRect);

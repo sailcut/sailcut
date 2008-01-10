@@ -24,7 +24,7 @@
 /** Constructs a QLabel based view area.
  */
 CSailDispLabel::CSailDispLabel( QWidget * parent )
-        : QLabel( parent )
+        : QLabel( parent ), wasResized(true)
 {
     // set the background to white
     QPalette pal = palette();
