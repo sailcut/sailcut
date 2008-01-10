@@ -1,4 +1,4 @@
-AM_CPPFLAGS = -I$(top_srcdir)/src $(QT_INCLUDES)
+AM_CPPFLAGS = -I$(top_srcdir)/src
 
 noinst_LIBRARIES = libsailcpp.a
 noinst_PROGRAMS = sailtest
@@ -28,10 +28,7 @@ libsailcpp_a_SOURCES = \
 	saildef.cpp \
 	sailmould.cpp \
 	sailworker.cpp
-#libsailcpp_a_LIBADD   = ../geocpp/libgeocpp.a $(LIB_QT)
 
 sailtest_SOURCES = sailtest.cpp
-sailtest_LDFLAGS = $(QT_LDFLAGS)
-sailtest_LDADD   = libsailcpp.a ../geocpp/libgeocpp.a $(LIB_QT)
-
+sailtest_LDADD   = libsailcpp.a ../geocpp/libgeocpp.a
 

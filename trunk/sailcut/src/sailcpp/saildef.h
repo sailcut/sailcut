@@ -20,7 +20,7 @@
 #ifndef SAILDEF_H
 #define SAILDEF_H
 
-#include <QString>
+#include <string>
 
 #include "sailmould.h"
 
@@ -44,7 +44,7 @@ public:
 
     // member variables
     /** sail ID name */
-    QString sailID;
+    string sailID;
     /** type of cut */
     enumSailCut sailCut;
     /** type of sail */

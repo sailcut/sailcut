@@ -1008,7 +1008,7 @@ ostream& operator<<(ostream& o , const CPanel &p)
  */
 ostream& operator<< (ostream &o , const CPanelLabel &lb)
 {
-    o << "== CPanelLabel : name ==" << endl << string(lb.name.toLocal8Bit()) << endl;
+    o << "== CPanelLabel : name ==" << endl << lb.name << endl;
     o << "== CPanelLabel : height ==" << endl << lb.height << endl;
     o << "== CPanelLabel : color ==" << endl << lb.color << endl;
     o << "== CPanelLabel : origin ==" << endl << lb.origin << endl;

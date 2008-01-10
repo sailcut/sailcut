@@ -21,7 +21,7 @@
 #define PANEL_H
 
 #include <vector>
-#include <QString>
+#include <string>
 
 #include <geocpp/geocpp.h>
 
@@ -43,7 +43,7 @@ public:
     CPanelLabel( const CPanelLabel& );
 
     /** label name of the panel */
-    QString name;
+    string name;
 
     /** label text height (default : 5) */
     int height;

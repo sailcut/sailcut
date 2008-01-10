@@ -35,7 +35,7 @@ public:
     CPanelGroup( const CPanel& );
 
     /** title of this panel group */
-    QString title;
+    string title;
 
     /** children of this group */
     vector<CPanelGroup> child;
