@@ -14,7 +14,7 @@ int main()
     {
         // create sail
         sail = worker.makeSail();
-        
+
         // rotate sail
         CMatrix rot = CMatrix::rot3d(1, PI/3);
         sail2 = sail.rotate(1, rot);

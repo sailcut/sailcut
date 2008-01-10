@@ -36,7 +36,7 @@ CHullDef::CHullDef()
     DaftW = 2000;      // Deck aft width
     StemA = 65;        // Stem inclination in degree from horizontal
     TransomA = 80;     // Transom inclination
-    
+
     BLWL    = 7000;    // Bottom length in millimetre
     BfwdHeight = 100;  // Bottom chine forward height
     BaftHeight = 200;  // Bottom chine aft height
@@ -48,17 +48,17 @@ CHullDef::CHullDef()
     BSweepA = 30;      // Bottom plank sweep angle in degree
     BfwdShape = 2;     // forward coefficient power of X
     BaftShape = 3;     // aft coefficient power of X
-    
+
     NBPlank = 3;
     AutoPlank = true;
     TopPlankA = 75;   // inclination in degree from horizontal
     LowPlankA = 30;
-    
+
 }
 
 
 /** Assignment operator.
- * 
+ *
  * @param copy the hull definition to copy from
  * @return CHullDef&
  */
@@ -77,7 +77,7 @@ CHullDef & CHullDef::operator=( const CHullDef &copy )
     DaftW = copy.DaftW;
     StemA = copy.StemA;
     TransomA = copy.TransomA;
-    
+
     BLWL = copy.BLWL;
     BfwdHeight = copy.BfwdHeight;
     BaftHeight = copy.BaftHeight;
@@ -90,12 +90,12 @@ CHullDef & CHullDef::operator=( const CHullDef &copy )
     BSweepA = copy.BSweepA;
     BfwdShape = copy.BfwdShape;
     BaftShape = copy.BaftShape;
-    
+
     NBPlank = copy.NBPlank;
     AutoPlank = copy.AutoPlank;
     TopPlankA = copy.TopPlankA;
     LowPlankA = copy.LowPlankA;
-    
+
     return *this;
 }
 
