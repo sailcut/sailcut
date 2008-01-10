@@ -1,16 +1,16 @@
 /*
  * Copyright (C) 2002-2006 Jeremy Laine
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
@@ -19,9 +19,9 @@
 #include <geocpp/subspace.h>
 
 /*******************************************************
- 
+
                Construction / destruction
- 
+
 ********************************************************/
 
 /** Constructs a CSubSpace of the specified dimension.
@@ -92,17 +92,17 @@ CSubSpace CSubSpace::intersect(const CSubSpace &h2) const
     CVector b2 = h2.m*h2.p;
     CVector bb( m.getnrow() + h2.m.getnrow() );
     CMatrix mm( m.getnrow() + h2.m.getnrow(), p.getdim() );
-    for ( unsigned int i = 0 ; i < mm.getnrow() ; i++ )
+    for (unsigned int i = 0 ; i < mm.getnrow() ; i++)
     {
         if ( i < m.getnrow() )
         {
-            for( unsigned int j = 0 ; j < mm.getncol() ; j++ )
+            for (unsigned int j = 0 ; j < mm.getncol() ; j++)
                 mm(i,j) = m(i,j);
             bb.m_data[i] = b1.m_data[i];
         }
         else
         {
-            for( unsigned int j = 0 ; j < mm.getncol() ; j++ )
+            for (unsigned int j = 0 ; j < mm.getncol() ; j++)
                 mm(i,j) = h2.m(i-m.getnrow() , j);
             bb.m_data[i] = b2.m_data[i-m.getnrow()];
         }
@@ -115,9 +115,9 @@ CSubSpace CSubSpace::intersect(const CSubSpace &h2) const
 
 
 /*******************************************************
- 
+
                       Other functions
- 
+
 ********************************************************/
 
 /** Outputs a CMatrix to a stream.
@@ -125,7 +125,7 @@ CSubSpace CSubSpace::intersect(const CSubSpace &h2) const
 ostream& operator<< (ostream &o, const CMatrix &m)
 {
     o << "[";
-    for ( unsigned int i = 0 ; i < m.getnrow() ; i++ )
+    for (unsigned int i = 0 ; i < m.getnrow() ; i++)
     {
         o << m.row(i);
         if ( i != m.getnrow()-1 )

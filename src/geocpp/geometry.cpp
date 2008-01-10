@@ -1,16 +1,16 @@
 /*
  * Copyright (C) 2002-2006 Jeremy Laine
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
@@ -21,9 +21,9 @@
 #include <geocpp/subspace.h>
 
 /***************************************
- 
+
             Generic 2D real vector
- 
+
 ***************************************/
 
 /** Copy constructor.
@@ -46,9 +46,9 @@ CVector2d::CVector2d(const CMatrix &m)
 
 
 /***************************************
- 
+
            Generic 3D real vector
- 
+
 ***************************************/
 
 /** Copy constructor.
@@ -74,16 +74,16 @@ CVector3d::CVector3d(const CMatrix &m)
 CVector3d CVector3d::cross(const CVector3d &v) const
 {
     CVector3d ret;
-    for(int i=0; i<3; i++)
+    for (int i=0; i<3; i++)
         ret.m_data[i] = m_data[(i+1)%3]*v.m_data[(i+2)%3] - m_data[(i+2)%3]*v.m_data[(i+1)%3];
     return ret;
 }
 
 
 /***************************************
- 
+
                  3D box
- 
+
 ***************************************/
 
 /** Translate box by a vector.
@@ -121,7 +121,7 @@ CRect3d CRect3d::operator* (const real r) const
 CRect3d CRect3d::join(const CRect3d& rect) const
 {
     CRect3d ret = *this;
-    for( unsigned int j = 0; j < 3; j++)
+    for (unsigned int j = 0; j < 3; j++)
     {
         if (rect.min[j] < ret.min[j])
             ret.min[j] = rect.min[j];
@@ -133,9 +133,9 @@ CRect3d CRect3d::join(const CRect3d& rect) const
 
 
 /***************************************
- 
+
                  2D/3D subspaces
- 
+
 ***************************************/
 
 /** Create a CSubSpace representing a 2D line from a point and a vector.
