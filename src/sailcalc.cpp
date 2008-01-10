@@ -158,3 +158,55 @@ real Distance3d(const CPoint3d &pta, const CPoint3d &ptb, const CPoint3d &ptc)
     //
     return d;
 }
+
+
+/** Calculates logical viewport rectangle to match
+ *  the ratio of the device viewport.
+ */
+CRect3d calcLRect(const CRect3d& viewRect, const CRect3d& objRect, real zoom, const CPoint3d center)
+{
+    CRect3d lRect;
+
+    // avoid division by zero errors
+    if ((viewRect.height() == 0) || (viewRect.width() == 0))
+    {
+        lRect.min = center;
+        lRect.max = center;
+        return lRect;
+    }
+
+    real viewAspect = viewRect.width() / viewRect.height();
+    real objAspect = objRect.width() / objRect.height();
+
+    // the viewing area may not match the proportions of the sail
+    // so we set the logical viewport accordingly
+    if (objAspect > viewAspect)
+    {
+        real extrah = 0.5 * objRect.height() * (objAspect/viewAspect - 1);
+        // we are limited by the width of the window, grow logical viewport's height
+        lRect.min = CVector3d(objRect.min.x(), objRect.min.y() - extrah, 0);
+        lRect.max = CVector3d(objRect.max.x(), objRect.max.y() + extrah, 0);
+    }
+    else
+    {
+        real extraw = 0.5 * objRect.width() * (viewAspect/objAspect - 1);
+        // we are limited by the height of the window, grow logical viewport's width
+        lRect.min = CVector3d(objRect.min.x() - extraw, objRect.min.y(), 0);
+        lRect.max = CVector3d(objRect.max.x() + extraw, objRect.max.y(), 0);
+    }
+
+    /*
+        cout << "-------" << endl;
+        cout << "objRect w: " << objRect.width() << ", h: "  << objRect.height() << endl;
+        cout << "viewRect w: " << viewRect.width() << ", h: " << viewRect.height() << endl;
+        cout << "lRect w: "<< lRect.width() << ", h: " << lRect.height() << endl;
+        cout << "zoom : " << zoom << endl;
+    */
+    lRect = (lRect+(center - lRect.center()))*(1/zoom);
+
+    /*
+        cout << "lRect w: " << lRect.width() << ", h: " << lRect.height() << endl;
+        cout << "-------" << endl;
+    */
+    return lRect;
+}
