@@ -46,6 +46,8 @@ public:
     void draw(const CPanelGroup &sail);
     void draw(const CPanelLabel &label);
     void drawArrowLabel(const CPoint3d &pDisp, const QStringList &lst, const real angle);
+    void drawCoord(const CPoint3d &pDisp, const CPoint3d &pValue, const real angle);
+    void drawDelta(const CPoint3d &pDisp, const CVector3d &vValue, const real angle);
     void drawCross(const CPoint3d &p, const real size);
     void drawTextCentered(const CPoint3d &p, const QString &str);
     void drawTextCentered(const CPoint3d &p, const QStringList &lst);

@@ -255,38 +255,6 @@ void CSailPrinter::printSailData(const CSailDef &saildef)
 }
 
 
-/** Print a point's coordinates.
- *
- * @param pDisp the display point coordinates
- * @param pValue the real coordinates
- * @param angle
- */
-void CSailPrinter::printCoord(const CPoint3d &pDisp, const CPoint3d &pValue, const real angle)
-{
-    // build list of lines to print
-    QStringList lst;
-    lst.append(QString("X=") + QString::number(pValue.x(), 'f', 1));
-    lst.append(QString("Y=") + QString::number(pValue.y(), 'f', 1));
-    painter.drawArrowLabel(pDisp, lst, angle);
-}
-
-
-/** Print a delta.
- *
- * @param pDisp the display point coordinates
- * @param vValue the distances
- * @param angle
- */
-void CSailPrinter::printDelta(const CPoint3d &pDisp, const CVector3d &vValue, real angle)
-{
-    // build list of lines to print
-    QStringList lst;
-    lst.append(QString("dX=") + QString::number(vValue.x(), 'f', 1));
-    lst.append(QString("dY=") + QString::number(vValue.y(), 'f', 1));
-    painter.drawArrowLabel(pDisp, lst, angle);
-}
-
-
 /** Print a developed sail.
  *
  * @param flatsail
@@ -323,7 +291,7 @@ void CSailPrinter::printSailDevel(const CPanelGroup &flatsail)
         // mark corners of cloth rectangle
         painter.setPen(Qt::green);
         painter.drawCross(rp.min, painter.fontMetrics().height() );
-        printCoord(rp.min, CPoint3d(0,0,0), PI );
+        painter.drawCoord(rp.min, CPoint3d(0,0,0), PI );
 
         // print the current panel number
         if (showLabels)
@@ -335,7 +303,7 @@ void CSailPrinter::printSailDevel(const CPanelGroup &flatsail)
         /* add coordinates of inner lines */
         // top fwd corners
         npt = 0;
-        printCoord(currentPanel.top[npt], flatsail[i].top[npt], 2*PI/3 );
+        painter.drawCoord(currentPanel.top[npt], flatsail[i].top[npt], 2*PI/3 );
 
         // top  middle
         npt = int ( (currentPanel.top.size() -1) /2 );
@@ -343,33 +311,33 @@ void CSailPrinter::printSailDevel(const CPanelGroup &flatsail)
         {
             dx = CVector3d( flatsail[i].top[npt] - flatsail[i].top[0] ) * CVector3d( flatsail[i].top[flatsail[i].top.size() -1] - flatsail[i].top[0] ).unit();
             dy = Distance3d(flatsail[i].top[npt] , flatsail[i].top[0] , flatsail[i].top[flatsail[i].top.size()-1] );
-            printDelta(currentPanel.top[npt], CVector3d(dx, dy, 0), PI/2);
+            painter.drawDelta(currentPanel.top[npt], CVector3d(dx, dy, 0), PI/2);
         }
 
         // top aft corner
         npt = currentPanel.top.size() -1;
         if ( CVector3d(flatsail[i].top[npt]-flatsail[i].top[0]).norm() > 5 )
         {
-            printCoord(currentPanel.top[npt], flatsail[i].top[npt], PI/3);
+            painter.drawCoord(currentPanel.top[npt], flatsail[i].top[npt], PI/3);
         }
 
         // right middle
         npt = (currentPanel.right.size() -1)/2;
-        printCoord(currentPanel.right[npt], flatsail[i].right[npt], 0);
+        painter.drawCoord(currentPanel.right[npt], flatsail[i].right[npt], 0);
 
         // bottom left corner
         if ( CVector3d(flatsail[i].top[0]-flatsail[i].bottom[0]).norm() > 5 )
         {
             npt = 0;
-            printCoord(currentPanel.bottom[npt], flatsail[i].bottom[npt], -2*PI/3 );
+            painter.drawCoord(currentPanel.bottom[npt], flatsail[i].bottom[npt], -2*PI/3 );
 
             // mid left
             npt = (currentPanel.left.size() -1)/2;
-            printCoord(currentPanel.left[npt], flatsail[i].left[npt], PI );
+            painter.drawCoord(currentPanel.left[npt], flatsail[i].left[npt], PI );
             if ( i == flatsail.size() )
             {
                 npt = 1+(currentPanel.left.size() -1)/2;
-                printCoord(currentPanel.left[npt], flatsail[i].left[npt], 2*PI/3 );
+                painter.drawCoord(currentPanel.left[npt], flatsail[i].left[npt], 2*PI/3 );
             }
         }
 
@@ -377,23 +345,23 @@ void CSailPrinter::printSailDevel(const CPanelGroup &flatsail)
         npt = int ( (currentPanel.bottom.size() -1) /5 );
         dx = CVector3d(  flatsail[i].bottom[npt] -  flatsail[i].bottom[0] ) * CVector3d(  flatsail[i].bottom[ flatsail[i].bottom.size() -1] -  flatsail[i].bottom[0] ).unit();
         dy = Distance3d( flatsail[i].bottom[npt] ,  flatsail[i].bottom[0] ,  flatsail[i].bottom[ flatsail[i].bottom.size()-1] );
-        printDelta(currentPanel.bottom[npt], CVector3d(dx, dy, 0), -5*PI/8 );
+        painter.drawDelta(currentPanel.bottom[npt], CVector3d(dx, dy, 0), -5*PI/8 );
 
         // bottom intermediate middle
         npt = int ( (currentPanel.bottom.size() -1) /2 );
         dx = CVector3d(  flatsail[i].bottom[npt] -  flatsail[i].bottom[0] ) * CVector3d(  flatsail[i].bottom[ flatsail[i].bottom.size() -1] -  flatsail[i].bottom[0] ).unit();
         dy = Distance3d( flatsail[i].bottom[npt] ,  flatsail[i].bottom[0] ,  flatsail[i].bottom[ flatsail[i].bottom.size()-1] );
-        printDelta(currentPanel.bottom[npt], CVector3d(dx, dy, 0), -PI/2 );
+        painter.drawDelta(currentPanel.bottom[npt], CVector3d(dx, dy, 0), -PI/2 );
 
         // bottom intermediate aft
         npt = int ( (currentPanel.bottom.size() -1) *4/5 );
         dx = CVector3d(  flatsail[i].bottom[npt] -  flatsail[i].bottom[0] ) * CVector3d(  flatsail[i].bottom[ flatsail[i].bottom.size() -1] -  flatsail[i].bottom[0] ).unit();
         dy = Distance3d( flatsail[i].bottom[npt] ,  flatsail[i].bottom[0] ,  flatsail[i].bottom[ flatsail[i].bottom.size()-1] );
-        printDelta(currentPanel.bottom[npt], CVector3d(dx, dy, 0), -3*PI/8 );
+        painter.drawDelta(currentPanel.bottom[npt], CVector3d(dx, dy, 0), -3*PI/8 );
 
         // bottom aft corner
         npt = currentPanel.bottom.size() -1;
-        printCoord(currentPanel.bottom[npt], flatsail[i].bottom[npt], -PI/3 );
+        painter.drawCoord(currentPanel.bottom[npt], flatsail[i].bottom[npt], -PI/3 );
 
         // reset pen color
         painter.setPen(Qt::black);
