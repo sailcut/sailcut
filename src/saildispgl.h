@@ -45,6 +45,9 @@ protected:
     void resizeGL( int w, int h );
     void wheelEvent( QWheelEvent *event);
 
+private:
+    /** Has the area been resized since last redraw */
+    bool wasResized;
     /** width of last resize event */
     int resizeW;
     /** height of last resize event */

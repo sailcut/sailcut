@@ -16,7 +16,6 @@ bin_PROGRAMS = sailcut
 noinst_HEADERS =  \
 	boatdef.h \
 	boatdef-panel.h \
-	disparea.h \
 	filewriter.h \
 	formboat.h \
 	formdocument.h \
@@ -94,7 +93,6 @@ BUILT_SOURCES = \
 sailcut_SOURCES = \
 	boatdef.cpp \
 	boatdef-panel.cpp \
-	disparea.cpp \
 	formboat.cpp \
 	formhelp.cpp \
 	formhull.cpp \

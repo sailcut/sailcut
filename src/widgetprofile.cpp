@@ -39,7 +39,7 @@
  * @param ptr pointer to the CProfile
  */
 CLabelProfile::CLabelProfile( QWidget *parent, CProfile *ptr)
-        : QLabel(parent), CDispArea(0.95), profile(ptr)
+        : QLabel(parent), profile(ptr), wasResized(true)
 {
     // set the background to white
     QPalette pal = palette();
@@ -56,16 +56,15 @@ void CLabelProfile::paintEvent( QPaintEvent *)
     QRect vRect = painter.viewport();
     painter.eraseRect(vRect);
 
+    CRect3d objRect;
+    objRect.max = CPoint3d(1 , 0.2);
+
     if ( wasResized )
     {
         CRect3d viewRect;
         viewRect.max = CPoint3d(vRect.width() , vRect.height());
 
-        CRect3d objRect;
-        objRect.max = CPoint3d(1 , 0.2);
-        center = objRect.center();
-
-        lRect = calcLRect(viewRect , objRect);
+        lRect = calcLRect(viewRect , objRect, objRect.center(), 0.95);
         wasResized = 0;
     }
 
@@ -76,7 +75,7 @@ void CLabelProfile::paintEvent( QPaintEvent *)
     real scale =  vRect.height() / lRect.height();
 
     // do a translation to have from z=0 to z=scale centered
-    painter.translate( (lRect.width() / 2 - center.x()) * scale,  vRect.height() + (center.y() - lRect.height()/2) * scale );
+    painter.translate( (lRect.width() / 2 - objRect.center().x()) * scale,  vRect.height() + (objRect.center().y() - lRect.height()/2) * scale );
 
     // flip coordinate system to have the z axis pointing up
     painter.scale(1,-1);

@@ -21,7 +21,7 @@
 #define WIDGETPROFILE_H
 
 #include <QLabel>
-#include "disparea.h"
+#include "sailcalc.h"
 
 class QSpinBox;
 
@@ -36,21 +36,24 @@ class CWidgetProfileVert;
 
 /** Drawing area fpr a CProfile.
  */
-class CLabelProfile : public QLabel, public CDispArea
+class CLabelProfile : public QLabel
 {
 public:
     CLabelProfile(QWidget *, CProfile *);
 
-    void paintEvent( QPaintEvent *);
-
 protected:
+    void paintEvent( QPaintEvent *);
     void resizeEvent( QResizeEvent * );
 
+private:
     /** the CProfile we are displaying */
     CProfile* profile;
 
     /** the logical viewport rectangle */
     CRect3d lRect;
+
+    /** Has the area been resized since last redraw */
+    bool wasResized;
 };
 
 
