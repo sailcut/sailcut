@@ -1,16 +1,16 @@
 /*
  * Copyright (C) 2002-2006 Jeremy Laine
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
@@ -23,9 +23,9 @@
 #include <cstdlib>
 
 /*******************************************************
- 
+
                       Static functions
- 
+
 ********************************************************/
 
 /** Returns the (square) identity matrix for a given dimension.
@@ -81,9 +81,9 @@ CMatrix CMatrix::rot3d(const unsigned int& axis, const real& angle)
 
 
 /*******************************************************
- 
+
                       Member functions
- 
+
 ********************************************************/
 
 /** Extracts the vector for the specified column.
@@ -277,7 +277,7 @@ CMatrix CMatrix::gaussjordan(bool *is_inv, CMatrix *inv, soltype_t * soltype, CV
         cswap.swap_col(k,p_j);
         // modify rows
         t = CMatrix::id(m_nrow);
-        for ( i =0; i < m_nrow; i++)
+        for (i =0; i < m_nrow; i++)
         {
             if ( i !=k )
                 t(i,k) = -m(i,k) / p_value;
@@ -319,7 +319,7 @@ CMatrix CMatrix::gaussjordan(bool *is_inv, CMatrix *inv, soltype_t * soltype, CV
                 break;
             }
 
-        if(*soltype==NONE)
+        if (*soltype==NONE)
         {
             // incompatible system
             *bb = CVector(0);
@@ -372,8 +372,8 @@ CMatrix CMatrix::gaussjordan(bool *is_inv, CMatrix *inv, soltype_t * soltype, CV
     }
     // clean matrix
 
-    for ( i = 0; i < m_nrow; i++ )
-        for ( j = 0; j < m_ncol; j++)
+    for (i = 0; i < m_nrow; i++)
+        for (j = 0; j < m_ncol; j++)
             if (fabs(m(i,j)) < EPS)
                 m(i,j) = 0;
 
@@ -468,7 +468,7 @@ CSubSpace CMatrix::solve(const CVector &b) const
     CSubSpace h(CVector(0),CMatrix());
 
     gaussjordan(NULL,NULL,&soltype,&s,&k);
-    switch(soltype)
+    switch (soltype)
     {
     case NONE:
         //cout << "CMatrix::solve : system has no solution" << endl;
@@ -544,9 +544,9 @@ CMatrix CMatrix::transp(void) const
 
 
 /*******************************************************
- 
+
                       Operators
- 
+
 ********************************************************/
 
 
