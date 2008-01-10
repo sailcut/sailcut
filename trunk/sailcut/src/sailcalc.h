@@ -31,4 +31,7 @@ real Atriangle3d ( const CPoint3d &pta, const CPoint3d &ptb, const CPoint3d &ptc
 /* computation of distance of a point to a line defined by 2 points */
 real Distance3d(const CPoint3d &pta, const CPoint3d &ptb, const CPoint3d &ptc);
 
+/* logical viewport calculation */
+CRect3d calcLRect(const CRect3d &viewRect, const CRect3d &objRect, real zoom = 0.8, const CPoint3d center = CPoint3d());
+
 #endif
