@@ -1,20 +1,14 @@
 SUBDIRS = geocpp sailcpp ts
 
 AM_CPPFLAGS = \
-	-I$(top_srcdir) $(QT_INCLUDES) $(X_INCLUDES) $(GLINC) \
+	-I$(top_srcdir) -I$(srcdir)/sailcpp \
+    $(QT_INCLUDES) $(X_INCLUDES) $(GLINC) \
 	-DSAILCUT_DOCDIR=\"$(pkgdocdir)\" -DSAILCUT_DATADIR=\"$(pkgdatadir)\"
-
-noinst_PROGRAMS = sailtest
-
-sailtest_SOURCES = panel.cpp panelgroup.cpp saildef.cpp sailcalc.cpp sailmould.cpp sailworker.cpp sailtest.cpp
-sailtest_LDFLAGS = $(QT_LDFLAGS)
-sailtest_LDADD   = geocpp/libgeocpp.a $(LIB_QT)
 
 bin_PROGRAMS = sailcut
 
 # these are the headers
 noinst_HEADERS =  \
-	boatdef.h \
 	boatdef-panel.h \
 	filewriter.h \
 	formboat.h \
@@ -29,21 +23,12 @@ noinst_HEADERS =  \
 	formrigdef.h \
 	formsail.h \
 	formsaildef.h \
-	hulldef.h \
-	hullworker.h \
-	panel.h \
-	panelgroup.h \
 	prefs.h \
-	rigdef.h \
-	rigworker.h \
-	sailcalc.h \
 	sailcutqt.h \
-	saildef.h \
 	saildisp.h \
 	saildispgl.h \
 	saildisplabel.h \
 	saildoc.h \
-	sailmould.h \
 	sailpainter.h \
 	sailprinter.h \
 	sailtreeitem.h \
@@ -51,7 +36,6 @@ noinst_HEADERS =  \
 	sailviewer.h \
 	sailviewer-panel.h \
 	sailviewer-tabs.h \
-	sailworker.h \
 	sailwriter-carlson.h \
 	sailwriter-dxf.h \
 	sailwriter-hand.h \
@@ -91,7 +75,6 @@ BUILT_SOURCES = \
 
 # the application source, library search path, and link libraries
 sailcut_SOURCES = \
-	boatdef.cpp \
 	boatdef-panel.cpp \
 	formboat.cpp \
 	formhelp.cpp \
@@ -104,22 +87,13 @@ sailcut_SOURCES = \
 	formrigdef.cpp \
 	formsail.cpp \
 	formsaildef.cpp \
-	hulldef.cpp \
-	hullworker.cpp \
 	main.cpp \
-	panel.cpp \
-	panelgroup.cpp \
 	prefs.cpp \
-	rigdef.cpp \
-	rigworker.cpp \
-	sailcalc.cpp \
 	sailcutqt.cpp \
-	saildef.cpp \
 	saildisp.cpp \
 	saildispgl.cpp \
 	saildisplabel.cpp \
 	saildoc.cpp \
-	sailmould.cpp \
 	sailpainter.cpp \
 	sailprinter.cpp \
 	sailtreeitem.cpp \
@@ -127,7 +101,6 @@ sailcut_SOURCES = \
 	sailviewer.cpp \
 	sailviewer-panel.cpp \
 	sailviewer-tabs.cpp \
-	sailworker.cpp \
 	sailwriter-carlson.cpp \
 	sailwriter-dxf.cpp \
 	sailwriter-hand.cpp \
@@ -138,7 +111,7 @@ sailcut_SOURCES = \
 nodist_sailcut_SOURCES = $(BUILT_SOURCES)
 
 sailcut_LDFLAGS = $(QT_LDFLAGS) $(X_LDFLAGS) $(GL_LDFLAGS)
-sailcut_LDADD   = geocpp/libgeocpp.a $(LIB_QT) $(LIB_QTSVG) $(LIB_QTXML) $(LIB_QTOPENGL) $(GLLIB)
+sailcut_LDADD   = sailcpp/libsailcpp.a geocpp/libgeocpp.a $(LIB_QT) $(LIB_QTSVG) $(LIB_QTXML) $(LIB_QTOPENGL) $(GLLIB)
 
 # rules for Qt metasources
 ui_%.h: %.ui
