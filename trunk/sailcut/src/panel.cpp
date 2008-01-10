@@ -193,42 +193,6 @@ CPoint3d CPanel::centroid() const
     return sum;
 }
 
-/** This routine returns the height ( in Y direction ) of a panel
- */
-real CPanel::height() const
-{
-    real h=0;
-
-    real ymax = -111111, ymin = 111111;
-    unsigned int i = 0;
-
-    switch (hasHems)
-    {
-    case true:
-        for ( i = 0 ; i < top.size() ; i++ )
-        {
-            if ( cutTop[i].y() > ymax )
-                ymax = cutTop[i].y();
-            if ( cutBottom[i].y() < ymin )
-                ymin = cutBottom[i].y();
-            //printf ("CUT pt i %d ymax %f ymin %f \n", i, ymax, ymin);
-        }
-    case false:
-        for ( i = 0 ; i < top.size() ; i++ )
-        {
-            if ( top[i].y() > ymax )
-                ymax = top[i].y();
-            if ( bottom[i].y() < ymin )
-                ymin = bottom[i].y();
-            //printf ("BASE pt i %d ymax %f ymin %f \n", i, ymax, ymin);
-        }
-    }
-
-    h = ymax - ymin;
-
-    return h;
-}
-
 
 /** This routine returns the development of the panel.
  *  The developed panel will be horizontal with its upper or lower edge
