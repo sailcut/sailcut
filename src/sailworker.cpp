@@ -231,8 +231,6 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
         deviaPrev[k] = deviation [k];
     }
 
-    /* create variable to monitor excess over cloth width */
-    real exb = 0, exc = 0,  ymax = 0;
     real CC = 0, x = 0, y = 0;
 
     /* seam 0 is on the foot of the sail ending at the clew */
@@ -244,8 +242,8 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
     /** Start laying the panels from the foot upward to the peak */
     for ( npanel = 1 ; npanel < MAX_PANELS -1 ; npanel++)
     {
-        exb = 0; // total correction
-        exc = 0; // current excess of width
+        real exc = 0; // current excess of width
+        real exb = 0; // total correction
         cnt = 0; // counter of iterations
 
         do  /** Loop for optimising the seam position to fit cloth width */
@@ -472,22 +470,13 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
                 dev[npanel-1].addHems(hemsW, seamW, leechHemW, 0);
 
             /* Check the width of developed panel */
-            ymax = dev[npanel-1].height();
-            exc = ymax-clothW;
+            exc = dev[npanel-1].boundingRect().height() - clothW;
 
-            exb = exb + .8 * exc +1; // sum previous correction + 80% of current excess of width
-
-            //printf ("P %d count %d exc %f exb %f \n", npanel,cnt,exc,exb); // send to console
-
+            /* Sum previous correction + 80% of current excess of width + 1mm */
+            exb += .8 * exc + 1;
         }
         while ( exc > 0  &&  cnt < 9 );
-        /* Now loop on DO as long as  the current excess of width is positive
-        *   AND the counter is less than 9
-        *   AND remaining cloth more than 10%
-        */
-
-        ////////////////////////////////////////////
-        //printf ("P ----- maxW %f\n", (ymax-ymin));
+        /* loop as long the excess of width is positive AND counter < 9 */
 
         for ( k = 0 ; k < npb ; k++)
             deviaPrev[k] = deviation[k];
@@ -608,7 +597,6 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
     }
 
     /* create variable to monitor excess over cloth width */
-    real exb=0, exc=0, ymax=0;
     real CC=0, x=0, y=0;
 
     /* seam 0 is on the foot of the sail ending at the clew */
@@ -620,8 +608,8 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
     /** Start laying the panels from foot upward to the peak */
     for (npanel = 1; npanel < MAX_PANELS-1; npanel++)
     {
-        exb = 0;
-        exc = 0;
+        real exb = 0; // total correction
+        real exc = 0; // current excess of width
         cnt = 0;
         
         /** Loop for optimising the seam position to fit cloth width */
@@ -802,7 +790,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
                 }
             }
 
-            ///* Now we add the seam and hems allowance */
+            /* Add the seam and hems allowance */
             if (npanel == 1)
                 dev[npanel-1].addHems(hemsW, seamW, leechHemW, hemsW);
             else if(flag == true)
@@ -821,20 +809,14 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
             }
 #endif	
  
-            ///* Now we check the width of developed panel */
-            ymax = dev[npanel-1].height();
-            exc = ymax - clothW;
+            /* Check the width of developed panel */
+            exc = dev[npanel-1].boundingRect().height() - clothW;
 
-            exb = exb +.8 * exc +1;
-
-            //printf ("P %d count %d exc %f exb %f \n", npanel,cnt,exc,exb);
+            /* Sum previous correction + 80% of current excess of width + 1mm */
+            exb += .8 * exc + 1;
         }
-        /** loop on DO as long as
-         *  the excess of width is positive AND counter < 9
-         */
         while ( exc > 0 && cnt < 9 );
-        /////////////////////////////////////////
-        //printf ("P -- %d --- maxW %f\n",cnt, (ymax-ymin));
+        /* loop as long the excess of width is positive AND counter < 9 */
 
         for ( k = 0; k < npb; k++ )
             deviaPrev[k] = deviation[k];
@@ -950,9 +932,6 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
         deviaPrev[k] = deviation[k];
     }
 
-    /* create variable to monitor excess over cloth width */
-    real exb, exc=0, ymax=0;
-
     /* seam 0 is on the leech of the sail ending at the peak */
     p1[0] = clew; // initialised at tack point
     p2[0] = peak;
@@ -962,10 +941,9 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
     /** Start laying the panels from the leech toward the tack */
     for ( npanel = 1; npanel < MAX_PANELS-1; npanel++ )
     {
-        // printf(" ----- FOR panel = %d \n" , npanel);
-        exb =0;
-        exc =0;
-        cnt =0;
+        real exb = 0; // total correction
+        real exc = 0; // current excess of width
+        cnt = 0;
         //if (npanel==3) flag=true;
 
         /** Loop for optimising the seam position to fit cloth width */
@@ -1078,7 +1056,7 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
                 }
             }
 
-            /** Now we add the seam and hems allowance */
+            /* Add the seam and hems allowance */
             if ( npanel == 1 )
                 dev[npanel-1].addHems(hemsW, seamW, hemsW, leechHemW);
             else if( flag == true )
@@ -1086,16 +1064,15 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
             else
                 dev[npanel-1].addHems(hemsW, seamW, hemsW, 0);
 
-            /** Now we check the width of developed panel */
-            ymax = dev[npanel-1].height();
-            exc = ymax - clothW; // current excess of width
+            /* Check the width of developed panel */
+            exc = dev[npanel-1].boundingRect().height() - clothW;
 
-            exb = exb + .8 * exc +1; // sum previous correction + 80% of current excess of width +1mm
+            /* Sum previous correction + 80% of current excess of width + 1mm */
+            exb += .8 * exc + 1;
 
-        }
-        while ( exc > 0 && cnt<9 );
-        /** loop DO as long as the excess of width is positive  AND counter <9 */
-        /////////////////////////////////////////
+        } 
+        while ( exc > 0 && cnt < 9 );
+        /* loop as long the excess of width is positive AND counter < 9 */
 
         for ( k = 0; k < npb; k++ )
             deviaPrev[k] = deviation[k];
@@ -2514,9 +2491,6 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
         deviaPrev[k] = deviation[k];
     }
 
-    /* create variable to monitor excess over cloth width */
-    real exb=0, exc=0, ymax=0;
-
     /* seam 0 is on the foot of the sail ending at the clew */
     p1[0] = clew; // initialised at clew point
     p2[0] = clew;
@@ -2525,9 +2499,9 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
 
     /** start by cutting the foot panels perpendicular to the foot */
     for ( npanel = 1 ; npanel < (MAX_PANELS / 2) -1 ; npanel++ )
-    { // printf(" ----- FOR panel = %d \n" , npanel);
-        exb = 0;
-        exc = 0;
+    {
+        real exb = 0; // total correction
+        real exc = 0; // current excess of width
         cnt = 0;
         //if (npanel==3) flag=true;
         
@@ -2643,25 +2617,21 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
                 }
             }
 
-            ///** Now we add the seam and hems allowance to the foot panels*/
+            /* Add the seam and hems allowance to the foot panels */
             if ( flag == true )
                 dev[npanel-1].addHems(hemsW, hemsW, 0, 0);
             else
                 dev[npanel-1].addHems(hemsW, seamW, 0, 0);
 
-            ///** Now we check the width of developed foot panel */
-            ymax = dev[npanel-1].height();
-            exc = ymax - clothW; // current excess of width
+            /* Check the width of developed foot panel */
+            exc = dev[npanel-1].boundingRect().height() - clothW;
 
-            exb = exb + .8 * exc + 1; // sum previous correction + 80% of current excess of width +1mm
-
-            //printf (" count %d ymax %f ymin %f \n", cnt,ymax,ymin);
-            //printf (" count %d exc %f exb %f \n", cnt,exc,exb);
-
-        }  /** loop DO as long as the excess of width > 0  AND counter <9 */
+            /* Sum previous correction + 80% of current excess of width + 1mm */
+            exb += .8 * exc + 1;
+        }
         while ( exc > 0 && cnt < 9 );
-        
-        //printf ("P ----- maxW %f\n", (ymax-ymin));
+        /* loop as long the excess of width is positive AND counter < 9 */
+
         for ( k = 0 ; k < npb ; k++ )
             deviaPrev[k] = deviation[k];
 
@@ -2689,8 +2659,8 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
     flag = false;
     for ( npanel = npanel +1 ; npanel < MAX_PANELS -1 ; npanel++ )
     {
-        exb = 0; // total correction
-        exc = 0; // current excess of width
+        real exb = 0; // total correction
+        real exc = 0; // current excess of width
         cnt = 0; // counter of iterations
         
         /** Loop for optimising the seam position to fit cloth width */        
@@ -2860,28 +2830,21 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
                 }
             }
 
-            /* Now we add the seam and hems allowance to leech panels*/
+            /* Add the seam and hems allowance to leech panels */
             if ( flag == true )
                 dev[npanel-1].addHems(seamW, hemsW, leechHemW, 0);
             else
                 dev[npanel-1].addHems(seamW, seamW, leechHemW, 0);
 
-            /* Now we check the width of developed leech panel */
-            ymax =  dev[npanel-1].height();
-            exc = ymax - clothW;
+            /* Check the width of developed leech panel */
+            exc = dev[npanel-1].boundingRect().height() - clothW;
 
-            exb = exb + .8 * exc +1; // sum previous correction + 80% of current excess of width
-
-            //printf ("P %d count %d exc %f exb %f \n", npanel,cnt,exc,exb);
-
+            /* Sum previous correction + 80% of current excess of width + 1mm */
+            exb += 8 * exc + 1;
         }
-        /* now loop DO as long as the current excess of width is positive
-         *  AND the counter is less than 9
-         *  AND remaining cloth more than 10%
-         */
         while ( exc > 0 && cnt < 9 );
-        ////////////////////////////////////////////
-        //printf ("P ----- maxW %f\n", (ymax-ymin));
+        /* loop as long the excess of width is positive AND counter < 9 */
+
         for ( k = 0 ; k < npb ; k++ )
             deviaPrev[k] = deviation[k];
 
