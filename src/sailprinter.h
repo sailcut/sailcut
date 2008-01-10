@@ -43,8 +43,6 @@ public:
     void printSailData(const CSailDef &saildef);
     void printSailDevel(const CPanelGroup &flatsail);
     void printSailDrawing(const CPanelGroup &sail);
-    void printCoord(const CPoint3d &pDisp, const CPoint3d &pValue, const real angle);
-    void printDelta(const CPoint3d &pDisp, const CVector3d &vValue, const real angle);
 
     void setShowLabels(bool show) { showLabels = show; };
 

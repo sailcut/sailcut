@@ -135,6 +135,38 @@ void CSailPainter::drawArrowLabel(const CPoint3d &pDisp, const QStringList &lst,
 }
 
 
+/** Draw a label representing a point's coordinates.
+ *
+ * @param pDisp the display point coordinates
+ * @param pValue the real coordinates
+ * @param angle
+ */
+void CSailPainter::drawCoord(const CPoint3d &pDisp, const CPoint3d &pValue, const real angle)
+{
+    // build list of lines to print
+    QStringList lst;
+    lst.append(QString("X=") + QString::number(pValue.x(), 'f', 1));
+    lst.append(QString("Y=") + QString::number(pValue.y(), 'f', 1));
+    drawArrowLabel(pDisp, lst, angle);
+}
+
+
+/** Draw a label representing a distance.
+ *
+ * @param pDisp the display point coordinates
+ * @param vValue the distances
+ * @param angle
+ */
+void CSailPainter::drawDelta(const CPoint3d &pDisp, const CVector3d &vValue, real angle)
+{
+    // build list of lines to print
+    QStringList lst;
+    lst.append(QString("dX=") + QString::number(vValue.x(), 'f', 1));
+    lst.append(QString("dY=") + QString::number(vValue.y(), 'f', 1));
+    drawArrowLabel(pDisp, lst, angle);
+}
+
+
 /** Draws a cross at a given Point position.
  */
 void CSailPainter::drawCross(const CPoint3d &p, const real size)
