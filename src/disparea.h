@@ -30,7 +30,7 @@
 class CDispArea
 {
 public:
-    CDispArea(real izoom = 0.8);
+    CDispArea(real izoom = 0.8, const CPoint3d icenter = CPoint3d());
 
     CRect3d calcLRect(const CRect3d &viewRect, const CRect3d &objRect);
 

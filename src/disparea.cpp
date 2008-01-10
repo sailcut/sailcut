@@ -21,8 +21,8 @@
 
 /** Constructs a generic view area.
  */
-CDispArea::CDispArea(real izoom) :
-        zoom(izoom), wasResized(1)
+CDispArea::CDispArea(real izoom, const CPoint3d icenter) :
+        center(icenter), zoom(izoom), wasResized(1)
 {}
 
 
