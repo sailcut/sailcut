@@ -83,7 +83,7 @@ void CSailCarlsonWriter::writePanelHeader(ofstream &out, const CPanel &panel) co
     yoff= panel.label.origin.y();
     //rtx = atn2(  xoff= panel.label.direction.y(),  xoff= _sail[panel].label.direction.x());
 
-    out << "panel, "<< string(panel.label.name.toLocal8Bit()) <<", "<<pencolor<<", "<< xoff<<", "<<yoff<<", "<<rtx<<", "<<htx << CRLF;
+    out << "panel, "<< panel.label.name <<", "<<pencolor<<", "<< xoff<<", "<<yoff<<", "<<rtx<<", "<<htx << CRLF;
 }
 
 

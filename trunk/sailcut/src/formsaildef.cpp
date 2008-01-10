@@ -46,7 +46,7 @@ CFormSailDef::CFormSailDef( QWidget* parent, CSailDef * sailptr )
     setSailCut( saildef->sailCut );
     setSailType( saildef->sailType );
 
-    txtSailID->setText(QString(saildef->sailID));
+    txtSailID->setText(QString::fromStdString(saildef->sailID));
 
     txtLOA->setText( QString::number(saildef->LOA ) );
     txtTriangBase->setText( QString::number(saildef->foreJ ) );
@@ -326,7 +326,7 @@ bool CFormSailDef::check()
         txtSailID->setPalette(palStd);
         txtSailID->setText(QString(txt));
     }
-    saildef->sailID = txt;
+    saildef->sailID = txt.toStdString();
 
     ///  check length of boat and fore triangle wrt length of boat
     saildef->LOA = txtLOA->text().toDouble();

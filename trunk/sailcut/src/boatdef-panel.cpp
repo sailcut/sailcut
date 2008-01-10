@@ -158,8 +158,8 @@ void CBoatElementWidget::languageChange()
 void CBoatElementWidget::setElement(const CBoatElement& newelement)
 {
     element = newelement;
-    lblFile->setText( element.filename );
-    txtName->setText( element.title );
+    lblFile->setText( QString::fromStdString(element.filename) );
+    txtName->setText( QString::fromStdString(element.title) );
     wdgOrigin->setVector( element.origin );
 }
 
@@ -169,21 +169,23 @@ void CBoatElementWidget::setElement(const CBoatElement& newelement)
  */
 void CBoatElementWidget::slotReload()
 {
+    QString filename = QString::fromStdString(element.filename);
+
     try
     {
         switch (element.type)
         {
         case SAILDEF:
-            (CPanelGroup&)element = CSailWorker(CSailDefXmlWriter().read(element.filename)).makeSail();
+            (CPanelGroup&)element = CSailWorker(CSailDefXmlWriter().read(filename)).makeSail();
             break;
         case HULLDEF:
-            (CPanelGroup&)element = CHullWorker(CHullDefXmlWriter().read(element.filename)).makeHull();
+            (CPanelGroup&)element = CHullWorker(CHullDefXmlWriter().read(filename)).makeHull();
             break;
         case RIGDEF:
-            (CPanelGroup&)element = CRigWorker(CRigDefXmlWriter().read(element.filename)).makeRig();
+            (CPanelGroup&)element = CRigWorker(CRigDefXmlWriter().read(filename)).makeRig();
             break;
         case PANELGROUP:
-            (CPanelGroup&)element = CPanelGroupXmlWriter().read(element.filename);
+            (CPanelGroup&)element = CPanelGroupXmlWriter().read(filename);
             break;
         }
         signalUpdate(element);
@@ -209,7 +211,7 @@ void CBoatElementWidget::slotRemove()
  */
 void CBoatElementWidget::slotUpdate()
 {
-    element.title = txtName->text();
+    element.title = txtName->text().toStdString();
     element.origin = wdgOrigin->getVector();
     signalUpdate(element);
 }
@@ -265,7 +267,7 @@ void CBoatDefPanel::setDef(const CBoatDef& newdef)
         connect(elementwidget[i], SIGNAL(signalRemove()), this, SLOT(slotRemove()));
         connect(elementwidget[i], SIGNAL(signalUpdate(const CBoatElement&)), this, SLOT(slotUpdate(const CBoatElement&)));
 
-        tabs->addTab(elementwidget[i], def[i].title);
+        tabs->addTab(elementwidget[i], QString::fromStdString(def[i].title));
     }
 
     if (elementwidget.size() > 0)
@@ -299,7 +301,7 @@ void CBoatDefPanel::slotUpdate(const CBoatElement& newelement)
     int tabIndex = tabs->currentIndex();
 
     def[tabIndex] = newelement;
-    tabs->setTabText(tabIndex, def[tabIndex].title);
+    tabs->setTabText(tabIndex, QString::fromStdString(def[tabIndex].title));
     signalUpdate(def);
 }
 

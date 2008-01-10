@@ -148,7 +148,8 @@ void CSailPrinter::printSailData(const CSailDef &saildef)
     QString text2=" ", text3=" ";
 
     // text of page header
-    printHeader(tr("Sailcut CAD data sheet") + (( saildef.sailID.length() > 0 ) ? " - " + saildef.sailID : " "));
+    QString sailID = QString::fromStdString(saildef.sailID);
+    printHeader(tr("Sailcut CAD data sheet") + (( sailID.length() > 0 ) ? " - " + sailID : " "));
 
     // sail cut and type
     switch (saildef.sailType )

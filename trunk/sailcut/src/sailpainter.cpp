@@ -73,7 +73,7 @@ void CSailPainter::draw(const CPanel &panel)
  */
 void CSailPainter::drawLabels(const CPanel &panel)
 {
-    drawTextCentered(panel.label.origin, QStringList(panel.label.name));
+    drawTextCentered(panel.label.origin, QStringList(QString::fromStdString(panel.label.name)));
 }
 
 
