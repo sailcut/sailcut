@@ -140,7 +140,7 @@ protected:
             get
                 (e, v[i], QString::number(i));
         }
-    };
+    }
 
     /** Writes a vector of elements to an XML document.
      *
@@ -157,7 +157,7 @@ protected:
 
         for(unsigned int i =0; i<v.size(); i++)
             put(e, v[i], QString::number(i));
-    };
+    }
 };
 
 

@@ -50,7 +50,7 @@ public:
         itemIcon = NULL;
         for(unsigned int i = 0; i < v.size(); i++)
             appendChild(new CSailTreeItem(v[i], QString::number(i), this));
-    };
+    }
 
     ~CSailTreeItem();
 
