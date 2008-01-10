@@ -18,6 +18,7 @@
  */
 
 #include "sailpainter.h"
+#include "sailcalc.h"
 #include "panelgroup.h"
 
 QPolygonF& operator<<(QPolygonF &poly, const CPoint3d &p)
@@ -31,7 +32,6 @@ QPolygonF& operator<<(QPolygonF &poly, const CPoint3d &p)
  */
 void CSailPainter::draw(const CPanel &panel)
 {
-    //setPen(Qt::blue);
     CSide::const_iterator iter;
     CSide::const_reverse_iterator riter;
 
@@ -48,6 +48,8 @@ void CSailPainter::draw(const CPanel &panel)
 
     if (panel.hasHems)
     {
+        // switch pen to red
+        QPen oldpen = pen();
         setPen(Qt::red);
 
         poly = QPolygonF();
@@ -62,18 +64,16 @@ void CSailPainter::draw(const CPanel &panel)
         drawPolyline(poly);
 
         // reset pen color
-        setPen(Qt::black);
+        setPen(oldpen);
     }
 }
 
 
 /** Draws a panel label.
  */
-void CSailPainter::draw(const CPanelLabel &label)
+void CSailPainter::drawLabels(const CPanel &panel)
 {
-    setPen(Qt::black);
-    
-    drawTextCentered(label.origin, QStringList(label.name));
+    drawTextCentered(panel.label.origin, QStringList(panel.label.name));
 }
 
 
@@ -82,24 +82,23 @@ void CSailPainter::draw(const CPanelLabel &label)
 void CSailPainter::draw(const CPanelGroup &sail)
 {
     unsigned int i;
-    
+
+    // set pen color
+    QPen oldpen = pen();
+    if ( sail.type == HULL )
+       setPen(Qt::darkGreen);
+    else if ( sail.type == RIG )
+        setPen(Qt::darkRed);
+    else
+        setPen(Qt::blue);
+
     for( i = 0; i < sail.size(); i++ )
-    {   
-        if ( sail.type == HULL )
-            setPen(Qt::darkGreen);
-        else if ( sail.type == RIG )
-            setPen(Qt::darkRed);
-        else
-            setPen(Qt::blue);
-             
         draw(sail[i]);
-    }
     for( i = 0; i < sail.child.size(); i++ )
         draw(sail.child[i]);
-        
+
     // reset pen color 
-    setPen(Qt::black);
-        
+    setPen(oldpen);
 }
 
 
@@ -137,17 +136,16 @@ void CSailPainter::drawArrowLabel(const CPoint3d &pDisp, const QStringList &lst,
 
 /** Draw a label representing a point's coordinates.
  *
- * @param pDisp the display point coordinates
- * @param pValue the real coordinates
+ * @param point
  * @param angle
  */
-void CSailPainter::drawCoord(const CPoint3d &pDisp, const CPoint3d &pValue, const real angle)
+void CSailPainter::drawCoord(const CPoint3d &p, const real angle)
 {
     // build list of lines to print
     QStringList lst;
-    lst.append(QString("X=") + QString::number(pValue.x(), 'f', 1));
-    lst.append(QString("Y=") + QString::number(pValue.y(), 'f', 1));
-    drawArrowLabel(pDisp, lst, angle);
+    lst.append(QString("X=") + QString::number(p.x(), 'f', 1));
+    lst.append(QString("Y=") + QString::number(p.y(), 'f', 1));
+    drawArrowLabel(p, lst, angle);
 }
 
 
@@ -180,7 +178,6 @@ void CSailPainter::drawCross(const CPoint3d &p, const real size)
  */
 void CSailPainter::drawTextCentered(const CPoint3d &p, const QString &str)
 {
-    setPen(Qt::black);
     drawTextCentered(p, QStringList(str));
 }
 
@@ -190,7 +187,6 @@ void CSailPainter::drawTextCentered(const CPoint3d &p, const QString &str)
 void CSailPainter::drawTextCentered(const CPoint3d &p, const QStringList &lst)
 {
     CVector3d dim = textSize(lst);
-    setPen(Qt::black);
 
     int i;
     real xPos = p.x() - 0.5 * dim.x();
@@ -209,14 +205,83 @@ void CSailPainter::drawTextCentered(const CPoint3d &p, const QStringList &lst)
 void CSailPainter::drawLabels(const CPanelGroup &sail)
 {
     unsigned int i;
-    setPen(Qt::black);
-    
+
     for ( i = 0; i < sail.size(); i++ )
-        draw(sail[i].label);
+        drawLabels(sail[i]);
     for ( i = 0; i < sail.child.size(); i++ )
         drawLabels(sail.child[i]);
 }
 
+void CSailPainter::drawMarkers(const CPanel &currentPanel, bool is_last_panel)
+{
+    unsigned int npt = 0;
+    real dx=0, dy=0;
+
+    // top fwd corners
+    drawCoord(currentPanel.top[npt], 2*PI/3 );
+
+    // top  middle
+    npt = int ( (currentPanel.top.size() -1) /2 );
+    if ( CVector3d(currentPanel.top[npt] - currentPanel.top.front()).norm() > 5 )
+    {
+        dx = CVector3d( currentPanel.top[npt] - currentPanel.top.front() ) * CVector3d( currentPanel.top.back() - currentPanel.top.front() ).unit();
+        dy = Distance3d(currentPanel.top[npt] , currentPanel.top.front() , currentPanel.top.back() );
+        drawDelta(currentPanel.top[npt], CVector3d(dx, dy, 0), PI/2);
+    }
+
+    // top aft corner
+    npt = currentPanel.top.size() -1;
+    if ( CVector3d(currentPanel.top[npt]-currentPanel.top[0]).norm() > 5 )
+        drawCoord(currentPanel.top[npt], PI/3);
+
+    // right middle
+    npt = (currentPanel.right.size() -1)/2;
+    drawCoord(currentPanel.right[npt], 0);
+
+    // bottom left corner
+    if ( CVector3d(currentPanel.top[0]-currentPanel.bottom[0]).norm() > 5 )
+    {
+        npt = 0;
+        drawCoord(currentPanel.bottom[npt], -2*PI/3);
+
+        // mid left
+        npt = (currentPanel.left.size() -1)/2;
+        drawCoord(currentPanel.left[npt], PI);
+        if ( is_last_panel )
+        {
+            npt = 1 +(currentPanel.left.size() -1)/2;
+            drawCoord(currentPanel.left[npt], 2*PI/3 );
+        }
+    }
+
+    // bottom intermediate fwd
+    npt = int ( (currentPanel.bottom.size() -1) /5 );
+    dx = CVector3d(  currentPanel.bottom[npt] -  currentPanel.bottom.front() ) * CVector3d(  currentPanel.bottom.back() -  currentPanel.bottom.front() ).unit();
+    dy = Distance3d( currentPanel.bottom[npt] ,  currentPanel.bottom.front() ,  currentPanel.bottom.back() );
+    drawDelta(currentPanel.bottom[npt], CVector3d(dx, dy, 0), -5*PI/8 );
+
+    // bottom intermediate middle
+    npt = int ( (currentPanel.bottom.size() -1) /2 );
+    dx = CVector3d(  currentPanel.bottom[npt] -  currentPanel.bottom.front() ) * CVector3d(  currentPanel.bottom.back() -  currentPanel.bottom.front() ).unit();
+    dy = Distance3d( currentPanel.bottom[npt] ,  currentPanel.bottom.front() ,  currentPanel.bottom.back() );
+    drawDelta(currentPanel.bottom[npt], CVector3d(dx, dy, 0), -PI/2 );
+
+    // bottom intermediate aft
+    npt = int ( (currentPanel.bottom.size() -1) *4/5 );
+    dx = CVector3d(  currentPanel.bottom[npt] -  currentPanel.bottom.front() ) * CVector3d(  currentPanel.bottom.back() -  currentPanel.bottom.front() ).unit();
+    dy = Distance3d( currentPanel.bottom[npt] ,  currentPanel.bottom.front(),  currentPanel.bottom.back() );
+    drawDelta(currentPanel.bottom[npt], CVector3d(dx, dy, 0), -3*PI/8 );
+
+    // bottom aft corner
+    npt = currentPanel.bottom.size() -1;
+    drawCoord(currentPanel.bottom[npt], -PI/3);
+}
+
+void CSailPainter::drawMarkers(const CPanelGroup &sail)
+{
+    for (unsigned int i = 0; i < sail.size(); i++)
+        drawMarkers(sail[i], i == sail.size());
+}
 
 /** Set the font size.
  *
