@@ -21,6 +21,13 @@
 #include "formmain.h"
 #include <geocpp/core.h>
 
+/** @mainpage
+ * This is the documentation for Sailcut CAD's code.
+ *
+ * It is intended mainly for programmers, to learn more about Sailcut CAD
+ * please visit http://sailcut.sourceforge.net/
+*/
+
 /**
  * Sailcut CAD's main routine.
  */
