@@ -65,7 +65,6 @@ AM_CONDITIONAL(MACOS, test x$platform = xmacos)
 AM_CONDITIONAL(WIN32, test x$platform = xwin32)
 
 dnl Produce output
-AC_CONFIG_FILES([ Doxyfile ])
 AC_CONFIG_FILES([ Makefile ])
 AC_CONFIG_FILES([ sailcut.nsi ])
 AC_CONFIG_FILES([ sailcut.plist ])
