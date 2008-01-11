@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 1993-2007 Robert & Jeremy Laine
+ * Copyright (C) 1993-2008 Robert & Jeremy Laine
  * See AUTHORS file for a full list of contributors.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -48,7 +48,7 @@ public:
         parentItem = parent;
         itemData << name;
         itemIcon = NULL;
-        for(unsigned int i = 0; i < v.size(); i++)
+        for (unsigned int i = 0; i < v.size(); i++)
             appendChild(new CSailTreeItem(v[i], QString::number(i), this));
     }
 

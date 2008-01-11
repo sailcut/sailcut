@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 1993-2007 Robert & Jeremy Laine
+ * Copyright (C) 1993-2008 Robert & Jeremy Laine
  * See AUTHORS file for a full list of contributors.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -22,9 +22,9 @@
 
 
 /**************************************************************************
- 
+
                        construction / destruction
- 
+
 **************************************************************************/
 
 /** Constructs an empty CSailDoc object.
@@ -101,7 +101,7 @@ QDomElement CSailDoc::findElement(const QDomNode &parent, const QString &type, c
     QDomNamedNodeMap attr;
     QDomNode n = parent.firstChild();
 
-    while( !n.isNull() )
+    while ( !n.isNull() )
     {
         if (n.nodeName() == type)
         {
@@ -121,9 +121,9 @@ QDomElement CSailDoc::findElement(const QDomNode &parent, const QString &type, c
 
 
 /**************************************************************************
- 
+
                                 Input
- 
+
 **************************************************************************/
 
 /** Reads an int value from an XML document.
@@ -133,7 +133,7 @@ QDomElement CSailDoc::findElement(const QDomNode &parent, const QString &type, c
  * @param name the name of the value
  */
 void CSailDoc::get
-    ( const QDomNode &parent, int &i, const QString &name )
+( const QDomNode &parent, int &i, const QString &name )
 {
     QDomElement e = findElement( parent, "int", name);
     QDomNamedNodeMap attr = e.attributes();
@@ -148,7 +148,7 @@ void CSailDoc::get
  * @param name the name of the value
  */
 void CSailDoc::get
-    ( const QDomNode &parent, unsigned int &i, const QString &name )
+( const QDomNode &parent, unsigned int &i, const QString &name )
 {
     int temp;
     get(parent, temp, name);
@@ -163,7 +163,7 @@ void CSailDoc::get
  * @param name the name of the value
  */
 void CSailDoc::get
-    ( const QDomNode &parent, real &r, const QString &name )
+( const QDomNode &parent, real &r, const QString &name )
 {
     QDomElement e = findElement( parent, "real", name);
     QDomNamedNodeMap attr = e.attributes();
@@ -178,7 +178,7 @@ void CSailDoc::get
  * @param name the name of the string
  */
 void CSailDoc::get
-    ( const QDomNode &parent, string &s, const QString &name )
+( const QDomNode &parent, string &s, const QString &name )
 {
     QDomElement e = findElement( parent, "string", name);
     QDomNamedNodeMap attr = e.attributes();
@@ -193,7 +193,7 @@ void CSailDoc::get
  * @param name the name of the string
  */
 void CSailDoc::get
-    ( const QDomNode &parent, QString &s, const QString &name )
+( const QDomNode &parent, QString &s, const QString &name )
 {
     QDomElement e = findElement( parent, "string", name);
     QDomNamedNodeMap attr = e.attributes();
@@ -208,15 +208,15 @@ void CSailDoc::get
  * @param name the name of the 3D point
  */
 void CSailDoc::get
-    ( const QDomNode &parent, CPoint3d &p, const QString &name )
+( const QDomNode &parent, CPoint3d &p, const QString &name )
 {
     QDomElement e = findElement( parent, "CPoint3d", name);
     get
-        (e, p.x(), "x");
+    (e, p.x(), "x");
     get
-        (e, p.y(), "y");
+    (e, p.y(), "y");
     get
-        (e, p.z(), "z");
+    (e, p.z(), "z");
 }
 
 
@@ -227,18 +227,25 @@ void CSailDoc::get
  * @param name the name of the value
  */
 void CSailDoc::get
-    ( const QDomNode &parent, enumPanelGroupType &t, const QString &name )
+( const QDomNode &parent, enumPanelGroupType &t, const QString &name )
 {
     QDomElement e = findElement( parent, "enumPanelGroupType", name);
     QString s = e.attributes().namedItem("value").nodeValue();
 
-    if (!s.compare("SAIL")) {
+    if (!s.compare("SAIL"))
+    {
         t = SAIL;
-    } else if (!s.compare("RIG")) {
+    }
+    else if (!s.compare("RIG"))
+    {
         t = RIG;
-    } else if (!s.compare("HULL")) {
+    }
+    else if (!s.compare("HULL"))
+    {
         t = HULL;
-    } else {
+    }
+    else
+    {
         throw CException("unknown panel group type");
     }
 }
@@ -251,7 +258,7 @@ void CSailDoc::get
  * @param name the name of the value
  */
 void CSailDoc::get
-    ( const QDomNode &parent, enumSailCut &c, const QString &name )
+( const QDomNode &parent, enumSailCut &c, const QString &name )
 {
     QDomElement e = findElement( parent, "enumSailCut", name);
     QString s = e.attributes().namedItem("value").nodeValue();
@@ -278,7 +285,7 @@ void CSailDoc::get
  * @param name the name of the value
  */
 void CSailDoc::get
-    ( const QDomNode &parent, enumSailType &t, const QString &name )
+( const QDomNode &parent, enumSailType &t, const QString &name )
 {
     QDomElement e = findElement( parent, "enumSailType", name);
     QString s = e.attributes().namedItem("value").nodeValue();
@@ -299,7 +306,7 @@ void CSailDoc::get
  * @param name the name of the value
  */
 void CSailDoc::get
-    ( const QDomNode &parent, enumBoatElementType &t, const QString &name )
+( const QDomNode &parent, enumBoatElementType &t, const QString &name )
 {
     QDomElement e = findElement( parent, "enumBoatElementType", name);
     QString s = e.attributes().namedItem("value").nodeValue();
@@ -322,12 +329,12 @@ void CSailDoc::get
  * @param name the name of the hull definition
  */
 void CSailDoc::get
-    ( const QDomNode &parent, CHullDef &d, const QString &name )
+( const QDomNode &parent, CHullDef &d, const QString &name )
 {
     QDomElement e = findElement( parent, "CHullDef", name);
 
     get(e, d.hullID, "hullID");
-    
+
     // bottom
     get(e, d.BLWL, "BLWL");
     get(e, d.BfwdHeight, "BfwdHeight");
@@ -340,18 +347,18 @@ void CSailDoc::get
     get(e, d.BSweepA, "BSweepA");
     get(e, d.BfwdShape, "BfwdShape");
     get(e, d.BaftShape, "BaftShape");
-    
+
     // deck
     get(e, d.DfwdHeight, "DfwdHeight");
     get(e, d.DaftHeight, "DaftHeight");
     get(e, d.DSlopeA, "DSlopeA");
-    
+
     // stem
     get(e, d.StemA, "StemA");
-    
+
     // transom
     get(e, d.TransomA, "TransomA");
-    
+
     // side planks
     get(e, d.NBPlank, "NBPlank");
     get(e, d.TopPlankA, "TopPlankA");
@@ -370,7 +377,7 @@ void CSailDoc::get
  * @param name the name of the sail definition
  */
 void CSailDoc::get
-    ( const QDomNode &parent, CSailDef &d, const QString &name )
+( const QDomNode &parent, CSailDef &d, const QString &name )
 {
     QDomElement e = findElement( parent, "CSailDef", name);
 
@@ -429,18 +436,18 @@ void CSailDoc::get
 
         /* radial sections */
         get(e, d.nbSections, "nbSections");
-        
+
         /* radial gores */
         get(e, d.nbGores, "nbGores");
-        
+
         /* luff gores */
         get(e, d.nbLuffGores, "nbLuffGores");
-        
+
         /* wing dihedral angle */
         get(e, d.dihedralDeg, "dihedralDeg");
     }
     catch (CException e)
-    { 
+    {
         // to avoid killing the program
     }
 }
@@ -453,7 +460,7 @@ void CSailDoc::get
  * @param name the name of the sail side
  */
 void CSailDoc::get
-    ( const QDomNode &parent, CSide &s, const QString &name )
+( const QDomNode &parent, CSide &s, const QString &name )
 {
     QDomElement e = findElement( parent, "CSide", name);
     get_vector(e, s, "point");
@@ -467,7 +474,7 @@ void CSailDoc::get
  * @param name the name of the panel
  */
 void CSailDoc::get
-    ( const QDomNode &parent, CPanel &p, const QString &name )
+( const QDomNode &parent, CPanel &p, const QString &name )
 {
     QDomElement e = findElement( parent, "CPanel", name);
     get(e, p.top, "top");
@@ -497,7 +504,7 @@ void CSailDoc::get
  * @param name the name of the panel group
  */
 void CSailDoc::get
-    ( const QDomNode &parent, CPanelGroup &g, const QString &name )
+( const QDomNode &parent, CPanelGroup &g, const QString &name )
 {
     QDomElement e = findElement( parent, "CPanelGroup", name);
     get_vector(e, g, "panel");
@@ -512,7 +519,7 @@ void CSailDoc::get
         get(e, g.type, "type");
     }
     catch (CException e)
-    { 
+    {
         // to avoid killing the program
     }
 }
@@ -525,7 +532,7 @@ void CSailDoc::get
  * @param name the name of the profile
  */
 void CSailDoc::get
-    ( const QDomNode &parent, CProfile &p, const QString &name )
+( const QDomNode &parent, CProfile &p, const QString &name )
 {
     QDomElement e = findElement( parent, "CProfile", name);
     real depth=0,kluff=0,kleech=0;
@@ -544,7 +551,7 @@ void CSailDoc::get
  * @param name the name of the boat definition
  */
 void CSailDoc::get
-    ( const QDomNode &parent, CBoatDef &d, const QString &name )
+( const QDomNode &parent, CBoatDef &d, const QString &name )
 {
     QDomElement e = findElement( parent, "CBoatDef", name);
     get_vector(e, d, "element");
@@ -558,7 +565,7 @@ void CSailDoc::get
  * @param name the name of the boat element
  */
 void CSailDoc::get
-    ( const QDomNode &parent, CBoatElement &s, const QString &name )
+( const QDomNode &parent, CBoatElement &s, const QString &name )
 {
     QDomElement e = findElement( parent, "CBoatElement", name);
     get(e, (CPanelGroup&)s, "panelgroup");
@@ -575,7 +582,7 @@ void CSailDoc::get
  * @param name the name of the mould
  */
 void CSailDoc::get
-    ( const QDomNode &parent, CSailMould &m, const QString &name )
+( const QDomNode &parent, CSailMould &m, const QString &name )
 {
     QDomElement e = findElement( parent, "CSailMould", name);
     get(e, m.vertpos, "vertpos");
@@ -590,7 +597,7 @@ void CSailDoc::get
  * @param name the name of the preferences
  */
 void CSailDoc::get
-    ( const QDomNode &parent, CPrefs &p, const QString &name )
+( const QDomNode &parent, CPrefs &p, const QString &name )
 {
     QDomElement e = findElement( parent, "CPrefs", name);
     try
@@ -616,12 +623,12 @@ void CSailDoc::get
  * @param name the name of the rig definition
  */
 void CSailDoc::get
-    ( const QDomNode &parent, CRigDef &d, const QString &name )
+( const QDomNode &parent, CRigDef &d, const QString &name )
 {
     QDomElement e = findElement( parent, "CRigDef", name);
-    
+
     get(e, d.rigID, "rigID");
-    
+
     // fore triangle
     get(e, d.foreI, "foreI");
     get(e, d.foreJ, "foreJ");
@@ -656,9 +663,9 @@ void CSailDoc::get
 
 
 /**************************************************************************
- 
+
                                 Output
- 
+
 **************************************************************************/
 
 /** Puts an int value to an XML document.
@@ -824,9 +831,9 @@ void CSailDoc::put(QDomNode &parent, const CHullDef &d, const QString &name )
 {
     QDomElement e = createElement("CHullDef",name);
     parent.appendChild(e);
-    
-    put(e, d.hullID, "hullID"); 
-    
+
+    put(e, d.hullID, "hullID");
+
     // bottom
     put(e, d.BLWL, "BLWL");
     put(e, d.BfwdHeight, "BfwdHeight");
@@ -839,18 +846,18 @@ void CSailDoc::put(QDomNode &parent, const CHullDef &d, const QString &name )
     put(e, d.BSweepA, "BSweepA");
     put(e, d.BfwdShape, "BfwdShape");
     put(e, d.BaftShape, "BaftShape");
-    
+
     // deck
     put(e, d.DfwdHeight, "DfwdHeight");
     put(e, d.DaftHeight, "DaftHeight");
     put(e, d.DSlopeA, "DSlopeA");
-    
+
     // stem
     put(e, d.StemA, "StemA");
-    
+
     // transom
     put(e, d.TransomA, "TransomA");
-    
+
     // side planks
     put(e, d.NBPlank, "NBPlank");
     put(e, d.TopPlankA, "TopPlankA");
@@ -920,13 +927,13 @@ void CSailDoc::put(QDomNode &parent, const CSailDef &d, const QString &name )
 
     /* radial sections */
     put(e, d.nbSections, "nbSections");
-    
+
     /* radial gores */
     put(e, d.nbGores, "nbGores");
-    
+
     /* luff gores */
     put(e, d.nbLuffGores, "nbLuffGores");
-    
+
     /* wing dihedral angle */
     put(e, d.dihedralDeg, "dihedralDeg");
 }
@@ -1053,9 +1060,9 @@ void CSailDoc::put(QDomNode &parent, const CRigDef &d, const QString &name )
 {
     QDomElement e = createElement("CRigDef",name);
     parent.appendChild(e);
-    
+
     put(e, d.rigID, "rigID");
-    
+
     // fore triangle
     put(e, d.foreI, "foreI");
     put(e, d.foreJ, "foreJ");

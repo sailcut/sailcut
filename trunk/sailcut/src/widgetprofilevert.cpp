@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 1993-2007 Robert & Jeremy Laine
+ * Copyright (C) 1993-2008 Robert & Jeremy Laine
  * See AUTHORS file for a full list of contributors.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -27,9 +27,9 @@
 #include <QSlider>
 
 /**************************************************************************
- 
+
                          CLabelProfileVert class
- 
+
 **************************************************************************/
 
 /** The constructor.
@@ -83,7 +83,7 @@ void CLabelProfileVert::paintEvent( QPaintEvent *)
     painter.scale(1,-1);
 
     prev = QPoint( int(scale * mould->interpol(0).getDepth()), 0 );
-    for( unsigned i = 1; i < nbpoints; i++)
+    for (unsigned i = 1; i < nbpoints; i++)
     {
         y = real(i) / (nbpoints-1);
         z = mould->interpol(y).getDepth();
@@ -105,9 +105,9 @@ void CLabelProfileVert::resizeEvent( QResizeEvent * )
 
 
 /**************************************************************************
- 
+
                          CWidgetProfileVert class
- 
+
 **************************************************************************/
 
 /** The constructor.

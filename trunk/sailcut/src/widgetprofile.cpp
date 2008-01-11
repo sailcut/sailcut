@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 1993-2007 Robert & Jeremy Laine
+ * Copyright (C) 1993-2008 Robert & Jeremy Laine
  * See AUTHORS file for a full list of contributors.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -81,7 +81,7 @@ void CLabelProfile::paintEvent( QPaintEvent *)
     painter.scale(1,-1);
 
     prev = QPoint( 0 , int(scale * profile->z(0) ) );
-    for( unsigned i = 1; i < nbpoints; i++)
+    for (unsigned i = 1; i < nbpoints; i++)
     {
         x = real(i) / (nbpoints -1);
         z = profile->z(x);
@@ -222,11 +222,11 @@ CWidgetProfile::CWidgetProfile( QWidget *parent, CProfile *ptr,
     connect( spinDepth, SIGNAL( valueChanged(int) ), this, SLOT( slotChanged() ) );
     connect( spinLeech, SIGNAL( valueChanged(int) ), this, SLOT( slotChanged() ) );
 
-    // set translations and trigger update 
+    // set translations and trigger update
     // NOTE : all the widgets need to be created before doing this
     languageChange();
     resize( QSize(527, 159).expandedTo( minimumSizeHint() ) );
-    
+
     // trigger the computation of profile to update the ancillary data labels
     slotChanged();
 }
@@ -244,7 +244,7 @@ void CWidgetProfile::languageChange()
     // ancillary data labels
     lblLuffSlopeDegrees->setText( tr( "degrees" ) );
     lblMaxPosCord->setText( tr( "cord") );
-    lblLeechSlopeDegrees->setText( tr( "degrees" ) );    
+    lblLeechSlopeDegrees->setText( tr( "degrees" ) );
 }
 
 
@@ -260,7 +260,7 @@ void CWidgetProfile::slotChanged()
 
     // update profile view
     lblDraw->update();
-    // display the position of the maximum depth 
+    // display the position of the maximum depth
     lblLuffSlopeValue->setText( QString::number ( int( 57.29579 * atan(profile->slope(0.0)) ) ));
     lblMaxPosValue->setText( QString::number (profile->getMaxPos() ) );
     lblLeechSlopeValue->setText( QString::number ( int( 57.29579 * atan(profile->slope(1.0)) ) ) );

@@ -1,17 +1,17 @@
 /*
- * Copyright (C) 1993-2007 Robert & Jeremy Laine
+ * Copyright (C) 1993-2008 Robert & Jeremy Laine
  * See AUTHORS file for a full list of contributors.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
@@ -100,19 +100,19 @@ CBoatElementWidget::CBoatElementWidget(QWidget *parent)
     iLayout->addWidget( lblFileStatic, 0, 0 );
     lblFile = new QLabel( grpInfo );
     iLayout->addWidget( lblFile, 0, 1 );
-    
+
     lblNameStatic = new QLabel( grpInfo );
     iLayout->addWidget( lblNameStatic, 1, 0 );
     txtName = new QLineEdit( grpInfo );
     iLayout->addWidget( txtName, 1, 1 );
-    
+
     btnReload = new QPushButton(grpInfo);
     iLayout->addWidget( btnReload, 2, 1);
 
     wdgOrigin = new CVector3dWidget(grpInfo);
     iLayout->addWidget(wdgOrigin, 3, 0, 1, 3);
     //iLayout->addItem( new QSpacerItem( 20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding ), 4, 1 );
-    
+
     // add button below frame
     btnUpdate = new QPushButton(this);
     btnRemove = new QPushButton(this);
@@ -123,7 +123,7 @@ CBoatElementWidget::CBoatElementWidget(QWidget *parent)
     layout->addWidget(btnRemove, 1, 0);
     layout->addItem( new QSpacerItem( 20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum ), 1, 1 );
     layout->addWidget(btnUpdate, 1, 2);
-    
+
     // pack everything upward
     layout->addItem( new QSpacerItem( 20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding ), 2, 0 );
 
@@ -237,7 +237,7 @@ CBoatDefPanel::CBoatDefPanel(QWidget *parent)
  */
 void CBoatDefPanel::languageChange()
 {
-    for ( unsigned int i = 0; i < elementwidget.size(); i++)
+    for (unsigned int i = 0; i < elementwidget.size(); i++)
         elementwidget[i]->languageChange();
 }
 
@@ -250,7 +250,7 @@ void CBoatDefPanel::languageChange()
 void CBoatDefPanel::setDef(const CBoatDef& newdef)
 {
     unsigned int i;
-    for ( i = 0; i < elementwidget.size(); i++)
+    for (i = 0; i < elementwidget.size(); i++)
     {
         tabs->removeTab(i);
         delete elementwidget[i];
@@ -259,7 +259,7 @@ void CBoatDefPanel::setDef(const CBoatDef& newdef)
     def = newdef;
     elementwidget.resize(def.size());
 
-    for ( i = 0; i < def.size(); i++)
+    for (i = 0; i < def.size(); i++)
     {
         elementwidget[i] = new CBoatElementWidget(0);
         elementwidget[i]->setElement(def[i]);

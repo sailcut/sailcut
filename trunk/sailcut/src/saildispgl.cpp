@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 1993-2007 Robert & Jeremy Laine
+ * Copyright (C) 1993-2008 Robert & Jeremy Laine
  * See AUTHORS file for a full list of contributors.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -18,7 +18,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-  #include "config.h"
+#include "config.h"
 #endif
 
 #ifdef HAVE_QTOPENGL
@@ -94,13 +94,13 @@ void CSailDispGL::draw( const CPanel &panel )
 void CSailDispGL::draw( const CPanelGroup &sail )
 {
     unsigned int i;
-    for( i = 0; i < sail.size(); i++ )
+    for (i = 0; i < sail.size(); i++)
     {
         if ( sail.type == HULL )
         {
             //  dark green
             glColor3f(.1, .3, .2);
-        } 
+        }
         else if ( sail.type == RIG )
         {
             //  dark red
@@ -113,7 +113,7 @@ void CSailDispGL::draw( const CPanelGroup &sail )
         }
         draw( sail[i] );
     }
-    for( i = 0; i < sail.child.size(); i++ )
+    for (i = 0; i < sail.child.size(); i++)
         draw( sail.child[i] );
 }
 
@@ -178,7 +178,7 @@ void CSailDispGL::paintGL()
         setViewRect( CRect3d(CPoint3d(0,0,0), CPoint3d(resizeW,resizeH,0)) );
         wasResized = 0;
     }
-    
+
     // set coordinate system to match the logical viewport
     glLoadIdentity();
     CRect3d lRect = getLogicalRect();

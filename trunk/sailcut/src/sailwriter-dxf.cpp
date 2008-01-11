@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 1993-2007 Robert & Jeremy Laine
+ * Copyright (C) 1993-2008 Robert & Jeremy Laine
  * See AUTHORS file for a full list of contributors.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -21,9 +21,9 @@
 #include <QFile>
 
 /***********************************
- 
+
            DXF components
- 
+
 ***********************************/
 
 /** Write a DXF atom to the file output stream.
@@ -124,9 +124,9 @@ void CSailDxfWriter::writeVertex(ofstream &out, CPoint3d pt, unsigned int layer)
 
 
 /***********************************
- 
+
            2D DXF export
- 
+
 ***********************************/
 
 
@@ -138,7 +138,7 @@ void CSailDxfWriter::writeVertex(ofstream &out, CPoint3d pt, unsigned int layer)
 void CSailDxfWriter2d::write(const CPanelGroup &sail, const QString &filename) const
 {
     ofstream out;
-    
+
     out.open(QFile::encodeName(filename),ios::out);
     if (!out.is_open())
         throw CException("CSailDxfWriter::write : unable to write to specified file");
@@ -159,7 +159,7 @@ void CSailDxfWriter2d::write(const CPanelGroup &sail, const QString &filename) c
     writeAtom(out, 70, "16");
 
     unsigned int pn = 0;
-    for ( pn = 0; pn < sail.size(); pn++)
+    for (pn = 0; pn < sail.size(); pn++)
     {
         //writeAtom(999,_sail[pn].label.name);
         writeAtom(out, 0, "LAYER");
@@ -180,7 +180,7 @@ void CSailDxfWriter2d::write(const CPanelGroup &sail, const QString &filename) c
     writeAtom(out, 2, "ENTITIES");
 
     // loop over panels ////////
-    for ( pn = 0; pn < sail.size(); pn++)
+    for (pn = 0; pn < sail.size(); pn++)
         writePanel(out, sail[pn], pn+1);
 
     writeAtom(out, 0, "ENDSEC");
@@ -219,7 +219,7 @@ void CSailDxfWriter2dBlocks::write(const CPanelGroup &sail, const QString &filen
     writeAtom(out, 70, "16");
 
     unsigned int pn = 0;
-    for ( pn = 0; pn < sail.size(); pn++)
+    for (pn = 0; pn < sail.size(); pn++)
     {
         //writeAtom(999,_sail[pn].label.name);
         writeAtom(out, 0, "LAYER");
@@ -241,7 +241,7 @@ void CSailDxfWriter2dBlocks::write(const CPanelGroup &sail, const QString &filen
     //writeAtom(out, 2, "ENTITIES");
 
     // loop over panels ////////
-    for ( pn = 0; pn < sail.size(); pn++)
+    for (pn = 0; pn < sail.size(); pn++)
     {
         writeAtom(out, 0, "BLOCK");
         writeAtom(out, 100, "AcDbEntity");
@@ -405,9 +405,9 @@ void CSailDxfWriter2d::writePanel(ofstream &out, const CPanel &panel, unsigned i
 
 
 /***********************************
- 
+
            3D DXF export
- 
+
 ***********************************/
 
 

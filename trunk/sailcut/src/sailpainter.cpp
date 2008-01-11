@@ -86,18 +86,18 @@ void CSailPainter::draw(const CPanelGroup &sail)
     // set pen color
     QPen oldpen = pen();
     if ( sail.type == HULL )
-       setPen(Qt::darkGreen);
+        setPen(Qt::darkGreen);
     else if ( sail.type == RIG )
         setPen(Qt::darkRed);
     else
         setPen(Qt::blue);
 
-    for( i = 0; i < sail.size(); i++ )
+    for (i = 0; i < sail.size(); i++)
         draw(sail[i]);
-    for( i = 0; i < sail.child.size(); i++ )
+    for (i = 0; i < sail.child.size(); i++)
         draw(sail.child[i]);
 
-    // reset pen color 
+    // reset pen color
     setPen(oldpen);
 }
 
@@ -206,9 +206,9 @@ void CSailPainter::drawLabels(const CPanelGroup &sail)
 {
     unsigned int i;
 
-    for ( i = 0; i < sail.size(); i++ )
+    for (i = 0; i < sail.size(); i++)
         drawLabels(sail[i]);
-    for ( i = 0; i < sail.child.size(); i++ )
+    for (i = 0; i < sail.child.size(); i++)
         drawLabels(sail.child[i]);
 }
 

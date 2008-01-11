@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 1993-2007 Robert & Jeremy Laine
+ * Copyright (C) 1993-2008 Robert & Jeremy Laine
  * See AUTHORS file for a full list of contributors.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -127,7 +127,7 @@ void CFormSail::setDef(const CSailDef& newdef)
 void CFormSail::setupMenuBar()
 {
     // File sub menus
-    
+
     // print submenu
     menuPrint = new QMenu(this);
     actionPrintData = menuPrint->addAction("", this, SLOT( slotPrintData() ));
@@ -160,11 +160,11 @@ void CFormSail::setupMenuBar()
     actionViewDef = new QAction(this);
     connect( actionViewDef, SIGNAL( triggered() ), this, SLOT( slotDef() ) );
     extraViewActions.push_back(actionViewDef);
-    
+
     actionViewMould = new QAction(this);
     connect( actionViewMould, SIGNAL( triggered() ), this, SLOT ( slotMould() ) );
     extraViewActions.push_back(actionViewMould);
-    
+
     // TODO : enable the following action when the patch viewer is ready
     actionViewPatch = new QAction(this);
     actionViewPatch->setEnabled(false);
@@ -190,7 +190,8 @@ void CFormSail::setupMainWidget()
  * Displays the sail CFormSailDef sail definition dialog.
  */
 void CFormSail::slotDef()
-{  // we pass the CFormSailDef a pointer to a copy of the sail definition so
+{
+    // we pass the CFormSailDef a pointer to a copy of the sail definition so
     // that it can update it if necessary
     CSailDef defcopy = def;
 
@@ -298,7 +299,8 @@ void CFormSail::slotExportFlatXML()
  * Displays the CFormMould sail mould definition dialog.
  */
 void CFormSail::slotMould()
-{  // we pass the CFormMould a pointer to a copy of the sail mould so
+{
+    // we pass the CFormMould a pointer to a copy of the sail mould so
     // that it can update it if necessary
     CSailDef defcopy = def;
 
@@ -314,7 +316,8 @@ void CFormSail::slotMould()
  * Print the current sail data.
  */
 void CFormSail::slotPrintData()
-{  // try printing
+{
+    // try printing
     try
     {
         QPrinter myprinter;
@@ -342,7 +345,8 @@ void CFormSail::slotPrintData()
 void CFormSail::slotPrintDev()
 {
     try
-    {  // try printing
+    {
+        // try printing
         QPrinter myprinter;
         // set landscape printing
         myprinter.setOrientation(QPrinter::Landscape);
@@ -366,7 +370,8 @@ void CFormSail::slotPrintDev()
  * Print the current sail drawing.
  */
 void CFormSail::slotPrintDwg()
-{  // try printing
+{
+    // try printing
     try
     {
         QPrinter myprinter;

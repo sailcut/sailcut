@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 1993-2007 Robert & Jeremy Laine
+ * Copyright (C) 1993-2008 Robert & Jeremy Laine
  * See AUTHORS file for a full list of contributors.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -198,7 +198,7 @@ void CFormSailDef::setSailType( enumSailType type )
     switch ( type )
     {
     case MAINSAIL:
-#ifdef DEBUG    
+#ifdef DEBUG
         cout << "setSailType( MAINSAIL )" << endl;
 #endif
         radioMainSail->setChecked( true );
@@ -223,7 +223,7 @@ void CFormSailDef::setSailType( enumSailType type )
         break;
 
     case JIB:
-#ifdef DEBUG    
+#ifdef DEBUG
         cout << "setSailType( JIB )" << endl;
 #endif
         radioJib->setChecked( true );
@@ -250,7 +250,7 @@ void CFormSailDef::setSailType( enumSailType type )
     case WING:
 #ifdef DEBUG
         cout << "setSailType( WING )" << endl;
-#endif        
+#endif
         radioWing->setChecked( true );
         txtTackDist->setEnabled( true );
         txtTackHeight->setEnabled( true );
@@ -937,7 +937,7 @@ bool CFormSailDef::check()
         txtTwistAngle->setPalette( palHi );
         saildef->twistDeg = 45;
     }
-    else if(saildef->twistDeg < 0)
+    else if (saildef->twistDeg < 0)
     {
         flag = false;
         txtTwistAngle->setPalette( palLo );
@@ -977,7 +977,7 @@ bool CFormSailDef::check()
         break;
     }
 
-    if(saildef->sheetDeg < L2)
+    if (saildef->sheetDeg < L2)
     {
         flag=false;
         txtSheetAngle->setPalette( palLo);

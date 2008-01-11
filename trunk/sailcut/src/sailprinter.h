@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 1993-2007 Robert & Jeremy Laine
+ * Copyright (C) 1993-2008 Robert & Jeremy Laine
  * See AUTHORS file for a full list of contributors.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -44,7 +44,10 @@ public:
     void printSailDevel(const CPanelGroup &flatsail);
     void printSailDrawing(const CPanelGroup &sail);
 
-    void setShowLabels(bool show) { showLabels = show; };
+    void setShowLabels(bool show)
+    {
+        showLabels = show;
+    };
 
 protected:
     void init(unsigned int fontsize);
