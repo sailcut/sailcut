@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 1993-2007 Robert & Jeremy Laine
+ * Copyright (C) 1993-2008 Robert & Jeremy Laine
  * See AUTHORS file for a full list of contributors.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -21,9 +21,9 @@
 #define FILEWRITER_H
 
 #ifdef WIN32
-  #define CRLF   endl
+#define CRLF   endl
 #else
-  #define CRLF "\r\n"
+#define CRLF "\r\n"
 #endif
 
 #include <geocpp/core.h>
@@ -47,7 +47,7 @@ public:
     ;
 
 
-    /** Perform the actual reading operation, may be overriden 
+    /** Perform the actual reading operation, may be overriden
      *  to provide this functionality.
      */
     virtual const objtype read(const QString &) const
@@ -84,7 +84,7 @@ public:
     /** Show an error message indicating that reading failed.
      */
     static void readErrorMessage()
-    { 
+    {
         QMessageBox::information(0, tr("error"), tr("There was an error reading from the selected file."));
     };
 

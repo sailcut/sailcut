@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 1993-2007 Robert & Jeremy Laine
+ * Copyright (C) 1993-2008 Robert & Jeremy Laine
  * See AUTHORS file for a full list of contributors.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -45,7 +45,7 @@ class CFormDocument : public QWidget
 public:
     /** The constructor. */
     CFormDocument(CPrefs *myPrefs, QWidget *parent)
-        : QWidget(parent), prefs(myPrefs)
+            : QWidget(parent), prefs(myPrefs)
     {};
     virtual bool open(const QString &newfile) = 0;
     virtual bool save() = 0;
@@ -76,7 +76,7 @@ public:
      * @params myPrefs
      */
     CFormDocumentTmpl(CPrefs *myPrefs, QWidget *parent)
-        : CFormDocument(myPrefs, parent)
+            : CFormDocument(myPrefs, parent)
     {}
     ;
 
@@ -91,7 +91,9 @@ public:
             setDef(newdef);
             filename = newfile;
             return true;
-        } catch (CException e) {
+        }
+        catch (CException e)
+        {
             writertype::readErrorMessage();
         }
         return false;
@@ -135,7 +137,7 @@ public:
 
 protected:
     virtual void setDef(const deftype& newdef) = 0;
-    
+
 protected:
     deftype def;
 };

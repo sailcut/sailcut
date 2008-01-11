@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 1993-2007 Robert & Jeremy Laine
+ * Copyright (C) 1993-2008 Robert & Jeremy Laine
  * See AUTHORS file for a full list of contributors.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -28,7 +28,7 @@
  *  The user enters the parameters of the sail
  *  Checking the input data
  *  Computing and displaying ancillary data.
- *  
+ *
  *  @see also CsailDef for definition and default values
  */
 class CFormSailDef : public QDialog, private Ui::CFormSailDefBase

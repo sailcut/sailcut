@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 1993-2007 Robert & Jeremy Laine
+ * Copyright (C) 1993-2008 Robert & Jeremy Laine
  * See AUTHORS file for a full list of contributors.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -18,13 +18,13 @@
  */
 
 #ifdef HAVE_CONFIG_H
-  #include "config.h"
+#include "config.h"
 #endif
 
 #include "sailviewer.h"
 #include "saildisplabel.h"
 #ifdef HAVE_QTOPENGL
-  #include "saildispgl.h"
+#include "saildispgl.h"
 #endif
 #include <QSlider>
 #include <QLayout>

@@ -1,17 +1,17 @@
 /*
- * Copyright (C) 1993-2007 Robert & Jeremy Laine
+ * Copyright (C) 1993-2008 Robert & Jeremy Laine
  * See AUTHORS file for a full list of contributors.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
@@ -47,47 +47,47 @@ public:
 
     // input
     void get
-        (const QDomNode &parent, int &i, const QString &name );
+    (const QDomNode &parent, int &i, const QString &name );
     void get
-        (const QDomNode &parent, unsigned int &i, const QString &name );
+    (const QDomNode &parent, unsigned int &i, const QString &name );
     void get
-        (const QDomNode &parent, real &r, const QString &name );
+    (const QDomNode &parent, real &r, const QString &name );
     void get
-        (const QDomNode &parent, string &s, const QString &name );
+    (const QDomNode &parent, string &s, const QString &name );
     void get
-        (const QDomNode &parent, QString &s, const QString &name );
+    (const QDomNode &parent, QString &s, const QString &name );
     void get
-        (const QDomNode &parent, CPoint3d &p, const QString &name );
+    (const QDomNode &parent, CPoint3d &p, const QString &name );
     void get
-        (const QDomNode &parent, enumBoatElementType &t, const QString &name );
+    (const QDomNode &parent, enumBoatElementType &t, const QString &name );
     void get
-        (const QDomNode &parent, enumPanelGroupType &t, const QString &name );
+    (const QDomNode &parent, enumPanelGroupType &t, const QString &name );
     void get
-        (const QDomNode &parent, enumSailCut &c, const QString &name );
+    (const QDomNode &parent, enumSailCut &c, const QString &name );
     void get
-        (const QDomNode &parent, enumSailType &t, const QString &name );
+    (const QDomNode &parent, enumSailType &t, const QString &name );
     void get
-        (const QDomNode &parent, CHullDef &d, const QString &name );
+    (const QDomNode &parent, CHullDef &d, const QString &name );
     void get
-        (const QDomNode &parent, CSailDef &d, const QString &name );
+    (const QDomNode &parent, CSailDef &d, const QString &name );
     void get
-        (const QDomNode &parent, CSide &s, const QString &name );
+    (const QDomNode &parent, CSide &s, const QString &name );
     void get
-        (const QDomNode &parent, CPanel &p, const QString &name );
+    (const QDomNode &parent, CPanel &p, const QString &name );
     void get
-        (const QDomNode &parent, CBoatDef &d, const QString &name );
+    (const QDomNode &parent, CBoatDef &d, const QString &name );
     void get
-        (const QDomNode &parent, CBoatElement &s, const QString &name );
+    (const QDomNode &parent, CBoatElement &s, const QString &name );
     void get
-        (const QDomNode &parent, CPanelGroup &g, const QString &name );
+    (const QDomNode &parent, CPanelGroup &g, const QString &name );
     void get
-        (const QDomNode &parent, CProfile &p, const QString &name );
+    (const QDomNode &parent, CProfile &p, const QString &name );
     void get
-        (const QDomNode &parent, CSailMould &m, const QString &name );
+    (const QDomNode &parent, CSailMould &m, const QString &name );
     void get
-        (const QDomNode &parent, CPrefs &p, const QString &name );
+    (const QDomNode &parent, CPrefs &p, const QString &name );
     void get
-        (const QDomNode &parent, CRigDef &d, const QString &name );
+    (const QDomNode &parent, CRigDef &d, const QString &name );
 
     // output
     void put(QDomNode &parent, const int &i, const QString &name ="" );
@@ -126,7 +126,7 @@ protected:
      */
     template<class myType>
     void get_vector
-        (QDomNode &parent, vector<myType>& v, const QString &name="")
+    (QDomNode &parent, vector<myType>& v, const QString &name="")
     {
         QDomElement e = findElement( parent, "vector", name);
         if ( e.isNull() )
@@ -138,7 +138,7 @@ protected:
         for ( unsigned int i = 0; i < size; i++)
         {
             get
-                (e, v[i], QString::number(i));
+            (e, v[i], QString::number(i));
         }
     }
 
@@ -155,7 +155,7 @@ protected:
         e.setAttribute("size", (unsigned int)v.size());
         parent.appendChild(e);
 
-        for(unsigned int i =0; i<v.size(); i++)
+        for (unsigned int i =0; i<v.size(); i++)
             put(e, v[i], QString::number(i));
     }
 };

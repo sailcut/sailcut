@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 1993-2007 Robert & Jeremy Laine
+ * Copyright (C) 1993-2008 Robert & Jeremy Laine
  * See AUTHORS file for a full list of contributors.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -18,7 +18,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-  #include "config.h"
+#include "config.h"
 #endif
 
 #include "formmain.h"
@@ -56,7 +56,7 @@ CFormMain::CFormMain(CSailApp *myApp, QWidget *parent)
     // locate Handbook
     app->loadTranslation(prefs->language);
     handbook = app->findHandbook(prefs->language);
-#ifdef DEBUG    
+#ifdef DEBUG
     cout << "handbook : " << (const char*)handbook.toString().toLocal8Bit() << endl;
 #endif
 
@@ -94,7 +94,7 @@ void CFormMain::addChild(CFormDocument *child)
     if (max)
         child->showMaximized();
     else
-        child->show();  
+        child->show();
 }
 
 
@@ -167,7 +167,7 @@ void CFormMain::makeMenuMru()
 {
     menuRecent->clear();
 
-    for ( unsigned int i = 0; i < prefs->mruDocuments.size(); i++)
+    for (unsigned int i = 0; i < prefs->mruDocuments.size(); i++)
     {
         menuRecent->addAction( prefs->mruDocuments[i], this, SLOT( slotOpenRecent() ) )->setData(i);
     }
@@ -185,15 +185,25 @@ void CFormMain::open(QString filename)
     if (CSailDefXmlWriter().isDocument(filename))
     {
         wnd = new CFormSail(prefs, this);
-    } else if (CHullDefXmlWriter().isDocument(filename)) {
+    }
+    else if (CHullDefXmlWriter().isDocument(filename))
+    {
         wnd = new CFormHull(prefs, this);
-    } else if (CBoatDefXmlWriter().isDocument(filename)) {
+    }
+    else if (CBoatDefXmlWriter().isDocument(filename))
+    {
         wnd = new CFormBoat(prefs, this);
-    } else if (CRigDefXmlWriter().isDocument(filename)) {
+    }
+    else if (CRigDefXmlWriter().isDocument(filename))
+    {
         wnd = new CFormRig(prefs, this);
-    } else if (CPanelGroupXmlWriter().isDocument(filename)) {
+    }
+    else if (CPanelGroupXmlWriter().isDocument(filename))
+    {
         wnd = new CFormPanelGroup(prefs, this);
-    } else {
+    }
+    else
+    {
         statusbar->showMessage( tr("unknown document type '%1'").arg(filename) );
         return;
     }
@@ -203,7 +213,9 @@ void CFormMain::open(QString filename)
         addChild(wnd);
         prefs->mruDocuments.touchEntry(filename);
         statusbar->showMessage(tr("loaded '%1'").arg(filename));
-    } else {
+    }
+    else
+    {
         prefs->mruDocuments.removeEntry(filename);
         statusbar->showMessage( tr("error loading '%1'").arg(filename) );
         wnd->deleteLater();
@@ -223,7 +235,7 @@ void CFormMain::setupMainWidget()
             this, SLOT(slotUpdateDocumentMenus()));
     windowMapper = new QSignalMapper(this);
     connect(windowMapper, SIGNAL(mapped(QWidget *)),
-            workspace, SLOT(setActiveWindow(QWidget *)));    
+            workspace, SLOT(setActiveWindow(QWidget *)));
 }
 
 
@@ -297,14 +309,17 @@ void CFormMain::show(const QString filename)
 {
     // load preferences
     makeMenuMru();
-    
+
     // show main window
     QMainWindow::show();
 
     // load specified file or create empty sail
-    if ( !filename.isNull() ) {
+    if ( !filename.isNull() )
+    {
         open(filename);
-    } else {
+    }
+    else
+    {
         CFormSail *wnd = new CFormSail(prefs, this);
         addChild(wnd);
     }
@@ -324,7 +339,7 @@ void CFormMain::slotAbout()
 #endif
                         "</h2>"
                         "<p>Sailcut is a software for designing boat sails<br/>"
-                        "(C) 1993-2007 Robert & Jeremy Laine"
+                        "(C) 1993-2008 Robert & Jeremy Laine"
 
                         "<p>For more information, visit the project's page at <a href=\"http://sailcut.sourceforge.net/\">http://sailcut.sourceforge.net/</a>.</p>"
 
@@ -405,18 +420,27 @@ void CFormMain::slotNew()
     CFormDocument *wnd;
 
     QAction *a = qobject_cast<QAction *>(sender());
-    if (a == actionNewSail) {
+    if (a == actionNewSail)
+    {
         wnd = new CFormSail(prefs, this);
-    } else if (a == actionNewBoat) {
+    }
+    else if (a == actionNewBoat)
+    {
         wnd = new CFormBoat(prefs, this);
-    } else if (a == actionNewRig) {
+    }
+    else if (a == actionNewRig)
+    {
         wnd = new CFormRig(prefs, this);
-    } else if (a == actionNewHull) {
+    }
+    else if (a == actionNewHull)
+    {
         wnd = new CFormHull(prefs, this);
-    } else {
+    }
+    else
+    {
         return;
     }
-    
+
     addChild(wnd);
 }
 
@@ -490,8 +514,8 @@ void CFormMain::slotSaveAs()
 void CFormMain::slotUpdateDocumentMenus()
 {
     bool hasChild = (activeChild() != 0);
-    actionSave->setEnabled(hasChild);    
-    actionSaveAs->setEnabled(hasChild);    
+    actionSave->setEnabled(hasChild);
+    actionSaveAs->setEnabled(hasChild);
 
     // remove old extra menu entries
     unsigned int i;
@@ -523,7 +547,7 @@ void CFormMain::slotUpdateDocumentMenus()
             childViewActions.push_back(menuView->insertSeparator(menuLanguage->menuAction()));
         }
 
-    } 
+    }
 }
 
 
@@ -546,7 +570,8 @@ void CFormMain::slotUpdateWindowMenu()
     actionTile->setEnabled(!windows.isEmpty());
     actionCascade->setEnabled(!windows.isEmpty());
 
-    for (int i = 0; i < windows.size(); ++i) {
+    for (int i = 0; i < windows.size(); ++i)
+    {
         CFormDocument *child = qobject_cast<CFormDocument *>(windows.at(i));
 
         QString text = QString("%1 %2").arg(i + 1).arg(child->windowTitle());
@@ -558,7 +583,7 @@ void CFormMain::slotUpdateWindowMenu()
         action->setChecked(child == activeChild());
         connect(action, SIGNAL(triggered()), windowMapper, SLOT(map()));
         windowMapper->setMapping(action, child);
-    }    
+    }
 }
 
 

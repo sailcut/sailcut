@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 1993-2007 Robert & Jeremy Laine
+ * Copyright (C) 1993-2008 Robert & Jeremy Laine
  * See AUTHORS file for a full list of contributors.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 #include <QtGui>
 
 #include "sailtreemodel.h"
@@ -43,14 +43,14 @@ QVariant CSailTreeModel::data(const QModelIndex &index, int role) const
 
     switch (role)
     {
-        case Qt::DisplayRole:
-            return item->data(index.column());
-        case Qt::DecorationRole:
-            if (index.column() == 0)
-                return item->icon();
-            break;
-        default:
-            break;
+    case Qt::DisplayRole:
+        return item->data(index.column());
+    case Qt::DecorationRole:
+        if (index.column() == 0)
+            return item->icon();
+        break;
+    default:
+        break;
     }
     return QVariant();
 }
@@ -64,7 +64,7 @@ Qt::ItemFlags CSailTreeModel::flags(const QModelIndex &index) const
 }
 
 QVariant CSailTreeModel::headerData(int section, Qt::Orientation orientation,
-                               int role) const
+                                    int role) const
 {
     if (orientation == Qt::Horizontal && role == Qt::DisplayRole)
         return rootItem->data(section);
@@ -73,7 +73,7 @@ QVariant CSailTreeModel::headerData(int section, Qt::Orientation orientation,
 }
 
 QModelIndex CSailTreeModel::index(int row, int column, const QModelIndex &parent)
-            const
+const
 {
     CSailTreeItem *parentItem;
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 1993-2007 Robert & Jeremy Laine
+ * Copyright (C) 1993-2008 Robert & Jeremy Laine
  * See AUTHORS file for a full list of contributors.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -66,15 +66,15 @@ CFormRigDef::CFormRigDef( QWidget* parent, CRigDef * rigptr )
     txt_MRnd->setText(QString::number(rigdef->MRnd) );
     txt_MRkM->setText(QString::number(rigdef->MRakeM) );
     spinBox_MRndPos->setValue(rigdef->MRndPos);
-    
+
     txt_CSH->setText(QString::number(rigdef->CSH) );
     txt_CSB->setText(QString::number(rigdef->CSB) );
     txt_LSB->setText(QString::number(rigdef->LSB) );
-    
+
     txt_SPH1->setText(QString::number(rigdef->SPH[1]) );
     txt_SPH2->setText(QString::number(rigdef->SPH[2]) );
     txt_SPH3->setText(QString::number(rigdef->SPH[3]) );
-    
+
     txt_SPW1->setText(QString::number(rigdef->SPW[1]) );
     txt_SPW2->setText(QString::number(rigdef->SPW[2]) );
     txt_SPW3->setText(QString::number(rigdef->SPW[3]) );
@@ -83,8 +83,8 @@ CFormRigDef::CFormRigDef( QWidget* parent, CRigDef * rigptr )
     lbl_MRkD->setText(QString::number(rigdef->MRakeD) );
 
     spinBox_SPNB->setValue(rigdef->SPNB);
-    
-    // variable changes triggering a check 
+
+    // variable changes triggering a check
     txt_HAD->setText(QString::number(rigdef->HAD) );
     txt_BAD->setText(QString::number(rigdef->BAD) );
 
@@ -106,7 +106,7 @@ void CFormRigDef::accept()
  *  language.
  */
 void CFormRigDef::languageChange()
-{   /* FIXME use proper labels 
+{   /* FIXME use proper labels
     lbl_RigID->setText( tr("Rig identification") );
     lbl_foreJ->setText( tr("Fore triangle base") );
     lbl_foreI->setText( tr("Fore triangle height") );
@@ -153,18 +153,18 @@ void CFormRigDef::slotChanged()
 }
 
 
-/** Check all dimensions entered in order to 
+/** Check all dimensions entered in order to
  *  make sure that the rig is possible and reasonable.
- *  This will also trigger ancillary data computation 
+ *  This will also trigger ancillary data computation
  *  for mainsail luff parameters.
  */
 bool CFormRigDef::check()
-{ 
+{
     long I = 1, J = 1, L1 = 1, L2 = 1;
     bool flag = true;
- 
+
     unsigned int j, n;
-    
+
     QString txt;
     ///  create four palettes
     QPalette palStd, palHi, palLo, palRel;
@@ -175,7 +175,7 @@ bool CFormRigDef::check()
     palRel.setColor( QPalette::Text, Qt::blue );  // related value to be checked
 
     //  start collecting data
-    ///  check the rig ID text 
+    ///  check the rig ID text
     txt = txt_RigID->text();
     txt = txt.simplified();
     if (txt.length() > 40)
@@ -191,7 +191,7 @@ bool CFormRigDef::check()
         txt_RigID->setText(QString(txt));
     }
     rigdef->rigID = txt.toStdString();
-    
+
     /// checking fore triangle
     rigdef->foreI = txt_foreI->text().toDouble();
     if (rigdef->foreI < 100) // height too small
@@ -203,11 +203,11 @@ bool CFormRigDef::check()
         return flag;
     }
     else
-    {   
+    {
         txt_foreI->setPalette(palStd);
         txt_foreI->setText(QString::number(rigdef->foreI));
     }
-    
+
     rigdef->foreJ = txt_foreJ->text().toDouble();
     I = (long)(rigdef->foreI);
     J = (long)(rigdef->foreJ);
@@ -236,11 +236,11 @@ bool CFormRigDef::check()
         txt_foreI->setText(QString::number(rigdef->foreI));
         txt_foreJ->setText(QString::number(rigdef->foreJ));
     }
-    
+
     /// checking mast height
     rigdef->MHeight = txt_MH->text().toDouble();
     L1 = (long)(rigdef->MHeight);
-    
+
     if ( L1 < I )
     {
         flag = false;
@@ -263,9 +263,9 @@ bool CFormRigDef::check()
         txt_MH->setPalette(palStd);
     }
     txt_MH->setText(QString::number(rigdef->MHeight));
-    
+
     L1 = (long)(rigdef->MHeight);
-    
+
     /// checking mast cord
     rigdef->MCord = txt_MC->text().toDouble();
     if (rigdef->MCord > (L1 / 10))
@@ -285,7 +285,7 @@ bool CFormRigDef::check()
         txt_MC->setPalette(palStd);
     }
     txt_MC->setText(QString::number(rigdef->MCord));
-    
+
     /// checking mast width
     rigdef->MWidth = txt_MW->text().toDouble();
     if (rigdef->MWidth > rigdef->MCord)
@@ -308,7 +308,7 @@ bool CFormRigDef::check()
         txt_MW->setPalette(palStd);
     }
     txt_MW->setText(QString::number(rigdef->MWidth));
-    
+
     /// checking mast rake
     rigdef->MRakeM = txt_MRkM->text().toDouble();
     if ( rigdef->MRakeM > L1 / 5)
@@ -317,28 +317,28 @@ bool CFormRigDef::check()
         rigdef->MRakeM = floor( L1 / 5 );
         txt_MH->setPalette(palRel);
         txt_MRkM->setPalette(palHi);
-    } 
+    }
     else if ( rigdef->MRakeM < -L1 / 5)
     {
         flag = false;
         rigdef->MRakeM = -floor( L1 / 5 );
         txt_MH->setPalette(palRel);
         txt_MRkM->setPalette(palLo);
-    } 
+    }
     else
     {
         txt_MH->setPalette(palStd);
-        txt_MRkM->setPalette(palStd); 
+        txt_MRkM->setPalette(palStd);
     }
     txt_MRkM->setText(QString::number(rigdef->MRakeM));
-    
+
     /// computing mast rake in degree
     rigdef->MRakeD = atan2(rigdef->MRakeM ,rigdef->MHeight) * (180 / PI);
     lbl_MRkD->setText(QString::number(rigdef->MRakeD));
-    
+
     /// computing mast base distance to stem
     rigdef->MBase = rigdef->foreJ - rigdef->MRakeM * (rigdef->foreI / rigdef->MHeight);
-    
+
     /// checking mast round
     rigdef->MRnd = txt_MRnd->text().toDouble();
     rigdef->MRndPos = spinBox_MRndPos->value();
@@ -348,15 +348,15 @@ bool CFormRigDef::check()
         rigdef->MRnd = floor( L1/10 );
         txt_MRnd->setPalette(palHi);
         txt_MRnd->setPalette(palHi);
-    } 
+    }
     else
     {
         txt_MH->setPalette(palStd);
-        txt_MRnd->setPalette(palStd); 
+        txt_MRnd->setPalette(palStd);
     }
     txt_MRnd->setText(QString::number(rigdef->MRnd));
-    
-    /// checking mainsail tack height 
+
+    /// checking mainsail tack height
     rigdef->BAD = txt_BAD->text().toDouble();
     if (rigdef->BAD < 0 )
     {
@@ -370,11 +370,11 @@ bool CFormRigDef::check()
         rigdef->BAD = int(L1 / 2);
         txt_BAD->setPalette(palHi);
         txt_MH->setPalette(palRel);
-    } 
+    }
     else
     {
         txt_BAD->setPalette(palStd);
-        txt_MH->setPalette(palStd); 
+        txt_MH->setPalette(palStd);
     }
     txt_BAD->setText(QString::number(rigdef->BAD));
 
@@ -393,12 +393,12 @@ bool CFormRigDef::check()
         rigdef->HAD = L1;
         txt_HAD->setPalette(palHi);
         txt_MH->setPalette(palRel);
-    } 
+    }
     else
     {
         txt_HAD->setPalette(palStd);
         txt_BAD->setPalette(palStd);
-        txt_MH->setPalette(palStd); 
+        txt_MH->setPalette(palStd);
     }
     txt_HAD->setText(QString::number(rigdef->HAD));
 
@@ -409,12 +409,12 @@ bool CFormRigDef::check()
 
     CVector3d MSluff = CVector3d(rigdef->MShead - rigdef->MStack);
 
-    // compute mainsail luff round and its position 
+    // compute mainsail luff round and its position
     CPoint3d p1, p2;
     real h=0, rd1 = 0, rd2 = 0;
     unsigned int rdPos = 49;
     j = 5;
-    do 
+    do
     {
         j++;
         p1 = rigdef->MStack + MSluff*(real( j ) / 50);
@@ -430,9 +430,9 @@ bool CFormRigDef::check()
     while ( rd1 == rd2 && j < 45);
 
     // display mainsail data
-    lbl_MS_TackX->setText( QString::number( int(round(rigdef->MStack.x()) ) ) ); 
+    lbl_MS_TackX->setText( QString::number( int(round(rigdef->MStack.x()) ) ) );
     lbl_MS_TackY->setText( QString::number( int(rigdef->MStack.y()) ));
-    
+
     lbl_MS_LuffL->setText( QString::number( int(round(MSluff.norm()) ) ) );
     lbl_MS_Rake->setText( QString::number( int(round(MSluff.x()) ) ) );
 
@@ -442,10 +442,10 @@ bool CFormRigDef::check()
     /// reading number of spreaders
     rigdef->SPNB = spinBox_SPNB->value();
     n = rigdef->SPNB;
-    
+
     /// checking shrouds height and shroud base width
     rigdef->CSH = txt_CSH->text().toDouble();
-    
+
     if ( rigdef->CSH > L1) // cap shroud above mast head
     {
         flag = false;
@@ -469,9 +469,9 @@ bool CFormRigDef::check()
         txt_CSH->setPalette(palStd);
     }
     txt_CSH->setText( QString::number(rigdef->CSH) );
-    
+
     rigdef->LSB = txt_LSB->text().toDouble();
-    
+
     if ( rigdef->LSB < rigdef->CSH / ( 10 * (1 + real(n)) ) )
     {
         flag = false;
@@ -486,15 +486,15 @@ bool CFormRigDef::check()
         txt_CSH->setPalette(palRel);
         rigdef->LSB = floor( rigdef->CSH / (2 + real(n)) );
     }
-    else 
+    else
     {
         txt_CSH->setPalette(palStd);
         txt_LSB->setPalette(palStd);
     }
     txt_LSB->setText( QString::number(rigdef->LSB) );
-    
+
     rigdef->CSB = txt_CSB->text().toDouble();
-    
+
     if ( n == 0 )
     {
         rigdef->CSB = rigdef->LSB;
@@ -519,30 +519,31 @@ bool CFormRigDef::check()
         txt_LSB->setPalette(palStd);
     }
     txt_CSB->setText( QString::number(rigdef->CSB) );
-    
-    /// checking spreaders 
+
+    /// checking spreaders
     rigdef->SPH[0] = 0;
     rigdef->SPW[0] = rigdef->LSB;
-        
+
     rigdef->SPH[1] = txt_SPH1->text().toDouble();
     rigdef->SPH[2] = txt_SPH2->text().toDouble();
     rigdef->SPH[3] = txt_SPH3->text().toDouble();
-        
+
     rigdef->SPW[1] = txt_SPW1->text().toDouble();
     rigdef->SPW[2] = txt_SPW2->text().toDouble();
     rigdef->SPW[3] = txt_SPW3->text().toDouble();
-    
+
     if ( n < 1 )
-    {   // no spreaders then reset to base of shrouds
-        for ( j = 1; j < 4; j++ )
+    {
+        // no spreaders then reset to base of shrouds
+        for (j = 1; j < 4; j++)
         {
             rigdef->SPH[j] = rigdef->SPH[0];
-            rigdef->SPW[j] = rigdef->SPW[0]; 
+            rigdef->SPW[j] = rigdef->SPW[0];
         }
         txt_SPH1->setText( QString::number(rigdef->SPH[1]) );
         txt_SPH2->setText( QString::number(rigdef->SPH[2]) );
         txt_SPH3->setText( QString::number(rigdef->SPH[3]) );
-        
+
         txt_SPW1->setText( QString::number(rigdef->SPW[1]) );
         txt_SPW2->setText( QString::number(rigdef->SPW[2]) );
         txt_SPW3->setText( QString::number(rigdef->SPW[3]) );
@@ -563,15 +564,15 @@ bool CFormRigDef::check()
             txt_SPH1->setPalette(palHi);
             rigdef->SPH[1] = floor( rigdef->CSH / (0.5 + real(n)) );
         }
-        else 
+        else
         {
             txt_CSH->setPalette(palStd);
             txt_SPH1->setPalette(palStd);
         }
         txt_SPH1->setText( QString::number(rigdef->SPH[1]) );
-    
+
         L2 = (long) (rigdef->CSH - rigdef->SPH[1]);
-    
+
         if ( n > 1 )
         {
             if ( rigdef->SPH[2] < ( rigdef->SPH[1] + L2 / (1 + real(n)) ) )
@@ -588,15 +589,15 @@ bool CFormRigDef::check()
                 txt_SPH2->setPalette(palHi);
                 rigdef->SPH[2] = floor(rigdef->SPH[1] + L2 /(real(n) -.5) );
             }
-            else 
+            else
             {
                 txt_SPH1->setPalette(palStd);
                 txt_SPH2->setPalette(palStd);
             }
             txt_SPH2->setText( QString::number(rigdef->SPH[2]) );
-    
+
             L2 = (long)(rigdef->CSH - rigdef->SPH[2]);
-            
+
             if ( n > 2 )
             {
                 if ( rigdef->SPH[3] < ( rigdef->SPH[2] + L2 / real(n) ) )
@@ -613,7 +614,7 @@ bool CFormRigDef::check()
                     txt_SPH3->setPalette(palHi);
                     rigdef->SPH[3] = floor( rigdef->CSH + L2/(real(n) -1.5) );
                 }
-                else 
+                else
                 {
                     txt_SPH2->setPalette(palStd);
                     txt_SPH3->setPalette(palStd);
