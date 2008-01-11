@@ -24,7 +24,9 @@
 #include "panelgroup.h"
 #include <fstream>
 
-/** A class for writing to Carlson files.
+/** A class for writing to Carlson plotter files.
+ *
+ * @ingroup FileIo
  */
 class CSailCarlsonWriter : public CFileWriter<CPanelGroup>
 {

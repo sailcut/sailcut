@@ -25,8 +25,9 @@
 
 
 /** This class holds the parameters that define a hull
- *  and the default parameters.
+ *  and their default values.
  *
+ * @ingroup SailCpp
  * @see CHullWorker
  */
 class CHullDef

@@ -25,6 +25,8 @@
 
 
 /** A class used to output a CPanelGroup to a TXT file.
+ *
+ * @ingroup FileIo
  */
 class CSailTxtWriter : public CFileWriter<CPanelGroup>
 {

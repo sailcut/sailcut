@@ -25,6 +25,8 @@ enum subspaceflags_t { GEOCPP_FROM_BASE, GEOCPP_FROM_EQS };
 
 /** Class for describing subspaces of an euclidian vector space,
  *  for example the empty space, points, lines and planes.
+ *
+ * @ingroup GeoCpp
  */
 class CSubSpace
 {

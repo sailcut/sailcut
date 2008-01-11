@@ -27,6 +27,7 @@
 /** This class holds the parameters that define a rig
  *  and the default parameters.
  *
+ * @ingroup SailCpp
  * @see CRigWorker
  */
 class CRigDef

@@ -22,6 +22,13 @@
 
 #include <geocpp/geocpp.h>
 
+/** @defgroup SailCpp Sail computations library
+ *
+ * SailCpp is the library that performs all the plotting calculations.
+ * It provides classes for generating sails, hulls, rigs and boats from
+ * their definitions.
+ */
+
 /* computation of parabolic edge round */
 real RoundP( const real &x, const int &p );
 /* computation of angle of triangle defined by 3 sides */

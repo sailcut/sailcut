@@ -64,16 +64,17 @@ public:
 
 
 /** Generic three dimensional real-valued vector.
+ *
+ * @ingroup GeoCpp
  */
 class CVector3d : public CVector
 {
 public:
     // construction & destruction
     CVector3d(const CVector& v);
-
-    /** Column matrix to vector conversion. */
     CVector3d(const CMatrix& m);
-    /** Constructor .*/
+
+    /** Constructor. */
     CVector3d(const real &x = 0, const real &y = 0, const real &z = 0)
     {
         m_dim = 3;
@@ -101,8 +102,7 @@ public:
     }
 
     // 3D only!
-    /** Cross product, produces a vector orthogonal
-     *  to the two original vectors. */
+
     CVector3d cross(const CVector3d &) const;
     /** Assignment. */
     CVector3d &operator=(const CVector3d &v)
@@ -119,11 +119,15 @@ typedef CVector2d CPoint2d;
 
 
 /** 3d real-valued point
+ *
+ * @ingroup GeoCpp
  */
 typedef CVector3d CPoint3d;
 
 
-/** 3D box.
+/** Three dimensional box.
+ *
+ * @ingroup GeoCpp
  */
 class CRect3d
 {

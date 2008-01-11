@@ -27,6 +27,7 @@ using namespace std;
 
 /** Class used to work on sail profiles.
  *
+ * @ingroup SailCpp
  * @see CSailMould
  */
 class CProfile

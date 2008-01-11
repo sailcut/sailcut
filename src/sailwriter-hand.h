@@ -25,6 +25,8 @@
 /** This class allows you to write a developed sail by using
  *  the deviation of the edge from the straight line instead
  *  of using absolute coordinates to a TXT file.
+ *
+ * @ingroup FileIo
  */
 class CSailHandWriter : public CSailTxtWriter
 {
