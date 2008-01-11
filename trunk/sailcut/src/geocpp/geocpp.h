@@ -19,6 +19,13 @@
 #ifndef GEOCPP_GEOCPP_H
 #define GEOCPP_GEOCPP_H
 
+/** @defgroup GeoCpp Linear algebra library
+ *
+ * GeoCpp is a small linear algebra library that can be used
+ * as a basis for geometry computations.
+ *
+ * @relates SailCpp
+ */
 #include <geocpp/geometry.h>
 #include <geocpp/matrix.h>
 #include <geocpp/subspace.h>

@@ -26,6 +26,8 @@ enum soltype_t { NONE, ONE, INF };
 class CSubSpace;
 
 /** Class for describing matrices.
+ *
+ * @ingroup GeoCpp
  */
 class CMatrix
 {

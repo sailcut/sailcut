@@ -27,6 +27,7 @@
 /** The CRigWorker class does all the rig-related calculations.
  *  It is used to create the rig from its definition.
  *
+ * @ingroup SailCpp
  * @see CRigDef, CPanelGroup
  */
 class CRigWorker : public CRigDef

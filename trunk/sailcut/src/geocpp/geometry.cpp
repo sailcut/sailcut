@@ -1,4 +1,4 @@
-/*
+  /*
  * Copyright (C) 2002-2006 Jeremy Laine
  *
  * This program is free software; you can redistribute it and/or modify
@@ -69,7 +69,8 @@ CVector3d::CVector3d(const CMatrix &m)
 {}
 
 
-/** Cross product.
+/** Cross product. Produces a vector orthogonal
+ *  to the two original vectors.
  */
 CVector3d CVector3d::cross(const CVector3d &v) const
 {

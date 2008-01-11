@@ -26,6 +26,8 @@ enum enumPanelGroupType { SAIL, RIG, HULL };
 
 /** This class holds a collection of panels, for instance to represent
  *  a 3D or a developed sail.
+ *
+ * @ingroup SailCpp
  */
 class CPanelGroup : public vector<CPanel>
 {

@@ -44,6 +44,8 @@ public:
 
 
 /** A class used to write a CPanelGroup to a simple 2D DXF file.
+ *
+ * @ingroup FileIo
  */
 class CSailDxfWriter2d : public CSailDxfWriter
 {
@@ -62,6 +64,8 @@ public:
 
 
 /** A class used to write a CPanelGroup to a 2D DXF file with one block per panel.
+ *
+ * @ingroup FileIo
  */
 class CSailDxfWriter2dBlocks : public CSailDxfWriter2d
 {
@@ -78,6 +82,8 @@ public:
 
 
 /** A class used to write a CPanelGroup to a 3D DXF file.
+ *
+ * @ingroup FileIo
  */
 class CSailDxfWriter3d : public CSailDxfWriter
 {

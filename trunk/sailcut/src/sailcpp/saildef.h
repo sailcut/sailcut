@@ -30,10 +30,12 @@ enum enumSailType { MAINSAIL, JIB, WING };
 enum enumSailCut { CROSS, TWIST, HORIZONTAL, VERTICAL, RADIAL, MITRE };
 
 
-/** This class holds the parameters that define a sail
- *  and the default parameters
+/** The CSailDef class holds the parameters that define a sail
+ *  and their default values.
  *
- *  @see CFormSailDef for data input and checking, CSailWorker
+ * @ingroup SailCpp
+ * @see CFormSailDef for data input and checking
+ * @see CSailWorker
  */
 class CSailDef
 {

@@ -28,8 +28,8 @@ typedef enum { SAILDEF, HULLDEF, RIGDEF, PANELGROUP } enumBoatElementType;
  * A boat element. This class extends a CPanelGroup with information
  *  about how to integrate it into a boat.
  *
- * @see CPanelGroup
- * @see CBoatDef
+ * @ingroup SailCpp
+ * @see CBoatDef, CPanelGroup
  */
 class CBoatElement : public CPanelGroup
 {

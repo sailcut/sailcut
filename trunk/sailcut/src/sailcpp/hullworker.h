@@ -27,6 +27,7 @@
 /** The CHullWorker class does all the hull-related calculations.
  *  It is used to create the hull from its definition.
  *
+ * @ingroup SailCpp
  * @see CHullDef, CPanelGroup
  */
 class CHullWorker : public CHullDef

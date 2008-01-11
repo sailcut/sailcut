@@ -76,7 +76,9 @@ public:
  
 *****************************************************************************/
 
-/** This class describes a side of a panel
+/** The CSide class describes a side of a panel. It is a collection of points.
+ *
+ * @ingroup SailCpp
  */
 class CSide : public vector<CPoint3d>
 {
@@ -120,7 +122,13 @@ public:
  
 *****************************************************************************/
 
-/** This class holds a sail panel
+/** The CPanel describes a sail panel.
+ *
+ *  A panel has at least four sides: top, bottom, left and right.
+ *  A developed panel also has four additional sides representing
+ *  the edge of the cloth.
+ *
+ * @ingroup SailCpp
  */
 class CPanel
 {

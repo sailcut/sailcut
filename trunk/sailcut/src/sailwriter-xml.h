@@ -27,6 +27,7 @@
 /** This class allows you to write sailcut objects to
  *  an XML file.
  *
+ *  @ingroup FileIo
  *  @see CPanelGroupXmlWriter
  *  @see CSailDefXmlWriter
  */

@@ -24,6 +24,8 @@
 #include "panelgroup.h"
 
 /** A class used to output a CPanelGroup to an SVG file.
+ *
+ * @ingroup FileIo
  */
 class CSailSvgWriter : public CFileWriter<CPanelGroup>
 {

@@ -28,7 +28,12 @@
 #include "saildef.h"
 #include "prefs.h"
 
+/** @defgroup FileIo File input and output
+*/
+
 /** This class handles input and output to Sailcut XML documents.
+ *
+ * @ingroup FileIo
  */
 class CSailDoc : protected QDomDocument
 {
