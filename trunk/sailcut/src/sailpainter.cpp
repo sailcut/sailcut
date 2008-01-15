@@ -280,7 +280,7 @@ void CSailPainter::drawMarkers(const CPanel &currentPanel, bool is_last_panel)
 void CSailPainter::drawMarkers(const CPanelGroup &sail)
 {
     for (unsigned int i = 0; i < sail.size(); i++)
-        drawMarkers(sail[i], i == sail.size());
+        drawMarkers(sail[i], i == (sail.size() - 1));
 }
 
 /** Set the font size.
