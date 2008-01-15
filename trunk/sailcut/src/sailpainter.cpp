@@ -21,6 +21,8 @@
 #include "sailcalc.h"
 #include "panelgroup.h"
 
+#define MIN_DISTANCE 5
+
 QPolygonF& operator<<(QPolygonF &poly, const CPoint3d &p)
 {
     poly << QPointF(p.x(), - p.y());
@@ -218,11 +220,11 @@ void CSailPainter::drawMarkers(const CPanel &currentPanel, bool is_last_panel)
     real dx=0, dy=0;
 
     // top fwd corners
-    drawCoord(currentPanel.top[npt], 2*PI/3 );
+    drawCoord(currentPanel.top.front(), 2*PI/3 );
 
     // top  middle
     npt = int ( (currentPanel.top.size() -1) /2 );
-    if ( CVector3d(currentPanel.top[npt] - currentPanel.top.front()).norm() > 5 )
+    if ( CVector3d(currentPanel.top[npt] - currentPanel.top.front()).norm() > MIN_DISTANCE )
     {
         dx = CVector3d( currentPanel.top[npt] - currentPanel.top.front() ) * CVector3d( currentPanel.top.back() - currentPanel.top.front() ).unit();
         dy = Distance3d(currentPanel.top[npt] , currentPanel.top.front() , currentPanel.top.back() );
@@ -230,28 +232,25 @@ void CSailPainter::drawMarkers(const CPanel &currentPanel, bool is_last_panel)
     }
 
     // top aft corner
-    npt = currentPanel.top.size() -1;
-    if ( CVector3d(currentPanel.top[npt]-currentPanel.top[0]).norm() > 5 )
-        drawCoord(currentPanel.top[npt], PI/3);
+    if ( CVector3d(currentPanel.top.back() - currentPanel.top.front()).norm() > MIN_DISTANCE )
+        drawCoord(currentPanel.top.back(), PI/3);
 
     // right middle
     npt = (currentPanel.right.size() -1)/2;
     drawCoord(currentPanel.right[npt], 0);
 
     // bottom left corner
-    if ( CVector3d(currentPanel.top[0]-currentPanel.bottom[0]).norm() > 5 )
+    if ( CVector3d(currentPanel.left.back() - currentPanel.left.front()).norm() > MIN_DISTANCE )
     {
-        npt = 0;
-        drawCoord(currentPanel.bottom[npt], -2*PI/3);
+        drawCoord(currentPanel.left.front(), -2*PI/3);
 
         // mid left
         npt = (currentPanel.left.size() -1)/2;
         drawCoord(currentPanel.left[npt], PI);
+
+        // FIXME: what does this point represent?
         if ( is_last_panel )
-        {
-            npt = 1 +(currentPanel.left.size() -1)/2;
-            drawCoord(currentPanel.left[npt], 2*PI/3 );
-        }
+            drawCoord(currentPanel.left[npt+1], 2*PI/3 );
     }
 
     // bottom intermediate fwd
@@ -273,8 +272,7 @@ void CSailPainter::drawMarkers(const CPanel &currentPanel, bool is_last_panel)
     drawDelta(currentPanel.bottom[npt], CVector3d(dx, dy, 0), -3*PI/8 );
 
     // bottom aft corner
-    npt = currentPanel.bottom.size() -1;
-    drawCoord(currentPanel.bottom[npt], -PI/3);
+	drawCoord(currentPanel.bottom.back(), -PI/3);
 }
 
 void CSailPainter::drawMarkers(const CPanelGroup &sail)
