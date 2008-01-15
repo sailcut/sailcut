@@ -72,9 +72,6 @@ protected:
     /** display area for the 3d sail */
     CSailViewer *sailDisp;
 
-    /** the layout for the form */
-    //QGridLayout *layout;
-
 private:
     bool showSliders;
 };
