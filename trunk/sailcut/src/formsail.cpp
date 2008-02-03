@@ -349,7 +349,7 @@ void CFormSail::slotPrintDev()
         // try printing
         QPrinter myprinter;
         // set landscape printing
-        myprinter.setOrientation(QPrinter::Landscape);
+        myprinter.setOrientation(QPrinter::Portrait);
         myprinter.setFullPage(FALSE);
 
         QPrintDialog printDialog(&myprinter, this);
