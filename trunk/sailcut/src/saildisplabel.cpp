@@ -80,11 +80,11 @@ void CSailDispLabel::paintEvent( QPaintEvent * )
     {
         painter.setFontSize(8, zoom);
         painter.drawLabels(dispObject);
-        /* // draw markers on edges
+        /*/ draw markers on edges for test purpose
         painter.setFontSize(10, zoom/10);
         painter.drawMarkers(dispObject);
         */
-     }
+    }
    //
     painter.end();
 }
