@@ -281,6 +281,7 @@ void CSailPrinter::printSailDevel(const CPanelGroup &flatsail)
         painter.draw(flatsail[i]);
         if (showLabels)
             painter.drawLabels(flatsail[i]);
+        
         painter.drawMarkers(flatsail[i], i == (flatsail.size() - 1));
 
         // mark corners of cloth rectangle
