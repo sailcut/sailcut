@@ -58,9 +58,9 @@ void CSailPrinter::init(unsigned int fontsize)
     painter.setFont(QFont("times", fontsize));
     showLabels = true;
 
-    // half inch margin on top and left
+    // half inch margin on left quarter inch on top
     xPos = painter.device()->logicalDpiX() / 2;
-    yPos = painter.device()->logicalDpiY() / 2;
+    yPos = painter.device()->logicalDpiY() / 4;
 }
 
 /** Print a header banner (used at the top of a for example).
@@ -76,7 +76,7 @@ real CSailPrinter::printHeader(const QString title)
     // draw box around header
     painter.drawRect(int(xPos), int(yPos - fm.height()), fm.width(btitle), int(1.5*fm.height()));
 
-    yPos += 2 * fm.height();
+    yPos += 1.5 * fm.height();
     return yPos;
 }
 
@@ -107,7 +107,7 @@ real CSailPrinter::printDataSection(const QString title)
     yPos += 0.5 * fm.height();
     painter.drawText(int(xPos), int(yPos), title);
 
-    yPos += 1.1 * fm.height();
+    yPos += 1 * fm.height();
     return yPos;
 }
 
@@ -133,7 +133,7 @@ real CSailPrinter::printDataLine(const QString title, const QString data0, const
     painter.drawText(x3, int(yPos), data1);
     painter.drawText(x4, int(yPos), data2);
 
-    yPos += 1.1 * fm.height();
+    yPos += .8 * fm.height();
     return yPos;
 }
 
