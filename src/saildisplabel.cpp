@@ -71,7 +71,6 @@ void CSailDispLabel::paintEvent( QPaintEvent * )
 
     // set coordinate system to match the logical viewport
     painter.setWindow(getLogicalRect());
-    painter.setFontSize(10, zoom);
 
     // draw the sail
     painter.draw(dispObject);
@@ -79,8 +78,14 @@ void CSailDispLabel::paintEvent( QPaintEvent * )
     // optionally draw labels
     if (drawLabels)
     {
+        painter.setFontSize(8, zoom);
         painter.drawLabels(dispObject);
-    }
+        /* // draw markers on edges
+        painter.setFontSize(10, zoom/10);
+        painter.drawMarkers(dispObject);
+        */
+     }
+   //
     painter.end();
 }
 
