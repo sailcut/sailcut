@@ -223,7 +223,7 @@ void CSailPainter::drawLabels(const CPanelGroup &sail)
         drawLabels(sail.child[i]);
 }
 
-void CSailPainter::drawMarkers(const CPanel &currentPanel, bool is_last_panel)
+void CSailPainter::drawMarkers(const CPanel &currentPanel)
 {
     unsigned int npt = 0;
     real dx=0, dy=0;
@@ -290,7 +290,7 @@ void CSailPainter::drawMarkers(const CPanel &currentPanel, bool is_last_panel)
 void CSailPainter::drawMarkers(const CPanelGroup &sail)
 {
     for (unsigned int i = 0; i < sail.size(); i++)
-        drawMarkers(sail[i], i == (sail.size() - 1));
+        drawMarkers(sail[i]);
 }
 
 /** Set the font size.

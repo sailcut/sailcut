@@ -52,7 +52,7 @@ public:
     void drawTextCentered(const CPoint3d &p, const QStringList &lst);
     void drawLabels(const CPanel &panel);
     void drawLabels(const CPanelGroup &sail);
-    void drawMarkers(const CPanel &panel, bool is_last_panel);
+    void drawMarkers(const CPanel &panel);
     void drawMarkers(const CPanelGroup &sail);
 
     void setFontSize(const real size, const real zoom);
