@@ -6,7 +6,7 @@ MINGW = i586-mingw32msvc
 STRIP = $(MINGW)-strip
 QTDIR=/usr/$(MINGW)/share/qt4
 
-VERSION := $(shell cat configure.in | grep AM_INIT_AUTOMAKE | sed -e 's/.*,\([0-9a-zA-Z\.]*\).*/\1/')
+VERSION := $(shell cat configure.in | grep AC_INIT | sed -e 's/.*, \([0-9a-zA-Z\.]*\).*/\1/')
 BIN_DOCS = README COPYING ChangeLog
 
 win32_configure= ../configure
