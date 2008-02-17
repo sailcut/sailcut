@@ -2,7 +2,7 @@
 
 STRIP = strip
 
-VERSION := $(shell cat configure.in | grep AM_INIT_AUTOMAKE | sed -e 's/.*,\([0-9a-zA-Z\.]*\).*/\1/')
+VERSION := $(shell cat configure.in | grep AC_INIT | sed -e 's/.*, \([0-9a-zA-Z\.]*\).*/\1/')
 
 mac_configure= ../configure
 mac_builddir = mac-build
