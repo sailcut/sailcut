@@ -349,12 +349,13 @@ void CFormSail::slotPrintDev()
         // try printing
         QPrinter myprinter;
         // set landscape printing
-        myprinter.setOrientation(QPrinter::Portrait);
+        myprinter.setOrientation(QPrinter::Landscape);
         myprinter.setFullPage(FALSE);
 
         QPrintDialog printDialog(&myprinter, this);
         if ( printDialog.exec() == QDialog::Accepted )
         {
+            cout << "slotPrintDev() orientation: " << myprinter.orientation() << endl;
             CSailPrinter p(&myprinter);
             p.printSailDevel(flatsail);
         }
@@ -382,6 +383,7 @@ void CFormSail::slotPrintDwg()
         QPrintDialog printDialog(&myprinter, this);
         if ( printDialog.exec() == QDialog::Accepted )
         {
+            cout << "slotPrintDwg() orientation: " << myprinter.orientation() << endl;
             CSailPrinter p(&myprinter);
             p.printSailDrawing(sail);
         }
