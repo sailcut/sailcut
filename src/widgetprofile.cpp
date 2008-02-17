@@ -142,7 +142,7 @@ CWidgetProfile::CWidgetProfile( QWidget *parent, CProfile *ptr,
     spinBoxesLayout->addWidget( lblLuff );
 
     spinLuff = new QSpinBox( grpProfile );
-    spinLuff->setMaximum( 16 );
+    spinLuff->setMaximum( 18 );
     spinLuff->setMinimum( 1 );
     spinLuff->setValue( 1 );
     spinBoxesLayout->addWidget( spinLuff );
@@ -155,7 +155,7 @@ CWidgetProfile::CWidgetProfile( QWidget *parent, CProfile *ptr,
     spinBoxesLayout->addWidget( lblDepth );
 
     spinDepth = new QSpinBox( grpProfile );
-    spinDepth->setMaximum( 20 );
+    spinDepth->setMaximum( 22 );
     spinDepth->setMinimum( 1 );
     spinDepth->setValue( 10 );
     spinBoxesLayout->addWidget( spinDepth );
@@ -171,7 +171,7 @@ CWidgetProfile::CWidgetProfile( QWidget *parent, CProfile *ptr,
 
     spinLeech = new QSpinBox( grpProfile );
     spinLeech->setMinimum( -4 );
-    spinLeech->setMaximum( 14 );
+    spinLeech->setMaximum( 20 );
     spinBoxesLayout->addWidget( spinLeech );
 
     grpProfileLayout->addLayout( spinBoxesLayout, 1, 0 );
