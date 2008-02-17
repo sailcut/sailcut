@@ -281,8 +281,8 @@ void CSailPrinter::printSailDevel(const CPanelGroup &flatsail)
         painter.draw(flatsail[i]);
         if (showLabels)
             painter.drawLabels(flatsail[i]);
-        
-        painter.drawMarkers(flatsail[i], i == (flatsail.size() - 1));
+
+        painter.drawMarkers(flatsail[i]);
 
         // mark corners of cloth rectangle
         QPen oldpen = painter.pen();
