@@ -12,7 +12,7 @@ BIN_DOCS = README COPYING ChangeLog
 win32_configure= ../configure
 win32_builddir = win32-build
 win32_distdir = sailcut-$(VERSION)-win32
-win32_qtlibs = mingwm10.dll QtCore4.dll QtGui4.dll QtOpenGL4.dll QtXml4.dll
+win32_qtlibs = mingwm10.dll QtCore4.dll QtGui4.dll QtOpenGL4.dll QtSvg4.dll QtXml4.dll
 win32_nsi = sailcut.nsi
 
 win32-dist: win32-zip win32-installer win32-clean
