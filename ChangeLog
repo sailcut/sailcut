@@ -1,5 +1,6 @@
 Sailcut CAD 1.3.2
  * added - export sail to SVG vector graphics format
+ * improved - doubled the width of seams between horizontal sections in radial layout
  * improved - Dutch translation by Stephan Paternote
  * improved - increased range for mould depth and shaping coefficients
  * improved - key points printing format
