@@ -1583,10 +1583,12 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
     leechCatenary[h] = clew;
 
     /** Now we cut the radial panels
-    *  Panels are oriented with lower and upper edge on vertical catenary
+    *  Panels are oriented with lower and upper edges on vertical catenary
     *  Bottom side is on luff side and top side is on leech side
     *  Left side is at the top of each section
-    *  p1 p2 are the end point of bottom side with p1 = top of horizontal section
+    *  p1 p2 are the end point of bottom side with 
+    *  p1 = top of horizontal section, p2 = bottom of horizontal section
+    *  The seams between sections are twice the normal seam width
     */
     npanel = 0;
     ng1 = 0;  // initialise number of central panels
@@ -1595,7 +1597,9 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
     for (h = nbSections; h > 0; h--)
     {
         nps[h] = 0;  // counter of panels in current section
-        /** Cutting the luff side panels */
+        /** Cutting the luff side panels 
+         *  which are left of the catenary separating the vertical zones
+         */
         for (j = 1; j <= ngLuff; j++)
         {
             if ( j == 1 )
@@ -1641,18 +1645,25 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
 
 
             // We add the seams and hems allowance
-            if ( h == nbSections  &&  j == 1 )
-                dev[npanel].addHems(hemsW, seamW, 0, hemsW);
+            if ( h == nbSections )
+            { 
+                if ( j == 1 )
+                    dev[npanel].addHems(hemsW, seamW, 0, hemsW);
+                else
+                    dev[npanel].addHems(hemsW, seamW, 0, 0);                
+            }
             else if ( j == 1 )
-                dev[npanel].addHems(seamW, seamW, 0, hemsW);
+                dev[npanel].addHems(2*seamW, seamW, 0, hemsW);
             else
-                dev[npanel].addHems(seamW, seamW, 0, 0);
+                dev[npanel].addHems(2*seamW, seamW, 0, 0);
 
             nps[h]++;
             npanel++;
         }
 
-        /** Cutting the middle panels */
+        /** Cutting the middle panels 
+         *  which are between the vertical catenaries luff and leech sides
+         */
         if ( h > 1 )
         {
             ng1++;  // we add one more central panel than section above
@@ -1717,7 +1728,7 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
                 if ( h == nbSections )
                     dev[npanel].addHems(hemsW, seamW, 0, 0);
                 else
-                    dev[npanel].addHems(seamW, seamW, 0, 0);
+                    dev[npanel].addHems(2*seamW, seamW, 0, 0);
 
                 nps[h]++;
                 npanel++;
@@ -1748,7 +1759,7 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
                 dev[npanel] = lay[npanel].develop(ALIGN_TOP);
 
                 // We add the seams allowance
-                dev[npanel].addHems(seamW, seamW, 0, 0);
+                dev[npanel].addHems(2*seamW, seamW, 0, 0);
 
                 nps[h]++;
                 npanel++;
@@ -1851,7 +1862,7 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
                 dev[npanel] = lay[npanel].develop(ALIGN_TOP);
 
                 // We add the seams allowance
-                dev[npanel].addHems(seamW, seamW, 0, 0);
+                dev[npanel].addHems(2*seamW, seamW, 0, 0);
 
                 nps[h]++;
                 npanel++;
@@ -1897,12 +1908,16 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
             dev[npanel] = lay[npanel].develop(ALIGN_TOP);
 
             // We add the seams and hems allowance
-            if ( h == nbSections  &&  j == nbGores-ngLuff-1)
-                dev[npanel].addHems(hemsW, leechHemW, 0, 0);
+            if ( h == nbSections )
+            {   if ( j == nbGores - ngLuff -1 )
+                    dev[npanel].addHems(hemsW, leechHemW, 0, 0);
+                else
+                    dev[npanel].addHems(hemsW, seamW, 0, 0);
+            }
             else if (j == nbGores - ngLuff -1)
-                dev[npanel].addHems(seamW, leechHemW, 0, 0);
+                dev[npanel].addHems(2*seamW, leechHemW, 0, 0);
             else
-                dev[npanel].addHems(seamW, seamW, 0, 0);
+                dev[npanel].addHems(2*seamW, seamW, 0, 0);
 
             nps[h]++;
             npanel++;
