@@ -247,6 +247,8 @@
 
 <para>La figure <xref linkend="fig.sail_seams"/> donne la position des réservations pour couture et ourlets. Sailcut CAD va calculer la position des coutures pour que les laizes utilisent au maximum la largeur du tissus, sauf dans la coupe radiale ou la largeur des laizes dépend du nombre de fuseaux. </para>
 
+<para>Notez que dans la coupe radiale, la largeur des coutures entre sections horizontales est le double de la largeur des coutures entre panneaux adjacent d'une section.</para>
+
 <para>
 <figure id="fig.sail_seams">
 <title>Définition des coutures et ourlets dans Sailcut</title>
@@ -328,6 +330,10 @@
 
 <listitem>
 <para>Fichier texte ASCII ordinaire de toutes les laizes avec l'entrée <guimenuitem>voile TXT</guimenuitem> (voir <xref linkend="s.format_text_sail"/> pour les détails du format du fichier).</para>
+</listitem>
+
+<listitem>
+<para>Fichier SVG (Scalable Vector Graphics) avec l'entrée <guimenuitem>SVG</guimenuitem>.</para>
 </listitem>
 
 </itemizedlist>
