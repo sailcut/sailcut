@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1">
+<!DOCTYPE TS><TS version="1.1" language="en_GB">
 <context>
     <name>CBoatElementWidget</name>
     <message>
@@ -10,27 +10,27 @@
     <message>
         <location filename="../boatdef-panel.cpp" line="145"/>
         <source>file</source>
-        <translation type="unfinished">файл</translation>
+        <translation>файл</translation>
     </message>
     <message>
         <location filename="../boatdef-panel.cpp" line="146"/>
         <source>name</source>
-        <translation type="unfinished">Имя</translation>
+        <translation>Имя</translation>
     </message>
     <message>
         <location filename="../boatdef-panel.cpp" line="147"/>
         <source>Reload</source>
-        <translation type="unfinished">Перезагрузить</translation>
+        <translation>Перезагрузить</translation>
     </message>
     <message>
         <location filename="../boatdef-panel.cpp" line="148"/>
         <source>Remove</source>
-        <translation type="unfinished">Удалить</translation>
+        <translation>Удалить</translation>
     </message>
     <message>
         <location filename="../boatdef-panel.cpp" line="149"/>
         <source>Update</source>
-        <translation type="unfinished">Обновить</translation>
+        <translation>Обновить</translation>
     </message>
     <message>
         <location filename="../boatdef-panel.cpp" line="144"/>
@@ -62,13 +62,12 @@
     <message>
         <location filename="../filewriter.h" line="129"/>
         <source>There was an error writing to the selected file.</source>
-        <translation>Ошибка записи в выбранный файл
-</translation>
+        <translation>Ошибка записи в выбранный файл.</translation>
     </message>
     <message>
         <location filename="../filewriter.h" line="66"/>
         <source>Open</source>
-        <translation type="unfinished">Открыть</translation>
+        <translation>Открыть</translation>
     </message>
     <message>
         <location filename="../filewriter.h" line="88"/>
@@ -78,30 +77,30 @@
     <message>
         <location filename="../filewriter.h" line="105"/>
         <source>Save</source>
-        <translation type="unfinished">Сохранить</translation>
+        <translation>Сохранить</translation>
     </message>
 </context>
 <context>
     <name>CFormBoat</name>
     <message>
-        <location filename="../formboat.cpp" line="95"/>
+        <location filename="../formboat.cpp" line="104"/>
         <source>boat</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../formboat.cpp" line="96"/>
+        <location filename="../formboat.cpp" line="105"/>
         <source>&amp;Add</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../formboat.cpp" line="97"/>
+        <location filename="../formboat.cpp" line="106"/>
         <source>file</source>
-        <translation type="unfinished">файл</translation>
+        <translation>файл</translation>
     </message>
     <message>
-        <location filename="../formboat.cpp" line="158"/>
+        <location filename="../formboat.cpp" line="167"/>
         <source>Open</source>
-        <translation type="unfinished">Открыть</translation>
+        <translation>Открыть</translation>
     </message>
 </context>
 <context>
@@ -295,13 +294,13 @@
     <message>
         <location filename="../formhulldefbase.ui" line="1781"/>
         <source>OK</source>
-        <translation type="unfinished">ОК
+        <translation>ОК
 </translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="1788"/>
         <source>Cancel</source>
-        <translation type="unfinished">Отмена</translation>
+        <translation>Отмена</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="1817"/>
@@ -369,8 +368,7 @@
     <message>
         <location filename="../formmain.cpp" line="131"/>
         <source>&amp;New</source>
-        <translation>Новый 
-</translation>
+        <translation>Новый </translation>
     </message>
     <message>
         <location filename="../formmain.cpp" line="136"/>
@@ -518,7 +516,7 @@
         <translation type="obsolete">Раскрой панелей</translation>
     </message>
     <message>
-        <location filename="../formmain.cpp" line="205"/>
+        <location filename="../formmain.cpp" line="215"/>
         <source>loaded &apos;%1&apos;</source>
         <translation>Загружен &apos;%1&apos;</translation>
     </message>
@@ -528,12 +526,12 @@
         <translation type="obsolete">Создан новый парус</translation>
     </message>
     <message>
-        <location filename="../formmain.cpp" line="319"/>
+        <location filename="../formmain.cpp" line="334"/>
         <source>About Sailcut CAD</source>
         <translation>О программе Sailcut CAD</translation>
     </message>
     <message>
-        <location filename="../formmain.cpp" line="208"/>
+        <location filename="../formmain.cpp" line="220"/>
         <source>error loading &apos;%1&apos;</source>
         <translation>Ошибка загрузки &apos;%1&apos;</translation>
     </message>
@@ -813,7 +811,7 @@
         <translation type="obsolete">Ошибка печати панелей в сборе</translation>
     </message>
     <message>
-        <location filename="../formmain.cpp" line="480"/>
+        <location filename="../formmain.cpp" line="504"/>
         <source>wrote &apos;%1&apos;</source>
         <translation>Записан &apos;%1&apos;</translation>
     </message>
@@ -860,7 +858,7 @@
     <message>
         <location filename="../formmain.cpp" line="149"/>
         <source>&amp;Close</source>
-        <translation type="unfinished">Закрыть</translation>
+        <translation>Закрыть</translation>
     </message>
     <message>
         <location filename="../formmain.cpp" line="150"/>
@@ -878,14 +876,14 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../formmain.cpp" line="197"/>
+        <location filename="../formmain.cpp" line="207"/>
         <source>unknown document type &apos;%1&apos;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../formmain.cpp" line="437"/>
+        <location filename="../formmain.cpp" line="461"/>
         <source>Open</source>
-        <translation type="unfinished">Открыть</translation>
+        <translation>Открыть</translation>
     </message>
 </context>
 <context>
@@ -1009,12 +1007,12 @@
     <message>
         <location filename="../formrig.cpp" line="59"/>
         <source>rig</source>
-        <translation type="unfinished"></translation>
+        <translation>Парусное вооружение</translation>
     </message>
     <message>
         <location filename="../formrig.cpp" line="60"/>
         <source>&amp;Dimensions</source>
-        <translation type="unfinished">Размеры </translation>
+        <translation>Размеры </translation>
     </message>
 </context>
 <context>
@@ -1027,12 +1025,12 @@
     <message>
         <location filename="../formrigdefbase.ui" line="53"/>
         <source>Cancel</source>
-        <translation type="unfinished">Отмена</translation>
+        <translation>Отмена</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="68"/>
         <source>OK</source>
-        <translation type="unfinished">ОК
+        <translation>ОК
 </translation>
     </message>
     <message>
@@ -1368,12 +1366,12 @@
     <message>
         <location filename="../formrigdefbase.ui" line="1288"/>
         <source>Luff length </source>
-        <translation type="unfinished"></translation>
+        <translation>Длина передней шкаторины</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1309"/>
         <source>Luff round</source>
-        <translation type="unfinished"></translation>
+        <translation>Выпуклость передней шкаторины</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1333"/>
@@ -1444,99 +1442,104 @@
 <context>
     <name>CFormSail</name>
     <message>
-        <location filename="../formsail.cpp" line="69"/>
+        <location filename="../formsail.cpp" line="73"/>
         <source>sail</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../formsail.cpp" line="72"/>
+        <location filename="../formsail.cpp" line="76"/>
         <source>&amp;Print</source>
-        <translation type="unfinished">Печатать </translation>
+        <translation>Печатать </translation>
     </message>
     <message>
-        <location filename="../formsail.cpp" line="73"/>
+        <location filename="../formsail.cpp" line="77"/>
         <source>data</source>
-        <translation type="unfinished">Данные</translation>
-    </message>
-    <message>
-        <location filename="../formsail.cpp" line="74"/>
-        <source>drawing</source>
-        <translation type="unfinished">Панели в сборе</translation>
-    </message>
-    <message>
-        <location filename="../formsail.cpp" line="99"/>
-        <source>development</source>
-        <translation type="unfinished">Раскрой панелей</translation>
+        <translation>Данные</translation>
     </message>
     <message>
         <location filename="../formsail.cpp" line="78"/>
+        <source>drawing</source>
+        <translation>Панели в сборе</translation>
+    </message>
+    <message>
+        <location filename="../formsail.cpp" line="106"/>
+        <source>development</source>
+        <translation>Раскрой панелей</translation>
+    </message>
+    <message>
+        <location filename="../formsail.cpp" line="82"/>
         <source>E&amp;xport 3D sail</source>
-        <translation type="unfinished">Экспорт 3D паруса</translation>
-    </message>
-    <message>
-        <location filename="../formsail.cpp" line="86"/>
-        <source>to &amp;DXF</source>
-        <translation type="unfinished">в DXF формат</translation>
-    </message>
-    <message>
-        <location filename="../formsail.cpp" line="89"/>
-        <source>to &amp;TXT sail</source>
-        <translation type="unfinished">в TXT формат</translation>
-    </message>
-    <message>
-        <location filename="../formsail.cpp" line="90"/>
-        <source>to &amp;XML sail</source>
-        <translation type="unfinished">в XML формат</translation>
-    </message>
-    <message>
-        <location filename="../formsail.cpp" line="84"/>
-        <source>Export &amp;development</source>
-        <translation type="unfinished">Экспорт панелей</translation>
-    </message>
-    <message>
-        <location filename="../formsail.cpp" line="85"/>
-        <source>to &amp;Carlson plotter</source>
-        <translation type="unfinished">в Carlson плоттер</translation>
-    </message>
-    <message>
-        <location filename="../formsail.cpp" line="88"/>
-        <source>to &amp;Hand-plotting format</source>
-        <translation type="unfinished">в форматдля ручного черчения</translation>
+        <translation>Экспорт 3D паруса</translation>
     </message>
     <message>
         <location filename="../formsail.cpp" line="93"/>
-        <source>&amp;Dimensions</source>
-        <translation type="unfinished">Размеры </translation>
+        <source>to &amp;DXF</source>
+        <translation>в DXF формат</translation>
     </message>
     <message>
-        <location filename="../formsail.cpp" line="94"/>
-        <source>&amp;Mould</source>
-        <translation type="unfinished">Профили</translation>
+        <location filename="../formsail.cpp" line="96"/>
+        <source>to &amp;TXT sail</source>
+        <translation>в TXT формат</translation>
+    </message>
+    <message>
+        <location filename="../formsail.cpp" line="97"/>
+        <source>to &amp;XML sail</source>
+        <translation>в XML формат</translation>
+    </message>
+    <message>
+        <location filename="../formsail.cpp" line="91"/>
+        <source>Export &amp;development</source>
+        <translation>Экспорт панелей</translation>
+    </message>
+    <message>
+        <location filename="../formsail.cpp" line="92"/>
+        <source>to &amp;Carlson plotter</source>
+        <translation>в Carlson плоттер</translation>
     </message>
     <message>
         <location filename="../formsail.cpp" line="95"/>
+        <source>to &amp;Hand-plotting format</source>
+        <translation>в форматдля ручного черчения</translation>
+    </message>
+    <message>
+        <location filename="../formsail.cpp" line="100"/>
+        <source>&amp;Dimensions</source>
+        <translation>Размеры </translation>
+    </message>
+    <message>
+        <location filename="../formsail.cpp" line="101"/>
+        <source>&amp;Mould</source>
+        <translation>Профили</translation>
+    </message>
+    <message>
+        <location filename="../formsail.cpp" line="102"/>
         <source>&amp;Patches</source>
-        <translation type="unfinished">Накладки </translation>
+        <translation>Накладки </translation>
     </message>
     <message>
-        <location filename="../formsail.cpp" line="365"/>
+        <location filename="../formsail.cpp" line="393"/>
         <source>error</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../formsail.cpp" line="312"/>
+        <location filename="../formsail.cpp" line="336"/>
         <source>There was a data printing error</source>
-        <translation type="unfinished">Ошибка печати данных</translation>
-    </message>
-    <message>
-        <location filename="../formsail.cpp" line="339"/>
-        <source>There was a development printing error</source>
-        <translation type="unfinished">ошибка  печати панелей</translation>
+        <translation>Ошибка печати данных</translation>
     </message>
     <message>
         <location filename="../formsail.cpp" line="365"/>
+        <source>There was a development printing error</source>
+        <translation>ошибка  печати панелей</translation>
+    </message>
+    <message>
+        <location filename="../formsail.cpp" line="393"/>
         <source>There was a drawing printing error</source>
-        <translation type="unfinished">Ошибка печати панелей в сборе</translation>
+        <translation>Ошибка печати панелей в сборе</translation>
+    </message>
+    <message>
+        <location filename="../formsail.cpp" line="85"/>
+        <source>to &amp;SVG</source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1569,7 +1572,7 @@
     <message>
         <location filename="../formsaildef.cpp" line="1099"/>
         <source>Sail width measurements </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1854,7 +1857,7 @@
     <message>
         <location filename="../formsaildefbase.ui" line="692"/>
         <source>m2</source>
-        <translation>м.кв.</translation>
+        <translation>кв.м</translation>
     </message>
     <message>
         <location filename="../formsaildefbase.ui" line="31"/>
@@ -1916,267 +1919,267 @@
 <context>
     <name>CSailPrinter</name>
     <message>
-        <location filename="../sailprinter.cpp" line="150"/>
+        <location filename="../sailprinter.cpp" line="152"/>
         <source>Sailcut CAD data sheet</source>
         <translation>Таблица данных Sailcut CAD</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="156"/>
+        <location filename="../sailprinter.cpp" line="158"/>
         <source>Mainsail</source>
         <translation>Грот</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="159"/>
+        <location filename="../sailprinter.cpp" line="161"/>
         <source>Jib</source>
         <translation>Стаксель</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="162"/>
+        <location filename="../sailprinter.cpp" line="164"/>
         <source>Wing</source>
         <translation>Крыло</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="162"/>
+        <location filename="../sailprinter.cpp" line="164"/>
         <source>deg</source>
-        <translation type="unfinished"></translation>
+        <translation>градус</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="165"/>
+        <location filename="../sailprinter.cpp" line="167"/>
         <source>Sail type</source>
         <translation>Тип паруса</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="171"/>
+        <location filename="../sailprinter.cpp" line="173"/>
         <source>Cross Cut</source>
         <translation>Поперечный крой</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="174"/>
+        <location filename="../sailprinter.cpp" line="176"/>
         <source>Horizontal Cut</source>
         <translation>Горизонтальный крой</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="177"/>
+        <location filename="../sailprinter.cpp" line="179"/>
         <source>Radial Cut</source>
         <translation>Радиальный крой</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="178"/>
-        <source>sections</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sailprinter.cpp" line="179"/>
-        <source>head gores</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sailprinter.cpp" line="180"/>
-        <source>luff gores</source>
-        <translation type="unfinished"></translation>
+        <source>sections</source>
+        <translation>Секции</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="183"/>
+        <location filename="../sailprinter.cpp" line="181"/>
+        <source>head gores</source>
+        <translation>Клинья верхней части паруса</translation>
+    </message>
+    <message>
+        <location filename="../sailprinter.cpp" line="182"/>
+        <source>luff gores</source>
+        <translation>Клинья передней шкаторины</translation>
+    </message>
+    <message>
+        <location filename="../sailprinter.cpp" line="185"/>
         <source>Twist Foot Cut</source>
         <translation>Поперечный крой , параллельный краю нижней шкаторины</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="186"/>
+        <location filename="../sailprinter.cpp" line="188"/>
         <source>Vertical Cut</source>
         <translation>Вертикальный крой</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="189"/>
+        <location filename="../sailprinter.cpp" line="191"/>
         <source>Mitre Cut</source>
         <translation>Крой под  45 градусов</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="192"/>
+        <location filename="../sailprinter.cpp" line="194"/>
         <source>Sail layout</source>
         <translation>Макет паруса</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="195"/>
+        <location filename="../sailprinter.cpp" line="197"/>
         <source>Rig</source>
         <translation>Парусное вооружение</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="196"/>
+        <location filename="../sailprinter.cpp" line="198"/>
         <source>Boat LOA</source>
         <translation>Габаритный размер лодки</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="197"/>
+        <location filename="../sailprinter.cpp" line="199"/>
         <source>Mast/Luff rake</source>
         <translation>Наклон мачты/штага</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="198"/>
+        <location filename="../sailprinter.cpp" line="200"/>
         <source>Tack position X</source>
         <translation>Положение галсового угла X</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="199"/>
+        <location filename="../sailprinter.cpp" line="201"/>
         <source>Tack height Y</source>
         <translation>Высота галсового угла Y</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="200"/>
+        <location filename="../sailprinter.cpp" line="202"/>
         <source>Fore triangle hoist I</source>
         <translation>Высота  крепления штага на мачте от палубы, величина L</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="201"/>
+        <location filename="../sailprinter.cpp" line="203"/>
         <source>Fore triangle base J</source>
         <translation>Проекция штага на палубу, величина J</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="204"/>
+        <location filename="../sailprinter.cpp" line="206"/>
         <source>Sail dimensions</source>
-        <translation type="unfinished"></translation>
+        <translation>Размеры паруса</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="205"/>
+        <location filename="../sailprinter.cpp" line="207"/>
         <source>Luff length</source>
         <translation>Длина передней шкаторины</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="206"/>
+        <location filename="../sailprinter.cpp" line="208"/>
         <source>Foot length</source>
         <translation>Длина нижней шкаторины</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="207"/>
+        <location filename="../sailprinter.cpp" line="209"/>
         <source>Leech length</source>
         <translation>Длина задней шкаторины</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="208"/>
+        <location filename="../sailprinter.cpp" line="210"/>
         <source>Gaff length</source>
-        <translation type="unfinished"></translation>
+        <translation>Длина гафеля</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="209"/>
+        <location filename="../sailprinter.cpp" line="211"/>
         <source>Gaff angle wrt luff</source>
         <translation>Угол наклона верхней шкаторины гафеля относительно передней шкаторины</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="212"/>
+        <location filename="../sailprinter.cpp" line="214"/>
         <source>Shape of edges</source>
         <translation>Форма краев</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="213"/>
+        <location filename="../sailprinter.cpp" line="215"/>
         <source>Luff round</source>
-        <translation type="unfinished"></translation>
+        <translation>Выпуклость передней шкаторины</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="214"/>
+        <location filename="../sailprinter.cpp" line="216"/>
         <source>Luff round position</source>
         <translation>Положение выпуклости передней шкаторины</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="215"/>
+        <location filename="../sailprinter.cpp" line="217"/>
         <source>Foot round</source>
         <translation>Выпуклость нижней шкаторины</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="216"/>
+        <location filename="../sailprinter.cpp" line="218"/>
         <source>Foot round position</source>
         <translation>Положение выпуклости нижней шкаторины</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="217"/>
+        <location filename="../sailprinter.cpp" line="219"/>
         <source>Leech round</source>
-        <translation type="unfinished"></translation>
+        <translation>Выпуклость задней шкаторины</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="218"/>
+        <location filename="../sailprinter.cpp" line="220"/>
         <source>Leech round position</source>
         <translation>Положение выпуклости задней шкаторины</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="219"/>
+        <location filename="../sailprinter.cpp" line="221"/>
         <source>Gaff round</source>
         <translation>Выпуклость верхней шкаторины гафеля</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="220"/>
+        <location filename="../sailprinter.cpp" line="222"/>
         <source>Gaff round position</source>
         <translation>Положение выпуклости верхней шкаторины гафеля</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="223"/>
+        <location filename="../sailprinter.cpp" line="225"/>
         <source>Sail settings</source>
         <translation>Настройки паруса</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="224"/>
+        <location filename="../sailprinter.cpp" line="226"/>
         <source>Twist angle</source>
-        <translation type="unfinished"></translation>
+        <translation>угол твиста</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="225"/>
+        <location filename="../sailprinter.cpp" line="227"/>
         <source>Sheeting angle</source>
-        <translation type="unfinished"></translation>
+        <translation>Угол между диаметральной плоскостью лодки и линией, соединяющей галсовый и шкотовый углы паруса</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="228"/>
+        <location filename="../sailprinter.cpp" line="230"/>
         <source>Cloth seams and hems</source>
         <translation>Ширина швов ткани и подгиба</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="229"/>
+        <location filename="../sailprinter.cpp" line="231"/>
         <source>Cloth width</source>
         <translation>Ширина ткани</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="230"/>
+        <location filename="../sailprinter.cpp" line="232"/>
         <source>Seams width</source>
         <translation>Ширина шва</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="231"/>
+        <location filename="../sailprinter.cpp" line="233"/>
         <source>Leech hem width</source>
         <translation>Ширина подгиба задней шкаторины</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="232"/>
+        <location filename="../sailprinter.cpp" line="234"/>
         <source>Other hem width</source>
         <translation>Ширина других подгибов</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="235"/>
+        <location filename="../sailprinter.cpp" line="237"/>
         <source>Sail mould</source>
         <translation>Профиль паруса</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="236"/>
+        <location filename="../sailprinter.cpp" line="238"/>
         <source>Luff factor</source>
         <translation>Фактор передней шкаторины</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="236"/>
+        <location filename="../sailprinter.cpp" line="238"/>
         <source>Depth</source>
         <translation>Глубина</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="236"/>
+        <location filename="../sailprinter.cpp" line="238"/>
         <source>Leech factor</source>
         <translation>Фактор задней шкаторины</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="238"/>
+        <location filename="../sailprinter.cpp" line="240"/>
         <source>Top profile</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="244"/>
+        <location filename="../sailprinter.cpp" line="246"/>
         <source>Mid profile at h = </source>
         <translation>Профиль средней части на h=</translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="250"/>
+        <location filename="../sailprinter.cpp" line="252"/>
         <source>Bottom profile</source>
         <translation>Профиль нижней части</translation>
     </message>
@@ -2234,43 +2237,43 @@
     <message>
         <location filename="../sailviewer-tabs.cpp" line="64"/>
         <source>shaded view</source>
-        <translation type="unfinished">Внешний вид</translation>
+        <translation>Внешний вид</translation>
     </message>
     <message>
         <location filename="../sailviewer-tabs.cpp" line="66"/>
         <source>wireframe view</source>
-        <translation type="unfinished"> В контурах</translation>
+        <translation> В контурах</translation>
     </message>
 </context>
 <context>
     <name>CWidgetProfile</name>
     <message>
-        <location filename="../widgetprofile.cpp" line="241"/>
+        <location filename="../widgetprofile.cpp" line="240"/>
         <source>Luff shape</source>
         <translation>Форма передней шкаторины</translation>
     </message>
     <message>
-        <location filename="../widgetprofile.cpp" line="242"/>
+        <location filename="../widgetprofile.cpp" line="241"/>
         <source>Depth</source>
         <translation>Глубина</translation>
     </message>
     <message>
-        <location filename="../widgetprofile.cpp" line="243"/>
+        <location filename="../widgetprofile.cpp" line="242"/>
         <source>%</source>
         <translation>%</translation>
     </message>
     <message>
-        <location filename="../widgetprofile.cpp" line="244"/>
+        <location filename="../widgetprofile.cpp" line="243"/>
         <source>Leech shape</source>
         <translation>Форма задней шкаторины</translation>
     </message>
     <message>
-        <location filename="../widgetprofile.cpp" line="248"/>
+        <location filename="../widgetprofile.cpp" line="247"/>
         <source>degrees</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgetprofile.cpp" line="247"/>
+        <location filename="../widgetprofile.cpp" line="246"/>
         <source>cord</source>
         <translation type="unfinished"></translation>
     </message>
