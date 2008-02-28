@@ -247,6 +247,8 @@
 
 <para><xref linkend="fig.sail_seams"/> describes the location of the various hems and seam width. Sailcut will compute the panels such that they fit within the declared cloth width including the seam and hems width as appropriate, except for a radial cut sail for which the width of each panels is computed from the number of radial panels entered. </para>
 
+<para>Note that when using the radial layout, the seam width between horizontal sections will be twice the width of the seams between adjacent panels of the same section.</para>
+
 <para>
 <figure id="fig.sail_seams">
 <title>Sailcut seams and hems definition </title>
@@ -358,6 +360,10 @@
 
 <listitem>
 <para>Plain ASCII text dump of the points using the <guimenuitem>to TXT sail</guimenuitem> menu entry (see <xref linkend="s.format_text_sail"/> for file format details). </para>
+</listitem>
+
+<listitem>
+<para>SVG (Scalable Vector Graphics) file using the <guimenuitem>to SVG</guimenuitem> menu entry. </para>
 </listitem>
 
 </itemizedlist>
