@@ -415,6 +415,10 @@ hems and seam width.</para>
 the declared cloth width including the seam and hems width as 
 appropriate.</para>
 
+<para>Note that when using the radial layout, the seam width 
+between horizontal sections will be twice the width of the seams 
+between adjacent panels of the same section.</para>
+
 <para>
 
 <figure id="fig.sail_seams">
@@ -599,44 +603,28 @@ favourite text editor.</para>
 
 <title>Exporting 3D sails</title>
 
-<para>On top of Sailcut CAD&apos;s native file format it is 
-possible to export the points of the edges of the panels that 
-make up a sail. You export the three dimensional sail to the 
-following file formats:</para>
+<para>In addition to Sailcut CAD&apos;s native file format, it is possible to export all the 3D points located on the edges and seams of the panels that make up a sail. You can export the three dimensional sail to the following file formats from the <guisubmenu>Export 3D sail</guisubmenu> submenu of the <guimenu>File</guimenu> menu:</para>
 
 <itemizedlist>
 
 <listitem>
-
-<para>AutoCAD DXF using File-&gt;Export 3D sail-&gt;to 
-DXF</para>
-
+<para>AutoCAD DXF file using the <guimenuitem>to DXF</guimenuitem> menu entry. </para>
 </listitem>
 
 <listitem>
-
-<para>AutoCAD DXF using File-&gt;Export 3D sail-&gt;to DXF 
-BLOCKS</para>
-
+<para>XML dump of the points using the <guimenuitem>to XML sail</guimenuitem> menu entry (see <xref linkend="s.format_xml_sail"/> for file format details). </para>
 </listitem>
 
 <listitem>
-
-<para>XML dump of the points using File-&gt;Export 3D 
-sail-&gt;to XML sail (see <xref linkend="s.format_xml_sail"/> 
-for file format details)</para>
-
+<para>Plain ASCII text dump of the points using the <guimenuitem>to TXT sail</guimenuitem> menu entry (see <xref linkend="s.format_text_sail"/> for file format details). </para>
 </listitem>
 
 <listitem>
-
-<para>plain text dump of the points using File-&gt;Export 3D 
-sail-&gt;to TXT sail (see <xref linkend="s.format_text_sail"/> 
-for file format details)</para>
-
+<para>SVG (Scalable Vector Graphics) file using the <guimenuitem>to SVG</guimenuitem> menu entry. </para>
 </listitem>
 
 </itemizedlist>
+
 
 </sect2>
 
