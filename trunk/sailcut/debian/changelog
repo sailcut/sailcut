@@ -1,3 +1,9 @@
+sailcut (1.3.2-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Jeremy Lainé <jeremy.laine@m4x.org>  Wed, 02 Apr 2008 20:00:47 +0200
+
 sailcut (1.3.1-2) unstable; urgency=low
 
   * Fix GCC 4.3 FTBFS due to missing includes (Closes: 455634).
