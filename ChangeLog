@@ -4,7 +4,7 @@ Sailcut CAD 1.3.2
  * improved - Dutch translation by Stephan Paternote
  * improved - increased range for mould depth and shaping coefficients
  * improved - key points printing format
- * fixed - undersized printing on MS Windows by Qt4.3.3
+ * fixed - undersized printing on Windows by using Qt 4.3.4
 
 Sailcut CAD 1.3.1
  * fixed - fix a crash on startup (seen on Linux 64-bit)
