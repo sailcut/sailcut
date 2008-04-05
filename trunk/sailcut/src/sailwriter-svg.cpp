@@ -37,9 +37,7 @@ void CSailSvgWriter::write(const CPanelGroup &sail, const QString &filename) con
     QSvgGenerator generator;
     generator.setFileName(filename);
 
-    CSailPrinter printer(&generator);
-    printer.setShowLabels(false);
-    printer.printSailDrawing(sail);
+    CDrawingPrinter(false).print(sail, &generator);
 #endif
 }
 

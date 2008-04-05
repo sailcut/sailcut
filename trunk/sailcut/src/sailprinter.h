@@ -42,7 +42,6 @@ public:
     real printDataLine(const QString title, const QString data0 = "", const QString data1 = "", const QString data2 = "");
     void printSailData(const CSailDef &saildef);
     void printSailDevel(const CPanelGroup &flatsail);
-    void printSailDrawing(const CPanelGroup &sail);
 
     void setShowLabels(bool show)
     {
@@ -67,11 +66,13 @@ protected:
 
 class CDrawingPrinter : public CPrinter<CPanelGroup>
 {
-  void print(const CPanelGroup &obj, QPaintDevice *pd) const
-  {
-    CSailPrinter p(pd);
-    p.printSailDrawing(obj);
-  }
+public:
+    CDrawingPrinter(bool show_labels = true) : showLabels(show_labels) {};
+    void print(const CPanelGroup &obj, QPaintDevice *pd) const;
+
+protected:
+    /** should the labels be printed? */
+    bool showLabels;
 };
 
 

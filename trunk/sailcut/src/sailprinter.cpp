@@ -300,8 +300,11 @@ void CSailPrinter::printSailDevel(const CPanelGroup &flatsail)
  *
  * @param sail
  */
-void CSailPrinter::printSailDrawing(const CPanelGroup &sail)
+void CDrawingPrinter::print(const CPanelGroup &sail, QPaintDevice *pd) const
 {
+    CSailPainter painter(pd);
+    painter.setFont(QFont("times", 10));
+
     // center the sail
     CPanelGroup printSail = sail + CVector3d( -sail.boundingRect().center() );
 
@@ -317,3 +320,5 @@ void CSailPrinter::printSailDrawing(const CPanelGroup &sail)
     if (showLabels)
         painter.drawLabels(printSail);
 }
+
+
