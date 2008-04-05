@@ -28,28 +28,32 @@ class CSailDef;
 class QPaintDevice;
 class QPrinter;
 
-/** A class for printing sails or sail data.
- */
-class CSailPrinter : public QObject
+class CTxtPainter : public CSailPainter
 {
 public:
-    CSailPrinter(QPaintDevice *pd, unsigned int fontsize = 10);
-
-    real printHeader(const QString title);
-    real printDataSection(const QString title);
-    real printDataLine(const QString title, const QString data0 = "", const QString data1 = "", const QString data2 = "");
-    void printSailData(const CSailDef &saildef);
+    CTxtPainter(QPaintDevice *pd);
+    void printHeader(const QString title);
+    void printDataSection(const QString title);
+    void printDataLine(const QString title, const QString data0 = "", const QString data1 = "", const QString data2 = "");
 
 protected:
-    /** painter to draw sail objects */
-    CSailPainter painter;
-    /** current X position when printing text */
     real xPos;
-    /** current Y position when printing text */
     real yPos;
 };
 
 
+/** A class for printing sail data.
+ */
+class CSailPrinter : public CPrinter<CSailDef>
+{
+public:
+    CSailPrinter() {};
+    void print(const CSailDef &saildef, QPaintDevice *pd) const;
+};
+
+
+/** A class for printing developped sail panels.
+ */
 class CDevelPrinter : public CPrinter<CPanelGroup>
 {
 public:
@@ -64,6 +68,8 @@ protected:
 };
 
 
+/** A class for printing a sail.
+ */
 class CDrawingPrinter : public CPrinter<CPanelGroup>
 {
 public:

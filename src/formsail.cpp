@@ -330,24 +330,7 @@ void CFormSail::slotMould()
  */
 void CFormSail::slotPrintData()
 {
-    // try printing
-    try
-    {
-        QPrinter myprinter;
-        myprinter.setOrientation(QPrinter::Portrait);
-        myprinter.setFullPage(FALSE);
-
-        QPrintDialog printDialog(&myprinter, this);
-        if ( printDialog.exec() == QDialog::Accepted )
-        {
-            CSailPrinter p(&myprinter);
-            p.printSailData(def);
-        }
-    }
-    catch (CException e)
-    {
-        QMessageBox::information(this, tr("error"), tr("There was a data printing error"));
-    }
+    CSailPrinter().printDialog(def, QPrinter::Portrait);
 }
 
 
