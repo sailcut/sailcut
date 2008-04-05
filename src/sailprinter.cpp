@@ -33,27 +33,7 @@
  * @param fontsize
  */
 CSailPrinter::CSailPrinter(QPaintDevice *pd, unsigned int fontsize)
-        : painter(pd), isPrinter(false)
-{
-    init(fontsize);
-}
-
-/** Construct a new CSailPrinter.
- *
- * @param printer
- * @param fontsize
- */
-CSailPrinter::CSailPrinter(QPrinter *printer, unsigned int fontsize)
-        : painter(printer), isPrinter(true)
-{
-    init(fontsize);
-}
-
-/** Initialise font size and cursor position.
- *
- * @param fontsize
- */
-void CSailPrinter::init(unsigned int fontsize)
+        : painter(pd)
 {
     painter.setFont(QFont("times", fontsize));
 
@@ -61,6 +41,7 @@ void CSailPrinter::init(unsigned int fontsize)
     xPos = painter.device()->logicalDpiX() / 2;
     yPos = painter.device()->logicalDpiY() / 4;
 }
+
 
 /** Print a header banner (used at the top of a for example).
  *
