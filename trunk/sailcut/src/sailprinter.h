@@ -33,7 +33,6 @@ class QPrinter;
 class CSailPrinter : public QObject
 {
 public:
-    CSailPrinter(QPrinter *printer, unsigned int fontsize = 10);
     CSailPrinter(QPaintDevice *pd, unsigned int fontsize = 10);
 
     real printHeader(const QString title);
@@ -42,16 +41,12 @@ public:
     void printSailData(const CSailDef &saildef);
 
 protected:
-    void init(unsigned int fontsize);
-
     /** painter to draw sail objects */
     CSailPainter painter;
     /** current X position when printing text */
     real xPos;
     /** current Y position when printing text */
     real yPos;
-    /** is the area we are writing to a QPrinter? */
-    bool isPrinter;
 };
 
 
