@@ -24,6 +24,7 @@ noinst_HEADERS =  \
 	formsail.h \
 	formsaildef.h \
 	prefs.h \
+	printer.h \
 	sailcutqt.h \
 	saildisp.h \
 	saildispgl.h \

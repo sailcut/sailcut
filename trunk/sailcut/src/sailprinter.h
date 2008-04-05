@@ -21,12 +21,12 @@
 #define SAILPRINTER_H
 
 #include "sailpainter.h"
+#include "printer.h"
 
 class CPanelGroup;
 class CSailDef;
 class QPaintDevice;
 class QPrinter;
-
 
 /** A class for printing sails or sail data.
  */
@@ -63,5 +63,16 @@ protected:
     /** should the labels be printed? */
     bool showLabels;
 };
+
+
+class CDrawingPrinter : public CPrinter<CPanelGroup>
+{
+  void print(const CPanelGroup &obj, QPaintDevice *pd) const
+  {
+    CSailPrinter p(pd);
+    p.printSailDrawing(obj);
+  }
+};
+
 
 #endif
