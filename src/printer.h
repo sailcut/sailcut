@@ -46,13 +46,13 @@ public:
      * @param obj the object to print
      * @param filename initial file name
      */
-    void printDialog(const objtype &obj) const
+    void printDialog(const objtype &obj, enum QPrinter::Orientation orientation) const
     {
         // try printing
         try
         {
             QPrinter myprinter;
-            myprinter.setOrientation(QPrinter::Portrait);
+            myprinter.setOrientation(orientation);
             myprinter.setFullPage(FALSE);
 
             QPrintDialog printDialog(&myprinter);
