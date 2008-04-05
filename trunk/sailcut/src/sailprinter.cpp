@@ -27,19 +27,12 @@
 #include "sailcalc.h"
 
 
-/** Construct a new CSailPrinter.
- *
- * @param pd
- * @param fontsize
- */
-CSailPrinter::CSailPrinter(QPaintDevice *pd, unsigned int fontsize)
-        : painter(pd)
+CTxtPainter::CTxtPainter(QPaintDevice *pd)
+    : CSailPainter(pd)
 {
-    painter.setFont(QFont("times", fontsize));
-
     // half inch margin on left quarter inch on top
-    xPos = painter.device()->logicalDpiX() / 2;
-    yPos = painter.device()->logicalDpiY() / 4;
+    xPos = pd->logicalDpiX() / 2;
+    yPos = pd->logicalDpiY() / 4;
 }
 
 
@@ -47,17 +40,16 @@ CSailPrinter::CSailPrinter(QPaintDevice *pd, unsigned int fontsize)
  *
  * @param title the title to print
  */
-real CSailPrinter::printHeader(const QString title)
+void CTxtPainter::printHeader(const QString title)
 {
-    QFontMetrics fm(painter.font());
+    QFontMetrics fm(font());
     QString btitle = "  " + title + "  ";
-    painter.drawText(int(xPos), int(yPos), btitle);
+    drawText(int(xPos), int(yPos), btitle);
 
     // draw box around header
-    painter.drawRect(int(xPos), int(yPos - fm.height()), fm.width(btitle), int(1.5*fm.height()));
+    drawRect(int(xPos), int(yPos - fm.height()), fm.width(btitle), int(1.5*fm.height()));
 
     yPos += 1.5 * fm.height();
-    return yPos;
 }
 
 
@@ -65,14 +57,13 @@ real CSailPrinter::printHeader(const QString title)
  *
  * @param title the title of the section
  */
-real CSailPrinter::printDataSection(const QString title)
+void CTxtPainter::printDataSection(const QString title)
 {
-    QFontMetrics fm(painter.font());
+    QFontMetrics fm(font());
     yPos += 0.5 * fm.height();
-    painter.drawText(int(xPos), int(yPos), title);
+    drawText(int(xPos), int(yPos), title);
 
     yPos += 1 * fm.height();
-    return yPos;
 }
 
 
@@ -83,22 +74,21 @@ real CSailPrinter::printDataSection(const QString title)
  * @param data1 second value
  * @param data2 third value
  */
-real CSailPrinter::printDataLine(const QString title, const QString data0, const QString data1, const QString data2)
+void CTxtPainter::printDataLine(const QString title, const QString data0, const QString data1, const QString data2)
 {
-    QFontMetrics fm(painter.font());
+    QFontMetrics fm(font());
 
     unsigned int x1 = int(xPos + 2  * fm.width("X"));
     unsigned int x2 = int(x1   + 26 * fm.width("X"));
     unsigned int x3 = int(x2   + 13 * fm.width("X"));
     unsigned int x4 = int(x3   + 13 * fm.width("X"));
 
-    painter.drawText(x1, int(yPos), title);
-    painter.drawText(x2, int(yPos), data0);
-    painter.drawText(x3, int(yPos), data1);
-    painter.drawText(x4, int(yPos), data2);
+    drawText(x1, int(yPos), title);
+    drawText(x2, int(yPos), data0);
+    drawText(x3, int(yPos), data1);
+    drawText(x4, int(yPos), data2);
 
     yPos += .8 * fm.height();
-    return yPos;
 }
 
 
@@ -107,13 +97,15 @@ real CSailPrinter::printDataLine(const QString title, const QString data0, const
  *
  * @param saildef
  */
-void CSailPrinter::printSailData(const CSailDef &saildef)
+void CSailPrinter::print(const CSailDef &saildef, QPaintDevice *pd) const
 {
     QString text2=" ", text3=" ";
+    CTxtPainter painter(pd);
+    painter.setFont(QFont("times", 10));
 
     // text of page header
     QString sailID = QString::fromStdString(saildef.sailID);
-    printHeader(tr("Sailcut CAD data sheet") + (( sailID.length() > 0 ) ? " - " + sailID : " "));
+    painter.printHeader(tr("Sailcut CAD data sheet") + (( sailID.length() > 0 ) ? " - " + sailID : " "));
 
     // sail cut and type
     switch (saildef.sailType )
@@ -128,7 +120,7 @@ void CSailPrinter::printSailData(const CSailDef &saildef)
         text2 = tr("Wing")+" @ " + QString::number(saildef.dihedralDeg) + tr("deg");
         break;
     }
-    printDataLine(tr("Sail type"), text2, " ");
+    painter.printDataLine(tr("Sail type"), text2, " ");
 
     text3 = " ";
     switch ( saildef.sailCut )
@@ -155,64 +147,64 @@ void CSailPrinter::printSailData(const CSailDef &saildef)
         text2 = tr("Mitre Cut");
         break;
     }
-    printDataLine(tr("Sail layout"), text2, text3);
+    painter.printDataLine(tr("Sail layout"), text2, text3);
 
     // boat data
-    printDataSection(tr("Rig"));
-    printDataLine(tr("Boat LOA"), QString::number(saildef.LOA), "mm");
-    printDataLine(tr("Mast/Luff rake"), QString::number(saildef.rake), "mm");
-    printDataLine(tr("Tack position X"), QString::number(saildef.tackX), "mm");
-    printDataLine(tr("Tack height Y"), QString::number(saildef.tackY), "mm");
-    printDataLine(tr("Fore triangle hoist I"), QString::number(saildef.foreI), "mm");
-    printDataLine(tr("Fore triangle base J"), QString::number(saildef.foreJ), "mm");
+    painter.printDataSection(tr("Rig"));
+    painter.printDataLine(tr("Boat LOA"), QString::number(saildef.LOA), "mm");
+    painter.printDataLine(tr("Mast/Luff rake"), QString::number(saildef.rake), "mm");
+    painter.printDataLine(tr("Tack position X"), QString::number(saildef.tackX), "mm");
+    painter.printDataLine(tr("Tack height Y"), QString::number(saildef.tackY), "mm");
+    painter.printDataLine(tr("Fore triangle hoist I"), QString::number(saildef.foreI), "mm");
+    painter.printDataLine(tr("Fore triangle base J"), QString::number(saildef.foreJ), "mm");
 
     // sides of the sail
-    printDataSection(tr("Sail dimensions"));
-    printDataLine(tr("Luff length"), QString::number(saildef.luffL), "mm");
-    printDataLine(tr("Foot length"), QString::number(saildef.footL), "mm");
-    printDataLine(tr("Leech length"), QString::number(saildef.leechL), "mm");
-    printDataLine(tr("Gaff length"), QString::number(saildef.gaffL), "mm");
-    printDataLine(tr("Gaff angle wrt luff"), QString::number(saildef.gaffDeg), "deg");
+    painter.printDataSection(tr("Sail dimensions"));
+    painter.printDataLine(tr("Luff length"), QString::number(saildef.luffL), "mm");
+    painter.printDataLine(tr("Foot length"), QString::number(saildef.footL), "mm");
+    painter.printDataLine(tr("Leech length"), QString::number(saildef.leechL), "mm");
+    painter.printDataLine(tr("Gaff length"), QString::number(saildef.gaffL), "mm");
+    painter.printDataLine(tr("Gaff angle wrt luff"), QString::number(saildef.gaffDeg), "deg");
 
     // shape of sides
-    printDataSection(tr("Shape of edges"));
-    printDataLine(tr("Luff round"), QString::number(saildef.luffR), "mm");
-    printDataLine(tr("Luff round position"), QString::number(saildef.footRP), "%");
-    printDataLine(tr("Foot round"), QString::number(saildef.footR), "mm");
-    printDataLine(tr("Foot round position"), QString::number(saildef.footRP), "%");
-    printDataLine(tr("Leech round"), QString::number(saildef.leechR), "mm");
-    printDataLine(tr("Leech round position"), QString::number(saildef.leechRP), "%");
-    printDataLine(tr("Gaff round"), QString::number(saildef.gaffR), "mm");
-    printDataLine(tr("Gaff round position"), QString::number(saildef.gaffRP), "%");
+    painter.printDataSection(tr("Shape of edges"));
+    painter.printDataLine(tr("Luff round"), QString::number(saildef.luffR), "mm");
+    painter.printDataLine(tr("Luff round position"), QString::number(saildef.footRP), "%");
+    painter.printDataLine(tr("Foot round"), QString::number(saildef.footR), "mm");
+    painter.printDataLine(tr("Foot round position"), QString::number(saildef.footRP), "%");
+    painter.printDataLine(tr("Leech round"), QString::number(saildef.leechR), "mm");
+    painter.printDataLine(tr("Leech round position"), QString::number(saildef.leechRP), "%");
+    painter.printDataLine(tr("Gaff round"), QString::number(saildef.gaffR), "mm");
+    painter.printDataLine(tr("Gaff round position"), QString::number(saildef.gaffRP), "%");
 
     // sail setting
-    printDataSection(tr("Sail settings"));
-    printDataLine(tr("Twist angle"), QString::number(saildef.twistDeg), "deg");
-    printDataLine(tr("Sheeting angle"), QString::number(saildef.sheetDeg), "deg");
+    painter.printDataSection(tr("Sail settings"));
+    painter.printDataLine(tr("Twist angle"), QString::number(saildef.twistDeg), "deg");
+    painter.printDataLine(tr("Sheeting angle"), QString::number(saildef.sheetDeg), "deg");
 
     // cloth width, seam and hems width
-    printDataSection(tr("Cloth seams and hems"));
-    printDataLine(tr("Cloth width"), QString::number(saildef.clothW), "mm");
-    printDataLine(tr("Seams width"), QString::number(saildef.seamW), "mm");
-    printDataLine(tr("Leech hem width"), QString::number(saildef.leechHemW), "mm");
-    printDataLine(tr("Other hem width"), QString::number(saildef.hemsW), "mm");
+    painter.printDataSection(tr("Cloth seams and hems"));
+    painter.printDataLine(tr("Cloth width"), QString::number(saildef.clothW), "mm");
+    painter.printDataLine(tr("Seams width"), QString::number(saildef.seamW), "mm");
+    painter.printDataLine(tr("Leech hem width"), QString::number(saildef.leechHemW), "mm");
+    painter.printDataLine(tr("Other hem width"), QString::number(saildef.hemsW), "mm");
 
     // sail mould
-    printDataSection(tr("Sail mould"));
-    printDataLine("", tr("Luff factor"), tr("Depth"), tr("Leech factor"));
-    printDataLine(
+    painter.printDataSection(tr("Sail mould"));
+    painter.printDataLine("", tr("Luff factor"), tr("Depth"), tr("Leech factor"));
+    painter.printDataLine(
         tr("Top profile"),
         QString::number( saildef.mould.profile[2].getLuff() ),
         QString::number( saildef.mould.profile[2].getDepth()*100 )+ "%",
         QString::number( saildef.mould.profile[2].getLeech()*50));
 
-    printDataLine(
+    painter.printDataLine(
         tr("Mid profile at h = ") + QString::number( saildef.mould.vertpos ) + "%",
         QString::number( saildef.mould.profile[1].getLuff() ),
         QString::number( saildef.mould.profile[1].getDepth()*100 )+"%",
         QString::number( saildef.mould.profile[1].getLeech()*50));
 
-    printDataLine(
+    painter.printDataLine(
         tr("Bottom profile"),
         QString::number( saildef.mould.profile[0].getLuff() ),
         QString::number( saildef.mould.profile[0].getDepth()*100 )+"%",
