@@ -385,26 +385,7 @@ void CFormSail::slotPrintDev()
  */
 void CFormSail::slotPrintDwg()
 {
-    // try printing
-    try
-    {
-        QPrinter myprinter;
-        // set landscape printing
-        myprinter.setOrientation(QPrinter::Portrait);
-        myprinter.setFullPage(FALSE);
-
-        QPrintDialog printDialog(&myprinter, this);
-        if ( printDialog.exec() == QDialog::Accepted )
-        {
-            cout << "slotPrintDwg() orientation: " << myprinter.orientation() << endl;
-            CSailPrinter p(&myprinter);
-            p.printSailDrawing(sail);
-        }
-    }
-    catch (CException e)
-    {
-        QMessageBox::information(this, tr("error"), tr("There was a drawing printing error"));
-    }
+    CDrawingPrinter().printDialog(sail);
 }
 
 
