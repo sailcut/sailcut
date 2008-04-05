@@ -36,17 +36,10 @@ public:
     CSailPrinter(QPrinter *printer, unsigned int fontsize = 10);
     CSailPrinter(QPaintDevice *pd, unsigned int fontsize = 10);
 
-    bool newPage();
     real printHeader(const QString title);
     real printDataSection(const QString title);
     real printDataLine(const QString title, const QString data0 = "", const QString data1 = "", const QString data2 = "");
     void printSailData(const CSailDef &saildef);
-    void printSailDevel(const CPanelGroup &flatsail);
-
-    void setShowLabels(bool show)
-    {
-        showLabels = show;
-    };
 
 protected:
     void init(unsigned int fontsize);
@@ -57,6 +50,18 @@ protected:
     real xPos;
     /** current Y position when printing text */
     real yPos;
+    /** is the area we are writing to a QPrinter? */
+    bool isPrinter;
+};
+
+
+class CDevelPrinter : public CPrinter<CPanelGroup>
+{
+public:
+    CDevelPrinter(bool is_printer = false, bool show_labels = true) : isPrinter(is_printer), showLabels(show_labels) {};
+    void print(const CPanelGroup &obj, QPaintDevice *pd) const;
+
+protected:
     /** is the area we are writing to a QPrinter? */
     bool isPrinter;
     /** should the labels be printed? */

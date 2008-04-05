@@ -56,7 +56,6 @@ CSailPrinter::CSailPrinter(QPrinter *printer, unsigned int fontsize)
 void CSailPrinter::init(unsigned int fontsize)
 {
     painter.setFont(QFont("times", fontsize));
-    showLabels = true;
 
     // half inch margin on left quarter inch on top
     xPos = painter.device()->logicalDpiX() / 2;
@@ -78,22 +77,6 @@ real CSailPrinter::printHeader(const QString title)
 
     yPos += 1.5 * fm.height();
     return yPos;
-}
-
-
-/** Start a new page.
- */
-bool CSailPrinter::newPage()
-{
-    if (isPrinter)
-    {
-        QPrinter *printer = (QPrinter*)painter.device();
-        return printer->newPage();
-    }
-    else
-    {
-        return true;
-    }
 }
 
 
@@ -260,8 +243,12 @@ void CSailPrinter::printSailData(const CSailDef &saildef)
  *
  * @param flatsail
  */
-void CSailPrinter::printSailDevel(const CPanelGroup &flatsail)
+void CDevelPrinter::print(const CPanelGroup &flatsail, QPaintDevice *pd) const
 {
+    QPrinter *printer = isPrinter ? (QPrinter *)pd : NULL;
+    CSailPainter painter(pd);
+    painter.setFont(QFont("times", 10));
+
     // calculate logical rectangle
     real zoom = 0.8;
     CRect3d flatrect = flatsail.boundingRect();
@@ -270,10 +257,9 @@ void CSailPrinter::printSailDevel(const CPanelGroup &flatsail)
     // print the panels out one by one
     for (unsigned int i = 0; i < flatsail.size(); i++)
     {
-        if ( i > 0 )
-        {
-            newPage();
-        }
+        if (( i > 0 ) && printer)
+          printer->newPage();
+
         // set coordinate system to match the logical viewport
         painter.setWindow(logicalRect);
         painter.setFontSize(10, zoom);
