@@ -69,7 +69,6 @@ BUILT_SOURCES = \
 	moc_formrigdef.cpp \
 	moc_formsail.cpp \
 	moc_formsaildef.cpp \
-	moc_sailprinter.cpp \
 	moc_sailtreemodel.cpp \
 	moc_sailviewer.cpp \
 	moc_sailviewer-panel.cpp \
