@@ -21,20 +21,42 @@
 #define FORMPRINT_H
 
 #include <QDialog>
+#include <QLabel>
 
-class QLabel;
-class QStatusBar;
+class CPrinter;
+
+
+/** A print preview label.
+ */
+class CPrintLabel : public QLabel
+{
+    Q_OBJECT
+
+public:
+    CPrintLabel(const CPrinter *printer);
+
+protected:
+    void paintEvent(QPaintEvent *event);
+
+    size_t page;
+    const CPrinter *printer;
+};
+
 
 /** A print preview dialog.
  */
 class CFormPrint : public QDialog
 {
-    Q_OBJECT
 public:
-    CFormPrint();
+    CFormPrint(const CPrinter *printer);
 
-    QLabel *label;
-    size_t page;
+protected:
+    /** display label */
+    CPrintLabel *label;
+    /** OK button */
+    QPushButton* buttonOk;
+    /** Cancel button */
+    QPushButton* buttonCancel;
 };
 
 #endif

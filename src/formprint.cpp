@@ -18,26 +18,58 @@
  */
 
 #include "formprint.h"
+#include "printer.h"
+#include "sailpainter.h"
 
-#include <QGridLayout>
-#include <QLabel>
-#include <QStatusBar>
+#include <QBoxLayout>
+#include <QPushButton>
+
+
+/** Construct a new print preview label.
+ */
+CPrintLabel::CPrintLabel(const CPrinter *prt)
+    : page(0), printer(prt)
+{
+    QPalette pal = palette();
+    pal.setColor( QPalette::Background, Qt::white );
+    setPalette( pal );
+}
+
+
+/** Print the current page.
+ */
+void CPrintLabel::paintEvent(QPaintEvent *)
+{
+    CTextPainter painter(this);
+    printer->print(&painter, page);
+}
 
 
 /** Construct a new print preview dialog.
  */
-CFormPrint::CFormPrint()
-    : page(0)
+CFormPrint::CFormPrint(const CPrinter *prt)
 {
     setMinimumSize( QSize( 300, 220 ) );
 
-    QGridLayout *layout = new QGridLayout(this);
+    QVBoxLayout *layout = new QVBoxLayout(this);
 
     // create main widget
-    label = new QLabel();
-    QPalette pal = palette();
-    pal.setColor( QPalette::Background, Qt::white );
-    label->setPalette( pal );
+    label = new CPrintLabel(prt);
     layout->addWidget(label);
+
+    // add the buttons 
+    QHBoxLayout* buttons= new QHBoxLayout();
+    buttons->addItem( new QSpacerItem( 20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum ) );
+    buttonOk = new QPushButton( tr("&OK"), this );
+    buttonOk->setDefault( TRUE );
+    buttons->addWidget( buttonOk );
+    buttonCancel = new QPushButton( tr("&Cancel"), this );
+    buttons->addWidget( buttonCancel );
+    layout->addLayout(buttons);
+
+    // signals and slots connections
+    connect( buttonOk, SIGNAL( clicked() ), this, SLOT( accept() ) );
+    connect( buttonCancel, SIGNAL( clicked() ), this, SLOT( reject() ) );
 }
+
 
