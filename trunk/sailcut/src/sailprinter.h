@@ -34,13 +34,9 @@ class QPrinter;
  */
 class CSailDataPrinter : public CPrinter
 {
-    Q_OBJECT
-
 public:
     CSailDataPrinter(const CSailDef &obj) : saildef(obj) {}; 
     size_t pages() const { return 1; };
-
-public slots:
     void print(CTextPainter *painter, size_t page) const;
 
 protected:
@@ -55,14 +51,10 @@ protected:
  */
 class CSailDevelPrinter : public CPrinter
 {
-    Q_OBJECT
-
 public:
     CSailDevelPrinter(const CPanelGroup &obj, bool show_labels = true)
         : flatsail(obj), showLabels(show_labels) {};
     size_t pages() const { return flatsail.size(); };
-
-public slots:
     void print(CTextPainter *painter, size_t page) const;
 
 protected:
@@ -79,14 +71,10 @@ protected:
  */
 class CSailDrawingPrinter : public CPrinter
 {
-    Q_OBJECT
-
 public:
     CSailDrawingPrinter(const CPanelGroup &obj, bool show_labels = true)
         : sail(obj), showLabels(show_labels) {};
     size_t pages() const { return 1; };
-
-public slots:
     void print(CTextPainter *painter, size_t page) const;
 
 protected:
