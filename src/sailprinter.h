@@ -23,10 +23,6 @@
 #include "saildef.h"
 #include "panelgroup.h"
 #include "sailpainter.h"
-//#include "printer.h"
-
-class QPaintDevice;
-class QPrinter;
 
 
 /** This is the base class used for printing.
