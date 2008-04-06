@@ -27,85 +27,20 @@
 #include "sailcalc.h"
 
 
-CTxtPainter::CTxtPainter(QPaintDevice *pd)
-    : CSailPainter(pd)
-{
-    // half inch margin on left quarter inch on top
-    xPos = pd->logicalDpiX() / 2;
-    yPos = pd->logicalDpiY() / 4;
-}
-
-
-/** Print a header banner (used at the top of a for example).
- *
- * @param title the title to print
- */
-void CTxtPainter::printHeader(const QString title)
-{
-    QFontMetrics fm(font());
-    QString btitle = "  " + title + "  ";
-    drawText(int(xPos), int(yPos), btitle);
-
-    // draw box around header
-    drawRect(int(xPos), int(yPos - fm.height()), fm.width(btitle), int(1.5*fm.height()));
-
-    yPos += 1.5 * fm.height();
-}
-
-
-/** Print a data section title.
- *
- * @param title the title of the section
- */
-void CTxtPainter::printDataSection(const QString title)
-{
-    QFontMetrics fm(font());
-    yPos += 0.5 * fm.height();
-    drawText(int(xPos), int(yPos), title);
-
-    yPos += 1 * fm.height();
-}
-
-
-/** Print a line of data.
- *
- * @param title the title for the current line of data
- * @param data0 first value
- * @param data1 second value
- * @param data2 third value
- */
-void CTxtPainter::printDataLine(const QString title, const QString data0, const QString data1, const QString data2)
-{
-    QFontMetrics fm(font());
-
-    unsigned int x1 = int(xPos + 2  * fm.width("X"));
-    unsigned int x2 = int(x1   + 26 * fm.width("X"));
-    unsigned int x3 = int(x2   + 13 * fm.width("X"));
-    unsigned int x4 = int(x3   + 13 * fm.width("X"));
-
-    drawText(x1, int(yPos), title);
-    drawText(x2, int(yPos), data0);
-    drawText(x3, int(yPos), data1);
-    drawText(x4, int(yPos), data2);
-
-    yPos += .8 * fm.height();
-}
-
-
 /**
  * Print the current sail data.
  *
  * @param saildef
+ * @param painter
  */
-void CSailPrinter::print(const CSailDef &saildef, QPaintDevice *pd) const
+void CSailPrinter::print(const CSailDef &saildef, CTextPainter *painter, size_t) const
 {
     QString text2=" ", text3=" ";
-    CTxtPainter painter(pd);
-    painter.setFont(QFont("times", 10));
+    painter->setFont(QFont("times", 10));
 
     // text of page header
     QString sailID = QString::fromStdString(saildef.sailID);
-    painter.printHeader(tr("Sailcut CAD data sheet") + (( sailID.length() > 0 ) ? " - " + sailID : " "));
+    painter->printHeader(tr("Sailcut CAD data sheet") + (( sailID.length() > 0 ) ? " - " + sailID : " "));
 
     // sail cut and type
     switch (saildef.sailType )
@@ -120,7 +55,7 @@ void CSailPrinter::print(const CSailDef &saildef, QPaintDevice *pd) const
         text2 = tr("Wing")+" @ " + QString::number(saildef.dihedralDeg) + tr("deg");
         break;
     }
-    painter.printDataLine(tr("Sail type"), text2, " ");
+    painter->printDataLine(tr("Sail type"), text2, " ");
 
     text3 = " ";
     switch ( saildef.sailCut )
@@ -147,64 +82,64 @@ void CSailPrinter::print(const CSailDef &saildef, QPaintDevice *pd) const
         text2 = tr("Mitre Cut");
         break;
     }
-    painter.printDataLine(tr("Sail layout"), text2, text3);
+    painter->printDataLine(tr("Sail layout"), text2, text3);
 
     // boat data
-    painter.printDataSection(tr("Rig"));
-    painter.printDataLine(tr("Boat LOA"), QString::number(saildef.LOA), "mm");
-    painter.printDataLine(tr("Mast/Luff rake"), QString::number(saildef.rake), "mm");
-    painter.printDataLine(tr("Tack position X"), QString::number(saildef.tackX), "mm");
-    painter.printDataLine(tr("Tack height Y"), QString::number(saildef.tackY), "mm");
-    painter.printDataLine(tr("Fore triangle hoist I"), QString::number(saildef.foreI), "mm");
-    painter.printDataLine(tr("Fore triangle base J"), QString::number(saildef.foreJ), "mm");
+    painter->printDataSection(tr("Rig"));
+    painter->printDataLine(tr("Boat LOA"), QString::number(saildef.LOA), "mm");
+    painter->printDataLine(tr("Mast/Luff rake"), QString::number(saildef.rake), "mm");
+    painter->printDataLine(tr("Tack position X"), QString::number(saildef.tackX), "mm");
+    painter->printDataLine(tr("Tack height Y"), QString::number(saildef.tackY), "mm");
+    painter->printDataLine(tr("Fore triangle hoist I"), QString::number(saildef.foreI), "mm");
+    painter->printDataLine(tr("Fore triangle base J"), QString::number(saildef.foreJ), "mm");
 
     // sides of the sail
-    painter.printDataSection(tr("Sail dimensions"));
-    painter.printDataLine(tr("Luff length"), QString::number(saildef.luffL), "mm");
-    painter.printDataLine(tr("Foot length"), QString::number(saildef.footL), "mm");
-    painter.printDataLine(tr("Leech length"), QString::number(saildef.leechL), "mm");
-    painter.printDataLine(tr("Gaff length"), QString::number(saildef.gaffL), "mm");
-    painter.printDataLine(tr("Gaff angle wrt luff"), QString::number(saildef.gaffDeg), "deg");
+    painter->printDataSection(tr("Sail dimensions"));
+    painter->printDataLine(tr("Luff length"), QString::number(saildef.luffL), "mm");
+    painter->printDataLine(tr("Foot length"), QString::number(saildef.footL), "mm");
+    painter->printDataLine(tr("Leech length"), QString::number(saildef.leechL), "mm");
+    painter->printDataLine(tr("Gaff length"), QString::number(saildef.gaffL), "mm");
+    painter->printDataLine(tr("Gaff angle wrt luff"), QString::number(saildef.gaffDeg), "deg");
 
     // shape of sides
-    painter.printDataSection(tr("Shape of edges"));
-    painter.printDataLine(tr("Luff round"), QString::number(saildef.luffR), "mm");
-    painter.printDataLine(tr("Luff round position"), QString::number(saildef.footRP), "%");
-    painter.printDataLine(tr("Foot round"), QString::number(saildef.footR), "mm");
-    painter.printDataLine(tr("Foot round position"), QString::number(saildef.footRP), "%");
-    painter.printDataLine(tr("Leech round"), QString::number(saildef.leechR), "mm");
-    painter.printDataLine(tr("Leech round position"), QString::number(saildef.leechRP), "%");
-    painter.printDataLine(tr("Gaff round"), QString::number(saildef.gaffR), "mm");
-    painter.printDataLine(tr("Gaff round position"), QString::number(saildef.gaffRP), "%");
+    painter->printDataSection(tr("Shape of edges"));
+    painter->printDataLine(tr("Luff round"), QString::number(saildef.luffR), "mm");
+    painter->printDataLine(tr("Luff round position"), QString::number(saildef.footRP), "%");
+    painter->printDataLine(tr("Foot round"), QString::number(saildef.footR), "mm");
+    painter->printDataLine(tr("Foot round position"), QString::number(saildef.footRP), "%");
+    painter->printDataLine(tr("Leech round"), QString::number(saildef.leechR), "mm");
+    painter->printDataLine(tr("Leech round position"), QString::number(saildef.leechRP), "%");
+    painter->printDataLine(tr("Gaff round"), QString::number(saildef.gaffR), "mm");
+    painter->printDataLine(tr("Gaff round position"), QString::number(saildef.gaffRP), "%");
 
     // sail setting
-    painter.printDataSection(tr("Sail settings"));
-    painter.printDataLine(tr("Twist angle"), QString::number(saildef.twistDeg), "deg");
-    painter.printDataLine(tr("Sheeting angle"), QString::number(saildef.sheetDeg), "deg");
+    painter->printDataSection(tr("Sail settings"));
+    painter->printDataLine(tr("Twist angle"), QString::number(saildef.twistDeg), "deg");
+    painter->printDataLine(tr("Sheeting angle"), QString::number(saildef.sheetDeg), "deg");
 
     // cloth width, seam and hems width
-    painter.printDataSection(tr("Cloth seams and hems"));
-    painter.printDataLine(tr("Cloth width"), QString::number(saildef.clothW), "mm");
-    painter.printDataLine(tr("Seams width"), QString::number(saildef.seamW), "mm");
-    painter.printDataLine(tr("Leech hem width"), QString::number(saildef.leechHemW), "mm");
-    painter.printDataLine(tr("Other hem width"), QString::number(saildef.hemsW), "mm");
+    painter->printDataSection(tr("Cloth seams and hems"));
+    painter->printDataLine(tr("Cloth width"), QString::number(saildef.clothW), "mm");
+    painter->printDataLine(tr("Seams width"), QString::number(saildef.seamW), "mm");
+    painter->printDataLine(tr("Leech hem width"), QString::number(saildef.leechHemW), "mm");
+    painter->printDataLine(tr("Other hem width"), QString::number(saildef.hemsW), "mm");
 
     // sail mould
-    painter.printDataSection(tr("Sail mould"));
-    painter.printDataLine("", tr("Luff factor"), tr("Depth"), tr("Leech factor"));
-    painter.printDataLine(
+    painter->printDataSection(tr("Sail mould"));
+    painter->printDataLine("", tr("Luff factor"), tr("Depth"), tr("Leech factor"));
+    painter->printDataLine(
         tr("Top profile"),
         QString::number( saildef.mould.profile[2].getLuff() ),
         QString::number( saildef.mould.profile[2].getDepth()*100 )+ "%",
         QString::number( saildef.mould.profile[2].getLeech()*50));
 
-    painter.printDataLine(
+    painter->printDataLine(
         tr("Mid profile at h = ") + QString::number( saildef.mould.vertpos ) + "%",
         QString::number( saildef.mould.profile[1].getLuff() ),
         QString::number( saildef.mould.profile[1].getDepth()*100 )+"%",
         QString::number( saildef.mould.profile[1].getLeech()*50));
 
-    painter.printDataLine(
+    painter->printDataLine(
         tr("Bottom profile"),
         QString::number( saildef.mould.profile[0].getLuff() ),
         QString::number( saildef.mould.profile[0].getDepth()*100 )+"%",
@@ -215,69 +150,61 @@ void CSailPrinter::print(const CSailDef &saildef, QPaintDevice *pd) const
 /** Print a developed sail.
  *
  * @param flatsail
+ * @param painter
+ * @param page
  */
-void CDevelPrinter::print(const CPanelGroup &flatsail, QPaintDevice *pd) const
+void CDevelPrinter::print(const CPanelGroup &flatsail, CTextPainter *painter, size_t page) const
 {
-    QPrinter *printer = isPrinter ? (QPrinter *)pd : NULL;
-    CSailPainter painter(pd);
-    painter.setFont(QFont("times", 10));
+    painter->setFont(QFont("times", 10));
 
     // calculate logical rectangle
     real zoom = 0.8;
     CRect3d flatrect = flatsail.boundingRect();
-    CRect3d logicalRect = calcLRect(painter.viewRect(), flatrect, flatrect.center(), zoom);
+    CRect3d logicalRect = calcLRect(painter->viewRect(), flatrect, flatrect.center(), zoom);
 
-    // print the panels out one by one
-    for (unsigned int i = 0; i < flatsail.size(); i++)
-    {
-        if (( i > 0 ) && printer)
-          printer->newPage();
+    // set coordinate system to match the logical viewport
+    painter->setWindow(logicalRect);
+    painter->setFontSize(10, zoom);
 
-        // set coordinate system to match the logical viewport
-        painter.setWindow(logicalRect);
-        painter.setFontSize(10, zoom);
+    painter->draw(flatsail[page]);
+    if (showLabels)
+        painter->drawLabels(flatsail[page]);
 
-        painter.draw(flatsail[i]);
-        if (showLabels)
-            painter.drawLabels(flatsail[i]);
+    painter->drawMarkers(flatsail[page]);
 
-        painter.drawMarkers(flatsail[i]);
-
-        // mark corners of cloth rectangle
-        QPen oldpen = painter.pen();
-        painter.setPen(Qt::green);
-        CRect3d rp = flatsail[i].boundingRect();
-        painter.drawCross(rp.min, painter.fontMetrics().height() );
-        painter.drawCoord(rp.min, PI );
-        painter.setPen(oldpen);
-    }
-
+    // mark corners of cloth rectangle
+    QPen oldpen = painter->pen();
+    painter->setPen(Qt::green);
+    CRect3d rp = flatsail[page].boundingRect();
+    painter->drawCross(rp.min, painter->fontMetrics().height() );
+    painter->drawCoord(rp.min, PI );
+    painter->setPen(oldpen);
 }
 
 
 /** Print the drawing of a sail.
  *
  * @param sail
+ * @param painter
  */
-void CDrawingPrinter::print(const CPanelGroup &sail, QPaintDevice *pd) const
+void CDrawingPrinter::print(const CPanelGroup &sail, CTextPainter *painter, size_t) const
 {
-    CSailPainter painter(pd);
-    painter.setFont(QFont("times", 10));
+    painter->setFont(QFont("times", 10));
 
     // center the sail
     CPanelGroup printSail = sail + CVector3d( -sail.boundingRect().center() );
 
     // calculate logical rectangle
     real zoom = 0.8;
-    CRect3d logicalRect = calcLRect(painter.viewRect(), printSail.boundingRect(), CPoint3d(0,0,0), zoom);
+    CRect3d logicalRect = calcLRect(painter->viewRect(), printSail.boundingRect(), CPoint3d(0,0,0), zoom);
 
     // set coordinate system to match the logical viewport
-    painter.setWindow(logicalRect);
-    painter.setFontSize(10, zoom);
+    painter->setWindow(logicalRect);
+    painter->setFontSize(10, zoom);
 
-    painter.draw(printSail);
+    painter->draw(printSail);
     if (showLabels)
-        painter.drawLabels(printSail);
+        painter->drawLabels(printSail);
 }
 
 

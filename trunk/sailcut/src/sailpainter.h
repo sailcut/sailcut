@@ -28,7 +28,7 @@ class CPanel;
 class CPanelLabel;
 class CPanelGroup;
 
-/** A sail painter
+/** A sail painter.
  *
  * @see CSailDispLabel
  */
@@ -60,6 +60,22 @@ public:
 
     CVector3d textSize(const QStringList &lst);
     CRect3d viewRect() const;
+};
+
+
+/** A text painter.
+ */
+class CTextPainter : public CSailPainter
+{
+public:
+    CTextPainter(QPaintDevice *pd);
+    void printHeader(const QString title);
+    void printDataSection(const QString title);
+    void printDataLine(const QString title, const QString data0 = "", const QString data1 = "", const QString data2 = "");
+
+protected:
+    real xPos;
+    real yPos;
 };
 
 #endif

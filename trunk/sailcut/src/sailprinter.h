@@ -20,27 +20,13 @@
 #ifndef SAILPRINTER_H
 #define SAILPRINTER_H
 
+#include "panelgroup.h"
 #include "sailpainter.h"
 #include "printer.h"
 
-class CPanelGroup;
 class CSailDef;
 class QPaintDevice;
 class QPrinter;
-
-class CTxtPainter : public CSailPainter
-{
-public:
-    CTxtPainter(QPaintDevice *pd);
-    void printHeader(const QString title);
-    void printDataSection(const QString title);
-    void printDataLine(const QString title, const QString data0 = "", const QString data1 = "", const QString data2 = "");
-
-protected:
-    real xPos;
-    real yPos;
-};
-
 
 /** A class for printing sail data.
  */
@@ -48,7 +34,8 @@ class CSailPrinter : public CPrinter<CSailDef>
 {
 public:
     CSailPrinter() {};
-    void print(const CSailDef &saildef, QPaintDevice *pd) const;
+    size_t pages(const CSailDef &) const { return 1; };
+    void print(const CSailDef &saildef, CTextPainter *painter, size_t page) const;
 };
 
 
@@ -58,7 +45,8 @@ class CDevelPrinter : public CPrinter<CPanelGroup>
 {
 public:
     CDevelPrinter(bool is_printer = false, bool show_labels = true) : isPrinter(is_printer), showLabels(show_labels) {};
-    void print(const CPanelGroup &obj, QPaintDevice *pd) const;
+    size_t pages(const CPanelGroup &obj) const { return obj.size(); };
+    void print(const CPanelGroup &obj, CTextPainter *painter, size_t page) const;
 
 protected:
     /** is the area we are writing to a QPrinter? */
@@ -74,7 +62,8 @@ class CDrawingPrinter : public CPrinter<CPanelGroup>
 {
 public:
     CDrawingPrinter(bool show_labels = true) : showLabels(show_labels) {};
-    void print(const CPanelGroup &obj, QPaintDevice *pd) const;
+    size_t pages(const CPanelGroup &) const { return 1; };
+    void print(const CPanelGroup &obj, CTextPainter *painter, size_t page) const;
 
 protected:
     /** should the labels be printed? */
