@@ -349,3 +349,70 @@ CRect3d CSailPainter::viewRect() const
 }
 
 
+/** Construct a new CTextPainter.
+ */
+CTextPainter::CTextPainter(QPaintDevice *pd)
+    : CSailPainter(pd)
+{
+    // half inch margin on left quarter inch on top
+    xPos = pd->logicalDpiX() / 2;
+    yPos = pd->logicalDpiY() / 4;
+}
+
+
+/** Print a header banner (used at the top of a for example).
+ *
+ * @param title the title to print
+ */
+void CTextPainter::printHeader(const QString title)
+{
+    QFontMetrics fm(font());
+    QString btitle = "  " + title + "  ";
+    drawText(int(xPos), int(yPos), btitle);
+
+    // draw box around header
+    drawRect(int(xPos), int(yPos - fm.height()), fm.width(btitle), int(1.5*fm.height()));
+
+    yPos += 1.5 * fm.height();
+}
+
+
+/** Print a data section title.
+ *
+ * @param title the title of the section
+ */
+void CTextPainter::printDataSection(const QString title)
+{
+    QFontMetrics fm(font());
+    yPos += 0.5 * fm.height();
+    drawText(int(xPos), int(yPos), title);
+
+    yPos += 1 * fm.height();
+}
+
+
+/** Print a line of data.
+ *
+ * @param title the title for the current line of data
+ * @param data0 first value
+ * @param data1 second value
+ * @param data2 third value
+ */
+void CTextPainter::printDataLine(const QString title, const QString data0, const QString data1, const QString data2)
+{
+    QFontMetrics fm(font());
+
+    unsigned int x1 = int(xPos + 2  * fm.width("X"));
+    unsigned int x2 = int(x1   + 26 * fm.width("X"));
+    unsigned int x3 = int(x2   + 13 * fm.width("X"));
+    unsigned int x4 = int(x3   + 13 * fm.width("X"));
+
+    drawText(x1, int(yPos), title);
+    drawText(x2, int(yPos), data0);
+    drawText(x3, int(yPos), data1);
+    drawText(x4, int(yPos), data2);
+
+    yPos += .8 * fm.height();
+}
+
+

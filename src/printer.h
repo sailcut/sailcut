@@ -35,16 +35,19 @@ public:
      */
     CPrinter() {};
 
+    /** Return the number of pages, must be overriden.
+     */
+    virtual size_t pages(const objtype &obj) const = 0;
 
     /** Perform the actual printing operation, must be overriden.
      */
-    virtual void print(const objtype &obj, QPaintDevice *pd) const = 0;
+    virtual void print(const objtype &obj, CTextPainter *painter, size_t page) const = 0;
 
 
     /** Display a dialog then print.
      *
      * @param obj the object to print
-     * @param filename initial file name
+     * @param orientation the initial page orientation
      */
     void printDialog(const objtype &obj, enum QPrinter::Orientation orientation) const
     {
@@ -58,7 +61,13 @@ public:
             QPrintDialog printDialog(&myprinter);
             if ( printDialog.exec() == QDialog::Accepted )
             {
-                  print(obj, &myprinter);
+                CTextPainter painter(&myprinter);
+                for (size_t i = 0; i < pages(obj); i ++)
+                {
+                    if ( i > 0 )
+                        myprinter.newPage();
+                    print(obj, &painter, i);
+                }
             }
         }
         catch (CException e)
