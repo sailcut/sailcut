@@ -93,6 +93,7 @@ sailcut_SOURCES = \
 	formsaildef.cpp \
 	main.cpp \
 	prefs.cpp \
+	printer.cpp \
 	sailcutqt.cpp \
 	saildisp.cpp \
 	saildispgl.cpp \

@@ -20,13 +20,15 @@
 #ifndef PRINTER_H
 #define PRINTER_H
 
+#include "formprint.h"
 #include <QMessageBox>
 #include <QPrintDialog>
 #include <QPrinter>
 
+class CTextPainter;
 
-/** This is a generic class used as the base for various file
- *  input and output modules.
+
+/** This is the base class used for printing.
  */
 class CPrinter : public QObject
 {
@@ -43,45 +45,12 @@ public:
      */
     virtual void print(CTextPainter *painter, size_t page) const = 0;
 
-
     /** Display a dialog then print.
      *
      * @param orientation the initial page orientation
      */
-    void printDialog(enum QPrinter::Orientation orientation) const
-    {
-        // try printing
-        try
-        {
-            QPrinter myprinter;
-            myprinter.setOrientation(orientation);
-            myprinter.setFullPage(FALSE);
-
-            // print preview
-/*
-            CFormPrint dlg;
-            CTextPainter painter(dlg.label);
-            print(&painter, 0);
-            dlg.exec();
-*/
-            QPrintDialog printDialog(&myprinter);
-            if ( printDialog.exec() == QDialog::Accepted )
-            {
-                CTextPainter painter(&myprinter);
-                for (size_t i = 0; i < pages(); i ++)
-                {
-                    if ( i > 0 )
-                        myprinter.newPage();
-                    print(&painter, i);
-                }
-            }
-        }
-        catch (CException e)
-        {
-            QMessageBox::information(NULL, tr("error"), tr("There was a printing error"));
-        }
-    };
-
+    void printDialog(enum QPrinter::Orientation orientation) const;
 };
+
 
 #endif
