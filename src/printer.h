@@ -24,10 +24,10 @@
 #include <QPrintDialog>
 #include <QPrinter>
 
+
 /** This is a generic class used as the base for various file
  *  input and output modules.
  */
-template <class objtype>
 class CPrinter : public QObject
 {
 public:
@@ -37,19 +37,18 @@ public:
 
     /** Return the number of pages, must be overriden.
      */
-    virtual size_t pages(const objtype &obj) const = 0;
+    virtual size_t pages() const = 0;
 
     /** Perform the actual printing operation, must be overriden.
      */
-    virtual void print(const objtype &obj, CTextPainter *painter, size_t page) const = 0;
+    virtual void print(CTextPainter *painter, size_t page) const = 0;
 
 
     /** Display a dialog then print.
      *
-     * @param obj the object to print
      * @param orientation the initial page orientation
      */
-    void printDialog(const objtype &obj, enum QPrinter::Orientation orientation) const
+    void printDialog(enum QPrinter::Orientation orientation) const
     {
         // try printing
         try
@@ -58,15 +57,22 @@ public:
             myprinter.setOrientation(orientation);
             myprinter.setFullPage(FALSE);
 
+            // print preview
+/*
+            CFormPrint dlg;
+            CTextPainter painter(dlg.label);
+            print(&painter, 0);
+            dlg.exec();
+*/
             QPrintDialog printDialog(&myprinter);
             if ( printDialog.exec() == QDialog::Accepted )
             {
                 CTextPainter painter(&myprinter);
-                for (size_t i = 0; i < pages(obj); i ++)
+                for (size_t i = 0; i < pages(); i ++)
                 {
                     if ( i > 0 )
                         myprinter.newPage();
-                    print(obj, &painter, i);
+                    print(&painter, i);
                 }
             }
         }

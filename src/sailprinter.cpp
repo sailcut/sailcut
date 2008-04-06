@@ -30,10 +30,9 @@
 /**
  * Print the current sail data.
  *
- * @param saildef
  * @param painter
  */
-void CSailDataPrinter::print(const CSailDef &saildef, CTextPainter *painter, size_t) const
+void CSailDataPrinter::print(CTextPainter *painter, size_t) const
 {
     QString text2=" ", text3=" ";
     painter->setFont(QFont("times", 10));
@@ -149,11 +148,10 @@ void CSailDataPrinter::print(const CSailDef &saildef, CTextPainter *painter, siz
 
 /** Print a developed sail.
  *
- * @param flatsail
  * @param painter
  * @param page
  */
-void CSailDevelPrinter::print(const CPanelGroup &flatsail, CTextPainter *painter, size_t page) const
+void CSailDevelPrinter::print(CTextPainter *painter, size_t page) const
 {
     painter->setFont(QFont("times", 10));
 
@@ -184,10 +182,9 @@ void CSailDevelPrinter::print(const CPanelGroup &flatsail, CTextPainter *painter
 
 /** Print the drawing of a sail.
  *
- * @param sail
  * @param painter
  */
-void CSailDrawingPrinter::print(const CPanelGroup &sail, CTextPainter *painter, size_t) const
+void CSailDrawingPrinter::print(CTextPainter *painter, size_t) const
 {
     painter->setFont(QFont("times", 10));
 
