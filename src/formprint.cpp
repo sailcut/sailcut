@@ -18,11 +18,14 @@
  */
 
 #include "formprint.h"
-#include "printer.h"
 #include "sailpainter.h"
+#include "sailprinter.h"
 
 #include <QBoxLayout>
 #include <QPushButton>
+#include <QPageSetupDialog>
+#include <QPrintDialog>
+#include <QMessageBox>
 
 
 /** Construct a new print preview label.
@@ -47,20 +50,25 @@ void CPrintLabel::paintEvent(QPaintEvent *)
 
 /** Construct a new print preview dialog.
  */
-CFormPrint::CFormPrint(const CPrinter *prt)
+CFormPrint::CFormPrint(const CPrinter *engine, enum QPrinter::Orientation orientation)
+    : printEngine(engine)
 {
     setMinimumSize( QSize( 300, 220 ) );
+
+    // initialise printer
+    printDevice.setOrientation(orientation);
+    printDevice.setFullPage(FALSE);
 
     QVBoxLayout *layout = new QVBoxLayout(this);
 
     // create main widget
-    label = new CPrintLabel(prt);
+    label = new CPrintLabel(engine);
     layout->addWidget(label);
 
     // add the buttons 
     QHBoxLayout* buttons= new QHBoxLayout();
     buttons->addItem( new QSpacerItem( 20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum ) );
-    buttonOk = new QPushButton( tr("&OK"), this );
+    buttonOk = new QPushButton( tr("&Print"), this );
     buttonOk->setDefault( TRUE );
     buttons->addWidget( buttonOk );
     buttonCancel = new QPushButton( tr("&Cancel"), this );
@@ -68,8 +76,43 @@ CFormPrint::CFormPrint(const CPrinter *prt)
     layout->addLayout(buttons);
 
     // signals and slots connections
-    connect( buttonOk, SIGNAL( clicked() ), this, SLOT( accept() ) );
+    connect( buttonOk, SIGNAL( clicked() ), this, SLOT( slotPrint() ) );
     connect( buttonCancel, SIGNAL( clicked() ), this, SLOT( reject() ) );
 }
 
+
+/** Print out the current data.
+ */
+void CFormPrint::slotPrint()
+{
+    // try printing
+    try
+    {
+        QPrintDialog printDialog(&printDevice);
+        if ( printDialog.exec() == QDialog::Accepted )
+        {
+            CTextPainter painter(&printDevice);
+            painter.setFont(QFont("times", 10));
+            for (size_t i = 0; i < printEngine->pages(); i ++)
+            {
+                if ( i > 0 )
+                    printDevice.newPage();
+                printEngine->print(&painter, i);
+            }
+        }
+    }
+    catch (CException e)
+    {
+        QMessageBox::information(NULL, tr("error"), tr("There was a printing error"));
+    }
+    accept();
+}
+
+
+/** Open the page setup dialog.
+ */
+void CFormPrint::slotSetup()
+{
+    QPageSetupDialog(&printDevice).exec();
+}
 

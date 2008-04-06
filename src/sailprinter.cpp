@@ -35,7 +35,6 @@
 void CSailDataPrinter::print(CTextPainter *painter, size_t) const
 {
     QString text2=" ", text3=" ";
-    painter->setFont(QFont("times", 10));
 
     // text of page header
     QString sailID = QString::fromStdString(saildef.sailID);
@@ -153,8 +152,6 @@ void CSailDataPrinter::print(CTextPainter *painter, size_t) const
  */
 void CSailDevelPrinter::print(CTextPainter *painter, size_t page) const
 {
-    painter->setFont(QFont("times", 10));
-
     // calculate logical rectangle
     real zoom = 0.8;
     CRect3d flatrect = flatsail.boundingRect();
@@ -186,8 +183,6 @@ void CSailDevelPrinter::print(CTextPainter *painter, size_t page) const
  */
 void CSailDrawingPrinter::print(CTextPainter *painter, size_t) const
 {
-    painter->setFont(QFont("times", 10));
-
     // center the sail
     CPanelGroup printSail = sail + CVector3d( -sail.boundingRect().center() );
 

@@ -17,6 +17,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
+#include "formprint.h"
 #include "formsail.h"
 #include "formsaildef.h"
 #include "formmould.h"
@@ -330,7 +331,8 @@ void CFormSail::slotMould()
  */
 void CFormSail::slotPrintData()
 {
-    CSailDataPrinter(def).printDialog(QPrinter::Portrait);
+    CSailDataPrinter prt(def);
+    CFormPrint(&prt, QPrinter::Portrait).exec();
 }
 
 
@@ -340,7 +342,8 @@ void CFormSail::slotPrintData()
  */
 void CFormSail::slotPrintDev()
 {
-    CSailDevelPrinter(flatsail).printDialog(QPrinter::Landscape);
+    CSailDevelPrinter prt(flatsail);
+    CFormPrint(&prt, QPrinter::Landscape).exec();
 }
 
 
@@ -349,7 +352,8 @@ void CFormSail::slotPrintDev()
  */
 void CFormSail::slotPrintDwg()
 {
-    CSailDrawingPrinter(sail).printDialog(QPrinter::Portrait);
+    CSailDrawingPrinter prt(sail);
+    CFormPrint(&prt, QPrinter::Portrait).exec();
 }
 
 
