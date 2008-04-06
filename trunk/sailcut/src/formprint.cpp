@@ -17,28 +17,27 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-// for HAVE_QSVGGENERATOR
-#include "sailcutqt.h"
+#include "formprint.h"
 
-#include "sailwriter-svg.h"
-#include "sailprinter.h"
-#ifdef HAVE_QSVGGENERATOR
-#include <QSvgGenerator>
-#endif
+#include <QGridLayout>
+#include <QLabel>
+#include <QStatusBar>
 
-/** Write sail to SVG format.
- *
- * @param filename the file to write to
+
+/** Construct a new print preview dialog.
  */
-void CSailSvgWriter::write(const CPanelGroup &sail, const QString &filename) const
+CFormPrint::CFormPrint()
+    : page(0)
 {
-#ifdef HAVE_QSVGGENERATOR
-    // SVG generator
-    QSvgGenerator generator;
-    generator.setFileName(filename);
+    setMinimumSize( QSize( 300, 220 ) );
 
-    CTextPainter painter(&generator);
-    CSailDrawingPrinter(sail, false).print(&painter, 0);
-#endif
+    QGridLayout *layout = new QGridLayout(this);
+
+    // create main widget
+    label = new QLabel();
+    QPalette pal = palette();
+    pal.setColor( QPalette::Background, Qt::white );
+    label->setPalette( pal );
+    layout->addWidget(label);
 }
 

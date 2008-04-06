@@ -330,7 +330,7 @@ void CFormSail::slotMould()
  */
 void CFormSail::slotPrintData()
 {
-    CSailDataPrinter().printDialog(def, QPrinter::Portrait);
+    CSailDataPrinter(def).printDialog(QPrinter::Portrait);
 }
 
 
@@ -340,7 +340,7 @@ void CFormSail::slotPrintData()
  */
 void CFormSail::slotPrintDev()
 {
-    CSailDevelPrinter(true).printDialog(flatsail, QPrinter::Landscape);
+    CSailDevelPrinter(flatsail).printDialog(QPrinter::Landscape);
 }
 
 
@@ -349,7 +349,7 @@ void CFormSail::slotPrintDev()
  */
 void CFormSail::slotPrintDwg()
 {
-    CSailDrawingPrinter().printDialog(sail, QPrinter::Portrait);
+    CSailDrawingPrinter(sail).printDialog(QPrinter::Portrait);
 }
 
 

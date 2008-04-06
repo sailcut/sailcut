@@ -19,6 +19,7 @@ noinst_HEADERS =  \
 	formmain.h \
 	formmould.h \
 	formpanelgroup.h \
+	formprint.h \
 	formrig.h \
 	formrigdef.h \
 	formsail.h \
@@ -63,10 +64,12 @@ BUILT_SOURCES = \
 	moc_formmain.cpp \
 	moc_formmould.cpp \
 	moc_formpanelgroup.cpp \
+	moc_formprint.cpp \
 	moc_formrig.cpp \
 	moc_formrigdef.cpp \
 	moc_formsail.cpp \
 	moc_formsaildef.cpp \
+	moc_sailprinter.cpp \
 	moc_sailtreemodel.cpp \
 	moc_sailviewer.cpp \
 	moc_sailviewer-panel.cpp \
@@ -85,6 +88,7 @@ sailcut_SOURCES = \
 	formmould.cpp \
 	formpanelgroup.cpp \
 	formrig.cpp \
+	formprint.cpp \
 	formrigdef.cpp \
 	formsail.cpp \
 	formsaildef.cpp \

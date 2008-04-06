@@ -20,11 +20,11 @@
 #ifndef SAILPRINTER_H
 #define SAILPRINTER_H
 
+#include "saildef.h"
 #include "panelgroup.h"
 #include "sailpainter.h"
 #include "printer.h"
 
-class CSailDef;
 class QPaintDevice;
 class QPrinter;
 
@@ -32,12 +32,20 @@ class QPrinter;
  *
  *  All the data is printed on a single page.
  */
-class CSailDataPrinter : public CPrinter<CSailDef>
+class CSailDataPrinter : public CPrinter
 {
+    Q_OBJECT
+
 public:
-    CSailDataPrinter() {};
-    size_t pages(const CSailDef &) const { return 1; };
-    void print(const CSailDef &saildef, CTextPainter *painter, size_t page) const;
+    CSailDataPrinter(const CSailDef &obj) : saildef(obj) {}; 
+    size_t pages() const { return 1; };
+
+public slots:
+    void print(CTextPainter *painter, size_t page) const;
+
+protected:
+    /** the sail definition to print */
+    const CSailDef saildef;
 };
 
 
@@ -45,14 +53,21 @@ public:
  *
  *  One panel is output per page.
  */
-class CSailDevelPrinter : public CPrinter<CPanelGroup>
+class CSailDevelPrinter : public CPrinter
 {
+    Q_OBJECT
+
 public:
-    CSailDevelPrinter(bool show_labels = true) : showLabels(show_labels) {};
-    size_t pages(const CPanelGroup &obj) const { return obj.size(); };
-    void print(const CPanelGroup &obj, CTextPainter *painter, size_t page) const;
+    CSailDevelPrinter(const CPanelGroup &obj, bool show_labels = true)
+        : flatsail(obj), showLabels(show_labels) {};
+    size_t pages() const { return flatsail.size(); };
+
+public slots:
+    void print(CTextPainter *painter, size_t page) const;
 
 protected:
+    /** the flat sail to print */
+    const CPanelGroup flatsail;
     /** should the labels be printed? */
     bool showLabels;
 };
@@ -62,14 +77,21 @@ protected:
  *
  *  All the panels are printed on a single page.
  */
-class CSailDrawingPrinter : public CPrinter<CPanelGroup>
+class CSailDrawingPrinter : public CPrinter
 {
+    Q_OBJECT
+
 public:
-    CSailDrawingPrinter(bool show_labels = true) : showLabels(show_labels) {};
-    size_t pages(const CPanelGroup &) const { return 1; };
-    void print(const CPanelGroup &obj, CTextPainter *painter, size_t page) const;
+    CSailDrawingPrinter(const CPanelGroup &obj, bool show_labels = true)
+        : sail(obj), showLabels(show_labels) {};
+    size_t pages() const { return 1; };
+
+public slots:
+    void print(CTextPainter *painter, size_t page) const;
 
 protected:
+    /** the sail to print */
+    const CPanelGroup sail;
     /** should the labels be printed? */
     bool showLabels;
 };
