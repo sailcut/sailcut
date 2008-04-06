@@ -29,39 +29,43 @@ class QPaintDevice;
 class QPrinter;
 
 /** A class for printing sail data.
+ *
+ *  All the data is printed on a single page.
  */
-class CSailPrinter : public CPrinter<CSailDef>
+class CSailDataPrinter : public CPrinter<CSailDef>
 {
 public:
-    CSailPrinter() {};
+    CSailDataPrinter() {};
     size_t pages(const CSailDef &) const { return 1; };
     void print(const CSailDef &saildef, CTextPainter *painter, size_t page) const;
 };
 
 
 /** A class for printing developped sail panels.
+ *
+ *  One panel is output per page.
  */
-class CDevelPrinter : public CPrinter<CPanelGroup>
+class CSailDevelPrinter : public CPrinter<CPanelGroup>
 {
 public:
-    CDevelPrinter(bool is_printer = false, bool show_labels = true) : isPrinter(is_printer), showLabels(show_labels) {};
+    CSailDevelPrinter(bool show_labels = true) : showLabels(show_labels) {};
     size_t pages(const CPanelGroup &obj) const { return obj.size(); };
     void print(const CPanelGroup &obj, CTextPainter *painter, size_t page) const;
 
 protected:
-    /** is the area we are writing to a QPrinter? */
-    bool isPrinter;
     /** should the labels be printed? */
     bool showLabels;
 };
 
 
 /** A class for printing a sail.
+ *
+ *  All the panels are printed on a single page.
  */
-class CDrawingPrinter : public CPrinter<CPanelGroup>
+class CSailDrawingPrinter : public CPrinter<CPanelGroup>
 {
 public:
-    CDrawingPrinter(bool show_labels = true) : showLabels(show_labels) {};
+    CSailDrawingPrinter(bool show_labels = true) : showLabels(show_labels) {};
     size_t pages(const CPanelGroup &) const { return 1; };
     void print(const CPanelGroup &obj, CTextPainter *painter, size_t page) const;
 
