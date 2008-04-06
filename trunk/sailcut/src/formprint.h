@@ -22,9 +22,9 @@
 
 #include <QDialog>
 #include <QLabel>
+#include <QPrinter>
 
 class CPrinter;
-
 
 /** A print preview label.
  */
@@ -47,8 +47,14 @@ protected:
  */
 class CFormPrint : public QDialog
 {
+    Q_OBJECT
+
 public:
-    CFormPrint(const CPrinter *printer);
+    CFormPrint(const CPrinter *printer, enum QPrinter::Orientation orientation);
+
+public slots:
+    void slotPrint();
+    void slotSetup();
 
 protected:
     /** display label */
@@ -57,6 +63,10 @@ protected:
     QPushButton* buttonOk;
     /** Cancel button */
     QPushButton* buttonCancel;
+    /** the printer device */
+    QPrinter printDevice;
+    /** the print engine */
+    const CPrinter *printEngine;
 };
 
 #endif

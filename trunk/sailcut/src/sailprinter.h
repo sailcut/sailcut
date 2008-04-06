@@ -23,10 +23,26 @@
 #include "saildef.h"
 #include "panelgroup.h"
 #include "sailpainter.h"
-#include "printer.h"
+//#include "printer.h"
 
 class QPaintDevice;
 class QPrinter;
+
+
+/** This is the base class used for printing.
+ */
+class CPrinter : public QObject
+{
+public:
+    /** Return the number of pages, must be overriden.
+     */
+    virtual size_t pages() const = 0;
+
+    /** Perform the actual printing operation, must be overriden.
+     */
+    virtual void print(CTextPainter *painter, size_t page) const = 0;
+};
+
 
 /** A class for printing sail data.
  *

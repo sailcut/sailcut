@@ -25,7 +25,6 @@ noinst_HEADERS =  \
 	formsail.h \
 	formsaildef.h \
 	prefs.h \
-	printer.h \
 	sailcutqt.h \
 	saildisp.h \
 	saildispgl.h \
@@ -93,7 +92,6 @@ sailcut_SOURCES = \
 	formsaildef.cpp \
 	main.cpp \
 	prefs.cpp \
-	printer.cpp \
 	sailcutqt.cpp \
 	saildisp.cpp \
 	saildispgl.cpp \
