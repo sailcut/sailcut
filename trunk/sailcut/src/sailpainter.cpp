@@ -354,11 +354,17 @@ CRect3d CSailPainter::viewRect() const
 CTextPainter::CTextPainter(QPaintDevice *pd)
     : CSailPainter(pd)
 {
-    // half inch margin on left quarter inch on top
-    xPos = pd->logicalDpiX() / 2;
-    yPos = pd->logicalDpiY() / 4;
 }
 
+
+/** Reset the text cursors to its initial position.
+ */
+void CTextPainter::printReset()
+{
+    QFontMetrics fm(font());
+    xPos = fm.width("X") * 4;
+    yPos = fm.height() * 2;
+}
 
 /** Print a header banner (used at the top of a for example).
  *

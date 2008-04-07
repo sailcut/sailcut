@@ -69,6 +69,7 @@ class CTextPainter : public CSailPainter
 {
 public:
     CTextPainter(QPaintDevice *pd);
+    void printReset();
     void printHeader(const QString title);
     void printDataSection(const QString title);
     void printDataLine(const QString title, const QString data0 = "", const QString data1 = "", const QString data2 = "");
