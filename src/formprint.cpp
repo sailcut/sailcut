@@ -45,12 +45,15 @@ CPrintLabel::CPrintLabel(CFormPrint *frm)
  */
 void CPrintLabel::paintEvent(QPaintEvent *)
 {
+    QRect print = form->printDevice.pageRect();
+
     // erase viewport
     CTextPainter painter(this);
     QRect rect = painter.viewport();
     painter.eraseRect(rect);
 
-    form->printEngine->print(&painter, page);
+    // draw print preview
+    form->printEngine->print(&painter, page, form->printFontSize * real(heightMM()) / real(form->printDevice.heightMM()));
 }
 
 
@@ -66,6 +69,7 @@ void CPrintLabel::resizeEvent (QResizeEvent *)
     real rprint = real(print.width()) / real(print.height());
     real rview = real(widthMM()) / real(heightMM());
     if (rview > rprint) {
+        resize(real(width()) / real(widthMM()) * real(heightMM()) * rprint, height());
         resize(real(width()) / real(widthMM()) * real(heightMM()) * rprint, height());
     } else {
         resize(width(), real(height()) / real(heightMM()) * real(widthMM()) / rprint); 
@@ -106,7 +110,7 @@ void CPrintLabel::slotPageNext()
 /** Construct a new print preview dialog.
  */
 CFormPrint::CFormPrint(const CPrinter *engine, enum QPrinter::Orientation orientation)
-    : printEngine(engine)
+    : printEngine(engine), printFontSize(10)
 {
     setMinimumSize( QSize( 300, 220 ) );
 
@@ -159,12 +163,11 @@ void CFormPrint::slotPrint()
         if ( printDialog.exec() == QDialog::Accepted )
         {
             CTextPainter painter(&printDevice);
-            painter.setFont(QFont("times", 10));
             for (int i = 0; i < printEngine->pages(); i ++)
             {
                 if ( i > 0 )
                     printDevice.newPage();
-                printEngine->print(&painter, i);
+                printEngine->print(&painter, i, printFontSize);
             }
         }
     }

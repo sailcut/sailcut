@@ -47,8 +47,11 @@ protected:
     void resizeEvent(QResizeEvent * event);
     void paintEvent(QPaintEvent *event);
 
+    /** the current page number */
     int page;
+    /** the print preview form */
     CFormPrint *form;
+    /** is the label currently being resized? */
     bool resizing;
 };
 
@@ -85,6 +88,8 @@ protected:
     QPrinter printDevice;
     /** the print engine */
     const CPrinter *printEngine;
+    /** the print font size */
+    int printFontSize;
 
     friend class CPrintLabel;
 };
