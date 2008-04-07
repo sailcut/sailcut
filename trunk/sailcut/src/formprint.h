@@ -25,6 +25,7 @@
 #include <QPrinter>
 
 class CPrinter;
+class QToolButton;
 
 /** A print preview label.
  */
@@ -34,6 +35,11 @@ class CPrintLabel : public QLabel
 
 public:
     CPrintLabel(const CPrinter *printer);
+    const int getPage() { return page; };
+
+public slots:
+    void slotPagePrev();
+    void slotPageNext();
 
 protected:
     void paintEvent(QPaintEvent *event);
@@ -54,15 +60,23 @@ public:
 
 public slots:
     void slotPrint();
-    void slotSetup();
 
 protected:
     /** display label */
     CPrintLabel *label;
+
+    /** left button */
+    QToolButton *buttonLeft;
+    /** page label */
+    QLabel *labelPage;
+    /** right button */
+    QToolButton *buttonRight;
+
     /** OK button */
-    QPushButton* buttonOk;
+    QPushButton *buttonOk;
     /** Cancel button */
-    QPushButton* buttonCancel;
+    QPushButton *buttonCancel;
+
     /** the printer device */
     QPrinter printDevice;
     /** the print engine */

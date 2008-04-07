@@ -23,6 +23,7 @@
 
 #include <QBoxLayout>
 #include <QPushButton>
+#include <QToolButton>
 #include <QPageSetupDialog>
 #include <QPrintDialog>
 #include <QMessageBox>
@@ -48,6 +49,30 @@ void CPrintLabel::paintEvent(QPaintEvent *)
 }
 
 
+/** Display the previous page.
+ */
+void CPrintLabel::slotPagePrev()
+{
+    if (page > 0)
+    {
+        page--;
+        update();
+    }
+}
+
+
+/** Display the next page.
+ */
+void CPrintLabel::slotPageNext()
+{
+    if (page < printer->pages() - 1)
+    {
+        page++;
+        update();
+    }
+}
+
+
 /** Construct a new print preview dialog.
  */
 CFormPrint::CFormPrint(const CPrinter *engine, enum QPrinter::Orientation orientation)
@@ -67,6 +92,15 @@ CFormPrint::CFormPrint(const CPrinter *engine, enum QPrinter::Orientation orient
 
     // add the buttons 
     QHBoxLayout* buttons= new QHBoxLayout();
+    buttonLeft = new QToolButton();
+    buttonLeft->setArrowType(Qt::LeftArrow);
+    buttons->addWidget(buttonLeft);
+    labelPage = new QLabel();
+    buttons->addWidget(labelPage);
+    buttonRight = new QToolButton();
+    buttonRight->setArrowType(Qt::RightArrow);
+    buttons->addWidget(buttonRight);
+
     buttons->addItem( new QSpacerItem( 20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum ) );
     buttonOk = new QPushButton( tr("&Print"), this );
     buttonOk->setDefault( TRUE );
@@ -76,6 +110,8 @@ CFormPrint::CFormPrint(const CPrinter *engine, enum QPrinter::Orientation orient
     layout->addLayout(buttons);
 
     // signals and slots connections
+    connect( buttonLeft, SIGNAL( clicked() ), label, SLOT( slotPagePrev() ) );
+    connect( buttonRight, SIGNAL( clicked() ), label, SLOT( slotPageNext() ) );
     connect( buttonOk, SIGNAL( clicked() ), this, SLOT( slotPrint() ) );
     connect( buttonCancel, SIGNAL( clicked() ), this, SLOT( reject() ) );
 }
@@ -108,11 +144,4 @@ void CFormPrint::slotPrint()
     accept();
 }
 
-
-/** Open the page setup dialog.
- */
-void CFormPrint::slotSetup()
-{
-    QPageSetupDialog(&printDevice).exec();
-}
 
