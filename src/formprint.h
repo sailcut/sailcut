@@ -24,6 +24,7 @@
 #include <QLabel>
 #include <QPrinter>
 
+class CFormPrint;
 class CPrinter;
 class QToolButton;
 
@@ -34,8 +35,9 @@ class CPrintLabel : public QLabel
     Q_OBJECT
 
 public:
-    CPrintLabel(const CPrinter *printer);
+    CPrintLabel(CFormPrint *form);
     const int getPage() { return page; };
+    void setPage(int page);
 
 public slots:
     void slotPagePrev();
@@ -44,8 +46,8 @@ public slots:
 protected:
     void paintEvent(QPaintEvent *event);
 
-    size_t page;
-    const CPrinter *printer;
+    int page;
+    CFormPrint *form;
 };
 
 
@@ -81,6 +83,8 @@ protected:
     QPrinter printDevice;
     /** the print engine */
     const CPrinter *printEngine;
+
+    friend class CPrintLabel;
 };
 
 #endif

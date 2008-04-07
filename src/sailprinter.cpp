@@ -32,7 +32,7 @@
  *
  * @param painter
  */
-void CSailDataPrinter::print(CTextPainter *painter, size_t) const
+void CSailDataPrinter::print(CTextPainter *painter, int) const
 {
     QString text2=" ", text3=" ";
 
@@ -150,7 +150,7 @@ void CSailDataPrinter::print(CTextPainter *painter, size_t) const
  * @param painter
  * @param page
  */
-void CSailDevelPrinter::print(CTextPainter *painter, size_t page) const
+void CSailDevelPrinter::print(CTextPainter *painter, int page) const
 {
     // calculate logical rectangle
     real zoom = 0.8;
@@ -181,7 +181,7 @@ void CSailDevelPrinter::print(CTextPainter *painter, size_t page) const
  *
  * @param painter
  */
-void CSailDrawingPrinter::print(CTextPainter *painter, size_t) const
+void CSailDrawingPrinter::print(CTextPainter *painter, int) const
 {
     // center the sail
     CPanelGroup printSail = sail + CVector3d( -sail.boundingRect().center() );

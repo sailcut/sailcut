@@ -31,8 +31,8 @@
 
 /** Construct a new print preview label.
  */
-CPrintLabel::CPrintLabel(const CPrinter *prt)
-    : page(0), printer(prt)
+CPrintLabel::CPrintLabel(CFormPrint *frm)
+    : form(frm)
 {
     QPalette pal = palette();
     pal.setColor( QPalette::Background, Qt::white );
@@ -45,7 +45,20 @@ CPrintLabel::CPrintLabel(const CPrinter *prt)
 void CPrintLabel::paintEvent(QPaintEvent *)
 {
     CTextPainter painter(this);
-    printer->print(&painter, page);
+    form->printEngine->print(&painter, page);
+}
+
+
+/** Set the current page.
+ */
+void CPrintLabel::setPage(int p)
+{
+    if ((p >= 0) && (p < form->printEngine->pages()))
+    {
+       page = p;
+       update();
+       form->labelPage->setText(QString::number(p+1) + " / " + QString::number(form->printEngine->pages()));
+    }
 }
 
 
@@ -53,11 +66,7 @@ void CPrintLabel::paintEvent(QPaintEvent *)
  */
 void CPrintLabel::slotPagePrev()
 {
-    if (page > 0)
-    {
-        page--;
-        update();
-    }
+    setPage(page - 1);
 }
 
 
@@ -65,11 +74,7 @@ void CPrintLabel::slotPagePrev()
  */
 void CPrintLabel::slotPageNext()
 {
-    if (page < printer->pages() - 1)
-    {
-        page++;
-        update();
-    }
+    setPage(page + 1);
 }
 
 
@@ -87,7 +92,7 @@ CFormPrint::CFormPrint(const CPrinter *engine, enum QPrinter::Orientation orient
     QVBoxLayout *layout = new QVBoxLayout(this);
 
     // create main widget
-    label = new CPrintLabel(engine);
+    label = new CPrintLabel(this);
     layout->addWidget(label);
 
     // add the buttons 
@@ -114,6 +119,7 @@ CFormPrint::CFormPrint(const CPrinter *engine, enum QPrinter::Orientation orient
     connect( buttonRight, SIGNAL( clicked() ), label, SLOT( slotPageNext() ) );
     connect( buttonOk, SIGNAL( clicked() ), this, SLOT( slotPrint() ) );
     connect( buttonCancel, SIGNAL( clicked() ), this, SLOT( reject() ) );
+    label->setPage(0);
 }
 
 
@@ -129,7 +135,7 @@ void CFormPrint::slotPrint()
         {
             CTextPainter painter(&printDevice);
             painter.setFont(QFont("times", 10));
-            for (size_t i = 0; i < printEngine->pages(); i ++)
+            for (int i = 0; i < printEngine->pages(); i ++)
             {
                 if ( i > 0 )
                     printDevice.newPage();
