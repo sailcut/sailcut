@@ -44,10 +44,12 @@ public slots:
     void slotPageNext();
 
 protected:
+    void resizeEvent(QResizeEvent * event);
     void paintEvent(QPaintEvent *event);
 
     int page;
     CFormPrint *form;
+    bool resizing;
 };
 
 
