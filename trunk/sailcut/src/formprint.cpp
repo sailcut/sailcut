@@ -27,12 +27,13 @@
 #include <QPageSetupDialog>
 #include <QPrintDialog>
 #include <QMessageBox>
+#include <QResizeEvent>
 
 
 /** Construct a new print preview label.
  */
 CPrintLabel::CPrintLabel(CFormPrint *frm)
-    : form(frm)
+    : form(frm), resizing(false)
 {
     QPalette pal = palette();
     pal.setColor( QPalette::Background, Qt::white );
@@ -44,8 +45,32 @@ CPrintLabel::CPrintLabel(CFormPrint *frm)
  */
 void CPrintLabel::paintEvent(QPaintEvent *)
 {
+    // erase viewport
     CTextPainter painter(this);
+    QRect rect = painter.viewport();
+    painter.eraseRect(rect);
+
     form->printEngine->print(&painter, page);
+}
+
+
+/** Receive a resize event.
+ */
+void CPrintLabel::resizeEvent (QResizeEvent *)
+{
+    QRect print = form->printDevice.pageRect();
+    if (resizing || !print.width() || !print.height() || !widthMM() || !heightMM())
+      return;
+
+    resizing = true;
+    real rprint = real(print.width()) / real(print.height());
+    real rview = real(widthMM()) / real(heightMM());
+    if (rview > rprint) {
+        resize(real(width()) / real(widthMM()) * real(heightMM()) * rprint, height());
+    } else {
+        resize(width(), real(height()) / real(heightMM()) * real(widthMM()) / rprint); 
+    }
+    resizing = false;
 }
 
 
