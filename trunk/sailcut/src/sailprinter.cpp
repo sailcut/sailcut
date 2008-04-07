@@ -32,9 +32,10 @@
  *
  * @param painter
  */
-void CSailDataPrinter::print(CTextPainter *painter, int) const
+void CSailDataPrinter::print(CTextPainter *painter, int, real fontsize) const
 {
     QString text2=" ", text3=" ";
+    painter->setFontSize(fontsize, 1);
 
     // text of page header
     QString sailID = QString::fromStdString(saildef.sailID);
@@ -150,7 +151,7 @@ void CSailDataPrinter::print(CTextPainter *painter, int) const
  * @param painter
  * @param page
  */
-void CSailDevelPrinter::print(CTextPainter *painter, int page) const
+void CSailDevelPrinter::print(CTextPainter *painter, int page, real fontsize) const
 {
     // calculate logical rectangle
     real zoom = 0.8;
@@ -159,7 +160,7 @@ void CSailDevelPrinter::print(CTextPainter *painter, int page) const
 
     // set coordinate system to match the logical viewport
     painter->setWindow(logicalRect);
-    painter->setFontSize(10, zoom);
+    painter->setFontSize(fontsize, zoom);
 
     painter->draw(flatsail[page]);
     if (showLabels)
@@ -181,7 +182,7 @@ void CSailDevelPrinter::print(CTextPainter *painter, int page) const
  *
  * @param painter
  */
-void CSailDrawingPrinter::print(CTextPainter *painter, int) const
+void CSailDrawingPrinter::print(CTextPainter *painter, int, real fontsize) const
 {
     // center the sail
     CPanelGroup printSail = sail + CVector3d( -sail.boundingRect().center() );
@@ -192,7 +193,7 @@ void CSailDrawingPrinter::print(CTextPainter *painter, int) const
 
     // set coordinate system to match the logical viewport
     painter->setWindow(logicalRect);
-    painter->setFontSize(10, zoom);
+    painter->setFontSize(fontsize, zoom);
 
     painter->draw(printSail);
     if (showLabels)
