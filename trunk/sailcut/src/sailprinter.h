@@ -32,11 +32,11 @@ class CPrinter : public QObject
 public:
     /** Return the number of pages, must be overriden.
      */
-    virtual size_t pages() const = 0;
+    virtual int pages() const = 0;
 
     /** Perform the actual printing operation, must be overriden.
      */
-    virtual void print(CTextPainter *painter, size_t page) const = 0;
+    virtual void print(CTextPainter *painter, int page) const = 0;
 };
 
 
@@ -48,8 +48,8 @@ class CSailDataPrinter : public CPrinter
 {
 public:
     CSailDataPrinter(const CSailDef &obj) : saildef(obj) {}; 
-    size_t pages() const { return 1; };
-    void print(CTextPainter *painter, size_t page) const;
+    int pages() const { return 1; };
+    void print(CTextPainter *painter, int page) const;
 
 protected:
     /** the sail definition to print */
@@ -66,8 +66,8 @@ class CSailDevelPrinter : public CPrinter
 public:
     CSailDevelPrinter(const CPanelGroup &obj, bool show_labels = true)
         : flatsail(obj), showLabels(show_labels) {};
-    size_t pages() const { return flatsail.size(); };
-    void print(CTextPainter *painter, size_t page) const;
+    int pages() const { return flatsail.size(); };
+    void print(CTextPainter *painter, int page) const;
 
 protected:
     /** the flat sail to print */
@@ -86,8 +86,8 @@ class CSailDrawingPrinter : public CPrinter
 public:
     CSailDrawingPrinter(const CPanelGroup &obj, bool show_labels = true)
         : sail(obj), showLabels(show_labels) {};
-    size_t pages() const { return 1; };
-    void print(CTextPainter *painter, size_t page) const;
+    int pages() const { return 1; };
+    void print(CTextPainter *painter, int page) const;
 
 protected:
     /** the sail to print */
