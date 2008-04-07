@@ -36,6 +36,7 @@ void CSailDataPrinter::print(CTextPainter *painter, int, real fontsize) const
 {
     QString text2=" ", text3=" ";
     painter->setFontSize(fontsize, 1);
+    painter->printReset();
 
     // text of page header
     QString sailID = QString::fromStdString(saildef.sailID);
