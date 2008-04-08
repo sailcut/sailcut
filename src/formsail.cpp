@@ -82,7 +82,9 @@ void CFormSail::languageChange()
     // export 3d submenu
     menuExport3d->setTitle( tr("E&xport 3D sail") );
     actionExport3dDXF->setText( tr("to &DXF") );
+#ifdef HAVE_QSVGGENERATOR
     actionExport3dSVG->setText( tr("to &SVG") );
+#endif
     actionExport3dTXT->setText( tr("to &TXT sail") );
     actionExport3dXML->setText( tr("to &XML sail") );
 
@@ -92,7 +94,9 @@ void CFormSail::languageChange()
     actionExportFlatDXF->setText( tr("to &DXF") );
     //actionExportFlatDXFBlocks->setText( tr("to &DXF-BLOCKS") );
     actionExportFlatHand->setText( tr("to &Hand-plotting format") );
+#ifdef HAVE_QSVGGENERATOR
     actionExportFlatSVG->setText( tr("to &SVG") );
+#endif
     actionExportFlatTXT->setText( tr("to &TXT sail") );
     actionExportFlatXML->setText( tr("to &XML sail") );
 
