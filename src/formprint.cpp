@@ -70,10 +70,9 @@ void CPrintLabel::resizeEvent (QResizeEvent *)
     real rview = real(widthMM()) / real(heightMM());
     
     if (rview > rprint) {
-        resize(real(width()) / real(widthMM()) * real(heightMM()) * rprint, height());
-        // resize(real(width()) / real(widthMM()) * real(heightMM()) * rprint, height());
+        resize(int(real(width()) / real(widthMM()) * real(heightMM()) * rprint), height());
     } else {
-        resize(width(), real(height()) / real(heightMM()) * real(widthMM()) / rprint); 
+        resize(width(), int(real(height()) / real(heightMM()) * real(widthMM()) / rprint)); 
     }
     resizing = false;
 }
