@@ -38,6 +38,16 @@ CPrintLabel::CPrintLabel(CFormPrint *frm)
     QPalette pal = palette();
     pal.setColor( QPalette::Background, Qt::white );
     setPalette( pal );
+
+    // set the initial size
+    QRect print = form->printDevice.pageRect();
+    real rprint = real(print.width()) / real(print.height());
+    if (rprint > 1)
+    {
+        setMinimumSize( QSize( 375, 250 ) );
+    } else {
+        setMinimumSize( QSize( 250, 375 ) );
+    }
 }
 
 
@@ -112,8 +122,6 @@ void CPrintLabel::slotPageNext()
 CFormPrint::CFormPrint(const CPrinter *engine, enum QPrinter::Orientation orientation)
     : printEngine(engine), printFontSize(10)
 {
-    setMinimumSize( QSize( 300, 220 ) );
-
     // initialise printer
     printDevice.setOrientation(orientation);
     printDevice.setFullPage(FALSE);
@@ -149,6 +157,9 @@ CFormPrint::CFormPrint(const CPrinter *engine, enum QPrinter::Orientation orient
     connect( buttonOk, SIGNAL( clicked() ), this, SLOT( slotPrint() ) );
     connect( buttonCancel, SIGNAL( clicked() ), this, SLOT( reject() ) );
     label->setPage(0);
+
+    // resize
+    resize( QSize(minimumSizeHint()) );
 }
 
 
