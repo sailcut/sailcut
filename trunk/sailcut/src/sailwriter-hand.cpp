@@ -23,9 +23,10 @@
 
 
 /** Write sail to TXT "hand" format.
-  *
-  * @param filename the file to write to
-  */
+ *
+ * @param sail the panel group to write
+ * @param filename the file to write to
+ */
 void CSailHandWriter::write(const CPanelGroup &sail, const QString &filename) const
 {
     // open the output file

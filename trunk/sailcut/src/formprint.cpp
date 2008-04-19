@@ -31,6 +31,8 @@
 
 
 /** Construct a new print preview label.
+ *
+ * @param frm the parent print form
  */
 CPrintLabel::CPrintLabel(CFormPrint *frm)
     : form(frm), resizing(false)
@@ -89,6 +91,8 @@ void CPrintLabel::resizeEvent (QResizeEvent *)
 
 
 /** Set the current page.
+ *
+ * @param p new the page
  */
 void CPrintLabel::setPage(int p)
 {
@@ -118,6 +122,9 @@ void CPrintLabel::slotPageNext()
 
 
 /** Construct a new print preview dialog.
+ *
+ * @param engine
+ * @param orientation
  */
 CFormPrint::CFormPrint(const CPrinter *engine, enum QPrinter::Orientation orientation)
     : printEngine(engine), printFontSize(10)

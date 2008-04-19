@@ -28,6 +28,7 @@
 
 /** Write sail to SVG format.
  *
+ * @param sail the sail to write
  * @param filename the file to write to
  */
 void CSailSvgWriter::write(const CPanelGroup &sail, const QString &filename) const

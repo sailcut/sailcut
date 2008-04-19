@@ -47,8 +47,11 @@ public:
     CFormDocument(CPrefs *myPrefs, QWidget *parent)
             : QWidget(parent), prefs(myPrefs)
     {};
+    /** Open a file. */
     virtual bool open(const QString &newfile) = 0;
+    /** Save to the current file. */
     virtual bool save() = 0;
+    /** Save to a user-specified file. */
     virtual bool saveAs() = 0;
 
 public:

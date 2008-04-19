@@ -31,14 +31,6 @@
 class CSailHandWriter : public CSailTxtWriter
 {
 public:
-    /** The constructor.
-     *
-     * @param sail the sail to write
-     */
-    CSailHandWriter() : CSailTxtWriter()
-    {}
-    ;
-
     virtual void write(const CPanelGroup &sail, const QString &filename) const;
 };
 

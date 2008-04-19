@@ -31,6 +31,7 @@
  * Print the current sail data.
  *
  * @param painter
+ * @param fontsize
  */
 void CSailDataPrinter::print(CTextPainter *painter, int, real fontsize) const
 {
@@ -151,6 +152,7 @@ void CSailDataPrinter::print(CTextPainter *painter, int, real fontsize) const
  *
  * @param painter
  * @param page
+ * @param fontsize
  */
 void CSailDevelPrinter::print(CTextPainter *painter, int page, real fontsize) const
 {
@@ -182,6 +184,7 @@ void CSailDevelPrinter::print(CTextPainter *painter, int page, real fontsize) co
 /** Print the drawing of a sail.
  *
  * @param painter
+ * @param fontsize
  */
 void CSailDrawingPrinter::print(CTextPainter *painter, int, real fontsize) const
 {

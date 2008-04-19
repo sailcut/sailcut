@@ -23,14 +23,9 @@
 #include <QFile>
 
 
-/** The constructor.
- */
-CSailCarlsonWriter::CSailCarlsonWriter()
-        : CFileWriter<CPanelGroup>(".sp4","Carlson plotter files")
-{}
-
 /** Write the draw message
  *
+ * @param out the output stream
  * @param ct number of points to be written
  */
 void CSailCarlsonWriter::writeDraw(ofstream &out, unsigned int ct) const
@@ -42,6 +37,7 @@ void CSailCarlsonWriter::writeDraw(ofstream &out, unsigned int ct) const
 
 /** Write the cut message
  *
+ * @param out the output stream
  * @param ct number of points to be written
  */
 void CSailCarlsonWriter::writeCut(ofstream &out, unsigned int ct) const
@@ -53,6 +49,7 @@ void CSailCarlsonWriter::writeCut(ofstream &out, unsigned int ct) const
 
 /** Write a point
  *
+ * @param out the output stream
  * @param p0 3d point to be written
  */
 void CSailCarlsonWriter::writePoint(ofstream &out, CPoint3d p0) const
@@ -68,7 +65,7 @@ void CSailCarlsonWriter::writePoint(ofstream &out, CPoint3d p0) const
 
 /** Write panel header to Carlson plotter format
  *
- *
+ * @param out the output stream
  * @param panel the number of the panel to write
  *
  */
@@ -113,7 +110,7 @@ void CSailCarlsonWriter::write(const CPanelGroup &sail, const QString &filename)
 
 /** Write panel to Carlson plotter format
  *
- *
+ * @param out the output stream
  * @param panel the number of the panel to write
  *
  */

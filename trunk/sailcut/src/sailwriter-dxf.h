@@ -50,14 +50,6 @@ public:
 class CSailDxfWriter2d : public CSailDxfWriter
 {
 public:
-    /** The constructor.
-     *
-     * @param sail the sail to write
-     */
-    CSailDxfWriter2d() : CSailDxfWriter()
-    {}
-    ;
-
     void write(const CPanelGroup &sail, const QString &filename) const;
     void writePanel(ofstream &out, const CPanel &panel, unsigned int layer) const;
 };
@@ -70,12 +62,6 @@ public:
 class CSailDxfWriter2dBlocks : public CSailDxfWriter2d
 {
 public:
-    /** The constructor.
-     */
-    CSailDxfWriter2dBlocks() : CSailDxfWriter2d()
-    {}
-    ;
-
     void write(const CPanelGroup &sail, const QString &filename) const;
 };
 
@@ -88,12 +74,6 @@ public:
 class CSailDxfWriter3d : public CSailDxfWriter
 {
 public:
-    /** The constructor.
-     */
-    CSailDxfWriter3d() : CSailDxfWriter()
-    {}
-    ;
-
     void write(const CPanelGroup &sail, const QString &filename) const;
     void writePanel(ofstream &out, const CPanel &panel, unsigned int layer) const;
 };
