@@ -24,6 +24,7 @@
 
 /** Write sail to TXT format.
  *
+ * @param sail the panel group to write
  * @param filename the file to write to
  */
 void CSailTxtWriter::write(const CPanelGroup &sail, const QString &filename) const

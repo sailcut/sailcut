@@ -150,13 +150,13 @@ void CSailPainter::drawArrowLabel(const CPoint3d &pDisp, const QStringList &lst,
  * @param point
  * @param angle
  */
-void CSailPainter::drawCoord(const CPoint3d &p, const real angle)
+void CSailPainter::drawCoord(const CPoint3d &point, const real angle)
 {
     // build list of lines to print
     QStringList lst;
-    lst.append(QString("X=") + QString::number(p.x(), 'f', 1));
-    lst.append(QString("Y=") + QString::number(p.y(), 'f', 1));
-    drawArrowLabel(p, lst, angle);
+    lst.append(QString("X=") + QString::number(point.x(), 'f', 1));
+    lst.append(QString("Y=") + QString::number(point.y(), 'f', 1));
+    drawArrowLabel(point, lst, angle);
 }
 
 
@@ -223,6 +223,11 @@ void CSailPainter::drawLabels(const CPanelGroup &sail)
         drawLabels(sail.child[i]);
 }
 
+
+/** Draw the markers for a panel.
+ *
+ * @param currentPanel
+ */
 void CSailPainter::drawMarkers(const CPanel &currentPanel)
 {
     unsigned int npt = 0;
@@ -287,11 +292,17 @@ void CSailPainter::drawMarkers(const CPanel &currentPanel)
     drawCoord(currentPanel.bottom.back(), -.25*PI);
 }
 
+
+/** Draw the markers for a full sail.
+ *
+ * @param sail
+ */
 void CSailPainter::drawMarkers(const CPanelGroup &sail)
 {
     for (unsigned int i = 0; i < sail.size(); i++)
         drawMarkers(sail[i]);
 }
+
 
 /** Set the font size.
  *

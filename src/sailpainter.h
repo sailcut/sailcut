@@ -75,7 +75,9 @@ public:
     void printDataLine(const QString title, const QString data0 = "", const QString data1 = "", const QString data2 = "");
 
 protected:
+    /** current x offset for text output */
     real xPos;
+    /** current y offset for text output */
     real yPos;
 };
 

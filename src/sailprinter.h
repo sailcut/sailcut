@@ -47,9 +47,13 @@ public:
 class CSailDataPrinter : public CPrinter
 {
 public:
+    /** The constructor.
+     * 
+     * @param obj the sail definition to print
+     */
     CSailDataPrinter(const CSailDef &obj) : saildef(obj) {}; 
     int pages() const { return 1; };
-    void print(CTextPainter *painter, int page, real fontsize) const;
+    void print(CTextPainter *painter, int, real fontsize) const;
 
 protected:
     /** the sail definition to print */
@@ -64,6 +68,11 @@ protected:
 class CSailDevelPrinter : public CPrinter
 {
 public:
+    /** The constructor.
+     * 
+     * @param obj the developed sail to print
+     * @param show_labels should labels be printed? 
+     */
     CSailDevelPrinter(const CPanelGroup &obj, bool show_labels = true)
         : flatsail(obj), showLabels(show_labels) {};
     int pages() const { return flatsail.size(); };
@@ -84,10 +93,15 @@ protected:
 class CSailDrawingPrinter : public CPrinter
 {
 public:
+    /** The constructor.
+     * 
+     * @param obj the sail to print
+     * @param show_labels should labels be printed? 
+     */
     CSailDrawingPrinter(const CPanelGroup &obj, bool show_labels = true)
         : sail(obj), showLabels(show_labels) {};
     int pages() const { return 1; };
-    void print(CTextPainter *painter, int page, real fontsize) const;
+    void print(CTextPainter *painter, int, real fontsize) const;
 
 protected:
     /** the sail to print */

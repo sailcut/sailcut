@@ -177,7 +177,7 @@ void CFormMain::makeMenuMru()
 /**
  * Opens the specified document.
  *
- * @params filename
+ * @param filename
  */
 void CFormMain::open(QString filename)
 {

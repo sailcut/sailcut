@@ -31,7 +31,12 @@
 class CSailCarlsonWriter : public CFileWriter<CPanelGroup>
 {
 public:
-    CSailCarlsonWriter();
+    /** The constructor.
+     */
+    CSailCarlsonWriter()
+        : CFileWriter<CPanelGroup>(".sp4","Carlson plotter files")
+    {}
+    ;
 
     void write(const CPanelGroup &sail, const QString &filename) const;
     void writePanel(ofstream &out, const CPanel &panel) const;
