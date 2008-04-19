@@ -28,7 +28,7 @@
 
 /** Write a DXF atom to the file output stream.
  *
- * @param out the output stream 
+ * @param out the output stream
  * @param code atom code
  * @param content atom content
  */
@@ -40,7 +40,7 @@ void CSailDxfWriter::writeAtom(ofstream &out, int code, const QString& content) 
 
 /** Write a triangular face to the file output stream.
  *
- * @param out the output stream 
+ * @param out the output stream
  * @param p0 first point
  * @param p1 second point
  * @param p2 third point
@@ -82,7 +82,7 @@ void CSailDxfWriter::writeFace(ofstream &out, CPoint3d p0, CPoint3d p1, CPoint3d
 
 /** Write a DXF Polyline header to the file output stream.
  *
- * @param out the output stream 
+ * @param out the output stream
  * @param layer
  * @param color the color (red=1 blue=5 white=7)
  */
@@ -102,7 +102,7 @@ void CSailDxfWriter::writePolyline(ofstream &out, unsigned int layer, unsigned i
 
 /** Write a 2D DXF Vertex to the file output stream.
  *
- * @param out the output stream 
+ * @param out the output stream
  * @param pt point
  * @param layer
  */
@@ -268,7 +268,7 @@ void CSailDxfWriter2dBlocks::write(const CPanelGroup &sail, const QString &filen
 
 /** Write a single 2D DXF developed panel draw and cut edges to the file output stream.
  *
- * @param out the output stream 
+ * @param out the output stream
  * @param panel the panel to write
  * @param layer
  */
@@ -474,7 +474,7 @@ void CSailDxfWriter3d::write(const CPanelGroup &sail, const QString &filename) c
 
 /** Write a single 3D DXF panel to the file output stream.
  *
- * @param out the output stream 
+ * @param out the output stream
  * @param panel the number of the panel to write
  * @param layer
  */

@@ -34,7 +34,7 @@ public:
     /** The constructor.
      */
     CSailCarlsonWriter()
-        : CFileWriter<CPanelGroup>(".sp4","Carlson plotter files")
+            : CFileWriter<CPanelGroup>(".sp4","Carlson plotter files")
     {}
     ;
 

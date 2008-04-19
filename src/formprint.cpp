@@ -35,7 +35,7 @@
  * @param frm the parent print form
  */
 CPrintLabel::CPrintLabel(CFormPrint *frm)
-    : form(frm), resizing(false)
+        : form(frm), resizing(false)
 {
     QPalette pal = palette();
     pal.setColor( QPalette::Background, Qt::white );
@@ -47,7 +47,9 @@ CPrintLabel::CPrintLabel(CFormPrint *frm)
     if (rprint > 1)
     {
         setMinimumSize( QSize( 375, 250 ) );
-    } else {
+    }
+    else
+    {
         setMinimumSize( QSize( 250, 375 ) );
     }
 }
@@ -75,16 +77,19 @@ void CPrintLabel::resizeEvent (QResizeEvent *)
 {
     QRect print = form->printDevice.pageRect();
     if (resizing || !print.width() || !print.height() || !widthMM() || !heightMM())
-      return;
+        return;
 
     resizing = true;
     real rprint = real(print.width()) / real(print.height());
     real rview = real(widthMM()) / real(heightMM());
-    
-    if (rview > rprint) {
+
+    if (rview > rprint)
+    {
         resize(int(real(width()) / real(widthMM()) * real(heightMM()) * rprint), height());
-    } else {
-        resize(width(), int(real(height()) / real(heightMM()) * real(widthMM()) / rprint)); 
+    }
+    else
+    {
+        resize(width(), int(real(height()) / real(heightMM()) * real(widthMM()) / rprint));
     }
     resizing = false;
 }
@@ -98,9 +103,9 @@ void CPrintLabel::setPage(int p)
 {
     if ((p >= 0) && (p < form->printEngine->pages()))
     {
-       page = p;
-       update();
-       form->labelPage->setText(QString::number(p+1) + " / " + QString::number(form->printEngine->pages()));
+        page = p;
+        update();
+        form->labelPage->setText(QString::number(p+1) + " / " + QString::number(form->printEngine->pages()));
     }
 }
 
@@ -127,7 +132,7 @@ void CPrintLabel::slotPageNext()
  * @param orientation
  */
 CFormPrint::CFormPrint(const CPrinter *engine, enum QPrinter::Orientation orientation)
-    : printEngine(engine), printFontSize(10)
+        : printEngine(engine), printFontSize(10)
 {
     // initialise printer
     printDevice.setOrientation(orientation);
@@ -139,7 +144,7 @@ CFormPrint::CFormPrint(const CPrinter *engine, enum QPrinter::Orientation orient
     label = new CPrintLabel(this);
     layout->addWidget(label);
 
-    // add the buttons 
+    // add the buttons
     QHBoxLayout* buttons= new QHBoxLayout();
     buttonLeft = new QToolButton();
     buttonLeft->setArrowType(Qt::LeftArrow);

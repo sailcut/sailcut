@@ -85,7 +85,7 @@ void CSailDispLabel::paintEvent( QPaintEvent * )
         painter.drawMarkers(dispObject);
         */
     }
-   //
+    //
     painter.end();
 }
 
