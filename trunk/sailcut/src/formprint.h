@@ -37,7 +37,10 @@ class CPrintLabel : public QLabel
 public:
     CPrintLabel(CFormPrint *form);
     /** Get the current page. */
-    const int getPage() { return page; };
+    const int getPage()
+    {
+        return page;
+    };
     void setPage(int page);
 
 public slots:

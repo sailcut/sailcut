@@ -115,13 +115,13 @@ void CSailPainter::drawArrowLabel(const CPoint3d &pDisp, const QStringList &lst,
     CVector3d textDim = textSize(lst);
     CPoint3d arrowStart;
     CPoint3d arrowEnd;
-    
+
     CVector3d v = CMatrix::rot3d(2, angle) * CVector3d(1, 0, 0);
     if (fabs(angle) > .1*PI)
         arrowEnd = pDisp + real( 2 * fontMetrics().height()) * v;
     else
         arrowEnd = pDisp + real( 1.3 * fontMetrics().height()) * v;
-        
+
     CVector3d v1 = CMatrix::rot3d(2, PI/6) * v;
     arrowStart = pDisp + real(.3 * fontMetrics().height()) * v1;
 
@@ -363,7 +363,7 @@ CRect3d CSailPainter::viewRect() const
 /** Construct a new CTextPainter.
  */
 CTextPainter::CTextPainter(QPaintDevice *pd)
-    : CSailPainter(pd)
+        : CSailPainter(pd)
 {
 }
 
