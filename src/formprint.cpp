@@ -171,14 +171,33 @@ void CFormPrint::slotPrint()
     try
     {
         QPrintDialog printDialog(&printDevice);
+        printDialog.setMinMax(1, printEngine->pages());
         if ( printDialog.exec() == QDialog::Accepted )
         {
-            CTextPainter painter(&printDevice);
-            for (int i = 0; i < printEngine->pages(); i ++)
+            // determine which pages need to be printed
+            int minPage, maxPage;
+            switch (printDialog.printRange())
             {
-                if ( i > 0 )
-                    printDevice.newPage();
-                printEngine->print(&painter, i, printFontSize);
+            case QAbstractPrintDialog::PageRange:
+                minPage = printDialog.fromPage();
+                maxPage = printDialog.toPage();
+                break;
+            default:
+                minPage = 1;
+                maxPage = printEngine->pages();
+                break;
+            }
+
+            // print the requested pages
+            CTextPainter painter(&printDevice);
+            for (int i = minPage - 1; i < maxPage; i ++)
+            {
+                if ( i >= 0 && i < printEngine->pages())
+                {
+                    if ( i > 0 )
+                        printDevice.newPage();
+                    printEngine->print(&painter, i, printFontSize);
+                }
             }
         }
     }
