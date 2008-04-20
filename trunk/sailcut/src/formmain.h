@@ -81,86 +81,86 @@ protected slots:
     virtual void slotUpdateWindowMenu();
 
 protected:
-    /** the workspace */
+    /** The workspace */
     QWorkspace *workspace;
 
-    /** signal mapper */
+    /** The signal mapper */
     QSignalMapper *windowMapper;
 
-    /** the location of the Sailcut CAD Handbook */
+    /** The location of the Sailcut CAD Handbook */
     QUrl handbook;
 
-    /** the application */
+    /** The application */
     CSailApp *app;
 
-    /** the user preferences */
+    /** The user preferences */
     CPrefs *prefs;
 
-    /** the status bar */
+    /** The status bar */
     QStatusBar* statusbar;
 
-    /** the File menu */
+    /** The File menu */
     QMenu *menuFile;
-    /** the New submenu */
+    /** The New submenu */
     QMenu *menuFileNew;
-    /** the Help menu */
+    /** The Help menu */
     QMenu *menuHelp;
-    /** the View menu */
+    /** The View menu */
     QMenu *menuView;
-    /** the Window menu */
+    /** The Window menu */
     QMenu *menuWindow;
-    /** the Language menu */
+    /** The Language menu */
     QMenu *menuLanguage;
 
-    /** the Most Recently Used files menu */
+    /** The Most Recently Used files menu */
     QMenu *menuRecent;
 
-    /** display information about sailcut */
+    /** Display information about sailcut */
     QAction *actionAbout;
-    /** display information about Qt */
+    /** Display information about Qt */
     QAction *actionAboutQt;
-    /** close the active document */
+    /** Close the active document */
     QAction *actionClose;
-    /** close all documents */
+    /** Close all documents */
     QAction *actionCloseAll;
-    /** tile document windows */
+    /** Tile document windows */
     QAction *actionTile;
-    /** cascade document windows */
+    /** Cascade document windows */
     QAction *actionCascade;
-    /** display the handbook */
+    /** Display the handbook */
     QAction *actionHandbook;
-    /** create a new boat */
+    /** Create a new boat */
     QAction *actionNewBoat;
-    /** create a new hull */
+    /** Create a new hull */
     QAction *actionNewHull;
-    /** create a new rig */
+    /** Create a new rig */
     QAction *actionNewRig;
-    /** create a new sail */
+    /** Create a new sail */
     QAction *actionNewSail;
-    /** open an existing sail definition */
+    /** Open an existing sail definition */
     QAction *actionOpen;
-    /** sail the sail definition to a file */
+    /** Save the sail definition to a file */
     QAction *actionSave;
-    /** prompt for a filename then write the sail definition to a file */
+    /** Prompt for a filename then write the sail definition to a file */
     QAction *actionSaveAs;
-    /** final separator in the 'File' menu before 'Quit' */
+    /** Final separator in the 'File' menu before 'Quit' */
     QAction *actionFileSep;
-    /** view sail definition */
+    /** View the sail definition */
     QAction *actionViewDef;
-    /** view sail mould */
+    /** View the sail mould */
     QAction *actionViewMould;
-    /** view sail definition */
+    /** View the sail patches definition */
     QAction *actionViewPatch;
-    /** view sail rig */
+    /** View the sail rig */
     QAction *actionViewRig;
-    /** separator in the 'Window' menu */
+    /** Separator in the 'Window' menu */
     QAction *actionWindowSep;
-    /** quit */
+    /** Quit */
     QAction *actionQuit;
 
-    /** extra actions for the file menu */
+    /** Extra actions for the file menu */
     vector<QAction*> childFileActions;
-    /** extra actions for the view menu */
+    /** Extra actions for the view menu */
     vector<QAction*> childViewActions;
 };
 
