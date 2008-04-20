@@ -51,20 +51,20 @@ public:
     CPanelGroup makeSail() const;
     CPanelGroup makeSail(CPanelGroup &flatsail, CPanelGroup &dispsail) const;
 
-    /** position of tack point */
+    /** The position of tack point */
     CPoint3d tack;
-    /** position of head point */
+    /** The position of head point */
     CPoint3d head;
-    /** position of peak point */
+    /** The position of peak point */
     CPoint3d peak;
-    /** position of clew point */
+    /** The position of clew point */
     CPoint3d clew;
 
 protected:
-    /** type of Edge of sail */
+    /** The type of Edge of a sail panel */
     enumEdgeType Edge;
     
-    /** layout of sail's panels */
+    /** The cut layout of sail's panels */
     CPanelGroup Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; // CROSS
     CPanelGroup LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; // TWIST
     CPanelGroup LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; // VERTICAL
@@ -74,48 +74,48 @@ protected:
     CPanelGroup LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; // TRIRADIAL
     CPanelGroup LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; // WING
 
-    /** intersections with edges */
+    /** The intersection with edges */
     CPoint3d EdgeIntersect( const enumEdgeType &Edge, const CPoint3d &pt1, const CVector3d &v1 ) const;
     CPoint3d FwdIntersect( const CPoint3d &pt1 ) const;
     CPoint3d AftIntersect( const CPoint3d &pt1 ) const;
     CPoint3d MitreIntersect( const CPoint3d &pt1, const CVector3d &v1 ) const;
     
-    /** mitre intersection point with luff */
+    /** The mitre intersection point with luff */
     CPoint3d mitreLuffPt;
     
-    /** depth at any point */
+    /** The depth of the sail at a point */
     CPoint3d Zpoint( const CPoint3d &p1 ) const;
-    /** depth for all points */
+    /** The depth of the sail at all points of a panel */
     CPanel Zpanel( const CPanel &p1 ) const;
 
-    /** foot vector */
+    /** Foot vector */
     CVector3d footV;
-    /** unitary vector perpendicular to foot */
+    /** Unitary vector perpendicular to foot */
     CVector3d footVP;
-    /** gaff vector */
+    /** Gaff vector */
     CVector3d gaffV;
-    /** unitary vector perpendicular to gaff */
+    /** Unitary vector perpendicular to gaff */
     CVector3d gaffVP;
-    /** leech vector */
+    /** Leech vector */
     CVector3d leechV;
-    /** unitary vector perpendicular to leech */
+    /** Unitary vector perpendicular to leech */
     CVector3d leechVP;
-    /** luff vector */
+    /** Luff vector */
     CVector3d luffV;
-    /** unitary vector perpendicular to luff */
+    /** Unitary vector perpendicular to luff */
     CVector3d luffVP;
-    /** mitre vector */
+    /** Mitre vector */
     CVector3d mitreV;
     
-    /** 3D foot straight line */
+    /** The foot straight 3D line */
     CSubSpace footLine;
-    /** 3D gaff straight line */
+    /** The gaff straight 3D line */
     CSubSpace gaffLine;
-    /** 3D leech straight line */
+    /** The leech straight 3D line */
     CSubSpace leechLine;
-    /** 3D luff straight line */
+    /** The luff straight 3D line */
     CSubSpace luffLine;
-    /** 3D mitre straight line */
+    /** The mitre straight 3D line */
     CSubSpace mitreLine;
 };
 

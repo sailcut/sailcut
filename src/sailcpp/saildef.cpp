@@ -82,7 +82,7 @@ CSailDef::CSailDef()
 **************************************************************************/
 
 
-/** assignment operator
+/** Assignment operator
  * @param copy the sail definition to copy from
  * @return CSailDef&
  */
@@ -118,6 +118,7 @@ CSailDef & CSailDef::operator=( const CSailDef &copy )
     seamW = copy.seamW;
     leechHemW = copy.leechHemW;
     hemsW = copy.hemsW;
+    
     tackX = copy.tackX;
     tackY = copy.tackY;
 
