@@ -55,7 +55,7 @@ protected slots:
     void slotCompute();
 
 protected:
-    /** a pointer to the sail definion */
+    /** A pointer to the sail definion */
     CSailDef *saildef;
 
 };
