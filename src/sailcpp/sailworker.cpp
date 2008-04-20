@@ -149,6 +149,9 @@ CPanelGroup CSailWorker::makeSail( CPanelGroup &flatsail , CPanelGroup &dispsail
         case MITRE:
             output = LayoutMitre(flatsail , dispsail);
             break;
+        case MITRE2:
+            output = LayoutMitre2(flatsail , dispsail);
+            break;
         default:
             throw CException("CSailWorker::makeSail : unknown sail cut!");
         }
@@ -2428,9 +2431,9 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
     }
     ///
     return sail;
-} ///////////// end layout triradial cut /////////  NOT USED ////////////
+} ///////////// end LayoutTriRadial cut /////////  NOT USED ////////////
 
-/** Creates a mitre cut sail.
+/** Creates a mitre cut sail with panels perpendicular to Leech and Foot.
  *
  * @param flatsail the CPanelGroup object that will hold the developed sail
  * @param dispsail the CPanelGroup object that will hold the display
@@ -2882,8 +2885,420 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
     }
 
     return sail;
-} ///////////// end layout5 = mitre cut //////////////////////////////////
+} ///////////// end layoutMitre cut //////////////////////////////////
 
+
+/** Creates a Mitre cut sail with panels Parallel to Leech & Foot.
+ *
+ * @param flatsail the CPanelGroup object that will hold 
+ *   the developed sail
+ * @param dispsail the CPanelGroup object that will hold 
+ *   the display version of the developed sail
+ * @return CPanelGroup
+ * @author Robert Laine alias Sailcuter
+ * Adapted by Peter G. Meuse
+ */
+
+CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &dispsail ) const
+{
+    /*  First create arrays p1 and p2 of points at the end of each seams
+     *   located on the straight edge of the sail (no round)
+     */
+    CPoint3d p1[MAX_PANELS], p2[MAX_PANELS];
+
+    /* Create two temporary sails lay and the corresponding dev */
+    CPanelGroup lay(MAX_PANELS); // 3D sail
+    CPanelGroup dev(MAX_PANELS); // developed sail
+
+    /* create number of panels */
+    unsigned int npanelFoot=1, npanel=1, npanelLeech = 2;
+    unsigned int npl= lay[0].right.size();  // number of right/left points
+    unsigned int npb= lay[0].bottom.size(); // number of bottom/top points
+
+    unsigned int j=0, k=0, cnt=0;
+    bool flag=false;
+
+    /* create arrays t1 and t2 of type of intersection
+    *  respectively at points p1 on luff side and p2 on leech side
+    *  t=1 seam intersect foot at point p1
+    *  t=2 seam intersect luff
+    *  t=3 seam intersect gaff
+    *  t=4 seam intersect leech
+    *  t=5 seam intersect mitre
+    */
+    int t1[MAX_PANELS], t2[MAX_PANELS];
+
+    /* define point i for intersections */
+    CPoint3d i;
+    /* define seamV as the vector parrallel to the foot vector (tack-clew)*/
+    CVector3d seamV = footV.unit();
+    CSubSpace seamSP;
+
+
+    /* create variables for the development and edge corrections */
+    CPoint3d pt(0, 0, 0); // test point
+    CPoint3d top(0, 0, 0);
+    CPoint3d bot(0, 0, 0);
+    CVector3d v(0, 0, 0);
+    CVector3d vb(0, 0, 0);
+    CVector3d vk(0, 0, 0);
+
+    /* create variable for edge correction */
+    vector<CVector3d> deviation;
+    deviation.resize(npb);
+    vector<CVector3d> deviaPrev;
+    deviaPrev.resize(npb);
+
+    /* create variable to monitor excess over cloth width */
+    real exb=0, exc=0;
+
+    /* create variable to store cloth width of Panel #1*/
+    real panelR = footR;
+    real panelHemW = leechHemW;
+    real footHemW, luffHemW; 
+    // real luffInnerHemW, footInnerHemW;
+    
+   /* Create the Panel width for Panel #1 */
+   /* To be used as first Foot Panel and First Leech panel */
+    if (leechR > footR) 
+        panelR = leechR;
+    if (footHemW > leechHemW)  
+        panelHemW = footHemW;
+    if (panelR < 0) 
+        panelR = 0;
+    real panelW = clothW-seamW - panelR - panelHemW - 2;
+
+    /* seam 0 is on the leech of the sail ending at the peak */
+    p1[0] = clew; // initialised at clew point
+    p2[0] = tack; // initialised at tack point
+    t1[0] = 5;    // type=5=mitre intersection.
+    t2[0] = 2;    // type=2=luff intersection
+
+    /** Start laying the panels from the leech toward the tack */
+    for ( npanel = 1; npanel < MAX_PANELS/2-1; npanel++ )
+    {
+        // printf(" ----- FOR panel = %d \n" , npanel);
+        exb=0;
+        exc =0;
+        cnt =0;
+        //if (npanel==3) flag=true;
+
+        /** begin the loop for optimising the seam position to fit cloth width */
+        do
+        {
+            cnt++;
+            if ( npanel == 1 ) 
+                pt = p1[0] + (panelW)* footVP.unit();
+            else 
+                pt = p1[npanel-1] + (clothW-seamW-exb)* footVP.unit();
+
+            seamSP = CSubSpace3d::line( pt, seamV );
+            if ( seamSP.intersect(mitreLine).getdim() == 0 )
+                p1[npanel] = seamSP.intersect(mitreLine).getp(); // find panel intersect along the mitre.
+            else 
+                throw CException("CSailDef::LayoutMitre2 vertical-1a : intersection of seam and mitre is not a point!");
+            /* the case when the intersection is not a point needs to be handled */
+
+            t1[npanel] = 5; // type1=5= mitre intersection horizontal cut panels
+
+            if ( p1[npanel].x() <= mitreLuffPt.x() )
+            { // last panel
+                p1[npanel] = mitreLuffPt;
+                t1[npanel] = 5;
+                p2[npanel] = mitreLuffPt;
+                t2[npanel] = 2;
+                flag=true; // to get out of FOR
+            }
+            else
+            {
+                // printf ("normal panel \n");
+                if ( seamSP.intersect(luffLine).getdim() == 0 )
+                    p2[npanel] = seamSP.intersect(luffLine).getp();
+                else 
+                    throw CException("CSailDef::LayoutMitre2 vertical-2a : intersection of seam and gaff is not a point!");
+                /* the case when the intersection is not a point needs to be handled */
+                
+                t2[npanel] = 2;     // Panel intersects on the Luff.
+            }
+
+            //// fill right side points along the Luff
+            lay[npanel-1].right.fill( p2[npanel-1], p2[npanel] );
+            for ( k = 0; k < npl; k++ )
+                lay[npanel-1].right[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].right[k], seamV );
+
+            //// fill left side points which are all on mitre
+            lay[npanel-1].left.fill( p1[npanel-1], p1[npanel] );
+            for ( k = 0; k < npl; k++ )
+                lay[npanel-1].left[k] = MitreIntersect( lay[npanel-1].left[k], seamV );
+
+            // fill bottom points
+            lay[npanel-1].bottom.fill( lay[npanel-1].left[0], lay[npanel-1].right[0] );
+            if ( npanel == 1 )
+            {
+                // bottom is on the leech
+                for ( k = 0; k < npb; k++ )
+                    lay[npanel-1].bottom[k] = EdgeIntersect( FOOT_EDGE,lay[npanel-1].bottom[k], footVP );
+            }
+
+            //// fill top side points on seam
+            lay[npanel-1].top.fill( lay[npanel-1].left[npl-1], lay[npanel-1].right[npl-1] );
+            /* Now we go over all the points and calculate their z */
+            lay[npanel-1] = Zpanel(lay[npanel-1]);
+
+            /** Now we develop the current panel */
+            if ( npanel == 1 )
+                dev[npanel-1] = lay[npanel-1].develop(ALIGN_TOP);
+            else
+            {
+                dev[npanel-1] = lay[npanel-1].develop(ALIGN_BOTTOM);
+                // add deviation of previous panel top edge to bottom edge
+                for( k = 1; k < npb-1; k ++)
+                    dev[npanel-1].bottom[k] = dev[npanel-1].bottom[k] + deviaPrev[k];
+            }
+
+            /** Now we compute the deviation of top edge of developed panel
+            *   and straighten this top edge except if this is the top panel
+            */
+            if ( flag == false )
+            {
+                vb = CMatrix::rot3d(2, PI/2) * CVector3d(dev[npanel-1].top[npb-1] -dev[npanel-1].top[0]).unit();
+                for( k = 1; k < npb-1; k ++)
+                {
+                    vk= CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
+                    v = vb * -(vk*vb);
+                    deviation[k] = v;
+                    dev[npanel-1].top[k] = dev[npanel-1].top[k] + deviation[k];
+                }
+            }
+
+            /** Now we add the seam and hems allowance */
+            if ( npanel == 1 )               // Bottom panel seam allowances.
+                dev[npanel-1].addHems(seamW, seamW, luffHemW, footHemW); //, 0, 0, luffInnerHemW, footInnerHemW);
+            else if( flag == true )          // Top Panel seam allowances
+                dev[npanel-1].addHems(seamW, 0, luffHemW, 0); //, 0, 0, luffInnerHemW,0); // No Top seam only Mitre seam.
+            else                           // Normal Panel seam allowances.
+                dev[npanel-1].addHems(seamW, seamW, luffHemW, 0); //, 0, 0, luffInnerHemW, 0);
+
+            /** Now we check the width of developed panel */
+            exc = dev[npanel-1].boundingRect().height() - clothW; // current excess of width
+            exb = exb + (0.8 * exc) +1; // sum previous correction + 80% of current excess of width +1mm
+        }
+        while ( exc > 0 && cnt < 9 );
+        /** loop DO as long as the excess of width is positive  AND counter <9 */
+        /////////////////////////////////////////
+         deviaPrev = deviation;
+
+        /** Now we reposition the developed panel such that bottom left is X=0 Y=0 */
+        dev[npanel-1] = dev[npanel-1].reframe(LOW_LEFT);
+
+        /** check if peak has been reached to break off */
+        if ( flag == true )
+            break;
+
+    }  /** loop FOR next seam */
+    /////////////////////////////////////////
+
+    /** store the number of panels in foot */
+    npanelFoot = npanel;
+    npanelLeech = npanel+1;
+    if ( npanelFoot == MAX_PANELS/2 -1 )
+        throw CException("CSailDef::LayoutMitre2 : panelling of Foot got to MAX_PANELS/2 without reaching Mitre intersect at Luff, do increase cloth width ");
+
+    p1[npanel] = clew; // re-initialising at clew point.
+    p2[npanel] = peak; // initialise at the peak.
+    t1[npanel] = 5;    // type=5=mitre intersection.
+    t2[npanel] = 3;    // type=3=gaff intersection.
+    flag = false;
+   /* define seamV as the vector parrallel to the leech vector (peak-clew)*/
+    seamV = leechV.unit();
+
+   /** Start laying the panels from the leech toward the tack */
+     for (npanel = npanelLeech; npanel < MAX_PANELS-1; npanel++)
+    {
+        // printf(" ----- FOR panel = %d \n" , npanel);
+        exb = 0;
+        exc = 0;
+        cnt = 0;
+        //if (npanel==3) flag=true;
+
+        /** begin the loop for optimising the seam position to fit cloth width */
+        do
+        {
+            cnt++;
+            /* Determine width of Panel Perpendicular to Leech side. */
+            if ( npanel == npanelLeech )
+                pt = p1[npanel-1] + ( panelW * leechVP.unit() );
+            else 
+                pt = p1[npanel-1] + (clothW-seamW-exb) * leechVP.unit();
+
+            seamSP = CSubSpace3d::line(pt, seamV);
+            p1[npanel] = seamSP.intersect(mitreLine).getp();
+
+            t1[npanel] = 5; // type1=5= mitre intersection vertically cut panels
+            /* the case when the intersection is not a point needs to be handled */
+            if ( seamSP.intersect(mitreLine).getdim() != 0 )
+               throw CException("CSailDef::LayoutMitre2 (vertical-1b) : intersection of seam and mitre is not a point!");
+
+            if ( p1[npanel].x() <= mitreLuffPt.x() )
+            { // last panel
+                p1[npanel] = mitreLuffPt;
+                t1[npanel] = 5;   // Type=5=Mitre instersection.
+                p2[npanel] = mitreLuffPt;
+                t2[npanel] = 2;   // Type=2=Luff intersection.
+                flag=true; // to get out of FOR
+            }
+            else
+            {
+                // printf ("normal panel \n");
+                 if ( seamSP.intersect(gaffLine).getdim() == 0 )
+                    p2[npanel] = seamSP.intersect(gaffLine).getp();
+                else 
+		    throw CException("CSailDef::LayoutMitre2(vertical-2b) : intersection of seam and gaff is not a point!");
+                /* the case when the intersection is not a point needs to be handled */
+
+                if ( CVector3d(p2[npanel]-head)*gaffV > 0.00001 )
+                    t2[npanel] = 3;   // Intersect is on the Gaff.
+                else
+                {
+                    if ( seamSP.intersect(luffLine).getdim() == 0 )
+                        p2[npanel] = seamSP.intersect(luffLine).getp();
+                    else 
+			throw CException ("CSailDef::Layout6 Mitre-2(vertical-3b) : intersection of seam and luff is not a point!");
+                    /* the case when the intersection is not a point needs to be handled */
+                    t2[npanel] = 2;  // Intersect is on the Luff
+                }
+            }
+
+            //// fill right side points
+            if ( t2[npanel-1] == 2 && t2[npanel] == 2 )
+            {
+                // printf ("full luff \n");
+                lay[npanel-1].right.fill(p2[npanel-1], p2[npanel]);
+                for ( k = 0; k < npl; k++ )
+                    lay[npanel-1].right[k]=EdgeIntersect( LUFF_EDGE, lay[npanel-1].right[k], seamV);
+            }
+            else if ( t2[npanel-1] == 3 && t2[npanel] == 2 )
+            {
+                // printf ("gaff-head-luff \n");
+                lay[npanel-1].right.fill(p2[npanel-1], head, p2[npanel]);
+
+                for ( k = 0; k < npl/2; k++ )
+                    lay[npanel-1].right[k] = EdgeIntersect( GAFF_EDGE,lay[npanel-1].right[k], seamV);
+
+                for ( k = npl/2+1; k < npl; k++ )
+                    lay[npanel-1].right[k] = EdgeIntersect( LUFF_EDGE,lay[npanel-1].right[k], seamV);
+            }
+            else
+            {
+                // printf ("full gaff \n");
+                lay[npanel-1].right.fill(p2[npanel-1], p2[npanel]);
+
+                for ( k = 0; k < npl; k++ )
+                    lay[npanel-1].right[k] = EdgeIntersect( GAFF_EDGE,lay[npanel-1].right[k], seamV);
+            }
+            //// fill left side points which are all on the mitre
+            lay[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
+            for ( k = 0; k < npl; k++ )
+                lay[npanel-1].left[k] = MitreIntersect(lay[npanel-1].left[k], leechV);
+
+            // fill bottom points
+            lay[npanel-1].bottom.fill(lay[npanel-1].left[0], lay[npanel-1].right[0]);
+            if ( npanel == npanelLeech )
+            {
+                // bottom is on the leech
+                for ( k = 0; k < npb; k++ )
+                    lay[npanel-1].bottom[k] = EdgeIntersect( LEECH_EDGE,lay[npanel-1].bottom[k], leechVP);
+            }
+
+            //// fill top side points on seam
+            lay[npanel-1].top.fill(lay[npanel-1].left[npl-1], lay[npanel-1].right[npl-1]);
+            /* Now we go over all the points and calculate their z */
+            lay[npanel-1] = Zpanel(lay[npanel-1]);
+
+            /** Now we develop the current panel */
+            if ( npanel == npanelLeech )
+                dev[npanel-1] = lay[npanel-1].develop(ALIGN_TOP);
+            else
+            {
+                dev[npanel-1] = lay[npanel-1].develop(ALIGN_BOTTOM);
+                // add deviation of previous panel top edge to bottom edge
+                for( k = 1; k < npb-1; k ++)
+                    dev[npanel-1].bottom[k] = dev[npanel-1].bottom[k] + deviaPrev[k];
+            }
+
+            /** Now we compute the deviation of top edge of developed panel
+            *   and straighten this top edge except if this is the top panel
+            */
+            if ( flag == false )
+            {
+                vb = CMatrix::rot3d(2,PI/2) * CVector3d(dev[npanel-1].top[npb-1] -dev[npanel-1].top[0]).unit();
+                for( k = 1; k < npb-1; k++ )
+                {
+                    vk = CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
+                    v = vb * -(vk*vb);
+                    deviation[k] = v;
+                    dev[npanel-1].top[k] = dev[npanel-1].top[k] + deviation[k];
+                }
+            }
+            /** Now we add the seam and hems allowance */
+            if ( npanel == npanelLeech )
+                dev[npanel-1].addHems(0, seamW, luffHemW, leechHemW); //, 0, 0, luffInnerHemW, leechInnerHemW);
+            else if( flag == true )
+                dev[npanel-1].addHems(0, 0, luffHemW, 0); //, 0, 0, luffInnerHemW, 0);
+            else
+                dev[npanel-1].addHems(0, seamW, luffHemW, 0); //, 0, 0, luffInnerHemW, 0);
+
+            /** Now we check the width of developed panel */
+            exc = dev[npanel-1].boundingRect().height() - clothW; // current excess of width
+
+            exb = exb + (0.8 * exc) + 1; // sum previous correction + 80% of current excess of width +1mm
+        }
+        while ( exc > 0 && cnt < 9 );
+        /** loop DO as long as the excess of width is positive  AND counter <9 */
+        /////////////////////////////////////////
+        deviaPrev = deviation;
+
+        /** Now we reposition the developed panel such that bottom left is X=0 Y=0 */
+        dev[npanel-1] = dev[npanel-1].reframe(LOW_LEFT);
+
+        /** check if peak has been reached to break off */
+        if ( flag == true )
+            break;
+
+    }  /** loop FOR next seam */
+    /////////////////////////////////////////
+    if ( npanel == MAX_PANELS -1 )
+        throw CException("CSailDef::LayoutMitre2 : got to MAX_PANELS without reaching Miter Intersect Point at Luff, do increase cloth width ");
+
+    /* copying the sails for display */
+    CPanelGroup sail(npanel);
+    for( j = 0; j < npanel; j++ )
+        sail[j] = lay[j];
+
+    /** copying the developed sail into flatsail */
+    flatsail = CPanelGroup(npanel);
+
+    for ( j = 0; j < npanel; j++ )
+        flatsail[j] = dev[j];
+
+    /** preparing the displays version of the developed sail */
+    dispsail = flatsail;
+
+    for ( j = 1; j < npanel; j++ )
+    {
+        top = dispsail[j-1].top[0];
+        bot = dispsail[j].bottom[0];
+
+        // translation v to align panel bottom edge origin to previous panel upper edge origin
+        v = top;
+        v.x() -= bot.x();
+        v.y() += 2*seamW +10; // adding offset to separate panels vertically
+
+        dispsail[j] = dispsail[j] + v;
+    }
+
+    return sail;
+} ///////////// end LayoutMitre2 ///////////////////
 
 /** Routine used for computing the cord of the profiles.
  *  Return a 3d point which is the aft intersection of
