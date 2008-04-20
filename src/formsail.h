@@ -67,54 +67,54 @@ protected slots:
 
     // member variables
 protected:
-    /** the sail */
+    /** The sail */
     CPanelGroup sail;
-    /** the developped sail */
+    /** The developed sail */
     CPanelGroup flatsail;
-    /** the display version of the flat sail */
+    /** The display version of the flat sail */
     CPanelGroup dispsail;
 
     // menus and action
-    /** the Print submenu */
+    /** The Print submenu */
     QMenu *menuPrint;
-    /** the Export 3d submenu */
+    /** Export 3d submenu */
     QMenu *menuExport3d;
-    /** the Export flat submenu */
+    /** Export flat panels submenu */
     QMenu *menuExportFlat;
 
-    /** export 3D sail to DXF */
+    /** Export 3D sail to DXF */
     QAction *actionExport3dDXF;
-    /** export 3D sail to SVG */
+    /** Export 3D sail to SVG (2D reduction) */
     QAction *actionExport3dSVG;
-    /** export 3D sail to text */
+    /** Export 3D sail to text */
     QAction *actionExport3dTXT;
-    /** export 3D sail to XML */
+    /** Export 3D sail to XML */
     QAction *actionExport3dXML;
-    /** export flat sail to Carlson plotter format */
+    /** Export flat sail to Carlson plotter format */
     QAction *actionExportFlatCarlson;
-    /** export flat sail to hand format */
+    /** Export flat sail to hand format */
     QAction *actionExportFlatHand;
-    /** export flat sail to DXF */
+    /** Export flat sail to DXF */
     QAction *actionExportFlatDXF;
-    /** export flat sail to DXF blocks */
+    /** Export flat sail to DXF blocks */
     QAction *actionExportFlatDXFBlocks;
-    /** export flat sail to SVG */
+    /** Export flat sail to SVG */
     QAction *actionExportFlatSVG;
-    /** export flat sail to TXT */
+    /** Export flat sail to TXT */
     QAction *actionExportFlatTXT;
-    /** export flat sail to XML */
+    /** Export flat sail to XML */
     QAction *actionExportFlatXML;
-    /** print sail data */
+    /** Print sail data */
     QAction *actionPrintData;
-    /** print sail development */
+    /** Print sail development */
     QAction *actionPrintDev;
-    /** print sail drawing */
+    /** Print sail drawing */
     QAction *actionPrintDwg;
-    /** view sail definition */
+    /** View sail definition */
     QAction *actionViewDef;
-    /** view sail mould */
+    /** View sail mould */
     QAction *actionViewMould;
-    /** view sail definition */
+    /** View sail definition */
     QAction *actionViewPatch;
 };
 
