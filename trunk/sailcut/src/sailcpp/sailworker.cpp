@@ -26,7 +26,8 @@
 // #define DEBUG 1
 
 
-/** The constructor does some preliminary calculations to set
+/** 
+ *  The constructor does some preliminary calculations to set
  *  internal variables.
  */
 CSailWorker::CSailWorker(const CSailDef &s) : CSailDef(s)
@@ -106,7 +107,8 @@ CSailWorker::CSailWorker(const CSailDef &s) : CSailDef(s)
 }
 
 
-/** Make a Sail from its definition.
+/** 
+ *  Make a Sail from its definition.
  */
 CPanelGroup CSailWorker::makeSail() const
 {
@@ -115,9 +117,10 @@ CPanelGroup CSailWorker::makeSail() const
 }
 
 
-/** Make a Sail from its definition.
- *  This the main routine of all the layout work
- *  The output is a 3D sail, its display and its development
+/** 
+ *  Make a Sail from its definition.
+ *  This is the main routine of all the sail layout work
+ *  The output is a 3D sail, its display and development versions.
  */
 CPanelGroup CSailWorker::makeSail( CPanelGroup &flatsail , CPanelGroup &dispsail) const
 {
@@ -170,7 +173,8 @@ CPanelGroup CSailWorker::makeSail( CPanelGroup &flatsail , CPanelGroup &dispsail
 }
 
 
-/** Creates a cross cut or horizontal cut sail.
+/** 
+ * Creates a cross cut or horizontal cut sail.
  *
  * @param flatsail the CPanelGroup object that will hold the developed sail
  * @param dispsail the CPanelGroup object that will hold the display
@@ -239,14 +243,14 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
     t1[0] = 1;
     t2[0] = 4;    // type=4=leech intersection
 
-    /** Start laying the panels from the foot upward to the peak */
+    /** Lay the panels starting from the foot upward to the peak */
     for (npanel = 1 ; npanel < MAX_PANELS -1 ; npanel++)
     {
         real exc = 0; // current excess of width
         real exb = 0; // total correction
         cnt = 0; // counter of iterations
 
-        do  /** Loop for optimising the seam position to fit cloth width */
+        do  /* Loop for optimising the seam position to fit cloth width */
         {
             cnt++;
             p2[npanel] = p2[npanel-1] + (clothW - seamW - exb) * leechV.unit();
@@ -495,13 +499,15 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
     if ( npanel == MAX_PANELS-1 )
         throw CException("CSailDef::Layout0 : got to MAX_PANELS without reaching head, do increase cloth width ");
 
-    /** copying the sails for display */
+    /* Copy the sails for 3D display */
     CPanelGroup sail(npanel);
 
     for (j = 0 ; j < npanel ; j ++)
         sail[j] = lay[j];
 
-    /** copying the developed sail */
+
+    /** Create the displays version of the developed sail */
+    /* Copy the developed sail */
     flatsail = CPanelGroup(npanel);
 
     for (j = 0 ; j < npanel ; j++)
@@ -509,9 +515,8 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
         flatsail[j] = dev[j];
     }
 
-    /** preparing the displays version of the developed sail */
+    /* Re-position the developed panels in a clean stack */
     dispsail = flatsail;
-
     for (j = 1 ; j < npanel ; j++)
     {
         top = dispsail[j-1].top[0];
@@ -602,14 +607,14 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
     t1[0] = 2;
     t2[0] = 4;    // type=4=leech intersection
 
-    /** Start laying the panels from foot upward to the peak */
+    /* Start laying the panels from foot upward to the peak */
     for (npanel = 1; npanel < MAX_PANELS-1; npanel++)
     {
         real exb = 0; // total correction
         real exc = 0; // current excess of width
         cnt = 0;
 
-        /** Loop for optimising the seam position to fit cloth width */
+        /* Loop for optimising the seam position to fit cloth width */
         do
         {
             cnt++;
@@ -817,7 +822,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
 
         deviaPrev = deviation;
 
-        /** Now we reposition the developed panel such that
+        /* Now we reposition the developed panel such that
          *  bottom minimum is Y=0 AND most left point is X=0
          */
         dev[npanel-1] = dev[npanel-1].reframe(LOW_LEFT);
@@ -831,18 +836,18 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
     if (npanel == MAX_PANELS-1)
         throw CException("CSailDef::Layout1-5 : got to MAX_PANELS without reaching head, do increase cloth width ");
 
-    /** copying the sails for display **** */
+    /* Copy the sails for display **** */
     CPanelGroup sail(npanel);
     for (j = 0; j < npanel; j++)
         sail[j] = lay[j];
 
-    /** copying the developed sail */
+    /** Copy the developed sail */
     flatsail = CPanelGroup(npanel);
 
     for (j = 0; j < npanel; j++)
         flatsail[j] = dev[j];
 
-    /** preparing the displays version of the developed sail */
+    /** Prepare the displays version of the developed sail */
     dispsail = flatsail;
 
     for (j = 1; j < npanel; j++)
@@ -931,7 +936,7 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
     t1[0] = 1;
     t2[0] = 3;    // type=4=leech intersection
 
-    /** Start laying the panels from the leech toward the tack */
+    /* Start laying the panels from the leech toward the tack */
     for (npanel = 1; npanel < MAX_PANELS-1; npanel++)
     {
         real exb = 0; // total correction
@@ -939,7 +944,7 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
         cnt = 0;
         //if (npanel==3) flag=true;
 
-        /** Loop for optimising the seam position to fit cloth width */
+        /* Loop for optimising the seam position to fit cloth width */
         do
         {
             cnt++;
@@ -1023,7 +1028,7 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
             /* Now we go over all the points and calculate their z */
             lay[npanel-1] = Zpanel(lay[npanel-1]);
 
-            /** Now we develop the current panel */
+            /* Now we develop the current panel */
             if ( npanel == 1 )
                 dev[npanel-1] = lay[npanel-1].develop(ALIGN_TOP);
             else
@@ -1034,7 +1039,7 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
                     dev[npanel-1].bottom[k] = dev[npanel-1].bottom[k] + deviaPrev[k];
             }
 
-            /** Now we compute the deviation of top edge of developed panel
+            /* Now we compute the deviation of top edge of developed panel
             *   and straighten this top edge except if this is the top panel
             */
             if ( flag == false )
@@ -1069,14 +1074,14 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
 
         deviaPrev = deviation;
 
-        /** Now we reposition the developed panel such that bottom left is X=0 Y=0 */
+        /* Now we reposition the developed panel such that bottom left is X=0 Y=0 */
         dev[npanel-1] = dev[npanel-1].reframe(LOW_LEFT);
 
-        /** check if peak has been reached to break off */
+        /* check if peak has been reached to break off */
         if ( flag == true )
             break;
 
-    }  /** loop FOR next seam */
+    }  /* loop FOR next seam */
     /////////////////////////////////////////
 
     if ( npanel == MAX_PANELS-1 )
@@ -1087,13 +1092,13 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
     for (j = 0; j < npanel; j++)
         sail[j] = lay[j];
 
-    /** copying the developed sail into flatsail */
+    /* copying the developed sail into flatsail */
     flatsail = CPanelGroup( npanel );
 
     for (j = 0; j < npanel; j++)
         flatsail[j] = dev[j];
 
-    /** preparing the displays version of the developed sail */
+    /* prepare the displays version of the developed sail */
     dispsail = flatsail;
 
     for (j = 1; j < npanel; j++)
@@ -1181,7 +1186,7 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
     t1[0] = 1;
     t2[0] = 4;    // type=4=leech intersection
 
-    /** This loop FOR will position the seams and determine the number of panels. */
+    /* This loop FOR will position the seams and determine the number of panels. */
     for (npanel = 1; npanel < MAX_PANELS-1; npanel++)
     {
         p2[npanel] = p2[npanel-1] + (clothW-seamW)/(seamV*leechVP) * leechV.unit();
@@ -1280,7 +1285,7 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
                 }
             }
 
-            /** We now add the intermediate points on all sides of the normal panel  */
+            /* We now add the intermediate points on all sides of the normal panel  */
 
             /* Below is the code for the left side depending
             *  on t1 for the top side and bottom side
@@ -1416,7 +1421,7 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
     if ( npanel == (MAX_PANELS/2 -1) )
         throw CException("CSailDef::Layout wing-4 : got to MAX_PANELS without reaching head, do increase cloth width ");
 
-    /** creating the symetrical panels */
+    /** Create the symetrical panels */
     np = npanel;
     for (j = 0; j < np +1; j++)
     {
@@ -1436,13 +1441,13 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
         }
     }
 
-    /** copying the sails for display */
+    /* Copy the sails for display */
     CPanelGroup sail( 2 * npanel +1 );
 
     for (j = 0; j < npanel; j++)
         sail[j] = lay[j];
 
-    /** copying the developed sail */
+    /* Copy the developed sail */
     flatsail = CPanelGroup( 2 * npanel +1);
 
     for (j = 0; j < npanel; j++)
@@ -1450,7 +1455,7 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
         flatsail[j] = dev[j];
     }
 
-    /** preparing the displays version of the developed sail */
+    /* Prepare the displays version of the developed sail */
     dispsail = flatsail;
 
     for (j = 1; j < npanel; j++)
@@ -1525,7 +1530,7 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
     vector<CVector3d> deviation;
     deviation.resize(npb);
 
-    /** Create arrays of points at horizontal seams ends (10 maximum) */
+    /* Create arrays of points at horizontal seams ends (10 maximum) */
     CPoint3d luffH[10];    // point at the luff end of the horizontal seam
     CPoint3d leechH[10];   // point at the leech end of the horizontal seam
     CSubSpace seamH[10];   // corresponding seam lines
@@ -1585,7 +1590,7 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
     luffCatenary[h] = tack;
     leechCatenary[h] = clew;
 
-    /** Now we cut the radial panels
+    /* Now we cut the radial panels
     *  Panels are oriented with lower and upper edges on vertical catenary
     *  Bottom side is on luff side and top side is on leech side
     *  Left side is at the top of each section
@@ -1596,11 +1601,11 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
     npanel = 0;
     ng1 = 0;  // initialise number of central panels
 
-    /** Sweeping the sail from the top section downward to the foot */
+    /** Sweep the sail from the top section downward to the foot */
     for (h = nbSections; h > 0; h--)
     {
         nps[h] = 0;  // counter of panels in current section
-        /** Cutting the luff side panels 
+        /* Cutting the luff side panels 
          *  which are left of the catenary separating the vertical zones
          */
         for (j = 1; j <= ngLuff; j++)
@@ -1664,7 +1669,7 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
             npanel++;
         }
 
-        /** Cutting the middle panels 
+        /* Cutting the middle panels 
          *  which are between the vertical catenaries luff and leech sides
          */
         if ( h > 1 )
@@ -1872,7 +1877,7 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
             }
         }
 
-        /** cutting the leech side panels */
+        /* cutting the leech side panels */
         for (j = 1; j < (nbGores - ngLuff); j++)
         {
             pt1 = leechCatenary[h] + CVector3d( leechH[h] - leechCatenary[h] ) * (real(j-1) / (nbGores - ngLuff -1) );
@@ -1927,18 +1932,18 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
         }
     }
 
-    /** copying 3d lay into 3d sail */
+    /* Copy 3d lay into 3d sail */
     CPanelGroup sail(npanel);
     for (j = 0 ; j < npanel ; j ++)
         sail[j] = lay[j];
 
-    /** copying from temporary developed sail into flatsail */
+    /* Copy from temporary developed sail into flatsail */
     flatsail = CPanelGroup(npanel);
 
     for (j = 0; j < npanel; j++)
         flatsail[j] = dev[j];
 
-    /** preparing the displays version of the developed sail */
+    /* Prepare the displays version of the developed sail */
     dispsail = flatsail;
     j = 0, h = nbSections, k = 0;
     v = CVector3d(0,0,0);
@@ -1976,7 +1981,7 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
 
 
 
-/** Creates a triradial cut sail.  //////// NOT USED //////////
+/** Creates a triradial cut sail.  //// NOT USED ////
  *
  * @param flatsail the CPanelGroup object that will hold the developed sail
  * @param dispsail the CPanelGroup object that will hold the display
@@ -2075,9 +2080,9 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
     luffCatenary[h] = tack;
     leechCatenary[h] = clew;
 
-    /** Now cutting the radial panels.
-    *   Panels are oriented with lower edge vertical toward luff
-    *   and left side at the top of each section
+    /* Now cutting the radial panels.
+    *  Panels are oriented with lower edge vertical toward luff
+    *  and left side at the top of each section
     */
     npanel = 0;
     ng1 = 0; // initialise number of central panels
@@ -2086,7 +2091,7 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
     {
         // sweeping from top section downward
         nps[h]=0; // counter of panels in current section
-        /** cutting the luff side panels */
+        /* cutting the luff side panels */
         for (j=1; j<=ngLuff; j++)
         {
             if (j == 1)
@@ -2138,7 +2143,7 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
             npanel++;
         }
 
-        /** cutting the middle panels */
+        /* cutting the middle panels */
         if ( h > 1 )
         {
             ng1++; // add one more central panel than section above
@@ -2338,7 +2343,7 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
             }
         }
 
-        /** cutting the leech side panels */
+        /* Cutting the leech side panels */
         for (j=1; j<nbGores-ngLuff; j++)
         {
             pt1 = leechCatenary[h] + CVector3d(leechH[h]-leechCatenary[h]) * (real(j-1)/(nbGores-ngLuff-1) );
@@ -2386,18 +2391,18 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
         }
     }
 
-    /** copying 3d sail lay into sail */
+    /* Copy 3d sail lay into sail */
     CPanelGroup sail(npanel);
     for (j = 0; j < npanel; j ++)
         sail[j] = lay[j];
 
-    /** copy from temporary developed sail into flatsail */
+    /* Copy from temporary developed sail into flatsail */
     flatsail = CPanelGroup(npanel);
 
     for (j=0; j < npanel; j++)
         flatsail[j] = dev[j];
 
-    /** preparing the displays version of the developed sail */
+    /* Prepare the displays version of the developed sail */
     dispsail = flatsail;
     j=0, h=nbSections, k=0;
     v = CVector3d(0,0,0);
@@ -2495,7 +2500,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
     t1[0] = 1;
     t2[0] = 5;    // type=5=mitre intersection
 
-    /** start by cutting the foot panels perpendicular to the foot */
+    /** Start by cutting the foot panels perpendicular to the foot */
     for (npanel = 1 ; npanel < (MAX_PANELS / 2) -1 ; npanel++)
     {
         real exb = 0; // total correction
@@ -2589,7 +2594,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
             printf (" --- \n");
             }*/
 
-            /** Now we develop the current foot panel */
+            /* Now we develop the current foot panel */
             if ( npanel == 1 )
                 dev[npanel-1] = lay[npanel-1].develop(ALIGN_TOP);
             else
@@ -2632,7 +2637,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
 
         deviaPrev = deviation;
 
-        /** Now we reposition the developed panel such that bottom left is X=0 Y=0 */
+        /* Now we reposition the developed panel such that bottom left is X=0 Y=0 */
         dev[npanel-1] = dev[npanel-1].reframe(LOW_LEFT);
 
         ///** check if peak has been reached to break off */
@@ -2640,7 +2645,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
             break;
     } /// Loop FOR next foot panel seam ////////////
 
-    ///** store the number of panels in foot */
+    /* Store the number of panels in foot */
     npanelFoot = npanel;
     if (npanel == MAX_PANELS/2 -1)
         throw CException("CSailDef::Layout5 : panelling of Foot got to MAX_PANELS/2 without reaching tack, do increase cloth width ");
@@ -2650,7 +2655,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
     t1[npanel] = 5;    // type=5=mitre intersection
     t2[npanel] = 4;    // type=4=leech intersection
 
-    /** Now we position the seams perpendicular to the leech
+    /** Position the seams perpendicular to the leech
     *   and determine the total number of panels.
     */
     flag = false;
@@ -2660,7 +2665,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
         real exc = 0; // current excess of width
         cnt = 0; // counter of iterations
 
-        /** Loop for optimising the seam position to fit cloth width */
+        /* Loop for optimising the seam position to fit cloth width */
         do
         {
             cnt++;
@@ -2798,10 +2803,10 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
 
             } //// end else normal panel ///////////////////////
 
-            /** Now we go over all the points of the leech panel and calculate their z */
+            /* Now we go over all the points of the leech panel and calculate their z */
             lay[npanel-1] = Zpanel(lay[npanel-1]);
 
-            /** Now we develop the current leech panel */
+            /* Now we develop the current leech panel */
             if ( npanel == npanelFoot +1 )
                 dev[npanel-1] = lay[npanel-1].develop(ALIGN_TOP);
             else
@@ -2857,18 +2862,18 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
     if ( npanel == MAX_PANELS-1 )
         throw CException("CSailDef::Layout5 : panelling leech got to MAX_PANELS without reaching head, do increase cloth width ");
 
-    /** copying the sails for display */
+    /* Copy the sails for display */
     CPanelGroup sail(npanel);
     for (j = 0; j < npanel; j++)
         sail[j] = lay[j];
 
-    /** copying the developed sail into flatsail */
+    /* Copy the developed sail into flatsail */
     flatsail = CPanelGroup(npanel);
 
     for (j = 0 ; j < npanel ; j++)
         flatsail[j] = dev[j];
 
-    /** preparing the displays version of the developed sail */
+    /* Prepare the displays version of the developed sail */
     dispsail = flatsail;
 
     for (j = 1 ; j < npanel ; j++)
@@ -2974,7 +2979,7 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
     t1[0] = 5;    // type=5=mitre intersection.
     t2[0] = 2;    // type=2=luff intersection
 
-    /** Start laying the panels from the leech toward the tack */
+    /** Start by laying the panels from the leech toward the tack */
     for ( npanel = 1; npanel < MAX_PANELS/2-1; npanel++ )
     {
         // printf(" ----- FOR panel = %d \n" , npanel);
@@ -2983,7 +2988,7 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
         cnt =0;
         //if (npanel==3) flag=true;
 
-        /** begin the loop for optimising the seam position to fit cloth width */
+        /* begin the loop for optimising the seam position to fit cloth width */
         do
         {
             cnt++;
@@ -3045,7 +3050,7 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
             /* Now we go over all the points and calculate their z */
             lay[npanel-1] = Zpanel(lay[npanel-1]);
 
-            /** Now we develop the current panel */
+            /* Now we develop the current panel */
             if ( npanel == 1 )
                 dev[npanel-1] = lay[npanel-1].develop(ALIGN_TOP);
             else
@@ -3056,7 +3061,7 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
                     dev[npanel-1].bottom[k] = dev[npanel-1].bottom[k] + deviaPrev[k];
             }
 
-            /** Now we compute the deviation of top edge of developed panel
+            /* Now we compute the deviation of top edge of developed panel
             *   and straighten this top edge except if this is the top panel
             */
             if ( flag == false )
@@ -3071,7 +3076,7 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
                 }
             }
 
-            /** Now we add the seam and hems allowance */
+            /* Now we add the seam and hems allowance */
             if ( npanel == 1 )               // Bottom panel seam allowances.
                 dev[npanel-1].addHems(seamW, seamW, luffHemW, footHemW); //, 0, 0, luffInnerHemW, footInnerHemW);
             else if( flag == true )          // Top Panel seam allowances
@@ -3079,26 +3084,26 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
             else                           // Normal Panel seam allowances.
                 dev[npanel-1].addHems(seamW, seamW, luffHemW, 0); //, 0, 0, luffInnerHemW, 0);
 
-            /** Now we check the width of developed panel */
+            /* Now we check the width of developed panel */
             exc = dev[npanel-1].boundingRect().height() - clothW; // current excess of width
             exb = exb + (0.8 * exc) +1; // sum previous correction + 80% of current excess of width +1mm
         }
         while ( exc > 0 && cnt < 9 );
-        /** loop DO as long as the excess of width is positive  AND counter <9 */
+        /* loop DO as long as the excess of width is positive  AND counter <9 */
         /////////////////////////////////////////
          deviaPrev = deviation;
 
-        /** Now we reposition the developed panel such that bottom left is X=0 Y=0 */
+        /* Now we reposition the developed panel such that bottom left is X=0 Y=0 */
         dev[npanel-1] = dev[npanel-1].reframe(LOW_LEFT);
 
-        /** check if peak has been reached to break off */
+        /* check if peak has been reached to break off */
         if ( flag == true )
             break;
 
-    }  /** loop FOR next seam */
+    }  /* loop FOR next seam */
     /////////////////////////////////////////
 
-    /** store the number of panels in foot */
+    /* Store the number of panels in leech */
     npanelFoot = npanel;
     npanelLeech = npanel+1;
     if ( npanelFoot == MAX_PANELS/2 -1 )
@@ -3112,7 +3117,7 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
    /* define seamV as the vector parrallel to the leech vector (peak-clew)*/
     seamV = leechV.unit();
 
-   /** Start laying the panels from the leech toward the tack */
+   /** Continue by laying the panels from the foot toward the mitre */
      for (npanel = npanelLeech; npanel < MAX_PANELS-1; npanel++)
     {
         // printf(" ----- FOR panel = %d \n" , npanel);
@@ -3121,7 +3126,7 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
         cnt = 0;
         //if (npanel==3) flag=true;
 
-        /** begin the loop for optimising the seam position to fit cloth width */
+        /* begin the loop for optimising the seam position to fit cloth width */
         do
         {
             cnt++;
@@ -3215,7 +3220,7 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
             /* Now we go over all the points and calculate their z */
             lay[npanel-1] = Zpanel(lay[npanel-1]);
 
-            /** Now we develop the current panel */
+            /* Now we develop the current panel */
             if ( npanel == npanelLeech )
                 dev[npanel-1] = lay[npanel-1].develop(ALIGN_TOP);
             else
@@ -3226,8 +3231,8 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
                     dev[npanel-1].bottom[k] = dev[npanel-1].bottom[k] + deviaPrev[k];
             }
 
-            /** Now we compute the deviation of top edge of developed panel
-            *   and straighten this top edge except if this is the top panel
+            /* Now we compute the deviation of top edge of developed panel
+            *  and straighten this top edge except if this is the top panel
             */
             if ( flag == false )
             {
@@ -3240,7 +3245,7 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
                     dev[npanel-1].top[k] = dev[npanel-1].top[k] + deviation[k];
                 }
             }
-            /** Now we add the seam and hems allowance */
+            /* Now we add the seam and hems allowance */
             if ( npanel == npanelLeech )
                 dev[npanel-1].addHems(0, seamW, luffHemW, leechHemW); //, 0, 0, luffInnerHemW, leechInnerHemW);
             else if( flag == true )
@@ -3248,40 +3253,40 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
             else
                 dev[npanel-1].addHems(0, seamW, luffHemW, 0); //, 0, 0, luffInnerHemW, 0);
 
-            /** Now we check the width of developed panel */
+            /* Now we check the width of developed panel */
             exc = dev[npanel-1].boundingRect().height() - clothW; // current excess of width
 
             exb = exb + (0.8 * exc) + 1; // sum previous correction + 80% of current excess of width +1mm
         }
         while ( exc > 0 && cnt < 9 );
-        /** loop DO as long as the excess of width is positive  AND counter <9 */
+        /* loop DO as long as the excess of width is positive  AND counter <9 */
         /////////////////////////////////////////
         deviaPrev = deviation;
 
-        /** Now we reposition the developed panel such that bottom left is X=0 Y=0 */
+        /* Now we reposition the developed panel such that bottom left is X=0 Y=0 */
         dev[npanel-1] = dev[npanel-1].reframe(LOW_LEFT);
 
-        /** check if peak has been reached to break off */
+        /* check if peak has been reached to break off */
         if ( flag == true )
             break;
 
-    }  /** loop FOR next seam */
+    }  /* Loop FOR next seam */
     /////////////////////////////////////////
     if ( npanel == MAX_PANELS -1 )
         throw CException("CSailDef::LayoutMitre2 : got to MAX_PANELS without reaching Miter Intersect Point at Luff, do increase cloth width ");
 
-    /* copying the sails for display */
+    /* Copy the sails for display */
     CPanelGroup sail(npanel);
     for( j = 0; j < npanel; j++ )
         sail[j] = lay[j];
 
-    /** copying the developed sail into flatsail */
+    /* Copy the developed sail into flatsail */
     flatsail = CPanelGroup(npanel);
 
     for ( j = 0; j < npanel; j++ )
         flatsail[j] = dev[j];
 
-    /** preparing the displays version of the developed sail */
+    /*  Prepare the displays version of the developed sail */
     dispsail = flatsail;
 
     for ( j = 1; j < npanel; j++ )
@@ -3307,7 +3312,7 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
  *  the aft intersection is forced to be on the vertical of the
  *  corresponding peak or clew.
  *
- * @author Robert Laine
+ * @author Robert Laine alias Sailcuter
  */
 CPoint3d CSailWorker::AftIntersect( const CPoint3d& pt1 ) const
 {
@@ -3335,9 +3340,11 @@ CPoint3d CSailWorker::AftIntersect( const CPoint3d& pt1 ) const
 } //////////////// AftIntersect //////////////////////////
 
 
-/** Routine for computing the area of the sail
+/** 
+ *  Routine for computing the area of the sail taking 
+ *  into account the luff and leech round.
  *
- * @author Robert Laine
+ * @author Robert Laine alias Sailcuter
  */
 real CSailWorker::Area()
 {
@@ -3349,9 +3356,10 @@ real CSailWorker::Area()
 }
 
 
-/** Routine for computing the diagonal head to clew
+/** 
+ *  Routine for computing the diagonal length from head to clew.
  *
- * @author Robert Laine
+ * @author Robert Laine alias Sailcuter
  */
 real CSailWorker::Diagonal()
 {
@@ -3359,10 +3367,11 @@ real CSailWorker::Diagonal()
 }
 
 
-/** Routine for computing the width of the sail at a given
- *   relative height on the leech in accordance with IRC rule
+/** 
+ *  Routine for computing the width of the sail at a given
+ *  relative height on the leech in accordance with IRC rule.
  *
- * @author Robert Laine
+ * @author Robert Laine alias Sailcuter
  */
 real CSailWorker::IRCwidth( const real &HL )
 {
@@ -3412,10 +3421,11 @@ real CSailWorker::IRCwidth( const real &HL )
 }
 
 
-/** Routine for computing the width of the sail at a given
- *   relative height on the luff and the leech
+/** 
+ *  Routine for computing the width of the sail at a given
+ *  relative height on the luff and the leech.
  *
- * @author Robert Laine
+ * @author Robert Laine alias Sailcuter
  */
 real CSailWorker::SailWidth( const  real  &HL )
 {
@@ -3486,10 +3496,11 @@ real CSailWorker::SailWidth( const  real  &HL )
 }
 
 
-/** Routine for computing the width LP of the sail
- *   perpendicular to the luff
+/** 
+ *  Routine for computing the perpendicular width of the sail
+ *  from clew to luff, measured perpendicular to the luff.
  *
- * @author Robert Laine
+ * @author Robert Laine alias Sailcuter
  */
 real CSailWorker::SailLP( )
 {
@@ -3517,8 +3528,9 @@ real CSailWorker::SailLP( )
 }
 
 
-/** Routine for computing the length of the leech edge
- *  up to a given relative heigth on straight leech line
+/** 
+ *  Routine for computing the actual length of the leech edge
+ *  up to a given relative heigth on straight leech line.
  *
  * @author Robert Laine alias Sailcuter
  */
@@ -3543,8 +3555,9 @@ real CSailWorker::LeechLength( const real &h )
 }
 
 
-/** Routine for computing the length of the luff edge
- *  up to a given relative heigth on straight luff line
+/** 
+ *  Routine for computing the actual length of the luff edge
+ *  up to a given relative heigth on straight luff line.
  *
  * @author Robert Laine alias Sailcuter
  */
@@ -3566,7 +3579,8 @@ real CSailWorker::LuffLength( const real &h )
 }
 
 
-/** Routine used for computing the cord of the profile.
+/** 
+ *  Routine used for computing the forward end of the cord of the profile.
  *  Return a 3d point which is the forward intersection of
  *  the horizontal line passing by p1 with either foot, luff or gaff.
  *
@@ -3607,8 +3621,9 @@ CPoint3d CSailWorker::FwdIntersect( const CPoint3d &pt1 ) const
 } ////////////// FwdIntersect /////////////////
 
 
-/** Routine used for computing the point position on a sail curved edge.
- *  Return p2 a 3d point which is the intersection of the vector v1
+/** 
+ *  Routine used for computing the point position on a sail curved edge.
+ *  Return a 3D point which is the intersection of the vector v1
  *  passing by pt1 point inside sail area with the Edge curve.
  *
  * @author Robert Laine alias Sailcuter
@@ -3737,9 +3752,10 @@ CPoint3d CSailWorker::EdgeIntersect( const enumEdgeType &Edge, const CPoint3d &p
 } //////////////// EdgeIntersect //////////////////////////////
 
 
-/** Routine used for computing the intersection with mitre line.
- *  Return a 3d point which is the intersection of the
- *  vector v1 passing by pt1 point with the mitre line.
+/** 
+ *  Routine used for computing the intersection with mitre line.
+ *  Return a 3d point which is the intersection of the vector v1
+ *  passing by pt1 point with the mitre line.
  *
  * @author: Robert Laine alias Sailcuter
  */
@@ -3766,10 +3782,11 @@ CPoint3d CSailWorker::MitreIntersect( const CPoint3d &pt1, const CVector3d &v1 )
 } ///////////// MitreIntersect ////////////////////////////////////////
 
 
-/** Routine used for computing the Z of any point of the sail.
- *  Return a CPoint3D p2 which is p1 point with its Z modified
+/** 
+ *  Routine used for computing the Z of a point of the sail.
+ *  Return a 3D point which is the input point p1 with its Z modified.
  *
- * @author Robert Laine
+ * @author Robert Laine alias Sailcuter
 */
 CPoint3d CSailWorker::Zpoint( const CPoint3d &p1 ) const
 {
@@ -3832,10 +3849,12 @@ CPoint3d CSailWorker::Zpoint( const CPoint3d &p1 ) const
 } /////////////// Zpoint ///////////////////////////////////////////////
 
 
-/** Routine used for computing the Z of all the points of a panel.
- *
- *  Returns a CPanel with all its Z's modified.
-*/
+/** 
+ * Routine used for computing the Z of all the points of a panel.
+ * Returns a CPanel with all its points Z's modified.
+ * 
+ * @author Robert Laine alias Sailcuter
+ */
 CPanel CSailWorker::Zpanel( const CPanel &p1 ) const
 {
     CPanel ret = p1;

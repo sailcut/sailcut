@@ -31,7 +31,7 @@ enum enumSailCut { CROSS, TWIST, HORIZONTAL, VERTICAL, RADIAL, MITRE , MITRE2};
 
 
 /** The CSailDef class holds the parameters that define a sail
- *  and their default values.
+ *  and its default values.
  *
  * @ingroup SailCpp
  * @see CFormSailDef for data input and checking
@@ -45,57 +45,65 @@ public:
     CSailDef & operator=( const CSailDef & );
 
     // member variables
-    /** sail ID name */
+    /** The Sail ID name */
     string sailID;
-    /** type of cut */
+    /** The type of cut layout */
     enumSailCut sailCut;
-    /** type of sail */
+    /** The type of sail */
     enumSailType sailType;
-    /** boat deck Length */
+    /** The boat deck Length in mm */
     real LOA;
-    /** Fore triangle */
-    real foreI, foreJ;
-    /** tack distance from stem */
+    /** The Fore triangle hoist in mm */
+    real foreI;
+    /** The Fore triangle base in mm */
+    real foreJ;
+    /** The distance from tack to stem */
     real tackX;
-    /** tack height above deck */ 
+    /** The Tack height above deck in mm */ 
     real tackY;
-    /** straight line luff length */
+    /** The straight line luff length in mm */
     real luffL;
-    /** rake of mast in mm */
+    /** The rake of Luff in mm */
     real rake;
-    /** gaff angle from luff line in degree */
+    /** The gaff angle from Luff line in degree */
     real gaffDeg;
-    /** straight line gaff length */
+    /** The straight line Gaff length in mm */
     real gaffL;
-    /** straight line foot length */
+    /** The straight line Foot length in mm */
     real footL;
-    /** straight line leech length */
+    /** The straight line Leech length in mm */
     real leechL;
-    /** value of round of sides */
+    /** The value of round of sides */
     real luffR,  gaffR,  leechR,  footR;
-    /** position of round of sides in percent */
+    /** The position of round of sides in percent of its length*/
     int  luffRP, gaffRP, leechRP, footRP;
-    /** cloth width */
+    /** The cloth width */
     real clothW;
-    /** seams width */
-    real seamW, leechHemW, hemsW;
-
-    /** sail twist */
+    /** The seam width between panels in mm */
+    real seamW;
+    /** The leech seam width in mm */
+    real leechHemW;
+    /** The other seams width in mm */
+    real hemsW;
+    /** The Inner guideline width in mm */
+    real innerW;
+     
+    /** The Sail twist between foot and head in degrees */
     real twistDeg;
-    /** sail sheeting angle */
+    /** The sail sheeting angle in degrees */
     real sheetDeg;
 
-    /** wing diedral angle */
+    /** The Wing diedral angle in degrees */
     real dihedralDeg;
 
-    /** number of radial sections */
+    /** The number of radial sections */
     unsigned int nbSections;
-    /** number of radial gores */
+    /** The number of radial head gores */
     unsigned int nbGores;
-    /** number of luff gores */
+    /** The number of luff gores */
     unsigned int nbLuffGores;
 
-    /** sail mould */
+    /** The sail mould */
     CSailMould mould;
 };
 
