@@ -69,7 +69,8 @@ protected:
     CPanelGroup LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; // TWIST
     CPanelGroup LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; // VERTICAL
     CPanelGroup LayoutRadial( CPanelGroup &flatsail, CPanelGroup &dispsail ) const;// RADIAL
-    CPanelGroup LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; // MITRE
+    CPanelGroup LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; // MITRE perpendicular to leech and foot
+    CPanelGroup LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; // MITRE2 parallel to leech and foot
     CPanelGroup LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; // TRIRADIAL
     CPanelGroup LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; // WING
 
