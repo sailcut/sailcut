@@ -121,7 +121,9 @@ CFormSailDef::CFormSailDef( QWidget* parent, CSailDef * sailptr )
 
 // member functions
 
-/** Compute and Display ancillary data of the sail computation */
+/** 
+ *  Compute and Display ancillary data of the sail computation 
+ */
 void CFormSailDef::compute()
 {
     CSailWorker worker(*saildef);
@@ -130,7 +132,9 @@ void CFormSailDef::compute()
 }
 
 
-/** Returns the sail cut from the form. */
+/** 
+ *  Returns the sail cut from the form. 
+ */
 enumSailCut CFormSailDef::getSailCut()
 {
     if ( radioHorizontal->isChecked() )
@@ -151,7 +155,9 @@ enumSailCut CFormSailDef::getSailCut()
 }
 
 
-/** Returns the sail type from the form. */
+/** 
+ *  Returns the sail type from the form. 
+ */
 enumSailType CFormSailDef::getSailType()
 {
     if ( radioJib->isChecked() )
@@ -164,7 +170,8 @@ enumSailType CFormSailDef::getSailType()
 }
 
 
-/** Enables or disables appropriate controls depending
+/** 
+ *  Enables or disables appropriate controls depending
  *  on the sail cut.
  */
 void CFormSailDef::setSailCut( enumSailCut cut )
@@ -196,7 +203,8 @@ void CFormSailDef::setSailCut( enumSailCut cut )
 }
 
 
-/** Enables or disables appropriate controls depending
+/** 
+ *  Enables or disables appropriate controls depending
  *  on the sail type.
  */
 void CFormSailDef::setSailType( enumSailType type )
@@ -288,8 +296,9 @@ void CFormSailDef::setSailType( enumSailType type )
 
 // Qt overrides
 
-/** Saves the parameters entered by the user in the CSailDef.
- *  slot connected to OK button
+/** 
+ *  Saves the parameters entered by the user in the CSailDef.
+ *  Slot connected to OK button
  */
 void CFormSailDef::accept()
 {
@@ -299,8 +308,9 @@ void CFormSailDef::accept()
 }
 
 
-/** Check all dimensions entered in order
- *  to make sure that the sail is possible and reasonable
+/** 
+ *  Check all dimensions entered in order to make 
+ *  sure that the sail is possible and reasonable
  */
 bool CFormSailDef::check()
 {
@@ -1068,7 +1078,8 @@ bool CFormSailDef::check()
 }
 
 
-/** Used to enable/disable appropriate controls when the user
+/** 
+ *  Enable/disable appropriate controls when the user
  *  changes the sail cut.
  **/
 void CFormSailDef::slotSailCut()
@@ -1078,7 +1089,8 @@ void CFormSailDef::slotSailCut()
 
 
 
-/** Saves the parameters entered by the user in the CSailDef.
+/** 
+ *  Saves the parameters entered by the user in the CSailDef.
  *  compute and display ancillary sail data
  *
  *  slot connected to Compute button
@@ -1132,7 +1144,8 @@ void CFormSailDef::slotCompute()
 }
 
 
-/** display ancillary data in a message box
+/** 
+ *  Display ancillary data in a message box
  */
 void CFormSailDef::displayData(QString &txt0, QString &txt1, QString &txt2, QString &txt3, QString &txt4 )
 {
@@ -1146,7 +1159,8 @@ void CFormSailDef::displayData(QString &txt0, QString &txt1, QString &txt2, QStr
 }
 
 
-/** Used to enable/disable appropriate controls when the user
+/** 
+ *  Enable/disable appropriate controls when the user
  *  changes the sail type.
  **/
 void CFormSailDef::slotSailType()
