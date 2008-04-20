@@ -797,6 +797,9 @@ void CSailDoc::put(QDomNode &parent, const enumSailCut &c, const QString &name )
     case MITRE:
         value = "MITRE";
         break;
+    case MITRE2:
+        value = "MITRE2";
+        break;
     }
     QDomElement e = createElement("enumSailCut",name,value);
     parent.appendChild(e);
