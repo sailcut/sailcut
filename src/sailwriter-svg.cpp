@@ -26,7 +26,8 @@
 #include <QSvgGenerator>
 #endif
 
-/** Write sail to SVG format.
+/** 
+ *  Write a 3D sail to 2D SVG format.
  *
  * @param sail the sail to write
  * @param filename the file to write to
