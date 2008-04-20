@@ -51,33 +51,43 @@ public:
     CPanelGroup makeSail() const;
     CPanelGroup makeSail(CPanelGroup &flatsail, CPanelGroup &dispsail) const;
 
-    /** The position of tack point */
+    /** The Tack 3D point */
     CPoint3d tack;
-    /** The position of head point */
+    /** The Head 3D point */
     CPoint3d head;
-    /** The position of peak point */
+    /** The Peak 3D point */
     CPoint3d peak;
-    /** The position of clew point */
+    /** The Clew 3D point */
     CPoint3d clew;
 
 protected:
     /** The type of Edge of a sail panel */
     enumEdgeType Edge;
     
-    /** The cut layout of sail's panels */
-    CPanelGroup Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; // CROSS
-    CPanelGroup LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; // TWIST
-    CPanelGroup LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; // VERTICAL
-    CPanelGroup LayoutRadial( CPanelGroup &flatsail, CPanelGroup &dispsail ) const;// RADIAL
-    CPanelGroup LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; // MITRE perpendicular to leech and foot
-    CPanelGroup LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; // MITRE2 parallel to leech and foot
-    CPanelGroup LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; // TRIRADIAL
-    CPanelGroup LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; // WING
+    /** The Cross or Horizontal cut layout of sail's panels */
+    CPanelGroup Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; 
+    /** The Twist cut layout of sail's panels */
+    CPanelGroup LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; 
+    /** The Vertical cut layout of sail's panels */
+    CPanelGroup LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; 
+    /** The Radial cut layout of sail's panels */
+    CPanelGroup LayoutRadial( CPanelGroup &flatsail, CPanelGroup &dispsail ) const;
+    /** The Mitre cut layout of sail's panels perpendicular to leech and foot */
+    CPanelGroup LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; 
+    /** The Mitre 2 cut layout of sail's panels parralel to foot and leech */
+    CPanelGroup LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; 
+    /** The Tri Radial cut layout of sail's panels */
+    CPanelGroup LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; 
+    /** The Wing cut layout of sail's panels */
+    CPanelGroup LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; 
 
-    /** The intersection with edges */
+    /** The intersection of a line defined by a point and a vector with an edge */
     CPoint3d EdgeIntersect( const enumEdgeType &Edge, const CPoint3d &pt1, const CVector3d &v1 ) const;
+    /** The horizontal intersection with forward edge */
     CPoint3d FwdIntersect( const CPoint3d &pt1 ) const;
+    /** The horizontal intersection with aft edge */
     CPoint3d AftIntersect( const CPoint3d &pt1 ) const;
+    /** The intersection of a line defined by a point and a vector with the mitre line */
     CPoint3d MitreIntersect( const CPoint3d &pt1, const CVector3d &v1 ) const;
     
     /** The mitre intersection point with luff */
