@@ -174,12 +174,13 @@ CPanelGroup CSailWorker::makeSail( CPanelGroup &flatsail , CPanelGroup &dispsail
 
 
 /** 
- * Creates a cross cut or horizontal cut sail.
+ *  Creates a cross cut or horizontal cut sail.
  *
  * @param flatsail the CPanelGroup object that will hold the developed sail
  * @param dispsail the CPanelGroup object that will hold the display
  *                 version of the developed sail
  * @return CPanelGroup
+ *
  * @author Robert Laine alias Sailcuter
  */
 CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail ) const
@@ -219,7 +220,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
 
     if ( sailCut == HORIZONTAL )
         seamV = CVector3d(-1, 0, 0);  // horizontal seam orientation for Horizontal cut
-    else // define seamV as the vector perpendicular to the leech vector (peak-clew)
+    else  // define seamV as the vector perpendicular to the leech vector (peak-clew)
         seamV = leechVP;  // for classical cross cut
 
     /* create variables for the development and edge corrections */
@@ -243,7 +244,8 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
     t1[0] = 1;
     t2[0] = 4;    // type=4=leech intersection
 
-    /** Lay the panels starting from the foot upward to the peak */
+    /** Lay the panels starting from the foot, going upward to the peak */
+    
     for (npanel = 1 ; npanel < MAX_PANELS -1 ; npanel++)
     {
         real exc = 0; // current excess of width
@@ -346,7 +348,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
                     }
                 }
 
-                /// We now add the intermediate points on all sides of the normal panel  */
+                ///* We now add the intermediate points on all sides of the normal panel  */
 
                 /* Below is the code for the left side depending
                 *  on t1 for the top side and bottom side
@@ -485,8 +487,8 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
 
         deviaPrev = deviation;
 
-        /** Now we reposition the developed panel such that
-        *  bottom minimum is Y=0 AND left is X=0
+        /* Reposition the developed panel such that the 
+        *  lowest point is Y=0 AND most left point is X=0.
         */
         dev[npanel-1] = dev[npanel-1].reframe(LOW_LEFT);
 
@@ -506,7 +508,8 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
         sail[j] = lay[j];
 
 
-    /** Create the displays version of the developed sail */
+    /** Create the displays version of the developed sail  */
+    
     /* Copy the developed sail */
     flatsail = CPanelGroup(npanel);
 
