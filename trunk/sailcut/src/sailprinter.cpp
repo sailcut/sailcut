@@ -82,6 +82,9 @@ void CSailDataPrinter::print(CTextPainter *painter, int, real fontsize) const
     case MITRE:
         text2 = tr("Mitre Cut");
         break;
+    case MITRE2:
+        text2 = tr("Mitre Cut 2");
+        break;
     }
     painter->printDataLine(tr("Sail layout"), text2, text3);
 
