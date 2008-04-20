@@ -104,6 +104,7 @@ CFormSailDef::CFormSailDef( QWidget* parent, CSailDef * sailptr )
     bgrpSailCut->addButton( radioHorizontal );
     bgrpSailCut->addButton( radioVertical );
     bgrpSailCut->addButton( radioMitre );
+    bgrpSailCut->addButton( radioMitre2 );
     bgrpSailCut->addButton( radioRadial );
 
     // signals and slots connections
@@ -136,6 +137,8 @@ enumSailCut CFormSailDef::getSailCut()
         return HORIZONTAL;
     else if ( radioMitre->isChecked() )
         return MITRE;
+    else if ( radioMitre2->isChecked() )
+        return MITRE2;
     else if ( radioRadial->isChecked() )
         return RADIAL;
     else if ( radioTwist->isChecked() )
@@ -186,6 +189,9 @@ void CFormSailDef::setSailCut( enumSailCut cut )
     case MITRE:
         radioMitre->setChecked( true );
         break;
+    case MITRE2:
+        radioMitre2->setChecked( true );
+        break;
     }
 }
 
@@ -220,6 +226,7 @@ void CFormSailDef::setSailType( enumSailType type )
         radioTwist->setEnabled( true );
         radioVertical->setEnabled( true );
         radioMitre->setEnabled( true );
+        radioMitre2->setEnabled( true );
         break;
 
     case JIB:
@@ -245,6 +252,7 @@ void CFormSailDef::setSailType( enumSailType type )
         radioTwist->setEnabled( true );
         radioVertical->setEnabled( true );
         radioMitre->setEnabled( true );
+        radioMitre2->setEnabled( true );
         break;
 
     case WING:
@@ -271,6 +279,7 @@ void CFormSailDef::setSailType( enumSailType type )
         radioTwist->setEnabled( false );
         radioVertical->setEnabled( false );
         radioMitre->setEnabled( false );
+        radioMitre2->setEnabled( false );
         break;
 
     }
