@@ -275,6 +275,8 @@ void CSailDoc::get
         c = RADIAL;
     if (!s.compare("MITRE"))
         c = MITRE;
+    if (!s.compare("MITRE2"))
+        c = MITRE2;
 }
 
 
@@ -431,20 +433,24 @@ void CSailDoc::get
      */
     try
     {
-        /* sail ID */
+        /* Sail ID */
         get(e, d.sailID, "sailID");
 
-        /* radial sections */
+        /* Radial sections */
         get(e, d.nbSections, "nbSections");
 
-        /* radial gores */
+        /* Radial gores */
         get(e, d.nbGores, "nbGores");
 
-        /* luff gores */
+        /* Luff gores */
         get(e, d.nbLuffGores, "nbLuffGores");
 
-        /* wing dihedral angle */
+        /* Wing dihedral angle */
         get(e, d.dihedralDeg, "dihedralDeg");
+        
+        /* Foot hem width */
+        get(e, d.footHemW, "footHemW");
+
     }
     catch (CException e)
     {
@@ -881,18 +887,18 @@ void CSailDoc::put(QDomNode &parent, const CSailDef &d, const QString &name )
     QDomElement e = createElement("CSailDef",name);
     parent.appendChild(e);
 
-    /* sail cut and type */
+    /* Sail cut and type */
     put(e, d.sailCut, "sailCut");
     put(e, d.sailType, "sailType");
 
-    /* boat data */
+    /* Boat data */
     put(e, d.LOA, "LOA");
     put(e, d.foreI, "foreI");
     put(e, d.foreJ, "foreJ");
     put(e, d.tackX, "tackX");
     put(e, d.tackY, "tackY");
 
-    /* sides of the sail */
+    /* Sides of the sail */
     put(e, d.luffL, "luffL");
     put(e, d.rake, "rake");
     put(e, d.gaffDeg, "gaffDeg");
@@ -900,7 +906,7 @@ void CSailDoc::put(QDomNode &parent, const CSailDef &d, const QString &name )
     put(e, d.footL, "footL");
     put(e, d.leechL, "leechL");
 
-    /* shape of sides */
+    /* Shape of sides */
     put(e, d.luffR, "luffR");
     put(e, d.gaffR, "gaffR");
     put(e, d.leechR, "leechR");
@@ -911,34 +917,37 @@ void CSailDoc::put(QDomNode &parent, const CSailDef &d, const QString &name )
     put(e, d.leechRP, "leechRP");
     put(e, d.footRP, "footRP");
 
-    /* cloth width, seam and hems width */
+    /* Cloth width, seam and hems width */
     put(e, d.clothW, "clothW");
     put(e, d.seamW, "seamW");
     put(e, d.leechHemW, "leechHemW");
     put(e, d.hemsW, "hemsW");
 
-    /* twist */
+    /* Twist */
     put(e, d.twistDeg, "twistDeg");
-    /* sheeting */
+    /* Sheeting */
     put(e, d.sheetDeg, "sheetDeg");
 
-    /* mould */
+    /* Mould */
     put(e, d.mould, "mould");
 
-    /* sail ID */
+    /* Sail ID */
     put(e, d.sailID, "sailID");
 
-    /* radial sections */
+    /* Radial sections */
     put(e, d.nbSections, "nbSections");
 
-    /* radial gores */
+    /* Radial gores */
     put(e, d.nbGores, "nbGores");
 
-    /* luff gores */
+    /* Luff gores */
     put(e, d.nbLuffGores, "nbLuffGores");
 
-    /* wing dihedral angle */
+    /* Wing dihedral angle */
     put(e, d.dihedralDeg, "dihedralDeg");
+    
+    /* Foot hem width */
+    put(e, d.footHemW, "footHemW");
 }
 
 
