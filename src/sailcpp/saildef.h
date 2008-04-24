@@ -83,6 +83,8 @@ public:
     real seamW;
     /** The leech seam width in mm */
     real leechHemW;
+    /** The foot seam width in mm */
+    real footHemW;
     /** The other seams width in mm */
     real hemsW;
     /** The Inner guideline width in mm */

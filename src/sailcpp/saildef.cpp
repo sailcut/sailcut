@@ -61,6 +61,7 @@ CSailDef::CSailDef()
     clothW = 900;        // in millimetre
     seamW = 13;         // in millimetre
     leechHemW = 40;  // in millimetre
+    footHemW = 30;
     hemsW = 20;        // in millimetre
 
     twistDeg = 18;      // in degree
@@ -117,6 +118,7 @@ CSailDef & CSailDef::operator=( const CSailDef &copy )
     clothW = copy.clothW;
     seamW = copy.seamW;
     leechHemW = copy.leechHemW;
+    footHemW = copy.footHemW;
     hemsW = copy.hemsW;
     
     tackX = copy.tackX;
