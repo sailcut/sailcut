@@ -1,10 +1,10 @@
        Authors of Sailcut (trademark) 2005
 
-Jeremy Lainé <jeremy.laine@m4x.org>
+Jeremy Lainï¿½ <jeremy.laine@m4x.org>
  * GeoCpp linear algebra library
  * Graphics and file I/O code
  
-Robert Lainé alias sailcuter <robert.laine@sailcut.com>
+Robert Lainï¿½ alias sailcuter <robert.laine@sailcut.com>
  * Original Sailcut software and owner of Sailcut name
  * Sail layout and profile algorithms and implementation
 
@@ -13,6 +13,9 @@ Contributors:
 Stephan Paternotte
  * Dutch translation
  * Sailcut CAD icons
+
+Peter Meuse
+ * Modification of Mitre layout code for laying panels parrallel to leech and foot
 
 Massimo Cislaghi
  * Italian translation
