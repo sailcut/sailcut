@@ -234,6 +234,11 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
     vector<CVector3d> deviaPrev;
     deviaPrev.resize(npb);
 
+    /* Other edge hem width */
+    // real footHemW = hemsW;
+    // real luffHemW = hemsW; 
+    // real luffInnerHemW, footInnerHemW;
+
     real CC = 0, x = 0, y = 0;
 
     /* seam 0 is on the foot of the sail ending at the clew */
@@ -468,7 +473,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
 
             /** Add the seam and hems allowance */
             if ( npanel == 1 )
-                dev[npanel-1].addHems(hemsW, seamW, leechHemW, hemsW);
+                dev[npanel-1].addHems(hemsW, seamW, leechHemW, footHemW);
             else if ( flag == true )
                 dev[npanel-1].addHems(hemsW, hemsW, leechHemW, 0);
             else
@@ -607,6 +612,11 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
     t1[0] = 2;
     t2[0] = 4;    // type=4=leech intersection
 
+    /* Other edge hem width */
+    // real footHemW = hemsW;
+    // real luffHemW = hemsW; 
+    // real luffInnerHemW, footInnerHemW;
+    
     /** Start laying the panels from foot upward to the peak */
     for (npanel = 1; npanel < MAX_PANELS-1; npanel++)
     {
@@ -793,7 +803,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
 
             /* Add the seam and hems allowance */
             if (npanel == 1)
-                dev[npanel-1].addHems(hemsW, seamW, leechHemW, hemsW);
+                dev[npanel-1].addHems(hemsW, seamW, leechHemW, footHemW);
             else if (flag == true)
                 dev[npanel-1].addHems(hemsW, hemsW, leechHemW, 0);
             else
@@ -926,6 +936,11 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
     vector<CVector3d> deviaPrev;
     deviaPrev.resize(npb);
 
+    /* Other edge hem width */
+    // real footHemW = hemsW;
+    // real luffHemW = hemsW; 
+    // real luffInnerHemW, footInnerHemW;
+    
     /* seam 0 is on the leech of the sail ending at the peak */
     p1[0] = clew; // initialised at tack point
     p2[0] = peak;
@@ -1053,11 +1068,11 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
 
             /* Add the seam and hems allowance */
             if ( npanel == 1 )
-                dev[npanel-1].addHems(hemsW, seamW, hemsW, leechHemW);
+                dev[npanel-1].addHems(footHemW, seamW, hemsW, leechHemW);
             else if ( flag == true )
-                dev[npanel-1].addHems(hemsW, hemsW, hemsW, 0);
+                dev[npanel-1].addHems(footHemW, hemsW, hemsW, 0);
             else
-                dev[npanel-1].addHems(hemsW, seamW, hemsW, 0);
+                dev[npanel-1].addHems(footHemW, seamW, hemsW, 0);
 
             /* Check the width of developed panel and store excess */
             exc = dev[npanel-1].boundingRect().height() - clothW;
@@ -1171,6 +1186,11 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
     deviation.resize(npb);
     vector<CVector3d> deviaPrev;
     deviaPrev.resize(npb);
+    
+    /* Other edge hem width */
+    // real footHemW = hemsW;
+    // real luffHemW = hemsW; 
+    // real luffInnerHemW, footInnerHemW;
 
     /* create variable to monitor excess over cloth width */
     real CC=0, x=0, y=0;
@@ -1393,7 +1413,7 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
 
         /* Add the seam and hems allowance */
         if ( npanel == 1 )
-            dev[npanel-1].addHems(hemsW, seamW, leechHemW, seamW);
+            dev[npanel-1].addHems(hemsW, seamW, leechHemW, footHemW);
         else if ( flag == true )
             dev[npanel-1].addHems(hemsW, hemsW, leechHemW, 0);
         else
@@ -1523,6 +1543,11 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
     /* create variable for edge correction */
     vector<CVector3d> deviation;
     deviation.resize(npb);
+
+    /* Other edge hem width */
+    // real footHemW = hemsW;
+    // real luffHemW = hemsW; 
+    // real luffInnerHemW, footInnerHemW;
 
     /* Create arrays of points at horizontal seams ends (10 maximum) */
     CPoint3d luffH[10];    // point at the luff end of the horizontal seam
@@ -1799,7 +1824,7 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
 
                 // We add the seams and hems allowance
                 if ( j == a )
-                    dev[npanel].addHems(seamW, hemsW, 0, 0);
+                    dev[npanel].addHems(seamW, footHemW, 0, 0);
                 else
                     dev[npanel].addHems(seamW, seamW, 0, 0);
 
@@ -1834,7 +1859,7 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
 
                 // We add the seams and hems allowance
                 if ( j == 1 )
-                    dev[npanel].addHems(0, seamW, 0, hemsW);
+                    dev[npanel].addHems(0, seamW, 0, footHemW);
                 else
                     dev[npanel].addHems(0, seamW, 0, 0);
 
@@ -2491,9 +2516,9 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
     /** Mitre Hem Width is set at twice the Seam Width. */
     real mitreHemW = 2 * seamW; 
     
-    /* Other edge hem */
-    real footHemW = seamW;
-    real luffHemW = seamW; 
+    /* Other edge hem width */
+    //real footHemW = hemsW;
+    real luffHemW = hemsW; 
     // real luffInnerHemW, footInnerHemW;
 
     /* seam 0 is on the foot of the sail ending at the clew */
@@ -2950,8 +2975,8 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
     real mitreHemW = 2 * seamW; 
     
     /* Other edge hem */
-    real footHemW = seamW;
-    real luffHemW = seamW; 
+    // real footHemW = hemsW;
+    real luffHemW = hemsW; 
     // real luffInnerHemW, footInnerHemW;
     
     /** Start by laying the foot panels parallel to the foot,
