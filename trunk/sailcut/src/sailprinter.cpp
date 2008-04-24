@@ -126,7 +126,8 @@ void CSailDataPrinter::print(CTextPainter *painter, int, real fontsize) const
     painter->printDataLine(tr("Cloth width"), QString::number(saildef.clothW), "mm");
     painter->printDataLine(tr("Seams width"), QString::number(saildef.seamW), "mm");
     painter->printDataLine(tr("Leech hem width"), QString::number(saildef.leechHemW), "mm");
-    painter->printDataLine(tr("Other hem width"), QString::number(saildef.hemsW), "mm");
+    painter->printDataLine(tr("Foot hem width"), QString::number(saildef.footHemW), "mm");
+    painter->printDataLine(tr("Other hems width"), QString::number(saildef.hemsW), "mm");
 
     // sail mould
     painter->printDataSection(tr("Sail mould"));
