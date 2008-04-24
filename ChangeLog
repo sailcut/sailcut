@@ -1,6 +1,8 @@
 preparing Sailcut CAD 1.3.4
+ * added - print preview window with panel selection option
  * added - Mitre2 layout with panels parrallel to leech and foot, contribution from Peter Meuse
- * fixed - crash in case SVG is not present in system
+ * added - Foot hem width distinct from other hems
+ * fixed - crash in case SVG is not present on Linux system
 
 Sailcut CAD 1.3.3
  * added - print preview dialog for previewing text or drawing output
