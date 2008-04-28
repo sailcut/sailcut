@@ -206,7 +206,7 @@ void CFormPrint::slotPrint()
             {
                 if ( i >= 0 && i < printEngine->pages())
                 {
-                    if ( i > 0 )
+                    if ( i > minPage - 1 )
                         printDevice.newPage();
                     printEngine->print(&painter, i, printFontSize);
                 }
