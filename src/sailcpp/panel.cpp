@@ -421,7 +421,7 @@ CPanel CPanel::reframe(enumAlign align) const
     return (*this + CVector3d( -xm , -ym , 0 ));
 }
 
-/** Add the cloth for stitching to the edges of the panel.
+/** Add the cloth for stitching to the 4 edges of the panel.
  *  This create the panel to be cut (outside the basic panel)
  *   lw = width to be added on left side
  *   tw = width to be added on top side
