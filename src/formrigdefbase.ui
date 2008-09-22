@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>740</width>
-    <height>722</height>
+    <width>720</width>
+    <height>620</height>
    </rect>
   </property>
   <property name="minimumSize" >
    <size>
-    <width>740</width>
-    <height>720</height>
+    <width>720</width>
+    <height>620</height>
    </size>
   </property>
   <property name="windowTitle" >
@@ -21,36 +21,28 @@
   </property>
   <layout class="QGridLayout" >
    <property name="margin" >
-    <number>9</number>
+    <number>4</number>
    </property>
    <property name="spacing" >
-    <number>6</number>
+    <number>4</number>
    </property>
-   <item row="1" column="6" colspan="2" >
+   <item row="7" column="4" >
     <spacer>
      <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
+      <enum>Qt::Vertical</enum>
      </property>
      <property name="sizeHint" >
       <size>
-       <width>71</width>
-       <height>25</height>
+       <width>20</width>
+       <height>5</height>
       </size>
      </property>
     </spacer>
    </item>
-   <item row="6" column="7" >
-    <widget class="QPushButton" name="btnCancel" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>1</hsizetype>
-       <vsizetype>0</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
+   <item row="6" column="4" >
+    <widget class="QPushButton" name="btnCheck" >
      <property name="text" >
-      <string>Cancel</string>
+      <string>Check</string>
      </property>
     </widget>
    </item>
@@ -69,279 +61,40 @@
      </property>
     </widget>
    </item>
-   <item row="5" column="3" colspan="5" >
-    <widget class="QGroupBox" name="groupBox_4" >
-     <property name="title" >
-      <string>Spreaders</string>
+   <item row="6" column="7" >
+    <widget class="QPushButton" name="btnCancel" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>1</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
-       <number>7</number>
-      </property>
-      <property name="spacing" >
-       <number>7</number>
-      </property>
-      <item row="0" column="3" >
-       <spacer>
-        <property name="orientation" >
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" >
-         <size>
-          <width>21</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="0" column="2" >
-       <widget class="QSpinBox" name="spinBox_SPNB" >
-        <property name="minimumSize" >
-         <size>
-          <width>50</width>
-          <height>21</height>
-         </size>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignHCenter</set>
-        </property>
-        <property name="suffix" >
-         <string/>
-        </property>
-        <property name="maximum" >
-         <number>3</number>
-        </property>
-        <property name="value" >
-         <number>3</number>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1" >
-       <widget class="QLabel" name="lbl_SPNB" >
-        <property name="text" >
-         <string>= SPNB</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0" >
-       <widget class="QLabel" name="label_SpreaderNumber" >
-        <property name="text" >
-         <string>Number of spreaders</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0" >
-       <widget class="QGroupBox" name="groupBox_7" >
-        <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>1</hsizetype>
-          <vsizetype>5</vsizetype>
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="title" >
-         <string>Spreader height</string>
-        </property>
-        <layout class="QGridLayout" >
-         <property name="margin" >
-          <number>8</number>
-         </property>
-         <property name="spacing" >
-          <number>8</number>
-         </property>
-         <item row="1" column="1" >
-          <widget class="QLineEdit" name="txt_SPH2" >
-           <property name="sizePolicy" >
-            <sizepolicy>
-             <hsizetype>5</hsizetype>
-             <vsizetype>0</vsizetype>
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize" >
-            <size>
-             <width>0</width>
-             <height>22</height>
-            </size>
-           </property>
-           <property name="text" >
-            <string>txt_SPH2</string>
-           </property>
-           <property name="alignment" >
-            <set>Qt::AlignHCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1" >
-          <widget class="QLineEdit" name="txt_SPH1" >
-           <property name="sizePolicy" >
-            <sizepolicy>
-             <hsizetype>5</hsizetype>
-             <vsizetype>0</vsizetype>
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize" >
-            <size>
-             <width>0</width>
-             <height>22</height>
-            </size>
-           </property>
-           <property name="text" >
-            <string>txt_SPH1</string>
-           </property>
-           <property name="alignment" >
-            <set>Qt::AlignHCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1" >
-          <widget class="QLineEdit" name="txt_SPH3" >
-           <property name="sizePolicy" >
-            <sizepolicy>
-             <hsizetype>5</hsizetype>
-             <vsizetype>0</vsizetype>
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize" >
-            <size>
-             <width>70</width>
-             <height>22</height>
-            </size>
-           </property>
-           <property name="text" >
-            <string>txt_SPH3</string>
-           </property>
-           <property name="alignment" >
-            <set>Qt::AlignHCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0" >
-          <widget class="QLabel" name="lbl_SPH2" >
-           <property name="text" >
-            <string>SPH2</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="0" >
-          <widget class="QLabel" name="lbl_SPH3" >
-           <property name="text" >
-            <string>SPH3</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0" >
-          <widget class="QLabel" name="lbl_SPH1" >
-           <property name="text" >
-            <string>SPH1</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item row="1" column="1" colspan="3" >
-       <widget class="QGroupBox" name="groupBox_6" >
-        <property name="title" >
-         <string>Spreader length</string>
-        </property>
-        <layout class="QGridLayout" >
-         <property name="margin" >
-          <number>8</number>
-         </property>
-         <property name="spacing" >
-          <number>8</number>
-         </property>
-         <item row="0" column="0" >
-          <widget class="QLabel" name="lbl_SPW3" >
-           <property name="text" >
-            <string>SPW3</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1" >
-          <widget class="QLineEdit" name="txt_SPW3" >
-           <property name="minimumSize" >
-            <size>
-             <width>70</width>
-             <height>22</height>
-            </size>
-           </property>
-           <property name="text" >
-            <string>txt_SPW3</string>
-           </property>
-           <property name="alignment" >
-            <set>Qt::AlignHCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0" >
-          <widget class="QLabel" name="lbl_SPW1" >
-           <property name="text" >
-            <string>SPW1</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1" >
-          <widget class="QLineEdit" name="txt_SPW1" >
-           <property name="minimumSize" >
-            <size>
-             <width>0</width>
-             <height>22</height>
-            </size>
-           </property>
-           <property name="text" >
-            <string>txt_SPW1</string>
-           </property>
-           <property name="alignment" >
-            <set>Qt::AlignHCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0" >
-          <widget class="QLabel" name="lbl_SPW2" >
-           <property name="text" >
-            <string>SPW2</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1" >
-          <widget class="QLineEdit" name="txt_SPW2" >
-           <property name="minimumSize" >
-            <size>
-             <width>0</width>
-             <height>22</height>
-            </size>
-           </property>
-           <property name="text" >
-            <string>txt_SPW2</string>
-           </property>
-           <property name="alignment" >
-            <set>Qt::AlignHCenter</set>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-     </layout>
+     <property name="text" >
+      <string>Cancel</string>
+     </property>
     </widget>
+   </item>
+   <item row="6" column="0" colspan="4" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>321</width>
+       <height>31</height>
+      </size>
+     </property>
+    </spacer>
    </item>
    <item row="5" column="0" colspan="2" >
     <widget class="QGroupBox" name="groupBox_3" >
      <property name="sizePolicy" >
       <sizepolicy>
        <hsizetype>5</hsizetype>
-       <vsizetype>5</vsizetype>
+       <vsizetype>1</vsizetype>
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -351,10 +104,10 @@
      </property>
      <layout class="QGridLayout" >
       <property name="margin" >
-       <number>7</number>
+       <number>4</number>
       </property>
       <property name="spacing" >
-       <number>8</number>
+       <number>4</number>
       </property>
       <item row="1" column="0" >
        <widget class="QLabel" name="lbl_CapShroudBase" >
@@ -573,8 +326,8 @@
      </property>
     </spacer>
    </item>
-   <item row="2" column="0" colspan="8" >
-    <widget class="QGroupBox" name="groupBox" >
+   <item row="5" column="3" colspan="5" >
+    <widget class="QGroupBox" name="groupBox_4" >
      <property name="sizePolicy" >
       <sizepolicy>
        <hsizetype>5</hsizetype>
@@ -584,14 +337,14 @@
       </sizepolicy>
      </property>
      <property name="title" >
-      <string>Fore triangle</string>
+      <string>Spreaders</string>
      </property>
      <layout class="QGridLayout" >
       <property name="margin" >
-       <number>8</number>
+       <number>4</number>
       </property>
       <property name="spacing" >
-       <number>8</number>
+       <number>4</number>
       </property>
       <item row="0" column="3" >
        <spacer>
@@ -600,407 +353,268 @@
         </property>
         <property name="sizeHint" >
          <size>
-          <width>40</width>
+          <width>21</width>
           <height>20</height>
          </size>
         </property>
        </spacer>
       </item>
       <item row="0" column="2" >
-       <widget class="QLineEdit" name="txt_foreI" >
-        <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>1</hsizetype>
-          <vsizetype>0</vsizetype>
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
+       <widget class="QSpinBox" name="spinBox_SPNB" >
         <property name="minimumSize" >
          <size>
-          <width>70</width>
-          <height>0</height>
+          <width>50</width>
+          <height>21</height>
          </size>
-        </property>
-        <property name="text" >
-         <string>txt_foreI</string>
         </property>
         <property name="alignment" >
          <set>Qt::AlignHCenter</set>
+        </property>
+        <property name="suffix" >
+         <string/>
+        </property>
+        <property name="maximum" >
+         <number>3</number>
+        </property>
+        <property name="value" >
+         <number>3</number>
         </property>
        </widget>
       </item>
       <item row="0" column="1" >
-       <widget class="QLabel" name="lbl_I" >
+       <widget class="QLabel" name="lbl_SPNB" >
         <property name="text" >
-         <string>= I</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="6" >
-       <widget class="QLineEdit" name="txt_foreJ" >
-        <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>1</hsizetype>
-          <vsizetype>0</vsizetype>
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize" >
-         <size>
-          <width>70</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="text" >
-         <string>txt_foreJ</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignHCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="5" >
-       <widget class="QLabel" name="lbl_J" >
-        <property name="text" >
-         <string>= J</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="4" >
-       <widget class="QLabel" name="lbl_foreJ" >
-        <property name="text" >
-         <string>Fore triangle base</string>
+         <string>= SPNB</string>
         </property>
        </widget>
       </item>
       <item row="0" column="0" >
-       <widget class="QLabel" name="lbl_foreI" >
+       <widget class="QLabel" name="label_SpreaderNumber" >
         <property name="text" >
-         <string>Fore triangle hoist</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="3" column="0" colspan="8" >
-    <widget class="QGroupBox" name="groupBox_2" >
-     <property name="title" >
-      <string>Mast</string>
-     </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
-       <number>8</number>
-      </property>
-      <property name="spacing" >
-       <number>8</number>
-      </property>
-      <item row="4" column="4" >
-       <widget class="QLabel" name="lbl_MastWidth" >
-        <property name="text" >
-         <string>Mast width</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="5" >
-       <widget class="QLabel" name="lbl_MW" >
-        <property name="text" >
-         <string>= MW</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="6" >
-       <widget class="QLineEdit" name="txt_MW" >
-        <property name="minimumSize" >
-         <size>
-          <width>70</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="text" >
-         <string>txt_MW</string>
+         <string>Number of spreaders</string>
         </property>
         <property name="alignment" >
-         <set>Qt::AlignHCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="2" >
-       <widget class="QLineEdit" name="txt_MC" >
-        <property name="minimumSize" >
-         <size>
-          <width>70</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="text" >
-         <string>txt_MC</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignHCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1" >
-       <widget class="QLabel" name="lbl_MC" >
-        <property name="text" >
-         <string>= MC</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0" >
-       <widget class="QLabel" name="lbl_MastCord" >
-        <property name="text" >
-         <string>Mast cord</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="6" >
-       <widget class="QLabel" name="lbl_MRkD" >
-        <property name="frameShape" >
-         <enum>QFrame::Box</enum>
-        </property>
-        <property name="text" >
-         <string>lbl_MRkD</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="5" >
-       <widget class="QLabel" name="lbl_MRkDeg" >
-        <property name="text" >
-         <string>= MRkD</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="4" >
-       <widget class="QLabel" name="lbl_MastRakeAngle" >
-        <property name="text" >
-         <string>Mast rake angle</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="2" >
-       <widget class="QLineEdit" name="txt_MH" >
-        <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>3</hsizetype>
-          <vsizetype>0</vsizetype>
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize" >
-         <size>
-          <width>70</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="text" >
-         <string>txt_MH</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignHCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2" >
-       <widget class="QLineEdit" name="txt_MRnd" >
-        <property name="text" >
-         <string>txt_MRnd</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignHCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="3" >
-       <spacer>
-        <property name="orientation" >
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeType" >
-         <enum>QSizePolicy::Expanding</enum>
-        </property>
-        <property name="sizeHint" >
-         <size>
-          <width>20</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="0" column="4" >
-       <widget class="QLabel" name="lbl_MastRake" >
-        <property name="text" >
-         <string>Mast rake</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="5" >
-       <widget class="QLabel" name="lbl_MRkM" >
-        <property name="text" >
-         <string>= MRkM</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="6" >
-       <widget class="QLineEdit" name="txt_MRkM" >
-        <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>3</hsizetype>
-          <vsizetype>0</vsizetype>
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize" >
-         <size>
-          <width>70</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="text" >
-         <string>txt_MRkM</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignHCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0" >
-       <widget class="QLabel" name="lbl_MastHeight" >
-        <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>5</hsizetype>
-          <vsizetype>0</vsizetype>
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize" >
-         <size>
-          <width>60</width>
-          <height>22</height>
-         </size>
-        </property>
-        <property name="text" >
-         <string>Mast height</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1" >
-       <widget class="QLabel" name="lbl_MH" >
-        <property name="text" >
-         <string>= MH</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1" >
-       <widget class="QLabel" name="lbl_MRnd" >
-        <property name="text" >
-         <string>= MRnd</string>
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
       <item row="1" column="0" >
-       <widget class="QLabel" name="lbl_MastRound" >
+       <widget class="QGroupBox" name="groupBox_7" >
         <property name="sizePolicy" >
          <sizepolicy>
           <hsizetype>5</hsizetype>
-          <vsizetype>0</vsizetype>
+          <vsizetype>1</vsizetype>
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
-        <property name="minimumSize" >
-         <size>
-          <width>60</width>
-          <height>22</height>
-         </size>
+        <property name="title" >
+         <string>Spreader height</string>
         </property>
-        <property name="text" >
-         <string>Mast round</string>
-        </property>
+        <layout class="QGridLayout" >
+         <property name="margin" >
+          <number>6</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item row="1" column="1" >
+          <widget class="QLineEdit" name="txt_SPH2" >
+           <property name="sizePolicy" >
+            <sizepolicy>
+             <hsizetype>5</hsizetype>
+             <vsizetype>0</vsizetype>
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize" >
+            <size>
+             <width>0</width>
+             <height>22</height>
+            </size>
+           </property>
+           <property name="text" >
+            <string>txt_SPH2</string>
+           </property>
+           <property name="alignment" >
+            <set>Qt::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1" >
+          <widget class="QLineEdit" name="txt_SPH1" >
+           <property name="sizePolicy" >
+            <sizepolicy>
+             <hsizetype>5</hsizetype>
+             <vsizetype>0</vsizetype>
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize" >
+            <size>
+             <width>0</width>
+             <height>22</height>
+            </size>
+           </property>
+           <property name="text" >
+            <string>txt_SPH1</string>
+           </property>
+           <property name="alignment" >
+            <set>Qt::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1" >
+          <widget class="QLineEdit" name="txt_SPH3" >
+           <property name="sizePolicy" >
+            <sizepolicy>
+             <hsizetype>5</hsizetype>
+             <vsizetype>0</vsizetype>
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize" >
+            <size>
+             <width>70</width>
+             <height>22</height>
+            </size>
+           </property>
+           <property name="text" >
+            <string>txt_SPH3</string>
+           </property>
+           <property name="alignment" >
+            <set>Qt::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0" >
+          <widget class="QLabel" name="lbl_SPH2" >
+           <property name="text" >
+            <string>SPH2</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0" >
+          <widget class="QLabel" name="lbl_SPH3" >
+           <property name="text" >
+            <string>SPH3</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0" >
+          <widget class="QLabel" name="lbl_SPH1" >
+           <property name="text" >
+            <string>SPH1</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </item>
-      <item row="2" column="1" >
-       <widget class="QLabel" name="lbl_MRndPos" >
-        <property name="text" >
-         <string>= MRndPos</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0" >
-       <widget class="QLabel" name="lbl_MastRoundPos" >
+      <item row="1" column="1" colspan="3" >
+       <widget class="QGroupBox" name="groupBox_6" >
         <property name="sizePolicy" >
          <sizepolicy>
           <hsizetype>5</hsizetype>
-          <vsizetype>0</vsizetype>
+          <vsizetype>1</vsizetype>
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
-        <property name="minimumSize" >
-         <size>
-          <width>60</width>
-          <height>22</height>
-         </size>
+        <property name="title" >
+         <string>Spreader length</string>
         </property>
-        <property name="text" >
-         <string>Mast round position </string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0" colspan="7" >
-       <widget class="Line" name="line" >
-        <property name="orientation" >
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2" >
-       <widget class="QSpinBox" name="spinBox_MRndPos" >
-        <property name="alignment" >
-         <set>Qt::AlignHCenter</set>
-        </property>
-        <property name="maximum" >
-         <number>80</number>
-        </property>
-        <property name="minimum" >
-         <number>20</number>
-        </property>
-        <property name="value" >
-         <number>50</number>
-        </property>
+        <layout class="QGridLayout" >
+         <property name="margin" >
+          <number>6</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item row="0" column="0" >
+          <widget class="QLabel" name="lbl_SPW3" >
+           <property name="text" >
+            <string>SPW3</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1" >
+          <widget class="QLineEdit" name="txt_SPW3" >
+           <property name="minimumSize" >
+            <size>
+             <width>70</width>
+             <height>22</height>
+            </size>
+           </property>
+           <property name="text" >
+            <string>txt_SPW3</string>
+           </property>
+           <property name="alignment" >
+            <set>Qt::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0" >
+          <widget class="QLabel" name="lbl_SPW1" >
+           <property name="text" >
+            <string>SPW1</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1" >
+          <widget class="QLineEdit" name="txt_SPW1" >
+           <property name="minimumSize" >
+            <size>
+             <width>0</width>
+             <height>22</height>
+            </size>
+           </property>
+           <property name="text" >
+            <string>txt_SPW1</string>
+           </property>
+           <property name="alignment" >
+            <set>Qt::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0" >
+          <widget class="QLabel" name="lbl_SPW2" >
+           <property name="text" >
+            <string>SPW2</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1" >
+          <widget class="QLineEdit" name="txt_SPW2" >
+           <property name="minimumSize" >
+            <size>
+             <width>0</width>
+             <height>22</height>
+            </size>
+           </property>
+           <property name="text" >
+            <string>txt_SPW2</string>
+           </property>
+           <property name="alignment" >
+            <set>Qt::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </item>
      </layout>
     </widget>
-   </item>
-   <item row="6" column="0" colspan="4" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>321</width>
-       <height>31</height>
-      </size>
-     </property>
-    </spacer>
    </item>
    <item row="4" column="0" colspan="8" >
     <widget class="QGroupBox" name="groupBox_5" >
      <property name="sizePolicy" >
       <sizepolicy>
-       <hsizetype>5</hsizetype>
-       <vsizetype>5</vsizetype>
+       <hsizetype>1</hsizetype>
+       <vsizetype>1</vsizetype>
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -1016,10 +630,10 @@
      </property>
      <layout class="QGridLayout" >
       <property name="margin" >
-       <number>9</number>
+       <number>4</number>
       </property>
       <property name="spacing" >
-       <number>6</number>
+       <number>4</number>
       </property>
       <item row="3" column="10" colspan="2" >
        <widget class="QLabel" name="lbl_MS_LuffRP" >
@@ -1532,53 +1146,433 @@
      </layout>
     </widget>
    </item>
-   <item row="6" column="4" >
-    <widget class="QPushButton" name="btnCheck" >
-     <property name="text" >
-      <string>Check</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0" colspan="6" >
-    <widget class="QLabel" name="lbl_TopFrame" >
+   <item row="3" column="0" colspan="8" >
+    <widget class="QGroupBox" name="groupBox_2" >
      <property name="sizePolicy" >
       <sizepolicy>
-       <hsizetype>5</hsizetype>
+       <hsizetype>1</hsizetype>
        <vsizetype>1</vsizetype>
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
+     <property name="title" >
+      <string>Mast</string>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>4</number>
+      </property>
+      <property name="spacing" >
+       <number>4</number>
+      </property>
+      <item row="4" column="4" >
+       <widget class="QLabel" name="lbl_MastWidth" >
+        <property name="text" >
+         <string>Mast width</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="5" >
+       <widget class="QLabel" name="lbl_MW" >
+        <property name="text" >
+         <string>= MW</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="6" >
+       <widget class="QLineEdit" name="txt_MW" >
+        <property name="minimumSize" >
+         <size>
+          <width>70</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text" >
+         <string>txt_MW</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignHCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="2" >
+       <widget class="QLineEdit" name="txt_MC" >
+        <property name="minimumSize" >
+         <size>
+          <width>70</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text" >
+         <string>txt_MC</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignHCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1" >
+       <widget class="QLabel" name="lbl_MC" >
+        <property name="text" >
+         <string>= MC</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0" >
+       <widget class="QLabel" name="lbl_MastCord" >
+        <property name="text" >
+         <string>Mast cord</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="6" >
+       <widget class="QLabel" name="lbl_MRkD" >
+        <property name="frameShape" >
+         <enum>QFrame::Box</enum>
+        </property>
+        <property name="text" >
+         <string>lbl_MRkD</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="5" >
+       <widget class="QLabel" name="lbl_MRkDeg" >
+        <property name="text" >
+         <string>= MRkD</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="4" >
+       <widget class="QLabel" name="lbl_MastRakeAngle" >
+        <property name="text" >
+         <string>Mast rake angle</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2" >
+       <widget class="QLineEdit" name="txt_MH" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>3</hsizetype>
+          <vsizetype>0</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize" >
+         <size>
+          <width>70</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text" >
+         <string>txt_MH</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignHCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2" >
+       <widget class="QLineEdit" name="txt_MRnd" >
+        <property name="text" >
+         <string>txt_MRnd</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignHCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3" >
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType" >
+         <enum>QSizePolicy::Expanding</enum>
+        </property>
+        <property name="sizeHint" >
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="4" >
+       <widget class="QLabel" name="lbl_MastRake" >
+        <property name="text" >
+         <string>Mast rake</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="5" >
+       <widget class="QLabel" name="lbl_MRkM" >
+        <property name="text" >
+         <string>= MRkM</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="6" >
+       <widget class="QLineEdit" name="txt_MRkM" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>3</hsizetype>
+          <vsizetype>0</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize" >
+         <size>
+          <width>70</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text" >
+         <string>txt_MRkM</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignHCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="lbl_MastHeight" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>5</hsizetype>
+          <vsizetype>0</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize" >
+         <size>
+          <width>60</width>
+          <height>22</height>
+         </size>
+        </property>
+        <property name="text" >
+         <string>Mast height</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" >
+       <widget class="QLabel" name="lbl_MH" >
+        <property name="text" >
+         <string>= MH</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" >
+       <widget class="QLabel" name="lbl_MRnd" >
+        <property name="text" >
+         <string>= MRnd</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QLabel" name="lbl_MastRound" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>5</hsizetype>
+          <vsizetype>0</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize" >
+         <size>
+          <width>60</width>
+          <height>22</height>
+         </size>
+        </property>
+        <property name="text" >
+         <string>Mast round</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1" >
+       <widget class="QLabel" name="lbl_MRndPos" >
+        <property name="text" >
+         <string>= MRndPos</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" >
+       <widget class="QLabel" name="lbl_MastRoundPos" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>5</hsizetype>
+          <vsizetype>0</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize" >
+         <size>
+          <width>60</width>
+          <height>22</height>
+         </size>
+        </property>
+        <property name="text" >
+         <string>Mast round position </string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" colspan="7" >
+       <widget class="Line" name="line" >
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2" >
+       <widget class="QSpinBox" name="spinBox_MRndPos" >
+        <property name="alignment" >
+         <set>Qt::AlignHCenter</set>
+        </property>
+        <property name="maximum" >
+         <number>80</number>
+        </property>
+        <property name="minimum" >
+         <number>20</number>
+        </property>
+        <property name="value" >
+         <number>50</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="8" >
+    <widget class="QGroupBox" name="groupBox" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>1</hsizetype>
+       <vsizetype>1</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="title" >
+      <string>Fore triangle</string>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>4</number>
+      </property>
+      <property name="spacing" >
+       <number>4</number>
+      </property>
+      <item row="0" column="3" >
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" >
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="2" >
+       <widget class="QLineEdit" name="txt_foreI" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>1</hsizetype>
+          <vsizetype>0</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize" >
+         <size>
+          <width>70</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text" >
+         <string>txt_foreI</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignHCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" >
+       <widget class="QLabel" name="lbl_I" >
+        <property name="text" >
+         <string>= I</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="6" >
+       <widget class="QLineEdit" name="txt_foreJ" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>1</hsizetype>
+          <vsizetype>0</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize" >
+         <size>
+          <width>70</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text" >
+         <string>txt_foreJ</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignHCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="5" >
+       <widget class="QLabel" name="lbl_J" >
+        <property name="text" >
+         <string>= J</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="4" >
+       <widget class="QLabel" name="lbl_foreJ" >
+        <property name="text" >
+         <string>Fore triangle base</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="lbl_foreI" >
+        <property name="text" >
+         <string>Fore triangle hoist</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="1" colspan="5" >
+    <widget class="QLineEdit" name="txt_RigID" >
      <property name="minimumSize" >
       <size>
-       <width>200</width>
-       <height>50</height>
+       <width>400</width>
+       <height>22</height>
       </size>
-     </property>
-     <property name="maximumSize" >
-      <size>
-       <width>600</width>
-       <height>160</height>
-      </size>
-     </property>
-     <property name="font" >
-      <font>
-       <pointsize>11</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
      </property>
      <property name="text" >
-      <string>All dimensions are in millimeter and angles in degrees</string>
-     </property>
-     <property name="alignment" >
-      <set>Qt::AlignCenter</set>
-     </property>
-     <property name="margin" >
-      <number>1</number>
-     </property>
-     <property name="indent" >
-      <number>0</number>
+      <string>Description of rig</string>
      </property>
     </widget>
    </item>
@@ -1586,7 +1580,7 @@
     <widget class="QLabel" name="lbl_RigID" >
      <property name="sizePolicy" >
       <sizepolicy>
-       <hsizetype>5</hsizetype>
+       <hsizetype>1</hsizetype>
        <vsizetype>0</vsizetype>
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
@@ -1606,16 +1600,59 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="1" colspan="5" >
-    <widget class="QLineEdit" name="txt_RigID" >
-     <property name="minimumSize" >
+   <item row="1" column="6" colspan="2" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" >
       <size>
-       <width>400</width>
-       <height>22</height>
+       <width>71</width>
+       <height>25</height>
       </size>
      </property>
+    </spacer>
+   </item>
+   <item row="0" column="0" colspan="6" >
+    <widget class="QLabel" name="lbl_TopFrame" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>1</hsizetype>
+       <vsizetype>1</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize" >
+      <size>
+       <width>200</width>
+       <height>24</height>
+      </size>
+     </property>
+     <property name="maximumSize" >
+      <size>
+       <width>600</width>
+       <height>160</height>
+      </size>
+     </property>
+     <property name="font" >
+      <font>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
      <property name="text" >
-      <string>Description of rig</string>
+      <string>All dimensions are in millimeter and angles in degrees</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignHCenter|Qt::AlignTop</set>
+     </property>
+     <property name="margin" >
+      <number>1</number>
+     </property>
+     <property name="indent" >
+      <number>0</number>
      </property>
     </widget>
    </item>
@@ -1646,7 +1683,6 @@
   <tabstop>txt_SPH1</tabstop>
   <tabstop>txt_SPW1</tabstop>
  </tabstops>
- <includes/>
  <resources/>
  <connections/>
 </ui>
