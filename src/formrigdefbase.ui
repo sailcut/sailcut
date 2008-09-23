@@ -6,14 +6,22 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>720</width>
-    <height>620</height>
+    <width>660</width>
+    <height>600</height>
    </rect>
+  </property>
+  <property name="sizePolicy" >
+   <sizepolicy>
+    <hsizetype>1</hsizetype>
+    <vsizetype>1</vsizetype>
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="minimumSize" >
    <size>
-    <width>720</width>
-    <height>620</height>
+    <width>660</width>
+    <height>590</height>
    </size>
   </property>
   <property name="windowTitle" >
@@ -492,6 +500,12 @@
          </item>
          <item row="1" column="0" >
           <widget class="QLabel" name="lbl_SPH2" >
+           <property name="minimumSize" >
+            <size>
+             <width>30</width>
+             <height>22</height>
+            </size>
+           </property>
            <property name="text" >
             <string>SPH2</string>
            </property>
@@ -499,6 +513,12 @@
          </item>
          <item row="0" column="0" >
           <widget class="QLabel" name="lbl_SPH3" >
+           <property name="minimumSize" >
+            <size>
+             <width>40</width>
+             <height>22</height>
+            </size>
+           </property>
            <property name="text" >
             <string>SPH3</string>
            </property>
@@ -506,6 +526,12 @@
          </item>
          <item row="2" column="0" >
           <widget class="QLabel" name="lbl_SPH1" >
+           <property name="minimumSize" >
+            <size>
+             <width>30</width>
+             <height>22</height>
+            </size>
+           </property>
            <property name="text" >
             <string>SPH1</string>
            </property>
@@ -536,6 +562,12 @@
          </property>
          <item row="0" column="0" >
           <widget class="QLabel" name="lbl_SPW3" >
+           <property name="minimumSize" >
+            <size>
+             <width>40</width>
+             <height>22</height>
+            </size>
+           </property>
            <property name="text" >
             <string>SPW3</string>
            </property>
@@ -559,6 +591,12 @@
          </item>
          <item row="2" column="0" >
           <widget class="QLabel" name="lbl_SPW1" >
+           <property name="minimumSize" >
+            <size>
+             <width>0</width>
+             <height>22</height>
+            </size>
+           </property>
            <property name="text" >
             <string>SPW1</string>
            </property>
@@ -582,6 +620,12 @@
          </item>
          <item row="1" column="0" >
           <widget class="QLabel" name="lbl_SPW2" >
+           <property name="minimumSize" >
+            <size>
+             <width>0</width>
+             <height>22</height>
+            </size>
+           </property>
            <property name="text" >
             <string>SPW2</string>
            </property>
@@ -1588,7 +1632,7 @@
      </property>
      <property name="minimumSize" >
       <size>
-       <width>30</width>
+       <width>50</width>
        <height>22</height>
       </size>
      </property>
@@ -1600,24 +1644,11 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="6" colspan="2" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>71</width>
-       <height>25</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="0" column="0" colspan="6" >
+   <item row="0" column="0" colspan="8" >
     <widget class="QLabel" name="lbl_TopFrame" >
      <property name="sizePolicy" >
       <sizepolicy>
-       <hsizetype>1</hsizetype>
+       <hsizetype>5</hsizetype>
        <vsizetype>1</vsizetype>
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
@@ -1625,7 +1656,7 @@
      </property>
      <property name="minimumSize" >
       <size>
-       <width>200</width>
+       <width>500</width>
        <height>24</height>
       </size>
      </property>
@@ -1655,6 +1686,19 @@
       <number>0</number>
      </property>
     </widget>
+   </item>
+   <item row="1" column="7" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>60</width>
+       <height>25</height>
+      </size>
+     </property>
+    </spacer>
    </item>
   </layout>
  </widget>
