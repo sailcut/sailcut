@@ -130,8 +130,7 @@ void CFormSail::setDef(const CSailDef& newdef)
  */
 void CFormSail::setupMenuBar()
 {
-    // File sub menus
-
+    // File sub menus //
     // print submenu
     menuPrint = new QMenu(this);
     actionPrintData = menuPrint->addAction("", this, SLOT( slotPrintData() ));
