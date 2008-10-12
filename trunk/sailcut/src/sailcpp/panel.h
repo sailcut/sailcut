@@ -164,6 +164,8 @@ public:
     CRect3d boundingRect() const;
     CPoint3d centroid() const; // centroid of a panel
     void addHems( const real &, const real &, const real &, const real &);
+    void add6Hems( const real &, const real &, const real &, const real &, const real &, const real & );
+
     CPanel develop(enumDevelopAlign align) const;
 
     void placeLabel();   //  place a label at the center of a panel
