@@ -437,10 +437,10 @@ void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real
 
 /** Add the cloth for stitching to the 6 edges of the panel.
  *  This create the panel to be cut (outside the basic panel)
- *   lolw, hilw = width to be added on left side
- *   topw = width to be added on top side
- *   lorw, hirw = width to be added on right side
- *   botw = width to be added on bottom side
+ *   lolW, hilW = width to be added on lo-hi left side
+ *   topW = width to be added on top side
+ *   lorW, hirW = width to be added on lo-hi right side
+ *   botW = width to be added on bottom side
  *
  * @author Robert Laine alias Sailcuter
  */
