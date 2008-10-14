@@ -62,7 +62,7 @@ CSailDef::CSailDef()
     seamW = 13;         // in millimetre
     leechHemW = 40;  // in millimetre
     footHemW = 30;
-    hemsW = 20;        // in millimetre
+    hemsW = 10;        // in millimetre
 
     twistDeg = 18;      // in degree
     sheetDeg = 0;
