@@ -201,7 +201,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
     unsigned int j = 0, k = 0, cnt = 0;
     bool flag = false;  // to check if top of sail is reached
 
-    /* create arrays t1 and t2 of type of intersection
+    /* create arrays t1 and t2 of type of intersection of upper seam
     *  respectively at points p1 on luff side and p2 on leech side
     *  t=1 seam intersect foot at point p1
     *  t=2 seam intersect luff
@@ -309,9 +309,9 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
                 // move all top points of top panel to gaff curve
                 for (k = 1 ; k < npb -1 ; k++)
                     lay[npanel -1].top[k] = EdgeIntersect( GAFF_EDGE, lay[npanel-1].top[k], CVector3d (head.y()-peak.y(),peak.x()-head.x(),0));
-                ////// end peak panel /////
+                // end peak panel //
             }
-            else   // normal panel  ///////////////////////////
+            else   // normal panel below peak //////
             {
                 /* find position of luff/seam intersection relative to tack and head */
                 if ( seamL.intersect(luffLine).getdim() == 0 )
@@ -324,7 +324,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
                         p1[npanel] = seamL.intersect(footLine).getp();
                     else throw CException("CSailDef::Layout0 -2 : intersection of seam and foot is not a point!");
 
-                    t1[npanel] =1;  // 1=foot type of intersection
+                    t1[npanel] =1;  // type1=1 = foot type of intersection
 
                     if ( npanel == 1 )
                     {   // set lower edge to start at same point p1
@@ -338,12 +338,12 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
                         p1[npanel] = seamL.intersect(gaffLine).getp();
                     else throw CException("CSailDef::Layout0 -3 : intersection of seam and foot is not a point!");
 
-                    t1[npanel] = 3;  // 3=gaff type of intersection
+                    t1[npanel] = 3;  // 3 = gaff type of intersection
                 }
                 else
                 {   // seam intersects luff
                     p1[npanel] = ip;
-                    t1[npanel] = 2;  // luff
+                    t1[npanel] = 2;  // 2 = luff
                     if ( npanel == 1 )
                     {   // force seam 0 to start at the tack
                         p1[0] = tack;
@@ -417,7 +417,6 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
                         lay[0].bottom[k] = EdgeIntersect( FOOT_EDGE, lay[0].bottom[k], CVector3d(0,-1,0));
                     }
                 }
-
 #ifdef DEBUG
                 if ( npanel == 1 )
                 {
@@ -443,12 +442,10 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
 #endif
 
             /** Develop the current panel */
-            if ( npanel == 1 )
-            {
+            if ( npanel == 1 ) {
                 dev[npanel-1] = lay[npanel-1].develop(ALIGN_TOP);
             }
-            else
-            {
+            else {
                 dev[npanel-1] = lay[npanel-1].develop(ALIGN_BOTTOM);
                 // add deviation of previous panel top edge to bottom edge
                 for (k = 1; k < npb-1; k ++)
@@ -459,8 +456,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
             *   the developed panel and straighten this top edge
             *   except if this is the top panel
             */
-            if ( flag == false )
-            {
+            if ( flag == false ) {
                 vb= CMatrix::rot3d(2,PI/2) * CVector3d(dev[npanel-1].top[npb-1] - dev[npanel-1].top[0]).unit();
                 for (k = 1 ; k < npb -1 ; k ++)
                 {
@@ -472,13 +468,18 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
             }
 
             /** Add the seam and hems allowance */
-            if ( npanel == 1 )
-                dev[npanel-1].addHems(hemsW, seamW, leechHemW, footHemW);
-            else if ( flag == true )
-                dev[npanel-1].addHems(hemsW, hemsW, leechHemW, 0);
-            else
-                dev[npanel-1].addHems(hemsW, seamW, leechHemW, 0);
-
+            if ( npanel == 1 ) {
+                dev[npanel-1].add6Hems(hemsW, hemsW, seamW, leechHemW, leechHemW, footHemW);
+            }        
+            else if ( flag == true ) {
+                dev[npanel-1].add6Hems(hemsW, hemsW, hemsW, leechHemW, leechHemW, 0);
+            }
+            else {
+                if ( t1[npanel-1] == 1 && t1[npanel] == 2 )
+                    dev[npanel-1].add6Hems(footHemW, hemsW, seamW, leechHemW, leechHemW, footHemW);
+                else 
+                    dev[npanel-1].add6Hems(hemsW, hemsW, seamW, leechHemW, leechHemW, footHemW);
+            }
             /* Check the width of developed panel and store the excess */
             exc = dev[npanel-1].boundingRect().height() - clothW;
 
