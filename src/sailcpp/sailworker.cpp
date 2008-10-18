@@ -235,8 +235,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
     deviaPrev.resize(npb);
 
     /* Other edge hem width */
-    // real footHemW = hemsW;
-    // real luffHemW = hemsW; 
+    real luffHemW = hemsW; 
     // real luffInnerHemW, footInnerHemW;
 
     real CC = 0, x = 0, y = 0;
@@ -469,16 +468,16 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
 
             /** Add the seam and hems allowance */
             if ( npanel == 1 ) {
-                dev[npanel-1].add6Hems(hemsW, hemsW, seamW, leechHemW, leechHemW, footHemW);
+                dev[npanel-1].add6Hems( hemsW, hemsW, seamW, leechHemW, leechHemW, footHemW );
             }        
             else if ( flag == true ) {
-                dev[npanel-1].add6Hems(hemsW, hemsW, hemsW, leechHemW, leechHemW, 0);
+                dev[npanel-1].add6Hems( hemsW, hemsW, hemsW, leechHemW, leechHemW, 0 );
             }
             else {
                 if ( t1[npanel-1] == 1 && t1[npanel] == 2 )
-                    dev[npanel-1].add6Hems(footHemW, hemsW, seamW, leechHemW, leechHemW, footHemW);
+                    dev[npanel-1].add6Hems( footHemW, luffHemW, seamW, leechHemW, leechHemW, 0 );
                 else 
-                    dev[npanel-1].add6Hems(hemsW, hemsW, seamW, leechHemW, leechHemW, footHemW);
+                    dev[npanel-1].add6Hems( hemsW, hemsW, seamW, leechHemW, leechHemW, 0 );
             }
             /* Check the width of developed panel and store the excess */
             exc = dev[npanel-1].boundingRect().height() - clothW;
@@ -614,8 +613,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
     t2[0] = 4;    // type=4=leech intersection
 
     /* Other edge hem width */
-    // real footHemW = hemsW;
-    // real luffHemW = hemsW; 
+    real luffHemW = hemsW; 
     // real luffInnerHemW, footInnerHemW;
     
     /** Start laying the panels from foot upward to the peak */
@@ -804,12 +802,16 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
 
             /* Add the seam and hems allowance */
             if (npanel == 1)
-                dev[npanel-1].addHems(hemsW, seamW, leechHemW, footHemW);
+                dev[npanel-1].add6Hems( luffHemW, luffHemW, seamW, leechHemW, leechHemW, footHemW );
             else if (flag == true)
-                dev[npanel-1].addHems(hemsW, hemsW, leechHemW, 0);
-            else
-                dev[npanel-1].addHems(hemsW, seamW, leechHemW, 0);
-
+                dev[npanel-1].add6Hems( hemsW, hemsW, hemsW, leechHemW, leechHemW, 0 );
+            else if ((t1[npanel-1] ==2 ) && (t1[npanel] == 2))
+                dev[npanel-1].add6Hems( luffHemW, luffHemW, seamW, leechHemW, leechHemW, 0 );
+            else if ((t1[npanel-1] ==2 ) && (t1[npanel] == 3))
+                dev[npanel-1].add6Hems( luffHemW, hemsW, seamW, leechHemW, leechHemW, 0 );
+            else 
+                dev[npanel-1].add6Hems( hemsW, hemsW, seamW, leechHemW, leechHemW, 0 );
+            
 #ifdef DEBUG
             if ( npanel == 1 )
             { // move bottom side of first panel to foot curve
@@ -938,8 +940,7 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
     deviaPrev.resize(npb);
 
     /* Other edge hem width */
-    // real footHemW = hemsW;
-    // real luffHemW = hemsW; 
+    real luffHemW = hemsW; 
     // real luffInnerHemW, footInnerHemW;
     
     /* seam 0 is on the leech of the sail ending at the peak */
@@ -1069,11 +1070,15 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
 
             /* Add the seam and hems allowance */
             if ( npanel == 1 )
-                dev[npanel-1].addHems(footHemW, seamW, hemsW, leechHemW);
+                dev[npanel-1].add6Hems( footHemW, footHemW, seamW, hemsW, hemsW, leechHemW );
             else if ( flag == true )
-                dev[npanel-1].addHems(footHemW, hemsW, hemsW, 0);
-            else
-                dev[npanel-1].addHems(footHemW, seamW, hemsW, 0);
+                dev[npanel-1].add6Hems( footHemW, footHemW, luffHemW, luffHemW, luffHemW, 0 );
+            else if ( t2[npanel-1] == 3 && t2[npanel] == 3 )
+                dev[npanel-1].add6Hems( footHemW, footHemW, seamW, hemsW, hemsW, 0 );
+            else if ( t2[npanel-1] == 3 && t2[npanel] == 2 )
+                dev[npanel-1].add6Hems( footHemW, footHemW, seamW, luffHemW, hemsW, 0 );
+            else 
+                dev[npanel-1].add6Hems( footHemW, footHemW, seamW, luffHemW, luffHemW, 0 );
 
             /* Check the width of developed panel and store excess */
             exc = dev[npanel-1].boundingRect().height() - clothW;
@@ -1130,8 +1135,8 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
 } /* end layout vertical cut //////// */
 
 
-/** Creates a WING horizontal cut sail.
- *
+/** Creates a WING with horizontal cut layout.
+ *  The panels are layed parrallel to the central line of the wing (horizontal cut)
  * @param flatsail the CPanelGroup object that will hold the developed sail
  * @param dispsail the CPanelGroup object that will hold the display
  *                 version of the developed sail
@@ -1189,8 +1194,7 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
     deviaPrev.resize(npb);
     
     /* Other edge hem width */
-    // real footHemW = hemsW;
-    // real luffHemW = hemsW; 
+    real luffHemW = hemsW; 
     // real luffInnerHemW, footInnerHemW;
 
     /* create variable to monitor excess over cloth width */
@@ -1412,14 +1416,18 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
             }
         }
 
-        /* Add the seam and hems allowance */
+        /* Add the seam and hems allowance to wing horizontal layout */
         if ( npanel == 1 )
-            dev[npanel-1].addHems(hemsW, seamW, leechHemW, footHemW);
+            dev[npanel-1].add6Hems( luffHemW, luffHemW, seamW, leechHemW, leechHemW, footHemW );
         else if ( flag == true )
-            dev[npanel-1].addHems(hemsW, hemsW, leechHemW, 0);
+            dev[npanel-1].add6Hems( hemsW, hemsW, hemsW, leechHemW, leechHemW, 0 );
+        else if ( t1[npanel-1] == 3 && t1[npanel] == 3 )
+            dev[npanel-1].add6Hems( hemsW, hemsW, seamW, leechHemW, leechHemW, 0 );
+        else if ( t1[npanel-1] == 2 && t1[npanel] == 3 )
+            dev[npanel-1].add6Hems( luffHemW, hemsW, seamW, leechHemW, leechHemW, 0 );
         else
-            dev[npanel-1].addHems(hemsW, seamW, leechHemW, 0);
-
+            dev[npanel-1].add6Hems( luffHemW, luffHemW, seamW, leechHemW, leechHemW, 0 );
+        
         /* Reset the previous panel deviation to the current panel */
         deviaPrev = deviation;
 
@@ -1431,7 +1439,7 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
         /* check if peak has been reached to break off */
         if ( flag == true )
             break;
-    }  /* loop FOR next seam ////// */
+    } /* loop FOR next seam ///////////// */
 
     if ( npanel == (MAX_PANELS/2 -1) )
         throw CException("CSailDef::Layout wing-4 : got to MAX_PANELS without reaching head, do increase cloth width ");
@@ -1678,7 +1686,7 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
                 if ( j == 1 )
                     dev[npanel].addHems(hemsW, seamW, 0, hemsW);
                 else
-                    dev[npanel].addHems(hemsW, seamW, 0, 0);                
+                    dev[npanel].addHems(hemsW, seamW, 0, 0);
             }
             else if ( j == 1 )
                 dev[npanel].addHems(2*seamW, seamW, 0, hemsW);
@@ -2518,7 +2526,6 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
     real mitreHemW = 2 * seamW; 
     
     /* Other edge hem width */
-    //real footHemW = hemsW;
     real luffHemW = hemsW; 
     // real luffInnerHemW, footInnerHemW;
 
@@ -2641,10 +2648,16 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
 
             /* Add the seam and hems allowance to the foot panels */
             if ( flag == true )
-                dev[npanel-1].addHems(footHemW, luffHemW, 0, 0);
-            else
-                dev[npanel-1].addHems(footHemW, seamW, 0, 0);
-
+                dev[npanel-1].add6Hems( footHemW, footHemW, luffHemW, 0, 0, 0 );
+            else {
+                if ( t2[npanel-1] == 2 && t2[npanel] == 2 )
+                    dev[npanel-1].add6Hems( footHemW, footHemW, seamW, luffHemW, luffHemW, 0 );
+                else if ( t2[npanel-1] == 5 && t2[npanel] < 5 )
+                    dev[npanel-1].add6Hems( footHemW, footHemW, seamW, luffHemW, 0, 0 );
+                else
+                    dev[npanel-1].add6Hems( footHemW, footHemW, seamW, 0, 0, 0 );
+                
+            }
             /* Check the width of developed foot panel */
             exc = dev[npanel-1].boundingRect().height() - clothW;
 
@@ -2852,10 +2865,15 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
 
             /* Add the seam and hems allowance to leech panels */
             if ( flag == true )
-                dev[npanel-1].addHems(mitreHemW, seamW, leechHemW, 0);
-            else
-                dev[npanel-1].addHems(mitreHemW, seamW, leechHemW, 0);
-
+                dev[npanel-1].add6Hems( mitreHemW, mitreHemW, seamW, leechHemW, leechHemW, 0 );
+            else {
+                if ( t1[npanel-1] < 5 && t1[npanel] < 5 )
+                    dev[npanel-1].add6Hems( hemsW, hemsW, seamW, leechHemW, leechHemW, 0 );
+                else if ( t1[npanel-1] == 5 && t1[npanel] < 5 )
+                    dev[npanel-1].add6Hems( mitreHemW, hemsW, seamW, leechHemW, leechHemW, 0 );
+                else
+                     dev[npanel-1].add6Hems( mitreHemW, mitreHemW, seamW, leechHemW, leechHemW, 0 );
+           }
             /* Check the width of developed leech panel */
             exc = dev[npanel-1].boundingRect().height() - clothW;
 
@@ -2976,7 +2994,6 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
     real mitreHemW = 2 * seamW; 
     
     /* Other edge hem */
-    // real footHemW = hemsW;
     real luffHemW = hemsW; 
     // real luffInnerHemW, footInnerHemW;
     
@@ -3078,13 +3095,13 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
                 }
             }
 
-            /* Now we add the seam and hems allowance, 2 * seam width on mitre */
+            /* Now we add the seam and hems allowance to the foot panels */
             if ( npanel == 1 )             // Bottom panel 
-                dev[npanel-1].addHems(luffHemW, seamW, mitreHemW, footHemW); 
+                dev[npanel-1].add6Hems( luffHemW, luffHemW, seamW, mitreHemW, mitreHemW, footHemW ); 
             else if( flag == true )        // last panel 
-                dev[npanel-1].addHems(luffHemW, 0, mitreHemW, 0); 
+                dev[npanel-1].add6Hems( luffHemW, luffHemW, luffHemW, mitreHemW, mitreHemW, 0 ); 
             else                           // Normal Panel 
-                dev[npanel-1].addHems(luffHemW, seamW, mitreHemW, 0); 
+                dev[npanel-1].add6Hems( luffHemW, luffHemW, seamW, mitreHemW, mitreHemW, 0 ); 
 
             /* Now we check the width of developed panel */
             exc = dev[npanel-1].boundingRect().height() - clothW; // current excess of width
@@ -3110,7 +3127,7 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
         throw CException("CSailDef::LayoutMitre2 : panelling of Foot got to MAX_PANELS/2 without reaching Mitre intersect at Luff, do increase cloth width ");
     
     /** Then continue by laying the leech panels parallel to the leech,
-     *  from the leech toward the luff. */
+     *  from the leech toward the luff intersection with the mitre. */
     
     p1[npanel] = clew; // re-initialising at clew point.
     p2[npanel] = peak; // initialise at the peak.
@@ -3241,14 +3258,14 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
                     dev[npanel-1].top[k] = dev[npanel-1].top[k] + deviation[k];
                 }
             }
-            /* Now we add the seam and hems allowance */
+            /* Now we add the seam and hems allowance to the leech panels*/
             if ( npanel == npanelFoot +1 )
-                dev[npanel-1].addHems( 0, seamW, seamW, leechHemW ); 
+                dev[npanel-1].add6Hems( 0, 0, seamW, hemsW, hemsW, leechHemW ); 
             else if( flag == true )
-                dev[npanel-1].addHems( 0, luffHemW, luffHemW, 0 ); 
-            else
-                dev[npanel-1].addHems( 0, seamW, luffHemW, 0 ); 
-
+                dev[npanel-1].add6Hems( 0, 0, luffHemW, hemsW, hemsW, 0 ); 
+            else 
+                dev[npanel-1].add6Hems( 0, 0, seamW, hemsW, hemsW, 0 );
+            
             /* Now we check the width of developed panel and correct for the next loop */
             exc = dev[npanel-1].boundingRect().height() - clothW;
 
