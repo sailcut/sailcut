@@ -42,7 +42,7 @@ CVector3dWidget::CVector3dWidget(QWidget *parent)
     for (int i = 0; i < 3; i++)
     {
         QSpinBox *spin = new QSpinBox(this);
-        spin->setRange(0, 10000);
+        spin->setRange(-10000, 10000);
         spin->setSingleStep(10);
         spinBox.push_back(spin);
     }
