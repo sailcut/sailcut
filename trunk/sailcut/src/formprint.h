@@ -37,7 +37,7 @@ class CPrintLabel : public QLabel
 public:
     CPrintLabel(CFormPrint *form);
     /** Get the current page. */
-    const int getPage()
+    int getPage()
     {
         return page;
     };
