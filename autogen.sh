@@ -1,10 +1,17 @@
 #! /bin/sh
-# $Id: autogen.sh,v 1.2 2005/09/03 14:28:58 jeremy_laine Exp $
+if test -n "`which glibtoolize`"; then
+  LIBTOOLIZE=glibtoolize
+else
+  LIBTOOLIZE=libtoolize
+fi
+if test -d /opt/local/share/aclocal; then
+  ACLOCAL_FLAGS=-I/opt/local/share/aclocal
+fi
 
 cat admin/utils.m4.in admin/qt.m4.in admin/sailcut.m4.in > acinclude.m4
 
-aclocal \
-  && libtoolize --force --copy \
+aclocal $ACLOCAL_FLAGS \
+  && $LIBTOOLIZE --force --copy \
   && autoheader \
   && automake --add-missing --foreign --copy \
   && autoconf
