@@ -18,8 +18,8 @@ if test "x$prefix" = "xNONE"; then
   ac_configure_args="$ac_configure_args --prefix $prefix"
 fi
 
-dnl generate the config header
-AM_CONFIG_HEADER(config.h) dnl at the distribution this done
+dnl Generate the config header
+AM_CONFIG_HEADER(config.h)
 
 dnl Checks for programs
 AC_PROG_CXX
@@ -44,6 +44,12 @@ JWB_CHECK_QT_MODULE(QtXml,,AC_MSG_ERROR([QtXml was not found!]))
 
 dnl Check OpenGL support
 JWB_HAVE_QTOPENGL
+AC_CHECK_PROG(MOC, [moc-qt4], [moc-qt4])
+AC_CHECK_PROG(MOC, [moc], [moc])
+AC_CHECK_PROG(UIC, [uic-qt4], [uic-qt4])
+AC_CHECK_PROG(UIC, [uic], [uic])
+AC_CHECK_PROG(LRELEASE, [lrelease], [lrelease])
+AC_CHECK_PROG(LUPDATE, [lupdate], [lupdate])
 
 dnl Check data and documentation directories
 JWB_CHECK_DATADIR(sailcut)
