@@ -33,23 +33,18 @@ AC_CHECK_PROG(ICOTOOL, icotool, icotool)
 AC_CHECK_PROG(INKSCAPE, inkscape, inkscape)
 AC_CHECK_PROG(XSLTPROC, xsltproc, xsltproc)
 AC_CHECK_PROG(DBLATEX, dblatex, dblatex)
-
-dnl Make compiler verbose
-CXXFLAGS="$CXXFLAGS -W -Wall" 
-
-dnl Check Qt stuff
-JWB_CHECK_QT(,AC_MSG_ERROR([Qt was not found!]))
-JWB_CHECK_QT_MODULE(QtSvg,,AC_MSG_ERROR([QtSvg was not found!]))
-JWB_CHECK_QT_MODULE(QtXml,,AC_MSG_ERROR([QtXml was not found!]))
-
-dnl Check OpenGL support
-JWB_HAVE_QTOPENGL
 AC_CHECK_PROG(MOC, [moc-qt4], [moc-qt4])
 AC_CHECK_PROG(MOC, [moc], [moc])
 AC_CHECK_PROG(UIC, [uic-qt4], [uic-qt4])
 AC_CHECK_PROG(UIC, [uic], [uic])
 AC_CHECK_PROG(LRELEASE, [lrelease], [lrelease])
 AC_CHECK_PROG(LUPDATE, [lupdate], [lupdate])
+
+dnl Make compiler verbose
+CXXFLAGS="$CXXFLAGS -W -Wall" 
+
+dnl Check Qt stuff
+PKG_CHECK_MODULES(QT, QtCore QtGui QtSvg QtXml)
 
 dnl Check data and documentation directories
 JWB_CHECK_DATADIR(sailcut)

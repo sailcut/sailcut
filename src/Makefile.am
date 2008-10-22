@@ -1,8 +1,7 @@
 SUBDIRS = geocpp sailcpp ts
 
 AM_CPPFLAGS = \
-	-I$(top_srcdir) -I$(srcdir)/sailcpp \
-    $(QT_INCLUDES) $(X_INCLUDES) $(GLINC) \
+	-I$(top_srcdir) -I$(srcdir)/sailcpp $(QT_CFLAGS) \
 	-DSAILCUT_DOCDIR=\"$(pkgdocdir)\" -DSAILCUT_DATADIR=\"$(pkgdatadir)\"
 
 bin_PROGRAMS = sailcut
@@ -113,8 +112,7 @@ sailcut_SOURCES = \
 	widgetprofilevert.cpp
 nodist_sailcut_SOURCES = $(BUILT_SOURCES)
 
-sailcut_LDFLAGS = $(QT_LDFLAGS) $(X_LDFLAGS) $(GL_LDFLAGS)
-sailcut_LDADD   = sailcpp/libsailcpp.a geocpp/libgeocpp.a $(LIB_QT) $(LIB_QTSVG) $(LIB_QTXML) $(LIB_QTOPENGL) $(GLLIB)
+sailcut_LDFLAGS = sailcpp/libsailcpp.a geocpp/libgeocpp.a $(QT_LIBS)
 
 # rules for Qt metasources
 ui_%.h: %.ui
