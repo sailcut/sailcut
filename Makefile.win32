@@ -34,10 +34,8 @@ win32-build-stamp:
 win32-install-stamp: win32-build-stamp
 	rm -rf $(win32_distdir)
 	mkdir -p $(win32_distdir)
-	for i in $(BIN_DOCS); do \
-	  cp $$i $(win32_distdir); \
-	  $(UNIX2DOS) $(win32_distdir)/$$i; \
-	done
+	cp $(BIN_DOCS) $(win32_distdir)
+	unix2dos $(addprefix $(win32_distdir)/,$(BIN_DOCS))
 	make -C $(win32_builddir) DESTDIR=$(CURDIR)/$(win32_distdir)/ bindir=. libdir=lib install
 	$(STRIP) $(win32_distdir)/*.exe
 	cp -f $(addprefix $(PREFIX)/bin/,$(DLLS)) $(win32_distdir)
