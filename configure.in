@@ -44,7 +44,8 @@ dnl Make compiler verbose
 CXXFLAGS="$CXXFLAGS -W -Wall" 
 
 dnl Check Qt stuff
-PKG_CHECK_MODULES(QT, QtCore QtGui QtSvg QtXml)
+PKG_CHECK_MODULES(QT, QtCore QtGui QtOpenGL QtSvg QtXml)
+AC_DEFINE(HAVE_QTOPENGL, 1, [Defines if you have QtOpenGL])
 
 dnl Check data and documentation directories
 JWB_CHECK_DATADIR(sailcut)
