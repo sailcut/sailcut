@@ -3,17 +3,16 @@
 MAKENSIS = makensis
 UNIX2DOS = unix2dos
 MINGW = i586-mingw32msvc
-STRIP = $(MINGW)-strip
 PREFIX = /usr/$(MINGW)
-QT_MODS = QtCore QtGui QtOpenGL QtSvg QtXml
+STRIP = $(MINGW)-strip
+VERSION := $(shell cat configure.ac | grep AC_INIT | sed -e 's/.*, \([0-9a-zA-Z\.]*\).*/\1/')
 
 PACKAGE = sailcut
-VERSION := $(shell cat configure.ac | grep AC_INIT | sed -e 's/.*, \([0-9a-zA-Z\.]*\).*/\1/')
 BIN_DOCS = README COPYING ChangeLog
+DLLS = mingwm10.dll QtCore4.dll QtGui4.dll QtOpenGL4.dll QtSvg4.dll QtXml4.dll
 
 win32_builddir = win32-build
 win32_distdir = $(PACKAGE)-$(VERSION)-win32
-win32_qtlibs = mingwm10.dll $(addsuffix 4.dll,$(QT_MODS))
 win32_nsi = $(PACKAGE).nsi
 
 win32-dist: win32-zip win32-installer win32-clean
@@ -39,7 +38,7 @@ win32-install-stamp: win32-build-stamp
 	done
 	make -C $(win32_builddir) DESTDIR=$(CURDIR)/$(win32_distdir)/ bindir=. install
 	$(STRIP) $(win32_distdir)/*.exe
-	cp -f $(addprefix $(PREFIX)/bin/,$(win32_qtlibs)) $(win32_distdir)
+	cp -f $(addprefix $(PREFIX)/bin/,$(DLLS)) $(win32_distdir)
 
 win32-installer: win32-install-stamp
 	@echo; echo "## Building win32 installer ##"; echo
