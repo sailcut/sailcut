@@ -2,20 +2,20 @@
 
 STRIP = strip
 
-VERSION := $(shell cat configure.ac | grep AC_INIT | sed -e 's/.*, \([0-9a-zA-Z\.]*\).*/\1/')
+PACKAGE := $(shell cat configure.ac | grep AC_INIT | sed -e 's|AC_INIT$(p1)\([^,]\+\).*|\1|')
+VERSION := $(shell cat configure.ac | grep AC_INIT | sed -e 's/.*, \([^$(p2)]\+\).*/\1/')
 
-mac_configure= ../configure
 mac_builddir = mac-build
 mac_distdir = mac-dist
 mac_contents = $(mac_distdir)/Sailcut.app/Contents
-mac_image := sailcut-$(VERSION)-macosx-$(shell uname -p)
+mac_image := $(PACKAGE)-$(VERSION)-macosx-$(shell uname -p)
 
 mac-dist: mac-image mac-clean
 
 mac-build-stamp:
 	mkdir -p $(mac_builddir)
 	cd $(mac_builddir) && \
-	  $(mac_configure) \
+	  ../configure \
 	    --with-datadir=../Resources/Translations \
 	    --with-docdir=../Resources/Documentation \
 	    --with-icondir=../Resources
@@ -25,13 +25,13 @@ mac-build-stamp:
 mac-install-stamp: mac-build-stamp
 	rm -rf $(mac_distdir)
 	mkdir -p $(mac_contents)/MacOS
-	make -C $(mac_builddir) DESTDIR=$(CURDIR)/$(mac_contents)/MacOS/ bindir=. install
+	make -C $(mac_builddir) DESTDIR=$(CURDIR)/$(mac_contents)/MacOS/ bindir=. libdir=lib install
 	# rename and strip binary
 	mv $(mac_contents)/MacOS/sailcut $(mac_contents)/MacOS/Sailcut
 	$(STRIP) $(mac_contents)/MacOS/Sailcut
 	# add extra files
 	echo -n "APPL????" > $(mac_contents)/PkgInfo
-	cp $(mac_builddir)/sailcut.plist $(mac_contents)/Info.plist
+	cp $(mac_builddir)/$(PACKAGE).plist $(mac_contents)/Info.plist
 	touch $@
 
 mac-image: mac-install-stamp
