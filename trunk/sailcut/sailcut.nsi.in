@@ -2,14 +2,14 @@
 
 !define PRODUCT_NAME "Sailcut CAD"
 !define PRODUCT_VERSION "@VERSION@"
-!define PRODUCT_DIR_REGKEY "Software\Sailcut CAD"
+!define PRODUCT_DIR_REGKEY "Software\${PRODUCT_NAME}"
 
 Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
 OutFile "..\sailcut-${PRODUCT_VERSION}-win32.exe"
 
 SetCompressor lzma
 
-InstallDir "$PROGRAMFILES\Sailcut CAD"
+InstallDir "$PROGRAMFILES\${PRODUCT_NAME}"
 InstallDirRegKey HKCU "${PRODUCT_DIR_REGKEY}" ""
 
 !include "MUI.nsh"
@@ -51,9 +51,9 @@ Section "Documentation" SecHandbook
 SectionEnd
 
 Section "Start Menu Shortcuts" SecShortcut
-  CreateDirectory "$SMPROGRAMS\Sailcut CAD"
-  CreateShortCut "$SMPROGRAMS\Sailcut CAD\Sailcut CAD.lnk" "$INSTDIR\sailcut.exe" "" "$INSTDIR\icons\sailcut.ico"
-  CreateShortCut "$SMPROGRAMS\Sailcut CAD\Uninstall.lnk" "$INSTDIR\uninstall.exe"
+  CreateDirectory "$SMPROGRAMS\${PRODUCT_NAME}"
+  CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\Sailcut CAD.lnk" "$INSTDIR\sailcut.exe" "" "$INSTDIR\icons\sailcut.ico"
+  CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\Uninstall.lnk" "$INSTDIR\uninstall.exe"
 SectionEnd
 
 Section "Register File Types" SecFileType
@@ -75,7 +75,7 @@ Section "Uninstall"
   DeleteRegKey HKCR ".saildef"
   DeleteRegKey HKCU "${PRODUCT_DIR_REGKEY}"
 
-  RMDir /r "$SMPROGRAMS\Sailcut CAD"
+  RMDir /r "$SMPROGRAMS\${PRODUCT_NAME}"
 
   Delete "$INSTDIR\sailcut.exe"
   Delete "$INSTDIR\*.dll"
