@@ -9,9 +9,10 @@ p1 = (
 p2 = )
 PACKAGE := $(shell cat configure.ac | grep AC_INIT | sed -e 's|AC_INIT$(p1)\([^,]\+\).*|\1|')
 VERSION := $(shell cat configure.ac | grep AC_INIT | sed -e 's/.*, \([^$(p2)]\+\).*/\1/')
+QT_LIBS := $(filter-out QtDBus,$(shell cat configure.ac | grep PKG_CHECK | grep Qt | sed -e 's/.*, \([^$(p2)]\+\).*/\1/'))
 
 BIN_DOCS = README COPYING ChangeLog
-DLLS = mingwm10.dll QtCore4.dll QtGui4.dll QtOpenGL4.dll QtSvg4.dll QtXml4.dll
+DLLS = mingwm10.dll $(foreach lib,$(QT_LIBS),$(lib)4.dll)
 
 win32_builddir = win32-build
 win32_distdir = $(PACKAGE)-$(VERSION)-win32
