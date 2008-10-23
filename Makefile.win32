@@ -5,9 +5,11 @@ UNIX2DOS = unix2dos
 MINGW = i586-mingw32msvc
 PREFIX = /usr/$(MINGW)
 STRIP = $(MINGW)-strip
-VERSION := $(shell cat configure.ac | grep AC_INIT | sed -e 's/.*, \([0-9a-zA-Z\.]*\).*/\1/')
+p1 = (
+p2 = )
+PACKAGE := $(shell cat configure.ac | grep AC_INIT | sed -e 's|AC_INIT$(p1)\([^,]\+\).*|\1|')
+VERSION := $(shell cat configure.ac | grep AC_INIT | sed -e 's/.*, \([^$(p2)]\+\).*/\1/')
 
-PACKAGE = sailcut
 BIN_DOCS = README COPYING ChangeLog
 DLLS = mingwm10.dll QtCore4.dll QtGui4.dll QtOpenGL4.dll QtSvg4.dll QtXml4.dll
 
@@ -36,7 +38,7 @@ win32-install-stamp: win32-build-stamp
 	  cp $$i $(win32_distdir); \
 	  $(UNIX2DOS) $(win32_distdir)/$$i; \
 	done
-	make -C $(win32_builddir) DESTDIR=$(CURDIR)/$(win32_distdir)/ bindir=. install
+	make -C $(win32_builddir) DESTDIR=$(CURDIR)/$(win32_distdir)/ bindir=. libdir=lib install
 	$(STRIP) $(win32_distdir)/*.exe
 	cp -f $(addprefix $(PREFIX)/bin/,$(DLLS)) $(win32_distdir)
 
