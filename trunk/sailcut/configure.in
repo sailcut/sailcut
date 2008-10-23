@@ -1,7 +1,6 @@
 dnl Initialise autoconf
 AC_INIT(sailcut, 1.3.3pre1)
 AC_CONFIG_SRCDIR(acinclude.m4)
-AC_CONFIG_AUX_DIR(admin)
 
 dnl Checking host/target/build systems, for make, install etc.
 AC_CANONICAL_SYSTEM 
@@ -10,6 +9,7 @@ AC_ARG_PROGRAM
 
 dnl Initialise automake
 AM_INIT_AUTOMAKE
+AM_CONFIG_HEADER(config.h)
 
 dnl Set default prefix
 AC_PREFIX_DEFAULT(/usr/local)
@@ -17,9 +17,6 @@ if test "x$prefix" = "xNONE"; then
   prefix=$ac_default_prefix
   ac_configure_args="$ac_configure_args --prefix $prefix"
 fi
-
-dnl Generate the config header
-AM_CONFIG_HEADER(config.h)
 
 dnl Checks for programs
 AC_PROG_CXX
