@@ -4,7 +4,10 @@ MAKENSIS = makensis
 UNIX2DOS = unix2dos
 MINGW = i586-mingw32msvc
 STRIP = $(MINGW)-strip
-QTDIR=/usr/$(MINGW)/share/qt4
+QTDIR = /usr/$(MINGW)/share/qt4
+QT_MODS = QtCore QtGui QtOpenGL QtSvg QtXml
+QT_CFLAGS = -I$(QTDIR)/include $(foreach mod,$(QT_MODS),-I$(QTDIR)/include/$(mod))
+QT_LIBS = -L$(QTDIR)/lib $(foreach mod,$(QT_MODS),-l$(mod)4) -lopengl32 -lglu32
 
 VERSION := $(shell cat configure.in | grep AC_INIT | sed -e 's/.*, \([0-9a-zA-Z\.]*\).*/\1/')
 BIN_DOCS = README COPYING ChangeLog
@@ -12,7 +15,7 @@ BIN_DOCS = README COPYING ChangeLog
 win32_configure= ../configure
 win32_builddir = win32-build
 win32_distdir = sailcut-$(VERSION)-win32
-win32_qtlibs = mingwm10.dll QtCore4.dll QtGui4.dll QtOpenGL4.dll QtSvg4.dll QtXml4.dll
+win32_qtlibs = mingwm10.dll $(addsuffix 4.dll,$(QT_MODS))
 win32_nsi = sailcut.nsi
 
 win32-dist: win32-zip win32-installer win32-clean
@@ -22,10 +25,10 @@ win32-build-stamp:
 	cd $(win32_builddir) && \
 	  $(win32_configure) \
 	    --host=$(MINGW) \
-	    --with-qt-dir=$(QTDIR) \
 	    --with-datadir=data \
 	    --with-docdir=doc \
-	    --with-icondir=icons
+	    --with-icondir=icons \
+	    QT_CFLAGS="$(QT_CFLAGS)" QT_LIBS="$(QT_LIBS)"
 	make -C $(win32_builddir)
 	touch $@
 
