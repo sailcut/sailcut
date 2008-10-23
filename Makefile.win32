@@ -6,16 +6,15 @@ MINGW = i586-mingw32msvc
 STRIP = $(MINGW)-strip
 PREFIX = /usr/$(MINGW)
 QT_MODS = QtCore QtGui QtOpenGL QtSvg QtXml
-QT_CFLAGS = -I$(PREFIX)/include/qt4 $(foreach mod,$(QT_MODS),-I$(PREFIX)/include/qt4/$(mod))
-QT_LIBS = -L$(PREFIX)/lib $(foreach mod,$(QT_MODS),-l$(mod)4) -lopengl32 -lglu32
 
+PACKAGE = sailcut
 VERSION := $(shell cat configure.ac | grep AC_INIT | sed -e 's/.*, \([0-9a-zA-Z\.]*\).*/\1/')
 BIN_DOCS = README COPYING ChangeLog
 
 win32_builddir = win32-build
-win32_distdir = sailcut-$(VERSION)-win32
+win32_distdir = $(PACKAGE)-$(VERSION)-win32
 win32_qtlibs = mingwm10.dll $(addsuffix 4.dll,$(QT_MODS))
-win32_nsi = sailcut.nsi
+win32_nsi = $(PACKAGE).nsi
 
 win32-dist: win32-zip win32-installer win32-clean
 
@@ -27,7 +26,7 @@ win32-build-stamp:
 	    --with-datadir=data \
 	    --with-docdir=doc \
 	    --with-icondir=icons \
-	    QT_CFLAGS="$(QT_CFLAGS)" QT_LIBS="$(QT_LIBS)"
+	    PKG_CONFIG_PATH=$(PREFIX)/lib/pkgconfig
 	make -C $(win32_builddir)
 	touch $@
 
@@ -39,7 +38,7 @@ win32-install-stamp: win32-build-stamp
 	  $(UNIX2DOS) $(win32_distdir)/$$i; \
 	done
 	make -C $(win32_builddir) DESTDIR=$(CURDIR)/$(win32_distdir)/ bindir=. install
-	$(STRIP) $(win32_distdir)/sailcut.exe
+	$(STRIP) $(win32_distdir)/*.exe
 	cp -f $(addprefix $(PREFIX)/bin/,$(win32_qtlibs)) $(win32_distdir)
 
 win32-installer: win32-install-stamp
