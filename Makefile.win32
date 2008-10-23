@@ -9,7 +9,7 @@ QT_MODS = QtCore QtGui QtOpenGL QtSvg QtXml
 QT_CFLAGS = -I$(QTDIR)/include $(foreach mod,$(QT_MODS),-I$(QTDIR)/include/$(mod))
 QT_LIBS = -L$(QTDIR)/lib $(foreach mod,$(QT_MODS),-l$(mod)4) -lopengl32 -lglu32
 
-VERSION := $(shell cat configure.in | grep AC_INIT | sed -e 's/.*, \([0-9a-zA-Z\.]*\).*/\1/')
+VERSION := $(shell cat configure.ac | grep AC_INIT | sed -e 's/.*, \([0-9a-zA-Z\.]*\).*/\1/')
 BIN_DOCS = README COPYING ChangeLog
 
 win32_configure= ../configure
