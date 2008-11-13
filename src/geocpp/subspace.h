@@ -48,7 +48,7 @@ public:
     int getdim() const
     {
         if (p.size() > 0)
-            return p.size() - m.getnrow();
+            return p.size() - m.rows();
         else
             return -1;
     }
