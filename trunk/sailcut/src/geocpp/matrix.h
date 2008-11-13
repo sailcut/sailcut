@@ -46,7 +46,7 @@ public:
      */
     ~CMatrix()
     {
-        if (!isempty())
+        if (!empty())
             delete [] m_data;
     };
 
@@ -82,7 +82,7 @@ public:
     CMatrix   img(void) const;
     CMatrix   inv(void) const;
     /** Is the matrixan empty (0x0) matrix? */
-    bool isempty() const
+    bool empty() const
     {
         return ! (m_ncol && m_nrow);
     }
@@ -116,7 +116,7 @@ inline
 CMatrix::CMatrix(const CMatrix &m)
         : m_nrow(m.m_nrow), m_ncol(m.m_ncol)
 {
-    if (!isempty())
+    if (!empty())
     {
         m_data = new real[m_nrow * m_ncol];
         memcpy(m_data, m.m_data, sizeof(real) * m_nrow * m_ncol);
@@ -134,7 +134,7 @@ inline
 CMatrix::CMatrix(const unsigned int& nrow, const unsigned int& ncol)
         : m_nrow(nrow), m_ncol(ncol)
 {
-    if (!isempty())
+    if (!empty())
     {
         m_data = new real[m_nrow * m_ncol];
         memset(m_data, 0, sizeof(real) * m_nrow * m_ncol);

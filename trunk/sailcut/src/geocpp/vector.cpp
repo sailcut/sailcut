@@ -80,18 +80,18 @@ CVector& CVector::operator=(const CVector& v)
 
     if (m_dim != v.m_dim)
     {
-        if (!isempty())
+        if (!empty())
             delete [] m_data;
 
         m_dim = v.m_dim;
 
-        if (v.isempty())
+        if (v.empty())
             m_data = NULL;
         else
             m_data = new real[m_dim];
     }
 
-    if (!isempty())
+    if (!empty())
         memcpy(m_data, v.m_data, sizeof(real) * m_dim);
 
     return *this;

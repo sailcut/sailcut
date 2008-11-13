@@ -174,7 +174,7 @@ CMatrix CMatrix::dev(const unsigned int& i, const unsigned int& j) const
 
     unsigned int dx=0,dy=0;
 
-    if (isempty())
+    if (empty())
         return CMatrix();
 
     CMatrix m(m_nrow - 1, m_ncol - 1);
@@ -401,7 +401,7 @@ CMatrix CMatrix::inv(void) const
         throw invalid_argument("CMatrix:: inv : matrix is not square !");
  
     // if matrix is empty, return empy matrix
-    if (isempty())
+    if (empty())
         return CMatrix();
 
     CMatrix ret;
@@ -419,7 +419,7 @@ CMatrix CMatrix::inv(void) const
  */
 CMatrix CMatrix::kern(const unsigned int& vsize) const
 {
-    if (isempty())
+    if (empty())
     {
         cout << "REQUEST FOR KER(o)" << endl;
         return CMatrix::id(vsize);
