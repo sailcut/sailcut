@@ -22,13 +22,14 @@
 
 #include <QWidget>
 #include <vector>
+
+#include "filewriter.h"
 #include "sailviewer-tabs.h"
 
 using namespace std;
 
 // forward definitions
 class CPrefs;
-class CException;
 class QMenu;
 
 #define T_KEYPRESS \
@@ -95,7 +96,7 @@ public:
             filename = newfile;
             return true;
         }
-        catch (CException e)
+        catch (read_error e)
         {
             writertype::readErrorMessage();
         }
@@ -116,7 +117,7 @@ public:
             writertype().write(def, filename);
             return true;
         }
-        catch (CException e)
+        catch (write_error e)
         {
             writertype::writeErrorMessage();
         }

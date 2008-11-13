@@ -113,7 +113,7 @@ void CSailApp::readPrefs()
         if (QFile(prefsfile).exists())
             prefs = CPrefsXmlWriter().read(prefsfile);
     }
-    catch (CException e)
+    catch (read_error e)
     {
         cout << "CSailApp::readPrefs : could not read preferences" << endl;
     }
@@ -129,7 +129,7 @@ void CSailApp::writePrefs()
     {
         CPrefsXmlWriter().write(prefs, prefsfile);
     }
-    catch (CException e)
+    catch (write_error e)
     {
         cout << "CSailApp::writePrefs : could not write preferences" << endl;
     }

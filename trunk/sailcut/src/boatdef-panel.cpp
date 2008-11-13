@@ -190,7 +190,7 @@ void CBoatElementWidget::slotReload()
         }
         signalUpdate(element);
     }
-    catch (CException e)
+    catch (read_error e)
     {
         CSailDefXmlWriter::readErrorMessage();
     }
