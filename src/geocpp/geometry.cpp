@@ -149,7 +149,7 @@ CSubSpace CSubSpace2d::line(const CPoint2d &p, const CVector2d &v)
     if (!v.norm())
     {
         cout << "CSubSpace2d::line : Crash point = " << p << endl;
-        throw CException("CSubSpace2d::line : Input vector cannot be zero");
+        throw invalid_argument("CSubSpace2d::line : Input vector cannot be zero");
     }
     return CSubSpace(p, v.matrix(), GEOCPP_FROM_BASE);
 }
@@ -165,7 +165,7 @@ CSubSpace CSubSpace3d::line(const CPoint3d &p, const CVector3d &v)
     if (!v.norm())
     {
         cout << "CSubSpace3d::line : Crash point = " << p << endl;
-        throw CException("CSubSpace3d::line : Input vector cannot be zero point ");
+        throw invalid_argument("CSubSpace3d::line : Input vector cannot be zero point ");
     }
     return CSubSpace(p, v.matrix(), GEOCPP_FROM_BASE);
 }
@@ -182,7 +182,7 @@ CSubSpace CSubSpace3d::plane(const CPoint3d &p, const CVector3d &v1, const CVect
     if (!v1.cross(v2).norm())
     {
         cout << "CSubSpace3d::plane : Crash point = " << p << endl;
-        throw CException("CSubSpace3d::plane : 2 Vectors cannot be colinear");
+        throw invalid_argument("CSubSpace3d::plane : 2 Vectors cannot be colinear");
     }
     CMatrix m(3,2);
     for (int i = 0; i < 3; i++)
