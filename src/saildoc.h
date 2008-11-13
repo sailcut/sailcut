@@ -21,6 +21,7 @@
 #define SAILDOC_H
 
 #include <QDomDocument>
+#include "filewriter.h"
 #include "panelgroup.h"
 #include "boatdef.h"
 #include "hulldef.h"

@@ -46,14 +46,12 @@ CSailDoc::CSailDoc( const QString &filename )
     QFile f( filename );
 
     if ( !f.open(QIODevice::ReadOnly) )
-    {
-        throw CException("CSailDoc::CSailDoc : cannot open file for read access!");
-    }
+        throw read_error("CSailDoc::CSailDoc : cannot open file for read access!");
 
     if ( !setContent( &f ) )
     {
         f.close();
-        throw CException("CSailDoc::CSailDoc : cannot set XML content from file!");
+        throw read_error("CSailDoc::CSailDoc : cannot set XML content from file!");
     }
 
     f.close();
@@ -1115,12 +1113,9 @@ void CSailDoc::put(QDomNode &parent, const CRigDef &d, const QString &name )
 void CSailDoc::toFile(const QString &filename)
 {
     QFile f( filename );
-    //FILE *fp = fopen(filename,"wb");
 
     if ( !f.open(QIODevice::WriteOnly) )
-    {
-        throw CException("CSailDoc::toFile : cannot open file for write access!");
-    }
+        throw write_error("CSailDoc::toFile : cannot open file for write access!");
 
     f.write(toByteArray());
     f.close();

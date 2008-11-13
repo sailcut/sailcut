@@ -27,10 +27,12 @@
 #endif
 
 #include <iostream>
-#include <geocpp/core.h>
+#include <stdexcept>
 
 #include <QFileDialog>
 #include <QMessageBox>
+
+using namespace std;
 
 class read_error : public runtime_error
 {
