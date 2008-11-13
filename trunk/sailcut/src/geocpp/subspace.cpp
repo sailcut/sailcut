@@ -50,14 +50,14 @@ CSubSpace::CSubSpace(const CVector &pi, const CMatrix &mi, subspaceflags_t creat
     {
     case GEOCPP_FROM_EQS:
         // equations are given in lines
-        if ( (mi.getnrow() > 0) && (mi.getncol() != pi.size()) )
+        if ( (mi.rows() > 0) && (mi.columns() != pi.size()) )
             throw invalid_argument("CSubSpace::CSubSpace(p,m,GEOCPP_FROM_EQS) : dimension mismatch between p and m");
 
         m = mi;
         break;
     case GEOCPP_FROM_BASE:
         // base is given in column format
-        if ( (mi.getncol() > 0) && (mi.getnrow() != pi.size()) )
+        if ( (mi.columns() > 0) && (mi.rows() != pi.size()) )
             throw invalid_argument("CSubSpace::CSubSpace(p,m,GEOCPP_FROM_BASE) : dimension mismatch between p and m");
 
         m = mi.transp().kern(pi.size()).transp();
@@ -90,21 +90,21 @@ CSubSpace CSubSpace::intersect(const CSubSpace &h2) const
 
     CVector b1 = m*p;
     CVector b2 = h2.m*h2.p;
-    CVector bb( m.getnrow() + h2.m.getnrow() );
-    CMatrix mm( m.getnrow() + h2.m.getnrow(), p.size() );
-    for (size_t i = 0 ; i < mm.getnrow() ; i++)
+    CVector bb( m.rows() + h2.m.rows() );
+    CMatrix mm( m.rows() + h2.m.rows(), p.size() );
+    for (size_t i = 0 ; i < mm.rows() ; i++)
     {
-        if ( i < m.getnrow() )
+        if ( i < m.rows() )
         {
-            for (size_t j = 0 ; j < mm.getncol() ; j++)
+            for (size_t j = 0 ; j < mm.columns() ; j++)
                 mm(i,j) = m(i,j);
             bb[i] = b1[i];
         }
         else
         {
-            for (size_t j = 0 ; j < mm.getncol() ; j++)
-                mm(i,j) = h2.m(i-m.getnrow() , j);
-            bb[i] = b2[i-m.getnrow()];
+            for (size_t j = 0 ; j < mm.columns() ; j++)
+                mm(i,j) = h2.m(i - m.rows(), j);
+            bb[i] = b2[i - m.rows()];
         }
     }
     //cout << "mm" << endl << mm << endl;
@@ -125,10 +125,10 @@ CSubSpace CSubSpace::intersect(const CSubSpace &h2) const
 ostream& operator<< (ostream &o, const CMatrix &m)
 {
     o << "[";
-    for (size_t i = 0 ; i < m.getnrow() ; i++)
+    for (size_t i = 0 ; i < m.rows() ; i++)
     {
         o << m.row(i);
-        if ( i != m.getnrow()-1 )
+        if ( i != m.rows() - 1 )
             o << endl;
     }
     o << "]";

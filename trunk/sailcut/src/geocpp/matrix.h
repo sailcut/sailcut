@@ -69,14 +69,13 @@ public:
     {
         return gaussjordan();
     };
-    CMatrix gaussjordan(bool *is_inv=NULL, CMatrix *inv=NULL, soltype_t *soltype=NULL, CVector *bb=NULL, CMatrix *tkern=NULL) const;
     /** Accessor for the number of columns. */
-    size_t getncol() const
+    size_t columns() const
     {
         return m_ncol;
     }
     /** Accessor for the number of rows. */
-    size_t getnrow() const
+    size_t rows() const
     {
         return m_nrow;
     }
@@ -103,6 +102,9 @@ public:
     CMatrix   operator-() const;
     CMatrix   operator*(const CMatrix &) const;
     CVector operator*(const CVector &) const;
+
+protected:
+    CMatrix gaussjordan(bool *is_inv=NULL, CMatrix *inv=NULL, soltype_t *soltype=NULL, CVector *bb=NULL, CMatrix *tkern=NULL) const;
 };
 
 
