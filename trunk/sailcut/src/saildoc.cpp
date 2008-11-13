@@ -111,7 +111,7 @@ QDomElement CSailDoc::findElement(const QDomNode &parent, const QString &type, c
     }
 
     // we didn't find the element, throw an exception
-    throw CException(QString("CSailDoc::findElement(" + type + "," + name + ") : did not find requested element").toStdString());
+    throw doc_element_error(QString("CSailDoc::findElement(" + type + "," + name + ") : did not find requested element").toStdString());
 
     n.clear();
     return n.toElement();
@@ -244,7 +244,7 @@ void CSailDoc::get
     }
     else
     {
-        throw CException("unknown panel group type");
+        throw invalid_argument("CSailDoc::get : unknown panel group type");
     }
 }
 
@@ -450,7 +450,7 @@ void CSailDoc::get
         get(e, d.footHemW, "footHemW");
 
     }
-    catch (CException e)
+    catch (doc_element_error e)
     {
         // to avoid killing the program
     }
@@ -522,7 +522,7 @@ void CSailDoc::get
     {
         get(e, g.type, "type");
     }
-    catch (CException e)
+    catch (doc_element_error e)
     {
         // to avoid killing the program
     }
@@ -613,7 +613,7 @@ void CSailDoc::get
         get(e, p.mainWindowHeight, "mainWindowHeight");
         get(e, p.mainWindowWidth, "mainWindowWidth");
     }
-    catch (CException e)
+    catch (doc_element_error e)
     {
         // we do not let this kill the program
     }
