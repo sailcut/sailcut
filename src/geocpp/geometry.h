@@ -37,25 +37,26 @@ public:
     CVector2d(const real &x = 0, const real &y = 0)
         : CVector(2)
     {
-        m_data[0] = x;
-        m_data[1] = y;
+        (*this)[0] = x;
+        (*this)[1] = y;
     }
 
     /** Returns the first coordinate. */
     real &x(void)
     {
-        return m_data[0];
+        return (*this)[0];
     }
     /** Returns the second coordinate. */
     real &y(void)
     {
-        return m_data[1];
+        return (*this)[1];
     }
 
     /** Assignment operator. */
     CVector2d &operator=(const CVector2d &v)
     {
-        memcpy(m_data,v.m_data,sizeof(real)*2);
+        (*this)[0] = v[0];
+        (*this)[1] = v[1];
         return *this;
     }
 
@@ -77,26 +78,40 @@ public:
     CVector3d(const real &x = 0, const real &y = 0, const real &z = 0)
         : CVector(3)
     {
-        m_data[0] = x;
-        m_data[1] = y;
-        m_data[2] = z;
+        (*this)[0] = x;
+        (*this)[1] = y;
+        (*this)[2] = z;
     }
 
     // access to coords
     /** Returns the first coordinate. */
-    real &x(void) const
+    real &x(void)
     {
-        return m_data[0];
+        return (*this)[0];
     }
+    real x(void) const
+    {
+        return (*this)[0];
+    }
+
     /** Returns the second coordinate. */
-    real &y(void) const
+    real &y(void)
     {
-        return m_data[1];
+        return (*this)[1];
     }
-    /** Returns the third coordinate. */
-    real &z(void) const
+    real y(void) const
     {
-        return m_data[2];
+        return (*this)[1];
+    }
+
+    /** Returns the third coordinate. */
+    real &z(void)
+    {
+        return (*this)[2];
+    }
+    real z(void) const
+    {
+        return (*this)[2];
     }
 
     // 3D only!
@@ -105,7 +120,9 @@ public:
     /** Assignment. */
     CVector3d &operator=(const CVector3d &v)
     {
-        memcpy(m_data,v.m_data,sizeof(real)*3);
+        (*this)[0] = v[0];
+        (*this)[1] = v[1];
+        (*this)[2] = v[2];
         return *this;
     }
 };
