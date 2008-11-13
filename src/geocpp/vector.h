@@ -77,11 +77,12 @@ public:
     real & operator[] (size_t index);
     real operator[] (size_t index) const;
 
+protected:
 private:
-    /** the vector's dimension */
-    size_t m_dim;
     /** the vector's coordinates */
     real * m_data;
+    /** the vector's dimension */
+    size_t m_dim;
 };
 
 
