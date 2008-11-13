@@ -98,7 +98,7 @@ CVector CMatrix::col(const size_t& index) const
 
     CVector ret(m_nrow);
     for (size_t i = 0; i < m_nrow; i++)
-        ret.m_data[i] = m_data[i*m_ncol + index];
+        ret[i] = m_data[i*m_ncol + index];
     return ret;
 }
 
@@ -439,7 +439,8 @@ CVector CMatrix::row(size_t index) const
         throw range_error("CMatrix::row : index out of bounds!");
 
     CVector ret(m_ncol);
-    memcpy(ret.m_data,&m_data[index*m_ncol],sizeof(real)*m_ncol);
+    for (size_t i = 0; i < m_ncol; i++)
+        ret[i] = m_data[index*m_ncol + i];
     return ret;
 }
 
@@ -645,7 +646,7 @@ CVector CMatrix::operator*(const CVector &v) const
     {
         for (size_t k=0; k < m_ncol; k++)
         {
-            p.m_data[i] += m_data[pos] * v.m_data[k];
+            p[i] += m_data[pos] * v[k];
             pos++;
         }
     }

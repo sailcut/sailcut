@@ -37,11 +37,6 @@ class CMatrix;
  */
 class CVector
 {
-protected:
-    /** the vector's dimension */
-    size_t m_dim;
-    /** the vector's coordinates */
-    real * m_data;
 public:
     // construction / destruction
     CVector(size_t size = 0);
@@ -82,11 +77,11 @@ public:
     real & operator[] (size_t index);
     real operator[] (size_t index) const;
 
-    // friend classes
-    friend class CMatrix;
-    friend class CSubSpace;
-    friend class CVector2d;
-    friend class CVector3d;
+private:
+    /** the vector's dimension */
+    size_t m_dim;
+    /** the vector's coordinates */
+    real * m_data;
 };
 
 
