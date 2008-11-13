@@ -33,28 +33,20 @@
  */
 int main( int argc, char* argv[] )
 {
-    int retCode = 1;
+    int retCode;
 
-    // fire up sailcut
-    try
-    {
-        CSailApp app( argc, argv );
-        app.readPrefs();
+    CSailApp app( argc, argv );
+    app.readPrefs();
 
-        CFormMain *sailcut = new CFormMain(&app);
+    CFormMain *sailcut = new CFormMain(&app);
 
-        if (argc > 1)
-            sailcut->show(argv[1]);
-        else
-            sailcut->show();
+    if (argc > 1)
+        sailcut->show(argv[1]);
+    else
+        sailcut->show();
 
-        retCode = app.exec();
-        app.writePrefs();
-    }
-    catch (CException e)
-    {
-        printf("main() : caught exception, exiting!\n");
-    }
+    retCode = app.exec();
+    app.writePrefs();
 
     return retCode;
 }
