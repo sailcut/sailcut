@@ -228,11 +228,10 @@ void test_space3d(void)
     cout << endl;
 
     cout << "== L3A.intersect(L3B) ==" << endl << (h=L3A.intersect(L3B)) << endl;
-    if (h.getdim() >= 0)
-    {
-        test_contain<CPoint3d>("L3A", L3A, h.getp(), true);
-        test_contain<CPoint3d>("L3B", L3B, h.getp(), true);
-    }
+    if (h.getdim() != 0)
+        throw runtime_error("intersection is not a point");
+    test_contain<CPoint3d>("L3A", L3A, h.getp(), true);
+    test_contain<CPoint3d>("L3B", L3B, h.getp(), true);
     cout << endl;
 
     cout << "== P3A ==" << endl << P3A << endl;
@@ -246,23 +245,25 @@ void test_space3d(void)
     cout << endl;
 
     cout << "== P3A.intersect(P3B) ==" << endl << (h=P3A.intersect(P3B)) << endl;
-    if (h.getdim() >= 0)
-    {
-        test_contain<CPoint3d>("P3A", P3A, h.getp(), true);
-        test_contain<CPoint3d>("P3B", P3B, h.getp(), true);
-    }
+    if (h.getdim() != 1)
+        throw runtime_error("intersection is not a line");
+    test_contain<CPoint3d>("P3A", P3A, h.getp(), true);
+    test_contain<CPoint3d>("P3B", P3B, h.getp(), true);
     cout << endl;
 
     cout << "== P3A.intersect(L3A) ==" << endl << (h=P3A.intersect(L3A)) << endl;
-    if (h.getdim() >= 0)
-    {
-        test_contain<CPoint3d>("P3A", P3A, h.getp(), true);
-        test_contain<CPoint3d>("L3A", L3A, h.getp(), true);
-    }
+    if (h.getdim() != 0)
+        throw runtime_error("intersection is not a point");
+    test_contain<CPoint3d>("P3A", P3A, h.getp(), true);
+    test_contain<CPoint3d>("L3A", L3A, h.getp(), true);
     cout << endl;
 
     cout << "== L3A.intersect(P3A) ==" << endl << (h=L3A.intersect(P3A)) << endl;
-
+    if (h.getdim() != 0)
+        throw runtime_error("intersection is not a point");
+    test_contain<CPoint3d>("P3A", P3A, h.getp(), true);
+    test_contain<CPoint3d>("L3A", L3A, h.getp(), true);
+    cout << endl;
 
     cout << " " << endl;
 }
