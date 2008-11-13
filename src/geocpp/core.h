@@ -19,6 +19,8 @@
 #ifndef GEOCPP_CORE_H
 #define GEOCPP_CORE_H
 
+#include <exception>
+#include <string>
 #include <math.h>
 
 // types and constants
@@ -29,16 +31,17 @@ const real PI = 3.14159265358979323846;
 
 /** Class for returning information about an exception.
  */
-class CException
+class CException : public std::exception
 {
+public:
+    CException (const std::string& msg);
+    virtual ~CException() throw();
+
+    virtual const char* what() const throw();
+
 protected:
     /** the exception's error message. */
-    const  char *message;
-    
-public:
-    CException (const char *);
-    ~CException();
-    void report(void);
+    std::string message;
 };
 
 #endif
