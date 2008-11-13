@@ -19,7 +19,7 @@
 #ifndef GEOCPP_CORE_H
 #define GEOCPP_CORE_H
 
-#include <cmath>
+//#include <cmath>
 #include <exception>
 #include <stdexcept>
 #include <string>

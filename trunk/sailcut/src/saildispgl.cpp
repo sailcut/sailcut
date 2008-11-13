@@ -23,8 +23,10 @@
 
 #ifdef HAVE_QTOPENGL
 
-#include "saildispgl.h"
+#include <cmath>
 #include <QMouseEvent>
+#include "saildispgl.h"
+
 
 /** Construct an OpenGL view area.
  *
