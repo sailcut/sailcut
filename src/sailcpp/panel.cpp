@@ -487,7 +487,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
     }
 
     if ( v5.norm() < minSize && v7.norm() < minSize )   // panel is a point
-        throw CException ("CPanelLabel::add6Hems : basic panel edges v5 and v6 too small");
+        throw runtime_error("CPanelLabel::add6Hems : basic panel edges v5 and v6 too small");
 
     if (v5.norm() < minSize )
     {   // bottom side too small copy top

@@ -29,6 +29,15 @@ class CSeam;
 
 enum enumEdgeType { LUFF_EDGE, GAFF_EDGE, FOOT_EDGE, LEECH_EDGE };
 
+class layout_error : public runtime_error
+{
+public:
+    layout_error(const string &message) : runtime_error(message)
+    {
+        cout << what() << endl;
+    }
+};
+
 /** The CSailWorker class does all the sail-related calculations like laying the panels.
  *  It is used to create the sail from a CSailDef definition.
  *
