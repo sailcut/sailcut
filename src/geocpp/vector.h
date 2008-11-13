@@ -60,11 +60,7 @@ public:
     {
         return m_dim;
     }
-    /** Returns the nth coordinate. */
-    const real& getcoord(unsigned int i) const
-    {
-        return m_data[i];
-    }
+
     /** Is this a null-dimension vector ?*/
     bool empty() const
     {
