@@ -19,9 +19,17 @@
 #ifndef GEOCPP_VECTOR_H
 #define GEOCPP_VECTOR_H
 
-#include <geocpp/core.h>
 #include <cstring>
 #include <iostream>
+#include <stdexcept>
+
+using namespace std;
+
+// types and constants
+typedef double real;
+
+const real EPS = 1E-14;
+const real PI = 3.14159265358979323846;
 
 class CMatrix;
 
