@@ -35,13 +35,13 @@ protected:
     /** the matrix's data */
     real* m_data;
     /** number of rows */
-    unsigned int m_nrow;
+    size_t m_nrow;
     /** number of columns */
-    unsigned int m_ncol;
+    size_t m_ncol;
 
 public:
     CMatrix(const CMatrix &m);
-    CMatrix(const unsigned int& = 0, const unsigned int& = 0);
+    CMatrix(const size_t& = 0, const size_t& = 0);
     /** The destructor.
      */
     ~CMatrix()
@@ -52,15 +52,15 @@ public:
 
 public:
     // static functions
-    static CMatrix id(const unsigned int&);
-    static CMatrix rnd(const unsigned int&, const unsigned int&);
-    static CMatrix rot3d(const unsigned int&, const real&);
+    static CMatrix id(const size_t&);
+    static CMatrix rnd(const size_t&, const size_t&);
+    static CMatrix rot3d(const size_t&, const real&);
 
     // member functions
-    CVector col(const unsigned int&) const;
-    CMatrix   crop(const unsigned int& nr, const unsigned int& nc, const unsigned int& nrz=0, const unsigned int& ncz=0) const;
+    CVector col(const size_t&) const;
+    CMatrix   crop(const size_t& nr, const size_t& nc, const size_t& nrz=0, const size_t& ncz=0) const;
     real      det(void) const;
-    CMatrix   dev(const unsigned int&, const unsigned int&) const;
+    CMatrix   dev(const size_t&, const size_t&) const;
     /** Diagonalises matrix. Currently this is implemented as
      * a full pivot Gauss-Jordan diagonalisation.
      */
@@ -70,12 +70,12 @@ public:
     };
     CMatrix gaussjordan(bool *is_inv=NULL, CMatrix *inv=NULL, soltype_t *soltype=NULL, CVector *bb=NULL, CMatrix *tkern=NULL) const;
     /** Accessor for the number of columns. */
-    unsigned int getncol() const
+    size_t getncol() const
     {
         return m_ncol;
     }
     /** Accessor for the number of rows. */
-    unsigned int getnrow() const
+    size_t getnrow() const
     {
         return m_nrow;
     }
@@ -86,16 +86,16 @@ public:
     {
         return ! (m_ncol && m_nrow);
     }
-    CMatrix   kern(const unsigned int& vsize) const;
-    CVector row(unsigned int) const;
+    CMatrix   kern(const size_t& vsize) const;
+    CVector row(size_t) const;
     CSubSpace solve(const CVector &) const;
-    void      swap_row(const unsigned int&, const unsigned int&);
-    void      swap_col(const unsigned int&, const unsigned int&);
+    void      swap_row(const size_t&, const size_t&);
+    void      swap_col(const size_t&, const size_t&);
     CMatrix   transp(void) const;
 
     // operators
-    real& operator() ( const unsigned int& row, const unsigned int& col );
-    real operator() ( const unsigned int& row, const unsigned int& col ) const;
+    real& operator() ( const size_t& row, const size_t& col );
+    real operator() ( const size_t& row, const size_t& col ) const;
     CMatrix&  operator=(const CMatrix &);
     bool      operator==(const CMatrix &) const;
     bool      operator!=(const CMatrix &) const;
@@ -131,7 +131,7 @@ CMatrix::CMatrix(const CMatrix &m)
 /** Constructs a CMatrix with the given number of rows and columns.
  */
 inline
-CMatrix::CMatrix(const unsigned int& nrow, const unsigned int& ncol)
+CMatrix::CMatrix(const size_t& nrow, const size_t& ncol)
         : m_nrow(nrow), m_ncol(ncol)
 {
     if (!empty())
@@ -149,7 +149,7 @@ CMatrix::CMatrix(const unsigned int& nrow, const unsigned int& ncol)
 /** Returns the selected element of the matrix.
  */
 inline
-real& CMatrix::operator() (const unsigned int& row, const unsigned int& col)
+real& CMatrix::operator() (const size_t& row, const size_t& col)
 {
     if (row >= m_nrow || col >= m_ncol)
         throw range_error("CMatrix::operator() : index out of bounds");
@@ -160,7 +160,7 @@ real& CMatrix::operator() (const unsigned int& row, const unsigned int& col)
 /** Returns the selected element of the matrix.
  */
 inline
-real CMatrix::operator() (const unsigned int& row, const unsigned int& col) const
+real CMatrix::operator() (const size_t& row, const size_t& col) const
 {
     if (row >= m_nrow || col >= m_ncol)
         throw range_error("CMatrix::operator() : index out of bounds");

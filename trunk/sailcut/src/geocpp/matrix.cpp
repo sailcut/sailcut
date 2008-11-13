@@ -33,10 +33,10 @@
  *
  * @param n the dimension of the identity matrix.
  */
-CMatrix CMatrix::id(const unsigned int& n)
+CMatrix CMatrix::id(const size_t& n)
 {
     CMatrix m = CMatrix(n,n);
-    for (unsigned int i = 0; i < n; i++)
+    for (size_t i = 0; i < n; i++)
         m(i,i) = 1;
     return m;
 }
@@ -47,12 +47,12 @@ CMatrix CMatrix::id(const unsigned int& n)
  * @param nrow number of rows for the matrix
  * @param ncol number of columns for the matrix
  */
-CMatrix CMatrix::rnd(const unsigned int& nrow, const unsigned int& ncol)
+CMatrix CMatrix::rnd(const size_t& nrow, const size_t& ncol)
 {
     CMatrix m(nrow,ncol);
-    for (unsigned int i=0; i < nrow; i++)
+    for (size_t i=0; i < nrow; i++)
     {
-        for (unsigned int j=0; j < ncol; j++)
+        for (size_t j=0; j < ncol; j++)
         {
             m(i,j) = (100 * real(rand()) / RAND_MAX)-50;
         }
@@ -66,7 +66,7 @@ CMatrix CMatrix::rnd(const unsigned int& nrow, const unsigned int& ncol)
  * @param axis the index (0,1,..) of the axis
  * @param angle rotation angle in radians
  */
-CMatrix CMatrix::rot3d(const unsigned int& axis, const real& angle)
+CMatrix CMatrix::rot3d(const size_t& axis, const real& angle)
 {
     CMatrix m(3,3);
 
@@ -91,13 +91,13 @@ CMatrix CMatrix::rot3d(const unsigned int& axis, const real& angle)
  *
  * @param index the index of the column to return
  */
-CVector CMatrix::col(const unsigned int& index) const
+CVector CMatrix::col(const size_t& index) const
 {
     if (index >= m_ncol)
         throw range_error("CMatrix::col : index out of bounds!");
 
     CVector ret(m_nrow);
-    for (unsigned int i = 0; i < m_nrow; i++)
+    for (size_t i = 0; i < m_nrow; i++)
         ret.m_data[i] = m_data[i*m_ncol + index];
     return ret;
 }
@@ -110,13 +110,13 @@ CVector CMatrix::col(const unsigned int& index) const
  * @param nrz number of rows to extract
  * @param ncz number of columns to extract
  */
-CMatrix CMatrix::crop(const unsigned int& nr,
-                      const unsigned int& nc,
-                      const unsigned int& nrz,
-                      const unsigned int& ncz) const
+CMatrix CMatrix::crop(const size_t& nr,
+                      const size_t& nc,
+                      const size_t& nrz,
+                      const size_t& ncz) const
 {
     CMatrix ret(nr,nc);
-    unsigned int nrm,ncm;
+    size_t nrm,ncm;
     if (nr < (m_nrow - nrz))
         nrm = nr;
     else
@@ -127,8 +127,8 @@ CMatrix CMatrix::crop(const unsigned int& nr,
     else
         ncm = m_ncol - ncz;
 
-    for (unsigned int i=0; i < nrm; i++)
-        for (unsigned int j=0; j < ncm; j++)
+    for (size_t i=0; i < nrm; i++)
+        for (size_t j=0; j < ncm; j++)
             ret(i,j) = (*this)(i,j+ncz);
     return ret;
 }
@@ -147,7 +147,7 @@ real CMatrix::det(void) const
         return (*this)(0,0);
 
     // develop relative to first row
-    for (unsigned int j=0; j < m_ncol; j++)
+    for (size_t j=0; j < m_ncol; j++)
     {
         if (j%2)
             ret -= (*this)(0,j) * dev(0,j).det();
@@ -164,7 +164,7 @@ real CMatrix::det(void) const
  * @param i the index of the row to remove
  * @param j the index of the column to remove
  */
-CMatrix CMatrix::dev(const unsigned int& i, const unsigned int& j) const
+CMatrix CMatrix::dev(const size_t& i, const size_t& j) const
 {
     if ((i >= m_nrow) || (j >= m_ncol))
         throw range_error("CMatrix::dev : index out of bounds");
@@ -172,18 +172,18 @@ CMatrix CMatrix::dev(const unsigned int& i, const unsigned int& j) const
     if (m_nrow != m_ncol)
         throw invalid_argument("CMatrix::dev : matrix is not square!");
 
-    unsigned int dx=0,dy=0;
+    size_t dx=0,dy=0;
 
     if (empty())
         return CMatrix();
 
     CMatrix m(m_nrow - 1, m_ncol - 1);
-    for (unsigned int x=0; x < m_nrow; x++)
+    for (size_t x=0; x < m_nrow; x++)
     {
         if (x!=i)
         {
             dy = 0;
-            for (unsigned int y=0; y < m_ncol; y++)
+            for (size_t y=0; y < m_ncol; y++)
             {
                 if (y!=j)
                 {
@@ -221,9 +221,9 @@ CMatrix CMatrix::gaussjordan(bool *is_inv, CMatrix *inv, soltype_t * soltype, CV
 
     real p_value;
     real p_avalue, avalue;
-    unsigned int p_i, p_j;
-    unsigned int i,j,k;
-    unsigned int n;
+    size_t p_i, p_j;
+    size_t i,j,k;
+    size_t n;
     // copy over the matrix
     CMatrix m = *this;
     CMatrix t;
@@ -417,7 +417,7 @@ CMatrix CMatrix::inv(void) const
 /** Returns the kernel of the linear application.
  *  associated with the matrix.
  */
-CMatrix CMatrix::kern(const unsigned int& vsize) const
+CMatrix CMatrix::kern(const size_t& vsize) const
 {
     if (empty())
     {
@@ -433,7 +433,7 @@ CMatrix CMatrix::kern(const unsigned int& vsize) const
 
 /** Retrieves a row of the matrix in vector form.
  */
-CVector CMatrix::row(unsigned int index) const
+CVector CMatrix::row(size_t index) const
 {
     if (index >= m_nrow)
         throw range_error("CMatrix::row : index out of bounds!");
@@ -484,7 +484,7 @@ CSubSpace CMatrix::solve(const CVector &b) const
 
 /** Swaps two rows of a matrix.
  */
-void CMatrix::swap_row(const unsigned int& i1, const unsigned int& i2)
+void CMatrix::swap_row(const size_t& i1, const size_t& i2)
 {
     if ((i1>=m_nrow)||(i2>=m_nrow))
         throw range_error("CMatrix:swap_row : index out of bounds");
@@ -493,9 +493,9 @@ void CMatrix::swap_row(const unsigned int& i1, const unsigned int& i2)
         return;
 
     real temp;
-    unsigned int pos1 = i1 * m_ncol;
-    unsigned int pos2 = i2 * m_ncol;
-    for (unsigned int j = 0; j < m_ncol; j++)
+    size_t pos1 = i1 * m_ncol;
+    size_t pos2 = i2 * m_ncol;
+    for (size_t j = 0; j < m_ncol; j++)
     {
         temp = m_data[pos1+j];
         m_data[pos1+j] = m_data[pos2+j];
@@ -506,7 +506,7 @@ void CMatrix::swap_row(const unsigned int& i1, const unsigned int& i2)
 
 /** Swap two columns of a matrix.
  */
-void CMatrix::swap_col(const unsigned int& j1, const unsigned int& j2)
+void CMatrix::swap_col(const size_t& j1, const size_t& j2)
 {
     if ((j1>=m_ncol)||(j2>=m_ncol))
         throw range_error("CMatrix:swap_col : index out of bounds");
@@ -515,8 +515,8 @@ void CMatrix::swap_col(const unsigned int& j1, const unsigned int& j2)
         return;
 
     real temp;
-    unsigned int pos = 0;
-    for (unsigned int i = 0; i < m_nrow; i++)
+    size_t pos = 0;
+    for (size_t i = 0; i < m_nrow; i++)
     {
         temp = m_data[pos+j1];
         m_data[pos+j1] = m_data[pos+j2];
@@ -532,8 +532,8 @@ CMatrix CMatrix::transp(void) const
 {
     CMatrix ret(m_ncol,m_nrow);
 
-    for (unsigned int i=0; i < m_ncol; i++)
-        for (unsigned int j=0; j< m_nrow; j++)
+    for (size_t i=0; i < m_ncol; i++)
+        for (size_t j=0; j< m_nrow; j++)
             ret.m_data[i*ret.m_ncol + j] = m_data[j*m_ncol + i];
     return ret;
 }
@@ -581,8 +581,8 @@ bool CMatrix::operator==(const CMatrix &m) const
     if ( (m_nrow != m.m_nrow) || (m_ncol != m.m_ncol) )
         return false;
 
-    for (unsigned int i=0; i < m_nrow; i++)
-        for (unsigned int j=0; j < m_ncol; j++)
+    for (size_t i=0; i < m_nrow; i++)
+        for (size_t j=0; j < m_ncol; j++)
             if ( (*this)(i,j) != m(i,j) )
                 return false;
 
@@ -604,7 +604,7 @@ CMatrix CMatrix::operator-() const
 {
     CMatrix ret(m_nrow,m_ncol);
 
-    for (unsigned int pos = 0; pos < m_nrow * m_ncol; pos++)
+    for (size_t pos = 0; pos < m_nrow * m_ncol; pos++)
         ret.m_data[pos]  = - m_data[pos];
     return ret;
 }
@@ -617,11 +617,11 @@ CMatrix CMatrix::operator*(const CMatrix &m2) const
         throw invalid_argument("CMatrix::operator*: dimension mismatch!");
 
     CMatrix p(m_nrow, m2.m_ncol);
-    unsigned int pos = 0;
-    for (unsigned int i = 0; i < p.m_nrow; i++)
-        for (unsigned int j = 0; j < p.m_ncol; j++)
+    size_t pos = 0;
+    for (size_t i = 0; i < p.m_nrow; i++)
+        for (size_t j = 0; j < p.m_ncol; j++)
         {
-            for (unsigned int k=0; k < m_ncol; k++)
+            for (size_t k=0; k < m_ncol; k++)
                 p.m_data[pos] += m2.m_data[m2.m_ncol * k + j] * m_data[m_ncol * i + k];
 
             pos++;
@@ -640,10 +640,10 @@ CVector CMatrix::operator*(const CVector &v) const
 
     // result is initialised to zero
     CVector p(m_nrow);
-    unsigned int pos = 0;
-    for (unsigned int i = 0; i < m_nrow; i++)
+    size_t pos = 0;
+    for (size_t i = 0; i < m_nrow; i++)
     {
-        for (unsigned int k=0; k < m_ncol; k++)
+        for (size_t k=0; k < m_ncol; k++)
         {
             p.m_data[i] += m_data[pos] * v.m_data[k];
             pos++;

@@ -39,12 +39,12 @@ class CVector
 {
 protected:
     /** the vector's dimension */
-    unsigned int m_dim;
+    size_t m_dim;
     /** the vector's coordinates */
     real * m_data;
 public:
     // construction / destruction
-    CVector(unsigned int size = 0);
+    CVector(size_t size = 0);
     CVector(const CVector &v);
     /** The destructor. */
     ~CVector()
@@ -56,7 +56,7 @@ public:
 
     // member functions
     /** Returns the dimension of the vector. */
-    unsigned int size() const
+    size_t size() const
     {
         return m_dim;
     }
@@ -79,8 +79,8 @@ public:
     CVector operator- (const CVector &) const;
     CVector operator* (const real &) const;
     real operator* (const CVector&) const;
-    real & operator[] (unsigned int index);
-    real operator[] (unsigned int index) const;
+    real & operator[] (size_t index);
+    real operator[] (size_t index) const;
 
     // friend classes
     friend class CMatrix;
@@ -103,7 +103,7 @@ ostream& operator<<(ostream&, const CVector&);
 /** Constructs a CVector vector with the given dimension
  */
 inline
-CVector::CVector(unsigned int size)
+CVector::CVector(size_t size)
         : m_dim(size)
 {
     // if size is non-zero, we allocate memory
@@ -147,7 +147,7 @@ CVector::CVector(const CVector& v)
 /** Returns the index'th coordinate of a vector.
  */
 inline
-real& CVector::operator[] (unsigned int index)
+real& CVector::operator[] (size_t index)
 {
     if (index >= m_dim)
         throw range_error("CVector::operator[] : out of bounds!");
@@ -158,7 +158,7 @@ real& CVector::operator[] (unsigned int index)
 /** Returns the index'th coordinate of a vector.
  */
 inline
-real CVector::operator[] (unsigned int index) const
+real CVector::operator[] (size_t index) const
 {
     if (index >= m_dim)
         throw range_error("CVector::operator[] : out of bounds!");
