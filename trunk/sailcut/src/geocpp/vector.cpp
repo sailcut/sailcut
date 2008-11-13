@@ -19,8 +19,6 @@
 #include <cmath>
 
 #include <geocpp/vector.h>
-#include <geocpp/matrix.h>
-#include <geocpp/subspace.h>
 
 
 /*******************************************************
@@ -28,16 +26,6 @@
                Member functions
 
 ********************************************************/
-
-/** Returns the matrix corresponding to a vector
- */
-CMatrix CVector::matrix(void) const
-{
-    CMatrix m(1,m_dim);
-    for (size_t j = 0; j < m_dim; j++)
-        m(0,j) = m_data[j];
-    return m.transp();
-}
 
 
 /** Returns the vector's norm ("length")
@@ -80,18 +68,18 @@ CVector& CVector::operator=(const CVector& v)
 
     if (m_dim != v.m_dim)
     {
-        if (!empty())
+        if (m_dim > 0)
             delete [] m_data;
 
         m_dim = v.m_dim;
 
-        if (v.empty())
-            m_data = NULL;
-        else
+        if (m_dim > 0)
             m_data = new real[m_dim];
+        else
+            m_data = NULL;
     }
 
-    if (!empty())
+    if (m_dim > 0)
         memcpy(m_data, v.m_data, sizeof(real) * m_dim);
 
     return *this;

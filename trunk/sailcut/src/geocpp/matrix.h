@@ -41,6 +41,7 @@ protected:
 
 public:
     CMatrix(const CMatrix &m);
+    CMatrix(const CVector &v);
     CMatrix(const size_t& = 0, const size_t& = 0);
     /** The destructor.
      */

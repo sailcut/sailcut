@@ -31,8 +31,6 @@ typedef double real;
 const real EPS = 1E-14;
 const real PI = 3.14159265358979323846;
 
-class CMatrix;
-
 /** Real-valued vector
  */
 class CVector
@@ -57,11 +55,6 @@ public:
     }
 
     /** Is this a null-dimension vector ?*/
-    bool empty() const
-    {
-        return !m_dim;
-    }
-    CMatrix matrix() const;
     real norm(void) const;
     CVector unit(void) const;
 
@@ -102,7 +95,7 @@ CVector::CVector(size_t size)
         : m_dim(size)
 {
     // if size is non-zero, we allocate memory
-    if (!empty())
+    if (m_dim > 0)
     {
         m_data = new real[m_dim];
         memset(m_data, 0, sizeof(real) * m_dim);
@@ -120,7 +113,7 @@ CVector::CVector(const CVector& v)
         : m_dim(v.m_dim)
 {
     // if size is non-zero, we allocate memory
-    if (!empty())
+    if (m_dim > 0)
     {
         m_data = new real[m_dim];
         memcpy(m_data, v.m_data, sizeof(real) * m_dim);
