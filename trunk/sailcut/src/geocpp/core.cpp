@@ -23,23 +23,26 @@ using namespace std;
 
 /** Constructs a CException object.
  */
-CException::CException (const char * msg)
+CException::CException(const string &msg)
 {
     message = msg;
-    report();
+
+    /* FIXME: should we output anything here? */
+    cout << "[ exception ] " << message << endl;
 }
 
 
 /** The destructor.
  */
-CException::~CException ()
-{}
-
-
-/** Outputs the description of an exception to the standard output.
- */
-void CException::report(void)
+CException::~CException() throw()
 {
-    cout << "[ exception ] " << message << endl;
 }
 
+
+/** Returns a C-style character string describing the general cause of
+ *  the current error (the same string passed to the ctor).
+ */
+const char *CException::what() const throw()
+{
+    return message.c_str();
+}

@@ -113,7 +113,7 @@ QDomElement CSailDoc::findElement(const QDomNode &parent, const QString &type, c
     }
 
     // we didn't find the element, throw an exception
-    throw CException(QString("CSailDoc::findElement(" + type + "," + name + ") : did not find requested element").toLocal8Bit());
+    throw CException(QString("CSailDoc::findElement(" + type + "," + name + ") : did not find requested element").toStdString());
 
     n.clear();
     return n.toElement();
