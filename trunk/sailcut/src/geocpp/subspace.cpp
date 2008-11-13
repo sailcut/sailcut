@@ -51,19 +51,19 @@ CSubSpace::CSubSpace(const CVector &pi, const CMatrix &mi, subspaceflags_t creat
     case GEOCPP_FROM_EQS:
         // equations are given in lines
         if ( (mi.getnrow() > 0) && (mi.getncol() != pi.getdim()) )
-            throw CException("CSubSpace::CSubSpace(p,m,GEOCPP_FROM_EQS) : dimension mismatch between p and m");
+            throw invalid_argument("CSubSpace::CSubSpace(p,m,GEOCPP_FROM_EQS) : dimension mismatch between p and m");
 
         m = mi;
         break;
     case GEOCPP_FROM_BASE:
         // base is given in column format
         if ( (mi.getncol() > 0) && (mi.getnrow() != pi.getdim()) )
-            throw CException("CSubSpace::CSubSpace(p,m,GEOCPP_FROM_BASE) : dimension mismatch between p and m");
+            throw invalid_argument("CSubSpace::CSubSpace(p,m,GEOCPP_FROM_BASE) : dimension mismatch between p and m");
 
         m = mi.transp().kern(pi.getdim()).transp();
         break;
     default:
-        throw CException("CSubSpace::CSubspace(p,m,createflags) : unknown creation flags");
+        throw invalid_argument("CSubSpace::CSubspace(p,m,createflags) : unknown creation flags");
     }
 }
 
@@ -86,7 +86,7 @@ CSubSpace CSubSpace::intersect(const CSubSpace &h2) const
         return CSubSpace(0 , 0);
 
     if ( p.getdim() != h2.p.getdim() )
-        throw CException("CSubSpace::intersect : dimension mismatch on points");
+        throw invalid_argument("CSubSpace::intersect : dimension mismatch on points");
 
     CVector b1 = m*p;
     CVector b2 = h2.m*h2.p;

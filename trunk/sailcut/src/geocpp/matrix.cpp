@@ -138,7 +138,7 @@ CMatrix CMatrix::crop(const unsigned int& nr,
 real CMatrix::det(void) const
 {
     if (m_nrow != m_ncol)
-        throw CException("CMatrix::det : matrix is not square!");
+        throw invalid_argument("CMatrix::det : matrix is not square!");
 
     real ret=0;
     // if we have a scalar matrix return its only coefficient
@@ -169,7 +169,7 @@ CMatrix CMatrix::dev(const unsigned int& i, const unsigned int& j) const
         throw range_error("CMatrix::dev : index out of bounds");
 
     if (m_nrow != m_ncol)
-        throw CException("CMatrix::dev : matrix is not square!");
+        throw invalid_argument("CMatrix::dev : matrix is not square!");
 
     unsigned int dx=0,dy=0;
 
@@ -207,7 +207,7 @@ CMatrix CMatrix::gaussjordan(bool *is_inv, CMatrix *inv, soltype_t * soltype, CV
     if (bb!=NULL)
     {
         if (bb->getdim() != m_nrow)
-            throw CException("CMatrix::solve : matrix <=> right-hand side dimensions incompatible");
+            throw invalid_argument("CMatrix::solve : matrix <=> right-hand side dimensions incompatible");
 
         b = bb->matrix();
     }
@@ -397,10 +397,8 @@ CMatrix CMatrix::img(void) const
 CMatrix CMatrix::inv(void) const
 {
     if (m_nrow != m_ncol)
-    {
-        CException e("CMatrix:: inv : matrix is not square !");
-        throw(e);
-    }
+        throw invalid_argument("CMatrix:: inv : matrix is not square !");
+ 
     // if matrix is empty, return empy matrix
     if (isempty())
         return CMatrix();
@@ -409,10 +407,7 @@ CMatrix CMatrix::inv(void) const
     bool is_inv;
     gaussjordan(&is_inv,&ret);
     if (is_inv == false)
-    {
-        CException e("CMatrix::diag : matrix is singular !");
-        throw(e);
-    }
+        throw invalid_argument("CMatrix::diag : matrix is singular !");
 
     return ret;
 }
@@ -456,7 +451,7 @@ CVector CMatrix::row(unsigned int index) const
 CSubSpace CMatrix::solve(const CVector &b) const
 {
     if (m_nrow != b.getdim())
-        throw CException("CMatrix::solve : dimension mismatch");
+        throw invalid_argument("CMatrix::solve : dimension mismatch");
 
     //cout << "[[ solver ]]" << endl;
     //cout << "m" << endl << *this << endl;
@@ -618,7 +613,7 @@ CMatrix CMatrix::operator-() const
 CMatrix CMatrix::operator*(const CMatrix &m2) const
 {
     if (m_ncol != m2.m_nrow)
-        throw CException("CMatrix::operator*: dimension mismatch!");
+        throw invalid_argument("CMatrix::operator*: dimension mismatch!");
 
     CMatrix p(m_nrow, m2.m_ncol);
     unsigned int pos = 0;
@@ -640,7 +635,7 @@ CMatrix CMatrix::operator*(const CMatrix &m2) const
 CVector CMatrix::operator*(const CVector &v) const
 {
     if (m_ncol != v.getdim())
-        throw CException("CMatrix::operator*: dimension mismatch!");
+        throw invalid_argument("CMatrix::operator*: dimension mismatch!");
 
     // result is initialised to zero
     CVector p(m_nrow);
