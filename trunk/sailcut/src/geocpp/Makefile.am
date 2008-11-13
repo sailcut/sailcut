@@ -1,6 +1,6 @@
 AM_CPPFLAGS = -I$(top_srcdir)/src
 
-noinst_HEADERS = core.h geocpp.h geometry.h matrix.h subspace.h vector.h
+noinst_HEADERS = geocpp.h geometry.h matrix.h subspace.h vector.h
 noinst_LIBRARIES = libgeocpp.a
 noinst_PROGRAMS = geotest
 
