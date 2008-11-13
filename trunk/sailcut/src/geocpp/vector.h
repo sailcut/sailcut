@@ -22,9 +22,6 @@
 #include <geocpp/core.h>
 #include <cstring>
 #include <iostream>
-#include <stdexcept>
-
-using namespace std;
 
 class CMatrix;
 
