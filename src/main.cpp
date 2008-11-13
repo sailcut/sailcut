@@ -19,7 +19,6 @@
 
 #include "sailcutqt.h"
 #include "formmain.h"
-#include <geocpp/core.h>
 
 /** @mainpage
  * This is the documentation for Sailcut CAD's code.
