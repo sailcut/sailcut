@@ -17,14 +17,17 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#include "widgetprofile.h"
-#include "widgetprofilevert.h"
-#include "sailmould.h"
+#include <cmath>
+
 #include <QPushButton>
 #include <QGroupBox>
 #include <QLayout>
 #include <QSpinBox>
 #include <QPainter>
+
+#include "widgetprofile.h"
+#include "widgetprofilevert.h"
+#include "sailmould.h"
 
 
 /**************************************************************************

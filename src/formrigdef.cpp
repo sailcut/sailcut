@@ -17,11 +17,15 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#include "formrigdef.h"
-#include "rigworker.h"
+#include <cmath>
+#include <iostream>
+
 #include <QLabel>
 #include <QMessageBox>
 #include <QRadioButton>
+
+#include "formrigdef.h"
+#include "rigworker.h"
 
 
 /** The constructor.

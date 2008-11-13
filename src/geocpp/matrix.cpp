@@ -20,6 +20,7 @@
 #include <geocpp/subspace.h>
 
 #include <climits>
+#include <cmath>
 #include <cstdlib>
 
 /*******************************************************

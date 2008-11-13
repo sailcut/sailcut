@@ -17,11 +17,14 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#include "formsaildef.h"
+#include <cmath>
+
 #include <QLabel>
 #include <QMessageBox>
 #include <QRadioButton>
 #include <QLineEdit>
+
+#include "formsaildef.h"
 #include "sailworker.h"
 
 //////////////////////////////////////////////////////////////////////
