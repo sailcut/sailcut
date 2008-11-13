@@ -179,43 +179,35 @@ CFormPrint::CFormPrint(const CPrinter *engine, enum QPrinter::Orientation orient
  */
 void CFormPrint::slotPrint()
 {
-    // try printing
-    try
+    QPrintDialog printDialog(&printDevice);
+    printDialog.setMinMax(1, printEngine->pages());
+    if ( printDialog.exec() == QDialog::Accepted )
     {
-        QPrintDialog printDialog(&printDevice);
-        printDialog.setMinMax(1, printEngine->pages());
-        if ( printDialog.exec() == QDialog::Accepted )
+        // determine which pages need to be printed
+        int minPage, maxPage;
+        switch (printDialog.printRange())
         {
-            // determine which pages need to be printed
-            int minPage, maxPage;
-            switch (printDialog.printRange())
-            {
-            case QAbstractPrintDialog::PageRange:
-                minPage = printDialog.fromPage();
-                maxPage = printDialog.toPage();
-                break;
-            default:
-                minPage = 1;
-                maxPage = printEngine->pages();
-                break;
-            }
+        case QAbstractPrintDialog::PageRange:
+            minPage = printDialog.fromPage();
+            maxPage = printDialog.toPage();
+            break;
+        default:
+            minPage = 1;
+            maxPage = printEngine->pages();
+            break;
+        }
 
-            // print the requested pages
-            CTextPainter painter(&printDevice);
-            for (int i = minPage - 1; i < maxPage; i ++)
+        // print the requested pages
+        CTextPainter painter(&printDevice);
+        for (int i = minPage - 1; i < maxPage; i ++)
+        {
+            if ( i >= 0 && i < printEngine->pages())
             {
-                if ( i >= 0 && i < printEngine->pages())
-                {
-                    if ( i > minPage - 1 )
-                        printDevice.newPage();
-                    printEngine->print(&painter, i, printFontSize);
-                }
+                if ( i > minPage - 1 )
+                    printDevice.newPage();
+                printEngine->print(&painter, i, printFontSize);
             }
         }
-    }
-    catch (CException e)
-    {
-        QMessageBox::information(NULL, tr("error"), tr("There was a printing error"));
     }
     accept();
 }

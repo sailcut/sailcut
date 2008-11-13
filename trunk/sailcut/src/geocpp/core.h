@@ -32,20 +32,5 @@ const real PI = 3.14159265358979323846;
 
 using namespace std;
 
-/** Class for returning information about an exception.
- */
-class CException : public exception
-{
-public:
-    CException (const string& msg);
-    virtual ~CException() throw();
-
-    virtual const char* what() const throw();
-
-protected:
-    /** the exception's error message. */
-    string message;
-};
-
 #endif
 
