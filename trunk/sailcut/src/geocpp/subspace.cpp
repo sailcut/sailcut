@@ -98,13 +98,13 @@ CSubSpace CSubSpace::intersect(const CSubSpace &h2) const
         {
             for (size_t j = 0 ; j < mm.getncol() ; j++)
                 mm(i,j) = m(i,j);
-            bb.m_data[i] = b1.m_data[i];
+            bb[i] = b1[i];
         }
         else
         {
             for (size_t j = 0 ; j < mm.getncol() ; j++)
                 mm(i,j) = h2.m(i-m.getnrow() , j);
-            bb.m_data[i] = b2.m_data[i-m.getnrow()];
+            bb[i] = b2[i-m.getnrow()];
         }
     }
     //cout << "mm" << endl << mm << endl;
