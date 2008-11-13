@@ -53,10 +53,7 @@ CProfile::CProfile( real rDepth, real rLeech, real rLuff)
 CProfile& CProfile::operator=( const CProfile &copy )
 {
     if (&copy == this)
-    {
-        CException e("CProfile::operator= : self-assignment!");
-        throw(e);
-    }
+        return *this;
 
     depth = copy.depth;
     kleech = copy.kleech;
@@ -281,10 +278,7 @@ CSailMould::CSailMould()
 CSailMould & CSailMould::operator=( const CSailMould &copy )
 {
     if (&copy == this)
-    {
-        CException e("CSailMould::operator= : self-assignment!");
-        throw(e);
-    }
+        return *this;
 
     profile = copy.profile;
     vertpos = copy.vertpos;

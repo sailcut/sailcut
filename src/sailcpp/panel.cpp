@@ -76,11 +76,8 @@ CPanelLabel CPanelLabel::operator+ ( const CVector3d &transl ) const
  */
 CPanelLabel& CPanelLabel::operator= (const CPanelLabel &lb)
 {
-    if ( &lb == this )
-    {
-        CException e("CPanelLabel::operator= : self-assignment!");
-        throw(e);
-    }
+    if (&lb == this)
+        return *this;
 
     name = lb.name;
     height = lb.height;
