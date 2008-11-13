@@ -32,7 +32,7 @@ void CSailTxtWriter::write(const CPanelGroup &sail, const QString &filename) con
     ofstream myOut;
     myOut.open(QFile::encodeName(filename), ios::out);
     if (!myOut.is_open())
-        throw CException("CSailTxtWriter::write : unable to write to specified file");
+        throw write_error("CSailTxtWriter::write : unable to write to specified file");
     myOut << sail.title << endl;
     myOut << sail;
     myOut.close();

@@ -140,7 +140,7 @@ void CSailDxfWriter2d::write(const CPanelGroup &sail, const QString &filename) c
 
     out.open(QFile::encodeName(filename),ios::out);
     if (!out.is_open())
-        throw CException("CSailDxfWriter::write : unable to write to specified file");
+        throw write_error("CSailDxfWriter::write : unable to write to specified file");
 
     // write comment
     writeAtom(out, 999, "DXF 2d created by Sailcut CAD");
@@ -200,7 +200,7 @@ void CSailDxfWriter2dBlocks::write(const CPanelGroup &sail, const QString &filen
     ofstream out;
     out.open(QFile::encodeName(filename),ios::out);
     if (!out.is_open())
-        throw CException("CSailDxfWriter::write : unable to write to specified file");
+        throw write_error("CSailDxfWriter::write : unable to write to specified file");
 
     // write comment
     writeAtom(out, 999, "DXF 2d created by Sailcut CAD");
@@ -421,7 +421,7 @@ void CSailDxfWriter3d::write(const CPanelGroup &sail, const QString &filename) c
     ofstream out;
     out.open(QFile::encodeName(filename), ios::out);
     if (!out.is_open())
-        throw CException("CSailDxfWriter3d::write : unable to write to specified DXF file");
+        throw write_error("CSailDxfWriter3d::write : unable to write to specified DXF file");
 
     // write comment
     writeAtom(out, 999,"DXF 3d created by Sailcut CAD");

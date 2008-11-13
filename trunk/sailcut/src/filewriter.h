@@ -26,9 +26,29 @@
 #define CRLF "\r\n"
 #endif
 
+#include <iostream>
 #include <geocpp/core.h>
+
 #include <QFileDialog>
 #include <QMessageBox>
+
+class read_error : public runtime_error
+{
+public:
+    read_error(const string &message) : runtime_error(message)
+    {
+        cout << what() << endl;
+    }
+};
+
+class write_error : public runtime_error
+{
+public:
+    write_error(const string &message) : runtime_error(message)
+    {
+        cout << what() << endl;
+    }
+};
 
 /** This is a generic class used as the base for various file
  *  input and output modules.
@@ -52,7 +72,7 @@ public:
      */
     virtual const objtype read(const QString &) const
     {
-        throw CException("Reading is not supported for this file type.");
+        throw logic_error("Reading is not supported for this file type.");
     };
 
 
@@ -71,7 +91,7 @@ public:
             {
                 dest = read(newfilename);
             }
-            catch (CException e)
+            catch (read_error e)
             {
                 readErrorMessage();
                 newfilename = QString::null;
@@ -113,7 +133,7 @@ public:
         {
             write(obj, newfilename);
         }
-        catch (CException e)
+        catch (write_error e)
         {
             writeErrorMessage();
             newfilename = QString::null;
