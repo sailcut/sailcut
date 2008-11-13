@@ -32,7 +32,7 @@
 CSubSpace::CSubSpace(unsigned int dim_space, unsigned int dim_sub)
         : p(dim_space)
 {
-    m = CMatrix( dim_sub , p.getdim() );
+    m = CMatrix( dim_sub , p.size() );
 }
 
 
@@ -50,17 +50,17 @@ CSubSpace::CSubSpace(const CVector &pi, const CMatrix &mi, subspaceflags_t creat
     {
     case GEOCPP_FROM_EQS:
         // equations are given in lines
-        if ( (mi.getnrow() > 0) && (mi.getncol() != pi.getdim()) )
+        if ( (mi.getnrow() > 0) && (mi.getncol() != pi.size()) )
             throw invalid_argument("CSubSpace::CSubSpace(p,m,GEOCPP_FROM_EQS) : dimension mismatch between p and m");
 
         m = mi;
         break;
     case GEOCPP_FROM_BASE:
         // base is given in column format
-        if ( (mi.getncol() > 0) && (mi.getnrow() != pi.getdim()) )
+        if ( (mi.getncol() > 0) && (mi.getnrow() != pi.size()) )
             throw invalid_argument("CSubSpace::CSubSpace(p,m,GEOCPP_FROM_BASE) : dimension mismatch between p and m");
 
-        m = mi.transp().kern(pi.getdim()).transp();
+        m = mi.transp().kern(pi.size()).transp();
         break;
     default:
         throw invalid_argument("CSubSpace::CSubspace(p,m,createflags) : unknown creation flags");
@@ -85,13 +85,13 @@ CSubSpace CSubSpace::intersect(const CSubSpace &h2) const
     if ( (getdim() < 0) || (h2.getdim() < 0) )
         return CSubSpace(0 , 0);
 
-    if ( p.getdim() != h2.p.getdim() )
+    if ( p.size() != h2.p.size() )
         throw invalid_argument("CSubSpace::intersect : dimension mismatch on points");
 
     CVector b1 = m*p;
     CVector b2 = h2.m*h2.p;
     CVector bb( m.getnrow() + h2.m.getnrow() );
-    CMatrix mm( m.getnrow() + h2.m.getnrow(), p.getdim() );
+    CMatrix mm( m.getnrow() + h2.m.getnrow(), p.size() );
     for (unsigned int i = 0 ; i < mm.getnrow() ; i++)
     {
         if ( i < m.getnrow() )
@@ -166,7 +166,7 @@ ostream& operator<< (ostream &o, const CSubSpace &h)
         if (h.getdim()>0)
         {
             o << "------" << endl;
-            o << "base vectors (in columns): " << endl << h.getm().kern(h.getp().getdim()) << endl << "------" << endl;
+            o << "base vectors (in columns): " << endl << h.getm().kern(h.getp().size()) << endl << "------" << endl;
             o << "equations (coeffs in lines): " << endl << h.getm() << endl;
         }
         o << "--------------------------------" << endl;

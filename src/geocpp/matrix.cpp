@@ -207,7 +207,7 @@ CMatrix CMatrix::gaussjordan(bool *is_inv, CMatrix *inv, soltype_t * soltype, CV
     CMatrix b;
     if (bb!=NULL)
     {
-        if (bb->getdim() != m_nrow)
+        if (bb->size() != m_nrow)
             throw invalid_argument("CMatrix::solve : matrix <=> right-hand side dimensions incompatible");
 
         b = bb->matrix();
@@ -451,7 +451,7 @@ CVector CMatrix::row(unsigned int index) const
  */
 CSubSpace CMatrix::solve(const CVector &b) const
 {
-    if (m_nrow != b.getdim())
+    if (m_nrow != b.size())
         throw invalid_argument("CMatrix::solve : dimension mismatch");
 
     //cout << "[[ solver ]]" << endl;
@@ -471,7 +471,7 @@ CSubSpace CMatrix::solve(const CVector &b) const
         break;
     case ONE:
         //cout << "CMatrix::solve : system has unique solution" << endl;
-        h = CSubSpace(s,CMatrix::id(s.getdim()));
+        h = CSubSpace(s,CMatrix::id(s.size()));
         break;
     case INF:
         //cout << "CMatrix::solve : system has an infinity of solutions" << endl;
@@ -635,7 +635,7 @@ CMatrix CMatrix::operator*(const CMatrix &m2) const
  */
 CVector CMatrix::operator*(const CVector &v) const
 {
-    if (m_ncol != v.getdim())
+    if (m_ncol != v.size())
         throw invalid_argument("CMatrix::operator*: dimension mismatch!");
 
     // result is initialised to zero

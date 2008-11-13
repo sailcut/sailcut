@@ -194,10 +194,10 @@ real CVector::operator*(const CVector &v2) const
  */
 ostream& operator<<(ostream &o, const CVector &v)
 {
-    if (v.getdim() >0)
+    if (v.size() >0)
     {
         o << v.getcoord(0);
-        for (unsigned int i=1; i < v.getdim(); i++)
+        for (unsigned int i=1; i < v.size(); i++)
             o << "\t" << v.getcoord(i);
     }
     return o;

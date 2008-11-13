@@ -56,7 +56,7 @@ public:
 
     // member functions
     /** Returns the dimension of the vector. */
-    unsigned int getdim() const
+    unsigned int size() const
     {
         return m_dim;
     }

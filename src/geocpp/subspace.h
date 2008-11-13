@@ -47,14 +47,14 @@ public:
     /** Return the dimension of the whole space. */
     unsigned int getncoord() const
     {
-        return p.getdim();
+        return p.size();
     }
     
     /** Return the subspace's dimension. */
     int getdim() const
     {
-        if (p.getdim() > 0)
-            return p.getdim()-m.getnrow();
+        if (p.size() > 0)
+            return p.size() - m.getnrow();
         else
             return -1;
     }
