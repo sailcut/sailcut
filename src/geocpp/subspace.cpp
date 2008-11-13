@@ -29,7 +29,7 @@
  * @param dim_space dimension of the Euclidian vector space we are working in
  * @param dim_sub dimension of the subspace to be created
  */
-CSubSpace::CSubSpace(unsigned int dim_space, unsigned int dim_sub)
+CSubSpace::CSubSpace(size_t dim_space, size_t dim_sub)
         : p(dim_space)
 {
     m = CMatrix( dim_sub , p.size() );
@@ -92,17 +92,17 @@ CSubSpace CSubSpace::intersect(const CSubSpace &h2) const
     CVector b2 = h2.m*h2.p;
     CVector bb( m.getnrow() + h2.m.getnrow() );
     CMatrix mm( m.getnrow() + h2.m.getnrow(), p.size() );
-    for (unsigned int i = 0 ; i < mm.getnrow() ; i++)
+    for (size_t i = 0 ; i < mm.getnrow() ; i++)
     {
         if ( i < m.getnrow() )
         {
-            for (unsigned int j = 0 ; j < mm.getncol() ; j++)
+            for (size_t j = 0 ; j < mm.getncol() ; j++)
                 mm(i,j) = m(i,j);
             bb.m_data[i] = b1.m_data[i];
         }
         else
         {
-            for (unsigned int j = 0 ; j < mm.getncol() ; j++)
+            for (size_t j = 0 ; j < mm.getncol() ; j++)
                 mm(i,j) = h2.m(i-m.getnrow() , j);
             bb.m_data[i] = b2.m_data[i-m.getnrow()];
         }
@@ -125,7 +125,7 @@ CSubSpace CSubSpace::intersect(const CSubSpace &h2) const
 ostream& operator<< (ostream &o, const CMatrix &m)
 {
     o << "[";
-    for (unsigned int i = 0 ; i < m.getnrow() ; i++)
+    for (size_t i = 0 ; i < m.getnrow() ; i++)
     {
         o << m.row(i);
         if ( i != m.getnrow()-1 )

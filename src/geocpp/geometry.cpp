@@ -31,7 +31,7 @@
 CVector2d::CVector2d(const CVector &v)
         : CVector(2)
 {
-    for (unsigned int i = 0; i < 2; i++)
+    for (size_t i = 0; i < 2; i++)
         if (i < v.size())
             m_data[i] = v.m_data[i];
 }
@@ -56,7 +56,7 @@ CVector2d::CVector2d(const CMatrix &m)
 CVector3d::CVector3d(const CVector &v)
         : CVector(3)
 {
-    for (unsigned int i = 0; i < 3; i++)
+    for (size_t i = 0; i < 3; i++)
         if (i < v.size())
             m_data[i] = v.m_data[i];
 }
@@ -122,7 +122,7 @@ CRect3d CRect3d::operator* (const real r) const
 CRect3d CRect3d::join(const CRect3d& rect) const
 {
     CRect3d ret = *this;
-    for (unsigned int j = 0; j < 3; j++)
+    for (size_t j = 0; j < 3; j++)
     {
         if (rect.min[j] < ret.min[j])
             ret.min[j] = rect.min[j];

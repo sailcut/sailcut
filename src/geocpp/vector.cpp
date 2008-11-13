@@ -34,7 +34,7 @@
 CMatrix CVector::matrix(void) const
 {
     CMatrix m(1,m_dim);
-    for (unsigned int j = 0; j < m_dim; j++)
+    for (size_t j = 0; j < m_dim; j++)
         m(0,j) = m_data[j];
     return m.transp();
 }
@@ -45,7 +45,7 @@ CMatrix CVector::matrix(void) const
 real CVector::norm(void) const
 {
     real tot = 0;
-    for (unsigned int i = 0; i < m_dim; i++)
+    for (size_t i = 0; i < m_dim; i++)
         tot += m_data[i]*m_data[i];
     return real(sqrt(tot));
 }
@@ -105,7 +105,7 @@ CVector CVector::operator+(const CVector& v2) const
         throw invalid_argument("VectTempl::operator+ : dimension mismatch!");
 
     CVector ret(m_dim);
-    for (unsigned int i=0; i < m_dim; i++)
+    for (size_t i = 0; i < m_dim; i++)
         ret.m_data[i] = m_data[i] + v2.m_data[i];
     return ret;
 }
@@ -116,7 +116,7 @@ CVector CVector::operator+(const CVector& v2) const
 CVector CVector::operator-() const
 {
     CVector ret(m_dim);
-    for (unsigned i = 0; i < m_dim; i++)
+    for (size_t i = 0; i < m_dim; i++)
         ret.m_data[i] = - m_data[i];
     return ret;
 }
@@ -130,7 +130,7 @@ CVector CVector::operator-(const CVector& v2) const
         throw invalid_argument("CVector::operator- : dimension mismatch!");
 
     CVector ret(m_dim);
-    for (unsigned int i=0; i < m_dim; i++)
+    for (size_t i = 0; i < m_dim; i++)
         ret.m_data[i] = m_data[i] - v2.m_data[i];
     return ret;
 }
@@ -141,7 +141,7 @@ CVector CVector::operator-(const CVector& v2) const
 CVector CVector::operator*(const real& lambda) const
 {
     CVector ret(m_dim);
-    for (unsigned i = 0; i < m_dim; i++)
+    for (size_t i = 0; i < m_dim; i++)
         ret.m_data[i] = m_data[i]* lambda;
 
     return ret;
@@ -155,7 +155,7 @@ bool CVector::operator==(const CVector &v) const
     if (m_dim != v.m_dim)
         return false;
 
-    for (unsigned int i = 0; i < m_dim; i++)
+    for (size_t i = 0; i < m_dim; i++)
         if (fabs(m_data[i] - v.m_data[i]) > EPS)
             return false;
     return true;
@@ -178,7 +178,7 @@ real CVector::operator*(const CVector &v2) const
         throw invalid_argument("CVector::operator*: dimension mismatch!");
 
     real ret = 0;
-    for (unsigned int i=0; i < m_dim; i++)
+    for (size_t i = 0; i < m_dim; i++)
         ret += m_data[i] * v2.m_data[i];
     return ret;
 }
@@ -197,7 +197,7 @@ ostream& operator<<(ostream &o, const CVector &v)
     if (v.size() > 0)
     {
         o << v[0];
-        for (unsigned int i=1; i < v.size(); i++)
+        for (size_t i=1; i < v.size(); i++)
             o << "\t" << v[i];
     }
     return o;
