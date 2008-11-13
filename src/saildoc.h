@@ -29,6 +29,15 @@
 #include "saildef.h"
 #include "prefs.h"
 
+class doc_element_error : public runtime_error
+{
+public:
+    doc_element_error(const string &message) : runtime_error(message)
+    {
+        cout << what() << endl;
+    }
+};
+
 /** @defgroup FileIo File input and output
 */
 
@@ -136,7 +145,7 @@ protected:
     {
         QDomElement e = findElement( parent, "vector", name);
         if ( e.isNull() )
-            throw CException("CSailDoc::get(vector) : did not find requested element");
+            throw doc_element_error(QString("CSailDoc::get(vector, " + name + ") : did not find requested element").toStdString());
 
         unsigned int size =   e.attributes().namedItem("size").nodeValue().toInt();
         v.resize(size);
