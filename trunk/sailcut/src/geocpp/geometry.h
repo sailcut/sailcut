@@ -35,9 +35,8 @@ public:
     CVector2d(const CMatrix &m);
     /** Constructor. */
     CVector2d(const real &x = 0, const real &y = 0)
+        : CVector(2)
     {
-        m_dim = 2;
-        m_data = new real[2];
         m_data[0] = x;
         m_data[1] = y;
     }
@@ -76,9 +75,8 @@ public:
 
     /** Constructor. */
     CVector3d(const real &x = 0, const real &y = 0, const real &z = 0)
+        : CVector(3)
     {
-        m_dim = 3;
-        m_data = new real[3];
         m_data[0] = x;
         m_data[1] = y;
         m_data[2] = z;
