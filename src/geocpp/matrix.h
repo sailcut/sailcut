@@ -152,7 +152,7 @@ inline
 real& CMatrix::operator() (const unsigned int& row, const unsigned int& col)
 {
     if (row >= m_nrow || col >= m_ncol)
-        throw CException("CMatrix::operator() : index out of bounds");
+        throw range_error("CMatrix::operator() : index out of bounds");
     return m_data[m_ncol * row + col];
 }
 
@@ -163,7 +163,7 @@ inline
 real CMatrix::operator() (const unsigned int& row, const unsigned int& col) const
 {
     if (row >= m_nrow || col >= m_ncol)
-        throw CException("CMatrix::operator() : index out of bounds");
+        throw range_error("CMatrix::operator() : index out of bounds");
     return m_data[m_ncol * row + col];
 }
 

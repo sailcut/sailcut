@@ -22,6 +22,7 @@
 #include <geocpp/core.h>
 #include <cstring>
 #include <iostream>
+#include <stdexcept>
 
 using namespace std;
 
@@ -148,7 +149,7 @@ inline
 real& CVector::operator[] (unsigned int index)
 {
     if (index >= m_dim)
-        throw CException("CVector::operator[] : out of bounds!");
+        throw range_error("CVector::operator[] : out of bounds!");
     return m_data[index];
 }
 
@@ -159,7 +160,7 @@ inline
 real CVector::operator[] (unsigned int index) const
 {
     if (index >= m_dim)
-        throw CException("CVector::operator[] : out of bounds!");
+        throw range_error("CVector::operator[] : out of bounds!");
     return m_data[index];
 }
 

@@ -93,7 +93,7 @@ CMatrix CMatrix::rot3d(const unsigned int& axis, const real& angle)
 CVector CMatrix::col(const unsigned int& index) const
 {
     if (index >= m_ncol)
-        throw CException("CMatrix::col : index out of bounds!");
+        throw range_error("CMatrix::col : index out of bounds!");
 
     CVector ret(m_nrow);
     for (unsigned int i = 0; i < m_nrow; i++)
@@ -166,7 +166,7 @@ real CMatrix::det(void) const
 CMatrix CMatrix::dev(const unsigned int& i, const unsigned int& j) const
 {
     if ((i >= m_nrow) || (j >= m_ncol))
-        throw CException("CMatrix::dev : index out of bounds");
+        throw range_error("CMatrix::dev : index out of bounds");
 
     if (m_nrow != m_ncol)
         throw CException("CMatrix::dev : matrix is not square!");
@@ -440,7 +440,7 @@ CMatrix CMatrix::kern(const unsigned int& vsize) const
 CVector CMatrix::row(unsigned int index) const
 {
     if (index >= m_nrow)
-        throw CException("CMatrix::row : index out of bounds!");
+        throw range_error("CMatrix::row : index out of bounds!");
 
     CVector ret(m_ncol);
     memcpy(ret.m_data,&m_data[index*m_ncol],sizeof(real)*m_ncol);
@@ -491,7 +491,7 @@ CSubSpace CMatrix::solve(const CVector &b) const
 void CMatrix::swap_row(const unsigned int& i1, const unsigned int& i2)
 {
     if ((i1>=m_nrow)||(i2>=m_nrow))
-        throw CException("CMatrix:swap_row : index out of bounds");
+        throw range_error("CMatrix:swap_row : index out of bounds");
 
     if (i1==i2)
         return;
@@ -513,7 +513,7 @@ void CMatrix::swap_row(const unsigned int& i1, const unsigned int& i2)
 void CMatrix::swap_col(const unsigned int& j1, const unsigned int& j2)
 {
     if ((j1>=m_ncol)||(j2>=m_ncol))
-        throw CException("CMatrix:swap_col : index out of bounds");
+        throw range_error("CMatrix:swap_col : index out of bounds");
 
     if (j1==j2)
         return;
