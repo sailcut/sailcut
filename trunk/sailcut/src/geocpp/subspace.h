@@ -44,12 +44,6 @@ public:
     CSubSpace intersect(const CSubSpace &) const;
     bool contains(const CVector &);
     
-    /** Return the dimension of the whole space. */
-    unsigned int getncoord() const
-    {
-        return p.size();
-    }
-    
     /** Return the subspace's dimension. */
     int getdim() const
     {
