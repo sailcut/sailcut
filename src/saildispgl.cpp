@@ -34,7 +34,7 @@ CSailDispGL::CSailDispGL( QWidget * parent )
         :  QGLWidget( parent ), wasResized(true)
 {
     if ( !QGLFormat::hasOpenGL() )
-        throw CException("This system has no OpenGL support.");
+        throw runtime_error("This system has no OpenGL support.");
 }
 
 

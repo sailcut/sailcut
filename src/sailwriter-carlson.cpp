@@ -95,7 +95,7 @@ void CSailCarlsonWriter::write(const CPanelGroup &sail, const QString &filename)
 
     out.open(QFile::encodeName(filename),ios::out);
     if (!out.is_open())
-        throw CException("CSailCarlsonWriter::write : unable to write to specified file");
+        throw write_error("CSailCarlsonWriter::write : unable to write to specified file");
 
     out << "Sailcut Carlson plotter development: Test1" << CRLF;
 

@@ -33,7 +33,7 @@ void CSailHandWriter::write(const CPanelGroup &sail, const QString &filename) co
     ofstream myOut;
     myOut.open(QFile::encodeName(filename), ios::out);
     if (!myOut.is_open())
-        throw CException("CSailWriter::write : unable to write to specified file");
+        throw write_error("CSailWriter::write : unable to write to specified file");
 
     // write the name of the sail
     myOut << sail.title << endl;
