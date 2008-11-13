@@ -68,7 +68,7 @@ CRigDef & CRigDef::operator=( const CRigDef &copy )
 {
     if (&copy == this)
         return *this;
-    // else
+
     rigID = copy.rigID;
     foreI  = copy.foreI;    // height of fore triangle
     foreJ  = copy.foreJ;    // base of fore triangle
