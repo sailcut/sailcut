@@ -149,7 +149,7 @@ CSubSpace CSubSpace2d::line(const CPoint2d &p, const CVector2d &v)
         cout << "CSubSpace2d::line : Crash point = " << p << endl;
         throw invalid_argument("CSubSpace2d::line : Input vector cannot be zero");
     }
-    return CSubSpace(p, v.matrix(), GEOCPP_FROM_BASE);
+    return CSubSpace(p, v, GEOCPP_FROM_BASE);
 }
 
 
@@ -165,7 +165,7 @@ CSubSpace CSubSpace3d::line(const CPoint3d &p, const CVector3d &v)
         cout << "CSubSpace3d::line : Crash point = " << p << endl;
         throw invalid_argument("CSubSpace3d::line : Input vector cannot be zero point ");
     }
-    return CSubSpace(p, v.matrix(), GEOCPP_FROM_BASE);
+    return CSubSpace(p, v, GEOCPP_FROM_BASE);
 }
 
 

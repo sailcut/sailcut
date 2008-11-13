@@ -23,6 +23,23 @@
 #include <cmath>
 #include <cstdlib>
 
+/** Returns the matrix corresponding to a vector
+ */
+CMatrix::CMatrix(const CVector &v)
+    : m_nrow(v.size()), m_ncol(1)
+{
+    if (v.size() > 0)
+    {
+        m_data = new real[v.size()];
+        for (size_t j = 0; j < v.size(); j++)
+            m_data[j] = v[j];
+    }
+    else
+    {
+        m_data = NULL;
+    }
+}
+
 /*******************************************************
 
                       Static functions
@@ -210,11 +227,11 @@ CMatrix CMatrix::gaussjordan(bool *is_inv, CMatrix *inv, soltype_t * soltype, CV
         if (bb->size() != m_nrow)
             throw invalid_argument("CMatrix::solve : matrix <=> right-hand side dimensions incompatible");
 
-        b = bb->matrix();
+        b = *bb;
     }
     else
     {
-        b = CMatrix(m_nrow,1);
+        b = CMatrix(m_nrow, 1);
     }
     //cout << "b" << endl<< b << endl;
     //cout << "m" << endl<< *this << endl;
