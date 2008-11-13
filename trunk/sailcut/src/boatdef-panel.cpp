@@ -82,7 +82,7 @@ CVector3d CVector3dWidget::getVector()
 void CVector3dWidget::setVector(const CVector3d &v)
 {
     for (unsigned int i = 0; i < 3; i++)
-        spinBox[i]->setValue(int(v.getcoord(i)));
+        spinBox[i]->setValue(int(v[i]));
 }
 
 
