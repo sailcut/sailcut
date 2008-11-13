@@ -66,7 +66,7 @@ public:
         return m_data[i];
     }
     /** Is this a null-dimension vector ?*/
-    bool isempty() const
+    bool empty() const
     {
         return !m_dim;
     }
@@ -111,7 +111,7 @@ CVector::CVector(unsigned int size)
         : m_dim(size)
 {
     // if size is non-zero, we allocate memory
-    if (!isempty())
+    if (!empty())
     {
         m_data = new real[m_dim];
         memset(m_data, 0, sizeof(real) * m_dim);
@@ -129,7 +129,7 @@ CVector::CVector(const CVector& v)
         : m_dim(v.m_dim)
 {
     // if size is non-zero, we allocate memory
-    if (!isempty())
+    if (!empty())
     {
         m_data = new real[m_dim];
         memcpy(m_data, v.m_data, sizeof(real) * m_dim);
