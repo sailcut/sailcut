@@ -254,26 +254,19 @@ int main()
 #ifdef DEBUG
     mcheck(0);
 #endif
-
     srand ( time(NULL) );
-    try
-    {
-        cout << "---   Using GeoCpp library by Jeremy Laine   ---" << endl;
-        cout << "(see AUTHORS file for full list of contributors)" << endl;
-        cout << " " << endl;
 
-        test_rect();
-        test_point();
-        test_vect();
-        test_matrix();
-        test_space();
+    cout << "---   Using GeoCpp library by Jeremy Laine   ---" << endl;
+    cout << "(see AUTHORS file for full list of contributors)" << endl;
+    cout << " " << endl;
 
-        cout << "----- " << endl;
-    }
-    catch (CException e)
-    {
-        cout << "main() : caught exception, exiting!" << endl;
-    }
+    test_rect();
+    test_point();
+    test_vect();
+    test_matrix();
+    test_space();
+
+    cout << "----- " << endl;
 
     return 0;
 }
