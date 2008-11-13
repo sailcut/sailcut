@@ -32,7 +32,7 @@ CVector2d::CVector2d(const CVector &v)
         : CVector(2)
 {
     for (unsigned int i = 0; i < 2; i++)
-        if (i < v.m_dim)
+        if (i < v.size())
             m_data[i] = v.m_data[i];
 }
 
@@ -57,7 +57,7 @@ CVector3d::CVector3d(const CVector &v)
         : CVector(3)
 {
     for (unsigned int i = 0; i < 3; i++)
-        if (i < v.m_dim)
+        if (i < v.size())
             m_data[i] = v.m_data[i];
 }
 
