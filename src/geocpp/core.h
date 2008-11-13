@@ -19,15 +19,18 @@
 #ifndef GEOCPP_CORE_H
 #define GEOCPP_CORE_H
 
+#include <cmath>
 #include <exception>
+#include <stdexcept>
 #include <string>
-#include <math.h>
 
 // types and constants
 typedef double real;
 
 const real EPS = 1E-14; // was 1E-14
 const real PI = 3.14159265358979323846;
+
+using namespace std;
 
 /** Class for returning information about an exception.
  */

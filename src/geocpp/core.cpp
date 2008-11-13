@@ -19,8 +19,6 @@
 #include <geocpp/core.h>
 #include <iostream>
 
-using namespace std;
-
 /** Constructs a CException object.
  */
 CException::CException(const string &msg)
@@ -46,3 +44,4 @@ const char *CException::what() const throw()
 {
     return message.c_str();
 }
+
