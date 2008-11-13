@@ -70,7 +70,7 @@ CSubSpace::CSubSpace(const CVector &pi, const CMatrix &mi, subspaceflags_t creat
 
 /** Test whether the CSubSpace contains a given point.
  */
-bool CSubSpace::contains(const CVector &point)
+bool CSubSpace::contains(const CVector &point) const
 {
     CVector prod = m*(point-p);
 

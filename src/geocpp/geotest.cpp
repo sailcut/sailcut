@@ -26,6 +26,15 @@
 #include <mcheck.h>
 #endif
 
+template<class T> void test_contain(const char *name, const CSubSpace &s, const T &p, bool expected)
+{
+    bool res = s.contains(p);
+    cout << "does " << name << " contain (" << p << ") : " << s.contains(p) << endl;
+    if (res != expected)
+        throw runtime_error("test failed");
+}
+
+
 void test_point(void)
 {
     CPoint3d p3(1,0,0), q3(0,1,0);
@@ -183,68 +192,77 @@ void test_matrix(void)
     cout << " " << endl;
 }
 
-void test_space(void)
+void test_space2d(void)
 {
-    cout << "----- Subspace operations -----" << endl;
+    cout << "----- 2D Subspace operations -----" << endl;
     CSubSpace L2 = CSubSpace2d::line(CPoint2d(0,0), CVector2d(1,1));
-    CSubSpace L3A = CSubSpace3d::line(CPoint3d(0,0,1), CVector3d(1,1,0));
-    CSubSpace L3B = CSubSpace3d::line(CPoint3d(0,0,0), CVector3d(1,1,1));
-    CSubSpace P3A = CSubSpace3d::plane(CPoint3d(2,3,7), CVector3d(1,0,5), CVector3d(0,1,0));
-    CSubSpace P3B = CSubSpace3d::plane(CPoint3d(4,-5,1), CVector3d(-3,0,1), CVector3d(0,1,0));
+    CPoint2d p2(2,2),q2(2,1);
+
+    cout << "== L2 ==" << endl << L2 << endl;
+    test_contain<CPoint2d>("L2", L2, p2, true);
+    test_contain<CPoint2d>("L2", L2, q2, false);
+    cout << endl;
+
+    cout << " " << endl;
+}
+
+void test_space3d(void)
+{
+    cout << "----- 3D Subspace operations -----" << endl;
+    const CSubSpace L3A = CSubSpace3d::line(CPoint3d(0,0,1), CVector3d(1,1,0));
+    const CSubSpace L3B = CSubSpace3d::line(CPoint3d(0,0,0), CVector3d(1,1,1));
+    const CSubSpace P3A = CSubSpace3d::plane(CPoint3d(2,3,7), CVector3d(1,0,5), CVector3d(0,1,0));
+    const CSubSpace P3B = CSubSpace3d::plane(CPoint3d(4,-5,1), CVector3d(-3,0,1), CVector3d(0,1,0));
+    const CPoint3d p3(2,2,2),q3(2,1,2),r3(4,5,7),s3(2,2,1);
 
     CSubSpace h(3);
 
-    CPoint2d p2(2,2),q2(2,1);
-    CPoint3d p3(2,2,2),q3(2,1,2),r3(4,5,7),s3(2,2,1);
-    cout << "== L2 ==" << endl << L2 << endl;
-    cout << "does L2 contain " << p2 << " : " << L2.contains(p2) << endl;
-    cout << "does L2 contain " << q2 << " : " << L2.contains(q2) << endl;
-    cout << endl;
-
     cout << "== L3A ==" << endl << L3A << endl;
-    cout << "does L3A contain " << p3 << " : " << L3A.contains(p3) << endl;
-    cout << "does L3A contain " << s3 << " : " << L3A.contains(s3) << endl;
+    test_contain<CPoint3d>("L3A", L3A, p3, false);
+    test_contain<CPoint3d>("L3A", L3A, s3, true);
     cout << endl;
 
     cout << "== L3B ==" << endl << L3B << endl;
-    cout << "does L3B contain " << p3 << " : " << L3B.contains(p3) << endl;
-    cout << "does L3B contain " << q3 << " : " << L3B.contains(q3) << endl;
+    test_contain<CPoint3d>("L3B", L3B, p3, true);
+    test_contain<CPoint3d>("L3B", L3B, q3, false);
     cout << endl;
 
     cout << "== L3A.intersect(L3B) ==" << endl << (h=L3A.intersect(L3B)) << endl;
     if (h.getdim() >= 0)
     {
-        cout << "does L3B contain " << h.getp() << " : " << L3B.contains(h.getp()) << endl;
-        cout << "does L3A contain " << h.getp() << " : " << L3B.contains(h.getp()) << endl;
+        test_contain<CPoint3d>("L3A", L3A, h.getp(), true);
+        test_contain<CPoint3d>("L3B", L3B, h.getp(), true);
     }
     cout << endl;
 
     cout << "== P3A ==" << endl << P3A << endl;
-    cout << "does P3A contain " << p3 << " : " << P3A.contains(p3) << endl;
-    cout << "does P3A contain " << r3 << " : " << P3A.contains(r3) << endl;
+    test_contain<CPoint3d>("P3A", P3A, p3, false);
+    test_contain<CPoint3d>("P3A", P3A, r3, false);
     cout << endl;
 
     cout << "== P3B ==" << endl << P3B << endl;
-    cout << "does P3B contain " << p3 << " : " << P3B.contains(p3) << endl;
-    cout << "does P3B contain " << r3 << " : " << P3B.contains(r3) << endl;
+    test_contain<CPoint3d>("P3B", P3B, p3, false);
+    test_contain<CPoint3d>("P3B", P3B, r3, false);
     cout << endl;
 
     cout << "== P3A.intersect(P3B) ==" << endl << (h=P3A.intersect(P3B)) << endl;
     if (h.getdim() >= 0)
     {
-        cout << "does P3A contain " << h.getp() << " : " << P3A.contains(h.getp()) << endl;
-        cout << "does P3B contain " << h.getp() << " : " << P3B.contains(h.getp()) << endl;
+        test_contain<CPoint3d>("P3A", P3A, h.getp(), true);
+        test_contain<CPoint3d>("P3B", P3B, h.getp(), true);
     }
     cout << endl;
 
     cout << "== P3A.intersect(L3A) ==" << endl << (h=P3A.intersect(L3A)) << endl;
     if (h.getdim() >= 0)
     {
-        cout << "does P3A contain " << h.getp() << " : " << P3A.contains(h.getp()) << endl;
-        cout << "does L3A contain " << h.getp() << " : " << L3A.contains(h.getp()) << endl;
+        test_contain<CPoint3d>("P3A", P3A, h.getp(), true);
+        test_contain<CPoint3d>("L3A", L3A, h.getp(), true);
     }
     cout << endl;
+
     cout << "== L3A.intersect(P3A) ==" << endl << (h=L3A.intersect(P3A)) << endl;
+
 
     cout << " " << endl;
 }
@@ -264,7 +282,8 @@ int main()
     test_point();
     test_vect();
     test_matrix();
-    test_space();
+    test_space2d();
+    test_space3d();
 
     cout << "----- " << endl;
 
