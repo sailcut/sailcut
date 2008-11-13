@@ -42,7 +42,7 @@ public:
     {}
     ;
     CSubSpace intersect(const CSubSpace &) const;
-    bool contains(const CVector &);
+    bool contains(const CVector &) const;
     
     /** Return the subspace's dimension. */
     int getdim() const
