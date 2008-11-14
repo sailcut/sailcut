@@ -22,63 +22,6 @@
 
 /***************************************
 
-            Generic 2D real vector
-
-***************************************/
-
-/** Copy constructor.
- */
-CVector2d::CVector2d(const CVector &v)
-        : CVector(v)
-{
-    resize(2);
-}
-
-
-
-/** Column matrix to vector conversion.
- */
-CVector2d::CVector2d(const CMatrix &m)
-        : CVector(m.col(0))
-{}
-
-
-/***************************************
-
-           Generic 3D real vector
-
-***************************************/
-
-/** Copy constructor.
- */
-CVector3d::CVector3d(const CVector &v)
-        : CVector(v)
-{
-    resize(3);
-}
-
-
-/** Column matrix to vector conversion.
- */
-CVector3d::CVector3d(const CMatrix &m)
-        : CVector(m.col(0))
-{}
-
-
-/** Cross product. Produces a vector orthogonal
- *  to the two original vectors.
- */
-CVector3d CVector3d::cross(const CVector3d &v) const
-{
-    CVector3d ret;
-    for (int i=0; i<3; i++)
-        ret[i] = (*this)[(i+1)%3] * v[(i+2)%3] - (*this)[(i+2)%3] * v[(i+1)%3];
-    return ret;
-}
-
-
-/***************************************
-
                  3D box
 
 ***************************************/

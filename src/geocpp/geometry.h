@@ -30,9 +30,6 @@ class CSubSpace;
 class CVector2d : public CVector
 {
 public:
-    // construction & destruction
-    CVector2d(const CVector &v);
-    CVector2d(const CMatrix &m);
     /** Constructor. */
     CVector2d(const real &x = 0, const real &y = 0)
         : CVector(2)
@@ -40,6 +37,14 @@ public:
         (*this)[0] = x;
         (*this)[1] = y;
     }
+
+    /** Copy constructor.
+     */
+    CVector2d(const CVector &v)
+        : CVector(v)
+    {
+        resize(2);
+    };
 
     /** Returns the first coordinate. */
     real &x(void)
@@ -70,10 +75,6 @@ public:
 class CVector3d : public CVector
 {
 public:
-    // construction & destruction
-    CVector3d(const CVector& v);
-    CVector3d(const CMatrix& m);
-
     /** Constructor. */
     CVector3d(const real &x = 0, const real &y = 0, const real &z = 0)
         : CVector(3)
@@ -82,6 +83,14 @@ public:
         (*this)[1] = y;
         (*this)[2] = z;
     }
+
+    /** Copy constructor.
+    */
+    CVector3d(const CVector &v)
+        : CVector(v)
+    {
+        resize(3);
+    };
 
     // access to coords
     /** Returns the first coordinate. */
@@ -116,7 +125,17 @@ public:
 
     // 3D only!
 
-    CVector3d cross(const CVector3d &) const;
+    /** Cross product. Produces a vector orthogonal
+    *  to the two original vectors.
+    */
+    CVector3d cross(const CVector3d &v) const
+    {
+        CVector3d ret;
+        for (int i=0; i<3; i++)
+            ret[i] = (*this)[(i+1)%3] * v[(i+2)%3] - (*this)[(i+2)%3] * v[(i+1)%3];
+        return ret;
+    }
+
     /** Assignment. */
     CVector3d &operator=(const CVector3d &v)
     {
