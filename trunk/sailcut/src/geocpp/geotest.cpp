@@ -95,9 +95,7 @@ void test_vect(void)
 
 void test_matrix(void)
 {
-    CMatrix a,p,o,big;
     CMatrix q(3,2);
-    CSubSpace h(3);
 
     // 3x4 matrix
     CMatrix t(3,4);
@@ -106,11 +104,6 @@ void test_matrix(void)
     CVector3d v1(1,2,1),v2(4,7,9);
 
     cout << "----- Matrix operations -----" << endl;
-    // random matrices
-    a = CMatrix::rnd(1,3);
-    p = CMatrix::rnd(3,2);
-    o = CMatrix::rnd(3,3);
-    big = CMatrix::rnd(15,15);
     // 3*4 matrix
     t(0,0) = 1;
     t(0,1) = -1;
@@ -143,29 +136,9 @@ void test_matrix(void)
     q(2,1) = -1;
 
     cout << "q" << endl << q << endl;
-    cout << "q.solve(v1)" << endl << (h=q.solve(v1)) << endl;
+    CSubSpace h = q.solve(v1);
+    cout << "q.solve(v1)" << endl << h << endl;
     cout << "q * q.solve(v1).getp()" << endl << q * h.getp() << endl;
-
-    cout << "big" << endl << big << endl;
-    cout << "big * big.inv()" << endl << big*big.inv() << endl;
-
-    cout << "o" << endl << o << endl;
-    cout << "o.img()" << endl << o.img() << endl;
-    cout << "o.v1" << endl << o*v1 << endl;
-
-    //cout << "o.kern()" << endl << o.kern() << endl;
-    //cout << "(o)-1" << endl << o.inv() << endl;
-    //cout << "o * (o)-1" << endl << o.inv() * o << endl;
-    cout << "o.solve(v1)" << endl << (h=o.solve(v1)) << endl;
-    //cout << "o * o.solve(v1).getp()" << endl << o * h.getp() << endl;
-
-    cout << "p" << endl << p << endl;
-    cout << "p.img()"<< endl << p.img() << endl;
-    cout << "p.kern(2)" << endl << p.kern(2) << endl;
-    //cout << "p.diag()" << endl << p.diag() << endl;
-    //cout << "p.solve(v1)" << endl << (h=p.solve(v1)) << endl;
-    //cout << "p.kern()" << endl << p.kern() << endl;
-    //cout << "p.img()" << endl << p.img() << endl;
 
     cout << "s" << endl << s << endl;
     cout << "s.diag()" << endl << s.diag() << endl;
@@ -183,12 +156,6 @@ void test_matrix(void)
     //cout << "t.diag()*t.kern()" << endl << t.diag()*t.kern() << endl;
     cout << "t*t.kern(4)" << endl << t*t.kern(4) << endl;
 
-    cout << "a" << endl << a << endl;
-    cout << "a.diag()" << endl << a.diag() << endl;
-
-    //cout << "a.img()" << endl << a.img() << endl;
-    //cout << "a.kern()" << endl << a.kern() << endl;
-    //cout << "a*a.kern()" << endl << a*a.kern() << endl;
     cout << " " << endl;
 }
 
