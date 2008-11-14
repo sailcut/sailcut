@@ -19,6 +19,9 @@
 #ifndef GEOCPP_MATRIX_H
 #define GEOCPP_MATRIX_H
 
+#include <cstring>
+#include <stdexcept>
+
 #include <geocpp/vector.h>
 
 enum soltype_t { NONE, ONE, INF };

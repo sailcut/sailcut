@@ -19,10 +19,13 @@
 #ifndef GEOCPP_VECTOR_H
 #define GEOCPP_VECTOR_H
 
-#include <cstring>
+#include <cmath>
 #include <iostream>
-#include <stdexcept>
 #include <vector>
+
+#ifdef CHECK_DIMENSIONS
+#include <stdexcept>
+#endif
 
 using namespace std;
 
@@ -40,27 +43,121 @@ public:
     CVector(size_t size) : vector<real>(size) {};
     CVector(const CVector &v) : vector<real>(v) {};
 
-    real norm(void) const;
-    CVector unit(void) const;
+    /** Returns the vector's norm ("length")
+     */
+    real norm(void) const
+    {
+        real tot = 0;
+        for (size_t i = 0; i < size(); i++)
+            tot += (*this)[i]*(*this)[i];
+        return real(sqrt(tot));
+    };
 
-    bool operator== (const CVector& v) const;
-    bool operator!= (const CVector& v) const;
-    CVector operator+ (const CVector &) const;
-    CVector operator- () const;
-    CVector operator- (const CVector &) const;
-    CVector operator* (const real &) const;
-    real operator* (const CVector&) const;
+    /** Returns corresponding unit length vector for non-zero vectors
+     * and zero vector otherwise.
+     */
+    CVector unit(void) const
+    {
+        real n = norm();
+        if (n<EPS)
+            return CVector(size());
+        else
+            return *this*(1/n);
+    };
+
+    /** Tests vectors for equality.
+    */
+    bool operator==(const CVector &v) const
+    {
+#ifdef CHECK_DIMENSIONS
+        if (size() != v.size())
+            throw invalid_argument("CVector::operator== : dimension mismatch!");
+#endif
+        for (size_t i = 0; i < size(); i++)
+            if (fabs((*this)[i] - v[i]) > EPS)
+                return false;
+        return true;
+    };
+
+    /** Tests vectors for non-equality.
+     */
+    bool operator!=(const CVector &v) const
+    {
+        return !(*this == v);
+    };
+
+    /** Binary '+' operator (addition)
+    */
+    CVector operator+(const CVector& v2) const
+    {
+#ifdef CHECK_DIMENSIONS
+        if (size() != v2.size())
+            throw invalid_argument("CVector::operator+ : dimension mismatch!");
+#endif
+        CVector ret(*this);
+        for (size_t i = 0; i < size(); i++)
+            ret[i] += v2[i];
+        return ret;
+    };
+
+    /** Unary '-' operator (return opposite)
+     */
+    CVector operator- () const
+    {
+        CVector ret(size());
+        for (size_t i = 0; i < size(); i++)
+            ret[i] = - (*this)[i];
+        return ret;
+    };
+
+    /** Binary '-' operator (return difference)
+    */
+    CVector operator- (const CVector &v2) const
+    {
+#ifdef CHECK_DIMENSIONS
+        if (size() != v2.size())
+            throw invalid_argument("CVector::operator- : dimension mismatch!");
+#endif
+        CVector ret(*this);
+        for (size_t i = 0; i < size(); i++)
+            ret[i] -= v2[i];
+        return ret;
+    };
+
+    /** Binary '* (multiply a vector by a real)
+    */
+    CVector operator*(const real& lambda) const
+    {
+        CVector ret(*this);
+        for (size_t i = 0; i < size(); i++)
+            ret[i] *= lambda;
+        return ret;
+    };
+
+    /** Dot (real) product.
+    */
+    real operator*(const CVector &v2) const
+    {
+#ifdef CHECK_DIMENSIONS
+        if (size() != v2.size())
+            throw invalid_argument("CVector::operator*: dimension mismatch!");
+#endif
+        real ret = 0;
+        for (size_t i = 0; i < size(); i++)
+            ret += (*this)[i] * v2[i];
+        return ret;
+    };
 };
 
-
-// global functions
-ostream& operator<<(ostream&, const CVector&);
-
-/*********************************************
- 
-            Global functions
- 
- *********************************************/
+/** Outputs a CVector to a stream.
+ */
+inline
+ostream& operator<<(ostream &o, const CVector &v)
+{
+    for (size_t i = 0; i < v.size(); i++)
+        o << (i > 0 ? "\t" : "") << v[i];
+    return o;
+}
 
 /** Binary '*' (multiply a scalar by a vector)
  */
