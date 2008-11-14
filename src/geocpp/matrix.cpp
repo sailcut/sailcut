@@ -26,13 +26,13 @@
 /** Returns the matrix corresponding to a vector
  */
 CMatrix::CMatrix(const CVector &v)
-    : m_nrow(v.m_dim), m_ncol(1)
+    : m_nrow(v.size()), m_ncol(1)
 {
-    if (v.m_dim > 0)
+    if (m_nrow > 0)
     {
-        m_data = new real[v.m_dim];
-        for (size_t j = 0; j < v.m_dim; j++)
-            m_data[j] = v.m_data[j];
+        m_data = new real[m_nrow];
+        for (size_t j = 0; j < m_nrow; j++)
+            m_data[j] = v[j];
     }
     else
     {
@@ -115,7 +115,7 @@ CVector CMatrix::col(const size_t& index) const
 
     CVector ret(m_nrow);
     for (size_t i = 0; i < m_nrow; i++)
-        ret.m_data[i] = m_data[i*m_ncol + index];
+        ret[i] = m_data[i*m_ncol + index];
     return ret;
 }
 
@@ -224,7 +224,7 @@ CMatrix CMatrix::gaussjordan(bool *is_inv, CMatrix *inv, soltype_t * soltype, CV
     CMatrix b;
     if (bb!=NULL)
     {
-        if (bb->m_dim != m_nrow)
+        if (bb->size() != m_nrow)
             throw invalid_argument("CMatrix::solve : matrix <=> right-hand side dimensions incompatible");
 
         b = *bb;
@@ -457,7 +457,7 @@ CVector CMatrix::row(size_t index) const
 
     CVector ret(m_ncol);
     for (size_t i = 0; i < m_ncol; i++)
-        ret.m_data[i] = m_data[index*m_ncol + i];
+        ret[i] = m_data[index*m_ncol + i];
     return ret;
 }
 
@@ -469,7 +469,7 @@ CVector CMatrix::row(size_t index) const
  */
 CSubSpace CMatrix::solve(const CVector &b) const
 {
-    if (m_nrow != b.m_dim)
+    if (m_nrow != b.size())
         throw invalid_argument("CMatrix::solve : dimension mismatch");
 
     //cout << "[[ solver ]]" << endl;
@@ -489,7 +489,7 @@ CSubSpace CMatrix::solve(const CVector &b) const
         break;
     case ONE:
         //cout << "CMatrix::solve : system has unique solution" << endl;
-        h = CSubSpace(s,CMatrix::id(s.m_dim));
+        h = CSubSpace(s,CMatrix::id(s.size()));
         break;
     case INF:
         //cout << "CMatrix::solve : system has an infinity of solutions" << endl;
@@ -653,7 +653,7 @@ CMatrix CMatrix::operator*(const CMatrix &m2) const
  */
 CVector CMatrix::operator*(const CVector &v) const
 {
-    if (m_ncol != v.m_dim)
+    if (m_ncol != v.size())
         throw invalid_argument("CMatrix::operator*: dimension mismatch!");
 
     // result is initialised to zero
@@ -663,7 +663,7 @@ CVector CMatrix::operator*(const CVector &v) const
     {
         for (size_t k=0; k < m_ncol; k++)
         {
-            p.m_data[i] += m_data[pos] * v.m_data[k];
+            p[i] += m_data[pos] * v[k];
             pos++;
         }
     }

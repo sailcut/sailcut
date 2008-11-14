@@ -78,7 +78,6 @@ protected:
 
     friend class CVector2d;
     friend class CVector3d;
-    friend class CMatrix;
 };
 
 
