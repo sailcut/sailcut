@@ -95,16 +95,58 @@ void test_vect(void)
 
 void test_matrix(void)
 {
-    CMatrix q(3,2);
-
-    // 3x4 matrix
-    CMatrix t(3,4);
-    // singular matrix
-    CMatrix s(3,3);
     CVector3d v1(1,2,1),v2(4,7,9);
 
     cout << "----- Matrix operations -----" << endl;
-    // 3*4 matrix
+
+    // 3x2 matrix
+    CMatrix q(3,2);
+    q(0,0) = 2;
+    q(0,1) = 4;
+    q(1,0) = 6;
+    q(1,1) = 3;
+    q(2,0) = 4;
+    q(2,1) = -1;
+
+    cout << "q" << endl << q << endl;
+    CSubSpace h = q.solve(v1);
+    cout << "q.solve(v1)" << endl << h << endl;
+    if (h.getdim() != 0)
+        throw runtime_error("intersection is not a point");
+
+    cout << "q * q.solve(v1).getp()" << endl << q * h.getp() << endl;
+
+    // Singular 3x3 matrix
+    CMatrix s(3,3);
+    s(0,0) = 1;
+    s(0,1) = 2;
+    s(0,2) = 3;
+    s(1,0) = 9;
+    s(1,1) = 3;
+    s(1,2) = 5;
+    s(2,0) = 8;
+    s(2,1) = 1;
+    s(2,2) = 2;
+
+    cout << "s" << endl << s << endl;
+    cout << "s.diag()" << endl << s.diag() << endl;
+    cout << "s.img()" << endl << s.img() << endl;
+    cout << "s.kern(3)" << endl << s.kern(3) << endl;
+    cout << "s*s.kern(3)" << endl << s*s.kern(3) << endl;
+    cout << "s*v1" << endl << s*v1 << endl;
+
+    CSubSpace h2 = s.solve(v1);
+    cout << "s.solve(v1)" << endl << h2 << endl;
+    if (h2.getdim() != 1)
+        throw runtime_error("intersection is not a line");
+
+    CSubSpace h3 = s.solve(v2);
+    cout << "s.solve(v2)" << endl << h3 << endl;
+    if (h3.getdim() != -1)
+        throw runtime_error("intersection is not empty");
+
+    // 3x4 matrix
+    CMatrix t(3,4);
     t(0,0) = 1;
     t(0,1) = -1;
     t(0,2) = 3;
@@ -117,37 +159,6 @@ void test_matrix(void)
     t(2,1) = 4;
     t(2,2) = 2;
     t(2,3) = 7;
-    /// Singular 3x3 matrix
-    s(0,0) = 1;
-    s(0,1) = 2;
-    s(0,2) = 3;
-    s(1,0) = 9;
-    s(1,1) = 3;
-    s(1,2) = 5;
-    s(2,0) = 8;
-    s(2,1) = 1;
-    s(2,2) = 2;
-    ///
-    q(0,0) = 2;
-    q(0,1) = 4;
-    q(1,0) = 6;
-    q(1,1) = 3;
-    q(2,0) = 4;
-    q(2,1) = -1;
-
-    cout << "q" << endl << q << endl;
-    CSubSpace h = q.solve(v1);
-    cout << "q.solve(v1)" << endl << h << endl;
-    cout << "q * q.solve(v1).getp()" << endl << q * h.getp() << endl;
-
-    cout << "s" << endl << s << endl;
-    cout << "s.diag()" << endl << s.diag() << endl;
-    cout << "s.img()" << endl << s.img() << endl;
-    cout << "s.kern(3)" << endl << s.kern(3) << endl;
-    cout << "s*s.kern(3)" << endl << s*s.kern(3) << endl;
-    cout << "s*v1" << endl << s*v1 << endl;
-    cout << "s.solve(v1)" << endl << s.solve(v1) << endl;
-    cout << "s.solve(v2)" << endl << s.solve(v2) << endl;
 
     cout << "t" << endl << t << endl;
     cout << "t.diag()" << endl << t.diag() << endl;
