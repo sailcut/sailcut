@@ -78,40 +78,40 @@ public:
     CVector3d(const real &x = 0, const real &y = 0, const real &z = 0)
         : CVector(3)
     {
-        (*this)[0] = x;
-        (*this)[1] = y;
-        (*this)[2] = z;
+        m_data[0] = x;
+        m_data[1] = y;
+        m_data[2] = z;
     }
 
     // access to coords
     /** Returns the first coordinate. */
     real &x(void)
     {
-        return (*this)[0];
+        return m_data[0];
     }
     real x(void) const
     {
-        return (*this)[0];
+        return m_data[0];
     }
 
     /** Returns the second coordinate. */
     real &y(void)
     {
-        return (*this)[1];
+        return m_data[1];
     }
     real y(void) const
     {
-        return (*this)[1];
+        return m_data[1];
     }
 
     /** Returns the third coordinate. */
     real &z(void)
     {
-        return (*this)[2];
+        return m_data[2];
     }
     real z(void) const
     {
-        return (*this)[2];
+        return m_data[2];
     }
 
     // 3D only!
@@ -120,9 +120,9 @@ public:
     /** Assignment. */
     CVector3d &operator=(const CVector3d &v)
     {
-        (*this)[0] = v[0];
-        (*this)[1] = v[1];
-        (*this)[2] = v[2];
+        m_data[0] = v[0];
+        m_data[1] = v[1];
+        m_data[2] = v[2];
         return *this;
     }
 };
