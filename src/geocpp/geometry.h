@@ -37,26 +37,26 @@ public:
     CVector2d(const real &x = 0, const real &y = 0)
         : CVector(2)
     {
-        (*this)[0] = x;
-        (*this)[1] = y;
+        m_data[0] = x;
+        m_data[1] = y;
     }
 
     /** Returns the first coordinate. */
     real &x(void)
     {
-        return (*this)[0];
+        return m_data[0];
     }
     /** Returns the second coordinate. */
     real &y(void)
     {
-        return (*this)[1];
+        return m_data[1];
     }
 
     /** Assignment operator. */
     CVector2d &operator=(const CVector2d &v)
     {
-        (*this)[0] = v[0];
-        (*this)[1] = v[1];
+        m_data[0] = v[0];
+        m_data[1] = v[1];
         return *this;
     }
 
