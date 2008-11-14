@@ -1,3 +1,10 @@
+sailcut (1.3.2-2) unstable; urgency=low
+
+  * Fix GCC 4.4 FTBFS due to missing includes (Closes: #505369).
+  * Update to Standards-Version 3.8.0.
+
+ -- Jeremy Lainé <jeremy.laine@m4x.org>  Fri, 14 Nov 2008 15:11:05 +0100
+
 sailcut (1.3.2-1) unstable; urgency=low
 
   * New upstream release.
@@ -7,7 +14,7 @@ sailcut (1.3.2-1) unstable; urgency=low
 
 sailcut (1.3.1-2) unstable; urgency=low
 
-  * Fix GCC 4.3 FTBFS due to missing includes (Closes: 455634).
+  * Fix GCC 4.3 FTBFS due to missing includes (Closes: #455634).
   * Fix lintian warning by using Homepage field in debian/control. 
 
  -- Jeremy Lainé <jeremy.laine@m4x.org>  Tue, 11 Dec 2007 08:59:55 +0100
