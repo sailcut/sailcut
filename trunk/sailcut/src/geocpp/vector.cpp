@@ -33,8 +33,8 @@
 real CVector::norm(void) const
 {
     real tot = 0;
-    for (size_t i = 0; i < m_dim; i++)
-        tot += m_data[i]*m_data[i];
+    for (size_t i = 0; i < size(); i++)
+        tot += (*this)[i]*(*this)[i];
     return real(sqrt(tot));
 }
 
@@ -46,12 +46,10 @@ CVector CVector::unit(void) const
 {
     real n = norm();
     if (n<EPS)
-        return CVector(m_dim);
+        return CVector(size());
     else
         return *this*(1/n);
 }
-
-
 
 /*********************************************
 
@@ -59,42 +57,16 @@ CVector CVector::unit(void) const
 
  *********************************************/
 
-/** Performs an assignment.
- */
-CVector& CVector::operator=(const CVector& v)
-{
-    if (&v == this)
-        return *this;
-
-    if (m_dim != v.m_dim)
-    {
-        if (m_dim > 0)
-            delete [] m_data;
-
-        m_dim = v.m_dim;
-
-        if (m_dim > 0)
-            m_data = new real[m_dim];
-        else
-            m_data = NULL;
-    }
-
-    if (m_dim > 0)
-        memcpy(m_data, v.m_data, sizeof(real) * m_dim);
-
-    return *this;
-}
-
 /** Binary '+' operator (addition)
  */
 CVector CVector::operator+(const CVector& v2) const
 {
-    if (m_dim != v2.m_dim)
+    if (size() != v2.size())
         throw invalid_argument("VectTempl::operator+ : dimension mismatch!");
 
     CVector ret(*this);
-    for (size_t i = 0; i < m_dim; i++)
-        ret.m_data[i] += v2.m_data[i];
+    for (size_t i = 0; i < size(); i++)
+        ret[i] += v2[i];
     return ret;
 }
 
@@ -103,9 +75,9 @@ CVector CVector::operator+(const CVector& v2) const
  */
 CVector CVector::operator-() const
 {
-    CVector ret(m_dim);
-    for (size_t i = 0; i < m_dim; i++)
-        ret.m_data[i] = - m_data[i];
+    CVector ret(size());
+    for (size_t i = 0; i < size(); i++)
+        ret[i] = - (*this)[i];
     return ret;
 }
 
@@ -114,12 +86,12 @@ CVector CVector::operator-() const
  */
 CVector CVector::operator-(const CVector& v2) const
 {
-    if (m_dim != v2.m_dim)
+    if (size() != v2.size())
         throw invalid_argument("CVector::operator- : dimension mismatch!");
 
     CVector ret(*this);
-    for (size_t i = 0; i < m_dim; i++)
-        ret.m_data[i] -= v2.m_data[i];
+    for (size_t i = 0; i < size(); i++)
+        ret[i] -= v2[i];
     return ret;
 }
 
@@ -130,8 +102,8 @@ CVector CVector::operator*(const real& lambda) const
 {
     CVector ret(*this);
 
-    for (size_t i = 0; i < m_dim; i++)
-        ret.m_data[i] *= lambda;
+    for (size_t i = 0; i < size(); i++)
+        ret[i] *= lambda;
 
     return ret;
 }
@@ -141,11 +113,11 @@ CVector CVector::operator*(const real& lambda) const
  */
 bool CVector::operator==(const CVector &v) const
 {
-    if (m_dim != v.m_dim)
+    if (size() != v.size())
         return false;
 
-    for (size_t i = 0; i < m_dim; i++)
-        if (fabs(m_data[i] - v.m_data[i]) > EPS)
+    for (size_t i = 0; i < size(); i++)
+        if (fabs((*this)[i] - v[i]) > EPS)
             return false;
     return true;
 }
@@ -163,12 +135,12 @@ bool CVector::operator!=(const CVector &v) const
  */
 real CVector::operator*(const CVector &v2) const
 {
-    if (m_dim != v2.m_dim)
+    if (size() != v2.size())
         throw invalid_argument("CVector::operator*: dimension mismatch!");
 
     real ret = 0;
-    for (size_t i = 0; i < m_dim; i++)
-        ret += m_data[i] * v2.m_data[i];
+    for (size_t i = 0; i < size(); i++)
+        ret += (*this)[i] * v2[i];
     return ret;
 }
 

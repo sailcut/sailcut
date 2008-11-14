@@ -22,6 +22,7 @@
 #include <cstring>
 #include <iostream>
 #include <stdexcept>
+#include <vector>
 
 using namespace std;
 
@@ -33,33 +34,15 @@ const real PI = 3.14159265358979323846;
 
 /** Real-valued vector
  */
-class CVector
+class CVector : public vector<real>
 {
 public:
-    // construction / destruction
-    CVector(size_t size = 0);
-    CVector(const CVector &v);
-    /** The destructor. */
-    ~CVector()
-    {
-        if (m_dim>0)
-            delete [] m_data;
-    }
+    CVector(size_t size) : vector<real>(size) {};
+    CVector(const CVector &v) : vector<real>(v) {};
 
-
-    // member functions
-    /** Returns the dimension of the vector. */
-    size_t size() const
-    {
-        return m_dim;
-    }
-
-    /** Is this a null-dimension vector ?*/
     real norm(void) const;
     CVector unit(void) const;
 
-    // operators
-    CVector & operator= (const CVector &);
     bool operator== (const CVector& v) const;
     bool operator!= (const CVector& v) const;
     CVector operator+ (const CVector &) const;
@@ -67,95 +50,11 @@ public:
     CVector operator- (const CVector &) const;
     CVector operator* (const real &) const;
     real operator* (const CVector&) const;
-    real & operator[] (size_t index);
-    real operator[] (size_t index) const;
-
-protected:
-    /** the vector's coordinates */
-    real * m_data;
-    /** the vector's dimension */
-    size_t m_dim;
-
-    friend class CVector2d;
-    friend class CVector3d;
 };
 
 
 // global functions
 ostream& operator<<(ostream&, const CVector&);
-
-
-/*********************************************
- 
-            Construction & destruction
- 
- *********************************************/
-
-/** Constructs a CVector vector with the given dimension
- */
-inline
-CVector::CVector(size_t size)
-        : m_dim(size)
-{
-    // if size is non-zero, we allocate memory
-    if (m_dim > 0)
-    {
-        m_data = new real[m_dim];
-        memset(m_data, 0, sizeof(real) * m_dim);
-    }
-    else
-    {
-        m_data = NULL;
-    }
-}
-
-/** Copy constructor.
- */
-inline
-CVector::CVector(const CVector& v)
-        : m_dim(v.m_dim)
-{
-    // if size is non-zero, we allocate memory
-    if (m_dim > 0)
-    {
-        m_data = new real[m_dim];
-        memcpy(m_data, v.m_data, sizeof(real) * m_dim);
-    }
-    else
-    {
-        m_data = NULL;
-    }
-}
-
-/*********************************************
- 
-            Operators
- 
- *********************************************/
-
-
-
-/** Returns the index'th coordinate of a vector.
- */
-inline
-real& CVector::operator[] (size_t index)
-{
-    if (index >= m_dim)
-        throw range_error("CVector::operator[] : out of bounds!");
-    return m_data[index];
-}
-
-
-/** Returns the index'th coordinate of a vector.
- */
-inline
-real CVector::operator[] (size_t index) const
-{
-    if (index >= m_dim)
-        throw range_error("CVector::operator[] : out of bounds!");
-    return m_data[index];
-}
-
 
 /*********************************************
  

@@ -29,10 +29,9 @@
 /** Copy constructor.
  */
 CVector2d::CVector2d(const CVector &v)
-        : CVector(2)
+        : CVector(v)
 {
-    for (size_t i = 0; i < 2 && i < v.m_dim; i++)
-        m_data[i] = v.m_data[i];
+    resize(2);
 }
 
 
@@ -53,10 +52,9 @@ CVector2d::CVector2d(const CMatrix &m)
 /** Copy constructor.
  */
 CVector3d::CVector3d(const CVector &v)
-        : CVector(3)
+        : CVector(v)
 {
-    for (size_t i = 0; i < 3 && i < v.m_dim; i++)
-        m_data[i] = v.m_data[i];
+    resize(3);
 }
 
 
@@ -74,7 +72,7 @@ CVector3d CVector3d::cross(const CVector3d &v) const
 {
     CVector3d ret;
     for (int i=0; i<3; i++)
-        ret.m_data[i] = m_data[(i+1)%3] * v.m_data[(i+2)%3] - m_data[(i+2)%3] * v.m_data[(i+1)%3];
+        ret[i] = (*this)[(i+1)%3] * v[(i+2)%3] - (*this)[(i+2)%3] * v[(i+1)%3];
     return ret;
 }
 
