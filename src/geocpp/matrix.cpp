@@ -23,23 +23,6 @@
 #include <cmath>
 #include <cstdlib>
 
-/** Returns the matrix corresponding to a vector
- */
-CMatrix::CMatrix(const CVector &v)
-    : m_nrow(v.size()), m_ncol(1)
-{
-    if (m_nrow > 0)
-    {
-        m_data = new real[m_nrow];
-        for (size_t j = 0; j < m_nrow; j++)
-            m_data[j] = v[j];
-    }
-    else
-    {
-        m_data = NULL;
-    }
-}
-
 /*******************************************************
 
                       Static functions
