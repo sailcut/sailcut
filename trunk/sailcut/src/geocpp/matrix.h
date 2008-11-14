@@ -43,9 +43,57 @@ protected:
     size_t m_ncol;
 
 public:
-    CMatrix(const CMatrix &m);
-    CMatrix(const CVector &v);
-    CMatrix(const size_t& = 0, const size_t& = 0);
+
+    /** Constructs a CMatrix with the given number of rows and columns.
+    */
+    CMatrix(const size_t &nrow = 0, const size_t &ncol = 0)
+        : m_nrow(nrow), m_ncol(ncol)
+    {
+        if (!empty())
+        {
+            m_data = new real[m_nrow * m_ncol];
+            memset(m_data, 0, sizeof(real) * m_nrow * m_ncol);
+        }
+        else
+        {
+            m_data = NULL;
+        }
+    };
+
+
+    /** Copy constructor.
+    */
+    CMatrix(const CMatrix &m)
+            : m_nrow(m.m_nrow), m_ncol(m.m_ncol)
+    {
+        if (!empty())
+        {
+            m_data = new real[m_nrow * m_ncol];
+            memcpy(m_data, m.m_data, sizeof(real) * m_nrow * m_ncol);
+        }
+        else
+        {
+            m_data = NULL;
+        }
+    };
+
+    /** Returns the matrix corresponding to a vector
+    */
+    CMatrix(const CVector &v)
+        : m_nrow(v.size()), m_ncol(1)
+    {
+        if (m_nrow > 0)
+        {
+            m_data = new real[m_nrow];
+            for (size_t j = 0; j < m_nrow; j++)
+                m_data[j] = v[j];
+        }
+        else
+        {
+            m_data = NULL;
+        }
+    };
+
     /** The destructor.
      */
     ~CMatrix()
@@ -115,42 +163,6 @@ protected:
 ostream& operator<< (ostream &, const CMatrix &);
 
 // inlines
-
-/** Copy constructor.
- */
-inline
-CMatrix::CMatrix(const CMatrix &m)
-        : m_nrow(m.m_nrow), m_ncol(m.m_ncol)
-{
-    if (!empty())
-    {
-        m_data = new real[m_nrow * m_ncol];
-        memcpy(m_data, m.m_data, sizeof(real) * m_nrow * m_ncol);
-    }
-    else
-    {
-        m_data = NULL;
-    }
-}
-
-
-/** Constructs a CMatrix with the given number of rows and columns.
- */
-inline
-CMatrix::CMatrix(const size_t& nrow, const size_t& ncol)
-        : m_nrow(nrow), m_ncol(ncol)
-{
-    if (!empty())
-    {
-        m_data = new real[m_nrow * m_ncol];
-        memset(m_data, 0, sizeof(real) * m_nrow * m_ncol);
-    }
-    else
-    {
-        m_data = NULL;
-    }
-}
-
 
 /** Returns the selected element of the matrix.
  */
