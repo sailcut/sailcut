@@ -169,8 +169,10 @@ ostream& operator<< (ostream &, const CMatrix &);
 inline
 real& CMatrix::operator() (const size_t& row, const size_t& col)
 {
+#ifdef CHECK_DIMENSIONS
     if (row >= m_nrow || col >= m_ncol)
         throw range_error("CMatrix::operator() : index out of bounds");
+#endif
     return m_data[m_ncol * row + col];
 }
 
@@ -180,8 +182,10 @@ real& CMatrix::operator() (const size_t& row, const size_t& col)
 inline
 real CMatrix::operator() (const size_t& row, const size_t& col) const
 {
+#ifdef CHECK_DIMENSIONS
     if (row >= m_nrow || col >= m_ncol)
         throw range_error("CMatrix::operator() : index out of bounds");
+#endif
     return m_data[m_ncol * row + col];
 }
 
