@@ -92,9 +92,9 @@ CVector CVector::operator+(const CVector& v2) const
     if (m_dim != v2.m_dim)
         throw invalid_argument("VectTempl::operator+ : dimension mismatch!");
 
-    CVector ret(m_dim);
+    CVector ret(*this);
     for (size_t i = 0; i < m_dim; i++)
-        ret.m_data[i] = m_data[i] + v2.m_data[i];
+        ret.m_data[i] += v2.m_data[i];
     return ret;
 }
 
@@ -117,9 +117,9 @@ CVector CVector::operator-(const CVector& v2) const
     if (m_dim != v2.m_dim)
         throw invalid_argument("CVector::operator- : dimension mismatch!");
 
-    CVector ret(m_dim);
+    CVector ret(*this);
     for (size_t i = 0; i < m_dim; i++)
-        ret.m_data[i] = m_data[i] - v2.m_data[i];
+        ret.m_data[i] -= v2.m_data[i];
     return ret;
 }
 
@@ -128,9 +128,10 @@ CVector CVector::operator-(const CVector& v2) const
  */
 CVector CVector::operator*(const real& lambda) const
 {
-    CVector ret(m_dim);
+    CVector ret(*this);
+
     for (size_t i = 0; i < m_dim; i++)
-        ret.m_data[i] = m_data[i]* lambda;
+        ret.m_data[i] *= lambda;
 
     return ret;
 }
