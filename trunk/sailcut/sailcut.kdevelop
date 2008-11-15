@@ -45,10 +45,10 @@
       </debug>
       <profiling>
         <builddir>profiling</builddir>
-        <ccompiler>GccOptions</ccompiler>
-        <cxxcompiler>GppOptions</cxxcompiler>
-        <f77compiler>G77Options</f77compiler>
-        <cxxflags>-pg</cxxflags>
+        <ccompiler>kdevgccoptions</ccompiler>
+        <cxxcompiler>kdevgppoptions</cxxcompiler>
+        <f77compiler>kdevpgf77options</f77compiler>
+        <cxxflags/>
         <envvars/>
       </profiling>
       <win32>
