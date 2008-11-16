@@ -6,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>740</width>
-    <height>539</height>
+    <height>525</height>
    </rect>
   </property>
   <property name="sizePolicy" >
@@ -20,7 +20,7 @@
   <property name="minimumSize" >
    <size>
     <width>740</width>
-    <height>527</height>
+    <height>525</height>
    </size>
   </property>
   <property name="windowTitle" >
@@ -28,10 +28,10 @@
   </property>
   <layout class="QGridLayout" >
    <property name="margin" >
-    <number>9</number>
+    <number>4</number>
    </property>
    <property name="spacing" >
-    <number>6</number>
+    <number>5</number>
    </property>
    <item row="2" column="0" colspan="6" >
     <widget class="QGroupBox" name="GroupSail" >
@@ -48,10 +48,10 @@
      </property>
      <layout class="QGridLayout" >
       <property name="margin" >
-       <number>5</number>
+       <number>4</number>
       </property>
       <property name="spacing" >
-       <number>6</number>
+       <number>5</number>
       </property>
       <item row="4" column="0" colspan="11" >
        <widget class="Line" name="Line2" >
@@ -276,8 +276,8 @@
        <widget class="QLineEdit" name="txtLuffLen" >
         <property name="minimumSize" >
          <size>
-          <width>0</width>
-          <height>0</height>
+          <width>60</width>
+          <height>18</height>
          </size>
         </property>
         <property name="alignment" >
@@ -289,8 +289,8 @@
        <widget class="QLineEdit" name="txtFootLen" >
         <property name="minimumSize" >
          <size>
-          <width>0</width>
-          <height>0</height>
+          <width>60</width>
+          <height>18</height>
          </size>
         </property>
         <property name="alignment" >
@@ -302,8 +302,8 @@
        <widget class="QLineEdit" name="txtLeechLen" >
         <property name="minimumSize" >
          <size>
-          <width>0</width>
-          <height>0</height>
+          <width>60</width>
+          <height>18</height>
          </size>
         </property>
         <property name="alignment" >
@@ -399,8 +399,8 @@
        <widget class="QLineEdit" name="txtGaffLen" >
         <property name="minimumSize" >
          <size>
-          <width>0</width>
-          <height>0</height>
+          <width>60</width>
+          <height>18</height>
          </size>
         </property>
         <property name="alignment" >
@@ -419,8 +419,8 @@
        <widget class="QLabel" name="lblDiagonal" >
         <property name="minimumSize" >
          <size>
-          <width>0</width>
-          <height>0</height>
+          <width>60</width>
+          <height>18</height>
          </size>
         </property>
         <property name="frameShape" >
@@ -514,7 +514,7 @@
      </property>
      <layout class="QGridLayout" >
       <property name="margin" >
-       <number>5</number>
+       <number>4</number>
       </property>
       <property name="spacing" >
        <number>5</number>
@@ -524,7 +524,7 @@
         <property name="minimumSize" >
          <size>
           <width>60</width>
-          <height>0</height>
+          <height>18</height>
          </size>
         </property>
         <property name="alignment" >
@@ -569,10 +569,10 @@
      </property>
      <layout class="QGridLayout" >
       <property name="margin" >
-       <number>9</number>
+       <number>4</number>
       </property>
       <property name="spacing" >
-       <number>6</number>
+       <number>5</number>
       </property>
       <item row="0" column="0" >
        <widget class="QRadioButton" name="radioMainSail" >
@@ -878,7 +878,7 @@
         </property>
         <property name="minimumSize" >
          <size>
-          <width>40</width>
+          <width>35</width>
           <height>18</height>
          </size>
         </property>
@@ -886,19 +886,6 @@
       </item>
      </layout>
     </widget>
-   </item>
-   <item row="5" column="2" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>20</width>
-       <height>7</height>
-      </size>
-     </property>
-    </spacer>
    </item>
    <item row="4" column="5" >
     <widget class="QPushButton" name="btnCancel" >
@@ -949,7 +936,7 @@
      </property>
      <layout class="QGridLayout" >
       <property name="margin" >
-       <number>5</number>
+       <number>4</number>
       </property>
       <property name="spacing" >
        <number>5</number>
@@ -966,7 +953,7 @@
         </property>
         <property name="minimumSize" >
          <size>
-          <width>0</width>
+          <width>100</width>
           <height>20</height>
          </size>
         </property>
@@ -987,7 +974,7 @@
         </property>
         <property name="minimumSize" >
          <size>
-          <width>0</width>
+          <width>100</width>
           <height>20</height>
          </size>
         </property>
@@ -1008,15 +995,15 @@
         </property>
         <property name="minimumSize" >
          <size>
-          <width>0</width>
-          <height>22</height>
+          <width>100</width>
+          <height>20</height>
          </size>
         </property>
         <property name="text" >
          <string>Number of sections</string>
         </property>
         <property name="margin" >
-         <number>2</number>
+         <number>1</number>
         </property>
        </widget>
       </item>
@@ -1024,8 +1011,14 @@
        <widget class="QLineEdit" name="txtGores" >
         <property name="minimumSize" >
          <size>
-          <width>40</width>
+          <width>25</width>
           <height>18</height>
+         </size>
+        </property>
+        <property name="maximumSize" >
+         <size>
+          <width>40</width>
+          <height>25</height>
          </size>
         </property>
         <property name="alignment" >
@@ -1037,8 +1030,14 @@
        <widget class="QLineEdit" name="txtLuffGores" >
         <property name="minimumSize" >
          <size>
-          <width>40</width>
+          <width>25</width>
           <height>18</height>
+         </size>
+        </property>
+        <property name="maximumSize" >
+         <size>
+          <width>40</width>
+          <height>25</height>
          </size>
         </property>
         <property name="alignment" >
@@ -1059,14 +1058,14 @@
         <property name="minimumSize" >
          <size>
           <width>0</width>
-          <height>22</height>
+          <height>20</height>
          </size>
         </property>
         <property name="text" >
          <string>Number of radial gores</string>
         </property>
         <property name="margin" >
-         <number>2</number>
+         <number>1</number>
         </property>
        </widget>
       </item>
@@ -1083,14 +1082,14 @@
         <property name="minimumSize" >
          <size>
           <width>0</width>
-          <height>22</height>
+          <height>20</height>
          </size>
         </property>
         <property name="text" >
          <string>Number of luff gores</string>
         </property>
         <property name="margin" >
-         <number>2</number>
+         <number>1</number>
         </property>
        </widget>
       </item>
@@ -1106,7 +1105,7 @@
         </property>
         <property name="minimumSize" >
          <size>
-          <width>0</width>
+          <width>100</width>
           <height>20</height>
          </size>
         </property>
@@ -1127,7 +1126,7 @@
         </property>
         <property name="minimumSize" >
          <size>
-          <width>0</width>
+          <width>100</width>
           <height>20</height>
          </size>
         </property>
@@ -1154,6 +1153,12 @@
       </item>
       <item row="0" column="2" >
        <widget class="QRadioButton" name="radioRadial" >
+        <property name="minimumSize" >
+         <size>
+          <width>100</width>
+          <height>20</height>
+         </size>
+        </property>
         <property name="text" >
          <string>Radial cut</string>
         </property>
@@ -1163,8 +1168,14 @@
        <widget class="QLineEdit" name="txtSections" >
         <property name="minimumSize" >
          <size>
-          <width>40</width>
+          <width>25</width>
           <height>18</height>
+         </size>
+        </property>
+        <property name="maximumSize" >
+         <size>
+          <width>40</width>
+          <height>25</height>
          </size>
         </property>
         <property name="alignment" >
@@ -1184,7 +1195,7 @@
         </property>
         <property name="minimumSize" >
          <size>
-          <width>0</width>
+          <width>100</width>
           <height>20</height>
          </size>
         </property>
@@ -1205,7 +1216,7 @@
         </property>
         <property name="minimumSize" >
          <size>
-          <width>0</width>
+          <width>100</width>
           <height>20</height>
          </size>
         </property>
@@ -1222,7 +1233,7 @@
         <property name="sizeHint" >
          <size>
           <width>20</width>
-          <height>40</height>
+          <height>20</height>
          </size>
         </property>
        </spacer>
@@ -1245,7 +1256,7 @@
      </property>
      <layout class="QGridLayout" >
       <property name="margin" >
-       <number>5</number>
+       <number>4</number>
       </property>
       <property name="spacing" >
        <number>5</number>
@@ -1268,8 +1279,14 @@
        <widget class="QLineEdit" name="txtTopDepth" >
         <property name="minimumSize" >
          <size>
-          <width>0</width>
-          <height>0</height>
+          <width>26</width>
+          <height>18</height>
+         </size>
+        </property>
+        <property name="maximumSize" >
+         <size>
+          <width>40</width>
+          <height>25</height>
          </size>
         </property>
         <property name="alignment" >
@@ -1279,6 +1296,18 @@
       </item>
       <item row="1" column="1" >
        <widget class="QLineEdit" name="txtMidDepth" >
+        <property name="minimumSize" >
+         <size>
+          <width>26</width>
+          <height>18</height>
+         </size>
+        </property>
+        <property name="maximumSize" >
+         <size>
+          <width>40</width>
+          <height>25</height>
+         </size>
+        </property>
         <property name="alignment" >
          <set>Qt::AlignHCenter</set>
         </property>
@@ -1293,6 +1322,18 @@
       </item>
       <item row="2" column="1" >
        <widget class="QLineEdit" name="txtFootDepth" >
+        <property name="minimumSize" >
+         <size>
+          <width>26</width>
+          <height>18</height>
+         </size>
+        </property>
+        <property name="maximumSize" >
+         <size>
+          <width>40</width>
+          <height>25</height>
+         </size>
+        </property>
         <property name="alignment" >
          <set>Qt::AlignHCenter</set>
         </property>
@@ -1317,6 +1358,9 @@
         <property name="text" >
          <string>Top depth</string>
         </property>
+        <property name="margin" >
+         <number>1</number>
+        </property>
        </widget>
       </item>
       <item row="1" column="0" >
@@ -1337,6 +1381,9 @@
         </property>
         <property name="text" >
          <string>Mid depth</string>
+        </property>
+        <property name="margin" >
+         <number>1</number>
         </property>
        </widget>
       </item>
@@ -1359,10 +1406,25 @@
         <property name="text" >
          <string>Foot depth</string>
         </property>
+        <property name="margin" >
+         <number>1</number>
+        </property>
        </widget>
       </item>
       <item row="3" column="1" >
        <widget class="QLineEdit" name="txtTwistAngle" >
+        <property name="minimumSize" >
+         <size>
+          <width>26</width>
+          <height>18</height>
+         </size>
+        </property>
+        <property name="maximumSize" >
+         <size>
+          <width>40</width>
+          <height>25</height>
+         </size>
+        </property>
         <property name="alignment" >
          <set>Qt::AlignHCenter</set>
         </property>
@@ -1370,6 +1432,18 @@
       </item>
       <item row="4" column="1" >
        <widget class="QLineEdit" name="txtSheetAngle" >
+        <property name="minimumSize" >
+         <size>
+          <width>26</width>
+          <height>18</height>
+         </size>
+        </property>
+        <property name="maximumSize" >
+         <size>
+          <width>40</width>
+          <height>25</height>
+         </size>
+        </property>
         <property name="alignment" >
          <set>Qt::AlignHCenter</set>
         </property>
@@ -1394,6 +1468,9 @@
         <property name="text" >
          <string>Twist angle</string>
         </property>
+        <property name="margin" >
+         <number>1</number>
+        </property>
        </widget>
       </item>
       <item row="4" column="0" >
@@ -1414,6 +1491,9 @@
         </property>
         <property name="text" >
          <string>Sheeting angle</string>
+        </property>
+        <property name="margin" >
+         <number>1</number>
         </property>
        </widget>
       </item>
@@ -1441,13 +1521,25 @@
      </property>
      <layout class="QGridLayout" >
       <property name="margin" >
-       <number>5</number>
+       <number>4</number>
       </property>
       <property name="spacing" >
        <number>5</number>
       </property>
       <item row="3" column="1" >
        <widget class="QLineEdit" name="txtFootHemWidth" >
+        <property name="minimumSize" >
+         <size>
+          <width>60</width>
+          <height>18</height>
+         </size>
+        </property>
+        <property name="maximumSize" >
+         <size>
+          <width>80</width>
+          <height>25</height>
+         </size>
+        </property>
         <property name="alignment" >
          <set>Qt::AlignHCenter</set>
         </property>
@@ -1455,6 +1547,18 @@
       </item>
       <item row="4" column="1" >
        <widget class="QLineEdit" name="txtHemsWidth" >
+        <property name="minimumSize" >
+         <size>
+          <width>60</width>
+          <height>18</height>
+         </size>
+        </property>
+        <property name="maximumSize" >
+         <size>
+          <width>80</width>
+          <height>25</height>
+         </size>
+        </property>
         <property name="alignment" >
          <set>Qt::AlignHCenter</set>
         </property>
@@ -1473,6 +1577,9 @@
         <property name="text" >
          <string>Other hems</string>
         </property>
+        <property name="margin" >
+         <number>1</number>
+        </property>
        </widget>
       </item>
       <item row="3" column="0" >
@@ -1487,6 +1594,9 @@
         </property>
         <property name="text" >
          <string>Foot hem</string>
+        </property>
+        <property name="margin" >
+         <number>1</number>
         </property>
        </widget>
       </item>
@@ -1513,6 +1623,18 @@
       </item>
       <item row="2" column="1" >
        <widget class="QLineEdit" name="txtLeechHemWidth" >
+        <property name="minimumSize" >
+         <size>
+          <width>60</width>
+          <height>18</height>
+         </size>
+        </property>
+        <property name="maximumSize" >
+         <size>
+          <width>80</width>
+          <height>25</height>
+         </size>
+        </property>
         <property name="alignment" >
          <set>Qt::AlignHCenter</set>
         </property>
@@ -1537,6 +1659,9 @@
         <property name="text" >
          <string>Cloth width</string>
         </property>
+        <property name="margin" >
+         <number>1</number>
+        </property>
        </widget>
       </item>
       <item row="2" column="0" >
@@ -1551,6 +1676,9 @@
         </property>
         <property name="text" >
          <string>Leech hem</string>
+        </property>
+        <property name="margin" >
+         <number>1</number>
         </property>
        </widget>
       </item>
@@ -1567,10 +1695,25 @@
         <property name="text" >
          <string>Seam width</string>
         </property>
+        <property name="margin" >
+         <number>1</number>
+        </property>
        </widget>
       </item>
       <item row="1" column="1" >
        <widget class="QLineEdit" name="txtSeamWidth" >
+        <property name="minimumSize" >
+         <size>
+          <width>60</width>
+          <height>18</height>
+         </size>
+        </property>
+        <property name="maximumSize" >
+         <size>
+          <width>80</width>
+          <height>25</height>
+         </size>
+        </property>
         <property name="alignment" >
          <set>Qt::AlignHCenter</set>
         </property>
@@ -1578,6 +1721,18 @@
       </item>
       <item row="0" column="1" >
        <widget class="QLineEdit" name="txtClothWidth" >
+        <property name="minimumSize" >
+         <size>
+          <width>60</width>
+          <height>18</height>
+         </size>
+        </property>
+        <property name="maximumSize" >
+         <size>
+          <width>80</width>
+          <height>25</height>
+         </size>
+        </property>
         <property name="alignment" >
          <set>Qt::AlignHCenter</set>
         </property>
