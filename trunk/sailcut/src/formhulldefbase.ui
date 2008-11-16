@@ -7,13 +7,13 @@
     <x>0</x>
     <y>0</y>
     <width>641</width>
-    <height>560</height>
+    <height>550</height>
    </rect>
   </property>
   <property name="minimumSize" >
    <size>
     <width>640</width>
-    <height>560</height>
+    <height>550</height>
    </size>
   </property>
   <property name="windowTitle" >
@@ -29,7 +29,7 @@
    <item row="2" column="0" >
     <layout class="QHBoxLayout" >
      <property name="margin" >
-      <number>0</number>
+      <number>-1</number>
      </property>
      <property name="spacing" >
       <number>6</number>
