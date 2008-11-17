@@ -61,14 +61,12 @@ CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
     planeTransom = CSubSpace3d::plane( ptAftChine , v1 , v2 );
 
     // compute intersection line between chine plane and transom
-    CSubSpace Line1;
-    Line1 = planeLowChine.intersect(planeTransom);
+    CSubSpace Line1 = planeLowChine.intersect(planeTransom);
 
     // compute intersection point of line1 with central plane located at aft width
-    CSubSpace Intersection2;
     if (Line1.getdim() == 1)
     {
-        Intersection2 = Line1.intersect(planeCentral);
+        CSubSpace Intersection2 = Line1.intersect(planeCentral);
         if (Intersection2.getdim() == 0)
             ptCentreChine = Intersection2.getp();
         else throw "ERROR in hullworker constructor = no low chine aft  point";
@@ -116,13 +114,11 @@ CPoint3d CHullWorker::ptLowChine( const real &x )
 
     // point pt with x input and z computed
     CPoint3d pt = CPoint3d ( x , y , z );
-    // define vertical Line1 passing through point pt
-    CSubSpace line1;
-    line1 =  CSubSpace3d::line( pt , CVector3d (0,1,0) );
 
-    // project pt vertically on chine plane
-    CSubSpace Intersection1;
-    Intersection1 = planeLowChine.intersect(line1);
+    // to project pt vertically on chine plane, get intersection
+    // with the vertical passing through point pt
+    CSubSpace Intersection1 = planeLowChine.intersect(
+        CSubSpace3d::line(pt, CVector3d(0, 1, 0)));
 
     if (Intersection1.getdim() == 0 )
         pt = Intersection1.getp();
@@ -148,13 +144,10 @@ CPoint3d CHullWorker::ptKeel( const real &x )
     // vector with deadrise and sweep
     v1 = CVector3d( tan( real(BSweepA) * PI/180) , tan( real(BDeadriseA) * PI/180) , 1 );
 
-    // define ruling line 1 passing through point pt
-    CSubSpace line1;
-    line1 =  CSubSpace3d::line (pt , v1 );
-
-    // project pt on central plane
-    CSubSpace Intersection1;
-    Intersection1 = planeCentral.intersect(line1);
+    // to project pt on central plane, get intersection
+    // with the ruling line passing through point pt
+    CSubSpace Intersection1 = planeCentral.intersect(
+        CSubSpace3d::line(pt, v1));
 
     if (Intersection1.getdim() == 0 )
         pt = Intersection1.getp();
@@ -177,10 +170,6 @@ CPanelGroup CHullWorker::makeHull() //const
     real x;
     CPoint3d pt , pt0 , p1 , p2 , p3 , p4;
     CVector3d v1 , v2 , v3 , vg;
-
-    CSubSpace Plane1;
-    CSubSpace Line1;
-    CSubSpace Intersection1;
 
     // create the hull type
     CPanelGroup hull;
@@ -225,8 +214,8 @@ CPanelGroup CHullWorker::makeHull() //const
     for (j = 0 ; j < npb ; j++)
     {
         plank1.bottom[j] =  chine.bottom[j];
-        Line1 = CSubSpace3d::line( plank1.bottom[j] , v1 );
-        Intersection1 = Line1.intersect(planeDeck);
+        CSubSpace Intersection1 = planeDeck.intersect(
+            CSubSpace3d::line(plank1.bottom[j], v1));
         if (Intersection1.getdim() == 0)
         {   // compute the vector vg which generate the side surface
             p1 = Intersection1.getp();
