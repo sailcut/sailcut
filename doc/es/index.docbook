@@ -15,7 +15,7 @@
 <othercredit><firstname>Joan</firstname><surname>Gelpi</surname><contrib>Translation</contrib></othercredit>
 </authorgroup>
 
-<pubdate>Sailcut CAD 1.2.4 - 16 Octobre 2006</pubdate>
+<pubdate>Sailcut CAD 1.3.3 - 24 November 2008</pubdate>
 
 </articleinfo>
 
@@ -406,7 +406,7 @@ when sailing.</para>
 <para>Enter there the width of cloth used, the width of the 
 seams between adjacent panels, the width of material to be 
 added to the leech to make the leech hem and the width of 
-material for the foot and the other edges hems.</para>
+material for the foot hem and the other edges hems.</para>
 
 <para>The figure below describes de location of the various 
 hems and seam width.</para>
