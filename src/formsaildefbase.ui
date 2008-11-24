@@ -662,7 +662,7 @@
       <item row="0" column="8" >
        <widget class="QLabel" name="lbl1" >
         <property name="text" >
-         <string>Mast / Luff rake</string>
+         <string>Luff rake</string>
         </property>
        </widget>
       </item>
