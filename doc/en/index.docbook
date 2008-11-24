@@ -243,7 +243,7 @@
 <sect3>
 <title> Cloth </title>
 
-<para>Enter there the width of cloth used, the width of the seams between adjacent panels, the width of material to be added to the leech to make the leech hem and the width of material for the other edges hems. </para>
+<para>Enter there the width of cloth used, the width of the seams between adjacent panels, the width of material to be added to the leech to make the leech hem and the width of material for the foot and for other edges hems. </para>
 
 <para><xref linkend="fig.sail_seams"/> describes the location of the various hems and seam width. Sailcut will compute the panels such that they fit within the declared cloth width including the seam and hems width as appropriate, except for a radial cut sail for which the width of each panels is computed from the number of radial panels entered. </para>
 

@@ -243,7 +243,7 @@
 <sect3>
 <title>Tissus</title>
 
-<para>Entrez i&ccedil;i la largeur du tissus utilisé, la largeur de couture nécessaire pour assembler les laizes et les réservations de tissus pour faire les ourlets de chute et des autres bords de la voile. </para>
+<para>Entrez i&ccedil;i la largeur du tissus utilisé, la largeur de couture nécessaire pour assembler les laizes et les réservations de tissus pour faire les ourlets de la chute, de la bordure et des autres bords de la voile. </para>
 
 <para>La figure <xref linkend="fig.sail_seams"/> donne la position des réservations pour couture et ourlets. Sailcut CAD va calculer la position des coutures pour que les laizes utilisent au maximum la largeur du tissus, sauf dans la coupe radiale ou la largeur des laizes dépend du nombre de fuseaux. </para>
 
