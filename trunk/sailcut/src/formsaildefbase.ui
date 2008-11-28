@@ -6,13 +6,11 @@
     <x>0</x>
     <y>0</y>
     <width>740</width>
-    <height>525</height>
+    <height>550</height>
    </rect>
   </property>
   <property name="sizePolicy" >
-   <sizepolicy>
-    <hsizetype>1</hsizetype>
-    <vsizetype>1</vsizetype>
+   <sizepolicy vsizetype="Minimum" hsizetype="Minimum" >
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -20,7 +18,7 @@
   <property name="minimumSize" >
    <size>
     <width>740</width>
-    <height>525</height>
+    <height>550</height>
    </size>
   </property>
   <property name="windowTitle" >
@@ -36,9 +34,7 @@
    <item row="2" column="0" colspan="6" >
     <widget class="QGroupBox" name="GroupSail" >
      <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>5</hsizetype>
-       <vsizetype>1</vsizetype>
+      <sizepolicy vsizetype="Minimum" hsizetype="Preferred" >
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -80,7 +76,7 @@
         <property name="sizeType" >
          <enum>QSizePolicy::MinimumExpanding</enum>
         </property>
-        <property name="sizeHint" >
+        <property name="sizeHint" stdset="0" >
          <size>
           <width>20</width>
           <height>20</height>
@@ -103,7 +99,7 @@
         <property name="sizeType" >
          <enum>QSizePolicy::MinimumExpanding</enum>
         </property>
-        <property name="sizeHint" >
+        <property name="sizeHint" stdset="0" >
          <size>
           <width>20</width>
           <height>20</height>
@@ -135,9 +131,7 @@
       <item row="0" column="0" >
        <widget class="QLabel" name="lblLuffLen" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>3</hsizetype>
-          <vsizetype>5</vsizetype>
+         <sizepolicy vsizetype="Preferred" hsizetype="MinimumExpanding" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -156,9 +150,7 @@
       <item row="1" column="0" >
        <widget class="QLabel" name="lblFootLen" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>3</hsizetype>
-          <vsizetype>5</vsizetype>
+         <sizepolicy vsizetype="Preferred" hsizetype="MinimumExpanding" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -184,9 +176,7 @@
       <item row="2" column="0" >
        <widget class="QLabel" name="lblLeechLen" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>3</hsizetype>
-          <vsizetype>5</vsizetype>
+         <sizepolicy vsizetype="Preferred" hsizetype="MinimumExpanding" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -226,9 +216,7 @@
       <item row="3" column="0" >
        <widget class="QLabel" name="lblGaffLen" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>3</hsizetype>
-          <vsizetype>5</vsizetype>
+         <sizepolicy vsizetype="Preferred" hsizetype="MinimumExpanding" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -493,9 +481,7 @@
    <item row="0" column="0" colspan="6" >
     <widget class="QGroupBox" name="GroupSailID" >
      <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>5</hsizetype>
-       <vsizetype>1</vsizetype>
+      <sizepolicy vsizetype="Minimum" hsizetype="Preferred" >
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -523,7 +509,7 @@
        <widget class="QLineEdit" name="txtSailID" >
         <property name="minimumSize" >
          <size>
-          <width>60</width>
+          <width>360</width>
           <height>18</height>
          </size>
         </property>
@@ -536,12 +522,12 @@
        <widget class="QLabel" name="lblSailID" >
         <property name="minimumSize" >
          <size>
-          <width>50</width>
+          <width>60</width>
           <height>20</height>
          </size>
         </property>
         <property name="text" >
-         <string>Sail ID</string>
+         <string>Sail name</string>
         </property>
         <property name="alignment" >
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -554,9 +540,7 @@
    <item row="1" column="0" colspan="6" >
     <widget class="QGroupBox" name="GroupRig" >
      <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>1</hsizetype>
-       <vsizetype>1</vsizetype>
+      <sizepolicy vsizetype="Minimum" hsizetype="Minimum" >
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -577,9 +561,7 @@
       <item row="0" column="0" >
        <widget class="QRadioButton" name="radioMainSail" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>1</hsizetype>
-          <vsizetype>1</vsizetype>
+         <sizepolicy vsizetype="Minimum" hsizetype="Minimum" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -605,9 +587,7 @@
       <item row="0" column="1" colspan="2" >
        <widget class="QRadioButton" name="radioJib" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>1</hsizetype>
-          <vsizetype>1</vsizetype>
+         <sizepolicy vsizetype="Minimum" hsizetype="Minimum" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -626,9 +606,7 @@
       <item row="1" column="0" >
        <widget class="QRadioButton" name="radioWing" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>1</hsizetype>
-          <vsizetype>1</vsizetype>
+         <sizepolicy vsizetype="Minimum" hsizetype="Minimum" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -669,9 +647,7 @@
       <item row="2" column="4" >
        <widget class="QLabel" name="lbl4" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>5</hsizetype>
-          <vsizetype>5</vsizetype>
+         <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -690,9 +666,7 @@
       <item row="0" column="4" >
        <widget class="QLabel" name="lbl6" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>5</hsizetype>
-          <vsizetype>5</vsizetype>
+         <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -777,7 +751,7 @@
         <property name="sizeType" >
          <enum>QSizePolicy::MinimumExpanding</enum>
         </property>
-        <property name="sizeHint" >
+        <property name="sizeHint" stdset="0" >
          <size>
           <width>20</width>
           <height>20</height>
@@ -835,9 +809,7 @@
       <item row="1" column="4" >
        <widget class="QLabel" name="lbl3" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>5</hsizetype>
-          <vsizetype>5</vsizetype>
+         <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -869,9 +841,7 @@
       <item row="2" column="1" >
        <widget class="QLineEdit" name="txtDihedral" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>1</hsizetype>
-          <vsizetype>0</vsizetype>
+         <sizepolicy vsizetype="Fixed" hsizetype="Minimum" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -944,9 +914,7 @@
       <item row="0" column="0" >
        <widget class="QRadioButton" name="radioCross" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>3</hsizetype>
-          <vsizetype>5</vsizetype>
+         <sizepolicy vsizetype="Preferred" hsizetype="MinimumExpanding" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -965,9 +933,7 @@
       <item row="1" column="0" >
        <widget class="QRadioButton" name="radioTwist" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>3</hsizetype>
-          <vsizetype>5</vsizetype>
+         <sizepolicy vsizetype="Preferred" hsizetype="MinimumExpanding" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -986,9 +952,7 @@
       <item row="1" column="2" >
        <widget class="QLabel" name="TextLabel1" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>3</hsizetype>
-          <vsizetype>5</vsizetype>
+         <sizepolicy vsizetype="Preferred" hsizetype="MinimumExpanding" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -1011,7 +975,7 @@
        <widget class="QLineEdit" name="txtGores" >
         <property name="minimumSize" >
          <size>
-          <width>25</width>
+          <width>28</width>
           <height>18</height>
          </size>
         </property>
@@ -1030,7 +994,7 @@
        <widget class="QLineEdit" name="txtLuffGores" >
         <property name="minimumSize" >
          <size>
-          <width>25</width>
+          <width>28</width>
           <height>18</height>
          </size>
         </property>
@@ -1048,9 +1012,7 @@
       <item row="2" column="2" >
        <widget class="QLabel" name="TextLabel2" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>3</hsizetype>
-          <vsizetype>5</vsizetype>
+         <sizepolicy vsizetype="Preferred" hsizetype="MinimumExpanding" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -1072,9 +1034,7 @@
       <item row="3" column="2" >
        <widget class="QLabel" name="TextLabel3" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>3</hsizetype>
-          <vsizetype>5</vsizetype>
+         <sizepolicy vsizetype="Preferred" hsizetype="MinimumExpanding" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -1096,9 +1056,7 @@
       <item row="2" column="0" >
        <widget class="QRadioButton" name="radioHorizontal" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>3</hsizetype>
-          <vsizetype>5</vsizetype>
+         <sizepolicy vsizetype="Preferred" hsizetype="MinimumExpanding" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -1117,9 +1075,7 @@
       <item row="3" column="0" >
        <widget class="QRadioButton" name="radioVertical" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>3</hsizetype>
-          <vsizetype>5</vsizetype>
+         <sizepolicy vsizetype="Preferred" hsizetype="MinimumExpanding" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -1168,7 +1124,7 @@
        <widget class="QLineEdit" name="txtSections" >
         <property name="minimumSize" >
          <size>
-          <width>25</width>
+          <width>28</width>
           <height>18</height>
          </size>
         </property>
@@ -1186,9 +1142,7 @@
       <item row="4" column="0" >
        <widget class="QRadioButton" name="radioMitre" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>3</hsizetype>
-          <vsizetype>5</vsizetype>
+         <sizepolicy vsizetype="Preferred" hsizetype="MinimumExpanding" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -1207,9 +1161,7 @@
       <item row="5" column="0" >
        <widget class="QRadioButton" name="radioMitre2" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>3</hsizetype>
-          <vsizetype>5</vsizetype>
+         <sizepolicy vsizetype="Preferred" hsizetype="MinimumExpanding" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -1230,7 +1182,7 @@
         <property name="orientation" >
          <enum>Qt::Vertical</enum>
         </property>
-        <property name="sizeHint" >
+        <property name="sizeHint" stdset="0" >
          <size>
           <width>20</width>
           <height>20</height>
@@ -1244,9 +1196,7 @@
    <item row="3" column="1" colspan="2" >
     <widget class="QGroupBox" name="GroupShape" >
      <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>5</hsizetype>
-       <vsizetype>5</vsizetype>
+      <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -1279,7 +1229,7 @@
        <widget class="QLineEdit" name="txtTopDepth" >
         <property name="minimumSize" >
          <size>
-          <width>26</width>
+          <width>28</width>
           <height>18</height>
          </size>
         </property>
@@ -1298,7 +1248,7 @@
        <widget class="QLineEdit" name="txtMidDepth" >
         <property name="minimumSize" >
          <size>
-          <width>26</width>
+          <width>28</width>
           <height>18</height>
          </size>
         </property>
@@ -1324,7 +1274,7 @@
        <widget class="QLineEdit" name="txtFootDepth" >
         <property name="minimumSize" >
          <size>
-          <width>26</width>
+          <width>28</width>
           <height>18</height>
          </size>
         </property>
@@ -1342,9 +1292,7 @@
       <item row="0" column="0" >
        <widget class="QLabel" name="lblTopDepth" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>3</hsizetype>
-          <vsizetype>5</vsizetype>
+         <sizepolicy vsizetype="Preferred" hsizetype="MinimumExpanding" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -1366,9 +1314,7 @@
       <item row="1" column="0" >
        <widget class="QLabel" name="lblMidDepth" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>3</hsizetype>
-          <vsizetype>5</vsizetype>
+         <sizepolicy vsizetype="Preferred" hsizetype="MinimumExpanding" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -1390,9 +1336,7 @@
       <item row="2" column="0" >
        <widget class="QLabel" name="lblFootDepth" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>3</hsizetype>
-          <vsizetype>5</vsizetype>
+         <sizepolicy vsizetype="Preferred" hsizetype="MinimumExpanding" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -1415,7 +1359,7 @@
        <widget class="QLineEdit" name="txtTwistAngle" >
         <property name="minimumSize" >
          <size>
-          <width>26</width>
+          <width>28</width>
           <height>18</height>
          </size>
         </property>
@@ -1434,7 +1378,7 @@
        <widget class="QLineEdit" name="txtSheetAngle" >
         <property name="minimumSize" >
          <size>
-          <width>26</width>
+          <width>28</width>
           <height>18</height>
          </size>
         </property>
@@ -1452,9 +1396,7 @@
       <item row="3" column="0" >
        <widget class="QLabel" name="lblTwistAngle" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>3</hsizetype>
-          <vsizetype>5</vsizetype>
+         <sizepolicy vsizetype="Preferred" hsizetype="MinimumExpanding" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -1476,9 +1418,7 @@
       <item row="4" column="0" >
        <widget class="QLabel" name="lblSheetAngle" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>3</hsizetype>
-          <vsizetype>5</vsizetype>
+         <sizepolicy vsizetype="Preferred" hsizetype="MinimumExpanding" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -1567,9 +1507,7 @@
       <item row="4" column="0" >
        <widget class="QLabel" name="lblHemsWidth" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>3</hsizetype>
-          <vsizetype>5</vsizetype>
+         <sizepolicy vsizetype="Preferred" hsizetype="MinimumExpanding" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -1585,9 +1523,7 @@
       <item row="3" column="0" >
        <widget class="QLabel" name="lblInnerWidth" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>3</hsizetype>
-          <vsizetype>5</vsizetype>
+         <sizepolicy vsizetype="Preferred" hsizetype="MinimumExpanding" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -1643,9 +1579,7 @@
       <item row="0" column="0" >
        <widget class="QLabel" name="lblClothWidth" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>3</hsizetype>
-          <vsizetype>5</vsizetype>
+         <sizepolicy vsizetype="Preferred" hsizetype="MinimumExpanding" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -1667,9 +1601,7 @@
       <item row="2" column="0" >
        <widget class="QLabel" name="lblLeechHemWidth" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>3</hsizetype>
-          <vsizetype>5</vsizetype>
+         <sizepolicy vsizetype="Preferred" hsizetype="MinimumExpanding" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -1685,9 +1617,7 @@
       <item row="1" column="0" >
        <widget class="QLabel" name="lblSeamWidth" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>3</hsizetype>
-          <vsizetype>5</vsizetype>
+         <sizepolicy vsizetype="Preferred" hsizetype="MinimumExpanding" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -1763,7 +1693,7 @@
      <property name="sizeType" >
       <enum>QSizePolicy::Expanding</enum>
      </property>
-     <property name="sizeHint" >
+     <property name="sizeHint" stdset="0" >
       <size>
        <width>441</width>
        <height>27</height>
