@@ -2042,7 +2042,7 @@ stævn</translation>
     <message>
         <location filename="../sailprinter.cpp" line="94"/>
         <source>Mast/Luff rake</source>
-        <translation type="unfinished">Maste/Forli hældning</translation>
+        <translation type="obsolete">Maste/Forli hældning</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="95"/>
@@ -2218,6 +2218,11 @@ stævn</translation>
         <location filename="../sailprinter.cpp" line="148"/>
         <source>Bottom profile</source>
         <translation type="unfinished">Nederste profil</translation>
+    </message>
+    <message>
+        <location filename="../sailprinter.cpp" line="94"/>
+        <source>Luff rake</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

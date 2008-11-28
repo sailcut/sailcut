@@ -1483,11 +1483,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sailprinter.cpp" line="94"/>
-        <source>Mast/Luff rake</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sailprinter.cpp" line="95"/>
         <source>Tack position X</source>
         <translation type="unfinished"></translation>
@@ -1662,9 +1657,11 @@
         <source>Bottom profile</source>
         <translation type="unfinished"></translation>
     </message>
-</context>
-<context>
-    <name>CSailPrinter</name>
+    <message>
+        <location filename="../sailprinter.cpp" line="94"/>
+        <source>Luff rake</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CSailViewerPanel</name>

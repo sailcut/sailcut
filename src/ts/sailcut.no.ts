@@ -2031,7 +2031,7 @@
     <message>
         <location filename="../sailprinter.cpp" line="94"/>
         <source>Mast/Luff rake</source>
-        <translation type="unfinished">Mastelogg</translation>
+        <translation type="obsolete">Mastelogg</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="95"/>
@@ -2207,6 +2207,11 @@
         <location filename="../sailprinter.cpp" line="148"/>
         <source>Bottom profile</source>
         <translation type="unfinished">Nedre profil</translation>
+    </message>
+    <message>
+        <location filename="../sailprinter.cpp" line="94"/>
+        <source>Luff rake</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

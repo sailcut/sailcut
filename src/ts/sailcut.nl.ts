@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="en_GB">
-<defaultcodec></defaultcodec>
 <context>
     <name>CBoatElementWidget</name>
     <message>
@@ -42,10 +41,12 @@
 <context>
     <name>CFileIO</name>
     <message>
+        <location filename="../boatdef-panel.cpp" line="144"/>
         <source>Open</source>
         <translation type="obsolete">Openen</translation>
     </message>
     <message>
+        <location filename="../boatdef-panel.cpp" line="144"/>
         <source>Save</source>
         <translation type="obsolete">Opslaan</translation>
     </message>
@@ -383,14 +384,17 @@
         <translation>Opslaan &amp;Als</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="139"/>
         <source>to &amp;DXF</source>
         <translation type="obsolete">naar &amp;DXF</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="139"/>
         <source>to &amp;TXT sail</source>
         <translation type="obsolete">naar &amp;TXT zeil</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="139"/>
         <source>to &amp;XML sail</source>
         <translation type="obsolete">naar &amp;XML zeil</translation>
     </message>
@@ -400,18 +404,22 @@
         <translation>&amp;Afsluiten</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="141"/>
         <source>&amp;Dimensions</source>
         <translation type="obsolete">&amp;Afmetingen</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="141"/>
         <source>&amp;Mould</source>
         <translation type="obsolete">&amp;Vorm</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="141"/>
         <source>&amp;Patches</source>
         <translation type="obsolete">&amp;Hoekverstevigingen</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="141"/>
         <source>&amp;Rig</source>
         <translation type="obsolete">&amp;Tuigage</translation>
     </message>
@@ -451,10 +459,12 @@
         <translation>Over Sailcut CAD</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="334"/>
         <source>error</source>
         <translation type="obsolete">fout</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="334"/>
         <source>There was an error writing to the selected file</source>
         <translation type="obsolete">Er is een fout opgetreden bij het opslaan van het bestand</translation>
     </message>
@@ -464,14 +474,17 @@
         <translation>Onlangs &amp;geopend</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="137"/>
         <source>E&amp;xport 3D sail</source>
         <translation type="obsolete">3D zeil e&amp;xporteren</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="137"/>
         <source>to &amp;Carlson plotter</source>
         <translation type="obsolete">naar &amp;Carlson plotter</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="137"/>
         <source>Export &amp;development</source>
         <translation type="obsolete">Zeil&amp;banen exporteren</translation>
     </message>
@@ -481,18 +494,22 @@
         <translation>Sailcut CAD &amp;Handboek</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="156"/>
         <source>shaded view</source>
         <translation type="obsolete">3D model</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="156"/>
         <source>wireframe view</source>
         <translation type="obsolete">draadmodel</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="156"/>
         <source>development</source>
         <translation type="obsolete">banen</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="156"/>
         <source>created new sail</source>
         <translation type="obsolete">nieuw zeil gecreëerd</translation>
     </message>
@@ -512,254 +529,317 @@
         <translation>&apos;%1&apos; opgeslagen</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>There was a data printing error</source>
         <translation type="obsolete">Er is een fout opgetreden bij het printen van de data</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>There was a development printing error</source>
         <translation type="obsolete">Er is een fout opgetreden bij het printen van banen</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>There was a drawing printing error</source>
         <translation type="obsolete">Er is een fout opgetreden bij het printen van het tekening</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>data</source>
         <translation type="obsolete">data</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>drawing</source>
         <translation type="obsolete">tekening</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>develop</source>
         <translation type="obsolete">banen</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>&amp;Print</source>
         <translation type="obsolete">&amp;Print</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Sail type</source>
         <translation type="obsolete">Zeil type</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Mainsail</source>
         <translation type="obsolete">Grootzeil</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Jib</source>
         <translation type="obsolete">Fok</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Sail layout</source>
         <translation type="obsolete">Zeilontwerp</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Cross Cut</source>
         <translation type="obsolete">Schuin gesneden</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Horizontal Cut</source>
         <translation type="obsolete">Horizontaal gesneden</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Radial Cut</source>
         <translation type="obsolete">Radiaal gesneden</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Twist Foot Cut</source>
         <translation type="obsolete">Gedraaid Onderlijk</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Vertical Cut</source>
         <translation type="obsolete">Verticaal gesneden</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Mitre Cut</source>
         <translation type="obsolete">Verstek gesneden</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source> sections,   </source>
         <translation type="obsolete"> secties,   </translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source> head gores.</source>
         <translation type="obsolete"> top banen.</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Rig </source>
         <translation type="obsolete">Tuigage </translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Boat LOA</source>
         <translation type="obsolete">Scheepslengte LOA</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Fore triangle hoist I</source>
         <translation type="obsolete">Voordriehoek hoogte I</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Fore triangle base J</source>
         <translation type="obsolete">Voordriehoek basis J</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Tack position X</source>
         <translation type="obsolete">Halshoek positie X</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Tack height Y</source>
         <translation type="obsolete">Halshoek hoogte Y</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Sail dimensions</source>
         <translation type="obsolete">Zeil afmetingen</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Luff length</source>
         <translation type="obsolete">Voorlijk lengte</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Mast rake</source>
         <translation type="obsolete">Mast helling</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Gaff angle wrt luff</source>
         <translation type="obsolete">Gaffel-mast hoek</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Gaff length</source>
         <translation type="obsolete">Gaffel lengte</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Foot length</source>
         <translation type="obsolete">Onderlijk lengte</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Leech length</source>
         <translation type="obsolete">Achterlijk lengte</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Shape of edges</source>
         <translation type="obsolete">Vorm van de randen</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Luff round</source>
         <translation type="obsolete">Voorlijk ronding</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Gaff round</source>
         <translation type="obsolete">Gaffel ronding</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Leech round</source>
         <translation type="obsolete">Achterlijk ronding</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Foot round</source>
         <translation type="obsolete">Onderlijk ronding</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Luff round position</source>
         <translation type="obsolete">Voorlijk ronding positie</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Gaff round position</source>
         <translation type="obsolete">Gaffel ronding positie</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Leech round position</source>
         <translation type="obsolete">Achterlijk ronding positie</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Foot round position</source>
         <translation type="obsolete">Onderlijk ronding positie</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Sail settings</source>
         <translation type="obsolete">Zeil instellingen</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Twist angle</source>
         <translation type="obsolete">Twist hoek</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Sheeting angle</source>
         <translation type="obsolete">Schootlijn hoek</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Cloth seams and hems</source>
         <translation type="obsolete">Doek naden en zomen</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Cloth width</source>
         <translation type="obsolete">Baan breedte</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Seams width</source>
         <translation type="obsolete">Naad breedte</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Leech hem width</source>
         <translation type="obsolete">Achterlijk zoom breedte</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Other hem width</source>
         <translation type="obsolete">Overige zoom breedte</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Sail mould</source>
         <translation type="obsolete">Zeilvorm</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Luff factor</source>
         <translation type="obsolete">Voorlijk factor</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Depth</source>
         <translation type="obsolete">Diepte</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Leech factor</source>
         <translation type="obsolete">Achterlijk factor</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Top profile</source>
         <translation type="obsolete">Top profiel</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Mid profile at h = </source>
         <translation type="obsolete">Midden profiel bij h = </translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Bottom profile</source>
         <translation type="obsolete">Onderlijk profiel</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Mast/Luff rake</source>
         <translation type="obsolete">Mast/Voorlijk helling</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source> head gores,   </source>
         <translation type="obsolete"> hoofd banen,   </translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source> luff gore.</source>
         <translation type="obsolete"> voorlijk baan.</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Wing</source>
         <translation type="obsolete">Vleugel</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source> luff gores.</source>
         <translation type="obsolete"> voorlijk banen.</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>deg</source>
         <translation type="obsolete">gr</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>to &amp;Hand-plotting format</source>
         <translation type="obsolete">naar &amp;Handmatige plotgegevens</translation>
     </message>
@@ -842,6 +922,7 @@
         <translation>Zeilvorm</translation>
     </message>
     <message>
+        <location filename="../formmould.cpp" line="42"/>
         <source>&amp;Help</source>
         <translation type="obsolete">&amp;Help</translation>
     </message>
@@ -885,54 +966,67 @@
 <context>
     <name>CFormRig</name>
     <message>
+        <location filename="../formprint.cpp" line="162"/>
         <source>Rig</source>
         <translation type="obsolete">Tuigage</translation>
     </message>
     <message>
+        <location filename="../formprint.cpp" line="162"/>
         <source>&amp;New</source>
         <translation type="obsolete">&amp;Nieuw</translation>
     </message>
     <message>
+        <location filename="../formprint.cpp" line="162"/>
         <source>sail &amp;definition</source>
         <translation type="obsolete">zeil &amp;definitie</translation>
     </message>
     <message>
+        <location filename="../formprint.cpp" line="162"/>
         <source>3D &amp;sail</source>
         <translation type="obsolete">3D &amp;zeil</translation>
     </message>
     <message>
+        <location filename="../formprint.cpp" line="162"/>
         <source>&amp;Add sail</source>
         <translation type="obsolete">Zeil &amp;toevoegen</translation>
     </message>
     <message>
+        <location filename="../formprint.cpp" line="162"/>
         <source>&amp;Open</source>
         <translation type="obsolete">&amp;Openen</translation>
     </message>
     <message>
+        <location filename="../formprint.cpp" line="162"/>
         <source>Open &amp;recent</source>
         <translation type="obsolete">Onlangs &amp;geopend</translation>
     </message>
     <message>
+        <location filename="../formprint.cpp" line="162"/>
         <source>&amp;Save</source>
         <translation type="obsolete">Op&amp;slaan</translation>
     </message>
     <message>
+        <location filename="../formprint.cpp" line="162"/>
         <source>Save &amp;As</source>
         <translation type="obsolete">Opslaan &amp;Als</translation>
     </message>
     <message>
+        <location filename="../formprint.cpp" line="162"/>
         <source>&amp;Close</source>
         <translation type="obsolete">&amp;Sluiten</translation>
     </message>
     <message>
+        <location filename="../formprint.cpp" line="162"/>
         <source>&amp;File</source>
         <translation type="obsolete">&amp;Bestand</translation>
     </message>
     <message>
+        <location filename="../formprint.cpp" line="162"/>
         <source>error</source>
         <translation type="obsolete">fout</translation>
     </message>
     <message>
+        <location filename="../formprint.cpp" line="162"/>
         <source>There was an error writing to the selected file</source>
         <translation type="obsolete">Er is een fout opgetreden bij het opslaan van het bestand</translation>
     </message>
@@ -1506,6 +1600,7 @@
         <translation>tophoek</translation>
     </message>
     <message>
+        <location filename="../formsaildef.cpp" line="1146"/>
         <source>IRC width measurements</source>
         <translation type="obsolete">IRC breedtematen</translation>
     </message>
@@ -1748,6 +1843,7 @@
         <translation>Schoothoek</translation>
     </message>
     <message encoding="UTF-8">
+        <location filename="../formsaildefbase.ui" line="1433"/>
         <source>m²</source>
         <translation type="obsolete">m²</translation>
     </message>
@@ -1820,34 +1916,42 @@
 <context>
     <name>CRigSailWidget</name>
     <message>
+        <location filename="../formsaildefbase.ui" line="1532"/>
         <source>Sail information</source>
         <translation type="obsolete">Zeil informatie</translation>
     </message>
     <message>
+        <location filename="../formsaildefbase.ui" line="1532"/>
         <source>file</source>
         <translation type="obsolete">bestand</translation>
     </message>
     <message>
+        <location filename="../formsaildefbase.ui" line="1532"/>
         <source>name</source>
         <translation type="obsolete">naam</translation>
     </message>
     <message>
+        <location filename="../formsaildefbase.ui" line="1532"/>
         <source>Reload</source>
         <translation type="obsolete">Opnieuw laden</translation>
     </message>
     <message>
+        <location filename="../formsaildefbase.ui" line="1532"/>
         <source>Remove</source>
         <translation type="obsolete">Verwijderen</translation>
     </message>
     <message>
+        <location filename="../formsaildefbase.ui" line="1532"/>
         <source>Update</source>
         <translation type="obsolete">Verversen</translation>
     </message>
     <message>
+        <location filename="../formsaildefbase.ui" line="1532"/>
         <source>error</source>
         <translation type="obsolete">fout</translation>
     </message>
     <message>
+        <location filename="../formsaildefbase.ui" line="1532"/>
         <source>There was an error reading from the selected file.</source>
         <translation type="obsolete">Er is een fout opgetreden bij het lezen van het bestand.</translation>
     </message>
@@ -1952,7 +2056,7 @@
     <message>
         <location filename="../sailprinter.cpp" line="94"/>
         <source>Mast/Luff rake</source>
-        <translation>Mast/Voorlijk helling</translation>
+        <translation type="obsolete">Mast/Voorlijk helling</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="95"/>
@@ -2129,10 +2233,16 @@
         <source>Bottom profile</source>
         <translation>Onderlijk profiel</translation>
     </message>
+    <message>
+        <location filename="../sailprinter.cpp" line="94"/>
+        <source>Luff rake</source>
+        <translation type="unfinished">Voorlijk helling</translation>
+    </message>
 </context>
 <context>
     <name>CSailDispGL</name>
     <message>
+        <location filename="../sailprinter.cpp" line="148"/>
         <source>This system has no OpenGL support.</source>
         <translation type="obsolete">Dit systeem ondersteunt geen OpenGL.</translation>
     </message>
@@ -2502,10 +2612,12 @@
 <context>
     <name>XmlReaderTempl</name>
     <message>
+        <location filename="../widgetprofile.cpp" line="249"/>
         <source>error</source>
         <translation type="obsolete">fout</translation>
     </message>
     <message>
+        <location filename="../widgetprofile.cpp" line="249"/>
         <source>There was an error reading from the selected file.</source>
         <translation type="obsolete">Er is een fout opgetreden bij het lezen van het bestand.</translation>
     </message>
