@@ -91,7 +91,7 @@ void CSailDataPrinter::print(CTextPainter *painter, int, real fontsize) const
     // boat data
     painter->printDataSection(tr("Rig"));
     painter->printDataLine(tr("Boat LOA"), QString::number(saildef.LOA), "mm");
-    painter->printDataLine(tr("Mast/Luff rake"), QString::number(saildef.rake), "mm");
+    painter->printDataLine(tr("Luff rake"), QString::number(saildef.rake), "mm");
     painter->printDataLine(tr("Tack position X"), QString::number(saildef.tackX), "mm");
     painter->printDataLine(tr("Tack height Y"), QString::number(saildef.tackY), "mm");
     painter->printDataLine(tr("Fore triangle hoist I"), QString::number(saildef.foreI), "mm");
