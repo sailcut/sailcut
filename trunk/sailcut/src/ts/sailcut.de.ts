@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="en_GB">
-<defaultcodec></defaultcodec>
 <context>
     <name>CBoatElementWidget</name>
     <message>
@@ -36,16 +35,18 @@
     <message>
         <location filename="../boatdef-panel.cpp" line="144"/>
         <source>Element information</source>
-        <translation type="unfinished"></translation>
+        <translation>Elementeinformationen</translation>
     </message>
 </context>
 <context>
     <name>CFileIO</name>
     <message>
+        <location filename="../boatdef-panel.cpp" line="144"/>
         <source>Open</source>
         <translation type="obsolete">Öffnen</translation>
     </message>
     <message>
+        <location filename="../boatdef-panel.cpp" line="144"/>
         <source>Save</source>
         <translation type="obsolete">Speichern</translation>
     </message>
@@ -137,12 +138,12 @@
     <message>
         <location filename="../formhulldefbase.ui" line="116"/>
         <source>Planking</source>
-        <translation type="unfinished"></translation>
+        <translation>Beplankung</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="128"/>
         <source>Automatic planking</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatische Beplankung</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="179"/>
@@ -302,7 +303,7 @@
     <message>
         <location filename="../formhulldefbase.ui" line="1754"/>
         <source>Dimensions are in millimeters and angles in degrees measured from horizontal</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle Dimensionen sind in Millimeter und Graden</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="891"/>
@@ -363,14 +364,17 @@
 <context>
     <name>CFormMain</name>
     <message>
+        <location filename="../formhulldefbase.ui" line="873"/>
         <source>to &amp;DXF</source>
         <translation type="obsolete">&amp;DXF</translation>
     </message>
     <message>
+        <location filename="../formhulldefbase.ui" line="873"/>
         <source>to &amp;TXT sail</source>
         <translation type="obsolete">&amp;TXT Segel</translation>
     </message>
     <message>
+        <location filename="../formhulldefbase.ui" line="873"/>
         <source>to &amp;XML sail</source>
         <translation type="obsolete">&amp;XML Segel</translation>
     </message>
@@ -400,18 +404,22 @@
         <translation>Be&amp;enden</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="141"/>
         <source>&amp;Dimensions</source>
         <translation type="obsolete">&amp;Abmessungen</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="141"/>
         <source>&amp;Mould</source>
         <translation type="obsolete">&amp;Form</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="141"/>
         <source>&amp;Patches</source>
         <translation type="obsolete">&amp;Verstärkungen</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="141"/>
         <source>&amp;Rig</source>
         <translation type="obsolete">&amp;Rigg</translation>
     </message>
@@ -436,10 +444,12 @@
         <translation>Über Sailcut CAD</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="334"/>
         <source>error</source>
         <translation type="obsolete">Fehler</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="334"/>
         <source>There was an error writing to the selected file</source>
         <translation type="obsolete">Beim Schreiben in die gewählte Datei ist ein Fehler aufgetreten</translation>
     </message>
@@ -464,10 +474,12 @@
         <translation>Zuletzt geöffnete P&amp;rojekte</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="137"/>
         <source>E&amp;xport 3D sail</source>
         <translation type="obsolete">E&amp;xport 3D-Segel</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="137"/>
         <source>to &amp;Carlson plotter</source>
         <translation type="obsolete">&amp;Carlson Plotter</translation>
     </message>
@@ -477,18 +489,22 @@
         <translation>Sailcut CAD &amp;Handbuch</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="156"/>
         <source>shaded view</source>
         <translation type="obsolete">schattierte Ansicht</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="156"/>
         <source>wireframe view</source>
         <translation type="obsolete">Ansicht als Drahtmodell</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="156"/>
         <source>development</source>
         <translation type="obsolete">Entwicklung</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="156"/>
         <source>created new sail</source>
         <translation type="obsolete">neu erstelltes Segel</translation>
     </message>
@@ -508,238 +524,297 @@
         <translation>gespeichert &apos;%1&apos;</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>There was a data printing error</source>
         <translation type="obsolete">Beim Schreiben in die gewählte Datei ist ein Fehler aufgetreten</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>There was a development printing error</source>
         <translation type="obsolete">Fehler beim Drucken der Entwicklungsansicht</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>There was a drawing printing error</source>
         <translation type="obsolete">Fehler beim drucken der Zeichnung</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>data</source>
         <translation type="obsolete">Daten</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>drawing</source>
         <translation type="obsolete">Zeichnung</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>&amp;Print</source>
         <translation type="obsolete">Dr&amp;ucken</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Sail type</source>
         <translation type="obsolete">Segeltyp</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Mainsail</source>
         <translation type="obsolete">Großsegel</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Jib</source>
         <translation type="obsolete">Fock</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Sail layout</source>
         <translation type="obsolete">Segelschnitt</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Cross Cut</source>
         <translation type="obsolete">Kreuzschnitt</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Horizontal Cut</source>
         <translation type="obsolete">Horizontalschnitt</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Radial Cut</source>
         <translation type="obsolete">Radialschnitt</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Twist Foot Cut</source>
         <translation type="obsolete">Twist-Foot Schnitt</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Vertical Cut</source>
         <translation type="obsolete">Vertikalschnitt</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Mitre Cut</source>
         <translation type="obsolete">Gehrungsschnitt</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source> sections,   </source>
         <translation type="obsolete"> Segmente,   </translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Rig </source>
         <translation type="obsolete">Rigg </translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Boat LOA</source>
         <translation type="obsolete">Bootslänge LüA</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Fore triangle hoist I</source>
         <translation type="obsolete">Höhe I des Vorsegeldreiecks</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Fore triangle base J</source>
         <translation type="obsolete">Basis J des Vorsegeldreiecks</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Tack position X</source>
         <translation type="obsolete">Segelhalsposition X</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Tack height Y</source>
         <translation type="obsolete">Segelhalshöhe Y</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Sail dimensions</source>
         <translation type="obsolete">Segelabmessungen</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Luff length</source>
         <translation type="obsolete">Länge des Vorlieks</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Gaff angle wrt luff</source>
         <translation type="obsolete">Gaffelwinkel relativ zum Vorliek</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Gaff length</source>
         <translation type="obsolete">Länge der Gaffel</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Foot length</source>
         <translation type="obsolete">Länge des Unterlieks</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Leech length</source>
         <translation type="obsolete">Länge des Achterlieks</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Luff round</source>
         <translation type="obsolete">Vorliek-Bogen</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Gaff round</source>
         <translation type="obsolete">Gaffel-Bogen</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Leech round</source>
         <translation type="obsolete">Achterliek-Bogen</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Foot round</source>
         <translation type="obsolete">Unterliek-Bogen</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Luff round position</source>
         <translation type="obsolete">Position des Vorliekbogens</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Gaff round position</source>
         <translation type="obsolete">Position des Gaffelbogens</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Leech round position</source>
         <translation type="obsolete">Position des Achterliekbogens</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Foot round position</source>
         <translation type="obsolete">Position des Unterliekbogens</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Sail settings</source>
         <translation type="obsolete">Eigenschaften des Segels</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Twist angle</source>
         <translation type="obsolete">Verwindungswinkel</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Sheeting angle</source>
         <translation type="obsolete">Winkel der Segelbahn</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Cloth seams and hems</source>
         <translation type="obsolete">Bahnennähte und Säume</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Cloth width</source>
         <translation type="obsolete">Bahnbreite</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Seams width</source>
         <translation type="obsolete">Nahtbreite</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Leech hem width</source>
         <translation type="obsolete">Breite des Achterlieksaumes</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Other hem width</source>
         <translation type="obsolete">andere Saumbreiten</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Sail mould</source>
         <translation type="obsolete">Segelform</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Luff factor</source>
         <translation type="obsolete">Vorliegsfaktor</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Depth</source>
         <translation type="obsolete">Tiefe</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Leech factor</source>
         <translation type="obsolete">Achterlieksfaktor</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Top profile</source>
         <translation type="obsolete">Oberes Profil</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Mid profile at h = </source>
         <translation type="obsolete">Mittleres Profil bei Höhe h =</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Bottom profile</source>
         <translation type="obsolete">Unteres Profil</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Mast/Luff rake</source>
         <translation type="obsolete">Neigung der Mastspur</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source> head gores,   </source>
         <translation type="obsolete">Radialkeile im Kopfabschnitt </translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Wing</source>
         <translation type="obsolete">Tragfläche</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source> luff gores.</source>
         <translation type="obsolete">Radialkeile beginnend am Kopf und endend am Segelhals.</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>deg</source>
         <translation type="obsolete">°</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>Export &amp;development</source>
         <translation type="obsolete">Export &amp;Entwicklung</translation>
     </message>
     <message>
+        <location filename="../formmain.cpp" line="504"/>
         <source>to &amp;Hand-plotting format</source>
         <translation type="obsolete">ins &amp;Hand-Plotterformat </translation>
     </message>
@@ -781,12 +856,12 @@
     <message>
         <location filename="../formmain.cpp" line="151"/>
         <source>&amp;Tile</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Fliesen</translation>
     </message>
     <message>
         <location filename="../formmain.cpp" line="152"/>
         <source>&amp;Cascade</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Kaskade</translation>
     </message>
     <message>
         <location filename="../formmain.cpp" line="207"/>
@@ -817,6 +892,7 @@
         <translation>Segelform</translation>
     </message>
     <message>
+        <location filename="../formmould.cpp" line="42"/>
         <source>&amp;Help</source>
         <translation type="obsolete">&amp;Hilfe</translation>
     </message>
@@ -865,54 +941,67 @@
 <context>
     <name>CFormRig</name>
     <message>
+        <location filename="../formprint.cpp" line="162"/>
         <source>Rig</source>
         <translation type="obsolete">Rigg </translation>
     </message>
     <message>
+        <location filename="../formprint.cpp" line="162"/>
         <source>&amp;New</source>
         <translation type="obsolete">&amp;Neu</translation>
     </message>
     <message>
+        <location filename="../formprint.cpp" line="162"/>
         <source>sail &amp;definition</source>
         <translation type="obsolete">&amp;Definition des Segels</translation>
     </message>
     <message>
+        <location filename="../formprint.cpp" line="162"/>
         <source>3D &amp;sail</source>
         <translation type="obsolete">3D &amp;Segel</translation>
     </message>
     <message>
+        <location filename="../formprint.cpp" line="162"/>
         <source>&amp;Add sail</source>
         <translation type="obsolete">neues Segel &amp;hinzufügen</translation>
     </message>
     <message>
+        <location filename="../formprint.cpp" line="162"/>
         <source>&amp;Open</source>
         <translation type="obsolete">Ö&amp;ffnen</translation>
     </message>
     <message>
+        <location filename="../formprint.cpp" line="162"/>
         <source>Open &amp;recent</source>
         <translation type="obsolete">zuletzt geöffnete P&amp;rojekte</translation>
     </message>
     <message>
+        <location filename="../formprint.cpp" line="162"/>
         <source>&amp;Save</source>
         <translation type="obsolete">&amp;Speichern</translation>
     </message>
     <message>
+        <location filename="../formprint.cpp" line="162"/>
         <source>Save &amp;As</source>
         <translation type="obsolete">Speichern &amp;unter</translation>
     </message>
     <message>
+        <location filename="../formprint.cpp" line="162"/>
         <source>&amp;Close</source>
         <translation type="obsolete">Be&amp;enden</translation>
     </message>
     <message>
+        <location filename="../formprint.cpp" line="162"/>
         <source>&amp;File</source>
         <translation type="obsolete">&amp;Datei</translation>
     </message>
     <message>
+        <location filename="../formprint.cpp" line="162"/>
         <source>error</source>
         <translation type="obsolete">Fehler</translation>
     </message>
     <message>
+        <location filename="../formprint.cpp" line="162"/>
         <source>There was an error writing to the selected file</source>
         <translation type="obsolete">Beim Schreiben in die gewählte Datei ist ein Fehler aufgetreten</translation>
     </message>
@@ -1107,22 +1196,22 @@
     <message>
         <location filename="../formrigdefbase.ui" line="1467"/>
         <source>Fore triangle base</source>
-        <translation type="unfinished"></translation>
+        <translation>Basis des Vorsegeldreiecks</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1474"/>
         <source>Fore triangle hoist</source>
-        <translation type="unfinished"></translation>
+        <translation>Höhe des Vorsegeldreiecks</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1091"/>
         <source>Mast</source>
-        <translation type="unfinished"></translation>
+        <translation>Mast</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1103"/>
         <source>Mast width</source>
-        <translation type="unfinished"></translation>
+        <translation>Mastbreite</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1110"/>
@@ -1147,7 +1236,7 @@
     <message>
         <location filename="../formrigdefbase.ui" line="1156"/>
         <source>Mast cord</source>
-        <translation type="unfinished"></translation>
+        <translation>Mastschnur</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1166"/>
@@ -1162,7 +1251,7 @@
     <message>
         <location filename="../formrigdefbase.ui" line="1183"/>
         <source>Mast rake angle</source>
-        <translation type="unfinished"></translation>
+        <translation>Mastrechenwinkel</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1202"/>
@@ -1177,7 +1266,7 @@
     <message>
         <location filename="../formrigdefbase.ui" line="1238"/>
         <source>Mast rake</source>
-        <translation type="unfinished"></translation>
+        <translation>Mastrechen</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1245"/>
@@ -1192,7 +1281,7 @@
     <message>
         <location filename="../formrigdefbase.ui" line="1286"/>
         <source>Mast height</source>
-        <translation type="unfinished"></translation>
+        <translation>Masthöhe</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1293"/>
@@ -1207,7 +1296,7 @@
     <message>
         <location filename="../formrigdefbase.ui" line="1319"/>
         <source>Mast round</source>
-        <translation type="unfinished"></translation>
+        <translation>Mast-Bogen</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1326"/>
@@ -1217,7 +1306,7 @@
     <message>
         <location filename="../formrigdefbase.ui" line="1345"/>
         <source>Mast round position </source>
-        <translation type="unfinished"></translation>
+        <translation>Position des mastbogens </translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="604"/>
@@ -1262,7 +1351,7 @@
     <message>
         <location filename="../formrigdefbase.ui" line="782"/>
         <source>Tack</source>
-        <translation type="unfinished"></translation>
+        <translation>Segelhals</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="820"/>
@@ -1277,7 +1366,7 @@
     <message>
         <location filename="../formrigdefbase.ui" line="855"/>
         <source>Luff length </source>
-        <translation type="unfinished"></translation>
+        <translation>Länge des Vorlieks</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="874"/>
@@ -1297,12 +1386,12 @@
     <message>
         <location filename="../formrigdefbase.ui" line="931"/>
         <source>Luff rake</source>
-        <translation type="unfinished"></translation>
+        <translation>Neigung der Vorliek</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="966"/>
         <source>Tack height </source>
-        <translation type="unfinished"></translation>
+        <translation>Segelhalshöhe</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="985"/>
@@ -1337,17 +1426,17 @@
     <message>
         <location filename="../formrigdefbase.ui" line="1544"/>
         <source>All dimensions are in millimeter and angles in degrees</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle Dimensionen sind in Millimeter und Graden</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1490"/>
         <source>Description of rig</source>
-        <translation type="unfinished"></translation>
+        <translation>Beschreibung der Rigg</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1509"/>
         <source>Rig name</source>
-        <translation type="unfinished"></translation>
+        <translation>Name von Rigg</translation>
     </message>
 </context>
 <context>
@@ -1481,6 +1570,7 @@
         <translation>Nock</translation>
     </message>
     <message>
+        <location filename="../formsaildef.cpp" line="1146"/>
         <source>IRC width measurements</source>
         <translation type="obsolete">IRC - Breite</translation>
     </message>
@@ -1723,6 +1813,7 @@
         <translation>Winkel der Segelbahn</translation>
     </message>
     <message encoding="UTF-8">
+        <location filename="../formsaildefbase.ui" line="1433"/>
         <source>m²</source>
         <translation type="obsolete">m²</translation>
     </message>
@@ -1774,7 +1865,7 @@
     <message>
         <location filename="../formsaildefbase.ui" line="530"/>
         <source>Sail name</source>
-        <translation type="unfinished"></translation>
+        <translation>Name von Segel</translation>
     </message>
     <message>
         <location filename="../formsaildefbase.ui" line="643"/>
@@ -1795,34 +1886,42 @@
 <context>
     <name>CRigSailWidget</name>
     <message>
+        <location filename="../formsaildefbase.ui" line="1532"/>
         <source>Sail information</source>
         <translation type="obsolete">Information des Segels</translation>
     </message>
     <message>
+        <location filename="../formsaildefbase.ui" line="1532"/>
         <source>file</source>
         <translation type="obsolete">Datei</translation>
     </message>
     <message>
+        <location filename="../formsaildefbase.ui" line="1532"/>
         <source>name</source>
         <translation type="obsolete">Bezeichnung</translation>
     </message>
     <message>
+        <location filename="../formsaildefbase.ui" line="1532"/>
         <source>Reload</source>
         <translation type="obsolete">neu laden</translation>
     </message>
     <message>
+        <location filename="../formsaildefbase.ui" line="1532"/>
         <source>Remove</source>
         <translation type="obsolete">Entfernen</translation>
     </message>
     <message>
+        <location filename="../formsaildefbase.ui" line="1532"/>
         <source>Update</source>
         <translation type="obsolete">Aktualisieren</translation>
     </message>
     <message>
+        <location filename="../formsaildefbase.ui" line="1532"/>
         <source>error</source>
         <translation type="obsolete">Fehler</translation>
     </message>
     <message>
+        <location filename="../formsaildefbase.ui" line="1532"/>
         <source>There was an error reading from the selected file.</source>
         <translation type="obsolete">Beim Lesen aus der gewählten Datei ist ein Fehler aufgetreten.</translation>
     </message>
@@ -1927,7 +2026,7 @@
     <message>
         <location filename="../sailprinter.cpp" line="94"/>
         <source>Mast/Luff rake</source>
-        <translation>Neigung der Mastspur</translation>
+        <translation type="obsolete">Neigung der Mastspur</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="95"/>
@@ -2057,7 +2156,7 @@
     <message>
         <location filename="../sailprinter.cpp" line="128"/>
         <source>Leech hem width</source>
-        <translation type="unfinished">Breite des Achterlieksaumes</translation>
+        <translation>Breite des Achterlieksaumes</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="129"/>
@@ -2104,10 +2203,16 @@
         <source>Bottom profile</source>
         <translation>Unteres Profil</translation>
     </message>
+    <message>
+        <location filename="../sailprinter.cpp" line="94"/>
+        <source>Luff rake</source>
+        <translation>Neigung der Vorliek</translation>
+    </message>
 </context>
 <context>
     <name>CSailDispGL</name>
     <message>
+        <location filename="../sailprinter.cpp" line="148"/>
         <source>This system has no OpenGL support.</source>
         <translation type="obsolete">Dieses System hat keine OpenGL Unterstützung.</translation>
     </message>
@@ -2477,10 +2582,12 @@
 <context>
     <name>XmlReaderTempl</name>
     <message>
+        <location filename="../widgetprofile.cpp" line="249"/>
         <source>error</source>
         <translation type="obsolete">Fehler</translation>
     </message>
     <message>
+        <location filename="../widgetprofile.cpp" line="249"/>
         <source>There was an error reading from the selected file.</source>
         <translation type="obsolete">Beim Lesen aus der gewählten Datei ist ein Fehler aufgetreten.</translation>
     </message>

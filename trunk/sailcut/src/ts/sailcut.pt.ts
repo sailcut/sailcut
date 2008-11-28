@@ -2046,7 +2046,7 @@
     <message>
         <location filename="../sailprinter.cpp" line="94"/>
         <source>Mast/Luff rake</source>
-        <translation type="unfinished">Caimento mastro/testa</translation>
+        <translation type="obsolete">Caimento mastro/testa</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="95"/>
@@ -2222,6 +2222,11 @@
         <location filename="../sailprinter.cpp" line="148"/>
         <source>Bottom profile</source>
         <translation type="unfinished">Perfil da base</translation>
+    </message>
+    <message>
+        <location filename="../sailprinter.cpp" line="94"/>
+        <source>Luff rake</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

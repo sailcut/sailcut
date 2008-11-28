@@ -2036,7 +2036,7 @@
     <message>
         <location filename="../sailprinter.cpp" line="94"/>
         <source>Mast/Luff rake</source>
-        <translation type="unfinished">Inclinazione albero/ghindante</translation>
+        <translation type="obsolete">Inclinazione albero/ghindante</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="95"/>
@@ -2212,6 +2212,11 @@
         <location filename="../sailprinter.cpp" line="148"/>
         <source>Bottom profile</source>
         <translation type="unfinished">Profilo inferiore</translation>
+    </message>
+    <message>
+        <location filename="../sailprinter.cpp" line="94"/>
+        <source>Luff rake</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
