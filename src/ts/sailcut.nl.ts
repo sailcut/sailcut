@@ -2236,7 +2236,7 @@
     <message>
         <location filename="../sailprinter.cpp" line="94"/>
         <source>Luff rake</source>
-        <translation type="unfinished">Voorlijk helling</translation>
+        <translation>Voorlijk helling</translation>
     </message>
 </context>
 <context>

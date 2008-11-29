@@ -35,7 +35,7 @@
     <message>
         <location filename="../boatdef-panel.cpp" line="144"/>
         <source>Element information</source>
-        <translation type="unfinished"></translation>
+        <translation>Informazioni elemento</translation>
     </message>
 </context>
 <context>
@@ -128,12 +128,12 @@
     <message>
         <location filename="../formhulldefbase.ui" line="20"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Dialogo</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="98"/>
         <source>Deck and bottom</source>
-        <translation type="unfinished"></translation>
+        <translation>Ponte e fondo</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="116"/>
@@ -148,7 +148,7 @@
     <message>
         <location filename="../formhulldefbase.ui" line="179"/>
         <source>lower plank angle</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="239"/>
@@ -163,7 +163,7 @@
     <message>
         <location filename="../formhulldefbase.ui" line="262"/>
         <source>Bottom</source>
-        <translation type="unfinished"></translation>
+        <translation>Fondo</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="315"/>
@@ -188,7 +188,7 @@
     <message>
         <location filename="../formhulldefbase.ui" line="638"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>Lunghezza</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="651"/>
@@ -228,12 +228,12 @@
     <message>
         <location filename="../formhulldefbase.ui" line="778"/>
         <source>Hull name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nome della buccia</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="788"/>
         <source>Deck</source>
-        <translation type="unfinished"></translation>
+        <translation>Ponte</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="1681"/>
@@ -856,22 +856,22 @@
     <message>
         <location filename="../formmain.cpp" line="150"/>
         <source>Close &amp;All</source>
-        <translation type="unfinished"></translation>
+        <translation>Chiudere &amp;Tutto</translation>
     </message>
     <message>
         <location filename="../formmain.cpp" line="151"/>
         <source>&amp;Tile</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Piastrella</translation>
     </message>
     <message>
         <location filename="../formmain.cpp" line="152"/>
         <source>&amp;Cascade</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Cascata</translation>
     </message>
     <message>
         <location filename="../formmain.cpp" line="207"/>
         <source>unknown document type &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>tipo di documento &apos;%1&apos; sconosciuto</translation>
     </message>
     <message>
         <location filename="../formmain.cpp" line="461"/>
@@ -927,7 +927,7 @@
     <message>
         <location filename="../formpanelgroup.cpp" line="56"/>
         <source>panels</source>
-        <translation type="unfinished"></translation>
+        <translation>pannelli</translation>
     </message>
 </context>
 <context>
@@ -935,12 +935,12 @@
     <message>
         <location filename="../formprint.cpp" line="159"/>
         <source>&amp;Print</source>
-        <translation type="unfinished">&amp;Stampa</translation>
+        <translation>&amp;Stampa</translation>
     </message>
     <message>
         <location filename="../formprint.cpp" line="162"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished">&amp;Cancellare</translation>
+        <translation>&amp;Cancellare</translation>
     </message>
 </context>
 <context>
@@ -1013,7 +1013,7 @@
     <message>
         <location filename="../formrig.cpp" line="59"/>
         <source>rig</source>
-        <translation type="unfinished">attrezzatura</translation>
+        <translation>attrezzatura</translation>
     </message>
     <message>
         <location filename="../formrig.cpp" line="60"/>
@@ -1201,17 +1201,17 @@
     <message>
         <location filename="../formrigdefbase.ui" line="1467"/>
         <source>Fore triangle base</source>
-        <translation type="unfinished"></translation>
+        <translation>Base del triangolo di prua</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1474"/>
         <source>Fore triangle hoist</source>
-        <translation type="unfinished"></translation>
+        <translation>Altezza del triangolo di prua</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1091"/>
         <source>Mast</source>
-        <translation type="unfinished"></translation>
+        <translation>Albero</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1103"/>
@@ -1256,7 +1256,7 @@
     <message>
         <location filename="../formrigdefbase.ui" line="1183"/>
         <source>Mast rake angle</source>
-        <translation type="unfinished"></translation>
+        <translation>Angolo albero</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1202"/>
@@ -1271,7 +1271,7 @@
     <message>
         <location filename="../formrigdefbase.ui" line="1238"/>
         <source>Mast rake</source>
-        <translation type="unfinished"></translation>
+        <translation>Inclinazione albero</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1245"/>
@@ -1301,7 +1301,7 @@
     <message>
         <location filename="../formrigdefbase.ui" line="1319"/>
         <source>Mast round</source>
-        <translation type="unfinished"></translation>
+        <translation>Allunamento del albero</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1326"/>
@@ -1311,7 +1311,7 @@
     <message>
         <location filename="../formrigdefbase.ui" line="1345"/>
         <source>Mast round position </source>
-        <translation type="unfinished"></translation>
+        <translation>Posizione allunamento albero </translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="604"/>
@@ -1391,12 +1391,12 @@
     <message>
         <location filename="../formrigdefbase.ui" line="931"/>
         <source>Luff rake</source>
-        <translation type="unfinished"></translation>
+        <translation>Inclinazione ghindante</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="966"/>
         <source>Tack height </source>
-        <translation type="unfinished"></translation>
+        <translation>Altezza del punto di mura</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="985"/>
@@ -1426,7 +1426,7 @@
     <message>
         <location filename="../formrigdefbase.ui" line="38"/>
         <source>Check</source>
-        <translation type="unfinished"></translation>
+        <translation>Controllo</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1544"/>
@@ -1436,12 +1436,12 @@
     <message>
         <location filename="../formrigdefbase.ui" line="1490"/>
         <source>Description of rig</source>
-        <translation type="unfinished"></translation>
+        <translation>Descrizione di attrezzatura</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1509"/>
         <source>Rig name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nome attrezzatura</translation>
     </message>
 </context>
 <context>
@@ -1504,7 +1504,7 @@
     <message>
         <location filename="../formsail.cpp" line="96"/>
         <source>to &amp;Hand-plotting format</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formsail.cpp" line="104"/>
@@ -1562,7 +1562,7 @@
     <message>
         <location filename="../formsaildef.cpp" line="1144"/>
         <source>clew</source>
-        <translation type="unfinished"></translation>
+        <translation>indizio</translation>
     </message>
     <message>
         <location filename="../formsaildef.cpp" line="1145"/>
@@ -1875,22 +1875,22 @@
     <message>
         <location filename="../formsaildefbase.ui" line="530"/>
         <source>Sail name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nome della vela</translation>
     </message>
     <message>
         <location filename="../formsaildefbase.ui" line="643"/>
         <source>Luff rake</source>
-        <translation type="unfinished"></translation>
+        <translation>Inclinazione ghindante</translation>
     </message>
     <message>
         <location filename="../formsaildefbase.ui" line="1176"/>
         <source>Mitre cut 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Taglio a spina di pesce 2</translation>
     </message>
     <message>
         <location filename="../formsaildefbase.ui" line="1532"/>
         <source>Foot hem</source>
-        <translation type="unfinished"></translation>
+        <translation>Vaina alla base</translation>
     </message>
 </context>
 <context>
@@ -1941,97 +1941,97 @@
     <message>
         <location filename="../sailprinter.cpp" line="44"/>
         <source>Sailcut CAD data sheet</source>
-        <translation type="unfinished">Scheda dati Sailcut CAD</translation>
+        <translation>Scheda dati Sailcut CAD</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="50"/>
         <source>Mainsail</source>
-        <translation type="unfinished">Randa</translation>
+        <translation>Randa</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="53"/>
         <source>Jib</source>
-        <translation type="unfinished">Fiocco</translation>
+        <translation>Fiocco</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="56"/>
         <source>Wing</source>
-        <translation type="unfinished"></translation>
+        <translation>Ala</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="56"/>
         <source>deg</source>
-        <translation type="unfinished">deg</translation>
+        <translation>deg</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="59"/>
         <source>Sail type</source>
-        <translation type="unfinished">Tipo vela</translation>
+        <translation>Tipo vela</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="65"/>
         <source>Cross Cut</source>
-        <translation type="unfinished">Taglio cross-cut</translation>
+        <translation>Taglio cross-cut</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="68"/>
         <source>Horizontal Cut</source>
-        <translation type="unfinished">Taglio orizzontale</translation>
+        <translation>Taglio orizzontale</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="71"/>
         <source>Radial Cut</source>
-        <translation type="unfinished">Taglio radiale</translation>
+        <translation>Taglio radiale</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="72"/>
         <source>sections</source>
-        <translation type="unfinished"> sezioni  </translation>
+        <translation> sezioni  </translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="73"/>
         <source>head gores</source>
-        <translation type="unfinished"> altezza pannelli</translation>
+        <translation> altezza pannelli</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="74"/>
         <source>luff gores</source>
-        <translation type="unfinished">ghindante pannelli</translation>
+        <translation>ghindante pannelli</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="77"/>
         <source>Twist Foot Cut</source>
-        <translation type="unfinished">Taglio twist foot</translation>
+        <translation>Taglio twist foot</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="80"/>
         <source>Vertical Cut</source>
-        <translation type="unfinished">Taglio verticale</translation>
+        <translation>Taglio verticale</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="83"/>
         <source>Mitre Cut</source>
-        <translation type="unfinished">Taglio a spina di pesce</translation>
+        <translation>Taglio a spina di pesce</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="86"/>
         <source>Mitre Cut 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Taglio a spina di pesce 2</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="89"/>
         <source>Sail layout</source>
-        <translation type="unfinished">Taglio vela</translation>
+        <translation>Taglio vela</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="92"/>
         <source>Rig</source>
-        <translation type="unfinished">Attrezzatura</translation>
+        <translation>Attrezzatura</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="93"/>
         <source>Boat LOA</source>
-        <translation type="unfinished">Lunghezza della barca</translation>
+        <translation>Lunghezza della barca</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="94"/>
@@ -2041,182 +2041,182 @@
     <message>
         <location filename="../sailprinter.cpp" line="95"/>
         <source>Tack position X</source>
-        <translation type="unfinished">Posizione X del punto di mura</translation>
+        <translation>Posizione X del punto di mura</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="96"/>
         <source>Tack height Y</source>
-        <translation type="unfinished">Altezza Y del punto di mura</translation>
+        <translation>Altezza Y del punto di mura</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="97"/>
         <source>Fore triangle hoist I</source>
-        <translation type="unfinished">Altezza I del triangolo di prua</translation>
+        <translation>Altezza I del triangolo di prua</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="98"/>
         <source>Fore triangle base J</source>
-        <translation type="unfinished">Base J del triangolo di prua</translation>
+        <translation>Base J del triangolo di prua</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="101"/>
         <source>Sail dimensions</source>
-        <translation type="unfinished">Dimensioni della vela</translation>
+        <translation>Dimensioni della vela</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="102"/>
         <source>Luff length</source>
-        <translation type="unfinished">Lunghezza del ghindante</translation>
+        <translation>Lunghezza del ghindante</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="103"/>
         <source>Foot length</source>
-        <translation type="unfinished">Lunghezza della base</translation>
+        <translation>Lunghezza della base</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="104"/>
         <source>Leech length</source>
-        <translation type="unfinished">Lunghezza della balumina</translation>
+        <translation>Lunghezza della balumina</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="105"/>
         <source>Gaff length</source>
-        <translation type="unfinished">Lunghezza del picco</translation>
+        <translation>Lunghezza del picco</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="106"/>
         <source>Gaff angle wrt luff</source>
-        <translation type="unfinished">Angolo tra picco e ghindante</translation>
+        <translation>Angolo tra picco e ghindante</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="109"/>
         <source>Shape of edges</source>
-        <translation type="unfinished">Forma dei bordi</translation>
+        <translation>Forma dei bordi</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="110"/>
         <source>Luff round</source>
-        <translation type="unfinished">Allunamento del ghindante</translation>
+        <translation>Allunamento del ghindante</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="111"/>
         <source>Luff round position</source>
-        <translation type="unfinished">Posizione allunamento ghindante</translation>
+        <translation>Posizione allunamento ghindante</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="112"/>
         <source>Foot round</source>
-        <translation type="unfinished">Allunamento della base</translation>
+        <translation>Allunamento della base</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="113"/>
         <source>Foot round position</source>
-        <translation type="unfinished">Posizione allunamento base</translation>
+        <translation>Posizione allunamento base</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="114"/>
         <source>Leech round</source>
-        <translation type="unfinished">Allunamento della balumina</translation>
+        <translation>Allunamento della balumina</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="115"/>
         <source>Leech round position</source>
-        <translation type="unfinished">Posizione allunamento balumina</translation>
+        <translation>Posizione allunamento balumina</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="116"/>
         <source>Gaff round</source>
-        <translation type="unfinished">Allunamento del picco</translation>
+        <translation>Allunamento del picco</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="117"/>
         <source>Gaff round position</source>
-        <translation type="unfinished">Posizione allunamento picco</translation>
+        <translation>Posizione allunamento picco</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="120"/>
         <source>Sail settings</source>
-        <translation type="unfinished">Regolazioni vela</translation>
+        <translation>Regolazioni vela</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="121"/>
         <source>Twist angle</source>
-        <translation type="unfinished">Angolo di svergolamento</translation>
+        <translation>Angolo di svergolamento</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="122"/>
         <source>Sheeting angle</source>
-        <translation type="unfinished">Angolo caduta vela</translation>
+        <translation>Angolo caduta vela</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="125"/>
         <source>Cloth seams and hems</source>
-        <translation type="unfinished">Vivagni e vaine tessuto vela</translation>
+        <translation>Vivagni e vaine tessuto vela</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="126"/>
         <source>Cloth width</source>
-        <translation type="unfinished">Larghezza del tessuto vela</translation>
+        <translation>Larghezza del tessuto vela</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="127"/>
         <source>Seams width</source>
-        <translation type="unfinished">Larghezza vivagni</translation>
+        <translation>Larghezza vivagni</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="128"/>
         <source>Leech hem width</source>
-        <translation type="unfinished">Larghezza vaina balumina</translation>
+        <translation>Larghezza vaina balumina</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="129"/>
         <source>Foot hem width</source>
-        <translation type="unfinished"></translation>
+        <translation>Larghezza vaina base</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="130"/>
         <source>Other hems width</source>
-        <translation type="unfinished">Larghezza altre vaine</translation>
+        <translation>Larghezza altre vaine</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="133"/>
         <source>Sail mould</source>
-        <translation type="unfinished">Profilo della vela</translation>
+        <translation>Profilo della vela</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="134"/>
         <source>Luff factor</source>
-        <translation type="unfinished">Fattore ghindante</translation>
+        <translation>Fattore ghindante</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="134"/>
         <source>Depth</source>
-        <translation type="unfinished">Profondita&apos;</translation>
+        <translation>Profondita&apos;</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="134"/>
         <source>Leech factor</source>
-        <translation type="unfinished">Fattore balumina</translation>
+        <translation>Fattore balumina</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="136"/>
         <source>Top profile</source>
-        <translation type="unfinished">Profilo superiore</translation>
+        <translation>Profilo superiore</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="142"/>
         <source>Mid profile at h = </source>
-        <translation type="unfinished">Profilo mediano ad &quot;h&quot;</translation>
+        <translation>Profilo mediano ad &quot;h&quot;</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="148"/>
         <source>Bottom profile</source>
-        <translation type="unfinished">Profilo inferiore</translation>
+        <translation>Profilo inferiore</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="94"/>
         <source>Luff rake</source>
-        <translation type="unfinished"></translation>
+        <translation>Inclinazione ghindante</translation>
     </message>
 </context>
 <context>
