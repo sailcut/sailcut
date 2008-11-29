@@ -1,9 +1,10 @@
 ##### MacOS distribution generation #####
 
 STRIP = strip
-
-PACKAGE := $(shell cat configure.ac | grep AC_INIT | sed -e 's|AC_INIT$(p1)\([^,]\+\).*|\1|')
-VERSION := $(shell cat configure.ac | grep AC_INIT | sed -e 's/.*, \([^$(p2)]\+\).*/\1/')
+p1 = (
+p2 = )
+PACKAGE := $(shell cat configure.ac | grep AC_INIT | sed -e 's|AC_INIT$(p1)\([^,]*\).*|\1|')
+VERSION := $(shell cat configure.ac | grep AC_INIT | sed -e 's/.*, \([^$(p2)]*\).*/\1/')
 
 mac_builddir = mac-build
 mac_distdir = mac-dist
