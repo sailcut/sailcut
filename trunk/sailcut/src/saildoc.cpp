@@ -20,6 +20,9 @@
 #include "saildoc.h"
 #include <QFile>
 
+/** This contains all the input and output functions 
+ *  to read and write the sail, hull, rig, boat data to file.
+ */
 
 /**************************************************************************
 
@@ -124,7 +127,7 @@ QDomElement CSailDoc::findElement(const QDomNode &parent, const QString &type, c
 
 **************************************************************************/
 
-/** Reads an int value from an XML document.
+/** Reads an integer value from an XML document.
  *
  * @param parent the parent node
  * @param i the integer
@@ -139,7 +142,7 @@ void CSailDoc::get
 }
 
 
-/** Reads an unsigned int value from an XML document.
+/** Reads an unsigned integer value from an XML document.
  *
  * @param parent the parent node
  * @param i the unsigned integer
@@ -199,7 +202,7 @@ void CSailDoc::get
 }
 
 
-/** Reads a CPoint3D from an XML document.
+/** Reads a CPoint3D point with x,y,z coordinates from an XML document.
  *
  * @param parent the parent node
  * @param p the 3D point
@@ -218,7 +221,7 @@ void CSailDoc::get
 }
 
 
-/** Reads an enumPanelGroupType from an XML document.
+/** Reads an enumPanelGroupType enumerated Panel Group Type from an XML document.
  *
  * @param parent the parent node
  * @param t the enumPanelGroupType
@@ -249,7 +252,7 @@ void CSailDoc::get
 }
 
 
-/** Reads an enumSailCut from an XML document.
+/** Reads an enumSailCut enumerated Sail Cut type from an XML document.
  *
  * @param parent the parent node
  * @param c the enumSailCut
@@ -278,7 +281,7 @@ void CSailDoc::get
 }
 
 
-/** Reads an enumSailType from an XML document.
+/** Reads an enumSailType enumerated Sail Type from an XML document.
  *
  * @param parent the parent node
  * @param t the enumSailType
@@ -299,7 +302,7 @@ void CSailDoc::get
 }
 
 
-/** Reads an enumBoatElementType from an XML document.
+/** Reads an enumBoatElementType enumerated Boat Element Type from an XML document.
  *
  * @param parent the parent node
  * @param t the enumBoatElementType
@@ -322,7 +325,7 @@ void CSailDoc::get
 }
 
 
-/** Reads a CHullDef hulll definition from an XML document.
+/** Reads a CHullDef hull definition from an XML document.
  *
  * @param parent the parent node
  * @param d the hull definition
@@ -335,7 +338,7 @@ void CSailDoc::get
 
     get(e, d.hullID, "hullID");
 
-    // bottom
+    /** read hull bottom data */
     get(e, d.BLWL, "BLWL");
     get(e, d.BfwdHeight, "BfwdHeight");
     get(e, d.BaftHeight, "BaftHeight");
@@ -348,18 +351,18 @@ void CSailDoc::get
     get(e, d.BfwdShape, "BfwdShape");
     get(e, d.BaftShape, "BaftShape");
 
-    // deck
+    /** read hull deck data */
     get(e, d.DfwdHeight, "DfwdHeight");
     get(e, d.DaftHeight, "DaftHeight");
     get(e, d.DSlopeA, "DSlopeA");
 
-    // stem
+    /** read hull stem angle */
     get(e, d.StemA, "StemA");
 
-    // transom
+    /** read hull transom angle */
     get(e, d.TransomA, "TransomA");
 
-    // side planks
+    /** read hull side planks data */
     get(e, d.NBPlank, "NBPlank");
     get(e, d.TopPlankA, "TopPlankA");
     get(e, d.LowPlankA, "lowPlankA");
@@ -381,18 +384,18 @@ void CSailDoc::get
 {
     QDomElement e = findElement( parent, "CSailDef", name);
 
-    /* sail cut and type */
+    /** read sail cut layout and type */
     get(e, d.sailCut, "sailCut");
     get(e, d.sailType, "sailType");
 
-    /* boat data */
+    /** read sail boat data */
     get(e, d.LOA, "LOA");
     get(e, d.foreI, "foreI");
     get(e, d.foreJ, "foreJ");
     get(e, d.tackX, "tackX");
     get(e, d.tackY, "tackY");
 
-    /* sides of the sail */
+    /** read sail sides */
     get(e, d.luffL, "luffL");
     get(e, d.rake, "rake");
     get(e, d.gaffDeg, "gaffDeg");
@@ -400,7 +403,7 @@ void CSailDoc::get
     get(e, d.footL, "footL");
     get(e, d.leechL, "leechL");
 
-    /* shape of sides */
+    /** read sail shape of sides */
     get(e, d.luffR, "luffR");
     get(e, d.gaffR, "gaffR");
     get(e, d.leechR, "leechR");
@@ -411,48 +414,48 @@ void CSailDoc::get
     get(e, d.leechRP, "leechRP");
     get(e, d.footRP, "footRP");
 
-    /* cloth width, seam and hems width */
+    /** read sail cloth width, seam and hems width */
     get(e, d.clothW, "clothW");
     get(e, d.seamW, "seamW");
     get(e, d.leechHemW, "leechHemW");
     get(e, d.hemsW, "hemsW");
 
-    /* twist */
+    /** read sail twist */
     get(e, d.twistDeg, "twistDeg");
 
-    /* mould */
+    /** read sail mould */
     get(e, d.mould, "mould");
 
-    /* sheeting */
+    /** read sail sheeting angle */
     get(e, d.sheetDeg, "sheetDeg");
 
-    /* NOTE : we maintain backward file format compatibility
-     * by adding new members in the order they were introduced below
+    /** NOTE : we maintain backward file format compatibility by adding below
+     * all new members in the order they are introduced in CSailDoc::put
      */
     try
     {
-        /* Sail ID */
+        /** read Sail ID */
         get(e, d.sailID, "sailID");
 
-        /* Radial sections */
+        /** read Radial sections */
         get(e, d.nbSections, "nbSections");
 
-        /* Radial gores */
+        /** read Radial gores */
         get(e, d.nbGores, "nbGores");
 
-        /* Luff gores */
+        /** read Luff gores */
         get(e, d.nbLuffGores, "nbLuffGores");
 
-        /* Wing dihedral angle */
+        /** read Wing dihedral angle */
         get(e, d.dihedralDeg, "dihedralDeg");
         
-        /* Foot hem width */
+        /** read Foot hem width */
         get(e, d.footHemW, "footHemW");
 
     }
     catch (doc_element_error e)
     {
-        // to avoid killing the program
+        /** catch read error to avoid killing the program */
     }
 }
 
@@ -516,7 +519,7 @@ void CSailDoc::get
     get_vector(e, g.child, "child");
 
     /* NOTE : we maintain backward file format compatibility
-     * by adding new members in the order they were introduced below
+     * by adding below all new members in the order they were introduced 
      */
     try
     {
@@ -633,10 +636,10 @@ void CSailDoc::get
 
     get(e, d.rigID, "rigID");
 
-    // fore triangle
+    /** read fore triangle data */
     get(e, d.foreI, "foreI");
     get(e, d.foreJ, "foreJ");
-    // mast
+    /** read mast data */
     get(e, d.MHeight, "MHeight");
     get(e, d.MCord, "MCord");
     get(e, d.MWidth, "MWidth");
@@ -645,11 +648,11 @@ void CSailDoc::get
     get(e, d.MBase, "MBase");
     get(e, d.MRnd, "MRnd");
     get(e, d.MRndPos, "MRndPos");
-    // shrouds
+    /** read shrouds data */
     get(e, d.CSH, "CSH");
     get(e, d.CSB, "CSB");
     get(e, d.LSB, "LSB");
-    // spreaders
+    /** read spreaders data */
     get(e, d.SPNB, "SPNB");
     get(e, d.SPH[0], "SPH0");
     get(e, d.SPH[1], "SPH1");
@@ -659,7 +662,7 @@ void CSailDoc::get
     get(e, d.SPW[1], "SPW1");
     get(e, d.SPW[2], "SPW2");
     get(e, d.SPW[3], "SPW3");
-    // mainsail data
+    /** read mainsail data */
     get(e, d.BAD, "BAD");
     get(e, d.HAD, "HAD");
     //
@@ -672,7 +675,7 @@ void CSailDoc::get
 
 **************************************************************************/
 
-/** Puts an int value to an XML document.
+/** Puts an integer value to an XML document.
  */
 void CSailDoc::put(QDomNode &parent, const int &i, const QString &name )
 {
@@ -681,7 +684,7 @@ void CSailDoc::put(QDomNode &parent, const int &i, const QString &name )
 }
 
 
-/** Puts an unsigned int value to an XML document.
+/** Puts an unsigned integer value to an XML document.
  */
 void CSailDoc::put(QDomNode &parent, const unsigned int &i, const QString &name )
 {
@@ -729,7 +732,7 @@ void CSailDoc::put(QDomNode &parent, const CPoint3d &p, const QString &name )
 }
 
 
-/** Puts an enumBoatElementType to an XML document.
+/** Puts an enumBoatElementType enumerated Boat Element Type to an XML document.
  */
 void CSailDoc::put(QDomNode &parent, const enumBoatElementType &t, const QString &name )
 {
@@ -754,7 +757,7 @@ void CSailDoc::put(QDomNode &parent, const enumBoatElementType &t, const QString
 }
 
 
-/** Puts an enumPanelGroupType to an XML document.
+/** Puts an enumPanelGroupType enumerated Panel Group Type to an XML document.
  */
 void CSailDoc::put(QDomNode &parent, const enumPanelGroupType &t, const QString &name )
 {
@@ -776,7 +779,7 @@ void CSailDoc::put(QDomNode &parent, const enumPanelGroupType &t, const QString 
 }
 
 
-/** Puts an enumSailCut to an XML document.
+/** Puts an enumSailCut enumerated Sail Cut Type to an XML document.
  */
 void CSailDoc::put(QDomNode &parent, const enumSailCut &c, const QString &name )
 {
@@ -810,7 +813,7 @@ void CSailDoc::put(QDomNode &parent, const enumSailCut &c, const QString &name )
 }
 
 
-/** Puts an enumSailType to an XML document.
+/** Puts an enumSailType enumerated Sailf Type to an XML document.
  */
 void CSailDoc::put(QDomNode &parent, const enumSailType &t, const QString &name )
 {
@@ -841,7 +844,7 @@ void CSailDoc::put(QDomNode &parent, const CHullDef &d, const QString &name )
 
     put(e, d.hullID, "hullID");
 
-    // bottom
+    /** write hull bottom data */
     put(e, d.BLWL, "BLWL");
     put(e, d.BfwdHeight, "BfwdHeight");
     put(e, d.BaftHeight, "BaftHeight");
@@ -854,18 +857,18 @@ void CSailDoc::put(QDomNode &parent, const CHullDef &d, const QString &name )
     put(e, d.BfwdShape, "BfwdShape");
     put(e, d.BaftShape, "BaftShape");
 
-    // deck
+    /** write hull deck data */
     put(e, d.DfwdHeight, "DfwdHeight");
     put(e, d.DaftHeight, "DaftHeight");
     put(e, d.DSlopeA, "DSlopeA");
 
-    // stem
+    /** write hull stem angle */
     put(e, d.StemA, "StemA");
 
-    // transom
+    /** write hull transom angle */
     put(e, d.TransomA, "TransomA");
 
-    // side planks
+    /** write hull side planks data */
     put(e, d.NBPlank, "NBPlank");
     put(e, d.TopPlankA, "TopPlankA");
     put(e, d.LowPlankA, "lowPlankA");
@@ -885,18 +888,18 @@ void CSailDoc::put(QDomNode &parent, const CSailDef &d, const QString &name )
     QDomElement e = createElement("CSailDef",name);
     parent.appendChild(e);
 
-    /* Sail cut and type */
+    /** write Sail cut and Sail type */
     put(e, d.sailCut, "sailCut");
     put(e, d.sailType, "sailType");
 
-    /* Boat data */
+    /** write Sail Boat data */
     put(e, d.LOA, "LOA");
     put(e, d.foreI, "foreI");
     put(e, d.foreJ, "foreJ");
     put(e, d.tackX, "tackX");
     put(e, d.tackY, "tackY");
 
-    /* Sides of the sail */
+    /** write Sides of the sail */
     put(e, d.luffL, "luffL");
     put(e, d.rake, "rake");
     put(e, d.gaffDeg, "gaffDeg");
@@ -904,7 +907,7 @@ void CSailDoc::put(QDomNode &parent, const CSailDef &d, const QString &name )
     put(e, d.footL, "footL");
     put(e, d.leechL, "leechL");
 
-    /* Shape of sides */
+    /** write Shape of sail sides */
     put(e, d.luffR, "luffR");
     put(e, d.gaffR, "gaffR");
     put(e, d.leechR, "leechR");
@@ -915,37 +918,43 @@ void CSailDoc::put(QDomNode &parent, const CSailDef &d, const QString &name )
     put(e, d.leechRP, "leechRP");
     put(e, d.footRP, "footRP");
 
-    /* Cloth width, seam and hems width */
+    /** write sail Cloth width, Seam and Hems width */
     put(e, d.clothW, "clothW");
     put(e, d.seamW, "seamW");
     put(e, d.leechHemW, "leechHemW");
     put(e, d.hemsW, "hemsW");
 
-    /* Twist */
+    /** write sail Twist angle*/
     put(e, d.twistDeg, "twistDeg");
-    /* Sheeting */
+    
+    /** write sail Sheeting angle*/
     put(e, d.sheetDeg, "sheetDeg");
 
-    /* Mould */
+    /** write sail Mould */
     put(e, d.mould, "mould");
 
-    /* Sail ID */
+    //** NOTE: this is the point at which sail data evolutions start */
+    
+    /** write sail ID */
     put(e, d.sailID, "sailID");
 
-    /* Radial sections */
+    /** write sail Radial sections */
     put(e, d.nbSections, "nbSections");
 
-    /* Radial gores */
+    /** write sail Radial gores */
     put(e, d.nbGores, "nbGores");
 
-    /* Luff gores */
+    /** write sail Luff gores */
     put(e, d.nbLuffGores, "nbLuffGores");
 
-    /* Wing dihedral angle */
+    /** write sail Wing dihedral angle */
     put(e, d.dihedralDeg, "dihedralDeg");
     
-    /* Foot hem width */
+    /** write sail Foot hem width */
     put(e, d.footHemW, "footHemW");
+    
+    /** NOTE: write here below future new elements of sail */
+    //
 }
 
 
@@ -973,7 +982,7 @@ void CSailDoc::put(QDomNode &parent, const CPanel &p, const QString &name )
     put(e, p.bottom, "bottom");
 
     put(e, p.hasHems, "hasHems");
-
+    
     if (p.hasHems)
     {
         put(e, p.cutLeft, "cutLeft");
@@ -1034,7 +1043,7 @@ void CSailDoc::put(QDomNode &parent, const CBoatDef &d, const QString &name )
 }
 
 
-/** Put a CBoatElement sail to an XML document.
+/** Put a CBoatElement elements of a boat (sail, hull, rig) to an XML document.
  */
 void CSailDoc::put(QDomNode &parent, const CBoatElement &s, const QString &name )
 {
@@ -1048,7 +1057,7 @@ void CSailDoc::put(QDomNode &parent, const CBoatElement &s, const QString &name 
 }
 
 
-/** Puts a CPrefs to an XML document.
+/** Puts a CPrefs preferences to an XML document.
  */
 void CSailDoc::put(QDomNode &parent, const CPrefs& p, const QString& name)
 {
@@ -1073,10 +1082,10 @@ void CSailDoc::put(QDomNode &parent, const CRigDef &d, const QString &name )
 
     put(e, d.rigID, "rigID");
 
-    // fore triangle
+    /** write rig fore triangle */
     put(e, d.foreI, "foreI");
     put(e, d.foreJ, "foreJ");
-    // mast
+    /** write rig mast data*/
     put(e, d.MHeight, "MHeight");
     put(e, d.MCord, "MCord");
     put(e, d.MWidth, "MWidth");
@@ -1085,11 +1094,11 @@ void CSailDoc::put(QDomNode &parent, const CRigDef &d, const QString &name )
     put(e, d.MBase, "MBase");
     put(e, d.MRnd, "MRnd");
     put(e, d.MRndPos, "MRndPos");
-    // shrouds
+    /** write rig shrouds data */
     put(e, d.CSH, "CSH");
     put(e, d.CSB, "CSB");
     put(e, d.LSB, "LSB");
-    // spreaders
+    /** write rig spreaders data */
     put(e, d.SPNB, "SPNB");
     put(e, d.SPH[0], "SPH0");
     put(e, d.SPH[1], "SPH1");
@@ -1099,7 +1108,7 @@ void CSailDoc::put(QDomNode &parent, const CRigDef &d, const QString &name )
     put(e, d.SPW[1], "SPW1");
     put(e, d.SPW[2], "SPW2");
     put(e, d.SPW[3], "SPW3");
-    // mainsail data
+    /** write rig mainsail data */
     put(e, d.BAD, "BAD");
     put(e, d.HAD, "HAD");
     //
