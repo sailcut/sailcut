@@ -127,8 +127,10 @@ protected:
     QAction *actionTile;
     /** Cascade document windows */
     QAction *actionCascade;
+    
     /** Display the handbook */
     QAction *actionHandbook;
+    
     /** Create a new boat */
     QAction *actionNewBoat;
     /** Create a new hull */
@@ -139,12 +141,14 @@ protected:
     QAction *actionNewSail;
     /** Open an existing sail definition */
     QAction *actionOpen;
+    
     /** Save the sail definition to a file */
     QAction *actionSave;
     /** Prompt for a filename then write the sail definition to a file */
     QAction *actionSaveAs;
     /** Final separator in the 'File' menu before 'Quit' */
     QAction *actionFileSep;
+    
     /** View the sail definition */
     QAction *actionViewDef;
     /** View the sail mould */
