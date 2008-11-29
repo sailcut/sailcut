@@ -29,6 +29,7 @@
 #include "saildef.h"
 #include "prefs.h"
 
+
 class doc_element_error : public runtime_error
 {
 public:
@@ -41,7 +42,7 @@ public:
 /** @defgroup FileIo File input and output
 */
 
-/** This class handles input and output to Sailcut XML documents.
+/** This class handles all input and output to Sailcut XML documents.
  *
  * @ingroup FileIo
  */
