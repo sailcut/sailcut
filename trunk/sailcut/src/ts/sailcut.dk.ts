@@ -84,12 +84,12 @@
     <message>
         <location filename="../formboat.cpp" line="104"/>
         <source>boat</source>
-        <translation type="unfinished"></translation>
+        <translation>båden</translation>
     </message>
     <message>
         <location filename="../formboat.cpp" line="105"/>
         <source>&amp;Add</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Tilføj</translation>
     </message>
     <message>
         <location filename="../formboat.cpp" line="106"/>
@@ -945,12 +945,12 @@
     <message>
         <location filename="../formprint.cpp" line="159"/>
         <source>&amp;Print</source>
-        <translation type="unfinished">&amp;Udskriv</translation>
+        <translation>&amp;Udskriv</translation>
     </message>
     <message>
         <location filename="../formprint.cpp" line="162"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished">&amp;Annuller</translation>
+        <translation>&amp;Annuller</translation>
     </message>
 </context>
 <context>
@@ -1886,17 +1886,17 @@ stævn</translation>
     <message>
         <location filename="../formsaildefbase.ui" line="643"/>
         <source>Luff rake</source>
-        <translation type="unfinished"></translation>
+        <translation>Forli hældning</translation>
     </message>
     <message>
         <location filename="../formsaildefbase.ui" line="1176"/>
         <source>Mitre cut 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Mitre cut 2</translation>
     </message>
     <message>
         <location filename="../formsaildefbase.ui" line="1532"/>
         <source>Foot hem</source>
-        <translation type="unfinished"></translation>
+        <translation>Sejlfod kantning</translation>
     </message>
 </context>
 <context>
@@ -1947,97 +1947,97 @@ stævn</translation>
     <message>
         <location filename="../sailprinter.cpp" line="44"/>
         <source>Sailcut CAD data sheet</source>
-        <translation type="unfinished">Sailcut CAD data side</translation>
+        <translation>Sailcut CAD data side</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="50"/>
         <source>Mainsail</source>
-        <translation type="unfinished">Storsejl</translation>
+        <translation>Storsejl</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="53"/>
         <source>Jib</source>
-        <translation type="unfinished">Fok</translation>
+        <translation>Fok</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="56"/>
         <source>Wing</source>
-        <translation type="unfinished">Vinge</translation>
+        <translation>Vinge</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="56"/>
         <source>deg</source>
-        <translation type="unfinished">grd</translation>
+        <translation>grd</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="59"/>
         <source>Sail type</source>
-        <translation type="unfinished">Sejl type</translation>
+        <translation>Sejl type</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="65"/>
         <source>Cross Cut</source>
-        <translation type="unfinished">Cross Cut</translation>
+        <translation>Cross Cut</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="68"/>
         <source>Horizontal Cut</source>
-        <translation type="unfinished">Horisontal Cut</translation>
+        <translation>Horisontal Cut</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="71"/>
         <source>Radial Cut</source>
-        <translation type="unfinished">Radial Cut</translation>
+        <translation>Radial Cut</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="72"/>
         <source>sections</source>
-        <translation type="unfinished">sektioner</translation>
+        <translation>sektioner</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="73"/>
         <source>head gores</source>
-        <translation type="unfinished">hoved kiler</translation>
+        <translation>hoved kiler</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="74"/>
         <source>luff gores</source>
-        <translation type="unfinished">forli kiler</translation>
+        <translation>forli kiler</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="77"/>
         <source>Twist Foot Cut</source>
-        <translation type="unfinished">Twistet Foot Cut</translation>
+        <translation>Twistet Foot Cut</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="80"/>
         <source>Vertical Cut</source>
-        <translation type="unfinished">Vertikal Cut</translation>
+        <translation>Vertikal Cut</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="83"/>
         <source>Mitre Cut</source>
-        <translation type="unfinished">Mitre Cut</translation>
+        <translation>Mitre Cut</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="86"/>
         <source>Mitre Cut 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Mitre cut 2</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="89"/>
         <source>Sail layout</source>
-        <translation type="unfinished">Sejl layout</translation>
+        <translation>Sejl layout</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="92"/>
         <source>Rig</source>
-        <translation type="unfinished">Rig</translation>
+        <translation>Rig</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="93"/>
         <source>Boat LOA</source>
-        <translation type="unfinished">Bådens LOA</translation>
+        <translation>Bådens LOA</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="94"/>
@@ -2047,22 +2047,22 @@ stævn</translation>
     <message>
         <location filename="../sailprinter.cpp" line="95"/>
         <source>Tack position X</source>
-        <translation type="unfinished">Halsbarm position X</translation>
+        <translation>Halsbarm position X</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="96"/>
         <source>Tack height Y</source>
-        <translation type="unfinished">Halsbarm højde Y</translation>
+        <translation>Halsbarm højde Y</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="97"/>
         <source>Fore triangle hoist I</source>
-        <translation type="unfinished">Forstags længde I mål</translation>
+        <translation>Forstags længde I mål</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="98"/>
         <source>Fore triangle base J</source>
-        <translation type="unfinished">Afstand fra forstævn til mast, J mål</translation>
+        <translation>Afstand fra forstævn til mast, J mål</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="101"/>
@@ -2072,107 +2072,107 @@ stævn</translation>
     <message>
         <location filename="../sailprinter.cpp" line="102"/>
         <source>Luff length</source>
-        <translation type="unfinished">Forli længde</translation>
+        <translation>Forli længde</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="103"/>
         <source>Foot length</source>
-        <translation type="unfinished">Sejlfod længde</translation>
+        <translation>Sejlfod længde</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="104"/>
         <source>Leech length</source>
-        <translation type="unfinished">Bagli længde</translation>
+        <translation>Bagli længde</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="105"/>
         <source>Gaff length</source>
-        <translation type="unfinished">Gaffel længde</translation>
+        <translation>Gaffel længde</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="106"/>
         <source>Gaff angle wrt luff</source>
-        <translation type="unfinished">Gaffel vinkel fra forli</translation>
+        <translation>Gaffel vinkel fra forli</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="109"/>
         <source>Shape of edges</source>
-        <translation type="unfinished">Kanternes form</translation>
+        <translation>Kanternes form</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="110"/>
         <source>Luff round</source>
-        <translation type="unfinished">Forli runding</translation>
+        <translation>Forli runding</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="111"/>
         <source>Luff round position</source>
-        <translation type="unfinished">Forli rundings position</translation>
+        <translation>Forli rundings position</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="112"/>
         <source>Foot round</source>
-        <translation type="unfinished"></translation>
+        <translation>Sejlfod runding</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="113"/>
         <source>Foot round position</source>
-        <translation type="unfinished">Sejlfods rundings position</translation>
+        <translation>Sejlfods rundings position</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="114"/>
         <source>Leech round</source>
-        <translation type="unfinished">Bagli runding</translation>
+        <translation>Bagli runding</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="115"/>
         <source>Leech round position</source>
-        <translation type="unfinished">Bagli rundings position</translation>
+        <translation>Bagli rundings position</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="116"/>
         <source>Gaff round</source>
-        <translation type="unfinished">Gaffel runding</translation>
+        <translation>Gaffel runding</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="117"/>
         <source>Gaff round position</source>
-        <translation type="unfinished">Position af Gaffel runding</translation>
+        <translation>Position af Gaffel runding</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="120"/>
         <source>Sail settings</source>
-        <translation type="unfinished">Sejl egenskaber</translation>
+        <translation>Sejl egenskaber</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="121"/>
         <source>Twist angle</source>
-        <translation type="unfinished">Tvist vinkel</translation>
+        <translation>Tvist vinkel</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="122"/>
         <source>Sheeting angle</source>
-        <translation type="unfinished">Lag vinkel</translation>
+        <translation>Lag vinkel</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="125"/>
         <source>Cloth seams and hems</source>
-        <translation type="unfinished">Sømme og kantninger</translation>
+        <translation>Sømme og kantninger</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="126"/>
         <source>Cloth width</source>
-        <translation type="unfinished">Tekstil bredde</translation>
+        <translation>Tekstil bredde</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="127"/>
         <source>Seams width</source>
-        <translation type="unfinished">Sømbredde</translation>
+        <translation>Sømbredde</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="128"/>
         <source>Leech hem width</source>
-        <translation type="unfinished">Bredde på bagli søm</translation>
+        <translation>Bredde på bagli søm</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="129"/>
@@ -2182,47 +2182,47 @@ stævn</translation>
     <message>
         <location filename="../sailprinter.cpp" line="130"/>
         <source>Other hems width</source>
-        <translation type="unfinished"></translation>
+        <translation>Andre søm bredde</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="133"/>
         <source>Sail mould</source>
-        <translation type="unfinished">Sejl form</translation>
+        <translation>Sejl form</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="134"/>
         <source>Luff factor</source>
-        <translation type="unfinished">Forli faktor</translation>
+        <translation>Forli faktor</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="134"/>
         <source>Depth</source>
-        <translation type="unfinished">Dybde</translation>
+        <translation>Dybde</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="134"/>
         <source>Leech factor</source>
-        <translation type="unfinished">Bagli faktor</translation>
+        <translation>Bagli faktor</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="136"/>
         <source>Top profile</source>
-        <translation type="unfinished">Øverste profil</translation>
+        <translation>Øverste profil</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="142"/>
         <source>Mid profile at h = </source>
-        <translation type="unfinished">Midter profil ved h =</translation>
+        <translation>Midter profil ved h =</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="148"/>
         <source>Bottom profile</source>
-        <translation type="unfinished">Nederste profil</translation>
+        <translation>Nederste profil</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="94"/>
         <source>Luff rake</source>
-        <translation type="unfinished"></translation>
+        <translation>Forli hældning</translation>
     </message>
 </context>
 <context>

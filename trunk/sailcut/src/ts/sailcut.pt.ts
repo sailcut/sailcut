@@ -950,12 +950,12 @@
     <message>
         <location filename="../formprint.cpp" line="159"/>
         <source>&amp;Print</source>
-        <translation type="unfinished">&amp;Imprimir</translation>
+        <translation>&amp;Imprimir</translation>
     </message>
     <message>
         <location filename="../formprint.cpp" line="162"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished">&amp;Cancelar</translation>
+        <translation>&amp;Cancelar</translation>
     </message>
 </context>
 <context>
@@ -1951,97 +1951,97 @@
     <message>
         <location filename="../sailprinter.cpp" line="44"/>
         <source>Sailcut CAD data sheet</source>
-        <translation type="unfinished">Folha de dados do Sailcut CAD</translation>
+        <translation>Folha de dados do Sailcut CAD</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="50"/>
         <source>Mainsail</source>
-        <translation type="unfinished">Vela Grande</translation>
+        <translation>Vela Grande</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="53"/>
         <source>Jib</source>
-        <translation type="unfinished"></translation>
+        <translation>Vela de Estai</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="56"/>
         <source>Wing</source>
-        <translation type="unfinished">Asa</translation>
+        <translation>Asa</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="56"/>
         <source>deg</source>
-        <translation type="unfinished">graus</translation>
+        <translation>graus</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="59"/>
         <source>Sail type</source>
-        <translation type="unfinished">Tipo de vela</translation>
+        <translation>Tipo de vela</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="65"/>
         <source>Cross Cut</source>
-        <translation type="unfinished"></translation>
+        <translation>Corte Transversal</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="68"/>
         <source>Horizontal Cut</source>
-        <translation type="unfinished"></translation>
+        <translation>Corte Horizontal</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="71"/>
         <source>Radial Cut</source>
-        <translation type="unfinished"></translation>
+        <translation>Corte Radial</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="72"/>
         <source>sections</source>
-        <translation type="unfinished"> secções </translation>
+        <translation> secções </translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="73"/>
         <source>head gores</source>
-        <translation type="unfinished">radiais do topo</translation>
+        <translation>radiais do topo</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="74"/>
         <source>luff gores</source>
-        <translation type="unfinished">radiais da testa</translation>
+        <translation>radiais da testa</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="77"/>
         <source>Twist Foot Cut</source>
-        <translation type="unfinished">Corte &quot;Twist foot&quot;</translation>
+        <translation>Corte &quot;Twist foot&quot;</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="80"/>
         <source>Vertical Cut</source>
-        <translation type="unfinished">Corte Vertical</translation>
+        <translation>Corte Vertical</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="83"/>
         <source>Mitre Cut</source>
-        <translation type="unfinished">Corte de Meia Esquadria</translation>
+        <translation>Corte de Meia Esquadria</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="86"/>
         <source>Mitre Cut 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Corte de meia esquadria 2</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="89"/>
         <source>Sail layout</source>
-        <translation type="unfinished">Formato da vela</translation>
+        <translation>Formato da vela</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="92"/>
         <source>Rig</source>
-        <translation type="unfinished">Aparelho</translation>
+        <translation>Aparelho</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="93"/>
         <source>Boat LOA</source>
-        <translation type="unfinished">Comprimento do barco fora-a-fora - LOA</translation>
+        <translation>Comprimento do barco fora-a-fora - LOA</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="94"/>
@@ -2051,132 +2051,132 @@
     <message>
         <location filename="../sailprinter.cpp" line="95"/>
         <source>Tack position X</source>
-        <translation type="unfinished">Posição do punho da amura X</translation>
+        <translation>Posição do punho da amura X</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="96"/>
         <source>Tack height Y</source>
-        <translation type="unfinished">Altura do punho da amura Y</translation>
+        <translation>Altura do punho da amura Y</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="97"/>
         <source>Fore triangle hoist I</source>
-        <translation type="unfinished">Altura do triângulo de vante - I</translation>
+        <translation>Altura do triângulo de vante - I</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="98"/>
         <source>Fore triangle base J</source>
-        <translation type="unfinished">Base do triângulo de vante - J</translation>
+        <translation>Base do triângulo de vante - J</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="101"/>
         <source>Sail dimensions</source>
-        <translation type="unfinished">Dimensões da vela</translation>
+        <translation>Dimensões da vela</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="102"/>
         <source>Luff length</source>
-        <translation type="unfinished">Comprimento da testa</translation>
+        <translation>Comprimento da testa</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="103"/>
         <source>Foot length</source>
-        <translation type="unfinished">Comprimento da esteira</translation>
+        <translation>Comprimento da esteira</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="104"/>
         <source>Leech length</source>
-        <translation type="unfinished">Comprimento da valuma</translation>
+        <translation>Comprimento da valuma</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="105"/>
         <source>Gaff length</source>
-        <translation type="unfinished">Comprimento do gurutil</translation>
+        <translation>Comprimento do gurutil</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="106"/>
         <source>Gaff angle wrt luff</source>
-        <translation type="unfinished">Âgulo da gurutil wrt testa</translation>
+        <translation>Âgulo da gurutil wrt testa</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="109"/>
         <source>Shape of edges</source>
-        <translation type="unfinished">Forma das extremidades</translation>
+        <translation>Forma das extremidades</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="110"/>
         <source>Luff round</source>
-        <translation type="unfinished">Curva da testa</translation>
+        <translation>Curva da testa</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="111"/>
         <source>Luff round position</source>
-        <translation type="unfinished">Posição da curva da testa</translation>
+        <translation>Posição da curva da testa</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="112"/>
         <source>Foot round</source>
-        <translation type="unfinished">Curva da esteira</translation>
+        <translation>Curva da esteira</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="113"/>
         <source>Foot round position</source>
-        <translation type="unfinished">Posição da curva da esteira</translation>
+        <translation>Posição da curva da esteira</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="114"/>
         <source>Leech round</source>
-        <translation type="unfinished">Curva da valuma</translation>
+        <translation>Curva da valuma</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="115"/>
         <source>Leech round position</source>
-        <translation type="unfinished">Posição da curva da valuma</translation>
+        <translation>Posição da curva da valuma</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="116"/>
         <source>Gaff round</source>
-        <translation type="unfinished"></translation>
+        <translation>Curva da gurutil</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="117"/>
         <source>Gaff round position</source>
-        <translation type="unfinished">Posição da curva do gurutil</translation>
+        <translation>Posição da curva do gurutil</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="120"/>
         <source>Sail settings</source>
-        <translation type="unfinished">Afinações da vela</translation>
+        <translation>Afinações da vela</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="121"/>
         <source>Twist angle</source>
-        <translation type="unfinished"></translation>
+        <translation>Âgulo de torção</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="122"/>
         <source>Sheeting angle</source>
-        <translation type="unfinished"></translation>
+        <translation>Âgulo de escota</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="125"/>
         <source>Cloth seams and hems</source>
-        <translation type="unfinished">Costuras e baínhas do tecido</translation>
+        <translation>Costuras e baínhas do tecido</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="126"/>
         <source>Cloth width</source>
-        <translation type="unfinished">Largura do tecido</translation>
+        <translation>Largura do tecido</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="127"/>
         <source>Seams width</source>
-        <translation type="unfinished">Largura das costuras</translation>
+        <translation>Largura das costuras</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="128"/>
         <source>Leech hem width</source>
-        <translation type="unfinished">Largura da baínha da valuma</translation>
+        <translation>Largura da baínha da valuma</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="129"/>
@@ -2191,42 +2191,42 @@
     <message>
         <location filename="../sailprinter.cpp" line="133"/>
         <source>Sail mould</source>
-        <translation type="unfinished">Molde da vela</translation>
+        <translation>Molde da vela</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="134"/>
         <source>Luff factor</source>
-        <translation type="unfinished">Factor da testa</translation>
+        <translation>Factor da testa</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="134"/>
         <source>Depth</source>
-        <translation type="unfinished">Profundidade</translation>
+        <translation>Profundidade</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="134"/>
         <source>Leech factor</source>
-        <translation type="unfinished">Factor da valuma</translation>
+        <translation>Factor da valuma</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="136"/>
         <source>Top profile</source>
-        <translation type="unfinished">Perfil do topo</translation>
+        <translation>Perfil do topo</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="142"/>
         <source>Mid profile at h = </source>
-        <translation type="unfinished">Perfil do meio em h = </translation>
+        <translation>Perfil do meio em h = </translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="148"/>
         <source>Bottom profile</source>
-        <translation type="unfinished">Perfil da base</translation>
+        <translation>Perfil da base</translation>
     </message>
     <message>
         <location filename="../sailprinter.cpp" line="94"/>
         <source>Luff rake</source>
-        <translation type="unfinished"></translation>
+        <translation>Caimento testa</translation>
     </message>
 </context>
 <context>
