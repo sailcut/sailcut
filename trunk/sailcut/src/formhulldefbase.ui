@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>641</width>
-    <height>569</height>
+    <height>567</height>
    </rect>
   </property>
   <property name="minimumSize" >
@@ -20,38 +20,26 @@
    <string>Dialog</string>
   </property>
   <layout class="QGridLayout" >
-   <property name="leftMargin" >
+   <property name="margin" >
     <number>5</number>
    </property>
-   <property name="topMargin" >
-    <number>3</number>
-   </property>
-   <property name="rightMargin" >
+   <property name="spacing" >
     <number>5</number>
-   </property>
-   <property name="bottomMargin" >
-    <number>3</number>
-   </property>
-   <property name="horizontalSpacing" >
-    <number>5</number>
-   </property>
-   <property name="verticalSpacing" >
-    <number>3</number>
    </property>
    <item row="2" column="0" >
     <layout class="QHBoxLayout" >
-     <property name="spacing" >
-      <number>6</number>
-     </property>
      <property name="margin" >
-      <number>9</number>
+      <number>4</number>
+     </property>
+     <property name="spacing" >
+      <number>10</number>
      </property>
      <item>
       <spacer>
        <property name="orientation" >
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeHint" stdset="0" >
+       <property name="sizeHint" >
         <size>
          <width>381</width>
          <height>31</height>
@@ -143,7 +131,7 @@
             <property name="sizeType" >
              <enum>QSizePolicy::MinimumExpanding</enum>
             </property>
-            <property name="sizeHint" stdset="0" >
+            <property name="sizeHint" >
              <size>
               <width>31</width>
               <height>20</height>
@@ -162,11 +150,11 @@
             <property name="alignment" >
              <set>Qt::AlignHCenter</set>
             </property>
-            <property name="minimum" >
-             <number>30</number>
-            </property>
             <property name="maximum" >
              <number>45</number>
+            </property>
+            <property name="minimum" >
+             <number>30</number>
             </property>
             <property name="value" >
              <number>40</number>
@@ -183,7 +171,9 @@
           <item row="1" column="1" >
            <widget class="QSpinBox" name="spinBox_TopPlankA" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -208,7 +198,9 @@
           <item row="0" column="1" >
            <widget class="QSpinBox" name="spinBox_NBPlank" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -222,11 +214,11 @@
             <property name="alignment" >
              <set>Qt::AlignHCenter</set>
             </property>
-            <property name="minimum" >
-             <number>1</number>
-            </property>
             <property name="maximum" >
              <number>6</number>
+            </property>
+            <property name="minimum" >
+             <number>1</number>
             </property>
             <property name="value" >
              <number>2</number>
@@ -253,7 +245,9 @@
        <item row="2" column="0" >
         <widget class="QGroupBox" name="groupBox_Bottom" >
          <property name="sizePolicy" >
-          <sizepolicy vsizetype="Minimum" hsizetype="Preferred" >
+          <sizepolicy>
+           <hsizetype>0</hsizetype>
+           <vsizetype>0</vsizetype>
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -271,7 +265,9 @@
           <item row="4" column="3" >
            <widget class="QSpinBox" name="spinBox_BSweepA" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Minimum" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -295,7 +291,7 @@
             <property name="orientation" >
              <enum>Qt::Horizontal</enum>
             </property>
-            <property name="sizeHint" stdset="0" >
+            <property name="sizeHint" >
              <size>
               <width>211</width>
               <height>20</height>
@@ -306,7 +302,9 @@
           <item row="4" column="2" >
            <widget class="QLabel" name="label_BsweepA" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -319,7 +317,9 @@
           <item row="2" column="4" >
            <widget class="QLabel" name="label_percent" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Preferred" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -338,7 +338,9 @@
           <item row="2" column="3" >
            <widget class="QSpinBox" name="spinBox_BBWPos" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -352,11 +354,11 @@
             <property name="alignment" >
              <set>Qt::AlignHCenter</set>
             </property>
-            <property name="minimum" >
-             <number>20</number>
-            </property>
             <property name="maximum" >
              <number>80</number>
+            </property>
+            <property name="minimum" >
+             <number>20</number>
             </property>
             <property name="value" >
              <number>50</number>
@@ -366,7 +368,9 @@
           <item row="1" column="3" >
            <widget class="QSpinBox" name="spinBox_BSlopeA" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -388,7 +392,9 @@
           <item row="0" column="3" >
            <widget class="QSpinBox" name="spinBox_StemA" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -402,11 +408,11 @@
             <property name="alignment" >
              <set>Qt::AlignHCenter</set>
             </property>
-            <property name="minimum" >
-             <number>45</number>
-            </property>
             <property name="maximum" >
              <number>90</number>
+            </property>
+            <property name="minimum" >
+             <number>45</number>
             </property>
             <property name="value" >
              <number>80</number>
@@ -416,7 +422,9 @@
           <item row="2" column="1" >
            <widget class="QLineEdit" name="txt_BBW" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -442,7 +450,9 @@
           <item row="1" column="1" >
            <widget class="QLineEdit" name="txt_BfwdHeight" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -461,7 +471,9 @@
           <item row="0" column="1" >
            <widget class="QLineEdit" name="txt_BLWL" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -480,7 +492,9 @@
           <item row="2" column="6" >
            <widget class="QLineEdit" name="txt_BaftW" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -507,18 +521,20 @@
             <property name="alignment" >
              <set>Qt::AlignHCenter</set>
             </property>
-            <property name="minimum" >
-             <number>2</number>
-            </property>
             <property name="maximum" >
              <number>9</number>
+            </property>
+            <property name="minimum" >
+             <number>2</number>
             </property>
            </widget>
           </item>
           <item row="3" column="1" >
            <widget class="QSpinBox" name="spinBox_BfwdShape" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -532,18 +548,20 @@
             <property name="alignment" >
              <set>Qt::AlignHCenter</set>
             </property>
-            <property name="minimum" >
-             <number>2</number>
-            </property>
             <property name="maximum" >
              <number>9</number>
+            </property>
+            <property name="minimum" >
+             <number>2</number>
             </property>
            </widget>
           </item>
           <item row="4" column="1" >
            <widget class="QSpinBox" name="spinBox_BDeadriseA" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -568,7 +586,9 @@
           <item row="1" column="6" >
            <widget class="QLineEdit" name="txt_BaftHeight" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -587,7 +607,9 @@
           <item row="0" column="6" >
            <widget class="QSpinBox" name="spinBox_TransomA" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Minimum" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -601,11 +623,11 @@
             <property name="alignment" >
              <set>Qt::AlignHCenter</set>
             </property>
-            <property name="minimum" >
-             <number>45</number>
-            </property>
             <property name="maximum" >
              <number>99</number>
+            </property>
+            <property name="minimum" >
+             <number>45</number>
             </property>
             <property name="value" >
              <number>80</number>
@@ -615,7 +637,9 @@
           <item row="4" column="0" >
            <widget class="QLabel" name="label_BdeadriseA" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -642,7 +666,9 @@
           <item row="1" column="0" >
            <widget class="QLabel" name="label_BfwdHeight" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -662,7 +688,9 @@
           <item row="1" column="2" >
            <widget class="QLabel" name="label_BSlopeA" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -689,7 +717,9 @@
           <item row="1" column="5" >
            <widget class="QLabel" name="label_BaftHeight" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -715,22 +745,6 @@
           </item>
          </layout>
         </widget>
-       </item>
-       <item row="4" column="0" >
-        <spacer>
-         <property name="orientation" >
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeType" >
-          <enum>QSizePolicy::MinimumExpanding</enum>
-         </property>
-         <property name="sizeHint" stdset="0" >
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
        </item>
        <item row="0" column="0" >
         <widget class="QFrame" name="frame_5" >
@@ -763,7 +777,9 @@
           <item row="0" column="0" >
            <widget class="QLabel" name="label_HullID" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -797,7 +813,9 @@
           <item row="0" column="3" >
            <widget class="QSpinBox" name="spinBox_DSlopeA" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -811,11 +829,11 @@
             <property name="alignment" >
              <set>Qt::AlignHCenter</set>
             </property>
-            <property name="minimum" >
-             <number>0</number>
-            </property>
             <property name="maximum" >
              <number>24</number>
+            </property>
+            <property name="minimum" >
+             <number>0</number>
             </property>
             <property name="value" >
              <number>12</number>
@@ -825,7 +843,9 @@
           <item row="0" column="5" >
            <widget class="QLineEdit" name="txt_DaftHeight" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -844,7 +864,9 @@
           <item row="0" column="1" >
            <widget class="QLineEdit" name="txt_DfwdHeight" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -903,14 +925,11 @@
           <string>Plank 6</string>
          </property>
          <layout class="QGridLayout" >
-          <property name="horizontalSpacing" >
-           <number>5</number>
-          </property>
-          <property name="verticalSpacing" >
-           <number>3</number>
-          </property>
           <property name="margin" >
            <number>3</number>
+          </property>
+          <property name="spacing" >
+           <number>5</number>
           </property>
           <item row="0" column="4" >
            <widget class="QLabel" name="label_50" >
@@ -950,7 +969,9 @@
           <item row="1" column="0" >
            <widget class="QSpinBox" name="spinBox_1_26" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -969,7 +990,9 @@
           <item row="1" column="4" >
            <widget class="QSpinBox" name="spinBox_1_27" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -985,7 +1008,9 @@
           <item row="1" column="3" >
            <widget class="QSpinBox" name="spinBox_1_28" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -1001,7 +1026,9 @@
           <item row="1" column="2" >
            <widget class="QSpinBox" name="spinBox_1_29" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -1017,7 +1044,9 @@
           <item row="1" column="1" >
            <widget class="QSpinBox" name="spinBox_1_30" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -1039,14 +1068,11 @@
           <string>Plank 5</string>
          </property>
          <layout class="QGridLayout" >
-          <property name="horizontalSpacing" >
-           <number>5</number>
-          </property>
-          <property name="verticalSpacing" >
-           <number>3</number>
-          </property>
           <property name="margin" >
            <number>3</number>
+          </property>
+          <property name="spacing" >
+           <number>5</number>
           </property>
           <item row="0" column="4" >
            <widget class="QLabel" name="label_45" >
@@ -1086,7 +1112,9 @@
           <item row="1" column="0" >
            <widget class="QSpinBox" name="spinBox_1_21" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -1105,7 +1133,9 @@
           <item row="1" column="4" >
            <widget class="QSpinBox" name="spinBox_1_22" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -1121,7 +1151,9 @@
           <item row="1" column="3" >
            <widget class="QSpinBox" name="spinBox_1_23" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -1137,7 +1169,9 @@
           <item row="1" column="2" >
            <widget class="QSpinBox" name="spinBox_1_24" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -1153,7 +1187,9 @@
           <item row="1" column="1" >
            <widget class="QSpinBox" name="spinBox_1_25" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -1175,14 +1211,11 @@
           <string>Plank 4</string>
          </property>
          <layout class="QGridLayout" >
-          <property name="horizontalSpacing" >
-           <number>5</number>
-          </property>
-          <property name="verticalSpacing" >
-           <number>3</number>
-          </property>
           <property name="margin" >
            <number>3</number>
+          </property>
+          <property name="spacing" >
+           <number>5</number>
           </property>
           <item row="0" column="4" >
            <widget class="QLabel" name="label_40" >
@@ -1222,7 +1255,9 @@
           <item row="1" column="0" >
            <widget class="QSpinBox" name="spinBox_1_16" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -1241,7 +1276,9 @@
           <item row="1" column="4" >
            <widget class="QSpinBox" name="spinBox_1_17" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -1257,7 +1294,9 @@
           <item row="1" column="3" >
            <widget class="QSpinBox" name="spinBox_1_18" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -1273,7 +1312,9 @@
           <item row="1" column="2" >
            <widget class="QSpinBox" name="spinBox_1_19" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -1289,7 +1330,9 @@
           <item row="1" column="1" >
            <widget class="QSpinBox" name="spinBox_1_20" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -1311,14 +1354,11 @@
           <string>Plank 3</string>
          </property>
          <layout class="QGridLayout" >
-          <property name="horizontalSpacing" >
-           <number>5</number>
-          </property>
-          <property name="verticalSpacing" >
-           <number>3</number>
-          </property>
           <property name="margin" >
            <number>3</number>
+          </property>
+          <property name="spacing" >
+           <number>5</number>
           </property>
           <item row="0" column="4" >
            <widget class="QLabel" name="label_35" >
@@ -1358,7 +1398,9 @@
           <item row="1" column="0" >
            <widget class="QSpinBox" name="spinBox_1_11" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -1377,7 +1419,9 @@
           <item row="1" column="4" >
            <widget class="QSpinBox" name="spinBox_1_12" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -1393,7 +1437,9 @@
           <item row="1" column="3" >
            <widget class="QSpinBox" name="spinBox_1_13" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -1409,7 +1455,9 @@
           <item row="1" column="2" >
            <widget class="QSpinBox" name="spinBox_1_14" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -1425,7 +1473,9 @@
           <item row="1" column="1" >
            <widget class="QSpinBox" name="spinBox_1_15" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -1447,14 +1497,11 @@
           <string>Plank 1</string>
          </property>
          <layout class="QGridLayout" >
-          <property name="horizontalSpacing" >
-           <number>5</number>
-          </property>
-          <property name="verticalSpacing" >
-           <number>3</number>
-          </property>
           <property name="margin" >
            <number>3</number>
+          </property>
+          <property name="spacing" >
+           <number>5</number>
           </property>
           <item row="0" column="4" >
            <widget class="QLabel" name="label_24" >
@@ -1494,7 +1541,9 @@
           <item row="1" column="0" >
            <widget class="QSpinBox" name="spinBox_1_1" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -1513,7 +1562,9 @@
           <item row="1" column="4" >
            <widget class="QSpinBox" name="spinBox_1_5" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -1529,7 +1580,9 @@
           <item row="1" column="3" >
            <widget class="QSpinBox" name="spinBox_1_4" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -1545,7 +1598,9 @@
           <item row="1" column="2" >
            <widget class="QSpinBox" name="spinBox_1_3" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -1561,7 +1616,9 @@
           <item row="1" column="1" >
            <widget class="QSpinBox" name="spinBox_1_2" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -1583,19 +1640,18 @@
           <string>Plank 2</string>
          </property>
          <layout class="QGridLayout" >
-          <property name="horizontalSpacing" >
-           <number>5</number>
-          </property>
-          <property name="verticalSpacing" >
-           <number>3</number>
-          </property>
           <property name="margin" >
            <number>3</number>
+          </property>
+          <property name="spacing" >
+           <number>5</number>
           </property>
           <item row="1" column="1" >
            <widget class="QSpinBox" name="spinBox_1_10" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -1611,7 +1667,9 @@
           <item row="1" column="2" >
            <widget class="QSpinBox" name="spinBox_1_9" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -1627,7 +1685,9 @@
           <item row="1" column="3" >
            <widget class="QSpinBox" name="spinBox_1_8" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -1643,7 +1703,9 @@
           <item row="1" column="4" >
            <widget class="QSpinBox" name="spinBox_1_7" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -1659,7 +1721,9 @@
           <item row="1" column="0" >
            <widget class="QSpinBox" name="spinBox_1_6" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -1718,7 +1782,7 @@
          <property name="orientation" >
           <enum>Qt::Vertical</enum>
          </property>
-         <property name="sizeHint" stdset="0" >
+         <property name="sizeHint" >
           <size>
            <width>20</width>
            <height>20</height>
@@ -1733,10 +1797,18 @@
    <item row="0" column="0" >
     <widget class="QLabel" name="label" >
      <property name="sizePolicy" >
-      <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+      <sizepolicy>
+       <hsizetype>0</hsizetype>
+       <vsizetype>0</vsizetype>
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
+     </property>
+     <property name="minimumSize" >
+      <size>
+       <width>620</width>
+       <height>25</height>
+      </size>
      </property>
      <property name="font" >
       <font>
