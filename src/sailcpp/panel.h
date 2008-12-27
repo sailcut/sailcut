@@ -126,7 +126,7 @@ public:
  *
  *  A panel has at least four sides: top, bottom, left and right.
  *  A developed panel also has four additional sides representing
- *  the edge of the cloth.
+ *  the edge of the cloth taking into account seam width and hems width.
  *
  * @ingroup SailCpp
  */
