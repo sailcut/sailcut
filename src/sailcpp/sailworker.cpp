@@ -80,29 +80,35 @@ CSailWorker::CSailWorker(const CSailDef &s) : CSailDef(s)
         clew = tack + CMatrix::rot3d( 2 , bb-aa ) * v1;
     /* end of computation of corners of the sail */
 
-    /* Define useful vectors of sail edges. */
+    /** Define foot vector of sail edge. */
     footV = CVector3d( clew - tack );
+    /** Define gaff vector of sail edge. */
     gaffV = CVector3d( peak - head );
+    /** Define fleech vector of sail edge. */
     leechV = CVector3d( peak - clew );
+    /** Define luff vector of sail edge. */
     luffV = CVector3d( head - tack );
 
-    /* Define usefull vector mitre. */
+    /** Define mitre vector bisecting foot-leech angle. */
     mitreV = CVector3d( tack - clew ).unit() + leechV.unit();
 
-    /* Define the unitary vectors perpendicular to the edges, rotated left. */
+    /** Define the unitary vectors perpendicular to foot edge, rotated anti-clockwise. */
     footVP = CMatrix::rot3d(2, PI/2) * footV.unit();
+    /** Define the unitary vectors perpendicular to gaff edge, rotated anti-clockwise. */
     gaffVP = CMatrix::rot3d(2, PI/2) * gaffV.unit();
+    /** Define the unitary vectors perpendicular to leech edge, rotated anti-clockwise. */
     leechVP = CMatrix::rot3d(2, PI/2) * leechV.unit();
+    /** Define the unitary vectors perpendicular to luff edge, rotated anti-clockwise. */
     luffVP = CMatrix::rot3d(2, PI/2) * luffV.unit();
 
-    /* Define useful straight lines. */
+    /** Define useful straight lines of edges and mitre. */
     footLine = CSubSpace3d::line(tack , footV);
     gaffLine = CSubSpace3d::line(head , gaffV);
     leechLine = CSubSpace3d::line(clew , leechV);
     luffLine = CSubSpace3d::line(tack , luffV);
     mitreLine = CSubSpace3d::line(clew , mitreV);
 
-    /* Define point at intersection of mitre and luff. */
+    /** Define point at intersection of mitre and luff. */
     mitreLuffPt = EdgeIntersect( LUFF_EDGE, clew , mitreV );
 }
 
@@ -2682,7 +2688,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
     /* Store the number of panels in foot */
     npanelFoot = npanel;
     if (npanel == MAX_PANELS/2 -1)
-        throw layout_error("CSailWorker::LayoutMitre -5 : Foot got to MAX_PANELS/2 without reaching tack, you need to increase cloth width ");
+        throw layout_error("CSailWorker::LayoutMitre -5 : Foot got to MAX_PANELS/2 without reaching tack, do increase cloth width.");
 
     p1[npanel] = clew; // re-initialising at clew point
     p2[npanel] = clew;
@@ -3121,7 +3127,7 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
     /* Store the number of panels in foot */
     npanelFoot = npanel;
     if ( npanelFoot == MAX_PANELS/2 -1 )
-        throw layout_error("CSailWorker::LayoutMitre2 : Foot got to MAX_PANELS/2 without reaching Mitre intersect at Luff, do increase cloth width ");
+        throw layout_error("CSailWorker::LayoutMitre2 : Foot got to MAX_PANELS/2 without reaching Mitre intersection at Luff, do increase cloth width.");
     
     /** Then continue by laying the leech panels parallel to the leech,
      *  from the leech toward the luff intersection with the mitre. */
@@ -3148,6 +3154,8 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
             
             if ( seamL.intersect(mitreLine).getdim() == 0 ) {
                 p1[npanel] = seamL.intersect(mitreLine).getp();
+                if ( p1[npanel].x() >= clew.x() ) // point beyong clew
+                    p1[npanel] = clew;
                 t1[npanel] = 5; // type1=5= mitre intersection vertically cut panels
             }
             else
@@ -3208,8 +3216,13 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
             
             // fill left side points which are all on the mitre
             lay[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
-            for ( k = 0; k < npl; k++ )
-                lay[npanel-1].left[k] = MitreIntersect(lay[npanel-1].left[k], leechV);
+            if (p1[npanel-1] == p1[npanel]) { // clew limit
+                for ( k = 0; k < npl; k++ )
+                    lay[npanel-1].left[k] = lay[npanel-1].left[k];
+            }
+            else 
+                for ( k = 0; k < npl; k++ )
+                    lay[npanel-1].left[k] = MitreIntersect(lay[npanel-1].left[k], leechV);
 
             // fill bottom points
             lay[npanel-1].bottom.fill(lay[npanel-1].left[0], lay[npanel-1].right[0]);
@@ -3260,7 +3273,7 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
             exb = exb + (0.8 * exc) + 1; // sum previous correction + 80% of current excess of width +1mm
             
             if (cnt == cntMax) 
-                cout << "CSailcorker::LayoutMitre2  Leech panel " << npanel << " may be wider than cloth by " << exc << "mm." << endl;
+                cout << "CSailWorker::LayoutMitre2  Leech panel " << npanel << " may be wider than cloth by " << exc << "mm." << endl;
         }
         while ( exc > 0 && cnt < cntMax );
         /* loop DO as long as the excess of width is positive  AND counter <9 */
@@ -3277,7 +3290,7 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
     }  /* Loop FOR next seam */
     
     if ( npanel == MAX_PANELS -1 )
-        throw layout_error("LayoutMitre2 -f : MAX_PANELS without reaching Miter Intersect Point at Luff, do increase cloth width.");
+        throw layout_error("CSailWorker::LayoutMitre2 -f : MAX_PANELS without reaching Miter Intersect Point at Luff, do increase cloth width.");
 
     /* Copy the sails for display */
     CPanelGroup sail(npanel);
@@ -3725,10 +3738,11 @@ CPoint3d CSailWorker::EdgeIntersect( const enumEdgeType &Edge, const CPoint3d &p
             // translate point0 on straight edge
             p3 = p0 + v;
 
-            if ( CVector3d(p3 - pEnd1) * vEdge <= 0 )
-                p2 = pEnd1;  // p3 left of edge end
-            else if ( CVector3d(p3 - pEnd2) * vEdge >= 0 )
-                p2 = pEnd2;  // p3 right of edge end
+            // check if p3 is inside edge
+            if ( CVector3d(p3 - pEnd1) * vEdge <= 0 ) // p3 outside left of edge end
+                p2 = pEnd1;
+            else if ( CVector3d(p3 - pEnd2) * vEdge >= 0 ) // p3 outside right of edge end
+                p2 = pEnd2;
             else {   // point is on edge curve
                 h2 = CVector3d(p3 - pEnd1).norm() / (vEdge.norm() + EPS);
                 d2 = EdgeR * RoundP( h2 , EdgeRP ); // local depth of edge curve
@@ -3764,19 +3778,21 @@ CPoint3d CSailWorker::MitreIntersect( const CPoint3d &pt1, const CVector3d &v1 )
     if ( v1.norm() <= EPS )
         throw layout_error("CSailWorker::MitreIntersect : input vector is nul");
     // real x=0, y=0, z=0; // for debugging only
+    
+    /* straight line passing through input point */
+    CSubSpace ptv1 = CSubSpace3d::line(pt1 , v1);
+    
     CPoint3d p2 = pt1;
 
-    if ( CVector3d(p2 - clew).norm() <= 0 )
+    if ( CVector3d(p2 - clew).norm() <= EPS )
         p2 = clew;
-    else
-    {
-        /* straight line passing through input point */
-        CSubSpace ptv1 = CSubSpace3d::line(pt1 , v1);
-
-        /* point at intersection of input vector and mitre */
+    else {
+        /* point at intersection of input vector and mitre 
+           ckecking if it is inside segment or not is in LayoutMitre */
         if ( ptv1.intersect(mitreLine).getdim() == 0 )
             p2 = ptv1.intersect(mitreLine).getp();
-        else throw layout_error("CSailWorker::MitreIntersect -1 : intersection with mitre is not a point!");
+        else 
+            throw layout_error("CSailWorker::MitreIntersect -1 : intersection with mitre is not a point!");
     }
     return p2;
 } 
