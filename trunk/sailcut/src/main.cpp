@@ -18,6 +18,7 @@
  */
 
 #include <cstdio>
+#include <iostream>
 
 #include "sailcutqt.h"
 #include "formmain.h"
@@ -31,6 +32,7 @@
 
 /**
  * Sailcut CAD's main routine.
+ * it calls CFormmain
  */
 int main( int argc, char* argv[] )
 {
