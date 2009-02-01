@@ -322,7 +322,7 @@ bool CFormSailDef::check()
     bool flag = true;
     QString txt;
     
-    /** Create four palettes for level of alarm. */
+    /** Create four palettes for levels of warning. */
     QPalette palStd, palHi, palLo, palRel;
     palStd = txtLuffLen->palette();
     palLo = palHi = palRel = palStd;
@@ -458,7 +458,7 @@ bool CFormSailDef::check()
     }
     txtTackHeight->setText(QString::number(saildef->tackY));
 
-    /** Get length and round data on the sides of sail. */
+    /** Get length and round data of the 4 sides of sail. */
     saildef->luffL  = txtLuffLen->text().toDouble();
     saildef->luffR  = txtLuffRound->text().toDouble();
     saildef->luffRP = txtLuffRoundPos->text().toInt();
@@ -473,7 +473,8 @@ bool CFormSailDef::check()
 
     saildef->footL  = txtFootLen->text().toDouble();
     saildef->footR  = txtFootRound->text().toDouble();
-
+    saildef->footRP = 50; // imposed value
+    
     /** Check  rake. */
     saildef->rake   = txtRake->text().toDouble();
 
