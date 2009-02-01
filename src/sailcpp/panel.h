@@ -25,8 +25,6 @@
 
 #include <geocpp/geocpp.h>
 
-#include <iostream>
-
 enum enumPointType { LUFF, FOOT, LEECH, GAFF };
 enum enumAlign {LEFT, LOW_LEFT, BOTTOM};
 enum enumDevelopAlign {ALIGN_TOP,ALIGN_BOTTOM };

@@ -23,8 +23,6 @@
 #include "panelgroup.h"
 #include "saildef.h"
 
-#include <iostream>
-
 // forward declarations
 class CPanelGroup;
 class CSeam;
