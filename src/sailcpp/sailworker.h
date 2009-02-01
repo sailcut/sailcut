@@ -23,6 +23,8 @@
 #include "panelgroup.h"
 #include "saildef.h"
 
+#include <iostream>
+
 // forward declarations
 class CPanelGroup;
 class CSeam;
@@ -34,7 +36,7 @@ class layout_error : public runtime_error
 public:
     layout_error(const string &message) : runtime_error(message)
     {
-        cout << what() << endl;
+        cout << "in sailworker:" << what()  << endl;
     }
 };
 
