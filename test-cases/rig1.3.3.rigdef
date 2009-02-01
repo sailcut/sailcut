@@ -1,0 +1,30 @@
+<!DOCTYPE Sailcut>
+<CSailDoc>
+ <CRigDef name="rigdef" >
+  <string value="Test rig 1" name="rigID" />
+  <real value="6500" name="foreI" />
+  <real value="2000" name="foreJ" />
+  <real value="8000" name="MHeight" />
+  <real value="140" name="MCord" />
+  <real value="70" name="MWidth" />
+  <real value="220" name="MRakeM" />
+  <real value="1.57524" name="MRakeD" />
+  <real value="1821.25" name="MBase" />
+  <real value="110" name="MRnd" />
+  <int value="50" name="MRndPos" />
+  <real value="7000" name="CSH" />
+  <real value="500" name="CSB" />
+  <real value="400" name="LSB" />
+  <int value="3" name="SPNB" />
+  <real value="0" name="SPH0" />
+  <real value="1800" name="SPH1" />
+  <real value="3600" name="SPH2" />
+  <real value="5400" name="SPH3" />
+  <real value="500" name="SPW0" />
+  <real value="500" name="SPW1" />
+  <real value="450" name="SPW2" />
+  <real value="300" name="SPW3" />
+  <real value="750" name="BAD" />
+  <real value="7000" name="HAD" />
+ </CRigDef>
+</CSailDoc>
