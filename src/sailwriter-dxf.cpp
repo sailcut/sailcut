@@ -511,3 +511,52 @@ void CSailDxfWriter3d::writePanel(ofstream &out, const CPanel &panel, unsigned i
 }
 
 
+/** Writes a 3D CPanelGroup to a 3D DXF file with one file per panel.
+ *
+ * @param sail the sail to write
+ * @param filename the file to write to
+ */
+void CSailDxfWriter3dSplit::write(const CPanelGroup &sail, const QString &basename) const
+{
+    ofstream out;
+
+    for (unsigned int pn = 0; pn < sail.size(); pn++)
+    {
+        QString filename = basename;
+        filename.replace(".dxf", QString("-%1.dxf").arg(pn));
+
+        // open file, write comment and header
+        writeBegin(out, filename);
+
+        // write tables section
+        writeAtom(out, 0, "SECTION");
+        writeAtom(out, 2, "TABLES");
+        writeAtom(out, 0, "TABLE");
+        writeAtom(out, 2, "LAYER");
+        writeAtom(out, 70, "6");
+
+        writeAtom(out, 0, "LAYER");
+        writeAtom(out, 2, QString::number(pn+1));
+        // flags
+        writeAtom(out, 70, "64");
+        // colour
+        if (pn % 2)
+            writeAtom(out, 62, "2"); // 1=red 2=yellow
+        else
+            writeAtom(out, 62, "4"); // 4=cyan 5=blue
+
+        writeAtom(out, 6, "CONTINUOUS");
+
+        writeAtom(out, 0, "ENDTAB");
+        writeAtom(out, 0, "ENDSEC");
+
+        // write entities section
+        writeAtom(out, 0, "SECTION");
+        writeAtom(out, 2, "ENTITIES");
+        writePanel(out, sail[pn], pn+1);
+        writeAtom(out, 0, "ENDSEC");
+
+        // end of file
+        writeEnd(out);
+    }
+}
