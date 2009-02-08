@@ -38,6 +38,38 @@ void CSailDxfWriter::writeAtom(ofstream &out, int code, const QString& content) 
 }
 
 
+/** Open the given file, then write comment and header section.
+ *
+ * @param out the output stream
+ * @param filename the output file name
+ */
+void CSailDxfWriter::writeBegin(ofstream &out, const QString &filename) const
+{
+    out.open(QFile::encodeName(filename),ios::out);
+    if (!out.is_open())
+        throw write_error("CSailDxfWriter::writeBegin : unable to write to specified file");
+
+    // write comment
+    writeAtom(out, 999, "DXF created by Sailcut CAD");
+
+    // write header section
+    writeAtom(out, 0, "SECTION");
+    writeAtom(out, 2, "HEADER");
+    writeAtom(out, 0, "ENDSEC");
+}
+
+
+/** Write end of file then close file.
+ *
+ * @param out the output stream
+ */
+void CSailDxfWriter::writeEnd(ofstream &out) const
+{
+    writeAtom(out, 0, "EOF");
+    out.close();
+}
+
+
 /** Write a triangular face to the file output stream.
  *
  * @param out the output stream
@@ -78,7 +110,6 @@ void CSailDxfWriter::writeFace(ofstream &out, CPoint3d p0, CPoint3d p1, CPoint3d
     writeAtom(out, 23, QString::number(p2.y()));
     writeAtom(out, 33, QString::number(p2.z()));
 }
-
 
 /** Write a DXF Polyline header to the file output stream.
  *
@@ -138,17 +169,8 @@ void CSailDxfWriter2d::write(const CPanelGroup &sail, const QString &filename) c
 {
     ofstream out;
 
-    out.open(QFile::encodeName(filename),ios::out);
-    if (!out.is_open())
-        throw write_error("CSailDxfWriter::write : unable to write to specified file");
-
-    // write comment
-    writeAtom(out, 999, "DXF 2d created by Sailcut CAD");
-
-    // write header section
-    writeAtom(out, 0, "SECTION");
-    writeAtom(out, 2, "HEADER");
-    writeAtom(out, 0, "ENDSEC");
+    // open file, write comment and header
+    writeBegin(out, filename);
 
     // write tables section
     writeAtom(out, 0, "SECTION");
@@ -185,8 +207,7 @@ void CSailDxfWriter2d::write(const CPanelGroup &sail, const QString &filename) c
     writeAtom(out, 0, "ENDSEC");
 
     // end of file
-    writeAtom(out, 0, "EOF");
-    out.close();
+    writeEnd(out);
 }
 
 
@@ -198,17 +219,9 @@ void CSailDxfWriter2d::write(const CPanelGroup &sail, const QString &filename) c
 void CSailDxfWriter2dBlocks::write(const CPanelGroup &sail, const QString &filename) const
 {
     ofstream out;
-    out.open(QFile::encodeName(filename),ios::out);
-    if (!out.is_open())
-        throw write_error("CSailDxfWriter::write : unable to write to specified file");
 
-    // write comment
-    writeAtom(out, 999, "DXF 2d created by Sailcut CAD");
-
-    // write header section
-    writeAtom(out, 0, "SECTION");
-    writeAtom(out, 2, "HEADER");
-    writeAtom(out, 0, "ENDSEC");
+    // open file, write comment and header
+    writeBegin(out, filename);
 
     // write tables section
     writeAtom(out, 0, "SECTION");
@@ -261,8 +274,7 @@ void CSailDxfWriter2dBlocks::write(const CPanelGroup &sail, const QString &filen
     writeAtom(out, 0, "ENDSEC"); // end of BLOCKS section
 
     // end of file
-    writeAtom(out, 0, "EOF");
-    out.close();
+    writeEnd(out);
 }
 
 
@@ -419,17 +431,9 @@ void CSailDxfWriter2d::writePanel(ofstream &out, const CPanel &panel, unsigned i
 void CSailDxfWriter3d::write(const CPanelGroup &sail, const QString &filename) const
 {
     ofstream out;
-    out.open(QFile::encodeName(filename), ios::out);
-    if (!out.is_open())
-        throw write_error("CSailDxfWriter3d::write : unable to write to specified DXF file");
 
-    // write comment
-    writeAtom(out, 999,"DXF 3d created by Sailcut CAD");
-
-    // write header section
-    writeAtom(out, 0, "SECTION");
-    writeAtom(out, 2, "HEADER");
-    writeAtom(out, 0, "ENDSEC");
+    // open file, write comment and header
+    writeBegin(out, filename);
 
     // write tables section
     writeAtom(out, 0, "SECTION");
@@ -467,8 +471,7 @@ void CSailDxfWriter3d::write(const CPanelGroup &sail, const QString &filename) c
     writeAtom(out, 0, "ENDSEC");
 
     // end of file
-    writeAtom(out, 0, "EOF");
-    out.close();
+    writeEnd(out);
 }
 
 
