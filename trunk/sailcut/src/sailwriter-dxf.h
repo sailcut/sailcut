@@ -81,4 +81,14 @@ public:
 };
 
 
+/** A class used to write a CPanelGroup to a set of 3D DXF files with one file per panel.
+ *
+ * @ingroup FileIo
+ */
+class CSailDxfWriter3dSplit : public CSailDxfWriter3d
+{
+public:
+    void write(const CPanelGroup &sail, const QString &filename) const;
+};
+
 #endif

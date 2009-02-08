@@ -82,6 +82,7 @@ void CFormSail::languageChange()
     // export 3d submenu
     menuExport3d->setTitle( tr("E&xport 3D sail") );
     actionExport3dDXF->setText( tr("to &DXF") );
+    actionExport3dDXFSplit->setText( tr("to DXF (split)") );
 #ifdef HAVE_QSVGGENERATOR
     actionExport3dSVG->setText( tr("to &SVG") );
 #endif
@@ -141,6 +142,7 @@ void CFormSail::setupMenuBar()
     // export 3d submenu
     menuExport3d = new QMenu(this);
     actionExport3dDXF = menuExport3d->addAction("", this, SLOT( slotExportDXF() ) );
+    actionExport3dDXFSplit = menuExport3d->addAction("", this, SLOT( slotExportDXFSplit() ) );
 #ifdef HAVE_QSVGGENERATOR
     actionExport3dSVG = menuExport3d->addAction("", this, SLOT( slotExportSVG() ) );
 #endif
@@ -210,11 +212,20 @@ void CFormSail::slotDef()
 
 
 /**
- * Export the 3D sail to a DXF file
+ * Export the 3D sail to a DXF file.
  */
 void CFormSail::slotExportDXF()
 {
     CSailDxfWriter3d().writeDialog(sail);
+}
+
+
+/**
+ * Export the 3D sail to several DXF files (one per panel).
+ */
+void CFormSail::slotExportDXFSplit()
+{
+    CSailDxfWriter3dSplit().writeDialog(sail);
 }
 
 
