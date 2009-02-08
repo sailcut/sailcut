@@ -36,6 +36,9 @@ public:
     {}
     ;
 
+    void writeBegin(ofstream &out, const QString &filename) const;
+    void writeEnd(ofstream &out) const;
+
     void writeAtom(ofstream &out, int code, const QString& content) const;
     void writeFace(ofstream &out, CPoint3d p0, CPoint3d p1, CPoint3d p2, unsigned int layer) const;
     void writePolyline(ofstream &out, unsigned int layer, unsigned int color) const;
@@ -64,7 +67,6 @@ class CSailDxfWriter2dBlocks : public CSailDxfWriter2d
 public:
     void write(const CPanelGroup &sail, const QString &filename) const;
 };
-
 
 
 /** A class used to write a CPanelGroup to a 3D DXF file.
