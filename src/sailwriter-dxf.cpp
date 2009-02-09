@@ -20,6 +20,15 @@
 #include "sailwriter-dxf.h"
 #include <QFile>
 
+#define DXF_BLACK   "0"
+#define DXF_RED     "1"
+#define DXF_YELLOW  "2"
+#define DXF_GREEN   "3"
+#define DXF_CYAN    "4"
+#define DXF_BLUE    "5"
+#define DXF_MAGENTA "6"
+#define DXF_WHITE   "7"
+
 /***********************************
 
            DXF components
@@ -115,15 +124,15 @@ void CSailDxfWriter::writeFace(ofstream &out, CPoint3d p0, CPoint3d p1, CPoint3d
  *
  * @param out the output stream
  * @param layer
- * @param color the color (red=1 blue=5 white=7)
+ * @param color the color
  */
-void CSailDxfWriter::writePolyline(ofstream &out, unsigned int layer, unsigned int color) const
+void CSailDxfWriter::writePolyline(ofstream &out, unsigned int layer, const QString &color) const
 {
     writeAtom(out, 0, "POLYLINE");
     // set the layer
     writeAtom(out, 8, QString::number(layer));
     // set color
-    writeAtom(out, 62, QString::number(color));
+    writeAtom(out, 62, color);
     // set vertice follows flag
     writeAtom(out, 66, "1");
     // line type
@@ -187,8 +196,8 @@ void CSailDxfWriter2d::write(const CPanelGroup &sail, const QString &filename) c
         writeAtom(out, 2, QString::number(pn+1));
         // flags
         writeAtom(out, 70, "64");
-        // colour by default  red=1 yellow=2 blue=5 white=7
-        writeAtom(out, 62, "3");
+        // colour by default
+        writeAtom(out, 62, DXF_GREEN);
 
         writeAtom(out, 6, "CONTINUOUS");
     }
@@ -238,8 +247,8 @@ void CSailDxfWriter2dBlocks::write(const CPanelGroup &sail, const QString &filen
         writeAtom(out, 2, QString::number(pn+1));
         // flags
         writeAtom(out, 70, "64");
-        // colour by default  red=1 yellow=2 blue=5 white=7
-        writeAtom(out, 62, "3");
+        // colour by default
+        writeAtom(out, 62, DXF_GREEN);
 
         writeAtom(out, 6, "CONTINUOUS");
     }
@@ -304,7 +313,7 @@ void CSailDxfWriter2d::writePanel(ofstream &out, const CPanel &panel, unsigned i
     int j=0;
 
     //// polyline header for draw line
-    writePolyline(out, layer, 5); // color 5=blue
+    writePolyline(out, layer, DXF_BLUE);
 
     // left edge
     pt = left[0];
@@ -359,7 +368,7 @@ void CSailDxfWriter2d::writePanel(ofstream &out, const CPanel &panel, unsigned i
     writeAtom(out, 0, "SEQEND"); // end draw line
 
     //// polyline header for cut line
-    writePolyline(out, layer, 1); // color 1=red
+    writePolyline(out, layer, DXF_RED);
 
     // left edge
     pt = cleft[0];
@@ -449,10 +458,8 @@ void CSailDxfWriter3d::write(const CPanelGroup &sail, const QString &filename) c
         // flags
         writeAtom(out, 70, "64");
         // colour
-        if (pn%2)
-            writeAtom(out, 62, "2"); // 1=red 2=yellow
-        else
-            writeAtom(out, 62, "4"); // 4=cyan 5=blue
+        // colour
+        writeAtom(out, 62, (pn % 2) ? DXF_YELLOW : DXF_CYAN);
 
         writeAtom(out, 6, "CONTINUOUS");
     }
@@ -540,10 +547,7 @@ void CSailDxfWriter3dSplit::write(const CPanelGroup &sail, const QString &basena
         // flags
         writeAtom(out, 70, "64");
         // colour
-        if (pn % 2)
-            writeAtom(out, 62, "2"); // 1=red 2=yellow
-        else
-            writeAtom(out, 62, "4"); // 4=cyan 5=blue
+        writeAtom(out, 62, (pn % 2) ? DXF_YELLOW : DXF_CYAN);
 
         writeAtom(out, 6, "CONTINUOUS");
 
