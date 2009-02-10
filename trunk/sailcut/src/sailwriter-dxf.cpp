@@ -196,13 +196,33 @@ void CSailDxfWriter::writeVertex(ofstream &out, CPoint3d pt, unsigned int layer)
 
 ***********************************/
 
+/** Writes a CPanelGroup to a simple DXF file.
+ *
+ * @param sail the sail to write
+ * @param filename the file to write to
+ */
+void CSailDxfWriter2d::write(const CPanelGroup &sail, const QString &filename) const
+{
+    switch (type)
+    {
+    case NORMAL:
+        writeNormal(sail, filename);
+        break;
+    case BLOCKS:
+        writeBlocks(sail, filename);
+        break;
+    case SPLIT:
+        writeSplit(sail, filename);
+        break;
+    }
+}
 
 /** Writes a CPanelGroup to a simple 2D DXF file.
  *
  * @param sail the sail to write
  * @param filename the file to write to
  */
-void CSailDxfWriter2d::write(const CPanelGroup &sail, const QString &filename) const
+void CSailDxfWriter2d::writeNormal(const CPanelGroup &sail, const QString &filename) const
 {
     ofstream out;
     unsigned int pn;
@@ -243,7 +263,7 @@ void CSailDxfWriter2d::write(const CPanelGroup &sail, const QString &filename) c
  * @param sail the sail to write
  * @param filename the file to write to
  */
-void CSailDxfWriter2dBlocks::write(const CPanelGroup &sail, const QString &filename) const
+void CSailDxfWriter2d::writeBlocks(const CPanelGroup &sail, const QString &filename) const
 {
     ofstream out;
     unsigned int pn;
@@ -287,6 +307,17 @@ void CSailDxfWriter2dBlocks::write(const CPanelGroup &sail, const QString &filen
 
     // end of file
     writeEnd(out);
+}
+
+
+/** Writes a CPanelGroup to a 2D DXF file with one file per panel.
+ *
+ * @param sail the sail to write
+ * @param filename the file to write to
+ */
+void CSailDxfWriter2d::writeSplit(const CPanelGroup &sail, const QString &filename) const
+{
+    cout << "Not implemented yet" << endl;
 }
 
 
