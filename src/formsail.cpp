@@ -272,7 +272,7 @@ void CFormSail::slotExportFlatCarlson()
   */
 void CFormSail::slotExportFlatDXF()
 {
-    CSailDxfWriter2d().writeDialog(dispsail);
+    CSailDxfWriter2d(CSailDxfWriter2d::NORMAL).writeDialog(dispsail);
 }
 
 
@@ -281,7 +281,8 @@ void CFormSail::slotExportFlatDXF()
   */
 void CFormSail::slotExportFlatDXFBlocks()
 {
-    CSailDxfWriter2d().writeDialog(flatsail);
+    // FIXME: shouldn't this be BLOCKS ?
+    CSailDxfWriter2d(CSailDxfWriter2d::NORMAL).writeDialog(flatsail);
 }
 
 

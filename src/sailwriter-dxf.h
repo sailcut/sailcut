@@ -54,19 +54,22 @@ public:
 class CSailDxfWriter2d : public CSailDxfWriter
 {
 public:
+    enum Dxf2dType {
+        NORMAL,
+        BLOCKS,
+        SPLIT,
+    };
+
+    CSailDxfWriter2d(enum Dxf2dType format) : type(format) {};
     void write(const CPanelGroup &sail, const QString &filename) const;
     void writePanel(ofstream &out, const CPanel &panel, unsigned int layer) const;
-};
 
+protected:
+    void writeNormal(const CPanelGroup &sail, const QString &filename) const;
+    void writeBlocks(const CPanelGroup &sail, const QString &filename) const;
+    void writeSplit(const CPanelGroup &sail, const QString &filename) const;
 
-/** A class used to write a CPanelGroup to a 2D DXF file with one block per panel.
- *
- * @ingroup FileIo
- */
-class CSailDxfWriter2dBlocks : public CSailDxfWriter2d
-{
-public:
-    void write(const CPanelGroup &sail, const QString &filename) const;
+    Dxf2dType type;
 };
 
 
