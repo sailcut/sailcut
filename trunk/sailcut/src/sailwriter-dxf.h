@@ -47,7 +47,7 @@ public:
 };
 
 
-/** A class used to write a CPanelGroup to a simple 2D DXF file.
+/** A class used to write a CPanelGroup to a 2D DXF file.
  *
  * @ingroup FileIo
  */
@@ -62,9 +62,10 @@ public:
 
     CSailDxfWriter2d(enum Dxf2dType format) : type(format) {};
     void write(const CPanelGroup &sail, const QString &filename) const;
-    void writePanel(ofstream &out, const CPanel &panel, unsigned int layer) const;
 
 protected:
+    void writePanel(ofstream &out, const CPanel &panel, unsigned int layer) const;
+
     void writeNormal(const CPanelGroup &sail, const QString &filename) const;
     void writeBlocks(const CPanelGroup &sail, const QString &filename) const;
     void writeSplit(const CPanelGroup &sail, const QString &filename) const;
@@ -80,19 +81,22 @@ protected:
 class CSailDxfWriter3d : public CSailDxfWriter
 {
 public:
+    enum Dxf3dType {
+        NORMAL,
+        SPLIT,
+    };
+
+    CSailDxfWriter3d(enum Dxf3dType format) : type(format) {};
     void write(const CPanelGroup &sail, const QString &filename) const;
+
+protected:
     void writePanel(ofstream &out, const CPanel &panel, unsigned int layer) const;
+
+    void writeNormal(const CPanelGroup &sail, const QString &filename) const;
+    void writeSplit(const CPanelGroup &sail, const QString &filename) const;
+
+    Dxf3dType type;
 };
 
-
-/** A class used to write a CPanelGroup to a set of 3D DXF files with one file per panel.
- *
- * @ingroup FileIo
- */
-class CSailDxfWriter3dSplit : public CSailDxfWriter3d
-{
-public:
-    void write(const CPanelGroup &sail, const QString &filename) const;
-};
 
 #endif

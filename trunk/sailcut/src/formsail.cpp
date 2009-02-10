@@ -216,7 +216,7 @@ void CFormSail::slotDef()
  */
 void CFormSail::slotExportDXF()
 {
-    CSailDxfWriter3d().writeDialog(sail);
+    CSailDxfWriter3d(CSailDxfWriter3d::NORMAL).writeDialog(sail);
 }
 
 
@@ -225,7 +225,7 @@ void CFormSail::slotExportDXF()
  */
 void CFormSail::slotExportDXFSplit()
 {
-    CSailDxfWriter3dSplit().writeDialog(sail);
+    CSailDxfWriter3d(CSailDxfWriter3d::SPLIT).writeDialog(sail);
 }
 
 
