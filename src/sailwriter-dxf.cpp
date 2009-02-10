@@ -465,13 +465,30 @@ void CSailDxfWriter2d::writePanel(ofstream &out, const CPanel &panel, unsigned i
 
 ***********************************/
 
-
 /** Writes a 3D CPanelGroup to a 3D DXF file.
  *
  * @param sail the sail to write
  * @param filename the file to write to
  */
 void CSailDxfWriter3d::write(const CPanelGroup &sail, const QString &filename) const
+{
+    switch (type)
+    {
+    case NORMAL:
+        writeNormal(sail, filename);
+        break;
+    case SPLIT:
+        writeSplit(sail, filename);
+        break;
+    }
+}
+
+/** Writes a 3D CPanelGroup to a 3D DXF file.
+ *
+ * @param sail the sail to write
+ * @param filename the file to write to
+ */
+void CSailDxfWriter3d::writeNormal(const CPanelGroup &sail, const QString &filename) const
 {
     ofstream out;
     unsigned int pn;
@@ -543,7 +560,7 @@ void CSailDxfWriter3d::writePanel(ofstream &out, const CPanel &panel, unsigned i
  * @param sail the sail to write
  * @param filename the file to write to
  */
-void CSailDxfWriter3dSplit::write(const CPanelGroup &sail, const QString &basename) const
+void CSailDxfWriter3d::writeSplit(const CPanelGroup &sail, const QString &basename) const
 {
     ofstream out;
 
