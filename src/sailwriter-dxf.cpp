@@ -217,7 +217,7 @@ void CSailDxfWriter2d::write(const CPanelGroup &sail, const QString &filename) c
     }
 }
 
-/** Writes a CPanelGroup to a simple 2D DXF file.
+/** Writes a CPanelGroup to a simple 2D DXF file, one panel per layer.
  *
  * @param sail the sail to write
  * @param filename the file to write to
@@ -235,7 +235,7 @@ void CSailDxfWriter2d::writeNormal(const CPanelGroup &sail, const QString &filen
     writeAtom(out, DXF_NAME, "TABLES");
     writeAtom(out, DXF_ENTITY, "TABLE");
     writeAtom(out, DXF_NAME, "LAYER");
-    writeAtom(out, DXF_FLAG, "16");
+    writeAtom(out, DXF_FLAG, "6");
 
     for (pn = 0; pn < sail.size(); pn++)
         writeLayer(out, pn+1, DXF_GREEN);
@@ -258,7 +258,7 @@ void CSailDxfWriter2d::writeNormal(const CPanelGroup &sail, const QString &filen
 }
 
 
-/** Writes a CPanelGroup to a 2D DXF file with one block per panel.
+/** Writes a CPanelGroup to a 2D DXF file with one block per panel on different layer.
  *
  * @param sail the sail to write
  * @param filename the file to write to
@@ -318,14 +318,44 @@ void CSailDxfWriter2d::writeBlocks(const CPanelGroup &sail, const QString &filen
 void CSailDxfWriter2d::writeSplit(const CPanelGroup &sail, const QString &filename) const
 {
     cout << "Not implemented yet" << endl;
+    /*
+    unsigned int pn;
+    for (pn = 0; pn < sail.size(); pn++)
+    {
+        QString filename = basename;
+        filename.replace(".dxf", QString("-%1.dxf").arg(pn));
+
+        // open file, write comment and header
+        writeBegin(out, filename);
+
+        // write tables section
+        writeAtom(out, DXF_ENTITY, "SECTION");
+        writeAtom(out, DXF_NAME, "TABLES");
+        writeAtom(out, DXF_ENTITY, "TABLE");
+        writeAtom(out, DXF_NAME, "LAYER");
+        writeAtom(out, DXF_FLAG, "6");
+        writeLayer(out, 1, DXF_CYAN);
+        writeAtom(out, DXF_ENTITY, "ENDTAB");
+        writeAtom(out, DXF_ENTITY, "ENDSEC");
+
+        // write entities section
+        writeAtom(out, DXF_ENTITY, "SECTION");
+        writeAtom(out, DXF_NAME, "ENTITIES");
+        writePanel(out, sail[pn], 1);
+        writeAtom(out, DXF_ENTITY, "ENDSEC");
+
+        // end of file
+        writeEnd(out);
+    }
+    */
 }
 
 
 /** Write a single 2D DXF developed panel draw and cut edges to the file output stream.
  *
  * @param out the output stream
- * @param panel the panel to write
- * @param layer
+ * @param panel the panel to be written
+ * @param layer the layer on which the panel is written
  */
 void CSailDxfWriter2d::writePanel(ofstream &out, const CPanel &panel, unsigned int layer) const
 {
@@ -483,7 +513,7 @@ void CSailDxfWriter3d::write(const CPanelGroup &sail, const QString &filename) c
     }
 }
 
-/** Writes a 3D CPanelGroup to a 3D DXF file.
+/** Writes a 3D CPanelGroup to a 3D DXF file with one panel per layer.
  *
  * @param sail the sail to write
  * @param filename the file to write to
@@ -522,8 +552,8 @@ void CSailDxfWriter3d::writeNormal(const CPanelGroup &sail, const QString &filen
 /** Write a single 3D DXF panel to the file output stream.
  *
  * @param out the output stream
- * @param panel the number of the panel to write
- * @param layer
+ * @param panel the number of the panel to be written
+ * @param layer the layer on which the panel is written
  */
 void CSailDxfWriter3d::writePanel(ofstream &out, const CPanel &panel, unsigned int layer) const
 {
@@ -578,14 +608,14 @@ void CSailDxfWriter3d::writeSplit(const CPanelGroup &sail, const QString &basena
         writeAtom(out, DXF_ENTITY, "TABLE");
         writeAtom(out, DXF_NAME, "LAYER");
         writeAtom(out, DXF_FLAG, "6");
-        writeLayer(out, pn + 1, (pn % 2) ? DXF_YELLOW : DXF_CYAN);
+        writeLayer(out, 1, DXF_CYAN);
         writeAtom(out, DXF_ENTITY, "ENDTAB");
         writeAtom(out, DXF_ENTITY, "ENDSEC");
 
         // write entities section
         writeAtom(out, DXF_ENTITY, "SECTION");
         writeAtom(out, DXF_NAME, "ENTITIES");
-        writePanel(out, sail[pn], pn+1);
+        writePanel(out, sail[pn], 1);
         writeAtom(out, DXF_ENTITY, "ENDSEC");
 
         // end of file
