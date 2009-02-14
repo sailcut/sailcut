@@ -155,6 +155,7 @@ void CFormSail::setupMenuBar()
     menuExportFlat = new QMenu(this); //menuFile->addMenu("");
     actionExportFlatCarlson = menuExportFlat->addAction("", this, SLOT( slotExportFlatCarlson() ) );
     actionExportFlatDXF = menuExportFlat->addAction("", this, SLOT( slotExportFlatDXF() ) );
+    actionExportFlatDXFSplit = menuExportFlat->addAction("", this, SLOT( slotExportFlatDXFSplit() ) );
     //actionExportFlatDXFBlocks = menuExportFlat->addAction("", this, SLOT( slotExportFlatDXFBlocks() ) );
     actionExportFlatHand = menuExportFlat->addAction("", this, SLOT( slotExportFlatHand() ) );
 #ifdef HAVE_QSVGGENERATOR
@@ -278,20 +279,21 @@ void CFormSail::slotExportFlatDXF()
 
 
 /**
+ * Export the flat sail to several DXF files (one per panel).
+ */
+void CFormSail::slotExportFlatDXFSplit()
+{
+    CSailDxfWriter2d(CSailDxfWriter2d::SPLIT).writeDialog(flatsail);
+}
+
+
+/**
  * Exports the flat sail with panels superimposed to a DXF file with blocks
   */
 void CFormSail::slotExportFlatDXFBlocks()
 {
     // FIXME: shouldn't this be BLOCKS ?
     CSailDxfWriter2d(CSailDxfWriter2d::NORMAL).writeDialog(flatsail);
-}
-
-/**
- * Export the flat sail to several DXF files (one per panel).
- */
-void CFormSail::slotExportFlatDXFSplit()
-{
-    CSailDxfWriter2d(CSailDxfWriter2d::SPLIT).writeDialog(flatsail);
 }
 
 
