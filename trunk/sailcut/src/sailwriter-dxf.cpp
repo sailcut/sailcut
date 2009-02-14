@@ -315,11 +315,13 @@ void CSailDxfWriter2d::writeBlocks(const CPanelGroup &sail, const QString &filen
  * @param sail the sail to write
  * @param filename the file to write to
  */
-void CSailDxfWriter2d::writeSplit(const CPanelGroup &sail, const QString &filename) const
+void CSailDxfWriter2d::writeSplit(const CPanelGroup &sail, const QString &basename) const
 {
-    cout << "Not implemented yet" << endl;
-    /*
+    //cout << "Not implemented yet" << endl;
+
+    ofstream out;
     unsigned int pn;
+
     for (pn = 0; pn < sail.size(); pn++)
     {
         QString filename = basename;
@@ -347,7 +349,6 @@ void CSailDxfWriter2d::writeSplit(const CPanelGroup &sail, const QString &filena
         // end of file
         writeEnd(out);
     }
-    */
 }
 
 

@@ -93,6 +93,7 @@ void CFormSail::languageChange()
     menuExportFlat->setTitle( tr("Export &development") );
     actionExportFlatCarlson->setText( tr("to &Carlson plotter") );
     actionExportFlatDXF->setText( tr("to &DXF") );
+    actionExportFlatDXFSplit->setText( tr("to DXF (split)") );
     //actionExportFlatDXFBlocks->setText( tr("to &DXF-BLOCKS") );
     actionExportFlatHand->setText( tr("to &Hand-plotting format") );
 #ifdef HAVE_QSVGGENERATOR
@@ -283,6 +284,14 @@ void CFormSail::slotExportFlatDXFBlocks()
 {
     // FIXME: shouldn't this be BLOCKS ?
     CSailDxfWriter2d(CSailDxfWriter2d::NORMAL).writeDialog(flatsail);
+}
+
+/**
+ * Export the flat sail to several DXF files (one per panel).
+ */
+void CFormSail::slotExportFlatDXFSplit()
+{
+    CSailDxfWriter2d(CSailDxfWriter2d::SPLIT).writeDialog(flatsail);
 }
 
 

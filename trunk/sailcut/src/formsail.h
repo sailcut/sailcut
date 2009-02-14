@@ -55,6 +55,7 @@ protected slots:
     virtual void slotExportXML();
     virtual void slotExportFlatCarlson();
     virtual void slotExportFlatDXF();
+    virtual void slotExportFlatDXFSplit();
     virtual void slotExportFlatDXFBlocks();
     virtual void slotExportFlatHand();
     virtual void slotExportFlatSVG();
@@ -99,6 +100,8 @@ protected:
     QAction *actionExportFlatHand;
     /** Export flat sail to DXF */
     QAction *actionExportFlatDXF;
+    /** Export flat sail to DXF (one file per file) */
+    QAction *actionExportFlatDXFSplit;
     /** Export flat sail to DXF blocks */
     QAction *actionExportFlatDXFBlocks;
     /** Export flat sail to SVG */
