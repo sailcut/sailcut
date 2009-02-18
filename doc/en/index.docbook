@@ -318,7 +318,11 @@
 </listitem>
 
 <listitem>
-<para>AutoCAD DXF using the <guimenuitem>to DXF</guimenuitem> menu entry. </para>
+<para>DXF file using the <guimenuitem>to DXF</guimenuitem> menu entry. All the panels will be placed in a single file with one panel per layer.</para>
+</listitem>
+
+<listitem>
+<para>Multiple DXF files using the <guimenuitem>to DXF (spilt)</guimenuitem> menu entry. Each panel will be placed in a separate file on layer 1. The name of the file is the base name entered completed with the number of the panel.</para>
 </listitem>
 
 <listitem>
@@ -351,7 +355,11 @@
 <itemizedlist>
 
 <listitem>
-<para>AutoCAD DXF file using the <guimenuitem>to DXF</guimenuitem> menu entry. </para>
+<para>DXF file using the <guimenuitem>to DXF</guimenuitem> menu entry. All the panels will be placed in a single file with one panel per layer.</para>
+</listitem>
+
+<listitem>
+<para>Multiple DXF files using the <guimenuitem>to DXF (spilt)</guimenuitem> menu entry. Each panel will be placed in a separate file on layer 1. The name of the file is the base name entered completed with the number of the panel.</para>
 </listitem>
 
 <listitem>
