@@ -1582,7 +1582,7 @@
     <message>
         <location filename="../formsaildef.cpp" line="1151"/>
         <source>Sail width measurements </source>
-        <translation type="unfinished"></translation>
+        <translation>Vela misure di ampiezza </translation>
     </message>
 </context>
 <context>
@@ -1860,7 +1860,7 @@
     <message>
         <location filename="../formsaildefbase.ui" line="615"/>
         <source>Wing</source>
-        <translation type="unfinished"></translation>
+        <translation>Ala</translation>
     </message>
     <message>
         <location filename="../formsaildefbase.ui" line="496"/>
