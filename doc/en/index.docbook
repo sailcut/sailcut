@@ -11,7 +11,7 @@
 <author> <firstname>Jeremy</firstname> <surname>Lainé</surname> </author>
 </authorgroup>
 
-<pubdate>Sailcut CAD 1.3.3 - 24 November 2008 </pubdate>
+<pubdate>Sailcut CAD 1.3.3 - 12 March 2009 </pubdate>
 
 </articleinfo>
 
@@ -322,7 +322,7 @@
 </listitem>
 
 <listitem>
-<para>Multiple DXF files using the <guimenuitem>to DXF (spilt)</guimenuitem> menu entry. Each panel will be placed in a separate file on layer 1. The name of the file is the base name entered completed with the number of the panel.</para>
+<para>Multiple DXF files using the <guimenuitem>to DXF (split)</guimenuitem> menu entry. Each panel will be placed in a separate file on layer 1. The name of the file is the base name entered completed with the number of the panel (0,1,2,...).</para>
 </listitem>
 
 <listitem>
@@ -359,7 +359,7 @@
 </listitem>
 
 <listitem>
-<para>Multiple DXF files using the <guimenuitem>to DXF (spilt)</guimenuitem> menu entry. Each panel will be placed in a separate file on layer 1. The name of the file is the base name entered completed with the number of the panel.</para>
+<para>Multiple DXF files using the <guimenuitem>to DXF (split)</guimenuitem> menu entry. Each panel will be placed in a separate file on layer 1. The name of the file is the base name entered completed with the number of the panel.</para>
 </listitem>
 
 <listitem>

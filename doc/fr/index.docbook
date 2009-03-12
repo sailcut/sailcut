@@ -11,7 +11,7 @@
 <author> <firstname>Jeremy</firstname> <surname>Lain&eacute;</surname> </author>
 </authorgroup>
 
-<pubdate>Sailcut CAD 1.3.3 - 24 Novembre 2008</pubdate>
+<pubdate>Sailcut CAD 1.3.3 - 12 mars 2009</pubdate>
 
 </articleinfo>
 
@@ -321,7 +321,7 @@
 </listitem>
 
 <listitem>
-<para>Plusieurs fichiers AutoCAD DXF avec l&apos;entr&eacute;e <guimenuitem>DXF (split)</guimenuitem>. Chaque panneau est dans un fichier distinct sur le calque 1. Le nom des fichiers est le nom entr&eacute; compl&eacute;t&eacute; du num&eacute;ro du panneau.</para>
+<para>Plusieurs fichiers AutoCAD DXF avec l&apos;entr&eacute;e <guimenuitem>DXF (divis&eacute;)</guimenuitem>. Chaque panneau est enregistr&eacute; dans un fichier distinct sur le calque 1. Le nom des fichiers est le nom saisi compl&eacute;t&eacute; avec le num&eacute;ro du panneau (0,1,2,...).</para>
 </listitem>
 
 <listitem>
@@ -367,7 +367,7 @@
 </listitem>
 
 <listitem>
-<para>Plusieurs fichiers AutoCAD DXF avec l&apos;entr&eacute;e <guimenuitem>DXF (spit)</guimenuitem>. Chaque panneau est dans un fichier distinct sur le calque 1. Le nom des fichiers est le nom entr&eacute; compl&eacute;t&eacute; du num&eacute;ro du panneau.</para>
+<para>Plusieurs fichiers AutoCAD DXF avec l&apos;entr&eacute;e <guimenuitem>DXF (divis&eacute;)</guimenuitem>. Chaque panneau est enregistr&eacute; dans un fichier distinct sur le calque 1. Le nom des fichiers est le nom saisi compl&eacute;t&eacute; avec le num&eacute;ro du panneau.</para>
 </listitem>
 
 <listitem>
