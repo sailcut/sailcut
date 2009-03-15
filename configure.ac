@@ -1,5 +1,5 @@
 dnl Initialise autoconf
-AC_INIT(sailcut, 1.3.3pre3)
+AC_INIT(sailcut, 1.3.3)
 AC_CONFIG_SRCDIR(acinclude.m4)
 
 dnl Checking host/target/build systems, for make, install etc.
