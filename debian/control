@@ -2,13 +2,13 @@ Source: sailcut
 Section: graphics
 Priority: optional
 Maintainer: Jeremy Lainé <jeremy.laine@m4x.org> 
-Standards-Version: 3.8.0
+Standards-Version: 3.8.1
 Build-Depends: cdbs, debhelper (>= 5), libqt4-dev (>= 4.2.0)
 Homepage: http://sailcut.sourceforge.net
 
 Package: sailcut
 Architecture: any
-Depends: ${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
 Suggests: sailcut-doc
 Description: A sail design and plotting software
  Sailcut CAD is a sail design and plotting software which allows you to
@@ -22,6 +22,7 @@ Description: A sail design and plotting software
 Package: sailcut-doc
 Architecture: all
 Section: doc
+Depends: ${misc:Depends}
 Suggests: sailcut
 Description: Sailcut CAD documentation
  This provides the documentation for Sailcut CAD.
