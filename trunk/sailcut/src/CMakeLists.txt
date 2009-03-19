@@ -75,3 +75,4 @@ set(sailcut_SOURCES
 #	$(UIC) -o $@ $<
 
 add_subdirectory(geocpp)
+add_subdirectory(sailcpp)
