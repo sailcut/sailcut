@@ -1,7 +1,7 @@
 SUBDIRS = geocpp sailcpp ts
 
 AM_CPPFLAGS = \
-	-I$(top_srcdir)/icons $(QT_CFLAGS) \
+	-I$(top_srcdir)/icons $(QT_CFLAGS) -DHAVE_QTOPENGL \
 	-DSAILCUT_DOC_DIR=\"$(pkgdocdir)\" -DSAILCUT_DATA_DIR=\"$(pkgdatadir)\" -DSAILCUT_VERSION=\"$(VERSION)\"
 
 bin_PROGRAMS = sailcut
