@@ -24,9 +24,6 @@ AC_ENABLE_SHARED(yes)
 AC_ENABLE_STATIC(no)
 AC_PROG_LIBTOOL
 AC_CHECK_PROG(FIG2DEV, fig2dev, fig2dev)
-AC_CHECK_PROG(PNGTOPNM, pngtopnm, pngtopnm)
-AC_CHECK_PROG(PPMTOXPM, ppmtoxpm, ppmtoxpm)
-AC_CHECK_PROG(ICOTOOL, icotool, icotool)
 AC_CHECK_PROG(INKSCAPE, inkscape, inkscape)
 AC_CHECK_PROG(XSLTPROC, xsltproc, xsltproc)
 AC_CHECK_PROG(DBLATEX, dblatex, dblatex)
@@ -35,7 +32,6 @@ AC_CHECK_PROG(MOC, [moc], [moc])
 AC_CHECK_PROG(UIC, [uic-qt4], [uic-qt4])
 AC_CHECK_PROG(UIC, [uic], [uic])
 AC_CHECK_PROG(LRELEASE, [lrelease], [lrelease])
-AC_CHECK_PROG(LUPDATE, [lupdate], [lupdate])
 
 dnl Make compiler verbose
 CXXFLAGS="$CXXFLAGS -W -Wall" 
