@@ -1,4 +1,6 @@
 set(docfiles)
+
+if(XSLTPROC AND FIG2DEV)
 foreach(language en es fr)
 	file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/${language})
 	transform_figs(pngs
@@ -9,7 +11,12 @@ foreach(language en es fr)
 		${language}/develop_panel_drawing.fig
 		${language}/head_gores_definition.fig
 		${language}/rigplan.fig)
-	list(APPEND docfiles ${pngs})
+	transform_docbook(html sailcut-html.xsl ${language}/index.docbook)
+	list(APPEND docfiles ${html} ${pngs})
 endforeach()
+else(XSLTPROC AND FIG2DEV)
+message(STATUS "Not generating documentation")
+endif(XSLTPROC AND FIG2DEV)
+
 add_custom_target(documentation DEPENDS ${docfiles})
 
