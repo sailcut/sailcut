@@ -3,83 +3,69 @@
   <general>
     <author>Robert and Jeremy Laine</author>
     <email>info@sailcut.com</email>
-    <version>$VERSION$</version>
-    <projectmanagement>KDevAutoProject</projectmanagement>
+    <version>1</version>
+    <projectmanagement>KDevCustomProject</projectmanagement>
     <primarylanguage>C++</primarylanguage>
     <ignoreparts/>
+    <projectname>sailcut</projectname>
     <projectdirectory>.</projectdirectory>
     <absoluteprojectpath>false</absoluteprojectpath>
     <description/>
-    <secondaryLanguages/>
-    <versioncontrol>kdevsubversion</versioncontrol>
-    <projectname>sailcut</projectname>
     <defaultencoding/>
   </general>
-  <kdevautoproject>
-    <general>
-      <activetarget>src/sailcut</activetarget>
-      <useconfiguration>debug</useconfiguration>
-    </general>
+  <kdevcustomproject>
     <run>
-      <mainprogram>src/sailcut</mainprogram>
-      <terminal>false</terminal>
       <directoryradio>executable</directoryradio>
+      <mainprogram>debug/src/sailcut</mainprogram>
+      <programargs/>
+      <globaldebugarguments/>
+      <globalcwd/>
+      <useglobalprogram>false</useglobalprogram>
+      <terminal>false</terminal>
+      <autocompile>false</autocompile>
+      <autoinstall>false</autoinstall>
+      <autokdesu>false</autokdesu>
+      <envvars/>
     </run>
-    <configurations>
-      <debug>
-        <configargs>--enable-debug=full</configargs>
-        <builddir>debug</builddir>
-        <ccompiler>kdevgccoptions</ccompiler>
-        <cxxcompiler>kdevgppoptions</cxxcompiler>
-        <f77compiler>kdevpgf77options</f77compiler>
-        <cxxflags>-O0 -g3</cxxflags>
-        <topsourcedir/>
-        <cppflags/>
-        <ldflags/>
-        <ccompilerbinary/>
-        <cxxcompilerbinary/>
-        <f77compilerbinary/>
-        <cflags/>
-        <f77flags/>
-        <envvars/>
-      </debug>
-      <profiling>
-        <builddir>profiling</builddir>
-        <ccompiler>kdevgccoptions</ccompiler>
-        <cxxcompiler>kdevgppoptions</cxxcompiler>
-        <f77compiler>kdevpgf77options</f77compiler>
-        <cxxflags/>
-        <envvars/>
-      </profiling>
-      <win32>
-        <envvars/>
-        <configargs>--host=i586-mingw32msvc --with-qt-dir=/usr/local/i586-mingw32msvc</configargs>
-        <builddir>win32</builddir>
-        <topsourcedir/>
-        <cppflags/>
-        <ldflags/>
-        <ccompiler>kdevgccoptions</ccompiler>
-        <cxxcompiler>kdevgppoptions</cxxcompiler>
-        <f77compiler>kdevpgf77options</f77compiler>
-        <ccompilerbinary/>
-        <cxxcompilerbinary/>
-        <f77compilerbinary/>
-        <cflags/>
-        <cxxflags/>
-        <f77flags/>
-      </win32>
-    </configurations>
+    <filetypes>
+      <filetype>*.h</filetype>
+      <filetype>*.cpp</filetype>
+      <filetype>CMakeLists.txt</filetype>
+    </filetypes>
+    <blacklist>
+      <path>debug</path>
+    </blacklist>
+    <build>
+      <buildtool>make</buildtool>
+      <builddir>debug</builddir>
+    </build>
+    <other>
+      <prio>0</prio>
+      <otherbin/>
+      <defaulttarget/>
+      <otheroptions/>
+      <selectedenvironment>default</selectedenvironment>
+      <environments>
+        <default/>
+      </environments>
+    </other>
     <make>
-      <envvars>
-        <envvar value="1" name="WANT_AUTOCONF_2_5" />
-        <envvar value="1" name="WANT_AUTOMAKE_1_6" />
-      </envvars>
+      <abortonerror>false</abortonerror>
+      <numberofjobs>0</numberofjobs>
+      <prio>0</prio>
+      <dontact>false</dontact>
+      <makebin/>
+      <defaulttarget/>
+      <makeoptions/>
+      <selectedenvironment>default</selectedenvironment>
+      <environments>
+        <default/>
+      </environments>
     </make>
-  </kdevautoproject>
+  </kdevcustomproject>
   <kdevdebugger>
     <general>
-      <dbgshell>libtool</dbgshell>
-      <programargs/>
+      <dbgshell/>
       <gdbpath/>
       <configGdbScript/>
       <runShellScript/>
@@ -87,6 +73,7 @@
       <breakonloadinglibs>true</breakonloadinglibs>
       <separatetty>false</separatetty>
       <floatingtoolbar>false</floatingtoolbar>
+      <raiseGDBOnStart>false</raiseGDBOnStart>
     </general>
     <display>
       <staticmembers>false</staticmembers>
@@ -102,30 +89,9 @@
       <type ext="h" />
     </useglobaltypes>
   </kdevfilecreate>
-  <kdevdoctreeview>
-    <projectdoc>
-      <userdocDir/>
-      <apidocDir/>
-    </projectdoc>
-    <ignoreqt_xml/>
-    <ignoredoxygen/>
-    <ignorekdocs/>
-    <ignoretocs/>
-    <ignoredevhelp/>
-  </kdevdoctreeview>
-  <cppsupportpart>
-    <filetemplates>
-      <interfacesuffix>.h</interfacesuffix>
-      <implementationsuffix>.cpp</implementationsuffix>
-    </filetemplates>
-  </cppsupportpart>
   <kdevcppsupport>
     <codecompletion>
-      <includeGlobalFunctions>true</includeGlobalFunctions>
-      <includeTypes>true</includeTypes>
-      <includeEnums>true</includeEnums>
-      <includeTypedefs>false</includeTypedefs>
-      <automaticCodeCompletion>true</automaticCodeCompletion>
+      <automaticCodeCompletion>false</automaticCodeCompletion>
       <automaticArgumentsHint>true</automaticArgumentsHint>
       <automaticHeaderCompletion>true</automaticHeaderCompletion>
       <codeCompletionDelay>250</codeCompletionDelay>
@@ -140,26 +106,13 @@
       <processPrimaryTypes>true</processPrimaryTypes>
       <processFunctionArguments>false</processFunctionArguments>
       <preProcessAllHeaders>false</preProcessAllHeaders>
-      <parseMissingHeaders>false</parseMissingHeaders>
-      <resolveIncludePaths>true</resolveIncludePaths>
+      <parseMissingHeadersExperimental>false</parseMissingHeadersExperimental>
+      <resolveIncludePathsUsingMakeExperimental>false</resolveIncludePathsUsingMakeExperimental>
       <alwaysParseInBackground>true</alwaysParseInBackground>
       <usePermanentCaching>true</usePermanentCaching>
       <alwaysIncludeNamespaces>false</alwaysIncludeNamespaces>
       <includePaths>.;</includePaths>
-      <parseMissingHeadersExperimental>false</parseMissingHeadersExperimental>
-      <resolveIncludePathsUsingMakeExperimental>false</resolveIncludePathsUsingMakeExperimental>
     </codecompletion>
-    <references/>
-    <qt>
-      <used>false</used>
-      <version>3</version>
-      <root>/usr/share/qt3</root>
-      <includestyle>3</includestyle>
-      <designerintegration>EmbeddedKDevDesigner</designerintegration>
-      <qmake>/usr/bin/qmake-qt3</qmake>
-      <designer>/usr/bin/designer</designer>
-      <designerpluginpaths/>
-    </qt>
     <creategettersetter>
       <prefixGet/>
       <prefixSet>set</prefixSet>
@@ -168,54 +121,37 @@
       <inlineGet>true</inlineGet>
       <inlineSet>true</inlineSet>
     </creategettersetter>
+    <splitheadersource>
+      <enabled>false</enabled>
+      <synchronize>true</synchronize>
+      <orientation>Vertical</orientation>
+    </splitheadersource>
+    <references/>
+    <qt>
+      <used>false</used>
+      <version>3</version>
+      <includestyle>3</includestyle>
+      <root>/usr/share/qt3</root>
+      <designerintegration>EmbeddedKDevDesigner</designerintegration>
+      <qmake>/usr/bin/qmake-qt3</qmake>
+      <designer>/usr/bin/designer</designer>
+      <designerpluginpaths/>
+    </qt>
   </kdevcppsupport>
+  <cppsupportpart>
+    <filetemplates>
+      <interfacesuffix>.h</interfacesuffix>
+      <implementationsuffix>.cpp</implementationsuffix>
+    </filetemplates>
+  </cppsupportpart>
   <kdevfileview>
     <groups>
-      <group pattern="*.h" name="Header files" />
-      <group pattern="*.cpp" name="Source files" />
-      <group pattern="*.ui" name="User Interface" />
-      <group pattern="*.png" name="Icons" />
-      <group pattern="*.ts" name="Translations" />
-      <group pattern="*" name="Others" />
       <hidenonprojectfiles>false</hidenonprojectfiles>
       <hidenonlocation>false</hidenonlocation>
     </groups>
     <tree>
-      <hidepatterns></hidepatterns>
+      <hidepatterns>*.o,*.lo,CVS</hidepatterns>
       <hidenonprojectfiles>false</hidenonprojectfiles>
-      <showvcsfields>true</showvcsfields>
     </tree>
   </kdevfileview>
-  <kdevcvs>
-    <cvsoptions>-f</cvsoptions>
-    <commitoptions/>
-    <addoptions/>
-    <logoptions/>
-    <updateoptions>-dP</updateoptions>
-    <removeoptions>-f</removeoptions>
-    <revertoptions>-C -d -P</revertoptions>
-    <diffoptions>-u3 -p</diffoptions>
-    <rshoptions/>
-  </kdevcvs>
-  <kdevcvsservice>
-    <recursivewhenupdate>true</recursivewhenupdate>
-    <prunedirswhenupdate>true</prunedirswhenupdate>
-    <createdirswhenupdate>true</createdirswhenupdate>
-    <recursivewhencommitremove>true</recursivewhencommitremove>
-    <revertoptions>-C</revertoptions>
-  </kdevcvsservice>
-  <kdevvisualadvance>
-    <emulator>VisualBoyAdvance</emulator>
-    <binary/>
-    <addOptions/>
-    <terminal>false</terminal>
-    <fullscreen>false</fullscreen>
-    <graphicFilter>-f0</graphicFilter>
-    <scaling>-1</scaling>
-  </kdevvisualadvance>
-  <ctagspart>
-    <customArguments/>
-    <customTagfilePath/>
-    <activeTagsFiles/>
-  </ctagspart>
 </kdevelop>
