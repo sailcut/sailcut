@@ -85,7 +85,7 @@ void CSailApp::loadTranslation(const QString locale)
     installTranslator(transQt);
 
     // translation file for application strings
-    QString qm = QString("sailcut.") + locale;
+    QString qm = QString("sailcut_") + locale;
     QStringList datadirs("ts");
 #ifdef SAILCUT_DATADIR
 
