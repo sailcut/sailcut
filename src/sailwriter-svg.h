@@ -21,7 +21,7 @@
 #define SAILWRITER_SVG_H
 
 #include "filewriter.h"
-#include "panelgroup.h"
+#include "sailcpp/panelgroup.h"
 
 /** A class used to output a CPanelGroup to an SVG file.
  *

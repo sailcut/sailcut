@@ -21,7 +21,7 @@
 #define SAILWRITER_CARLSON_H
 
 #include "filewriter.h"
-#include "panelgroup.h"
+#include "sailcpp/panelgroup.h"
 #include <fstream>
 
 /** A class for writing to Carlson plotter files.

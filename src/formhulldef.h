@@ -21,7 +21,7 @@
 #define FORMHULLDEF_H
 
 #include "ui_formhulldefbase.h"
-#include "hulldef.h"
+#include "sailcpp/hulldef.h"
 
 
 /** The hull definition dialog, where the user enters

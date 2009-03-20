@@ -21,7 +21,7 @@
 #define TXTWRITER_H
 
 #include "filewriter.h"
-#include "panelgroup.h"
+#include "sailcpp/panelgroup.h"
 
 
 /** A class used to output a CPanelGroup to a TXT file.

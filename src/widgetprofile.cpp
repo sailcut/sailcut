@@ -27,7 +27,7 @@
 
 #include "widgetprofile.h"
 #include "widgetprofilevert.h"
-#include "sailmould.h"
+#include "sailcpp/sailmould.h"
 
 
 /**************************************************************************

@@ -21,7 +21,7 @@
 #define SAILWRITER_DXF_H
 
 #include "filewriter.h"
-#include "panelgroup.h"
+#include "sailcpp/panelgroup.h"
 #include <iostream>
 #include <fstream>
 

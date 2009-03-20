@@ -25,7 +25,7 @@
 #include <QLineEdit>
 
 #include "formsaildef.h"
-#include "sailworker.h"
+#include "sailcpp/sailworker.h"
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction

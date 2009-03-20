@@ -20,7 +20,7 @@
 #include "formmould.h"
 #include "widgetprofile.h"
 #include "widgetprofilevert.h"
-#include "sailmould.h"
+#include "sailcpp/sailmould.h"
 
 #include <QLabel>
 #include <QFrame>

@@ -20,8 +20,8 @@
 #ifndef SAILPRINTER_H
 #define SAILPRINTER_H
 
-#include "saildef.h"
-#include "panelgroup.h"
+#include "sailcpp/saildef.h"
+#include "sailcpp/panelgroup.h"
 #include "sailpainter.h"
 
 

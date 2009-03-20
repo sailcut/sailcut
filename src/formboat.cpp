@@ -20,9 +20,9 @@
 #include "formboat.h"
 #include "sailcutqt.h"
 #include "boatdef-panel.h"
-#include "hullworker.h"
-#include "sailworker.h"
-#include "rigworker.h"
+#include "sailcpp/hullworker.h"
+#include "sailcpp/sailworker.h"
+#include "sailcpp/rigworker.h"
 #include "sailwriter-xml.h"
 
 #include <QLayout>

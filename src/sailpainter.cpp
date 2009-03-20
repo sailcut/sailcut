@@ -20,8 +20,8 @@
 #include <cmath>
 
 #include "sailpainter.h"
-#include "sailcalc.h"
-#include "panelgroup.h"
+#include "sailcpp/sailcalc.h"
+#include "sailcpp/panelgroup.h"
 
 #define MIN_DISTANCE 5
 

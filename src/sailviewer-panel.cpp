@@ -18,7 +18,7 @@
  */
 
 #include "sailviewer-panel.h"
-#include "panelgroup.h"
+#include "sailcpp/panelgroup.h"
 
 #include <QGroupBox>
 #include <QLabel>

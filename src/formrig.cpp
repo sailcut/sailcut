@@ -19,7 +19,7 @@
 
 #include "formrig.h"
 #include "formrigdef.h"
-#include "rigworker.h"
+#include "sailcpp/rigworker.h"
 
 #include <QLayout>
 

@@ -1,3 +1,9 @@
+include_directories(${CMAKE_SOURCE_DIR}/src)
+
+set(QT_USE_QTSVG 1)
+set(QT_USE_QTXML 1)
+include(${QT_USE_FILE})
+
 #AM_CPPFLAGS = \
 #	-I$(top_srcdir) -I$(srcdir)/sailcpp $(QT_CFLAGS) \
 #	-DSAILCUT_DOCDIR=\"$(pkgdocdir)\" -DSAILCUT_DATADIR=\"$(pkgdatadir)\"
@@ -68,6 +74,9 @@ set(sailcut_SOURCES
 	widgetprofile.cpp
 	widgetprofilevert.cpp)
 
+qt4_wrap_cpp(sailcut_MOC_SOURCES ${sailcut_MOC_HEADERS})
+add_executable(sailcut ${sailcut_SOURCES} ${sailcut_MOC_SOURCES})
+target_link_libraries(sailcut sailcpp geocpp ${QT_LIBRARIES})
 #sailcut_LDFLAGS = sailcpp/libsailcpp.a geocpp/libgeocpp.a $(QT_LIBS)
 
 # rules for Qt metasources

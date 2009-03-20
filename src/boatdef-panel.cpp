@@ -19,9 +19,9 @@
 
 #include "boatdef-panel.h"
 #include "sailwriter-xml.h"
-#include "hullworker.h"
-#include "rigworker.h"
-#include "sailworker.h"
+#include "sailcpp/hullworker.h"
+#include "sailcpp/rigworker.h"
+#include "sailcpp/sailworker.h"
 
 #include <QLabel>
 #include <QLayout>

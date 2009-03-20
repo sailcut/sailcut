@@ -20,8 +20,8 @@
 #ifndef SAILDISP_H
 #define SAILDISP_H
 
-#include "panelgroup.h"
-#include "sailcalc.h"
+#include "sailcpp/panelgroup.h"
+#include "sailcpp/sailcalc.h"
 
 
 /** A generic display area for a panel group.

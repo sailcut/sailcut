@@ -25,7 +25,7 @@
 #include <QRadioButton>
 
 #include "formrigdef.h"
-#include "rigworker.h"
+#include "sailcpp/rigworker.h"
 
 
 /** The constructor.

@@ -22,11 +22,11 @@
 
 #include <QDomDocument>
 #include "filewriter.h"
-#include "panelgroup.h"
-#include "boatdef.h"
-#include "hulldef.h"
-#include "rigdef.h"
-#include "saildef.h"
+#include "sailcpp/panelgroup.h"
+#include "sailcpp/boatdef.h"
+#include "sailcpp/hulldef.h"
+#include "sailcpp/rigdef.h"
+#include "sailcpp/saildef.h"
 #include "prefs.h"
 
 

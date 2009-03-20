@@ -18,8 +18,8 @@
  */
 
 #include "widgetprofilevert.h"
-#include "sailcalc.h"
-#include "sailmould.h"
+#include "sailcpp/sailcalc.h"
+#include "sailcpp/sailmould.h"
 
 #include <QGroupBox>
 #include <QLayout>

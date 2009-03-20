@@ -21,7 +21,7 @@
 #define FORMSAILDEF_H
 
 #include "ui_formsaildefbase.h"
-#include "saildef.h"
+#include "sailcpp/saildef.h"
 
 
 /** This class is for sail definition dialog where,
