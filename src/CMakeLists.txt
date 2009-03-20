@@ -75,6 +75,7 @@ set(sailcut_SOURCES
 qt4_wrap_cpp(sailcut_MOC_SOURCES ${sailcut_MOC_HEADERS})
 qt4_wrap_ui(sailcut_UI_SOURCES ${sailcut_UIS})
 add_executable(sailcut ${sailcut_SOURCES} ${sailcut_MOC_SOURCES} ${sailcut_UI_SOURCES})
+add_dependencies(sailcut documentation)
 add_dependencies(sailcut translations)
 target_link_libraries(sailcut sailcpp geocpp ${QT_LIBRARIES})
 
