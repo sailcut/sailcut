@@ -6,6 +6,11 @@ set(QT_USE_QTXML 1)
 include(${QT_USE_FILE})
 
 add_definitions(-DSAILCUT_VERSION="${SAILCUT_VERSION}")
+add_definitions(-DSAILCUT_DATA_DIR="${CMAKE_INSTALL_PREFIX}/${SAILCUT_DATA_DIR}")
+add_definitions(-DSAILCUT_DOC_DIR="${CMAKE_INSTALL_PREFIX}/${SAILCUT_DOC_DIR}")
+if(QT_QTOPENGL_FOUND)
+add_definitions(-DHAVE_QTOPENGL)
+endif(QT_QTOPENGL_FOUND)
 
 set(sailcut_UIS formhulldefbase.ui formrigdefbase.ui formsaildefbase.ui)
 
