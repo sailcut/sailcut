@@ -18,7 +18,6 @@ set(sailcut_MOC_HEADERS
 	boatdef-panel.h
 	formboat.h
 	formdocument.h
-	formhelp.h
 	formhull.h
 	formhulldef.h
 	formmain.h
@@ -39,7 +38,6 @@ set(sailcut_MOC_HEADERS
 set(sailcut_SOURCES
 	boatdef-panel.cpp
 	formboat.cpp
-	formhelp.cpp
 	formhull.cpp
 	formhulldef.cpp
 	formmain.cpp

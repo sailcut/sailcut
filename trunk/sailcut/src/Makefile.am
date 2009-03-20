@@ -12,7 +12,6 @@ noinst_HEADERS =  \
 	filewriter.h \
 	formboat.h \
 	formdocument.h \
-	formhelp.h \
 	formhull.h \
 	formhulldef.h \
 	formmain.h \
@@ -56,7 +55,6 @@ BUILT_SOURCES = \
 	moc_boatdef-panel.cpp \
 	moc_formboat.cpp \
 	moc_formdocument.cpp \
-	moc_formhelp.cpp \
 	moc_formhull.cpp \
 	moc_formhulldef.cpp \
 	moc_formmain.cpp \
@@ -78,7 +76,6 @@ BUILT_SOURCES = \
 sailcut_SOURCES = \
 	boatdef-panel.cpp \
 	formboat.cpp \
-	formhelp.cpp \
 	formhull.cpp \
 	formhulldef.cpp \
 	formmain.cpp \
