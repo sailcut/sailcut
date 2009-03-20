@@ -79,6 +79,8 @@ add_dependencies(sailcut documentation)
 add_dependencies(sailcut translations)
 target_link_libraries(sailcut sailcpp geocpp ${QT_LIBRARIES})
 
+install(TARGETS sailcut DESTINATION ${SAILCUT_RUNTIME_DIR})
+
 add_subdirectory(geocpp)
 add_subdirectory(sailcpp)
 add_subdirectory(ts)
