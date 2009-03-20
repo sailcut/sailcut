@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 2.6)
 
+set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
+include(SailcutDocs)
+
 project(sailcut)
 set(SAILCUT_VERSION_MAJOR 1)
 set(SAILCUT_VERSION_MINOR 3)
@@ -13,4 +16,5 @@ find_package(Qt4 REQUIRED)
 set(SAILCUT_DATA_DIR share/${PROJECT_NAME})
 set(SAILCUT_DOC_DIR share/doc/${PROJECT_NAME})
 
+add_subdirectory(doc)
 add_subdirectory(src)

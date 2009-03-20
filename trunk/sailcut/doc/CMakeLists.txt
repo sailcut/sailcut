@@ -1,5 +1,6 @@
 set(docfiles)
-foreach(language en fr)
+foreach(language en es fr)
+	file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/${language})
 	transform_figs(pngs
 		${language}/coordinates_system.fig
 		${language}/sailplan.fig
