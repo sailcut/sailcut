@@ -1,0 +1,32 @@
+#!/bin/sh
+
+set -e
+
+case "$1" in
+icons)
+	if test -z "`which icotool`" -o -z "`which inkscape`" -o -z "`which pngtopnm`"; then
+		echo "Please install icotool, inkscape and netpbm";
+		exit 1;
+	fi
+
+	echo "Refreshing XPM icons"
+	for i in icons/panelgroup icons/panel  icons/point  icons/sailcut; do
+		inkscape -z --file=$i.svg --export-png=$i.tmp.png --export-width=32 --export-height=32
+		pngtopnm -alpha $i.tmp.png > $i.tmp.alpha
+		pngtopnm $i.tmp.png | ppmtoxpm -alpha $i.tmp.alpha -name `basename $i`_xpm | sed -e 's/static char/static const char/g' > $i.xpm
+		rm -f $i.tmp.*
+	done
+
+	echo "Refreshing Windows icons"
+	for i in icons/sailcut icons/sailcut-file; do
+		for s in 48 32 16; do
+			inkscape -z --file=$i.svg --export-png=$i.tmp.$s --export-width=$s --export-height=$s
+		done
+		icotool -c -o $i.ico $i.tmp.48 $i.tmp.32 $i.tmp.16
+		rm -f $i.tmp.*
+	done
+	;;
+*)
+	echo "Usage: refresh icons|translation"
+	;;
+esac
