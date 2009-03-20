@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 2.6)
 
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
-include(SailcutDocs)
 
+# project and version
 project(sailcut)
 set(SAILCUT_VERSION_MAJOR 1)
 set(SAILCUT_VERSION_MINOR 3)
@@ -11,10 +11,24 @@ set(SAILCUT_VERSION ${SAILCUT_VERSION_MAJOR}.${SAILCUT_VERSION_MINOR}.${SAILCUT_
 
 # dependencies
 find_package(Qt4 REQUIRED)
+include(SailcutDocs)
+# FIXME: when cross-compiling for mingw32 FindQt4 picks up
+# the host's dependencies for QtOpenGl (-lGLU -GL)
+if(WIN32)
+set(QT_QTOPENGL_LIB_DEPENDENCIES -lopengl32 -lglu32)
+endif(WIN32)
 
 # configuration
 set(SAILCUT_DATA_DIR share/${PROJECT_NAME})
 set(SAILCUT_DOC_DIR share/doc/${PROJECT_NAME})
+
+# packaging
+install(FILES ${SAILCUT_EXTRA_LIBRARIES} DESTINATION ${SAILCUT_RUNTIME_DIR})
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Sailcut CAD")
+set(CPACK_RESOURCE_FILE_LICENSE ${CMAKE_CURRENT_SOURCE_DIR}/COPYING)
+set(CPACK_PACKAGE_VERSION_MAJOR ${SAILCUT_VERSION_MAJOR})
+set(CPACK_PACKAGE_VERSION_MINOR ${SAILCUT_VERSION_MINOR})
+set(CPACK_PACKAGE_VERSION_PATCH ${SAILCUT_VERSION_PATCH})
 
 add_subdirectory(doc)
 add_subdirectory(src)
