@@ -31,7 +31,7 @@
 
 #include "sailcutqt.h"
 
-#include "icons/sailcut.xpm"
+#include "sailcut.xpm"
 
 #include <QMenuBar>
 #include <QStatusBar>

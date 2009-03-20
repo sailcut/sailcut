@@ -1,4 +1,4 @@
-include_directories(${CMAKE_SOURCE_DIR}/src)
+include_directories(${CMAKE_SOURCE_DIR}/icons ${CMAKE_SOURCE_DIR}/src)
 
 set(QT_USE_QTSVG 1)
 set(QT_USE_QTXML 1)
