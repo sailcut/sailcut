@@ -1,0 +1,27 @@
+# specify system and cross compiler
+SET(CMAKE_SYSTEM_NAME Windows)
+SET(CMAKE_C_COMPILER   i586-mingw32msvc-gcc)
+SET(CMAKE_CXX_COMPILER i586-mingw32msvc-g++)
+
+# where is the target environment 
+SET(CMAKE_FIND_ROOT_PATH  /usr/i586-mingw32msvc)
+
+# search for programs in the build host directories
+SET(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+# for libraries and headers in the target directories
+SET(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+SET(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+
+# Qt 4
+set(QT_HEADERS_DIR ${CMAKE_FIND_ROOT_PATH}/include/qt4)
+set(QT_LIBRARY_DIR ${CMAKE_FIND_ROOT_PATH}/lib)
+
+# Extra requirements
+set(SAILCUT_EXTRA_LIBRARIES
+	${CMAKE_FIND_ROOT_PATH}/bin/mingwm10.dll
+	${CMAKE_FIND_ROOT_PATH}/bin/QtCore4.dll
+	${CMAKE_FIND_ROOT_PATH}/bin/QtGui4.dll
+	${CMAKE_FIND_ROOT_PATH}/bin/QtOpenGL4.dll
+	${CMAKE_FIND_ROOT_PATH}/bin/QtSvg4.dll
+	${CMAKE_FIND_ROOT_PATH}/bin/QtXml4.dll)
+
