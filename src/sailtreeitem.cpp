@@ -18,9 +18,9 @@
  */
 
 #include "sailtreeitem.h"
-#include "icons/point.xpm"
-#include "icons/panel.xpm"
-#include "icons/panelgroup.xpm"
+#include "point.xpm"
+#include "panel.xpm"
+#include "panelgroup.xpm"
 #include <QStringList>
 #include <QIcon>
 
