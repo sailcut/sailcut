@@ -19,7 +19,7 @@
 
 #include "formhull.h"
 #include "formhulldef.h"
-#include "hullworker.h"
+#include "sailcpp/hullworker.h"
 
 /**
  * Constructs a window to display a hull.

@@ -20,7 +20,7 @@
 #ifndef SAILTREEITEM_H
 #define SAILTREEITEM_H
 
-#include "panelgroup.h"
+#include "sailcpp/panelgroup.h"
 
 #include <QList>
 #include <QVariant>

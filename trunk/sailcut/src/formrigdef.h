@@ -21,7 +21,7 @@
 #define FORMRIGDEF_H
 
 #include "ui_formrigdefbase.h"
-#include "rigdef.h"
+#include "sailcpp/rigdef.h"
 
 
 /** The rig definition dialog, where the user enters

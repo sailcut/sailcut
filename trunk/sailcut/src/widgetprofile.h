@@ -21,7 +21,7 @@
 #define WIDGETPROFILE_H
 
 #include <QLabel>
-#include "sailcalc.h"
+#include "sailcpp/sailcalc.h"
 
 class QSpinBox;
 

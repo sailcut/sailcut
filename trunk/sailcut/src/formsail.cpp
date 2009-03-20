@@ -26,7 +26,7 @@
 #include "sailcutqt.h"
 
 #include "sailprinter.h"
-#include "sailworker.h"
+#include "sailcpp/sailworker.h"
 #include "sailwriter-carlson.h"
 #include "sailwriter-dxf.h"
 #include "sailwriter-hand.h"

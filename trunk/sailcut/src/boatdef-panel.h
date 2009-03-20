@@ -20,7 +20,7 @@
 #ifndef BOATDEF_PANEL_H
 #define BOATDEF_PANEL_H
 
-#include "boatdef.h"
+#include "sailcpp/boatdef.h"
 
 #include <QWidget>
 

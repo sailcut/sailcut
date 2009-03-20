@@ -21,7 +21,7 @@
 #define SAILVIEWER_H
 
 #include <QWidget>
-#include "panelgroup.h"
+#include "sailcpp/panelgroup.h"
 
 class QSlider;
 class QLabel;

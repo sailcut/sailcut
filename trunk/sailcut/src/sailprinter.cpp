@@ -21,10 +21,10 @@
 
 #include <QPrinter>
 
-#include "sailcalc.h"
-#include "saildef.h"
-#include "panelgroup.h"
-#include "sailcalc.h"
+#include "sailcpp/sailcalc.h"
+#include "sailcpp/saildef.h"
+#include "sailcpp/panelgroup.h"
+#include "sailcpp/sailcalc.h"
 
 
 /**
