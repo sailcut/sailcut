@@ -54,10 +54,7 @@ QUrl CSailApp::findHandbook(const QString locale)
     if (locale != "en")
         locales.append("en");
     QStringList docdirs("../doc");
-#ifdef SAILCUT_DOCDIR
-
-    docdirs.append(QString(SAILCUT_DOCDIR) + QDir::separator() + "html");
-#endif
+    docdirs.append(QString(SAILCUT_DOC_DIR) + QDir::separator() + "html");
 
     // look for handbook in different languages
     QDir appDir(applicationDirPath());
@@ -87,10 +84,7 @@ void CSailApp::loadTranslation(const QString locale)
     // translation file for application strings
     QString qm = QString("sailcut_") + locale;
     QStringList datadirs("ts");
-#ifdef SAILCUT_DATADIR
-
-    datadirs.append(QString(SAILCUT_DATADIR));
-#endif
+    datadirs.append(QString(SAILCUT_DATA_DIR));
 
     int d = 0;
     QDir appDir(applicationDirPath());
