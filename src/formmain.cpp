@@ -23,7 +23,6 @@
 
 #include "formmain.h"
 #include "formsail.h"
-#include "formhelp.h"
 #include "formhull.h"
 #include "formrig.h"
 #include "formpanelgroup.h"
@@ -37,9 +36,7 @@
 #include <QStatusBar>
 #include <QSignalMapper>
 #include <QWorkspace>
-#ifdef HAVE_QDESKTOPSERVICES
 #include <QDesktopServices>
-#endif
 
 
 /**
@@ -375,13 +372,7 @@ void CFormMain::slotAboutQt()
 void CFormMain::slotHandbook()
 {
     if ( !handbook.isEmpty() )
-    {
-#ifdef HAVE_QDESKTOPSERVICES
-        if (QDesktopServices::openUrl(handbook))
-            return;
-#endif
-        CFormHelp(this, prefs , handbook).exec();
-    }
+        QDesktopServices::openUrl(handbook);
 }
 
 
