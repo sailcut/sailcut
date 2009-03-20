@@ -11,5 +11,6 @@ find_package(Qt4 REQUIRED)
 
 # configuration
 set(SAILCUT_DATA_DIR share/${PROJECT_NAME})
+set(SAILCUT_DOC_DIR share/doc/${PROJECT_NAME})
 
 add_subdirectory(src)
