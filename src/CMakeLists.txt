@@ -1,5 +1,6 @@
-include_directories(${CMAKE_SOURCE_DIR}/icons ${CMAKE_SOURCE_DIR}/src)
+include_directories(${CMAKE_SOURCE_DIR}/icons ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
 
+set(QT_USE_QTOPENGL 1)
 set(QT_USE_QTSVG 1)
 set(QT_USE_QTXML 1)
 include(${QT_USE_FILE})
@@ -75,7 +76,8 @@ set(sailcut_SOURCES
 	widgetprofilevert.cpp)
 
 qt4_wrap_cpp(sailcut_MOC_SOURCES ${sailcut_MOC_HEADERS})
-add_executable(sailcut ${sailcut_SOURCES} ${sailcut_MOC_SOURCES})
+qt4_wrap_ui(sailcut_UI_SOURCES ${sailcut_UIS})
+add_executable(sailcut ${sailcut_SOURCES} ${sailcut_MOC_SOURCES} ${sailcut_UI_SOURCES})
 target_link_libraries(sailcut sailcpp geocpp ${QT_LIBRARIES})
 #sailcut_LDFLAGS = sailcpp/libsailcpp.a geocpp/libgeocpp.a $(QT_LIBS)
 

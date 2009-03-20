@@ -26,6 +26,9 @@ icons)
 		rm -f $i.tmp.*
 	done
 	;;
+translations)
+	lupdate src/*.cpp src/*.h src/*.ui -ts src/ts/*.ts
+	;;
 *)
 	echo "Usage: refresh icons|translation"
 	;;
