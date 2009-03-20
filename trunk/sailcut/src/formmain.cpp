@@ -333,11 +333,7 @@ void CFormMain::slotAbout()
 {
     QMessageBox::about( this, tr("About Sailcut CAD"),
 
-                        "<h2>Sailcut CAD"
-#ifdef VERSION
-                        " "VERSION
-#endif
-                        "</h2>"
+                        "<h2>Sailcut CAD " SAILCUT_VERSION "</h2>"
                         "<p>Sailcut is a software for designing boat sails<br/>"
                         "(C) 1993-2008 Robert & Jeremy Laine"
 

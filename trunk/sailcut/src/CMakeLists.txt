@@ -5,17 +5,10 @@ set(QT_USE_QTSVG 1)
 set(QT_USE_QTXML 1)
 include(${QT_USE_FILE})
 
-#AM_CPPFLAGS = \
-#	-I$(top_srcdir) -I$(srcdir)/sailcpp $(QT_CFLAGS) \
-#	-DSAILCUT_DOCDIR=\"$(pkgdocdir)\" -DSAILCUT_DATADIR=\"$(pkgdatadir)\"
+add_definitions(-DSAILCUT_VERSION="${SAILCUT_VERSION}")
 
-# the Qt UI files
 set(sailcut_UIS formhulldefbase.ui formrigdefbase.ui formsaildefbase.ui)
 
-#	ui_formhulldefbase.h
-#	ui_formrigdefbase.h
-#	ui_formsaildefbase.h
-# generated source files
 set(sailcut_MOC_HEADERS
 	boatdef-panel.h
 	formboat.h
@@ -38,7 +31,6 @@ set(sailcut_MOC_HEADERS
 	widgetprofile.h
 	widgetprofilevert.h)
 
-# the application source, library search path, and link libraries
 set(sailcut_SOURCES
 	boatdef-panel.cpp
 	formboat.cpp
@@ -78,12 +70,9 @@ set(sailcut_SOURCES
 qt4_wrap_cpp(sailcut_MOC_SOURCES ${sailcut_MOC_HEADERS})
 qt4_wrap_ui(sailcut_UI_SOURCES ${sailcut_UIS})
 add_executable(sailcut ${sailcut_SOURCES} ${sailcut_MOC_SOURCES} ${sailcut_UI_SOURCES})
+add_dependencies(sailcut translations)
 target_link_libraries(sailcut sailcpp geocpp ${QT_LIBRARIES})
-#sailcut_LDFLAGS = sailcpp/libsailcpp.a geocpp/libgeocpp.a $(QT_LIBS)
-
-# rules for Qt metasources
-#ui_%.h: %.ui
-#	$(UIC) -o $@ $<
 
 add_subdirectory(geocpp)
 add_subdirectory(sailcpp)
+add_subdirectory(ts)
