@@ -18,8 +18,8 @@
  */
 
 #include "sailcutqt.h"
-#include <QFile>
 #include <QDir>
+#include <QFile>
 #include <QTranslator>
 #include <QUrl>
 #include "sailwriter-xml.h"
@@ -60,7 +60,7 @@ QUrl CSailApp::findHandbook(const QString locale)
     docdirs.append("../doc");
 
     // when run from the installed location
-    docdirs.append(QDir(SAILCUT_RUNTIME_DIR).relativeFilePath(SAILCUT_DOC_DIR) + QDir::separator() + "html");
+    docdirs.append(SAILCUT_DOC_PATH);
 
     // look for handbook in different languages
     QDir appDir(applicationDirPath());
@@ -96,7 +96,7 @@ void CSailApp::loadTranslation(const QString locale)
     datadirs.append("ts");
 
     // when run from the installed location
-    datadirs.append(QDir(SAILCUT_RUNTIME_DIR).relativeFilePath(SAILCUT_DATA_DIR));
+    datadirs.append(SAILCUT_DATA_PATH);
 
     int d = 0;
     QDir appDir(applicationDirPath());
