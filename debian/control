@@ -3,7 +3,7 @@ Section: graphics
 Priority: optional
 Maintainer: Jeremy Lainé <jeremy.laine@m4x.org> 
 Standards-Version: 3.8.1
-Build-Depends: cdbs, debhelper (>= 5), pkg-config, libqt4-dev (>= 4.2.0), libqt4-opengl-dev, qt4-dev-tools
+Build-Depends: cdbs, debhelper (>= 5), cmake, libqt4-dev (>= 4.2.0), libqt4-opengl-dev, qt4-dev-tools
 Homepage: http://sailcut.sourceforge.net
 
 Package: sailcut
