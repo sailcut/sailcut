@@ -1,0 +1,25 @@
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION     ${SAILCUT_VERSION_WIN32}
+ PRODUCTVERSION  ${SAILCUT_VERSION_WIN32}
+ FILEFLAGSMASK   0x3fL
+ FILEFLAGS       0x0L
+ FILEOS          0x4L
+ FILETYPE        0x1L
+ FILESUBTYPE     0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "FileDescription",  "Sailcut CAD ${SAILCUT_VERSION_WIN32}"
+            VALUE "FileVersion",      "${SAILCUT_VERSION_WIN32}"
+            VALUE "InternalName",     "sailcut"
+            VALUE "LegalCopyright",   "Copyright © 1993-2009 Robert & Jeremy Laine"
+            VALUE "OriginalFilename", "sailcut.exe"
+            VALUE "ProductName",      "Sailcut CAD"
+            VALUE "ProductVersion",   "${SAILCUT_VERSION_WIN32}"
+        END
+    END
+END
+
+IDR_MAINFRAME ICON "${CMAKE_SOURCE_DIR}/icons/sailcut.ico"
