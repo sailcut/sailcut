@@ -5,7 +5,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleExecutable</key>
-	<string>sailcut</string>
+	<string>@CPACK_BUNDLE_NAME@</string>
 	<key>CFBundleIdentifier</key>
 	<string>@CPACK_BUNDLE_IDENTIFIER@</string>
 	<key>CFBundleName</key>
