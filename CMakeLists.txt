@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 2.6)
-
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
+include(RelativePath)
+include(SailcutDocs)
 
 # project and version
 project(sailcut)
@@ -11,7 +12,6 @@ set(SAILCUT_VERSION ${SAILCUT_VERSION_MAJOR}.${SAILCUT_VERSION_MINOR}.${SAILCUT_
 
 # dependencies
 find_package(Qt4 REQUIRED)
-include(SailcutDocs)
 # FIXME: when cross-compiling for mingw32 FindQt4 picks up
 # the host's dependencies for QtOpenGl (-lGLU -GL)
 if(WIN32)
@@ -28,6 +28,7 @@ install(FILES ${SAILCUT_EXTRA_LIBRARIES} DESTINATION ${SAILCUT_RUNTIME_DIR})
 set(CPACK_PACKAGE_CONTACT "info@sailcut.com")
 set(CPACK_PACKAGE_DESCRIPTION "Sailcut CAD is a sail design and plotting software")
 set(CPACK_PACKAGE_INSTALL_DIRECTORY "Sailcut CAD ${SAILCUT_VERSION}")
+set(CPACK_PACKAGE_INSTALL_REGISTRY_KEY "Sailcut CAD ${SAILCUT_VERSION}")
 set(CPACK_RESOURCE_FILE_LICENSE ${CMAKE_CURRENT_SOURCE_DIR}/COPYING)
 set(CPACK_PACKAGE_EXECUTABLES "sailcut" "Sailcut CAD")
 set(CPACK_PACKAGE_VERSION_MAJOR ${SAILCUT_VERSION_MAJOR})
