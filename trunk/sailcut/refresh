@@ -4,8 +4,8 @@ set -e
 
 case "$1" in
 icons)
-	if test -z "`which icotool`" -o -z "`which inkscape`" -o -z "`which pngtopnm`"; then
-		echo "Please install icotool, inkscape and netpbm";
+	if test -z "`which png2icns`" -o -z "`which icotool`" -o -z "`which inkscape`" -o -z "`which pngtopnm`"; then
+		echo "Please install icnsutils, icotool, inkscape and netpbm";
 		exit 1;
 	fi
 
@@ -26,10 +26,11 @@ icons)
 		rm -f $i.tmp.*
 	done
 
-	echo "Refreshing installer icons"
-	inkscape -z --file=icons/sailcut.svg --export-png=icons/sailcut.tmp.png --export-width=64 --export-height=64
-	pngtopnm icons/sailcut.tmp.png | ppmtobmp > icons/sailcut.bmp
-	rm -f icons/sailcut.tmp.png
+	echo "Refreshing MacOS/X icons"
+	i=icons/sailcut
+	inkscape -z --file=$i.svg --export-png=$i.tmp.png --export-width=128 --export-height=128
+	png2icns $i.icns $i.tmp.png
+	rm -f $i.tmp.png
 	;;
 translations)
 	lupdate src/*.cpp src/*.h src/*.ui -ts src/ts/*.ts
