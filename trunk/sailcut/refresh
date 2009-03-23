@@ -25,6 +25,11 @@ icons)
 		icotool -c -o $i.ico $i.tmp.48 $i.tmp.32 $i.tmp.16
 		rm -f $i.tmp.*
 	done
+
+	echo "Refreshing installer icons"
+	inkscape -z --file=icons/sailcut.svg --export-png=icons/sailcut.tmp.png --export-width=64 --export-height=64
+	pngtopnm icons/sailcut.tmp.png | ppmtobmp > icons/sailcut.bmp
+	rm -f icons/sailcut.tmp.png
 	;;
 translations)
 	lupdate src/*.cpp src/*.h src/*.ui -ts src/ts/*.ts
