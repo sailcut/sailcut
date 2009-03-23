@@ -5,19 +5,19 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleExecutable</key>
-	<string>Sailcut</string>
+	<string>sailcut</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.sailcut.Sailcut</string>
+	<string>@CPACK_BUNDLE_IDENTIFIER@</string>
 	<key>CFBundleName</key>
-	<string>Sailcut CAD</string>
+	<string>@CPACK_BUNDLE_NAME@</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>@VERSION@</string>
+	<string>@CPACK_PACKAGE_VERSION@</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>@VERSION@</string>
+	<string>@CPACK_PACKAGE_VERSION@</string>
 	<key>CFBundleIconFile</key>
 	<string>sailcut.icns</string>
 </dict>
