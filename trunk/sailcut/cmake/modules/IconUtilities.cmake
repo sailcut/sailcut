@@ -55,12 +55,14 @@ macro(generate_xpm OUTPUT)
 	set(${OUTPUT})
 	foreach(_this_svg ${ARGN})
 		generate_name(_this_xpm ${_this_svg} xpm)
+		get_filename_component(_this_xpm_title ${_this_svg} NAME_WE)
+		string(REPLACE "-" "_" _this_xpm_title ${_this_xpm_title})
 		set(_this_alpha ${_this_xpm}.tmp.alpha)
 		set(_this_png ${_this_xpm}.tmp.png)
 		add_custom_command(OUTPUT ${_this_xpm} DEPENDS ${_this_svg}
 			COMMAND ${INKSCAPE} -z --file=${CMAKE_CURRENT_SOURCE_DIR}/${_this_svg} --export-png=${_this_png} --export-width=32 --export-height=32
 			COMMAND ${PNGTOPNM} -alpha ${_this_png} > ${_this_alpha}
-			COMMAND ${PNGTOPNM} ${_this_png} | ${PPMTOXPM} -alpha ${_this_alpha} -name ${_svg_name}_xpm | sed -e 's/static char/static const char/g' > ${_this_xpm}
+			COMMAND ${PNGTOPNM} ${_this_png} | ${PPMTOXPM} -alpha ${_this_alpha} -name ${_this_xpm_title}_xpm | sed -e 's/static char/static const char/g' > ${_this_xpm}
 			COMMAND rm -f ${_this_alpha} ${_this_png})
 		list(APPEND ${OUTPUT} ${_this_xpm})
 	endforeach()
