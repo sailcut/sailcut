@@ -5,13 +5,6 @@ set(QT_USE_QTSVG 1)
 set(QT_USE_QTXML 1)
 include(${QT_USE_FILE})
 
-# RELATIVE_PATH(OUTPUT BASE TARGET)
-# Calculate the path to TARGET relative to BASE.
-macro(relative_path OUTPUT BASE TARGET)
-    string(REGEX REPLACE "[^/]+" ".." _temp ${BASE})
-    set(${OUTPUT} "${_temp}/${TARGET}")
-endmacro(relative_path)
-
 relative_path(SAILCUT_DATA_PATH ${SAILCUT_RUNTIME_DIR} ${SAILCUT_DATA_DIR})
 relative_path(SAILCUT_DOC_PATH ${SAILCUT_RUNTIME_DIR} ${SAILCUT_DOC_DIR})
 
