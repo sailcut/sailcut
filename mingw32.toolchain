@@ -1,18 +1,18 @@
 # specify system and cross compiler
-SET(CMAKE_SYSTEM_NAME Windows)
-SET(CMAKE_C_COMPILER   i586-mingw32msvc-gcc)
-SET(CMAKE_CXX_COMPILER i586-mingw32msvc-g++)
-SET(CMAKE_RC_COMPILER  i586-mingw32msvc-windres)
-SET(CMAKE_RC_COMPILE_OBJECT "<CMAKE_RC_COMPILER> <FLAGS> <DEFINES> --input-format rc --output-format coff -i <SOURCE> -o <OBJECT>")
+set(CMAKE_SYSTEM_NAME Windows)
+set(CMAKE_C_COMPILER   i586-mingw32msvc-gcc)
+set(CMAKE_CXX_COMPILER i586-mingw32msvc-g++)
+set(CMAKE_RC_COMPILER  i586-mingw32msvc-windres)
+set(CMAKE_RC_COMPILE_OBJECT "<CMAKE_RC_COMPILER> <FLAGS> <DEFINES> --input-format rc --output-format coff -i <SOURCE> -o <OBJECT>")
 
 # where is the target environment 
-SET(CMAKE_FIND_ROOT_PATH  /usr/i586-mingw32msvc)
+set(CMAKE_FIND_ROOT_PATH  /usr/i586-mingw32msvc)
 
 # search for programs in the build host directories
-SET(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
 # for libraries and headers in the target directories
-SET(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
-SET(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 
 # Qt 4
 set(QT_HEADERS_DIR ${CMAKE_FIND_ROOT_PATH}/include/qt4)
