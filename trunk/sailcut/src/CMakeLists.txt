@@ -86,7 +86,7 @@ add_executable(sailcut ${sailcut_SOURCES} ${sailcut_MOC_SOURCES} ${sailcut_UI_SO
 add_dependencies(sailcut documentation)
 add_dependencies(sailcut translations)
 if (WIN32)
-    set_target_properties(sailcut PROPERTIES LINK_FLAGS "-mwindows")
+	set_target_properties(sailcut PROPERTIES LINK_FLAGS "-mwindows")
 endif(WIN32)
 target_link_libraries(sailcut sailcpp geocpp ${QT_LIBRARIES})
 
