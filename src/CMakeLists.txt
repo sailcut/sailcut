@@ -73,6 +73,13 @@ set(sailcut_SOURCES
 	widgetprofile.cpp
 	widgetprofilevert.cpp)
 
+if(WIN32)
+	set(SAILCUT_VERSION_WIN32 "${SAILCUT_VERSION_MAJOR},${SAILCUT_VERSION_MINOR},${SAILCUT_VERSION_PATCH},0")
+	configure_file(${CMAKE_SOURCE_DIR}/cmake/sailcut.rc.in ${CMAKE_CURRENT_BINARY_DIR}/sailcut.rc)
+	add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/sailcut.rc.obj COMMAND i586-mingw32msvc-windres -i ${CMAKE_CURRENT_BINARY_DIR}/sailcut.rc -o ${CMAKE_CURRENT_BINARY_DIR}/sailcut.rc.obj -O coff --define VS_VERSION_INFO=1)
+	set(sailcut_SOURCES ${sailcut_SOURCES} sailcut.rc.obj)
+endif(WIN32)
+
 qt4_wrap_cpp(sailcut_MOC_SOURCES ${sailcut_MOC_HEADERS})
 qt4_wrap_ui(sailcut_UI_SOURCES ${sailcut_UIS})
 add_executable(sailcut ${sailcut_SOURCES} ${sailcut_MOC_SOURCES} ${sailcut_UI_SOURCES})
