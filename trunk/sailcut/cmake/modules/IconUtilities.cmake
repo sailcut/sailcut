@@ -1,4 +1,4 @@
-# Macros for generating Sailcut CAD's icons
+# Macros for generating various icons from SVG.
 
 find_program(ICOTOOL icotool)
 find_program(INKSCAPE inkscape)
@@ -12,6 +12,10 @@ macro(generate_name OUTPUT INPUT EXT)
 	set(${OUTPUT} ${CMAKE_CURRENT_BINARY_DIR}/${_svg_path}${_svg_name}.${EXT})
 endmacro(generate_name)
 
+# GENERATE_ICNS(OUTPUT SVGS..)
+#
+# Generate MacOS/X .icns icons from SVG files.
+#
 macro(generate_icns OUTPUT)
 	set(${OUTPUT})
 	foreach(_this_svg ${ARGN})
@@ -25,6 +29,10 @@ macro(generate_icns OUTPUT)
 	endforeach()
 endmacro(generate_icns)
 
+# GENERATE_ICO(OUTPUT SVGS..)
+#
+# Generate Windows .ico icons from SVG files.
+#
 macro(generate_ico OUTPUT)
 	set(${OUTPUT})
 	foreach(_this_svg ${ARGN})
@@ -39,6 +47,10 @@ macro(generate_ico OUTPUT)
 	endforeach()
 endmacro(generate_ico)
 
+# GENERATE_XPM(OUTPUT SVGS..)
+#
+# Generate XPM icons from SVG files.
+#
 macro(generate_xpm OUTPUT)
 	set(${OUTPUT})
 	foreach(_this_svg ${ARGN})
@@ -53,5 +65,4 @@ macro(generate_xpm OUTPUT)
 		list(APPEND ${OUTPUT} ${_this_xpm})
 	endforeach()
 endmacro(generate_xpm)
-
 
