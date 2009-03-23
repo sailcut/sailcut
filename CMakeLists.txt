@@ -46,4 +46,5 @@ configure_file(${CMAKE_SOURCE_DIR}/cmake/Bundle.plist.in ${CMAKE_BINARY_DIR}/Bun
 configure_file(${CMAKE_SOURCE_DIR}/cmake/Bundle.start.in ${CMAKE_BINARY_DIR}/Bundle.start)
 
 add_subdirectory(doc)
+add_subdirectory(icons)
 add_subdirectory(src)
