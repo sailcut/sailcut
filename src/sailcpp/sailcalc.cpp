@@ -177,38 +177,9 @@ CRect3d calcLRect(const CRect3d& viewRect, const CRect3d& objRect, const CPoint3
         return lRect;
     }
 
-    real viewAspect = viewRect.width() / viewRect.height();
-    real objAspect = objRect.width() / objRect.height();
+    // set correct aspect ratio
+    lRect = objRect.expandToRatio(viewRect.width() / viewRect.height());
 
-    // the viewing area may not match the proportions of the sail
-    // so we set the logical viewport accordingly
-    if (objAspect > viewAspect)
-    {
-        real extrah = 0.5 * objRect.height() * (objAspect/viewAspect - 1);
-        // we are limited by the width of the window, grow logical viewport's height
-        lRect.min = CVector3d(objRect.min.x(), objRect.min.y() - extrah, 0);
-        lRect.max = CVector3d(objRect.max.x(), objRect.max.y() + extrah, 0);
-    }
-    else
-    {
-        real extraw = 0.5 * objRect.width() * (viewAspect/objAspect - 1);
-        // we are limited by the height of the window, grow logical viewport's width
-        lRect.min = CVector3d(objRect.min.x() - extraw, objRect.min.y(), 0);
-        lRect.max = CVector3d(objRect.max.x() + extraw, objRect.max.y(), 0);
-    }
-
-    /*
-        cout << "-------" << endl;
-        cout << "objRect w: " << objRect.width() << ", h: "  << objRect.height() << endl;
-        cout << "viewRect w: " << viewRect.width() << ", h: " << viewRect.height() << endl;
-        cout << "lRect w: "<< lRect.width() << ", h: " << lRect.height() << endl;
-        cout << "zoom : " << zoom << endl;
-    */
-    lRect = (lRect+(center - lRect.center()))*(1/zoom);
-
-    /*
-        cout << "lRect w: " << lRect.width() << ", h: " << lRect.height() << endl;
-        cout << "-------" << endl;
-    */
-    return lRect;
+    // recenter view
+    return (lRect + (center - lRect.center())) * (1/zoom);
 }
