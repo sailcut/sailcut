@@ -54,6 +54,39 @@ CRect3d CRect3d::operator* (const real r) const
 
 
 /** Return the minimum rectangle containing the current rectangle
+ *  with the given aspect ratio (width / height).
+ */
+CRect3d CRect3d::expandToRatio(const real ratio) const
+{
+    CRect3d lRect(*this);
+    const real w = width();
+    const real h = height();
+
+    if (!w || !h)
+        return lRect;
+
+   
+    const real objAspect = w / h;
+    if (objAspect > ratio)
+    {
+        const real extrah = 0.5 * h * (objAspect/ratio - 1);
+        // we are limited by the width of the window, grow logical viewport's height
+        lRect.min.y() -= extrah;
+        lRect.max.y() += extrah;
+    }
+    else
+    {
+        real extraw = 0.5 * w * (ratio/objAspect - 1);
+        // we are limited by the height of the window, grow logical viewport's width
+        lRect.min.x() -= extraw;
+        lRect.max.x() += extraw;
+    }
+
+    return lRect;
+}
+
+
+/** Return the minimum rectangle containing the current rectangle
  *  and the one given as an argument.
  *
  * @param rect
