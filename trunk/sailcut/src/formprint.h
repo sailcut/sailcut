@@ -26,6 +26,7 @@
 
 class CFormPrint;
 class CPrinter;
+class QDoubleSpinBox;
 class QToolButton;
 
 /** A print preview label.
@@ -41,16 +42,23 @@ public:
     {
         return page;
     };
+    double getScale()
+    {
+        return scale;
+    };
     void setPage(int page);
 
 public slots:
     void slotPagePrev();
     void slotPageNext();
+    void slotScale(double scale);
 
 protected:
     void resizeEvent(QResizeEvent * event);
     void paintEvent(QPaintEvent *event);
 
+    /** scale */
+    double scale;
     /** the current page number */
     int page;
     /** the print preview form */
@@ -75,6 +83,11 @@ public slots:
 protected:
     /** display label */
     CPrintLabel *label;
+
+    /** scale label */
+    QLabel *labelScale;
+    /** scale edit */
+    QDoubleSpinBox *spinScale;
 
     /** left button */
     QToolButton *buttonLeft;
