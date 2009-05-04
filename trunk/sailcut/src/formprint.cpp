@@ -69,7 +69,8 @@ void CPrintLabel::paintEvent(QPaintEvent *)
     painter.eraseRect(rect);
 
     // draw print preview
-    form->printEngine->print(&painter, page, form->printFontSize * real(heightMM()) / real(form->printDevice.heightMM()));
+    real viewScale = real(heightMM()) / real(form->printDevice.heightMM());
+    form->printEngine->print(&painter, page, scale * viewScale, form->printFontSize * viewScale);
 }
 
 
@@ -155,13 +156,23 @@ CFormPrint::CFormPrint(const CPrinter *engine, enum QPrinter::Orientation orient
     label = new CPrintLabel(this);
     layout->addWidget(label);
 
-    // add the buttons
     QHBoxLayout* buttons = new QHBoxLayout();
-    labelScale = new QLabel(tr("Scale"));
-    buttons->addWidget(labelScale);
-    spinScale = new QDoubleSpinBox();
-    spinScale->setValue(label->getScale());
-    buttons->addWidget(spinScale);
+
+    // add scale spinbox if applicable
+    double scale = engine->scaleToFit(&printDevice);
+    if (scale > 0)
+    {
+        labelScale = new QLabel(tr("Scale"));
+        buttons->addWidget(labelScale);
+        spinScale = new QDoubleSpinBox();
+        spinScale->setDecimals(3);
+        buttons->addWidget(spinScale);
+        connect( spinScale, SIGNAL( valueChanged(double) ), label, SLOT( slotScale(double) ) );
+
+        spinScale->setValue(scale);
+    }
+
+    // add the buttons
     buttonLeft = new QToolButton();
     buttonLeft->setArrowType(Qt::LeftArrow);
     buttons->addWidget(buttonLeft);
@@ -180,7 +191,6 @@ CFormPrint::CFormPrint(const CPrinter *engine, enum QPrinter::Orientation orient
     layout->addLayout(buttons);
 
     // signals and slots connections
-    connect( spinScale, SIGNAL( valueChanged(double) ), label, SLOT( slotScale(double) ) );
     connect( buttonLeft, SIGNAL( clicked() ), label, SLOT( slotPagePrev() ) );
     connect( buttonRight, SIGNAL( clicked() ), label, SLOT( slotPageNext() ) );
     connect( buttonOk, SIGNAL( clicked() ), this, SLOT( slotPrint() ) );
@@ -222,7 +232,7 @@ void CFormPrint::slotPrint()
             {
                 if ( i > minPage - 1 )
                     printDevice.newPage();
-                printEngine->print(&painter, i, printFontSize);
+                printEngine->print(&painter, i, label->getScale(), printFontSize);
             }
         }
     }

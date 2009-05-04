@@ -40,7 +40,7 @@ void CSailSvgWriter::write(const CPanelGroup &sail, const QString &filename) con
     generator.setFileName(filename);
 
     CTextPainter painter(&generator);
-    CSailDrawingPrinter(sail, false).print(&painter, 0, 10);
+    CSailDrawingPrinter(sail, false).print(&painter, 0, 1.0, 10);
 #endif
 }
 
