@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 1993-2008 Robert & Jeremy Laine
+ * Copyright (C) 1993-2009 Robert & Jeremy Laine
  * See AUTHORS file for a full list of contributors.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -158,7 +158,7 @@ CFormPrint::CFormPrint(const CPrinter *engine, enum QPrinter::Orientation orient
 
     QHBoxLayout* buttons = new QHBoxLayout();
 
-    // add scale spinbox if applicable
+    /** add scale spinbox if applicable */
     double scale = engine->scaleToFit(&printDevice);
     if (scale > 0)
     {
@@ -166,13 +166,13 @@ CFormPrint::CFormPrint(const CPrinter *engine, enum QPrinter::Orientation orient
         buttons->addWidget(labelScale);
         spinScale = new QDoubleSpinBox();
         spinScale->setDecimals(3);
+        spinScale->setSingleStep(0.001);
         buttons->addWidget(spinScale);
         connect( spinScale, SIGNAL( valueChanged(double) ), label, SLOT( slotScale(double) ) );
-
         spinScale->setValue(scale);
     }
 
-    // add the buttons
+    /** add the buttons */
     buttonLeft = new QToolButton();
     buttonLeft->setArrowType(Qt::LeftArrow);
     buttons->addWidget(buttonLeft);
@@ -190,7 +190,7 @@ CFormPrint::CFormPrint(const CPrinter *engine, enum QPrinter::Orientation orient
     buttons->addWidget( buttonCancel );
     layout->addLayout(buttons);
 
-    // signals and slots connections
+    /** establish signals and slots connections */
     connect( buttonLeft, SIGNAL( clicked() ), label, SLOT( slotPagePrev() ) );
     connect( buttonRight, SIGNAL( clicked() ), label, SLOT( slotPageNext() ) );
     connect( buttonOk, SIGNAL( clicked() ), this, SLOT( slotPrint() ) );

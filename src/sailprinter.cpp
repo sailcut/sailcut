@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 1993-2008 Robert & Jeremy Laine
+ * Copyright (C) 1993-2009 Robert & Jeremy Laine
  * See AUTHORS file for a full list of contributors.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -28,8 +28,7 @@
 #include "sailcpp/sailcalc.h"
 
 
-/**
- * Print the current sail data.
+/** Print the current sail data sheet.
  *
  * @param painter
  * @param fontsize
@@ -153,7 +152,7 @@ void CSailDataPrinter::print(CTextPainter *painter, int, real scale, real fontsi
 }
 
 
-/** Print a developed sail.
+/** Print a developed sail panel by panel.
  *
  * @param painter
  * @param page
@@ -185,10 +184,16 @@ void CSailDevelPrinter::print(CTextPainter *painter, int page, real scale, real 
     painter->drawCross(rp.min, painter->fontMetrics().height() );
     painter->drawCoord(rp.min, PI );
     painter->setPen(oldpen);
+
+    /* NOTE scale factor on preview screen is not same value as in spinbox
+    *  However the correct value equal to spinbox value will be printed */
+    CPoint3d pt = logicalRect.center()+ CVector3d(0,1,0)*0.45*logicalRect.height();
+    QString txt = QString("Scale = %1").arg(scale, 0, 'f', 3);
+    painter->drawTextCentered(pt, txt);
 }
 
 
-/** Print the drawing of a sail.
+/** Print the drawing of a complete sail.
  *
  * @param painter
  * @param scale
@@ -205,10 +210,17 @@ void CSailDrawingPrinter::print(CTextPainter *painter, int, real scale, real fon
     // set coordinate system to match the logical viewport
     painter->setWindow(logicalRect);
     painter->setFontSize(fontsize, 1);
-
+    
     painter->draw(sail);
     if (showLabels)
         painter->drawLabels(sail);
+
+    /* NOTE scale factor on preview screen is not same value as in spinbox
+    *  However the correct value equal to spinbox value will be printed */
+    CPoint3d pt = logicalRect.center()+ CVector3d(0,1,0)*0.45*logicalRect.height();
+    QString txt = QString("Scale = %1").arg(scale, 0, 'f', 3);
+    painter->drawTextCentered(pt, txt);
+
 }
 
 /** Return the scale needed to fit the developed sail in the given device.
