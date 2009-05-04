@@ -19,6 +19,7 @@
 
 #include "sailprinter.h"
 
+#include <QDebug>
 #include <QPrinter>
 
 #include "sailcpp/sailcalc.h"
@@ -33,7 +34,7 @@
  * @param painter
  * @param fontsize
  */
-void CSailDataPrinter::print(CTextPainter *painter, int, real fontsize) const
+void CSailDataPrinter::print(CTextPainter *painter, int, real scale, real fontsize) const
 {
     QString text2=" ", text3=" ";
     painter->setFontSize(fontsize, 1);
@@ -156,29 +157,31 @@ void CSailDataPrinter::print(CTextPainter *painter, int, real fontsize) const
  *
  * @param painter
  * @param page
+ * @param scale
  * @param fontsize
  */
-void CSailDevelPrinter::print(CTextPainter *painter, int page, real fontsize) const
+void CSailDevelPrinter::print(CTextPainter *painter, int page, real scale, real fontsize) const
 {
-    // calculate logical rectangle
-    real zoom = 0.8;
-    CRect3d flatrect = flatsail.boundingRect();
-    CRect3d logicalRect = calcLRect(painter->viewRect(), flatrect, flatrect.center(), zoom);
+    // set scale
+    CRect3d logicalRect = CRect3d(CPoint3d(0, 0, 0), CPoint3d(painter->device()->widthMM(), painter->device()->heightMM(), 0)) * (1/scale);
+
+    // center view
+    logicalRect = logicalRect + (sail.boundingRect().center() - logicalRect.center());
 
     // set coordinate system to match the logical viewport
     painter->setWindow(logicalRect);
-    painter->setFontSize(fontsize, zoom);
+    painter->setFontSize(fontsize, 1);
 
-    painter->draw(flatsail[page]);
+    painter->draw(sail[page]);
     if (showLabels)
-        painter->drawLabels(flatsail[page]);
+        painter->drawLabels(sail[page]);
 
-    painter->drawMarkers(flatsail[page]);
+    painter->drawMarkers(sail[page]);
 
     // mark corners of cloth rectangle
     QPen oldpen = painter->pen();
     painter->setPen(Qt::green);
-    CRect3d rp = flatsail[page].boundingRect();
+    CRect3d rp = sail[page].boundingRect();
     painter->drawCross(rp.min, painter->fontMetrics().height() );
     painter->drawCoord(rp.min, PI );
     painter->setPen(oldpen);
@@ -188,24 +191,34 @@ void CSailDevelPrinter::print(CTextPainter *painter, int page, real fontsize) co
 /** Print the drawing of a sail.
  *
  * @param painter
+ * @param scale
  * @param fontsize
  */
-void CSailDrawingPrinter::print(CTextPainter *painter, int, real fontsize) const
+void CSailDrawingPrinter::print(CTextPainter *painter, int, real scale, real fontsize) const
 {
-    // center the sail
-    CPanelGroup printSail = sail + CVector3d( -sail.boundingRect().center() );
+    // set scale
+    CRect3d logicalRect = CRect3d(CPoint3d(0, 0, 0), CPoint3d(painter->device()->widthMM(), painter->device()->heightMM(), 0)) * (1/scale);
 
-    // calculate logical rectangle
-    real zoom = 0.8;
-    CRect3d logicalRect = calcLRect(painter->viewRect(), printSail.boundingRect(), CPoint3d(0,0,0), zoom);
+    // center view
+    logicalRect = logicalRect + (sail.boundingRect().center() - logicalRect.center());
 
     // set coordinate system to match the logical viewport
     painter->setWindow(logicalRect);
-    painter->setFontSize(fontsize, zoom);
+    painter->setFontSize(fontsize, 1);
 
-    painter->draw(printSail);
+    painter->draw(sail);
     if (showLabels)
-        painter->drawLabels(printSail);
+        painter->drawLabels(sail);
 }
 
-
+/** Return the scale needed to fit the developed sail in the given device.
+ *
+ * @param device
+ */
+double CSailDrawingPrinter::scaleToFit(QPaintDevice* device) const
+{
+    Q_ASSERT(device->widthMM() > 0 && device->heightMM() > 0);
+    const real w = device->widthMM();
+    const real h = device->heightMM();
+    return 0.8 * w / sail.boundingRect().expandToRatio(w / h).width();
+}

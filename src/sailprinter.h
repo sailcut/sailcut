@@ -36,7 +36,13 @@ public:
 
     /** Perform the actual printing operation, must be overriden.
      */
-    virtual void print(CTextPainter *painter, int page, real fontsize) const = 0;
+    virtual void print(CTextPainter *painter, int page, real scale, real fontsize) const = 0;
+
+    /** Return the scale needed to fit the developed sail in the given device.
+    *
+    * @param device
+    */
+    virtual double scaleToFit(QPaintDevice* device) const { return -1; };
 };
 
 
@@ -56,39 +62,11 @@ public:
     {
         return 1;
     };
-    void print(CTextPainter *painter, int, real fontsize) const;
+    void print(CTextPainter *painter, int, real size, real fontsize) const;
 
 protected:
     /** the sail definition to print */
     const CSailDef saildef;
-};
-
-
-/** A class for printing developped sail panels.
- *
- *  One panel is output per page.
- */
-class CSailDevelPrinter : public CPrinter
-{
-public:
-    /** The constructor.
-     *
-     * @param obj the developed sail to print
-     * @param show_labels should labels be printed?
-     */
-    CSailDevelPrinter(const CPanelGroup &obj, bool show_labels = true)
-            : flatsail(obj), showLabels(show_labels) {};
-    int pages() const
-    {
-        return flatsail.size();
-    };
-    void print(CTextPainter *painter, int page, real fontsize) const;
-
-protected:
-    /** the flat sail to print */
-    const CPanelGroup flatsail;
-    /** should the labels be printed? */
-    bool showLabels;
 };
 
 
@@ -110,13 +88,41 @@ public:
     {
         return 1;
     };
-    void print(CTextPainter *painter, int, real fontsize) const;
+    void print(CTextPainter *painter, int, real scale, real fontsize) const;
+    double scaleToFit(QPaintDevice *device) const;
 
 protected:
     /** the sail to print */
     const CPanelGroup sail;
     /** should the labels be printed? */
     bool showLabels;
+};
+
+
+/** A class for printing developped sail panels.
+ *
+ *  One panel is output per page.
+ */
+class CSailDevelPrinter : public CSailDrawingPrinter
+{
+public:
+    /** The constructor.
+     *
+     * @param obj the developed sail to print
+     * @param show_labels should labels be printed?
+     */
+    /** The constructor.
+     *
+     * @param obj the sail to print
+     * @param show_labels should labels be printed?
+     */
+    CSailDevelPrinter(const CPanelGroup &obj, bool show_labels = true)
+            : CSailDrawingPrinter(obj, show_labels) {};
+    int pages() const
+    {
+        return sail.size();
+    };
+    void print(CTextPainter *painter, int page, real scale, real fontsize) const;
 };
 
 
