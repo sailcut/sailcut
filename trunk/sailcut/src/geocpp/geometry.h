@@ -190,16 +190,21 @@ public:
     {
         return 0.5 * (min + max);
     };
+
+    CRect3d expandToRatio(const real ratio) const;
+
     /** Return the box's width. */
     real width() const
     {
         return max.x()-min.x();
     };
+
     /** Return the box's height. */
     real height() const
     {
         return max.y()-min.y();
     };
+
     CRect3d join(const CRect3d& rect) const;
 
     /** lower-left corner */
