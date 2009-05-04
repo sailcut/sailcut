@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 1993-2008 Robert & Jeremy Laine
+ * Copyright (C) 1993-2009 Robert & Jeremy Laine
  * See AUTHORS file for a full list of contributors.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -32,7 +32,7 @@ QPolygonF& operator<<(QPolygonF &poly, const CPoint3d &p)
 }
 
 
-/** Draws a panel of a sail.
+/** Draws a single panel of a sail.
  */
 void CSailPainter::draw(const CPanel &panel)
 {
@@ -73,7 +73,7 @@ void CSailPainter::draw(const CPanel &panel)
 }
 
 
-/** Draws a panel label.
+/** Draws the label of a panel.
  */
 void CSailPainter::drawLabels(const CPanel &panel)
 {
@@ -334,7 +334,7 @@ void CSailPainter::setWindow(const CRect3d& lRect)
 }
 
 
-/** Draw text centered at the given position.
+/** Return text size vector.
  */
 CVector3d CSailPainter::textSize(const QStringList &lst)
 {
