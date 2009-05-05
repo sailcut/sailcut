@@ -158,7 +158,7 @@ CFormPrint::CFormPrint(const CPrinter *engine, enum QPrinter::Orientation orient
 
     QHBoxLayout* buttons = new QHBoxLayout();
 
-    /** add scale spinbox if applicable */
+    // add scale spinbox if applicable
     double scale = engine->scaleToFit(&printDevice);
     if (scale > 0)
     {
@@ -172,7 +172,7 @@ CFormPrint::CFormPrint(const CPrinter *engine, enum QPrinter::Orientation orient
         spinScale->setValue(scale);
     }
 
-    /** add the buttons */
+    // add the buttons
     buttonLeft = new QToolButton();
     buttonLeft->setArrowType(Qt::LeftArrow);
     buttons->addWidget(buttonLeft);
@@ -190,7 +190,7 @@ CFormPrint::CFormPrint(const CPrinter *engine, enum QPrinter::Orientation orient
     buttons->addWidget( buttonCancel );
     layout->addLayout(buttons);
 
-    /** establish signals and slots connections */
+    // connect signals and slots
     connect( buttonLeft, SIGNAL( clicked() ), label, SLOT( slotPagePrev() ) );
     connect( buttonRight, SIGNAL( clicked() ), label, SLOT( slotPageNext() ) );
     connect( buttonOk, SIGNAL( clicked() ), this, SLOT( slotPrint() ) );
