@@ -48,6 +48,7 @@ CLabelProfile::CLabelProfile( QWidget *parent, CProfile *ptr)
     QPalette pal = palette();
     pal.setColor( QPalette::Background, Qt::white );
     setPalette( pal );
+    setMinimumSize( QSize( 300, 100 ) );
 }
 
 
@@ -60,14 +61,14 @@ void CLabelProfile::paintEvent( QPaintEvent *)
     painter.eraseRect(vRect);
 
     CRect3d objRect;
-    objRect.max = CPoint3d(1 , 0.2);
+    objRect.max = CPoint3d(1, 0.22);
 
     if ( wasResized )
     {
         CRect3d viewRect;
         viewRect.max = CPoint3d(vRect.width() , vRect.height());
 
-        lRect = calcLRect(viewRect , objRect, objRect.center(), 0.95);
+        lRect = calcLRect(viewRect , objRect, objRect.center(), 0.8);
         wasResized = 0;
     }
 
@@ -228,7 +229,6 @@ CWidgetProfile::CWidgetProfile( QWidget *parent, CProfile *ptr,
     // set translations and trigger update
     // NOTE : all the widgets need to be created before doing this
     languageChange();
-    resize( QSize(527, 159).expandedTo( minimumSizeHint() ) );
 
     // trigger the computation of profile to update the ancillary data labels
     slotChanged();
