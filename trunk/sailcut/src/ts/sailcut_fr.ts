@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS>
+<!DOCTYPE TS><TS version="1.1" language="fr">
+<defaultcodec></defaultcodec>
 <context>
     <name>CBoatElementWidget</name>
     <message>
@@ -1504,7 +1505,7 @@
         <source>Sheeting angle</source>
         <translation>Ouverture de la voile</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <source>m²</source>
         <translation type="obsolete">m²</translation>
     </message>
@@ -2126,15 +2127,15 @@
     <name>Dialog</name>
     <message>
         <source>Dialog</source>
-        <translation type="unfinished">Dialogue</translation>
+        <translation>Dialogue</translation>
     </message>
     <message>
         <source>All panels in a single file</source>
-        <translation type="unfinished"></translation>
+        <translation>Tous les panneaux dans un seul fichier</translation>
     </message>
     <message>
         <source>One file per panel</source>
-        <translation type="unfinished"></translation>
+        <translation>Un fichier par panneau</translation>
     </message>
 </context>
 <context>
