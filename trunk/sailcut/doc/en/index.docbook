@@ -386,15 +386,15 @@
 <itemizedlist>
 
 <listitem>
-<para>The <guimenuitem>data</guimenuitem> menu entry will print the data of the sail, </para>
+<para>The <guimenuitem>data</guimenuitem> menu entry will print the data of the sail. </para>
 </listitem>
 
 <listitem>
-<para>The <guimenuitem>drawing</guimenuitem> menu entry will print a drawing of the complete sail, </para>
+<para>The <guimenuitem>drawing</guimenuitem> menu entry will print a drawing of the complete sail. A dialog box allows to preview the printout with a spin box to adjust the scale factor. The scale factor is the factor by which the sail size is multiplied to obtain the drawing size. The scale factor can be as small as 0.001 (1000 mm sail will be printed as 1mm), the default value is such that the sail fits in 80% of the paper size. </para>
 </listitem>
 
 <listitem>
-<para>The <guimenuitem>develop</guimenuitem> menu entry will print all the developed panels with key points coordinates (1 panel per page). The definition of the developed panel key points coordinates is given in <xref linkend="fig.develop_panel_drawing"/>. The X,Y coordinates are absolute coordinates referenced to the lower left corner of the box enveloping the contour of the CUT line of the panel (edge of cloth). The dX,dY coordinates are relative to the straight line joining the end of the corresponding edge and it should be remembered that the origin of dX is at the left end of the edge and positive value of dY indicate that the point is left of the straight line joining the origin to the end points of the edge.</para>
+<para>The <guimenuitem>develop</guimenuitem> menu entry will print all the developed panels with key points coordinates (1 panel per page). A dialog box allows to preview the printout with a spin box to adjust the scale factor as for the complete sail. The layout of the paper is set to landscape. The definition of the developed panel key points coordinates is given in <xref linkend="fig.develop_panel_drawing"/>. The X,Y coordinates are absolute coordinates referenced to the lower left corner of the box enveloping the contour of the CUT line of the panel (edge of cloth). The dX,dY coordinates are relative to the straight line joining the end of the corresponding edge and it should be remembered that the origin of dX is at the left end of the edge and positive value of dY indicate that the point is left of the straight line joining the origin to the end points of the edge.</para>
 </listitem>
 
 </itemizedlist>
