@@ -45,7 +45,7 @@ CLabelProfileVert::CLabelProfileVert( QWidget *parent, CSailMould *ptr)
     pal.setColor( QPalette::Background, Qt::white );
     setPalette( pal );
 
-    setMinimumSize( QSize( 110, 400 ) );
+    setMinimumSize( QSize( 120, 400 ) );
 }
 
 
@@ -59,7 +59,7 @@ void CLabelProfileVert::paintEvent( QPaintEvent *)
     painter.eraseRect(vRect);
 
     CRect3d objRect;
-    objRect.max = CPoint3d(0.2, 1);
+    objRect.max = CPoint3d(0.22, 1);
 
     if ( wasResized )
     {
