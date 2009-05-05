@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="en_GB">
+<!DOCTYPE TS><TS>
 <context>
     <name>CBoatElementWidget</name>
     <message>
@@ -82,13 +82,6 @@
     <message>
         <source>Open</source>
         <translation>Ouvrir</translation>
-    </message>
-</context>
-<context>
-    <name>CFormHelp</name>
-    <message>
-        <source>Sailcut CAD Handbook</source>
-        <translation>Manuel de Sailcut CAD</translation>
     </message>
 </context>
 <context>
@@ -397,7 +390,7 @@
     </message>
     <message>
         <source>wireframe view</source>
-        <translation type="obsolete">vue fil de  fer</translation>
+        <translation type="obsolete">vue fil de fer</translation>
     </message>
     <message>
         <source>development</source>
@@ -795,6 +788,10 @@
     <message>
         <source>&amp;Cancel</source>
         <translation>&amp;Annuler</translation>
+    </message>
+    <message>
+        <source>Scale</source>
+        <translation>Echelle</translation>
     </message>
 </context>
 <context>
@@ -1507,7 +1504,7 @@
         <source>Sheeting angle</source>
         <translation>Ouverture de la voile</translation>
     </message>
-    <message encoding="UTF-8">
+    <message utf8="true">
         <source>m²</source>
         <translation type="obsolete">m²</translation>
     </message>
