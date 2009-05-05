@@ -84,13 +84,6 @@
     </message>
 </context>
 <context>
-    <name>CFormHelp</name>
-    <message>
-        <source>Sailcut CAD Handbook</source>
-        <translation>Sailcut CAD håndbog</translation>
-    </message>
-</context>
-<context>
     <name>CFormHull</name>
     <message>
         <source>hull</source>
@@ -766,6 +759,10 @@
     <message>
         <source>&amp;Cancel</source>
         <translation>&amp;Annuller</translation>
+    </message>
+    <message>
+        <source>Scale</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="en_GB">
+<!DOCTYPE TS><TS>
 <context>
     <name>CBoatElementWidget</name>
     <message>
@@ -82,13 +81,6 @@
     <message>
         <source>Open</source>
         <translation>Openen</translation>
-    </message>
-</context>
-<context>
-    <name>CFormHelp</name>
-    <message>
-        <source>Sailcut CAD Handbook</source>
-        <translation>Sailcut CAD Handboek</translation>
     </message>
 </context>
 <context>
@@ -775,6 +767,10 @@
     <message>
         <source>&amp;Cancel</source>
         <translation>Op&amp;heffen</translation>
+    </message>
+    <message>
+        <source>Scale</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
