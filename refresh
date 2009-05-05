@@ -6,6 +6,6 @@ translations)
 	lupdate src/*.cpp src/*.h src/*.ui -ts src/ts/*.ts
 	;;
 *)
-	echo "Usage: refresh translation"
+	echo "Usage: refresh translations"
 	;;
 esac
