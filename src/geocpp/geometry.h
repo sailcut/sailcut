@@ -1,5 +1,6 @@
 /*
- * Copyright (C) 2002-2008 Jeremy Laine
+ * Copyright (C) 1993-2009 Robert & Jeremy Laine
+ * See AUTHORS file for a full list of contributors.
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
