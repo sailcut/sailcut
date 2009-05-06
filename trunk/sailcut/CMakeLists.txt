@@ -20,12 +20,12 @@ set(QT_QTOPENGL_LIB_DEPENDENCIES -lopengl32 -lglu32)
 endif(WIN32)
 
 # configuration
-set(SAILCUT_RUNTIME_DIR bin)
-set(SAILCUT_DATA_DIR share/${PROJECT_NAME})
-set(SAILCUT_DOC_DIR share/doc/${PROJECT_NAME})
+set(SAILCUT_RUNTIME_DIR bin CACHE STRING "Sailcut runtime directory.")
+set(SAILCUT_LIBRARY_DIR lib CACHE STRING "Sailcut library directory.")
+set(SAILCUT_DATA_DIR share/${PROJECT_NAME} CACHE STRING "Sailcut data directory.")
+set(SAILCUT_DOC_DIR share/doc/${PROJECT_NAME} CACHE STRING "Sailcut documentation directory.")
 
 # packaging
-install(FILES ${SAILCUT_EXTRA_LIBRARIES} DESTINATION ${SAILCUT_RUNTIME_DIR})
 set(CPACK_PACKAGE_CONTACT "info@sailcut.com")
 set(CPACK_PACKAGE_DESCRIPTION "Sailcut CAD is a sail design and plotting software")
 set(CPACK_PACKAGE_INSTALL_DIRECTORY "Sailcut CAD ${SAILCUT_VERSION}")
