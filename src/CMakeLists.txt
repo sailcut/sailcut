@@ -31,6 +31,7 @@ set(sailcut_MOC_HEADERS
 	formrigdef.h
 	formsail.h
 	formsaildef.h
+	sailprinter.h
 	sailtreemodel.h
 	sailviewer.h
 	sailviewer-panel.h

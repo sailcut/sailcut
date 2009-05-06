@@ -52,6 +52,8 @@ public:
  */
 class CSailDataPrinter : public CPrinter
 {
+    Q_OBJECT
+
 public:
     /** The constructor.
      *
@@ -76,6 +78,8 @@ protected:
  */
 class CSailDrawingPrinter : public CPrinter
 {
+    Q_OBJECT
+
 public:
     /** The constructor.
      *
@@ -105,6 +109,8 @@ protected:
  */
 class CSailDevelPrinter : public CSailDrawingPrinter
 {
+    Q_OBJECT
+
 public:
     /** The constructor.
      *
