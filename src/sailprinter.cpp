@@ -189,7 +189,7 @@ void CSailDevelPrinter::print(CTextPainter *painter, int page, real scale, real 
     *  However the correct value equal to spinbox value will be printed */
     QString txt = tr("Scale")+" = %1";
     txt = txt.arg(scale, 0, 'f', 3);
-    CPoint3d pt = logicalRect.center()+ CVector3d(0,1,0)*0.45*logicalRect.height();
+    CPoint3d pt = logicalRect.center()+ CVector3d(0,1,0)*0.47*logicalRect.height();
     painter->drawTextCentered(pt, txt);
 }
 
@@ -220,7 +220,7 @@ void CSailDrawingPrinter::print(CTextPainter *painter, int, real scale, real fon
     *  However the correct value equal to spinbox value will be printed */
     QString txt = tr("Scale")+" = %1";
     txt = txt.arg(scale, 0, 'f', 3);
-    CPoint3d pt = logicalRect.center()+ CVector3d(0,1,0)*0.45*logicalRect.height();
+    CPoint3d pt = logicalRect.center()+ CVector3d(0,1,0)*0.47*logicalRect.height();
     painter->drawTextCentered(pt, txt);
 }
 
