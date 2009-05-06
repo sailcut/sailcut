@@ -1,11 +1,5 @@
 #!/bin/sh
 set -e
 
-case "$1" in
-translations)
-	lupdate src/*.cpp src/*.h src/*.ui -ts src/ts/*.ts
-	;;
-*)
-	echo "Usage: refresh translations"
-	;;
-esac
+echo "Refreshing translations"
+lupdate src/*.cpp src/*.h src/*.ui -ts src/ts/*.ts
