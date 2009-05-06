@@ -91,6 +91,7 @@ if (WIN32)
 endif(WIN32)
 target_link_libraries(sailcut sailcpp geocpp ${QT_LIBRARIES})
 
+ship_depends(sailcut)
 install(TARGETS sailcut DESTINATION ${SAILCUT_RUNTIME_DIR})
 
 add_subdirectory(geocpp)
