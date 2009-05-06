@@ -3,4 +3,6 @@
 BUNDLE="`echo "$0" | sed -e 's/\/Contents\/MacOS\/.*//'`"
 RESOURCES="$BUNDLE/Contents/Resources"
 
+export DYLD_LIBRARY_PATH=$RESOURCES/lib
+
 exec "$RESOURCES/@SAILCUT_RUNTIME_DIR@/sailcut"
