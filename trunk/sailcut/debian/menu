@@ -1,6 +1,0 @@
-?package(sailcut):\
-  needs="X11"\
-  section="Applications/Graphics"\
-  title="Sailcut CAD"\
-  command="/usr/bin/sailcut"\
-  icon="/usr/share/pixmaps/sailcut.xpm"
