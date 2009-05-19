@@ -1,9 +1,0 @@
-Document: sailcut-doc
-Title: Sailcut CAD Handbook
-Author: Jeremy Laine <jeremy.laine@m4x.org>
-Abstract: This document describes Sailcut CAD
-Section: Graphics
-
-Format: HTML
-Index: /usr/share/doc/sailcut/html/en/index.html
-Files: /usr/share/doc/sailcut/html/en/*.html
