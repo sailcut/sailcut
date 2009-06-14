@@ -123,7 +123,7 @@
     <message>
         <location filename="../formhulldefbase.ui" line="86"/>
         <source>Deck and bottom</source>
-        <translation>Deck und Unteres</translation>
+        <translation>Deck und Rumpf</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="104"/>
@@ -138,27 +138,27 @@
     <message>
         <location filename="../formhulldefbase.ui" line="167"/>
         <source>lower plank angle</source>
-        <translation type="unfinished"></translation>
+        <translation>Unterer Plankenwinkel</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="231"/>
         <source>top plank angle</source>
-        <translation type="unfinished"></translation>
+        <translation>Oberer Plankenwinkel</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="238"/>
         <source>Number of planks</source>
-        <translation type="unfinished"></translation>
+        <translation>Anzahl der Planken</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="256"/>
         <source>Bottom</source>
-        <translation>Unteres</translation>
+        <translation>Boden</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="313"/>
         <source>Bottom sweep angle</source>
-        <translation type="unfinished"></translation>
+        <translation>Unterer Anstellwinkel</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="334"/>
@@ -168,12 +168,12 @@
     <message>
         <location filename="../formhulldefbase.ui" line="446"/>
         <source>Max Width</source>
-        <translation type="unfinished"></translation>
+        <translation>Max. Breite</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="655"/>
         <source>Forward shape</source>
-        <translation type="unfinished"></translation>
+        <translation>Bug-Form</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="662"/>
@@ -183,102 +183,102 @@
     <message>
         <location filename="../formhulldefbase.ui" line="677"/>
         <source>Forward height </source>
-        <translation type="unfinished"></translation>
+        <translation>Bug-Höhe</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="684"/>
         <source>Max Width position</source>
-        <translation type="unfinished"></translation>
+        <translation>Position max. Breite</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="706"/>
         <source>Stem angle</source>
-        <translation type="unfinished"></translation>
+        <translation>Vorsteven-Winkel</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="713"/>
         <source>Transom angle</source>
-        <translation type="unfinished"></translation>
+        <translation>Heckspiegel-Winkel</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="1752"/>
         <source>Aft height</source>
-        <translation type="unfinished"></translation>
+        <translation>Heck-Höhe</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="735"/>
         <source>Aft width</source>
-        <translation type="unfinished"></translation>
+        <translation>Heck-Breite</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="742"/>
         <source>Aft shape</source>
-        <translation type="unfinished"></translation>
+        <translation>Heckform</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="794"/>
         <source>Hull name</source>
-        <translation type="unfinished"></translation>
+        <translation>Rumpfname</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="804"/>
         <source>Deck</source>
-        <translation type="unfinished"></translation>
+        <translation>Deck</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="1745"/>
         <source>Forward height</source>
-        <translation type="unfinished"></translation>
+        <translation>Bug-Höhe</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="1068"/>
         <source>Plank 5</source>
-        <translation type="unfinished"></translation>
+        <translation>Planke 5</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="1773"/>
         <source>Chine angle</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Unterer Rumpf-Winkel??</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="1766"/>
         <source>Sweep angle</source>
-        <translation type="unfinished"></translation>
+        <translation>Kiel-Winkel</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="1759"/>
         <source>Plank angle</source>
-        <translation type="unfinished"></translation>
+        <translation>Plankenwinkel</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="1211"/>
         <source>Plank 4</source>
-        <translation type="unfinished"></translation>
+        <translation>Planke 4</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="1354"/>
         <source>Plank 3</source>
-        <translation type="unfinished"></translation>
+        <translation>Planke 3</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="1640"/>
         <source>Plank 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Planke 2</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="1497"/>
         <source>Plank 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Planke 1</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="925"/>
         <source>Plank 6</source>
-        <translation type="unfinished"></translation>
+        <translation>Planke 6</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="53"/>
         <source>Check</source>
-        <translation type="unfinished"></translation>
+        <translation>Prüfen</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="60"/>
@@ -293,37 +293,37 @@
     <message>
         <location filename="../formhulldefbase.ui" line="1826"/>
         <source>Dimensions are in millimeters and angles in degrees measured from horizontal</source>
-        <translation>Alle Dimensionen sind in Millimeter und Graden</translation>
+        <translation>Alle Massangaben sind in Millimeter und Grad zur Horizontalen</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="913"/>
         <source>Planks</source>
-        <translation type="unfinished"></translation>
+        <translation>Planken</translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="439"/>
         <source>txt_BBW</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="467"/>
         <source>txt_BfwdHeight</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="488"/>
         <source>txt_BLWL</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="509"/>
         <source>txt_BaftW</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="603"/>
         <source>txt_BaftHeight</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="648"/>
@@ -333,22 +333,22 @@
     <message>
         <location filename="../formhulldefbase.ui" line="773"/>
         <source>txt_HullID</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="860"/>
         <source>txt_DaftHeight</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="881"/>
         <source>txt_DfwdHeight</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="895"/>
         <source>Side angle</source>
-        <translation type="unfinished"></translation>
+        <translation>Seitenwinkel</translation>
     </message>
 </context>
 <context>
@@ -943,37 +943,37 @@
     <message>
         <location filename="../formrigdefbase.ui" line="291"/>
         <source>Spreaders</source>
-        <translation type="unfinished"></translation>
+        <translation>Salinge</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="338"/>
         <source>= SPNB</source>
-        <translation type="unfinished"></translation>
+        <translation>= SPNB</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="345"/>
         <source>Number of spreaders</source>
-        <translation type="unfinished"></translation>
+        <translation>Anzahl der Sahlinge</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="361"/>
         <source>Spreader height</source>
-        <translation type="unfinished"></translation>
+        <translation>Saling-Höhe</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="385"/>
         <source>txt_SPH2</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="407"/>
         <source>txt_SPH1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="429"/>
         <source>txt_SPH3</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="445"/>
@@ -993,7 +993,7 @@
     <message>
         <location filename="../formrigdefbase.ui" line="487"/>
         <source>Spreader length</source>
-        <translation type="unfinished"></translation>
+        <translation>Saling-Länge</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="505"/>
@@ -1003,7 +1003,7 @@
     <message>
         <location filename="../formrigdefbase.ui" line="518"/>
         <source>txt_SPW3</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="534"/>
@@ -1013,7 +1013,7 @@
     <message>
         <location filename="../formrigdefbase.ui" line="547"/>
         <source>txt_SPW1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="563"/>
@@ -1023,82 +1023,82 @@
     <message>
         <location filename="../formrigdefbase.ui" line="576"/>
         <source>txt_SPW2</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="90"/>
         <source>Shrouds</source>
-        <translation type="unfinished"></translation>
+        <translation>Wanten</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="114"/>
         <source>Cap shroud base width</source>
-        <translation type="unfinished"></translation>
+        <translation>Basisweite der Oberwanten</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="133"/>
         <source>= CSH</source>
-        <translation type="unfinished"></translation>
+        <translation>= CSH</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="152"/>
         <source>Lower shroud base width </source>
-        <translation type="unfinished"></translation>
+        <translation>Basisweite der Unterwanten</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="171"/>
         <source>txt_LSB</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="193"/>
         <source>txt_CSH</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="215"/>
         <source>= CSB</source>
-        <translation type="unfinished"></translation>
+        <translation>= CSB</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="234"/>
         <source>Cap shroud height</source>
-        <translation type="unfinished"></translation>
+        <translation>Oberwanten-Höhe</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="253"/>
         <source>txt_CSB</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="275"/>
         <source>= LSB</source>
-        <translation type="unfinished"></translation>
+        <translation>= LSB</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1384"/>
         <source>Fore triangle</source>
-        <translation type="unfinished"></translation>
+        <translation>Vorsegel-Dreieck</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1421"/>
         <source>txt_foreI</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1431"/>
         <source>= I</source>
-        <translation type="unfinished"></translation>
+        <translation>= I</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1450"/>
         <source>txt_foreJ</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1460"/>
         <source>= J</source>
-        <translation type="unfinished"></translation>
+        <translation>= J</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1467"/>
@@ -1123,22 +1123,22 @@
     <message>
         <location filename="../formrigdefbase.ui" line="1110"/>
         <source>= MW</source>
-        <translation type="unfinished"></translation>
+        <translation>= MW</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1123"/>
         <source>txt_MW</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1139"/>
         <source>txt_MC</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1149"/>
         <source>= MC</source>
-        <translation type="unfinished"></translation>
+        <translation>= MC</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1156"/>
@@ -1148,42 +1148,42 @@
     <message>
         <location filename="../formrigdefbase.ui" line="1166"/>
         <source>lbl_MRkD</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1176"/>
         <source>= MRkD</source>
-        <translation type="unfinished"></translation>
+        <translation>= MRkD</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1183"/>
         <source>Mast rake angle</source>
-        <translation>Mastrechenwinkel</translation>
+        <translation>Mastfallwinkel</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1202"/>
         <source>txt_MH</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1212"/>
         <source>txt_MRnd</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1238"/>
         <source>Mast rake</source>
-        <translation>Mastrechen</translation>
+        <translation>Mastfall</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1245"/>
         <source>= MRkM</source>
-        <translation type="unfinished"></translation>
+        <translation>= MRkM</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1264"/>
         <source>txt_MRkM</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1286"/>
@@ -1193,12 +1193,12 @@
     <message>
         <location filename="../formrigdefbase.ui" line="1293"/>
         <source>= MH</source>
-        <translation type="unfinished"></translation>
+        <translation>= MH</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1300"/>
         <source>= MRnd</source>
-        <translation type="unfinished"></translation>
+        <translation>= MRnd</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1319"/>
@@ -1208,7 +1208,7 @@
     <message>
         <location filename="../formrigdefbase.ui" line="1326"/>
         <source>= MRndPos</source>
-        <translation type="unfinished"></translation>
+        <translation>= MRndPos</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1345"/>
@@ -1223,37 +1223,37 @@
     <message>
         <location filename="../formrigdefbase.ui" line="631"/>
         <source>lbl_MS_LuffRP</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="653"/>
         <source>@ </source>
-        <translation type="unfinished"></translation>
+        <translation>@</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="678"/>
         <source>lbl_MS_LuffR</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="703"/>
         <source>lbl_MS_TackY</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="725"/>
         <source>Y =</source>
-        <translation type="unfinished"></translation>
+        <translation>Y =</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="750"/>
         <source>lbl_MS_TackX</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="766"/>
         <source>X =</source>
-        <translation type="unfinished"></translation>
+        <translation>X =</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="782"/>
@@ -1263,12 +1263,12 @@
     <message>
         <location filename="../formrigdefbase.ui" line="820"/>
         <source>lbl_MS_LuffL</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="836"/>
         <source>= MSL</source>
-        <translation type="unfinished"></translation>
+        <translation>= MSL</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="855"/>
@@ -1283,12 +1283,12 @@
     <message>
         <location filename="../formrigdefbase.ui" line="896"/>
         <source>lbl_MS_Rake</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="912"/>
         <source>= MSR</source>
-        <translation type="unfinished"></translation>
+        <translation>= MSR</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="931"/>
@@ -1303,47 +1303,47 @@
     <message>
         <location filename="../formrigdefbase.ui" line="985"/>
         <source>txt_BAD</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1007"/>
         <source>= BAD</source>
-        <translation type="unfinished"></translation>
+        <translation>= BAD</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1027"/>
         <source>Head height</source>
-        <translation type="unfinished"></translation>
+        <translation>Höhe des Segelkopfes</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1040"/>
         <source>= HAD</source>
-        <translation type="unfinished"></translation>
+        <translation>= HAD</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1059"/>
         <source>txt_HAD</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="38"/>
         <source>Check</source>
-        <translation type="unfinished"></translation>
+        <translation>Prüfen</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1544"/>
         <source>All dimensions are in millimeter and angles in degrees</source>
-        <translation>Alle Dimensionen sind in Millimeter und Graden</translation>
+        <translation>Alle Massangaben sind in Millimeter und Grad </translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1490"/>
         <source>Description of rig</source>
-        <translation>Beschreibung der Rigg</translation>
+        <translation>Beschreibung des Riggs</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1509"/>
         <source>Rig name</source>
-        <translation>Name von Rigg</translation>
+        <translation>Name des Riggs</translation>
     </message>
 </context>
 <context>
@@ -1447,7 +1447,7 @@
     <message>
         <location filename="../formsail.cpp" line="96"/>
         <source>to DXF (split)</source>
-        <translation type="unfinished"></translation>
+        <translation>DXF (geteilt)</translation>
     </message>
 </context>
 <context>

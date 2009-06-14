@@ -303,27 +303,27 @@
     <message>
         <location filename="../formhulldefbase.ui" line="439"/>
         <source>txt_BBW</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="467"/>
         <source>txt_BfwdHeight</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="488"/>
         <source>txt_BLWL</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="509"/>
         <source>txt_BaftW</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="603"/>
         <source>txt_BaftHeight</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="648"/>
@@ -333,17 +333,17 @@
     <message>
         <location filename="../formhulldefbase.ui" line="773"/>
         <source>txt_HullID</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="860"/>
         <source>txt_DaftHeight</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="881"/>
         <source>txt_DfwdHeight</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formhulldefbase.ui" line="895"/>
@@ -968,7 +968,7 @@
     <message>
         <location filename="../formrigdefbase.ui" line="338"/>
         <source>= SPNB</source>
-        <translation type="unfinished"></translation>
+        <translation>= SPNB</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="345"/>
@@ -983,17 +983,17 @@
     <message>
         <location filename="../formrigdefbase.ui" line="385"/>
         <source>txt_SPH2</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="407"/>
         <source>txt_SPH1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="429"/>
         <source>txt_SPH3</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="445"/>
@@ -1023,7 +1023,7 @@
     <message>
         <location filename="../formrigdefbase.ui" line="518"/>
         <source>txt_SPW3</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="534"/>
@@ -1033,7 +1033,7 @@
     <message>
         <location filename="../formrigdefbase.ui" line="547"/>
         <source>txt_SPW1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="563"/>
@@ -1043,7 +1043,7 @@
     <message>
         <location filename="../formrigdefbase.ui" line="576"/>
         <source>txt_SPW2</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="90"/>
@@ -1058,7 +1058,7 @@
     <message>
         <location filename="../formrigdefbase.ui" line="133"/>
         <source>= CSH</source>
-        <translation type="unfinished"></translation>
+        <translation>= CSH</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="152"/>
@@ -1068,17 +1068,17 @@
     <message>
         <location filename="../formrigdefbase.ui" line="171"/>
         <source>txt_LSB</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="193"/>
         <source>txt_CSH</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="215"/>
         <source>= CSB</source>
-        <translation type="unfinished"></translation>
+        <translation>= CSB</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="234"/>
@@ -1088,12 +1088,12 @@
     <message>
         <location filename="../formrigdefbase.ui" line="253"/>
         <source>txt_CSB</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="275"/>
         <source>= LSB</source>
-        <translation type="unfinished"></translation>
+        <translation>= LSB</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1384"/>
@@ -1103,22 +1103,22 @@
     <message>
         <location filename="../formrigdefbase.ui" line="1421"/>
         <source>txt_foreI</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1431"/>
         <source>= I</source>
-        <translation type="unfinished"></translation>
+        <translation>= I</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1450"/>
         <source>txt_foreJ</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1460"/>
         <source>= J</source>
-        <translation type="unfinished"></translation>
+        <translation>= J</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1467"/>
@@ -1143,22 +1143,22 @@
     <message>
         <location filename="../formrigdefbase.ui" line="1110"/>
         <source>= MW</source>
-        <translation type="unfinished"></translation>
+        <translation>= MW</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1123"/>
         <source>txt_MW</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1139"/>
         <source>txt_MC</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1149"/>
         <source>= MC</source>
-        <translation type="unfinished"></translation>
+        <translation>= MC</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1156"/>
@@ -1168,12 +1168,12 @@
     <message>
         <location filename="../formrigdefbase.ui" line="1166"/>
         <source>lbl_MRkD</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1176"/>
         <source>= MRkD</source>
-        <translation type="unfinished"></translation>
+        <translation>= MRkD</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1183"/>
@@ -1183,12 +1183,12 @@
     <message>
         <location filename="../formrigdefbase.ui" line="1202"/>
         <source>txt_MH</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1212"/>
         <source>txt_MRnd</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1238"/>
@@ -1198,12 +1198,12 @@
     <message>
         <location filename="../formrigdefbase.ui" line="1245"/>
         <source>= MRkM</source>
-        <translation type="unfinished"></translation>
+        <translation>= MRkM</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1264"/>
         <source>txt_MRkM</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1286"/>
@@ -1213,12 +1213,12 @@
     <message>
         <location filename="../formrigdefbase.ui" line="1293"/>
         <source>= MH</source>
-        <translation type="unfinished"></translation>
+        <translation>= MH</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1300"/>
         <source>= MRnd</source>
-        <translation type="unfinished"></translation>
+        <translation>= MRnd</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1319"/>
@@ -1228,7 +1228,7 @@
     <message>
         <location filename="../formrigdefbase.ui" line="1326"/>
         <source>= MRndPos</source>
-        <translation type="unfinished"></translation>
+        <translation>= MRndPos</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1345"/>
@@ -1243,7 +1243,7 @@
     <message>
         <location filename="../formrigdefbase.ui" line="631"/>
         <source>lbl_MS_LuffRP</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="653"/>
@@ -1253,27 +1253,27 @@
     <message>
         <location filename="../formrigdefbase.ui" line="678"/>
         <source>lbl_MS_LuffR</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="703"/>
         <source>lbl_MS_TackY</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="725"/>
         <source>Y =</source>
-        <translation type="unfinished"></translation>
+        <translation>Y =</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="750"/>
         <source>lbl_MS_TackX</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="766"/>
         <source>X =</source>
-        <translation type="unfinished"></translation>
+        <translation>X =</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="782"/>
@@ -1283,12 +1283,12 @@
     <message>
         <location filename="../formrigdefbase.ui" line="820"/>
         <source>lbl_MS_LuffL</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="836"/>
         <source>= MSL</source>
-        <translation type="unfinished"></translation>
+        <translation>= MSL</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="855"/>
@@ -1303,12 +1303,12 @@
     <message>
         <location filename="../formrigdefbase.ui" line="896"/>
         <source>lbl_MS_Rake</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="912"/>
         <source>= MSR</source>
-        <translation type="unfinished"></translation>
+        <translation>= MSR</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="931"/>
@@ -1323,12 +1323,12 @@
     <message>
         <location filename="../formrigdefbase.ui" line="985"/>
         <source>txt_BAD</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1007"/>
         <source>= BAD</source>
-        <translation type="unfinished"></translation>
+        <translation>= BAD</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1027"/>
@@ -1338,12 +1338,12 @@
     <message>
         <location filename="../formrigdefbase.ui" line="1040"/>
         <source>= HAD</source>
-        <translation type="unfinished"></translation>
+        <translation>= HAD</translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="1059"/>
         <source>txt_HAD</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../formrigdefbase.ui" line="38"/>
