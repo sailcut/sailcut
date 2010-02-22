@@ -644,12 +644,14 @@ bool CFormSailDef::check()
         txtLuffLen->setText(QString::number(saildef->luffL) );
 
         L2 = (long) ((saildef->luffL )/ 10); // round limit
-
-        if (saildef->luffR > L2)
+        /** To acommodate code zero jib 
+            the positive luff round limit is twice negative round limit 
+        */
+        if (saildef->luffR > 2*L2) 
         {
             flag=false;
             txtLuffRound->setPalette(palHi);
-            saildef->luffR = L2;
+            saildef->luffR = 2*L2;
         }
         else if (saildef->luffR <-L2)
         {
@@ -1052,11 +1054,11 @@ bool CFormSailDef::check()
             txtGores->setPalette( palLo);
             txtGores->setText(QString::number(3));
         }
-        else  if (saildef->nbGores >7)
+        else  if (saildef->nbGores > 12)
         {
             flag=false;
             txtGores->setPalette( palHi);
-            txtGores->setText(QString::number(7));
+            txtGores->setText(QString::number(12));
         }
         else
         {
@@ -1072,7 +1074,7 @@ bool CFormSailDef::check()
             txtSections->setPalette( palLo);
             txtSections->setText(QString::number(3));
         }
-        else if (saildef->nbSections >8)
+        else if (saildef->nbSections > 8)
         {
             flag=false;
             txtSections->setPalette( palHi);
