@@ -3042,11 +3042,12 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
 
             // check if top seam is past luff mitre point
             if ( CVector3d(p2[npanel] - mitreLuffPt) * mitreV > EPS ) {
-                // last foot panel 
+                // last foot panel is meeting Mitre luff point
                 p1[npanel] = mitreLuffPt;
-                p2[npanel] = mitreLuffPt;
+                //p2[npanel] = mitreLuffPt; // top is luff point
+                p2[npanel] = p2[npanel-1]; //top on mitre line
                 t2[npanel] = 2;
-                flag = true; // to get out of FOR
+                flag = true; // set to get out of FOR loop
             }
 
             // fill right side points which are all on mitre
@@ -3100,7 +3101,7 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
             if ( npanel == 1 )    // Foot panel 
                 dev[npanel-1].add6Hems( luffHemW, luffHemW, seamW, mitreHemW, mitreHemW, footHemW ); 
             else if ( flag == true )   // last foot section panel 
-               dev[npanel-1].add6Hems( luffHemW, luffHemW, luffHemW, mitreHemW, mitreHemW, 0 ); 
+               dev[npanel-1].add6Hems( luffHemW, luffHemW, mitreHemW, mitreHemW, 1.5*mitreHemW, 0 ); 
             else    // Normal Panel 
                 dev[npanel-1].add6Hems( luffHemW, luffHemW, seamW, mitreHemW, mitreHemW, 0 ); 
             
