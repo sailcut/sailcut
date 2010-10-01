@@ -3044,8 +3044,8 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
             if ( CVector3d(p2[npanel] - mitreLuffPt) * mitreV > EPS ) {
                 // last foot panel is meeting Mitre luff point
                 p1[npanel] = mitreLuffPt;
-                //p2[npanel] = mitreLuffPt; // top is luff point
-                p2[npanel] = p2[npanel-1]; //top on mitre line
+                //p2[npanel] = mitreLuffPt; // old top on luff point
+                p2[npanel] = p2[npanel-1]; // new top on mitre line
                 t2[npanel] = 2;
                 flag = true; // set to get out of FOR loop
             }
@@ -3125,7 +3125,7 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
             break;
     }  /* Loop FOR next seam */
 
-    /* Store the number of panels in foot */
+    /* Store the number of panels in the foot area */
     npanelFoot = npanel;
     if ( npanelFoot == MAX_PANELS/2 -1 )
         throw layout_error("CSailWorker::LayoutMitre2 : Foot got to MAX_PANELS/2 without reaching Mitre intersection at Luff, do increase cloth width.");
@@ -3163,7 +3163,8 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
                throw layout_error("CSailWorker::LayoutMitre2 leech -c : intersection of seam and mitre is not a point!"); // the case when the intersection is not a point needs to be handled 
 
             // check if top seam is passed luff mitre point
-            if ( p1[npanel].x() <= mitreLuffPt.x() ) { // last panel
+            if ( p1[npanel].x() <= mitreLuffPt.x() ) { 
+		// last panel
                 p1[npanel] = mitreLuffPt;
                 t1[npanel] = 5;   // Type=5=Mitre instersection.
                 p2[npanel] = mitreLuffPt;
