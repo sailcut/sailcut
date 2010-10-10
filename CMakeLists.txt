@@ -23,7 +23,7 @@ endif(WIN32)
 set(SAILCUT_RUNTIME_DIR bin CACHE STRING "Sailcut runtime directory.")
 set(SAILCUT_LIBRARY_DIR lib CACHE STRING "Sailcut library directory.")
 set(SAILCUT_DATA_DIR share/${PROJECT_NAME} CACHE STRING "Sailcut data directory.")
-set(SAILCUT_DOC_DIR share/doc/${PROJECT_NAME} CACHE STRING "Sailcut documentation directory.")
+set(SAILCUT_DOC_DIR share/doc/${PROJECT_NAME}/html CACHE STRING "Sailcut documentation directory.")
 
 # packaging
 set(CPACK_PACKAGE_CONTACT "info@sailcut.com")
