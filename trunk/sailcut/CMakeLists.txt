@@ -13,11 +13,6 @@ set(SAILCUT_VERSION ${SAILCUT_VERSION_MAJOR}.${SAILCUT_VERSION_MINOR}.${SAILCUT_
 
 # dependencies
 find_package(Qt4 REQUIRED)
-# FIXME: when cross-compiling for mingw32 FindQt4 picks up
-# the host's dependencies for QtOpenGl (-lGLU -GL)
-if(WIN32)
-set(QT_QTOPENGL_LIB_DEPENDENCIES -lopengl32 -lglu32)
-endif(WIN32)
 
 # configuration
 set(SAILCUT_RUNTIME_DIR bin CACHE STRING "Sailcut runtime directory.")
