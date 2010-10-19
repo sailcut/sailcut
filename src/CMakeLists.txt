@@ -87,6 +87,9 @@ add_executable(sailcut ${sailcut_SOURCES} ${sailcut_MOC_SOURCES} ${sailcut_UI_SO
 add_dependencies(sailcut documentation)
 add_dependencies(sailcut translations)
 if (WIN32)
+	# FIXME: when cross-compiling for mingw32 FindQt4 fails to pick up
+	# the dependencies for QtOpenGl
+	set(QT_LIBRARIES ${QT_LIBRARIES} -lopengl32 -lglu32)
 	set_target_properties(sailcut PROPERTIES LINK_FLAGS "-mwindows")
 endif(WIN32)
 target_link_libraries(sailcut sailcpp geocpp ${QT_LIBRARIES})
