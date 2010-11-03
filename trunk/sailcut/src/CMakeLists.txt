@@ -12,7 +12,14 @@ add_definitions(-DSAILCUT_VERSION="${SAILCUT_VERSION}")
 add_definitions(-DSAILCUT_DATA_PATH="${SAILCUT_DATA_PATH}")
 add_definitions(-DSAILCUT_DOC_PATH="${SAILCUT_DOC_PATH}")
 if(QT_QTOPENGL_FOUND)
-add_definitions(-DHAVE_QTOPENGL)
+	add_definitions(-DHAVE_QTOPENGL)
+	# FIXME: FindQt4 fails to pick up the dependencies for QtOpenGL
+	# the dependencies for QtOpenGl
+	if(APPLE)
+		set(QT_LIBRARIES ${QT_LIBRARIES} "-framework OpenGL -framework AGL")
+	elseif(WIN32)
+		set(QT_LIBRARIES ${QT_LIBRARIES} -lopengl32 -lglu32)
+	endif()
 endif(QT_QTOPENGL_FOUND)
 
 set(sailcut_UIS formhulldefbase.ui formrigdefbase.ui formsaildefbase.ui)
@@ -87,9 +94,6 @@ add_executable(sailcut ${sailcut_SOURCES} ${sailcut_MOC_SOURCES} ${sailcut_UI_SO
 add_dependencies(sailcut documentation)
 add_dependencies(sailcut translations)
 if (WIN32)
-	# FIXME: when cross-compiling for mingw32 FindQt4 fails to pick up
-	# the dependencies for QtOpenGl
-	set(QT_LIBRARIES ${QT_LIBRARIES} -lopengl32 -lglu32)
 	set_target_properties(sailcut PROPERTIES LINK_FLAGS "-mwindows")
 endif(WIN32)
 target_link_libraries(sailcut sailcpp geocpp ${QT_LIBRARIES})
