@@ -1,0 +1,25 @@
+<!DOCTYPE Sailcut>
+<CSailDoc>
+ <CHullDef name="hulldef" >
+  <string value="First-25.7S" name="hullID" />
+  <real value="7000" name="BLWL" />
+  <real value="100" name="BfwdHeight" />
+  <real value="200" name="BaftHeight" />
+  <int value="12" name="BSlopeA" />
+  <real value="2500" name="BBW" />
+  <int value="35" name="BBWPos" />
+  <real value="2000" name="BaftW" />
+  <int value="10" name="BDeadriseA" />
+  <int value="24" name="BSweepA" />
+  <int value="2" name="BfwdShape" />
+  <int value="2" name="BaftShape" />
+  <real value="1000" name="DfwdHeight" />
+  <real value="950" name="DaftHeight" />
+  <int value="6" name="DSlopeA" />
+  <int value="85" name="StemA" />
+  <int value="92" name="TransomA" />
+  <int value="3" name="NBPlank" />
+  <int value="88" name="TopPlankA" />
+  <int value="30" name="lowPlankA" />
+ </CHullDef>
+</CSailDoc>

@@ -1,0 +1,58 @@
+<!DOCTYPE Sailcut>
+<CSailDoc>
+ <CSailDef name="saildef" >
+  <enumSailCut value="MITRE" name="sailCut" />
+  <enumSailType value="MAINSAIL" name="sailType" />
+  <real value="7000" name="LOA" />
+  <real value="6500" name="foreI" />
+  <real value="2000" name="foreJ" />
+  <real value="1972" name="tackX" />
+  <real value="750" name="tackY" />
+  <real value="4877" name="luffL" />
+  <real value="161" name="rake" />
+  <real value="45" name="gaffDeg" />
+  <real value="5" name="gaffL" />
+  <real value="2223" name="footL" />
+  <real value="5154" name="leechL" />
+  <real value="67" name="luffR" />
+  <real value="0" name="gaffR" />
+  <real value="350" name="leechR" />
+  <real value="50" name="footR" />
+  <int value="50" name="luffRP" />
+  <int value="50" name="gaffRP" />
+  <int value="55" name="leechRP" />
+  <int value="50" name="footRP" />
+  <real value="900" name="clothW" />
+  <real value="13" name="seamW" />
+  <real value="40" name="leechHemW" />
+  <real value="10" name="hemsW" />
+  <real value="18" name="twistDeg" />
+  <real value="0" name="sheetDeg" />
+  <CSailMould name="mould" >
+   <int value="40" name="vertpos" />
+   <vector size="3" name="profile" >
+    <CProfile name="0" >
+     <real value="0.02" name="depth" />
+     <real value="0" name="kleech" />
+     <real value="1" name="kluff" />
+    </CProfile>
+    <CProfile name="1" >
+     <real value="0.08" name="depth" />
+     <real value="0.04" name="kleech" />
+     <real value="3" name="kluff" />
+    </CProfile>
+    <CProfile name="2" >
+     <real value="0.06" name="depth" />
+     <real value="0.04" name="kleech" />
+     <real value="5" name="kluff" />
+    </CProfile>
+   </vector>
+  </CSailMould>
+  <string value="Test sail 1" name="sailID" />
+  <int value="5" name="nbSections" />
+  <int value="5" name="nbGores" />
+  <int value="2" name="nbLuffGores" />
+  <real value="168" name="dihedralDeg" />
+  <real value="30" name="footHemW" />
+ </CSailDef>
+</CSailDoc>
