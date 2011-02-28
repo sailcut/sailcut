@@ -19,6 +19,8 @@ if(QT_QTOPENGL_FOUND)
 		set(QT_LIBRARIES ${QT_LIBRARIES} "-framework OpenGL -framework AGL")
 	elseif(WIN32)
 		set(QT_LIBRARIES ${QT_LIBRARIES} -lopengl32 -lglu32)
+	else()
+		set(QT_LIBRARIES ${QT_LIBRARIES} -lGL)
 	endif()
 endif(QT_QTOPENGL_FOUND)
 
