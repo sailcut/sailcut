@@ -28,10 +28,12 @@
 
 #include "sailcut.xpm"
 
+#include <QDebug>
+#include <QMdiArea>
+#include <QMdiSubWindow>
 #include <QMenuBar>
 #include <QStatusBar>
 #include <QSignalMapper>
-#include <QWorkspace>
 #include <QDesktopServices>
 
 
@@ -83,7 +85,7 @@ CFormMain::CFormMain(CSailApp *myApp, QWidget *parent)
 void CFormMain::addChild(CFormDocument *child)
 {
     bool max = ((activeChild() == NULL) || activeChild()->isMaximized());
-    workspace->addWindow(child);
+    workspace->addSubWindow(child);
     if (max)
         child->showMaximized();
     else
@@ -96,7 +98,8 @@ void CFormMain::addChild(CFormDocument *child)
  */
 CFormDocument* CFormMain::activeChild()
 {
-    return qobject_cast<CFormDocument *>(workspace->activeWindow());
+    QMdiSubWindow *subWindow = workspace->activeSubWindow();
+    return qobject_cast<CFormDocument *>(subWindow ? subWindow->widget() : 0);
 }
 
 
@@ -222,13 +225,13 @@ void CFormMain::open(QString filename)
  */
 void CFormMain::setupMainWidget()
 {
-    workspace = new QWorkspace();
+    workspace = new QMdiArea();
     setCentralWidget(workspace);
-    connect(workspace, SIGNAL(windowActivated(QWidget *)),
+    connect(workspace, SIGNAL(subWindowActivated(QMdiSubWindow *)),
             this, SLOT(slotUpdateDocumentMenus()));
     windowMapper = new QSignalMapper(this);
     connect(windowMapper, SIGNAL(mapped(QWidget *)),
-            workspace, SLOT(setActiveWindow(QWidget *)));
+            this, SLOT(slotSetActiveWindow(QWidget *)));
 }
 
 
@@ -259,13 +262,13 @@ void CFormMain::setupMenuBar()
     // Window menu
     menuWindow = menuBar()->addMenu("");
     actionClose = new QAction(this);
-    connect(actionClose, SIGNAL( triggered() ), workspace, SLOT( closeActiveWindow() ) );
+    connect(actionClose, SIGNAL( triggered() ), workspace, SLOT( closeActiveSubWindow() ) );
     actionCloseAll = new QAction(this);
-    connect(actionCloseAll, SIGNAL( triggered() ), workspace, SLOT( closeAllWindows() ) );
+    connect(actionCloseAll, SIGNAL( triggered() ), workspace, SLOT( closeAllSubWindows() ) );
     actionTile = new QAction(this);
-    connect(actionTile, SIGNAL( triggered() ), workspace, SLOT( tile() ) );
+    connect(actionTile, SIGNAL( triggered() ), workspace, SLOT( tileSubWindows() ) );
     actionCascade = new QAction(this);
-    connect(actionCascade, SIGNAL( triggered() ), workspace, SLOT( cascade() ) );
+    connect(actionCascade, SIGNAL( triggered() ), workspace, SLOT( cascadeSubWindows() ) );
     actionWindowSep = new QAction(this);
     actionWindowSep->setSeparator(true);
     connect(menuWindow, SIGNAL( aboutToShow() ), this, SLOT( slotUpdateWindowMenu() ) );
@@ -466,9 +469,10 @@ void CFormMain::slotOpenRecent()
  */
 void CFormMain::slotSave()
 {
-    if (activeChild()->save())
+    CFormDocument* child = activeChild();
+    if (child->save())
     {
-        QString filename = activeChild()->filename;
+        QString filename = child->filename;
         statusbar->showMessage(tr("wrote '%1'").arg(filename));
         prefs->mruDocuments.touchEntry(filename);
         makeMenuMru();
@@ -481,15 +485,20 @@ void CFormMain::slotSave()
  */
 void CFormMain::slotSaveAs()
 {
-    if (activeChild()->saveAs())
+    CFormDocument* child = activeChild();
+    if (child->saveAs())
     {
-        QString filename = activeChild()->filename;
+        QString filename = child->filename;
         statusbar->showMessage(tr("wrote '%1'").arg(filename));
         prefs->mruDocuments.touchEntry(filename);
         makeMenuMru();
     }
 }
 
+void CFormMain::slotSetActiveWindow(QWidget *widget)
+{
+    workspace->setActiveSubWindow(qobject_cast<QMdiSubWindow*>(widget));
+}
 
 /**
  * Refresh the document-specific menus.
@@ -546,7 +555,7 @@ void CFormMain::slotUpdateWindowMenu()
     menuWindow->addAction(actionCascade);
     menuWindow->addAction(actionWindowSep);
 
-    QList<QWidget *> windows = workspace->windowList();
+    QList<QMdiSubWindow *> windows = workspace->subWindowList();
     actionWindowSep->setVisible(!windows.isEmpty());
     actionClose->setEnabled(!windows.isEmpty());
     actionCloseAll->setEnabled(!windows.isEmpty());
@@ -555,7 +564,8 @@ void CFormMain::slotUpdateWindowMenu()
 
     for (int i = 0; i < windows.size(); ++i)
     {
-        CFormDocument *child = qobject_cast<CFormDocument *>(windows.at(i));
+        QMdiSubWindow *subWindow = windows.at(i);
+        CFormDocument *child = qobject_cast<CFormDocument *>(subWindow->widget());
 
         QString text = QString("%1 %2").arg(i + 1).arg(child->windowTitle());
         if (!child->filename.isNull())
@@ -565,7 +575,7 @@ void CFormMain::slotUpdateWindowMenu()
         action->setCheckable(true);
         action->setChecked(child == activeChild());
         connect(action, SIGNAL(triggered()), windowMapper, SLOT(map()));
-        windowMapper->setMapping(action, child);
+        windowMapper->setMapping(action, subWindow);
     }
 }
 

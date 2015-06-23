@@ -28,10 +28,10 @@
    
 // forward definitions
 class QAction;
+class QMdiArea;
 class QMenu;
 class QMenuBar;
 class QStatusBar;
-class QWorkspace;
 class QSignalMapper;
 
 class CPrefs;
@@ -77,12 +77,13 @@ protected slots:
     virtual void slotHandbook();
 
     virtual void slotLanguage();
+    virtual void slotSetActiveWindow(QWidget *widget);
     virtual void slotUpdateDocumentMenus();
     virtual void slotUpdateWindowMenu();
 
 protected:
     /** The workspace */
-    QWorkspace *workspace;
+    QMdiArea *workspace;
 
     /** The signal mapper */
     QSignalMapper *windowMapper;
