@@ -1,20 +1,20 @@
 /*
- * Copyright (C) 1993-2009 Robert & Jeremy Laine
+ * Copyright (C) 1993-2015 Robert & Jeremy Laine
  * See AUTHORS file for a full list of contributors.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
 #include "formmain.h"
@@ -328,7 +328,7 @@ void CFormMain::slotAbout()
 
                         "<h2>Sailcut CAD " SAILCUT_VERSION "</h2>"
                         "<p>Sailcut is a software for designing boat sails<br/>"
-                        "(C) 1993-2009 Robert & Jeremy Laine"
+                        "(C) 1993-2015 Robert & Jeremy Laine"
 
                         "<p>For more information, visit the project's page at <a href=\"http://sailcut.sourceforge.net/\">http://sailcut.sourceforge.net/</a>.</p>"
 
@@ -347,7 +347,7 @@ void CFormMain::slotAbout()
 
                         "You should have received a copy of the GNU General Public License "
                         "along with this program; if not, write to the Free Software "
-                        "Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA"
+                        "Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA"
                         "</small></td></tr></table>"
                       );
 }

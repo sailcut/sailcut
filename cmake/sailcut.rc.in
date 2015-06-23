@@ -15,7 +15,7 @@ BEGIN
         BEGIN
             VALUE "FileDescription",  "Sailcut CAD ${SAILCUT_VERSION}\0"
             VALUE "FileVersion",      "${SAILCUT_VERSION_WIN32}\0"
-            VALUE "LegalCopyright",   "Copyright 1993-2009 Robert & Jeremy Laine\0"
+            VALUE "LegalCopyright",   "Copyright 1993-2015 Robert & Jeremy Laine\0"
             VALUE "ProductName",      "Sailcut CAD\0"
             VALUE "ProductVersion",   "${SAILCUT_VERSION_WIN32}\0"
         END
