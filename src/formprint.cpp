@@ -184,7 +184,7 @@ CFormPrint::CFormPrint(const CPrinter *engine, enum QPrinter::Orientation orient
 
     buttons->addItem( new QSpacerItem( 20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum ) );
     buttonOk = new QPushButton( tr("&Print"), this );
-    buttonOk->setDefault( TRUE );
+    buttonOk->setDefault( true );
     buttons->addWidget( buttonOk );
     buttonCancel = new QPushButton( tr("&Cancel"), this );
     buttons->addWidget( buttonCancel );

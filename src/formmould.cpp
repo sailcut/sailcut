@@ -45,7 +45,7 @@ CFormMould::CFormMould( QWidget *parent, CSailMould *mouldptr )
     // the user clicks OK
     sailmould = mouldptr;
 
-    setSizeGripEnabled( TRUE );
+    setSizeGripEnabled( true );
     QGridLayout* CFormMouldLayout = new QGridLayout( this );
 
     // Add the buttons at the bottom of the screen
@@ -54,7 +54,7 @@ CFormMould::CFormMould( QWidget *parent, CSailMould *mouldptr )
     buttonsLayout->addItem( new QSpacerItem( 20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum ) );
 
     buttonOk = new QPushButton( tr("&OK"), this );
-    buttonOk->setDefault( TRUE );
+    buttonOk->setDefault( true );
     buttonsLayout->addWidget( buttonOk );
 
     buttonCancel = new QPushButton( tr("&Cancel"), this );
