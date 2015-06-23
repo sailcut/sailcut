@@ -148,7 +148,7 @@ CFormPrint::CFormPrint(const CPrinter *engine, enum QPrinter::Orientation orient
 {
     // initialise printer
     printDevice.setOrientation(orientation);
-    printDevice.setFullPage(FALSE);
+    printDevice.setFullPage(false);
 
     QVBoxLayout *layout = new QVBoxLayout(this);
 
