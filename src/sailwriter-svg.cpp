@@ -30,13 +30,11 @@
  */
 void CSailSvgWriter::write(const CPanelGroup &sail, const QString &filename) const
 {
-#ifdef HAVE_QSVGGENERATOR
     // SVG generator
     QSvgGenerator generator;
     generator.setFileName(filename);
 
     CTextPainter painter(&generator);
     CSailDrawingPrinter(sail, false).print(&painter, 0, 1.0, 10);
-#endif
 }
 
