@@ -56,6 +56,7 @@ public:
     void drawMarkers(const CPanelGroup &sail);
 
     void setFontSize(const real size, const real zoom);
+    void setPenColor(const QColor &color);
     void setWindow(const CRect3d& lRect);
 
     CVector3d textSize(const QStringList &lst);

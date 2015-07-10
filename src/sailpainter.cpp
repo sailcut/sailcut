@@ -54,7 +54,7 @@ void CSailPainter::draw(const CPanel &panel)
     {
         // switch pen to red
         const QPen oldPen = pen();
-        setPen(Qt::red);
+        setPenColor(Qt::red);
 
         poly = QPolygonF();
         for (iter = panel.cutBottom.begin(); iter != panel.cutBottom.end(); iter++)
@@ -90,11 +90,11 @@ void CSailPainter::draw(const CPanelGroup &sail)
     // set pen color
     const QPen oldPen = pen();
     if ( sail.type == HULL )
-        setPen(Qt::darkGreen);
+        setPenColor(Qt::darkGreen);
     else if ( sail.type == RIG )
-        setPen(Qt::darkRed);
+        setPenColor(Qt::darkRed);
     else
-        setPen(Qt::blue);
+        setPenColor(Qt::blue);
 
     for (i = 0; i < sail.size(); i++)
         draw(sail[i]);
@@ -319,6 +319,16 @@ void CSailPainter::setFontSize(const real size, const real zoom)
     setFont(myfont);
 }
 
+/** Set the pen color.
+ *
+ * Unlike setPen(QColor), this does not change the pen width.
+ */
+void CSailPainter::setPenColor(const QColor &color)
+{
+    QPen p = pen();
+    p.setColor(color);
+    setPen(p);
+}
 
 /** Set coordinate system to match the logical viewport.
  *
