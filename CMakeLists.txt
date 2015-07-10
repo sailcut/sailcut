@@ -16,12 +16,12 @@ set(SAILCUT_VERSION ${SAILCUT_VERSION_MAJOR}.${SAILCUT_VERSION_MINOR}.${SAILCUT_
 
 # dependencies
 if(USE_QT5)
-    find_package(Qt5LinguistTools)
-    find_package(Qt5OpenGL)
-    find_package(Qt5PrintSupport)
-    find_package(Qt5Svg)
-    find_package(Qt5Widgets)
-    find_package(Qt5Xml)
+    find_package(Qt5LinguistTools REQUIRED)
+    find_package(Qt5OpenGL REQUIRED)
+    find_package(Qt5PrintSupport REQUIRED)
+    find_package(Qt5Svg REQUIRED)
+    find_package(Qt5Widgets REQUIRED)
+    find_package(Qt5Xml REQUIRED)
 else()
     find_package(Qt4 4.3 REQUIRED QtCore QtGui QtOpenGL QtSvg QtXml)
 endif()
