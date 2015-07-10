@@ -28,9 +28,7 @@
 CSailViewerTabs::CSailViewerTabs(QWidget *parent)
         : QTabWidget(parent)
 {
-#ifdef HAVE_QTOPENGL
     addViewer(new CSailViewerPanel(NULL, SHADED, true));
-#endif
     addViewer(new CSailViewerPanel(NULL, WIREFRAME, true));
 }
 
@@ -56,9 +54,7 @@ void CSailViewerTabs::languageChange()
     int tabidx = 0;
     for (unsigned int i = 0; i < panel.size(); i++)
         panel[i]->languageChange();
-#ifdef HAVE_QTOPENGL
     setTabText(tabidx++, tr("shaded view"));
-#endif
     setTabText(tabidx++, tr("wireframe view"));
 }
 
@@ -71,8 +67,6 @@ void CSailViewerTabs::languageChange()
 void CSailViewerTabs::setObject(const CPanelGroup &obj)
 {
     int tabidx = 0;
-#ifdef HAVE_QTOPENGL
     panel[tabidx++]->setObject(obj);
-#endif
     panel[tabidx++]->setObject(obj);
 }

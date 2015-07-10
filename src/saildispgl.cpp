@@ -17,8 +17,6 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifdef HAVE_QTOPENGL
-
 #include <cmath>
 #include <QMouseEvent>
 #include "saildispgl.h"
@@ -214,5 +212,3 @@ void CSailDispGL::wheelEvent( QWheelEvent *event)
         zoomOut();
     redraw();
 }
-
-#endif

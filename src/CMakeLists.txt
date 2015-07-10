@@ -11,18 +11,16 @@ relative_path(SAILCUT_DOC_PATH ${SAILCUT_RUNTIME_DIR} ${SAILCUT_DOC_DIR})
 add_definitions(-DSAILCUT_VERSION="${SAILCUT_VERSION}")
 add_definitions(-DSAILCUT_DATA_PATH="${SAILCUT_DATA_PATH}")
 add_definitions(-DSAILCUT_DOC_PATH="${SAILCUT_DOC_PATH}")
-if(QT_QTOPENGL_FOUND)
-	add_definitions(-DHAVE_QTOPENGL)
-	# FIXME: FindQt4 fails to pick up the dependencies for QtOpenGL
-	# the dependencies for QtOpenGl
-	if(APPLE)
-		set(QT_LIBRARIES ${QT_LIBRARIES} "-framework OpenGL -framework AGL")
-	elseif(WIN32)
-		set(QT_LIBRARIES ${QT_LIBRARIES} -lopengl32 -lglu32)
-	else()
-		set(QT_LIBRARIES ${QT_LIBRARIES} -lGL)
-	endif()
-endif(QT_QTOPENGL_FOUND)
+
+# FIXME: FindQt4 fails to pick up the dependencies for QtOpenGL
+# the dependencies for QtOpenGl
+if(APPLE)
+	set(OPENGL_LIBRARIES "-framework OpenGL -framework AGL")
+elseif(WIN32)
+	set(OPENGL_LIBRARIES -lopengl32 -lglu32)
+else()
+	set(OPENGL_LIBRARIES -lGL)
+endif()
 
 set(sailcut_UIS formhulldefbase.ui formrigdefbase.ui formsaildefbase.ui)
 
@@ -76,7 +74,7 @@ add_dependencies(sailcut translations)
 if (WIN32)
 	set_target_properties(sailcut PROPERTIES LINK_FLAGS "-mwindows")
 endif(WIN32)
-target_link_libraries(sailcut sailcpp geocpp ${QT_LIBRARIES})
+target_link_libraries(sailcut sailcpp geocpp ${QT_LIBRARIES} ${OPENGL_LIBRARIES})
 
 ship_depends(sailcut)
 install(TARGETS sailcut DESTINATION ${SAILCUT_RUNTIME_DIR})

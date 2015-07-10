@@ -19,9 +19,7 @@
 
 #include "sailviewer.h"
 #include "saildisplabel.h"
-#ifdef HAVE_QTOPENGL
 #include "saildispgl.h"
-#endif
 #include <QSlider>
 #include <QLayout>
 #include <QKeyEvent>
@@ -62,12 +60,10 @@ CSailViewer::CSailViewer( QWidget *parent, enumViewMode viewMode, bool show_slid
     /* create the drawing area */
     switch (viewMode)
     {
-#ifdef HAVE_QTOPENGL
     case SHADED:
         lblDraw = new CSailDispGL( this );
         sailDispLayout->addWidget( (CSailDispGL*)(lblDraw), 0, xpos );
         break;
-#endif
 
     case WIREFRAME:
     default:
