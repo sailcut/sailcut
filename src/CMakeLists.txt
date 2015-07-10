@@ -1,10 +1,5 @@
 include_directories(${CMAKE_SOURCE_DIR}/icons ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
 
-set(QT_USE_QTOPENGL 1)
-set(QT_USE_QTSVG 1)
-set(QT_USE_QTXML 1)
-include(${QT_USE_FILE})
-
 relative_path(SAILCUT_DATA_PATH ${SAILCUT_RUNTIME_DIR} ${SAILCUT_DATA_DIR})
 relative_path(SAILCUT_DOC_PATH ${SAILCUT_RUNTIME_DIR} ${SAILCUT_DOC_DIR})
 
@@ -74,7 +69,7 @@ add_dependencies(sailcut translations)
 if (WIN32)
 	set_target_properties(sailcut PROPERTIES LINK_FLAGS "-mwindows")
 endif(WIN32)
-target_link_libraries(sailcut sailcpp geocpp ${QT_LIBRARIES} ${OPENGL_LIBRARIES})
+target_link_libraries(sailcut sailcpp geocpp Qt4::QtGui Qt4::QtOpenGL Qt4::QtSvg Qt4::QtXml ${OPENGL_LIBRARIES})
 
 ship_depends(sailcut)
 install(TARGETS sailcut DESTINATION ${SAILCUT_RUNTIME_DIR})
