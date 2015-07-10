@@ -7,7 +7,11 @@ set(QMS_SOURCES
     sailcut_no.ts
     sailcut_pt.ts
     sailcut_ru.ts)
-qt4_add_translation(QMS ${QMS_SOURCES})
+if(USE_QT5)
+    qt5_add_translation(QMS ${QMS_SOURCES})
+else()
+    qt4_add_translation(QMS ${QMS_SOURCES})
+endif()
 add_custom_target(translations DEPENDS ${QMS})
 
 install(FILES ${QMS} DESTINATION ${SAILCUT_DATA_DIR})
