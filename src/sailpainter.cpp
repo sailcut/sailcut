@@ -330,6 +330,17 @@ void CSailPainter::setPenColor(const QColor &color)
     setPen(p);
 }
 
+/** Set the default pen width.
+ *
+ * The width is set to 0, indicating a 1 pixel cosmetic pen.
+ */
+void CSailPainter::setPenWidth()
+{
+    QPen p = pen();
+    p.setWidth(0);
+    setPen(p);
+}
+
 /** Set coordinate system to match the logical viewport.
  *
  * @param lRect the logical viewport rectangle
