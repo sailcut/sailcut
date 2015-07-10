@@ -49,7 +49,7 @@ int main()
 
     printf("Running %i iterations for each operation\n", int(iters));
 
-    // SAIL OPERATIONS 
+    // SAIL OPERATIONS
     CSailDef saildef;
     CSailWorker sailworker(saildef);
 
@@ -71,7 +71,7 @@ int main()
         rect = output2.boundingRect();
     printf("Sail bounding rect: %lf iterations/sec\n", double(iters) / toc());
 
-    // HULL OPERATIONS 
+    // HULL OPERATIONS
     CHullDef hulldef;
     CHullWorker hullworker(hulldef);
 

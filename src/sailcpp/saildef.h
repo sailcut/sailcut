@@ -59,7 +59,7 @@ public:
     real foreJ;
     /** The distance from tack to stem */
     real tackX;
-    /** The Tack height above deck in mm */ 
+    /** The Tack height above deck in mm */
     real tackY;
     /** The straight line luff length in mm */
     real luffL;
@@ -89,7 +89,7 @@ public:
     real hemsW;
     /** The Inner guideline width in mm */
     real innerW;
-     
+
     /** The Sail twist between foot and head in degrees */
     real twistDeg;
     /** The sail sheeting angle in degrees */

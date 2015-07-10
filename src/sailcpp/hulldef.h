@@ -39,7 +39,7 @@ public:
 
     /** hull ID name */
     string hullID;
-    
+
         //deck
     /** deck Length in millimeter */
     real DLOA;
@@ -59,7 +59,7 @@ public:
     int StemA;
     /** transom angle in degree from horizontal */
     int TransomA;
-    
+
     	// bottom data
     /** bottom chine Length in millimeter */
     real BLWL;
@@ -83,7 +83,7 @@ public:
     int BfwdShape;
     //* Lower chine aft shape */
     int BaftShape;
-    
+
         //planking data
     /** Number of side planks */
     int NBPlank;

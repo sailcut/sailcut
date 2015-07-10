@@ -120,7 +120,7 @@ CSailDef & CSailDef::operator=( const CSailDef &copy )
     leechHemW = copy.leechHemW;
     footHemW = copy.footHemW;
     hemsW = copy.hemsW;
-    
+
     tackX = copy.tackX;
     tackY = copy.tackY;
 

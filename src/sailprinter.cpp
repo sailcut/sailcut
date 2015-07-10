@@ -211,7 +211,7 @@ void CSailDrawingPrinter::print(CTextPainter *painter, int, real scale, real fon
     // set coordinate system to match the logical viewport
     painter->setWindow(logicalRect);
     painter->setFontSize(fontsize, 1);
-    
+
     painter->draw(sail);
     if (showLabels)
         painter->drawLabels(sail);

@@ -22,7 +22,7 @@
 
 #include <QSvgGenerator>
 
-/** 
+/**
  *  Write a 3D sail to 2D SVG format.
  *
  * @param sail the sail to write

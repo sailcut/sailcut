@@ -40,7 +40,7 @@ public:
 protected:
     /** abciss of Bmax point on chine */
     real xBmax;
-    
+
     /** function compute a point on Deck edge  */
     CPoint3d ptDeck( const real &x );
     /** function compute a point on Keel line */
@@ -49,7 +49,7 @@ protected:
     CPoint3d ptChine(const int &n, const real &x );
     /** function compute a point on lower Chine */
     CPoint3d ptLowChine( const real &x );
-    
+
     /** central plane longitudinal X-Y */
     CSubSpace planeCentral;
     /** deck plane */
@@ -59,22 +59,22 @@ protected:
     /** chine plane */
     CSubSpace planeChine[5];
     CSubSpace planeLowChine;
-    
+
     /** Lower Chine point at stem/centre line */
     CPoint3d ptFwdChine;
     /** Lower Chine point at transom/edge */
     CPoint3d ptAftChine;
     /** Lower Chine point at transom/centre line */
     CPoint3d ptCentreChine;
-    
+
     /** Deck Forward Point */
     CPoint3d ptFwdDeck;
-    
+
     /** basic panels */
     CPanel deck;
     CPanel plank;
     CPanel chine;
-    
+
 };
 
 #endif

@@ -20,7 +20,7 @@
 #include "saildoc.h"
 #include <QFile>
 
-/** This contains all the input and output functions 
+/** This contains all the input and output functions
  *  to read and write the sail, hull, rig, boat data to file.
  */
 
@@ -448,7 +448,7 @@ void CSailDoc::get
 
         /** read Wing dihedral angle */
         get(e, d.dihedralDeg, "dihedralDeg");
-        
+
         /** read Foot hem width */
         get(e, d.footHemW, "footHemW");
 
@@ -519,7 +519,7 @@ void CSailDoc::get
     get_vector(e, g.child, "child");
 
     /* NOTE : we maintain backward file format compatibility
-     * by adding below all new members in the order they were introduced 
+     * by adding below all new members in the order they were introduced
      */
     try
     {
@@ -926,7 +926,7 @@ void CSailDoc::put(QDomNode &parent, const CSailDef &d, const QString &name )
 
     /** write sail Twist angle*/
     put(e, d.twistDeg, "twistDeg");
-    
+
     /** write sail Sheeting angle*/
     put(e, d.sheetDeg, "sheetDeg");
 
@@ -934,7 +934,7 @@ void CSailDoc::put(QDomNode &parent, const CSailDef &d, const QString &name )
     put(e, d.mould, "mould");
 
     //** NOTE: this is the point at which sail data evolutions start */
-    
+
     /** write sail ID */
     put(e, d.sailID, "sailID");
 
@@ -949,10 +949,10 @@ void CSailDoc::put(QDomNode &parent, const CSailDef &d, const QString &name )
 
     /** write sail Wing dihedral angle */
     put(e, d.dihedralDeg, "dihedralDeg");
-    
+
     /** write sail Foot hem width */
     put(e, d.footHemW, "footHemW");
-    
+
     /** NOTE: write here below future new elements of sail */
     //
 }
@@ -982,7 +982,7 @@ void CSailDoc::put(QDomNode &parent, const CPanel &p, const QString &name )
     put(e, p.bottom, "bottom");
 
     put(e, p.hasHems, "hasHems");
-    
+
     if (p.hasHems)
     {
         put(e, p.cutLeft, "cutLeft");

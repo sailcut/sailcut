@@ -127,7 +127,7 @@ real Atriangle3d ( const CPoint3d &pta, const CPoint3d &ptb, const CPoint3d &ptc
  *    to the line defined by the 2 points ptb and ptc
  *  The two points ptb and ptc defining the baseline also define
  *    its positive direction from point ptb toward point ptc.
- *  It is assumed that the 3 points pta, ptb, ptc define a plane 
+ *  It is assumed that the 3 points pta, ptb, ptc define a plane
  *    not far from the X-Y plane.
  *  The sign of d is positive if the point pta
  *    is left of the line ptb=>ptc

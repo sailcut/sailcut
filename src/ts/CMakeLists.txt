@@ -1,4 +1,4 @@
-qt4_add_translation(QMS 
+qt4_add_translation(QMS
 	sailcut_de.ts
 	sailcut_dk.ts
 	sailcut_fr.ts

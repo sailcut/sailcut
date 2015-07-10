@@ -171,9 +171,9 @@ public:
     CRect3d()
     {}
     ;
-    
+
     /** Construct a new 3D box given its corners.
-     * 
+     *
      * @param pmin
      * @param pmax
      */

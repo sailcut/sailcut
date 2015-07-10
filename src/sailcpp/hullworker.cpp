@@ -102,7 +102,7 @@ CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
 CPoint3d CHullWorker::ptLowChine( const real &x )
 {
     real x1 = 0 , y = 0 , z = 0;
-    
+
     /* compute width z function of x */
     if (x > xBmax)
     {   // aft part of chine
@@ -119,7 +119,7 @@ CPoint3d CHullWorker::ptLowChine( const real &x )
     CPoint3d pt = CPoint3d ( x , y , z );
 
     /* compute y by projecting pt vertically on the chine plane */
-    
+
     CSubSpace Intersection1 = planeLowChine.intersect(CSubSpace3d::line(pt, CVector3d(0, 1, 0) ) );
 
     if (Intersection1.getdim() == 0 )
@@ -160,7 +160,7 @@ CPoint3d CHullWorker::ptKeel( const real &x )
 }
 
 
-/** Creates the basic hull with bottom, deck 
+/** Creates the basic hull with bottom, deck
  *  and only one top side plank.
  *
  * @return CPanelGroup

@@ -41,7 +41,7 @@ public:
 
     /** children of this group */
     vector<CPanelGroup> child;
-    
+
     /** type of boat object */
     enumPanelGroupType type;
 

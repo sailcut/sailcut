@@ -66,7 +66,7 @@ CRect3d CRect3d::expandToRatio(const real ratio) const
     if (!w || !h)
         return lRect;
 
-   
+
     const real objAspect = w / h;
     if (objAspect > ratio)
     {

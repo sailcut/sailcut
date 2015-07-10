@@ -61,7 +61,7 @@ public:
     real LeechLength( const real &h );
     /** The length of the luff measured along its curved edge. */
     real LuffLength( const real &h );
-    /** The maximum width of the sail perpendicular to the luff. */ 
+    /** The maximum width of the sail perpendicular to the luff. */
     real SailLP( );
 
     CPanelGroup makeSail() const;
@@ -78,21 +78,21 @@ public:
 
 protected:
     /** The Cross cut and Horizontal cut layout of sail's panels. */
-    CPanelGroup Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; 
+    CPanelGroup Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail ) const;
     /** The Twist cut layout of sail's panels. */
-    CPanelGroup LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; 
+    CPanelGroup LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsail ) const;
     /** The Vertical cut layout of sail's panels. */
-    CPanelGroup LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; 
+    CPanelGroup LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dispsail ) const;
     /** The Radial cut layout of sail's panels. */
     CPanelGroup LayoutRadial( CPanelGroup &flatsail, CPanelGroup &dispsail ) const;
     /** The Mitre cut layout of sail's panels perpendicular to leech and foot. */
-    CPanelGroup LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; 
+    CPanelGroup LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsail ) const;
     /** The Mitre 2 cut layout of sail's panels parralel to foot and leech. */
-    CPanelGroup LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; 
+    CPanelGroup LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &dispsail ) const;
     /** The Tri Radial cut layout of sail's panels. */
-    CPanelGroup LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; 
+    CPanelGroup LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &dispsail ) const;
     /** The Wing cut layout of sail's panels. */
-    CPanelGroup LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsail ) const; 
+    CPanelGroup LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsail ) const;
 
     /** The type of sail Edge for an intersection. */
     enumEdgeType Edge;
@@ -104,10 +104,10 @@ protected:
     CPoint3d AftIntersect( const CPoint3d &pt1 ) const;
     /** The intersection of a line defined by a point and a vector with the mitre line. */
     CPoint3d MitreIntersect( const CPoint3d &pt1, const CVector3d &v1 ) const;
-    
+
     /** The mitre intersection point with luff. */
     CPoint3d mitreLuffPt;
-    
+
     /** The depth of the sail at a point. */
     CPoint3d Zpoint( const CPoint3d &p1 ) const;
     /** The depth of the sail at all points of a panel. */
@@ -131,7 +131,7 @@ protected:
     CVector3d luffVP;
     /** Mitre vector. */
     CVector3d mitreV;
-    
+
     /** The foot straight 3D line. */
     CSubSpace footLine;
     /** The gaff straight 3D line. */

@@ -36,8 +36,8 @@ public:
     CRigWorker(const CRigDef &d);
 
     CPanelGroup makeRig() const;
-    
-    // point of mast center at given height 
+
+    // point of mast center at given height
     CPoint3d mastCenter( const real &h ) const;
 
 };

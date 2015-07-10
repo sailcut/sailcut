@@ -474,17 +474,17 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
     //  if ( v7.norm() == 0 ) cout << "CPanel::add6Hems v7=0 " << endl;
     CVector3d v8 = CVector3d( top[npb-1] - top[npb-2] );
     //  if ( v8.norm() == 0 ) cout << "CPanel::add6Hems v8=0 " << endl <<endl;
-    
+
     //cout << "CPanel::add6Hems start" << endl;
     //cout << "   lolW=" << lolW << " hilW=" << hilW << "   topW =" << topW <<  endl;
     //cout << "   lorW=" << lorW << " hirW=" << hirW << "   botW=" << botW << endl;
-    
+
     ///* copy the basic panel edge points to cut points as default */
     for (i = 0 ; i < npl ; i++) {
         cutLeft[i] = left[i];
         cutRight[i] = right[i];
     }
-    
+
     for (i = 0 ; i < npb ; i++) {
         cutTop[i] = top[i];
         cutBottom[i] = bottom[i];
@@ -511,7 +511,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
 
     ///* Move the basic bottom edge points to the cut line */
     //cout << "CPanel::add6Hems move basic bottom edge" << endl;
-    
+
     if ( botW >= EPS ) { // width of material is not too small
         for (i = 0 ; i < npb ; i++) {
             if ( i == 0 )
@@ -586,8 +586,8 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
             for (i = npl/2 +1 ; i < npl ; i++)
                 cutLeft[i] = left[i] + CMatrix::rot3d( 2 , PI/2) * v2.unit() * hilW;
         }
-    } 
-    else if ( v2.norm() >= minSize ) {  
+    }
+    else if ( v2.norm() >= minSize ) {
         // only lower left side is a point
         v1 = CVector3d( left[npl/2 +1] - left[npl/2] );
         for (i = 0 ; i < npl/2  ; i++)
@@ -598,8 +598,8 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
             v2 = CVector3d( left[i] - left[i-1] );
             cutLeft[i] = left[i] + CMatrix::rot3d( 2 , PI/2) * v2.unit() * hilW;
         }
-    } 
-    else {  
+    }
+    else {
         // complete left side is a point
         if ( botW == 0 )
             v = -v5; // extend the bottom edge
@@ -626,7 +626,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
                     v = CVector3d( right[i+3] - right[i] );
                 else if ( right[i+4] != right[i] )
                     v = CVector3d( right[i+4] - right[i] );
-            } 
+            }
             else {
                 if ( right[i] != right[i-1] )
                     v = CVector3d( right[i] - right[i-1] );

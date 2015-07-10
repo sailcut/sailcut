@@ -94,7 +94,7 @@ void CSailDispGL::draw( const CPanelGroup &sail )
     {
         if ( sail.type == HULL )
         {
-            /**  Hull GL color dark green (.1, .3, .2) 
+            /**  Hull GL color dark green (.1, .3, .2)
                  color lighter green  (.1, .5, .2) */
             glColor3f(.1, .5, .2);
         }

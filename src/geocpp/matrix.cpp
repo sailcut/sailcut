@@ -400,7 +400,7 @@ CMatrix CMatrix::inv(void) const
 {
     if (m_nrow != m_ncol)
         throw invalid_argument("CMatrix:: inv : matrix is not square !");
- 
+
     // if matrix is empty, return empy matrix
     if (empty())
         return CMatrix();

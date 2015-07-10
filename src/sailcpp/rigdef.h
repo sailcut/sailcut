@@ -84,7 +84,7 @@ public:
     real SPH[4];
     /** spreader width */
     real SPW[4];
-    
+
 };
 
 #endif

@@ -37,14 +37,14 @@ private:
 public:
     CSubSpace(size_t dim_space = 3, size_t dim_sub = 0);
     CSubSpace(const CVector &pi, const CMatrix &mi, subspaceflags_t createflags = GEOCPP_FROM_EQS);
-    
+
     /** Copy constructor */
     CSubSpace(const CSubSpace &s) : m(s.m) , p(s.p)
     {}
     ;
     CSubSpace intersect(const CSubSpace &) const;
     bool contains(const CVector &) const;
-    
+
     /** Return the subspace's dimension. */
     int getdim() const
     {
@@ -53,13 +53,13 @@ public:
         else
             return -1;
     }
-    
+
     /** Accessor for the matrix. */
     const CMatrix& getm() const
     {
         return m;
     }
-    
+
     /** Accessor for the point. */
     const CVector& getp() const
     {

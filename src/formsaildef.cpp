@@ -45,7 +45,7 @@ CFormSailDef::CFormSailDef( QWidget* parent, CSailDef * sailptr )
     /* we store the pointer to the CSailDef so we can update it when
        the user clicks OK */
     saildef = sailptr;
-    
+
     /** Write all the sail data to the screen dimensions of sail. */
     setSailCut( saildef->sailCut );
     setSailType( saildef->sailType );
@@ -124,8 +124,8 @@ CFormSailDef::CFormSailDef( QWidget* parent, CSailDef * sailptr )
 
 // member functions
 
-/** 
- *  Compute and Display ancillary data of the sail computation 
+/**
+ *  Compute and Display ancillary data of the sail computation
  */
 void CFormSailDef::compute()
 {
@@ -135,7 +135,7 @@ void CFormSailDef::compute()
 }
 
 
-/** 
+/**
  *  Returns the sail cut layout from the form.
  */
 enumSailCut CFormSailDef::getSailCut()
@@ -158,8 +158,8 @@ enumSailCut CFormSailDef::getSailCut()
 }
 
 
-/** 
- *  Returns the sail type from the form. 
+/**
+ *  Returns the sail type from the form.
  */
 enumSailType CFormSailDef::getSailType()
 {
@@ -173,7 +173,7 @@ enumSailType CFormSailDef::getSailType()
 }
 
 
-/** 
+/**
  *  Enables or disables appropriate controls depending
  *  on the sail cut.
  */
@@ -206,7 +206,7 @@ void CFormSailDef::setSailCut( enumSailCut cut )
 }
 
 
-/** 
+/**
  *  Enables or disables appropriate controls depending
  *  on the sail type.
  */
@@ -299,7 +299,7 @@ void CFormSailDef::setSailType( enumSailType type )
 
 // Qt overrides
 
-/** 
+/**
  *  Saves the parameters entered by the user in the CSailDef.
  *  Slot connected to OK button
  */
@@ -311,8 +311,8 @@ void CFormSailDef::accept()
 }
 
 
-/** 
- *  Check all dimensions entered in order to make 
+/**
+ *  Check all dimensions entered in order to make
  *  sure that the sail is possible and reasonable
  */
 bool CFormSailDef::check()
@@ -321,7 +321,7 @@ bool CFormSailDef::check()
     real A1=0, A2=0;
     bool flag = true;
     QString txt;
-    
+
     /** Create four palettes for levels of warning. */
     QPalette palStd, palHi, palLo, palRel;
     palStd = txtLuffLen->palette();
@@ -337,7 +337,7 @@ bool CFormSailDef::check()
     /** Get and the sail ID text length. */
     txt = txtSailID->text();
     txt = txt.simplified();
-    
+
     if (txt.length() > 40)
     {
         txt.truncate(40);
@@ -474,7 +474,7 @@ bool CFormSailDef::check()
     saildef->footL  = txtFootLen->text().toDouble();
     saildef->footR  = txtFootRound->text().toDouble();
     saildef->footRP = 50; // imposed value
-    
+
     /** Check  rake. */
     saildef->rake   = txtRake->text().toDouble();
 
@@ -644,10 +644,10 @@ bool CFormSailDef::check()
         txtLuffLen->setText(QString::number(saildef->luffL) );
 
         L2 = (long) ((saildef->luffL )/ 10); // round limit
-        /** To acommodate code zero jib 
-            the positive luff round limit is twice negative round limit 
+        /** To acommodate code zero jib
+            the positive luff round limit is twice negative round limit
         */
-        if (saildef->luffR > 2*L2) 
+        if (saildef->luffR > 2*L2)
         {
             flag=false;
             txtLuffRound->setPalette(palHi);
@@ -735,7 +735,7 @@ bool CFormSailDef::check()
         break;
     }
 
-    /** Check leech length. */ 
+    /** Check leech length. */
     L1 = (long) saildef->luffL;
     L1 = L1 + (long) saildef->gaffL;
 
@@ -859,7 +859,7 @@ bool CFormSailDef::check()
     saildef->leechHemW = txtLeechHemWidth->text().toDouble();
     saildef->footHemW = txtFootHemWidth->text().toDouble();
     saildef->hemsW = txtHemsWidth->text().toDouble();
-    
+
     /** Check cloth width. */
     if (saildef->clothW < saildef->leechL /100)
     {
@@ -877,7 +877,7 @@ bool CFormSailDef::check()
     txtClothWidth->setText( QString::number(saildef->clothW));
 
     L1 = (long)(5+ saildef->clothW / 10);
-    
+
     /** Check seams width function of cloth width. */
     if (saildef->seamW > L1)
     {
@@ -896,7 +896,7 @@ bool CFormSailDef::check()
         txtSeamWidth->setPalette( palStd);
     }
     txtSeamWidth->setText( QString::number(saildef->seamW));
-    
+
     /** Check leech hem width function of cloth width. */
     if (saildef->leechHemW > L1*2)
     {
@@ -982,7 +982,7 @@ bool CFormSailDef::check()
     txtDihedral->setText(QString::number(saildef->dihedralDeg));
 
 
-    /** Get and check twist of the sail. */ 
+    /** Get and check twist of the sail. */
     saildef->twistDeg = txtTwistAngle->text().toInt();
     if (saildef->twistDeg > 45)
     {
@@ -1112,7 +1112,7 @@ bool CFormSailDef::check()
 }
 
 
-/** 
+/**
  *  Enable/disable appropriate controls when the user
  *  changes the sail cut.
  **/
@@ -1123,7 +1123,7 @@ void CFormSailDef::slotSailCut()
 
 
 
-/** 
+/**
  *  Saves the parameters entered by the user in the CSailDef.
  *  compute and display ancillary sail data
  *
@@ -1178,7 +1178,7 @@ void CFormSailDef::slotCompute()
 }
 
 
-/** 
+/**
  *  Display ancillary data in a message box
  */
 void CFormSailDef::displayData(QString &txt0, QString &txt1, QString &txt2, QString &txt3, QString &txt4 )
@@ -1193,7 +1193,7 @@ void CFormSailDef::displayData(QString &txt0, QString &txt1, QString &txt2, QStr
 }
 
 
-/** 
+/**
  *  Enable/disable appropriate controls when the user
  *  changes the sail type.
  **/

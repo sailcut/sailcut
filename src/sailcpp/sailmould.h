@@ -39,7 +39,7 @@ public:
     real z( real dX );
     real slope( real dX );
     real camber( real dX );
-    
+
     /** Accessor for the depth */
     real getDepth() const
     {
@@ -65,7 +65,7 @@ public:
     {
         return zmax;
     }
-    
+
     /** Set the depth */
     void setDepth( real ndepth )
     {
@@ -114,7 +114,7 @@ public:
     /** the mould's profiles ( top, middle, bottom ) */
     //  CProfile profile[3];
     vector<CProfile> profile;
-    
+
     /** vertical position of profile[1] in percent */
     int vertpos;
 };
