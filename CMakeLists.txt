@@ -13,7 +13,7 @@ set(SAILCUT_VERSION_PATCH 5)
 set(SAILCUT_VERSION ${SAILCUT_VERSION_MAJOR}.${SAILCUT_VERSION_MINOR}.${SAILCUT_VERSION_PATCH})
 
 # dependencies
-find_package(Qt4 REQUIRED)
+find_package(Qt4 REQUIRED QtCore QtGui QtOpenGL QtSvg QtXml)
 
 # configuration
 set(SAILCUT_RUNTIME_DIR bin CACHE STRING "Sailcut runtime directory.")
