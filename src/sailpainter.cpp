@@ -53,7 +53,7 @@ void CSailPainter::draw(const CPanel &panel)
     if (panel.hasHems)
     {
         // switch pen to red
-        QPen oldpen = pen();
+        const QPen oldpen = pen();
         setPen(Qt::red);
 
         poly = QPolygonF();
@@ -88,7 +88,7 @@ void CSailPainter::draw(const CPanelGroup &sail)
     unsigned int i;
 
     // set pen color
-    QPen oldpen = pen();
+    const QPen oldpen = pen();
     if ( sail.type == HULL )
         setPen(Qt::darkGreen);
     else if ( sail.type == RIG )

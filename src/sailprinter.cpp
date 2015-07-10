@@ -178,7 +178,7 @@ void CSailDevelPrinter::print(CTextPainter *painter, int page, real scale, real 
     painter->drawMarkers(sail[page]);
 
     // mark corners of cloth rectangle
-    QPen oldpen = painter->pen();
+    const QPen oldpen = painter->pen();
     painter->setPen(Qt::green);
     CRect3d rp = sail[page].boundingRect();
     painter->drawCross(rp.min, painter->fontMetrics().height() );
