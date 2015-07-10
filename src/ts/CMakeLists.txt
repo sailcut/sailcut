@@ -1,12 +1,12 @@
 set(QMS_SOURCES
-	sailcut_de.ts
-	sailcut_dk.ts
-	sailcut_fr.ts
-	sailcut_it.ts
-	sailcut_nl.ts
-	sailcut_no.ts
-	sailcut_pt.ts
-	sailcut_ru.ts)
+    sailcut_de.ts
+    sailcut_dk.ts
+    sailcut_fr.ts
+    sailcut_it.ts
+    sailcut_nl.ts
+    sailcut_no.ts
+    sailcut_pt.ts
+    sailcut_ru.ts)
 qt4_add_translation(QMS ${QMS_SOURCES})
 add_custom_target(translations DEPENDS ${QMS})
 
