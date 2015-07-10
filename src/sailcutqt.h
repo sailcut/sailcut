@@ -23,12 +23,6 @@
 #include <QApplication>
 #include "prefs.h"
 
-#if QT_VERSION >= 0x040300
-#define HAVE_QSVGGENERATOR
-#else
-#undef HAVE_QSVGGENERATOR
-#endif
-
 class QTranslator;
 class QUrl;
 

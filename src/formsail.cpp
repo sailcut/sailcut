@@ -22,9 +22,6 @@
 #include "formsaildef.h"
 #include "formmould.h"
 
-// for HAVE_QSVGGENERATOR
-#include "sailcutqt.h"
-
 #include "sailprinter.h"
 #include "sailcpp/sailworker.h"
 #include "sailwriter-carlson.h"
@@ -83,9 +80,7 @@ void CFormSail::languageChange()
     menuExport3d->setTitle( tr("E&xport 3D sail") );
     actionExport3dDXF->setText( tr("to &DXF") );
     actionExport3dDXFSplit->setText( tr("to DXF (split)") );
-#ifdef HAVE_QSVGGENERATOR
     actionExport3dSVG->setText( tr("to &SVG") );
-#endif
     actionExport3dTXT->setText( tr("to &TXT sail") );
     actionExport3dXML->setText( tr("to &XML sail") );
 
@@ -96,9 +91,7 @@ void CFormSail::languageChange()
     actionExportFlatDXFSplit->setText( tr("to DXF (split)") );
     //actionExportFlatDXFBlocks->setText( tr("to &DXF-BLOCKS") );
     actionExportFlatHand->setText( tr("to &Hand-plotting format") );
-#ifdef HAVE_QSVGGENERATOR
     actionExportFlatSVG->setText( tr("to &SVG") );
-#endif
     actionExportFlatTXT->setText( tr("to &TXT sail") );
     actionExportFlatXML->setText( tr("to &XML sail") );
 
@@ -144,9 +137,7 @@ void CFormSail::setupMenuBar()
     menuExport3d = new QMenu(this);
     actionExport3dDXF = menuExport3d->addAction("", this, SLOT( slotExportDXF() ) );
     actionExport3dDXFSplit = menuExport3d->addAction("", this, SLOT( slotExportDXFSplit() ) );
-#ifdef HAVE_QSVGGENERATOR
     actionExport3dSVG = menuExport3d->addAction("", this, SLOT( slotExportSVG() ) );
-#endif
     actionExport3dTXT = menuExport3d->addAction("", this, SLOT( slotExportTXT() ) );
     actionExport3dXML = menuExport3d->addAction("", this, SLOT( slotExportXML() ) );
     extraFileMenus.push_back(menuExport3d);
@@ -158,9 +149,7 @@ void CFormSail::setupMenuBar()
     actionExportFlatDXFSplit = menuExportFlat->addAction("", this, SLOT( slotExportFlatDXFSplit() ) );
     //actionExportFlatDXFBlocks = menuExportFlat->addAction("", this, SLOT( slotExportFlatDXFBlocks() ) );
     actionExportFlatHand = menuExportFlat->addAction("", this, SLOT( slotExportFlatHand() ) );
-#ifdef HAVE_QSVGGENERATOR
     actionExportFlatSVG = menuExportFlat->addAction("", this, SLOT( slotExportFlatSVG() ) );
-#endif
     actionExportFlatTXT = menuExportFlat->addAction("", this, SLOT( slotExportFlatTXT() ) );
     actionExportFlatXML = menuExportFlat->addAction("", this, SLOT( slotExportFlatXML() ) );
     extraFileMenus.push_back(menuExportFlat);
@@ -236,9 +225,7 @@ void CFormSail::slotExportDXFSplit()
  */
 void CFormSail::slotExportSVG()
 {
-#ifdef HAVE_QSVGGENERATOR
     CSailSvgWriter().writeDialog(sail);
-#endif
 }
 
 
@@ -311,9 +298,7 @@ void CFormSail::slotExportFlatHand()
  */
 void CFormSail::slotExportFlatSVG()
 {
-#ifdef HAVE_QSVGGENERATOR
     CSailSvgWriter().writeDialog(dispsail);
-#endif
 }
 
 

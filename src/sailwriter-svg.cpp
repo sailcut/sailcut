@@ -17,14 +17,10 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-// for HAVE_QSVGGENERATOR
-#include "sailcutqt.h"
-
 #include "sailwriter-svg.h"
 #include "sailprinter.h"
-#ifdef HAVE_QSVGGENERATOR
+
 #include <QSvgGenerator>
-#endif
 
 /** 
  *  Write a 3D sail to 2D SVG format.
