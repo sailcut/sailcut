@@ -18,7 +18,6 @@
  */
 
 #include "formboat.h"
-#include "sailcutqt.h"
 #include "boatdef-panel.h"
 #include "sailcpp/hullworker.h"
 #include "sailcpp/sailworker.h"
