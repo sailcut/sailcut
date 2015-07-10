@@ -21,7 +21,7 @@ InstallDirRegKey HKCU "${PRODUCT_DIR_REGKEY}" ""
 !insertmacro MUI_PAGE_INSTFILES
 !define MUI_FINISHPAGE_RUN "$INSTDIR\sailcut.exe"
 !define MUI_FINISHPAGE_LINK "Visit the Sailcut CAD website"
-!define MUI_FINISHPAGE_LINK_LOCATION "http://sailcut.sourceforge.net/"
+!define MUI_FINISHPAGE_LINK_LOCATION "http://www.sailcut.com/"
 !insertmacro MUI_PAGE_FINISH
   
 !insertmacro MUI_UNPAGE_CONFIRM

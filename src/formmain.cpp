@@ -333,7 +333,7 @@ void CFormMain::slotAbout()
                         "<p>Sailcut is a software for designing boat sails<br/>"
                         "(C) 1993-2015 Robert & Jeremy Laine"
 
-                        "<p>For more information, visit the project's page at <a href=\"http://sailcut.sourceforge.net/\">http://sailcut.sourceforge.net/</a>.</p>"
+                        "<p>For more information, visit the project's page at <a href=\"http://www.sailcut.com/\">http://www.sailcut.com/</a>.</p>"
 
                         "<p>Sailcut is a trademark registered by Robert Laine</p>"
 

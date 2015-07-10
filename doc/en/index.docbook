@@ -33,7 +33,7 @@
 <sect2>
 <title> How to obtain Sailcut CAD? </title>
 
-<para>You can download the latest version of Sailcut CAD from the project&apos;s home page at <ulink url="http://sailcut.sourceforge.net/"/>. Sailcut CAD is made available both in binary (compiled for you) and in source code form. </para>
+<para>You can download the latest version of Sailcut CAD from the project&apos;s home page at <ulink url="http://www.sailcut.com/"/>.</para>
 
 </sect2>
 
@@ -675,7 +675,7 @@
 
 <para>Sailcut software was initially written in 1978 in Basic language on a computer with 1.6 KB of memory, one line text screen and a small 32 columns text printer. Hence the necessity to keep the surface formulation simple for designing the sails which I built and used on my IOR ¼ton. </para>
 
-<para>This short cycle: &quot;design =&gt; manufacturing =&gt; utilisation =&gt; modification&quot;, without commercial constraints linked to sailmakers work habits has allowed me to converge quickly on a compact and robust way of describing the sail surface. The method is valid for classical triangular sails and also for quadrangular sails used on old timers and modern rigs with very large headboard. Later on, the use of Sailcut by professional sailmakers has necessitated the addition of graphic interface to the kernel of Sailcut, but that is an other story... Since 1993 the Microsoft Visual Basic version of Sailcut is available at <ulink url="http://www.sailcut.com/"/> and since 2003, the source code of Sailcut re-written in C++ is available at <ulink url="http://sailcut.sourceforge.net/"/>. For protection of the intellectual rights, the name Sailcut is a registered trademark, but the author maintains free and unrestricted access to Sailcut. </para>
+<para>This short cycle: &quot;design =&gt; manufacturing =&gt; utilisation =&gt; modification&quot;, without commercial constraints linked to sailmakers work habits has allowed me to converge quickly on a compact and robust way of describing the sail surface. The method is valid for classical triangular sails and also for quadrangular sails used on old timers and modern rigs with very large headboard. Later on, the use of Sailcut by professional sailmakers has necessitated the addition of graphic interface to the kernel of Sailcut, but that is an other story... Since 1993 the Microsoft Visual Basic version of Sailcut is available at <ulink url="http://www.sailcut.com/"/> and since 2003, the source code of Sailcut re-written in C++ is available at <ulink url="http://www.sailcut.com/"/>. For protection of the intellectual rights, the name Sailcut is a registered trademark, but the author maintains free and unrestricted access to Sailcut. </para>
 
 </sect2>
 
@@ -790,7 +790,7 @@ curvature = z&quot; / (1+ z&apos;*z&apos;)^3/2
 <sect1 id="s.moreinfo">
 <title> Where can I find more information about Sailcut CAD? </title>
 
-<para>The Sailcut CAD project lives at <ulink url="http://sailcut.sourceforge.net/"/>. This is where you will find links to all matters related to Sailcut CAD! </para>
+<para>The Sailcut CAD project lives at <ulink url="http://www.sailcut.com/"/>. This is where you will find links to all matters related to Sailcut CAD! </para>
 
 <sect2>
 <title>I think I found a bug, what should I do?</title>

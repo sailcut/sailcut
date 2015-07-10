@@ -27,7 +27,7 @@
  * This is the documentation for Sailcut CAD's code.
  *
  * It is intended mainly for programmers, to learn more about Sailcut CAD
- * please visit http://sailcut.sourceforge.net/
+ * please visit http://www.sailcut.com/
 */
 
 /**
