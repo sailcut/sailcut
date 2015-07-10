@@ -26,31 +26,10 @@ endif(QT_QTOPENGL_FOUND)
 
 set(sailcut_UIS formhulldefbase.ui formrigdefbase.ui formsaildefbase.ui)
 
-set(sailcut_MOC_HEADERS
-	boatdef-panel.h
-	formboat.h
-	formdocument.h
-	formhull.h
-	formhulldef.h
-	formmain.h
-	formmould.h
-	formpanelgroup.h
-	formprint.h
-	formrig.h
-	formrigdef.h
-	formsail.h
-	formsaildef.h
-	sailprinter.h
-	sailtreemodel.h
-	sailviewer.h
-	sailviewer-panel.h
-	sailviewer-tabs.h
-	widgetprofile.h
-	widgetprofilevert.h)
-
 set(sailcut_SOURCES
 	boatdef-panel.cpp
 	formboat.cpp
+	formdocument.h
 	formhull.cpp
 	formhulldef.cpp
 	formmain.cpp
@@ -90,9 +69,8 @@ if(WIN32)
 	set(sailcut_SOURCES ${sailcut_SOURCES} sailcut.rc)
 endif(WIN32)
 
-qt4_wrap_cpp(sailcut_MOC_SOURCES ${sailcut_MOC_HEADERS})
 qt4_wrap_ui(sailcut_UI_SOURCES ${sailcut_UIS})
-add_executable(sailcut ${sailcut_SOURCES} ${sailcut_MOC_SOURCES} ${sailcut_UI_SOURCES})
+add_executable(sailcut ${sailcut_SOURCES} ${sailcut_UI_SOURCES})
 add_dependencies(sailcut documentation)
 add_dependencies(sailcut translations)
 if (WIN32)
