@@ -178,12 +178,12 @@ void CSailDevelPrinter::print(CTextPainter *painter, int page, real scale, real 
     painter->drawMarkers(sail[page]);
 
     // mark corners of cloth rectangle
-    const QPen oldpen = painter->pen();
+    const QPen oldPen = painter->pen();
     painter->setPen(Qt::green);
     CRect3d rp = sail[page].boundingRect();
     painter->drawCross(rp.min, painter->fontMetrics().height() );
     painter->drawCoord(rp.min, PI );
-    painter->setPen(oldpen);
+    painter->setPen(oldPen);
 
     /* NOTE scale factor on preview screen is not same value as in spinbox
     *  However the correct value equal to spinbox value will be printed */
