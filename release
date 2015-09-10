@@ -1,0 +1,42 @@
+#!/bin/sh
+
+set -e
+
+# determine target
+target=$1
+if [ -z "$target" ]; then
+    if [ -n "`which sw_vers 2> /dev/null`" ]; then
+        target="mac"
+    elif [ -n "`which cmd.exe 2> /dev/null`" ]; then
+        target="win32"
+    elif [ "`uname`" = "Linux" ]; then
+        target="linux"
+    fi
+fi
+if [ -z "$target" ]; then
+    echo "Unknown target"
+    exit 1
+fi
+echo "Target: $target"
+
+# configure
+MAKE=make
+QMAKE=qmake
+case "$target" in
+mac)
+	export PATH=~/Qt/5.5/clang_64/bin:$PATH
+    ;;
+win32)
+	export PATH="/c/Qt/5.5/mingw492_32/bin:$PATH"
+	export PATH="/c/Qt/Tools/mingw492_32/bin:$PATH"
+	export PATH="/c/Program Files (x86)/NSIS:$PATH"
+    MAKE=mingw32-make
+    ;;
+esac
+
+rm -rf release-$target
+mkdir release-$target
+cd release-$target
+$QMAKE ..
+$MAKE
+$MAKE package
