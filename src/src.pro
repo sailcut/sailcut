@@ -119,6 +119,8 @@ SOURCES += \
     widgetprofilevert.cpp
 
 # Installation
+QMAKE_TARGET_COPYRIGHT="Copyright (c) 1993-2015 Robert & Jeremy Laine"
+QMAKE_TARGET_PRODUCT="Sailcut CAD"
 mac {
     QMAKE_POST_LINK += $$[QT_INSTALL_BINS]/macdeployqt $$DESTDIR/sailcut.app
 } else:win32 {
