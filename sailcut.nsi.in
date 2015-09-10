@@ -1,12 +1,8 @@
-;Sailcut CAD Installer
-
 !define PRODUCT_NAME "Sailcut CAD"
-!define PRODUCT_VERSION "@VERSION@"
 !define PRODUCT_DIR_REGKEY "Software\${PRODUCT_NAME}"
 
 Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
-OutFile "..\sailcut-${PRODUCT_VERSION}-win32.exe"
-
+OutFile "${PRODUCT_OUTPUT}"
 SetCompressor lzma
 
 InstallDir "$PROGRAMFILES\${PRODUCT_NAME}"
@@ -15,7 +11,7 @@ InstallDirRegKey HKCU "${PRODUCT_DIR_REGKEY}" ""
 !include "MUI.nsh"
 !define MUI_ABORTWARNING
 
-!insertmacro MUI_PAGE_LICENSE "COPYING"
+!insertmacro MUI_PAGE_LICENSE "${PRODUCT_LICENSE}"
 !insertmacro MUI_PAGE_COMPONENTS
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
