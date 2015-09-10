@@ -1,4 +1,4 @@
-include(../sailcut.pri)
+include(sailcut.pri)
 
 TEMPLATE = subdirs
 
