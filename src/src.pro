@@ -117,3 +117,11 @@ SOURCES += \
     sailwriter-txt.cpp \
     widgetprofile.cpp \
     widgetprofilevert.cpp
+
+# Installation
+mac {
+    QMAKE_POST_LINK += $$[QT_INSTALL_BINS]/macdeployqt $$DESTDIR/sailcut.app
+} else:win32 {
+    RC_ICONS = ../icons/wiLink.ico
+    QMAKE_POST_LINK += $$[QT_INSTALL_BINS]/windeployqt $$DESTDIR/sailcut.exe
+}
