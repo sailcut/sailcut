@@ -121,6 +121,26 @@ SOURCES += \
     widgetprofile.cpp \
     widgetprofilevert.cpp
 
+TRANSLATIONS = \
+    ts/sailcut_de.ts \
+    ts/sailcut_dk.ts \
+    ts/sailcut_fr.ts \
+    ts/sailcut_it.ts \
+    ts/sailcut_nl.ts \
+    ts/sailcut_no.ts \
+    ts/sailcut_pt.ts \
+    ts/sailcut_ru.ts
+
+win32:QMAKE_LRELEASE = $$[QT_INSTALL_BINS]\lrelease.exe
+else:QMAKE_LRELEASE = $$[QT_INSTALL_BINS]/lrelease
+
+updateqm.input = TRANSLATIONS
+updateqm.output = $$OUT_PWD/$$TARGET_DIR/ts/${QMAKE_FILE_BASE}.qm
+isEmpty(vcproj):updateqm.variable_out = PRE_TARGETDEPS
+updateqm.commands = $$QMAKE_LRELEASE ${QMAKE_FILE_IN} -qm ${QMAKE_FILE_OUT}
+updateqm.CONFIG += no_link
+QMAKE_EXTRA_COMPILERS += updateqm
+
 # Installation
 QMAKE_TARGET_BUNDLE_PREFIX="com.sailcut"
 QMAKE_TARGET_COPYRIGHT="Copyright (c) 1993-2015 Robert & Jeremy Laine"
