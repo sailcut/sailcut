@@ -1,8 +1,0 @@
-#!/bin/sh
-
-BUNDLE="`echo "$0" | sed -e 's/\/Contents\/MacOS\/.*//'`"
-RESOURCES="$BUNDLE/Contents/Resources"
-
-export DYLD_LIBRARY_PATH=$RESOURCES/@SAILCUT_LIBRARY_DIR@
-
-exec "$RESOURCES/@SAILCUT_RUNTIME_DIR@/sailcut"
