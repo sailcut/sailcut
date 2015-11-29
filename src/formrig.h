@@ -30,8 +30,7 @@ class CFormRig : public CFormDocumentTmpl<CRigDef, CRigDefXmlWriter>
     Q_OBJECT
 
 public:
-    // construction, destruction
-    CFormRig(CPrefs *myPrefs, QWidget *parent);
+    CFormRig(QWidget *parent);
 
 protected:
     T_KEYPRESS

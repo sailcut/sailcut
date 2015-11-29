@@ -175,23 +175,23 @@ void CFormMain::open(QString filename)
     CFormDocument *wnd;
     if (CSailDefXmlWriter().isDocument(filename))
     {
-        wnd = new CFormSail(prefs, this);
+        wnd = new CFormSail(this);
     }
     else if (CHullDefXmlWriter().isDocument(filename))
     {
-        wnd = new CFormHull(prefs, this);
+        wnd = new CFormHull(this);
     }
     else if (CBoatDefXmlWriter().isDocument(filename))
     {
-        wnd = new CFormBoat(prefs, this);
+        wnd = new CFormBoat(this);
     }
     else if (CRigDefXmlWriter().isDocument(filename))
     {
-        wnd = new CFormRig(prefs, this);
+        wnd = new CFormRig(this);
     }
     else if (CPanelGroupXmlWriter().isDocument(filename))
     {
-        wnd = new CFormPanelGroup(prefs, this);
+        wnd = new CFormPanelGroup(this);
     }
     else
     {
@@ -311,7 +311,7 @@ void CFormMain::show(const QString filename)
     }
     else
     {
-        CFormSail *wnd = new CFormSail(prefs, this);
+        CFormSail *wnd = new CFormSail(this);
         addChild(wnd);
     }
 }
@@ -394,19 +394,19 @@ void CFormMain::slotNew()
     QAction *a = qobject_cast<QAction *>(sender());
     if (a == actionNewSail)
     {
-        wnd = new CFormSail(prefs, this);
+        wnd = new CFormSail(this);
     }
     else if (a == actionNewBoat)
     {
-        wnd = new CFormBoat(prefs, this);
+        wnd = new CFormBoat(this);
     }
     else if (a == actionNewRig)
     {
-        wnd = new CFormRig(prefs, this);
+        wnd = new CFormRig(this);
     }
     else if (a == actionNewHull)
     {
-        wnd = new CFormHull(prefs, this);
+        wnd = new CFormHull(this);
     }
     else
     {

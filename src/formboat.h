@@ -32,7 +32,7 @@ class CFormBoat : public CFormDocumentTmpl<CBoatDef, CBoatDefXmlWriter>
     Q_OBJECT
 
 public:
-    CFormBoat(CPrefs *myPrefs, QWidget *parent);
+    CFormBoat(QWidget *parent);
     void add(const QString &newfile);
 
 protected:

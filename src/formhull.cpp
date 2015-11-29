@@ -24,11 +24,10 @@
 /**
  * Constructs a window to display a hull.
  *
- * @param myPrefs the user preferences
  * @param parent the parent widget
  */
-CFormHull::CFormHull(CPrefs *myPrefs, QWidget *parent)
-        : CFormDocumentTmpl<CHullDef, CHullDefXmlWriter> (myPrefs, parent)
+CFormHull::CFormHull(QWidget *parent)
+    : CFormDocumentTmpl<CHullDef, CHullDefXmlWriter> (parent)
 {
     setMinimumSize( QSize( 300, 220 ) );
 

@@ -33,7 +33,7 @@ class CFormPanelGroup : public CFormDocumentTmpl<CPanelGroup, CPanelGroupXmlWrit
     Q_OBJECT
 
 public:
-    CFormPanelGroup(CPrefs *myPrefs, QWidget *parent);
+    CFormPanelGroup(QWidget *parent);
 
 protected:
     T_KEYPRESS

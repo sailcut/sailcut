@@ -33,11 +33,10 @@
 /**
  * The constructor.
  *
- * @param myPrefs the user preferences
  * @param parent the parent widget
  */
-CFormBoat::CFormBoat(CPrefs *myPrefs, QWidget *parent)
-        : CFormDocumentTmpl<CBoatDef, CBoatDefXmlWriter>(myPrefs, parent)
+CFormBoat::CFormBoat(QWidget *parent)
+    : CFormDocumentTmpl<CBoatDef, CBoatDefXmlWriter>(parent)
 {
     // create main widget
     setupMainWidget();

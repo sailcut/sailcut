@@ -30,7 +30,7 @@ class CFormHull : public CFormDocumentTmpl<CHullDef, CHullDefXmlWriter>
     Q_OBJECT
 
 public:
-    CFormHull(CPrefs *myPrefs, QWidget *parent);
+    CFormHull(QWidget *parent);
 
 protected:
     T_KEYPRESS

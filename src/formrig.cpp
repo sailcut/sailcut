@@ -26,11 +26,10 @@
 /**
  * Constructs a window to display a rig.
  *
- * @param myPrefs the user preferences
  * @param parent the parent widget
  */
-CFormRig::CFormRig(CPrefs *myPrefs, QWidget *parent)
-        : CFormDocumentTmpl<CRigDef, CRigDefXmlWriter> (myPrefs, parent)
+CFormRig::CFormRig(QWidget *parent)
+    : CFormDocumentTmpl<CRigDef, CRigDefXmlWriter> (parent)
 {
     setMinimumSize( QSize( 300, 220 ) );
 

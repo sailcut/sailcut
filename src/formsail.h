@@ -33,8 +33,7 @@ class CFormSail : public CFormDocumentTmpl<CSailDef, CSailDefXmlWriter>
     Q_OBJECT
 
 public:
-    // construction, destruction
-    CFormSail(CPrefs *myPrefs, QWidget *parent);
+    CFormSail(QWidget *parent);
 
 protected:
     T_KEYPRESS

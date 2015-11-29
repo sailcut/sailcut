@@ -29,11 +29,10 @@
 /**
  * Constructs a window to display a collection of panels.
  *
- * @param myPrefs the user preferences
  * @param parent the parent widget
  */
-CFormPanelGroup::CFormPanelGroup(CPrefs *myPrefs, QWidget *parent)
-        : CFormDocumentTmpl<CPanelGroup, CPanelGroupXmlWriter> (myPrefs, parent)
+CFormPanelGroup::CFormPanelGroup(QWidget *parent)
+    : CFormDocumentTmpl<CPanelGroup, CPanelGroupXmlWriter> (parent)
 {
     setMinimumSize( QSize( 400, 400 ) );
 

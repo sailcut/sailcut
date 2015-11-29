@@ -29,7 +29,6 @@
 using namespace std;
 
 // forward definitions
-class CPrefs;
 class QMenu;
 
 #define T_KEYPRESS \
@@ -45,9 +44,10 @@ class CFormDocument : public QWidget
 
 public:
     /** The constructor. */
-    CFormDocument(CPrefs *myPrefs, QWidget *parent)
-            : QWidget(parent), prefs(myPrefs)
+    CFormDocument(QWidget *parent)
+        : QWidget(parent)
     {};
+
     /** Open a file. */
     virtual bool open(const QString &newfile) = 0;
     /** Save to the current file. */
@@ -64,8 +64,6 @@ public:
     QString filename;
 
 protected:
-    /** The user preferences. */
-    CPrefs *prefs;
     /** An optional tabbed widget */
     CSailViewerTabs *tabs;
 };
@@ -77,12 +75,11 @@ class CFormDocumentTmpl : public CFormDocument
 public:
     /** The constructor.
      *
-     * @params myPrefs
+     * @params parent
      */
-    CFormDocumentTmpl(CPrefs *myPrefs, QWidget *parent)
-            : CFormDocument(myPrefs, parent)
-    {}
-    ;
+    CFormDocumentTmpl(QWidget *parent)
+        : CFormDocument(parent)
+    {};
 
     /**
      * Reads the definition from an XML file.
