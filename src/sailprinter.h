@@ -42,7 +42,7 @@ public:
     *
     * @param device
     */
-    virtual double scaleToFit(QPaintDevice* device) const { return -1; };
+    virtual double scaleToFit(QPaintDevice* device) const;
 };
 
 
@@ -112,11 +112,6 @@ class CSailDevelPrinter : public CSailDrawingPrinter
     Q_OBJECT
 
 public:
-    /** The constructor.
-     *
-     * @param obj the developed sail to print
-     * @param show_labels should labels be printed?
-     */
     /** The constructor.
      *
      * @param obj the sail to print

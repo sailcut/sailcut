@@ -61,7 +61,7 @@ CPrintLabel::CPrintLabel(CFormPrint *frm)
  */
 void CPrintLabel::paintEvent(QPaintEvent *)
 {
-    QRect print = form->printDevice.pageRect();
+    form->printDevice.pageRect();
 
     // erase viewport
     CTextPainter painter(this);

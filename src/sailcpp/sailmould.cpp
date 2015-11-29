@@ -215,11 +215,10 @@ void CProfile::calcMax()
     c = kleech/6 - b;
 
     /* scan from 16% point until slope become <= 0 */
-    real x=.16, dz=.1, dz1=.1;
+    real x=.16, dz=.1;
     int n=16, step=8;
     while ((dz>0) && (n<60))
     {
-        dz1 = dz;  // memorise previous value of dz>0
         x = real(n)/100;
         dz = a*pow( 1-x, kluff+1)/(kluff+1) - kleech/2 * (x * x) + c;
         while ((dz<=0) && (step>1))

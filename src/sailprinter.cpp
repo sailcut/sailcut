@@ -28,6 +28,13 @@
 #include "sailcpp/sailcalc.h"
 
 
+double CPrinter::scaleToFit(QPaintDevice* device) const
+{
+    Q_UNUSED(device);
+    return -1;
+}
+
+
 /** Print the current sail data sheet.
  *
  * @param painter
@@ -35,6 +42,8 @@
  */
 void CSailDataPrinter::print(CTextPainter *painter, int, real scale, real fontsize) const
 {
+    Q_UNUSED(scale);
+
     QString text2=" ", text3=" ";
     painter->setFontSize(fontsize, 1);
     painter->printReset();
