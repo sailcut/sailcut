@@ -88,9 +88,6 @@ protected:
     /** The signal mapper */
     QSignalMapper *windowMapper;
 
-    /** The location of the Sailcut CAD Handbook */
-    QUrl handbook;
-
     /** The application */
     CSailApp *app;
 

@@ -48,12 +48,7 @@ CFormMain::CFormMain(CSailApp *myApp, QWidget *parent)
 {
     setMinimumSize( QSize( 300, 220 ) );
 
-    // locate Handbook
     app->loadTranslation(prefs->language);
-    handbook = app->findHandbook(prefs->language);
-#ifdef DEBUG
-    cout << "handbook : " << (const char*)handbook.toString().toLocal8Bit() << endl;
-#endif
 
     // create main widget
     setupMainWidget();
@@ -370,6 +365,7 @@ void CFormMain::slotAboutQt()
  */
 void CFormMain::slotHandbook()
 {
+    QUrl handbook = app->findHandbook(prefs->language);
     if ( !handbook.isEmpty() )
         QDesktopServices::openUrl(handbook);
 }
@@ -390,9 +386,6 @@ void CFormMain::slotLanguage()
 
     prefs->language = locale;
     app->loadTranslation(locale);
-
-    // try to locate handbook
-    handbook = app->findHandbook(locale);
 
     languageChange();
 }
