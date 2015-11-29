@@ -37,13 +37,9 @@ public:
     CSailApp(int &argc, char** argv);
 
     static QUrl findHandbook(const QString locale);
-    void loadTranslation(const QString locale);
     void readPrefs();
     void writePrefs();
-
-    QString language() const;
     void setLanguage(const QString &language);
-
 
     /** the user's preferences */
     CPrefs prefs;
@@ -51,7 +47,9 @@ public:
 signals:
     void languageChanged();
 
-protected:
+private:
+    void loadTranslation(const QString locale);
+
     /** the file in which the preferences are stored */
     QString prefsfile;
 

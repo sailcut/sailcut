@@ -48,8 +48,6 @@ CFormMain::CFormMain(CSailApp *myApp, QWidget *parent)
 {
     setMinimumSize( QSize( 300, 220 ) );
 
-    app->loadTranslation(prefs->language);
-
     // create main widget
     setupMainWidget();
 

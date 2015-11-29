@@ -78,12 +78,6 @@ QUrl CSailApp::findHandbook(const QString locale)
 }
 
 
-QString CSailApp::language() const
-{
-    return prefs.language;
-}
-
-
 void CSailApp::setLanguage(const QString &language)
 {
     if (language != prefs.language) {
@@ -134,8 +128,10 @@ void CSailApp::readPrefs()
 {
     try
     {
-        if (QFile(prefsfile).exists())
+        if (QFile(prefsfile).exists()) {
             prefs = CPrefsXmlWriter().read(prefsfile);
+            loadTranslation(prefs.language);
+        }
     }
     catch (read_error e)
     {
