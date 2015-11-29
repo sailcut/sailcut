@@ -17,6 +17,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+#include <QApplication>
+
 #include "sailviewer-panel.h"
 #include "sailviewer-tabs.h"
 
@@ -30,6 +32,11 @@ CSailViewerTabs::CSailViewerTabs(QWidget *parent)
 {
     addViewer(new CSailViewerPanel(NULL, SHADED, true));
     addViewer(new CSailViewerPanel(NULL, WIREFRAME, true));
+
+    // set language
+    connect(qApp, SIGNAL(languageChanged()),
+            this, SLOT(languageChange()));
+    languageChange();
 }
 
 
@@ -52,8 +59,6 @@ void CSailViewerTabs::addViewer(CSailViewerPanel *viewer)
 void CSailViewerTabs::languageChange()
 {
     int tabidx = 0;
-    for (unsigned int i = 0; i < panel.size(); i++)
-        panel[i]->languageChange();
     setTabText(tabidx++, tr("shaded view"));
     setTabText(tabidx++, tr("wireframe view"));
 }

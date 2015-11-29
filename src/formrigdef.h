@@ -40,8 +40,10 @@ public:
     virtual void accept();
 
 protected slots:
-    virtual void languageChange();
     void slotChanged();
+
+private slots:
+    void languageChange();
 
 protected:
     /** a pointer to the rig definion */

@@ -24,6 +24,7 @@
 #include "sailcpp/rigworker.h"
 #include "sailwriter-xml.h"
 
+#include <QApplication>
 #include <QLayout>
 #include <QMenuBar>
 #include <QFileInfo>
@@ -45,6 +46,8 @@ CFormBoat::CFormBoat(CPrefs *myPrefs, QWidget *parent)
     setupMenuBar();
 
     // set language
+    connect(qApp, SIGNAL(languageChanged()),
+            this, SLOT(languageChange()));
     languageChange();
 
     // set initial definition
@@ -103,9 +106,6 @@ void CFormBoat::languageChange()
     setWindowTitle( tr("boat") );
     menuAdd->setTitle( tr("&Add") );
     actionAddFile->setText( tr("file") );
-
-    defpanel->languageChange();
-    tabs->languageChange();
 }
 
 

@@ -42,9 +42,11 @@ protected:
     void setupMenuBar();
 
 protected slots:
-    virtual void languageChange();
     virtual void slotAdd();
     virtual void slotUpdate(const CBoatDef& newdef);
+
+private slots:
+    void languageChange();
 
 protected:
     /** A panel with one tab per element in the current boat.  */

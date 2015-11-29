@@ -42,9 +42,11 @@ public:
 
     // slots
 public slots:
-    virtual void languageChange();
     virtual void slotAzimuth(real azimuth);
     virtual void slotElevation(real azimuth);
+
+private slots:
+    void languageChange();
 
     // member variables
 protected:

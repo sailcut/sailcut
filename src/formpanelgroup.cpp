@@ -20,6 +20,7 @@
 #include "formpanelgroup.h"
 #include "sailtreemodel.h"
 
+#include <QApplication>
 #include <QLayout>
 #include <QSplitter>
 #include <QTreeView>
@@ -40,6 +41,8 @@ CFormPanelGroup::CFormPanelGroup(CPrefs *myPrefs, QWidget *parent)
     setupMainWidget();
 
     // set language
+    connect(qApp, SIGNAL(languageChanged()),
+            this, SLOT(languageChange()));
     languageChange();
 
     // set initial definition
@@ -54,7 +57,6 @@ CFormPanelGroup::CFormPanelGroup(CPrefs *myPrefs, QWidget *parent)
 void CFormPanelGroup::languageChange()
 {
     setWindowTitle( tr("panels") );
-    tabs->languageChange();
 }
 
 

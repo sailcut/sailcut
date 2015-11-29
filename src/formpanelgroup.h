@@ -40,8 +40,8 @@ protected:
     void setDef(const CPanelGroup& newdef);
     void setupMainWidget();
 
-protected slots:
-    virtual void languageChange();
+private slots:
+    void languageChange();
 
 protected:
     /** the tree view */

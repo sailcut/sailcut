@@ -41,6 +41,8 @@ CFormHull::CFormHull(CPrefs *myPrefs, QWidget *parent)
     layout->addWidget(tabs);
 
     // set language
+    connect(qApp, SIGNAL(languageChanged()),
+            this, SLOT(languageChange()));
     languageChange();
 
     // set initial definition
@@ -56,7 +58,6 @@ void CFormHull::languageChange()
 {
     setWindowTitle( tr("hull") );
     actionViewDef->setText( tr("&Dimensions") );
-    tabs->languageChange();
 }
 
 

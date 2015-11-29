@@ -55,6 +55,8 @@ CFormSail::CFormSail(CPrefs *myPrefs, QWidget *parent)
     setupMainWidget();
 
     // set language
+    connect(qApp, SIGNAL(languageChanged()),
+            this, SLOT(languageChange()));
     languageChange();
 
     // set initial definition
@@ -101,7 +103,6 @@ void CFormSail::languageChange()
     actionViewPatch->setText( tr("&Patches") );
 
     // tabs
-    tabs->languageChange();
     tabs->setTabText(tabs->panel.size()-1, tr("development"));
 }
 

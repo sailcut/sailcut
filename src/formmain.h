@@ -63,8 +63,6 @@ private:
 
 protected slots:
 
-    virtual void languageChange();
-
     virtual void slotAbout();
     virtual void slotAboutQt();
 
@@ -80,6 +78,9 @@ protected slots:
     virtual void slotSetActiveWindow(QWidget *widget);
     virtual void slotUpdateDocumentMenus();
     virtual void slotUpdateWindowMenu();
+
+private slots:
+    void languageChange();
 
 protected:
     /** The workspace */

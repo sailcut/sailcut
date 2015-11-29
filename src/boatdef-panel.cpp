@@ -23,6 +23,7 @@
 #include "sailcpp/rigworker.h"
 #include "sailcpp/sailworker.h"
 
+#include <QApplication>
 #include <QLabel>
 #include <QLayout>
 #include <QGroupBox>
@@ -127,6 +128,9 @@ CBoatElementWidget::CBoatElementWidget(QWidget *parent)
     // pack everything upward
     layout->addItem( new QSpacerItem( 20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding ), 2, 0 );
 
+    // set language
+    connect(qApp, SIGNAL(languageChanged()),
+            this, SLOT(languageChange()));
     languageChange();
 
     /* connect signals */
@@ -229,16 +233,6 @@ CBoatDefPanel::CBoatDefPanel(QWidget *parent)
     QGridLayout *layout = new QGridLayout( this );
     tabs = new QTabWidget(this);
     layout->addWidget( tabs, 0, 0);
-}
-
-
-/**
- * Sets the strings of the subwidgets using the current language.
- */
-void CBoatDefPanel::languageChange()
-{
-    for (unsigned int i = 0; i < elementwidget.size(); i++)
-        elementwidget[i]->languageChange();
 }
 
 

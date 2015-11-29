@@ -40,8 +40,10 @@ protected:
 
     // slots
 protected slots:
-    virtual void languageChange();
     virtual void slotDef();
+
+private slots:
+    void languageChange();
 
     // member variables
 protected:

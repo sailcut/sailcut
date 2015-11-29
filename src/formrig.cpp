@@ -43,6 +43,8 @@ CFormRig::CFormRig(CPrefs *myPrefs, QWidget *parent)
     layout->addWidget(tabs);
 
     // set language
+    connect(qApp, SIGNAL(languageChanged()),
+            this, SLOT(languageChange()));
     languageChange();
 
     // set initial definition
@@ -58,7 +60,6 @@ void CFormRig::languageChange()
 {
     setWindowTitle( tr("rig") );
     actionViewDef->setText( tr("&Dimensions") );
-    tabs->languageChange();
 }
 
 

@@ -61,6 +61,8 @@ CFormMain::CFormMain(CSailApp *myApp, QWidget *parent)
     setupMenuBar();
 
     // set language
+    connect(qApp, SIGNAL(languageChanged()),
+            this, SLOT(languageChange()));
     languageChange();
 
     // set icon
@@ -376,18 +378,11 @@ void CFormMain::slotHandbook()
  */
 void CFormMain::slotLanguage()
 {
-    QString locale;
-
     QAction *a = qobject_cast<QAction *>(sender());
     if ( !a )
         return;
 
-    locale = a->data().toString();
-
-    prefs->language = locale;
-    app->loadTranslation(locale);
-
-    languageChange();
+    app->setLanguage(a->data().toString());
 }
 
 

@@ -78,6 +78,22 @@ QUrl CSailApp::findHandbook(const QString locale)
 }
 
 
+QString CSailApp::language() const
+{
+    return prefs.language;
+}
+
+
+void CSailApp::setLanguage(const QString &language)
+{
+    if (language != prefs.language) {
+        prefs.language = language;
+        loadTranslation(language);
+        emit languageChanged();
+    }
+}
+
+
 /**
  * Loads translation strings for a given language.
  */
@@ -86,10 +102,12 @@ void CSailApp::loadTranslation(const QString locale)
     QStringList datadirs;
 
     // translation file for Qt
+    removeTranslator(transQt);
     transQt->load( QString( "qt_" ) + locale, "." );
     installTranslator(transQt);
 
     // translation file for application strings
+    removeTranslator(transApp);
     QString qm = QString("sailcut_") + locale;
 
     // when run from the build location

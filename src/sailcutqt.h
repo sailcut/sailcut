@@ -31,6 +31,8 @@ class QUrl;
  */
 class CSailApp : public QApplication
 {
+    Q_OBJECT
+
 public:
     CSailApp(int &argc, char** argv);
 
@@ -39,8 +41,15 @@ public:
     void readPrefs();
     void writePrefs();
 
+    QString language() const;
+    void setLanguage(const QString &language);
+
+
     /** the user's preferences */
     CPrefs prefs;
+
+signals:
+    void languageChanged();
 
 protected:
     /** the file in which the preferences are stored */

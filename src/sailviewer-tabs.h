@@ -34,8 +34,8 @@ public:
     void addViewer(CSailViewerPanel *viewer);
     void setObject(const CPanelGroup &obj);
 
-public slots:
-    virtual void languageChange();
+private slots:
+    void languageChange();
 
 public:
     /** the widgets of each view */

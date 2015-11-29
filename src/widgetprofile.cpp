@@ -19,6 +19,7 @@
 
 #include <cmath>
 
+#include <QApplication>
 #include <QPushButton>
 #include <QGroupBox>
 #include <QLayout>
@@ -228,6 +229,8 @@ CWidgetProfile::CWidgetProfile( QWidget *parent, CProfile *ptr,
 
     // set translations and trigger update
     // NOTE : all the widgets need to be created before doing this
+    connect(qApp, SIGNAL(languageChanged()),
+            this, SLOT(languageChange()));
     languageChange();
 
     // trigger the computation of profile to update the ancillary data labels

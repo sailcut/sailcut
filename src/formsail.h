@@ -44,9 +44,6 @@ protected:
 
     // slots
 protected slots:
-
-    virtual void languageChange();
-
     virtual void slotDef();
     virtual void slotExportDXF();
     virtual void slotExportDXFSplit();
@@ -66,6 +63,9 @@ protected slots:
     virtual void slotPrintData();
     virtual void slotPrintDwg();
     virtual void slotPrintDev();
+
+private slots:
+    void languageChange();
 
     // member variables
 protected:

@@ -38,8 +38,10 @@ protected:
     void setupMenuBar();
 
 protected slots:
-    virtual void languageChange();
     virtual void slotDef();
+
+private slots:
+    void languageChange();
 
 protected:
     /** view hull definition */

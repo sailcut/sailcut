@@ -62,14 +62,14 @@ public:
 
     void setElement(const CBoatElement &newelement);
 
-public slots:
-    virtual void languageChange();
-
 signals:
     /** Signals that the user hit the "Remove" button. */
     void signalRemove();
     /** Signals that the element was modified. */
     void signalUpdate(const CBoatElement& newelement);
+
+private slots:
+    void languageChange();
 
 protected slots:
     void slotReload();
@@ -118,7 +118,6 @@ public:
     void setDef(const CBoatDef &newdef);
 
 public slots:
-    virtual void languageChange();
     virtual void slotRemove();
     virtual void slotUpdate(const CBoatElement& newelement);
 

@@ -20,6 +20,7 @@
 #include "sailviewer-panel.h"
 #include "sailcpp/panelgroup.h"
 
+#include <QApplication>
 #include <QGroupBox>
 #include <QLabel>
 #include <QLayout>
@@ -101,7 +102,9 @@ CSailViewerPanel::CSailViewerPanel(QWidget *parent, enumViewMode viewMode, bool 
     layout->addLayout( vbox );
 
 
-    /* set language and size */
+    /* set language */
+    connect(qApp, SIGNAL(languageChanged()),
+            this, SLOT(languageChange()));
     languageChange();
 
     /* connect signals */

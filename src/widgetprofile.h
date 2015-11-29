@@ -77,8 +77,10 @@ public:
     CWidgetProfile( QWidget*, CProfile*, QString, CWidgetProfileVert* );
 
 protected slots:
-    virtual void languageChange();
     void slotChanged();
+
+private slots:
+    void languageChange();
 
     // member variables
 public:
