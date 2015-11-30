@@ -148,8 +148,8 @@ QMAKE_TARGET_COPYRIGHT="Copyright (c) 1993-2015 Robert & Jeremy Laine"
 QMAKE_TARGET_PRODUCT="Sailcut CAD"
 mac {
     ICON = ../icons/sailcut.icns
-    QMAKE_POST_LINK += $$[QT_INSTALL_BINS]/macdeployqt "$$DESTDIR/$$TARGET.app"
+    QMAKE_POST_LINK += $$[QT_INSTALL_BINS]/macdeployqt $$shell_quote($$DESTDIR/$${TARGET}.app)
 } else:win32 {
     RC_ICONS = ../icons/sailcut.ico
-    QMAKE_POST_LINK += $$[QT_INSTALL_BINS]/windeployqt $$DESTDIR/$$TARGET.exe
+    QMAKE_POST_LINK += $$[QT_INSTALL_BINS]/windeployqt $$shell_quote($$DESTDIR/$${TARGET}.exe)
 }
