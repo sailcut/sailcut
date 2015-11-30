@@ -10,7 +10,9 @@ VERSION = $$SAILCUT_VERSION
 DEFINES += SAILCUT_VERSION=\\\"$${SAILCUT_VERSION}\\\"
 DEFINES += SAILCUT_DATA_PATH=\\\"$${SAILCUT_DATA_PATH}\\\"
 DEFINES += SAILCUT_DOC_PATH=\\\"$${SAILCUT_DOC_PATH}\\\"
-win32 {
+mac {
+    TARGET = "Sailcut CAD"
+} else:win32 {
     LIBS += -lopengl32 -lglu32
 }
 
@@ -146,8 +148,8 @@ QMAKE_TARGET_COPYRIGHT="Copyright (c) 1993-2015 Robert & Jeremy Laine"
 QMAKE_TARGET_PRODUCT="Sailcut CAD"
 mac {
     ICON = ../icons/sailcut.icns
-    QMAKE_POST_LINK += $$[QT_INSTALL_BINS]/macdeployqt $$DESTDIR/sailcut.app
+    QMAKE_POST_LINK += $$[QT_INSTALL_BINS]/macdeployqt "$$DESTDIR/$$TARGET.app"
 } else:win32 {
     RC_ICONS = ../icons/sailcut.ico
-    QMAKE_POST_LINK += $$[QT_INSTALL_BINS]/windeployqt $$DESTDIR/sailcut.exe
+    QMAKE_POST_LINK += $$[QT_INSTALL_BINS]/windeployqt $$DESTDIR/$$TARGET.exe
 }
