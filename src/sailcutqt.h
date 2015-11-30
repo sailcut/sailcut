@@ -43,11 +43,12 @@ public:
     QString language() const;
     void setLanguage(const QString &language);
 
+    QStringList recentDocuments() const;
+    void addRecentDocument(const QString &filename);
+    void removeRecentDocument(const QString &filename);
+
     QSize windowSize() const;
     void setWindowSize(const QSize &size);
-
-    /** the user's preferences */
-    CPrefs prefs;
 
 public slots:
     void createBoat() const;
@@ -62,6 +63,9 @@ signals:
 
 private:
     void loadTranslation(const QString locale);
+
+    /** the user's preferences */
+    CPrefs prefs;
 
     /** the file in which the preferences are stored */
     QString prefsfile;

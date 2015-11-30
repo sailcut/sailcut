@@ -49,7 +49,6 @@ public:
 
 protected:
     void closeEvent( QCloseEvent * e);
-    void makeMenuMru();
 
 private:
     void setupMenuBar();
@@ -71,6 +70,7 @@ protected slots:
 
 private slots:
     void languageChange();
+    void recentDocumentsChanged();
 
 protected:
     /** The signal mapper */

@@ -209,14 +209,46 @@ void CSailApp::open(const QString &filename)
     }
 
     if (wnd->open(filename)) {
-        prefs.mruDocuments.touchEntry(filename);
+        addRecentDocument(filename);
         //statusbar->showMessage(tr("loaded '%1'").arg(filename));
         wnd->show();
     } else {
-        prefs.mruDocuments.removeEntry(filename);
+        removeRecentDocument(filename);
         //statusbar->showMessage( tr("error loading '%1'").arg(filename) );
         wnd->deleteLater();
     }
+}
+
+
+QStringList CSailApp::recentDocuments() const
+{
+    QStringList documents;
+    for (unsigned int i = 0; i < prefs.mruDocuments.size(); ++i)
+        documents.push_back(prefs.mruDocuments[i]);
+    return documents;
+}
+
+
+/**
+ * Puts an entry at the top of the Most Recently Used files.
+ *
+ * @param newEntry The entry to be added
+ */
+void CSailApp::addRecentDocument(const QString &filename)
+{
+    prefs.mruDocuments.touchEntry(filename);
+    emit recentDocumentsChanged();
+}
+
+
+/**
+ * Removes an entry from the Most Recently Used files.
+ *
+ * @param oldEntry The entry to be removed
+ */
+void CSailApp::removeRecentDocument(const QString &filename)
+{
+    prefs.mruDocuments.removeEntry(filename);
     emit recentDocumentsChanged();
 }
 

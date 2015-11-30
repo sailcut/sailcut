@@ -45,6 +45,7 @@ CFormMain::CFormMain(QWidget *parent)
 {
     app = qobject_cast<CSailApp*>(qApp);
     setMinimumSize( QSize( 400, 400 ) );
+    setWindowIcon( QPixmap( (const char **)sailcut_xpm ) );
 
     // create status bar
     statusbar = new QStatusBar(this);
@@ -58,14 +59,13 @@ CFormMain::CFormMain(QWidget *parent)
             this, SLOT(languageChange()));
     languageChange();
 
-    // set icon
-    setWindowIcon( QPixmap( (const char **)sailcut_xpm ) );
-
     // update document-specific menus
     slotUpdateDocumentMenus();
 
     // load preferences
-    makeMenuMru();
+    connect(qApp, SIGNAL(recentDocumentsChanged()),
+            this, SLOT(recentDocumentsChanged()));
+    recentDocumentsChanged();
 
     // resize to preferred size
     resize(app->windowSize().expandedTo(minimumSizeHint()));
@@ -119,14 +119,11 @@ void CFormMain::languageChange()
 /**
  * Creates the "Open Recent" menu from the Most Recently Used files list.
  */
-void CFormMain::makeMenuMru()
+void CFormMain::recentDocumentsChanged()
 {
     menuRecent->clear();
-
-    for (unsigned int i = 0; i < app->prefs.mruDocuments.size(); i++)
-    {
-        menuRecent->addAction( app->prefs.mruDocuments[i], this, SLOT( slotOpenRecent() ) )->setData(i);
-    }
+    foreach (const QString &document, app->recentDocuments())
+        menuRecent->addAction(document, this, SLOT(slotOpenRecent()))->setData(document);
 }
 
 
@@ -238,10 +235,8 @@ void CFormMain::slotHandbook()
 void CFormMain::slotLanguage()
 {
     QAction *a = qobject_cast<QAction *>(sender());
-    if ( !a )
-        return;
-
-    app->setLanguage(a->data().toString());
+    if (a)
+        app->setLanguage(a->data().toString());
 }
 
 
@@ -269,12 +264,9 @@ void CFormMain::slotOpen()
  */
 void CFormMain::slotOpenRecent()
 {
-    // retrieve the index of the MRU entry
     QAction *a = qobject_cast<QAction *>(sender());
-    if ( !a )
-        return;
-    int index = a->data().toInt();
-    app->open(app->prefs.mruDocuments[index]);
+    if (a)
+        app->open(a->data().toString());
 }
 
 
@@ -289,8 +281,7 @@ void CFormMain::slotSave()
     {
         QString filename = child->filename;
         statusbar->showMessage(tr("wrote '%1'").arg(filename));
-        app->prefs.mruDocuments.touchEntry(filename);
-        makeMenuMru();
+        app->addRecentDocument(filename);
     }
 #endif
 }
@@ -307,8 +298,7 @@ void CFormMain::slotSaveAs()
     {
         QString filename = child->filename;
         statusbar->showMessage(tr("wrote '%1'").arg(filename));
-        app->prefs.mruDocuments.touchEntry(filename);
-        makeMenuMru();
+        app->addRecentDocument(filename);
     }
 #endif
 }
