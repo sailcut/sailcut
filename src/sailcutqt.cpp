@@ -193,7 +193,6 @@ void CSailApp::open(const QString &filename)
 {
     CFormMain *wnd;
     if (CSailDefXmlWriter().isDocument(filename)) {
-        qDebug() << "sail!";
         wnd = new CFormSail;
     } else if (CHullDefXmlWriter().isDocument(filename)) {
         wnd = new CFormHull;
