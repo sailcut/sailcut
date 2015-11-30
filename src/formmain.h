@@ -53,7 +53,6 @@ protected:
 
 private:
     void setupMenuBar();
-    void setupMainWidget();
 
 protected slots:
     virtual void slotAbout();
