@@ -124,7 +124,7 @@ bool CFormBoat::write(const QString &filename)
     try {
         writer.write(def, filename);
         return true;
-    } catch (read_error e) {
+    } catch (write_error e) {
         return false;
     }
 }
