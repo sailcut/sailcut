@@ -34,7 +34,7 @@ class CFormBoat : public CFormMain
 public:
     CFormBoat(QWidget *parent = 0);
     void add(const QString &newfile);
-    bool open(const QString &newfile);
+    bool read(const QString &newfile);
 
 private slots:
     void languageChange();

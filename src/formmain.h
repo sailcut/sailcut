@@ -44,7 +44,7 @@ class CFormMain : public QMainWindow
 public:
     // construction, destruction
     CFormMain(QWidget *parent = 0);
-    virtual bool open(const QString &filename) = 0;
+    virtual bool read(const QString &filename) = 0;
 
 protected:
     void addFileMenu(QMenu *menu);

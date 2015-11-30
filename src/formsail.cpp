@@ -104,7 +104,7 @@ void CFormSail::languageChange()
 }
 
 
-bool CFormSail::open(const QString &newfile)
+bool CFormSail::read(const QString &newfile)
 {
     CSailDefXmlWriter writer;
     try {

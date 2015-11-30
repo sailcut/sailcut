@@ -31,7 +31,7 @@ class CFormHull : public CFormMain
 
 public:
     CFormHull(QWidget *parent = 0);
-    bool open(const QString &newfile);
+    bool read(const QString &newfile);
 
 private slots:
     void languageChange();

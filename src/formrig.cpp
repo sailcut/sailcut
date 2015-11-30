@@ -59,7 +59,7 @@ void CFormRig::languageChange()
 }
 
 
-bool CFormRig::open(const QString &newfile)
+bool CFormRig::read(const QString &newfile)
 {
     CRigDefXmlWriter writer;
     try {

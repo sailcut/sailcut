@@ -35,7 +35,7 @@ class CFormSail : public CFormMain
 
 public:
     CFormSail(QWidget *parent = 0);
-    bool open(const QString &newfile);
+    bool read(const QString &newfile);
 
 protected slots:
     virtual void slotDef();

@@ -207,7 +207,7 @@ void CSailApp::open(const QString &filename)
         return;
     }
 
-    if (wnd->open(filename)) {
+    if (wnd->read(filename)) {
         addRecentDocument(filename);
         //statusbar->showMessage(tr("loaded '%1'").arg(filename));
         wnd->show();

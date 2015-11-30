@@ -57,7 +57,7 @@ void CFormPanelGroup::languageChange()
 }
 
 
-bool CFormPanelGroup::open(const QString &newfile)
+bool CFormPanelGroup::read(const QString &newfile)
 {
     CPanelGroupXmlWriter writer;
     try {

@@ -57,7 +57,7 @@ void CFormHull::languageChange()
 }
 
 
-bool CFormHull::open(const QString &newfile)
+bool CFormHull::read(const QString &newfile)
 {
     CHullDefXmlWriter writer;
     try {

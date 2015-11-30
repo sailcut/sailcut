@@ -107,7 +107,7 @@ void CFormBoat::languageChange()
     actionAddFile->setText( tr("file") );
 }
 
-bool CFormBoat::open(const QString &newfile)
+bool CFormBoat::read(const QString &newfile)
 {
     CBoatDefXmlWriter writer;
     try {
