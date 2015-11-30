@@ -34,7 +34,6 @@ class QMenuBar;
 class QStatusBar;
 class QSignalMapper;
 
-class CPrefs;
 class CSailApp;
 
 
@@ -46,7 +45,7 @@ class CFormMain : public QMainWindow
 
 public:
     // construction, destruction
-    CFormMain(CSailApp *myApp, QWidget *parent = 0);
+    CFormMain(QWidget *parent = 0);
 
     void show(const QString newname = QString::null);
 
@@ -91,9 +90,6 @@ protected:
 
     /** The application */
     CSailApp *app;
-
-    /** The user preferences */
-    CPrefs *prefs;
 
     /** The status bar */
     QStatusBar* statusbar;

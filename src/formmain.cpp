@@ -43,9 +43,10 @@
  * @param myApp the Sailcut application
  * @param parent the parent widget
  */
-CFormMain::CFormMain(CSailApp *myApp, QWidget *parent)
-        : QMainWindow(parent), app(myApp), prefs(&myApp->prefs)
+CFormMain::CFormMain(QWidget *parent)
+        : QMainWindow(parent)
 {
+    app = qobject_cast<CSailApp*>(qApp);
     setMinimumSize( QSize( 300, 220 ) );
 
     // create main widget
@@ -69,8 +70,9 @@ CFormMain::CFormMain(CSailApp *myApp, QWidget *parent)
     // update document-specific menus
     slotUpdateDocumentMenus();
 
-    // resize to prefered size
-    resize( QSize(prefs->mainWindowWidth,prefs->mainWindowHeight).expandedTo(minimumSizeHint()) );
+    // resize to preferred size
+    const QSize preferredSize(app->prefs.mainWindowWidth, app->prefs.mainWindowHeight);
+    resize(preferredSize.expandedTo(minimumSizeHint()));
 }
 
 
@@ -103,8 +105,8 @@ CFormDocument* CFormMain::activeChild()
  */
 void CFormMain::closeEvent(QCloseEvent *e)
 {
-    prefs->mainWindowHeight = height();
-    prefs->mainWindowWidth = width();
+    app->prefs.mainWindowHeight = height();
+    app->prefs.mainWindowWidth = width();
     QMainWindow::closeEvent(e);
 }
 
@@ -158,9 +160,9 @@ void CFormMain::makeMenuMru()
 {
     menuRecent->clear();
 
-    for (unsigned int i = 0; i < prefs->mruDocuments.size(); i++)
+    for (unsigned int i = 0; i < app->prefs.mruDocuments.size(); i++)
     {
-        menuRecent->addAction( prefs->mruDocuments[i], this, SLOT( slotOpenRecent() ) )->setData(i);
+        menuRecent->addAction( app->prefs.mruDocuments[i], this, SLOT( slotOpenRecent() ) )->setData(i);
     }
 }
 
@@ -202,12 +204,12 @@ void CFormMain::open(QString filename)
     if (wnd->open(filename))
     {
         addChild(wnd);
-        prefs->mruDocuments.touchEntry(filename);
+        app->prefs.mruDocuments.touchEntry(filename);
         statusbar->showMessage(tr("loaded '%1'").arg(filename));
     }
     else
     {
-        prefs->mruDocuments.removeEntry(filename);
+        app->prefs.mruDocuments.removeEntry(filename);
         statusbar->showMessage( tr("error loading '%1'").arg(filename) );
         wnd->deleteLater();
     }
@@ -365,7 +367,7 @@ void CFormMain::slotAboutQt()
  */
 void CFormMain::slotHandbook()
 {
-    QUrl handbook = app->findHandbook(prefs->language);
+    QUrl handbook = app->findHandbook(app->prefs.language);
     if ( !handbook.isEmpty() )
         QDesktopServices::openUrl(handbook);
 }
@@ -446,7 +448,7 @@ void CFormMain::slotOpenRecent()
     if ( !a )
         return;
     int index = a->data().toInt();
-    open(prefs->mruDocuments[index]);
+    open(app->prefs.mruDocuments[index]);
 }
 
 
@@ -460,7 +462,7 @@ void CFormMain::slotSave()
     {
         QString filename = child->filename;
         statusbar->showMessage(tr("wrote '%1'").arg(filename));
-        prefs->mruDocuments.touchEntry(filename);
+        app->prefs.mruDocuments.touchEntry(filename);
         makeMenuMru();
     }
 }
@@ -476,7 +478,7 @@ void CFormMain::slotSaveAs()
     {
         QString filename = child->filename;
         statusbar->showMessage(tr("wrote '%1'").arg(filename));
-        prefs->mruDocuments.touchEntry(filename);
+        app->prefs.mruDocuments.touchEntry(filename);
         makeMenuMru();
     }
 }

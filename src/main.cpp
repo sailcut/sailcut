@@ -41,7 +41,7 @@ int main( int argc, char* argv[] )
     CSailApp app( argc, argv );
     app.readPrefs();
 
-    CFormMain *sailcut = new CFormMain(&app);
+    CFormMain *sailcut = new CFormMain;
 
     if (argc > 1)
         sailcut->show(argv[1]);
