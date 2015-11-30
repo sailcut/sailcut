@@ -33,7 +33,6 @@ HEADERS += \
     sailcpp/rigdef.h \
     sailcpp/rigworker.h \
     sailcpp/sailcalc.h \
-    sailcpp/sailcutqt.h \
     sailcpp/saildef.h \
     sailcpp/sailmould.h \
     sailcpp/sailworker.h \
