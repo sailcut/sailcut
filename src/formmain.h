@@ -28,7 +28,6 @@
 
 // forward definitions
 class QAction;
-class QMdiArea;
 class QMenu;
 class QMenuBar;
 class QStatusBar;
@@ -46,26 +45,21 @@ class CFormMain : public QMainWindow
 public:
     // construction, destruction
     CFormMain(QWidget *parent = 0);
-
-    void show(const QString newname = QString::null);
+    bool open(const QString &filename);
 
 protected:
     void closeEvent( QCloseEvent * e);
     void makeMenuMru();
-    void open(QString filename);
 
 private:
-    void addChild(CFormDocument *child);
     void setupMenuBar();
     void setupMainWidget();
-    CFormDocument *activeChild();
 
 protected slots:
 
     virtual void slotAbout();
     virtual void slotAboutQt();
 
-    virtual void slotNew();
     virtual void slotOpen();
     virtual void slotOpenRecent();
     virtual void slotSave();
@@ -74,17 +68,12 @@ protected slots:
     virtual void slotHandbook();
 
     virtual void slotLanguage();
-    virtual void slotSetActiveWindow(QWidget *widget);
     virtual void slotUpdateDocumentMenus();
-    virtual void slotUpdateWindowMenu();
 
 private slots:
     void languageChange();
 
 protected:
-    /** The workspace */
-    QMdiArea *workspace;
-
     /** The signal mapper */
     QSignalMapper *windowMapper;
 
@@ -102,8 +91,6 @@ protected:
     QMenu *menuHelp;
     /** The View menu */
     QMenu *menuView;
-    /** The Window menu */
-    QMenu *menuWindow;
     /** The Language menu */
     QMenu *menuLanguage;
 
@@ -114,14 +101,6 @@ protected:
     QAction *actionAbout;
     /** Display information about Qt */
     QAction *actionAboutQt;
-    /** Close the active document */
-    QAction *actionClose;
-    /** Close all documents */
-    QAction *actionCloseAll;
-    /** Tile document windows */
-    QAction *actionTile;
-    /** Cascade document windows */
-    QAction *actionCascade;
 
     /** Display the handbook */
     QAction *actionHandbook;
@@ -161,6 +140,14 @@ protected:
     vector<QAction*> childFileActions;
     /** Extra actions for the view menu */
     vector<QAction*> childViewActions;
+
+    CSailViewerTabs *tabs;
+    /** Extra submenus for the File menu */
+    vector<QMenu*> extraFileMenus;
+    /** Extra actions for the View menu */
+    vector<QAction*> extraViewActions;
+    /** The current filename. */
+    QString filename;
 };
 
 #endif

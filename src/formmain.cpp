@@ -29,8 +29,6 @@
 #include "sailcut.xpm"
 
 #include <QDebug>
-#include <QMdiArea>
-#include <QMdiSubWindow>
 #include <QMenuBar>
 #include <QStatusBar>
 #include <QSignalMapper>
@@ -40,17 +38,13 @@
 /**
  * Constructs Sailcut CAD's main window.
  *
- * @param myApp the Sailcut application
  * @param parent the parent widget
  */
 CFormMain::CFormMain(QWidget *parent)
-        : QMainWindow(parent)
+    : QMainWindow(parent)
 {
     app = qobject_cast<CSailApp*>(qApp);
-    setMinimumSize( QSize( 300, 220 ) );
-
-    // create main widget
-    setupMainWidget();
+    setMinimumSize( QSize( 400, 400 ) );
 
     // create status bar
     statusbar = new QStatusBar(this);
@@ -70,33 +64,12 @@ CFormMain::CFormMain(QWidget *parent)
     // update document-specific menus
     slotUpdateDocumentMenus();
 
+    // load preferences
+    makeMenuMru();
+
     // resize to preferred size
     const QSize preferredSize(app->prefs.mainWindowWidth, app->prefs.mainWindowHeight);
     resize(preferredSize.expandedTo(minimumSizeHint()));
-}
-
-
-/**
- * Add a document window and show it.
- */
-void CFormMain::addChild(CFormDocument *child)
-{
-    bool max = ((activeChild() == NULL) || activeChild()->isMaximized());
-    workspace->addSubWindow(child);
-    if (max)
-        child->showMaximized();
-    else
-        child->show();
-}
-
-
-/**
- * Returns the active document window.
- */
-CFormDocument* CFormMain::activeChild()
-{
-    QMdiSubWindow *subWindow = workspace->activeSubWindow();
-    return qobject_cast<CFormDocument *>(subWindow ? subWindow->widget() : 0);
 }
 
 
@@ -137,19 +110,11 @@ void CFormMain::languageChange()
     menuView->setTitle( tr("&View") );
     menuLanguage->setTitle( tr("Language") );
 
-    // Window menu
-    menuWindow->setTitle( tr("&Window") );
-    actionClose->setText( tr("&Close") );
-    actionCloseAll->setText( tr("Close &All") );
-    actionTile->setText( tr("&Tile") );
-    actionCascade->setText( tr("&Cascade") );
-
     // Help menu
     menuHelp->setTitle( tr("&Help") );
     actionHandbook->setText( tr("Sailcut CAD &Handbook") );
     actionAboutQt->setText( tr("About &Qt") );
     actionAbout->setText( tr("About &Sailcut CAD") );
-
 }
 
 
@@ -172,35 +137,10 @@ void CFormMain::makeMenuMru()
  *
  * @param filename
  */
-void CFormMain::open(QString filename)
+bool CFormMain::open(const QString &filename)
 {
-    CFormDocument *wnd;
-    if (CSailDefXmlWriter().isDocument(filename))
-    {
-        wnd = new CFormSail(this);
-    }
-    else if (CHullDefXmlWriter().isDocument(filename))
-    {
-        wnd = new CFormHull(this);
-    }
-    else if (CBoatDefXmlWriter().isDocument(filename))
-    {
-        wnd = new CFormBoat(this);
-    }
-    else if (CRigDefXmlWriter().isDocument(filename))
-    {
-        wnd = new CFormRig(this);
-    }
-    else if (CPanelGroupXmlWriter().isDocument(filename))
-    {
-        wnd = new CFormPanelGroup(this);
-    }
-    else
-    {
-        statusbar->showMessage( tr("unknown document type '%1'").arg(filename) );
-        return;
-    }
-
+    return true;
+#if 0
     if (wnd->open(filename))
     {
         addChild(wnd);
@@ -214,21 +154,7 @@ void CFormMain::open(QString filename)
         wnd->deleteLater();
     }
     makeMenuMru();
-}
-
-
-/**
- * Creates the main widget
- */
-void CFormMain::setupMainWidget()
-{
-    workspace = new QMdiArea();
-    setCentralWidget(workspace);
-    connect(workspace, SIGNAL(subWindowActivated(QMdiSubWindow *)),
-            this, SLOT(slotUpdateDocumentMenus()));
-    windowMapper = new QSignalMapper(this);
-    connect(windowMapper, SIGNAL(mapped(QWidget *)),
-            this, SLOT(slotSetActiveWindow(QWidget *)));
+#endif
 }
 
 
@@ -240,10 +166,10 @@ void CFormMain::setupMenuBar()
     // File menu
     menuFile = menuBar()->addMenu("");
     menuFileNew = menuFile->addMenu("");
-    actionNewSail = menuFileNew->addAction("", this, SLOT( slotNew() ) );
-    actionNewHull = menuFileNew->addAction("", this, SLOT( slotNew() ) );
-    actionNewRig = menuFileNew->addAction("", this, SLOT( slotNew() ) );
-    actionNewBoat = menuFileNew->addAction("", this, SLOT( slotNew() ) );
+    actionNewSail = menuFileNew->addAction("", app, SLOT(createSail()));
+    actionNewHull = menuFileNew->addAction("", app, SLOT(createHull()));
+    actionNewRig = menuFileNew->addAction("", app, SLOT(createRig()));
+    actionNewBoat = menuFileNew->addAction("", app, SLOT(createBoat()));
     actionOpen = menuFile->addAction("", this, SLOT( slotOpen() ) );
     menuRecent = menuFile->addMenu("");
     menuFile->addSeparator();
@@ -255,21 +181,6 @@ void CFormMain::setupMenuBar()
     // View menu
     menuView = menuBar()->addMenu("");
     menuLanguage = menuView->addMenu("");
-
-    // Window menu
-    menuWindow = menuBar()->addMenu("");
-    actionClose = new QAction(this);
-    connect(actionClose, SIGNAL( triggered() ), workspace, SLOT( closeActiveSubWindow() ) );
-    actionCloseAll = new QAction(this);
-    connect(actionCloseAll, SIGNAL( triggered() ), workspace, SLOT( closeAllSubWindows() ) );
-    actionTile = new QAction(this);
-    connect(actionTile, SIGNAL( triggered() ), workspace, SLOT( tileSubWindows() ) );
-    actionCascade = new QAction(this);
-    connect(actionCascade, SIGNAL( triggered() ), workspace, SLOT( cascadeSubWindows() ) );
-    actionWindowSep = new QAction(this);
-    actionWindowSep->setSeparator(true);
-    connect(menuWindow, SIGNAL( aboutToShow() ), this, SLOT( slotUpdateWindowMenu() ) );
-
 
     // language text is not to be translated
     menuLanguage->addAction( "English", this, SLOT( slotLanguage() ) )->setData("en");
@@ -292,30 +203,6 @@ void CFormMain::setupMenuBar()
     actionAboutQt = menuHelp->addAction( "", this, SLOT( slotAboutQt() ) );
     actionAbout = menuHelp->addAction( "", this, SLOT( slotAbout() ) );
 
-}
-
-
-/**
- * Opens a given sail file
- */
-void CFormMain::show(const QString filename)
-{
-    // load preferences
-    makeMenuMru();
-
-    // show main window
-    QMainWindow::show();
-
-    // load specified file or create empty sail
-    if ( !filename.isNull() )
-    {
-        open(filename);
-    }
-    else
-    {
-        CFormSail *wnd = new CFormSail(this);
-        addChild(wnd);
-    }
 }
 
 
@@ -387,39 +274,6 @@ void CFormMain::slotLanguage()
 
 
 /**
- * Creates a new document
- */
-void CFormMain::slotNew()
-{
-    CFormDocument *wnd;
-
-    QAction *a = qobject_cast<QAction *>(sender());
-    if (a == actionNewSail)
-    {
-        wnd = new CFormSail(this);
-    }
-    else if (a == actionNewBoat)
-    {
-        wnd = new CFormBoat(this);
-    }
-    else if (a == actionNewRig)
-    {
-        wnd = new CFormRig(this);
-    }
-    else if (a == actionNewHull)
-    {
-        wnd = new CFormHull(this);
-    }
-    else
-    {
-        return;
-    }
-
-    addChild(wnd);
-}
-
-
-/**
  * Displays a dialog box to open an XML sail definition.
  */
 void CFormMain::slotOpen()
@@ -434,7 +288,7 @@ void CFormMain::slotOpen()
 
     QString newfile = QFileDialog::getOpenFileName(0, tr("Open"), "", filter);
     if ( !newfile.isNull() )
-        open(newfile);
+        app->open(newfile);
 }
 
 
@@ -448,7 +302,7 @@ void CFormMain::slotOpenRecent()
     if ( !a )
         return;
     int index = a->data().toInt();
-    open(app->prefs.mruDocuments[index]);
+    app->open(app->prefs.mruDocuments[index]);
 }
 
 
@@ -457,6 +311,7 @@ void CFormMain::slotOpenRecent()
  */
 void CFormMain::slotSave()
 {
+#if 0
     CFormDocument* child = activeChild();
     if (child->save())
     {
@@ -465,6 +320,7 @@ void CFormMain::slotSave()
         app->prefs.mruDocuments.touchEntry(filename);
         makeMenuMru();
     }
+#endif
 }
 
 
@@ -473,6 +329,7 @@ void CFormMain::slotSave()
  */
 void CFormMain::slotSaveAs()
 {
+#if 0
     CFormDocument* child = activeChild();
     if (child->saveAs())
     {
@@ -481,18 +338,16 @@ void CFormMain::slotSaveAs()
         app->prefs.mruDocuments.touchEntry(filename);
         makeMenuMru();
     }
+#endif
 }
 
-void CFormMain::slotSetActiveWindow(QWidget *widget)
-{
-    workspace->setActiveSubWindow(qobject_cast<QMdiSubWindow*>(widget));
-}
 
 /**
  * Refresh the document-specific menus.
  */
 void CFormMain::slotUpdateDocumentMenus()
 {
+#if 0
     bool hasChild = (activeChild() != 0);
     actionSave->setEnabled(hasChild);
     actionSaveAs->setEnabled(hasChild);
@@ -526,45 +381,6 @@ void CFormMain::slotUpdateDocumentMenus()
             }
             childViewActions.push_back(menuView->insertSeparator(menuLanguage->menuAction()));
         }
-
     }
+#endif
 }
-
-
-/**
- * Refresh the "window" menu.
- */
-void CFormMain::slotUpdateWindowMenu()
-{
-    menuWindow->clear();
-    menuWindow->addAction(actionClose);
-    menuWindow->addAction(actionCloseAll);
-    menuWindow->addAction(actionTile);
-    menuWindow->addAction(actionCascade);
-    menuWindow->addAction(actionWindowSep);
-
-    QList<QMdiSubWindow *> windows = workspace->subWindowList();
-    actionWindowSep->setVisible(!windows.isEmpty());
-    actionClose->setEnabled(!windows.isEmpty());
-    actionCloseAll->setEnabled(!windows.isEmpty());
-    actionTile->setEnabled(!windows.isEmpty());
-    actionCascade->setEnabled(!windows.isEmpty());
-
-    for (int i = 0; i < windows.size(); ++i)
-    {
-        QMdiSubWindow *subWindow = windows.at(i);
-        CFormDocument *child = qobject_cast<CFormDocument *>(subWindow->widget());
-
-        QString text = QString("%1 %2").arg(i + 1).arg(child->windowTitle());
-        if (!child->filename.isNull())
-            text.append(QString(" - %1").arg(QFileInfo(child->filename).fileName()));
-
-        QAction *action  = menuWindow->addAction(text);
-        action->setCheckable(true);
-        action->setChecked(child == activeChild());
-        connect(action, SIGNAL(triggered()), windowMapper, SLOT(map()));
-        windowMapper->setMapping(action, subWindow);
-    }
-}
-
-

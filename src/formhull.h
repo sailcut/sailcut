@@ -20,30 +20,27 @@
 #ifndef FORMHULL_H
 #define FORMHULL_H
 
-#include "formdocument.h"
+#include "formmain.h"
 #include "sailwriter-xml.h"
 
 /** Dialog holding a hull.
  */
-class CFormHull : public CFormDocumentTmpl<CHullDef, CHullDefXmlWriter>
+class CFormHull : public CFormMain
 {
     Q_OBJECT
 
 public:
-    CFormHull(QWidget *parent);
-
-protected:
-    T_KEYPRESS
-    void setDef(const CHullDef& newdef);
-    void setupMenuBar();
-
-protected slots:
-    virtual void slotDef();
+    CFormHull(QWidget *parent = 0);
 
 private slots:
     void languageChange();
+    void slotDef();
 
-protected:
+private:
+    void setDef(const CHullDef& newdef);
+    void setupMenuBar();
+
+    CHullDef def;
     /** view hull definition */
     QAction *actionViewDef;
 };

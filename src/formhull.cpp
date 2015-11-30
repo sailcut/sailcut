@@ -27,17 +27,14 @@
  * @param parent the parent widget
  */
 CFormHull::CFormHull(QWidget *parent)
-    : CFormDocumentTmpl<CHullDef, CHullDefXmlWriter> (parent)
+    : CFormMain(parent)
 {
-    setMinimumSize( QSize( 300, 220 ) );
-
     // create menu bar
     setupMenuBar();
 
     // create main widget
-    QGridLayout *layout = new QGridLayout(this);
     tabs = new CSailViewerTabs(this);
-    layout->addWidget(tabs);
+    setCentralWidget(tabs);
 
     // set language
     connect(qApp, SIGNAL(languageChanged()),

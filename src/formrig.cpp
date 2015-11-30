@@ -29,17 +29,14 @@
  * @param parent the parent widget
  */
 CFormRig::CFormRig(QWidget *parent)
-    : CFormDocumentTmpl<CRigDef, CRigDefXmlWriter> (parent)
+    : CFormMain(parent)
 {
-    setMinimumSize( QSize( 300, 220 ) );
-
     // create menu bar
     setupMenuBar();
 
     // create main widget
-    QGridLayout *layout = new QGridLayout(this);
     tabs = new CSailViewerTabs(this);
-    layout->addWidget(tabs);
+    setCentralWidget(tabs);
 
     // set language
     connect(qApp, SIGNAL(languageChanged()),

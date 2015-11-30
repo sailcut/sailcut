@@ -44,8 +44,16 @@ public:
     /** the user's preferences */
     CPrefs prefs;
 
+public slots:
+    void createBoat() const;
+    void createHull() const;
+    void createRig() const;
+    void createSail() const;
+    void open(const QString &filename);
+
 signals:
     void languageChanged();
+    void recentDocumentsChanged();
 
 private:
     void loadTranslation(const QString locale);

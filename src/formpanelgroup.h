@@ -20,7 +20,7 @@
 #ifndef FORMPANELGROUP_H
 #define FORMPANELGROUP_H
 
-#include "formdocument.h"
+#include "formmain.h"
 #include "sailwriter-xml.h"
 
 // forward definitions
@@ -28,22 +28,21 @@ class QTreeView;
 
 /** Dialog holding a sail.
  */
-class CFormPanelGroup : public CFormDocumentTmpl<CPanelGroup, CPanelGroupXmlWriter>
+class CFormPanelGroup : public CFormMain
 {
     Q_OBJECT
 
 public:
-    CFormPanelGroup(QWidget *parent);
-
-protected:
-    T_KEYPRESS
-    void setDef(const CPanelGroup& newdef);
-    void setupMainWidget();
+    CFormPanelGroup(QWidget *parent = 0);
 
 private slots:
     void languageChange();
 
-protected:
+private:
+    void setDef(const CPanelGroup& newdef);
+    void setupMainWidget();
+
+    CPanelGroup def;
     /** the tree view */
     QTreeView *treeview;
 };

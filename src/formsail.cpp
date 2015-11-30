@@ -43,10 +43,8 @@
  * @param parent the parent widget
  */
 CFormSail::CFormSail(QWidget *parent)
-    : CFormDocumentTmpl<CSailDef, CSailDefXmlWriter> (parent)
+    : CFormMain(parent)
 {
-    setMinimumSize( QSize( 300, 220 ) );
-
     // create menu bar
     setupMenuBar();
 
@@ -178,10 +176,7 @@ void CFormSail::setupMainWidget()
 {
     tabs = new CSailViewerTabs(this);
     tabs->addViewer(new CSailViewerPanel(NULL, WIREFRAME, false));
-
-    // create tabs
-    QGridLayout *layout = new QGridLayout(this);
-    layout->addWidget(tabs);
+    setCentralWidget(tabs);
 }
 
 

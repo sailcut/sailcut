@@ -20,32 +20,27 @@
 #ifndef FORMRIG_H
 #define FORMRIG_H
 
-#include "formdocument.h"
+#include "formmain.h"
 #include "sailwriter-xml.h"
 
 /** Dialog holding a rig.
  */
-class CFormRig : public CFormDocumentTmpl<CRigDef, CRigDefXmlWriter>
+class CFormRig : public CFormMain
 {
     Q_OBJECT
 
 public:
-    CFormRig(QWidget *parent);
-
-protected:
-    T_KEYPRESS
-    void setDef(const CRigDef& newdef);
-    void setupMenuBar();
-
-    // slots
-protected slots:
-    virtual void slotDef();
+    CFormRig(QWidget *parent = 0);
 
 private slots:
     void languageChange();
+    void slotDef();
 
-    // member variables
-protected:
+private:
+    void setDef(const CRigDef& newdef);
+    void setupMenuBar();
+
+    CRigDef def;
     /** view hull definition */
     QAction *actionViewDef;
 };

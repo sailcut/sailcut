@@ -32,10 +32,8 @@
  * @param parent the parent widget
  */
 CFormPanelGroup::CFormPanelGroup(QWidget *parent)
-    : CFormDocumentTmpl<CPanelGroup, CPanelGroupXmlWriter> (parent)
+    : CFormMain(parent)
 {
-    setMinimumSize( QSize( 400, 400 ) );
-
     // create main widget
     setupMainWidget();
 
@@ -88,7 +86,6 @@ void CFormPanelGroup::setupMainWidget()
     splitter->addWidget(tabs);
     splitter->addWidget(treeview);
 
-    QHBoxLayout *layout = new QHBoxLayout(this);
-    layout->addWidget(splitter);
+    setCentralWidget(splitter);
 }
 

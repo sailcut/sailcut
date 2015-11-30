@@ -36,7 +36,7 @@
  * @param parent the parent widget
  */
 CFormBoat::CFormBoat(QWidget *parent)
-    : CFormDocumentTmpl<CBoatDef, CBoatDefXmlWriter>(parent)
+    : CFormMain(parent)
 {
     // create main widget
     setupMainWidget();
@@ -132,9 +132,7 @@ void CFormBoat::setupMainWidget()
     QSplitter *splitter = new QSplitter(Qt::Horizontal, this);
     splitter->addWidget(tabs);
     splitter->addWidget(defpanel);
-
-    QHBoxLayout *layout = new QHBoxLayout(this);
-    layout->addWidget(splitter);
+    setCentralWidget(splitter);
 
     connect(defpanel, SIGNAL(signalUpdate(const CBoatDef& )), this, SLOT(slotUpdate(const CBoatDef& )));
 }

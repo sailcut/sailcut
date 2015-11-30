@@ -19,9 +19,16 @@
 
 #include "sailcutqt.h"
 #include <QDir>
+#include <QDebug>
 #include <QFile>
 #include <QTranslator>
 #include <QUrl>
+
+#include "formboat.h"
+#include "formhull.h"
+#include "formpanelgroup.h"
+#include "formrig.h"
+#include "formsail.h"
 #include "sailwriter-xml.h"
 
 using namespace std;
@@ -41,6 +48,46 @@ CSailApp::CSailApp(int &argc, char** argv) :
 
     // the file containing the user's preferences
     prefsfile = QDir::home().filePath(".sailcutrc");
+}
+
+
+/**
+ * Creates a new boat and shows it in a new window.
+ */
+void CSailApp::createBoat() const
+{
+    CFormMain *wnd = new CFormBoat;
+    wnd->show();
+}
+
+
+/**
+ * Creates a new hull and shows it in a new window.
+ */
+void CSailApp::createHull() const
+{
+    CFormMain *wnd = new CFormHull;
+    wnd->show();
+}
+
+
+/**
+ * Creates a new rig and shows it in a new window.
+ */
+void CSailApp::createRig() const
+{
+    CFormMain *wnd = new CFormRig;
+    wnd->show();
+}
+
+
+/**
+ * Creates a new sail and shows it in a new window.
+ */
+void CSailApp::createSail() const
+{
+    CFormMain *wnd = new CFormSail;
+    wnd->show();
 }
 
 
@@ -118,6 +165,38 @@ void CSailApp::loadTranslation(const QString locale)
         d++;
     }
     installTranslator(transApp);
+}
+
+
+void CSailApp::open(const QString &filename)
+{
+    CFormMain *wnd;
+    if (CSailDefXmlWriter().isDocument(filename)) {
+        qDebug() << "sail!";
+        wnd = new CFormSail;
+    } else if (CHullDefXmlWriter().isDocument(filename)) {
+        wnd = new CFormHull;
+    } else if (CBoatDefXmlWriter().isDocument(filename)) {
+        wnd = new CFormBoat;
+    } else if (CRigDefXmlWriter().isDocument(filename)) {
+        wnd = new CFormRig;
+    } else if (CPanelGroupXmlWriter().isDocument(filename)) {
+        wnd = new CFormPanelGroup;
+    } else {
+        //statusbar->showMessage( tr("unknown document type '%1'").arg(filename) );
+        return;
+    }
+
+    if (wnd->open(filename)) {
+        prefs.mruDocuments.touchEntry(filename);
+        //statusbar->showMessage(tr("loaded '%1'").arg(filename));
+        wnd->show();
+    } else {
+        prefs.mruDocuments.removeEntry(filename);
+        //statusbar->showMessage( tr("error loading '%1'").arg(filename) );
+        wnd->deleteLater();
+    }
+    emit recentDocumentsChanged();
 }
 
 

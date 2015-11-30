@@ -20,23 +20,22 @@
 #ifndef FORMBOAT_H
 #define FORMBOAT_H
 
-#include "formdocument.h"
+#include "formmain.h"
 #include "sailwriter-xml.h"
 
 class CBoatDefPanel;
 
 /** A form allowing the user to assemble several elements into a boat.
  */
-class CFormBoat : public CFormDocumentTmpl<CBoatDef, CBoatDefXmlWriter>
+class CFormBoat : public CFormMain
 {
     Q_OBJECT
 
 public:
-    CFormBoat(QWidget *parent);
+    CFormBoat(QWidget *parent = 0);
     void add(const QString &newfile);
 
 protected:
-    T_KEYPRESS
     void setDef(const CBoatDef &newdef);
     void setupMainWidget();
     void setupMenuBar();
@@ -48,7 +47,8 @@ protected slots:
 private slots:
     void languageChange();
 
-protected:
+private:
+    CBoatDef def;
     /** A panel with one tab per element in the current boat.  */
     CBoatDefPanel *defpanel;
     /** The Add menu. */

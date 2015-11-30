@@ -20,7 +20,8 @@
 #ifndef FORMSAIL_H
 #define FORMSAIL_H
 
-#include "formdocument.h"
+#include "formmain.h"
+#include "sailviewer-tabs.h"
 #include "sailwriter-xml.h"
 
 
@@ -28,12 +29,12 @@
  *
  *  @see CFormSailDef for data input and checking, CSailWorker, CSailDef
  */
-class CFormSail : public CFormDocumentTmpl<CSailDef, CSailDefXmlWriter>
+class CFormSail : public CFormMain
 {
     Q_OBJECT
 
 public:
-    CFormSail(QWidget *parent);
+    CFormSail(QWidget *parent = 0);
 
 protected:
     T_KEYPRESS
@@ -121,6 +122,9 @@ protected:
     QAction *actionViewMould;
     /** View sail definition */
     QAction *actionViewPatch;
+
+private:
+    CSailDef def;
 };
 
 #endif

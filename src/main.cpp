@@ -17,11 +17,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#include <cstdio>
-#include <iostream>
-
 #include "sailcutqt.h"
-#include "formmain.h"
 
 /** @mainpage
  * This is the documentation for Sailcut CAD's code.
@@ -41,12 +37,11 @@ int main( int argc, char* argv[] )
     CSailApp app( argc, argv );
     app.readPrefs();
 
-    CFormMain *sailcut = new CFormMain;
-
-    if (argc > 1)
-        sailcut->show(argv[1]);
-    else
-        sailcut->show();
+    if (argc > 1) {
+        app.open(argv[1]);
+    } else {
+        app.createSail();
+    }
 
     retCode = app.exec();
     app.writePrefs();
