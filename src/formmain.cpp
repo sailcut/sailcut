@@ -68,8 +68,7 @@ CFormMain::CFormMain(QWidget *parent)
     makeMenuMru();
 
     // resize to preferred size
-    const QSize preferredSize(app->prefs.mainWindowWidth, app->prefs.mainWindowHeight);
-    resize(preferredSize.expandedTo(minimumSizeHint()));
+    resize(app->windowSize().expandedTo(minimumSizeHint()));
 }
 
 
@@ -78,8 +77,7 @@ CFormMain::CFormMain(QWidget *parent)
  */
 void CFormMain::closeEvent(QCloseEvent *e)
 {
-    app->prefs.mainWindowHeight = height();
-    app->prefs.mainWindowWidth = width();
+    app->setWindowSize(size());
     QMainWindow::closeEvent(e);
 }
 
@@ -228,8 +226,8 @@ void CFormMain::slotAboutQt()
  */
 void CFormMain::slotHandbook()
 {
-    QUrl handbook = app->findHandbook(app->prefs.language);
-    if ( !handbook.isEmpty() )
+    const QUrl handbook = app->findHandbook();
+    if (!handbook.isEmpty())
         QDesktopServices::openUrl(handbook);
 }
 

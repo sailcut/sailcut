@@ -94,8 +94,10 @@ void CSailApp::createSail() const
 /**
  * Tries to locate the Sailcut Handbook.
  */
-QUrl CSailApp::findHandbook(const QString locale)
+QUrl CSailApp::findHandbook() const
 {
+    const QString locale = prefs.language;
+
     QStringList docdirs;
     QString handbook;
 
@@ -125,6 +127,12 @@ QUrl CSailApp::findHandbook(const QString locale)
 }
 
 
+QString CSailApp::language() const
+{
+    return prefs.language;
+}
+
+
 void CSailApp::setLanguage(const QString &language)
 {
     if (language != prefs.language) {
@@ -132,6 +140,19 @@ void CSailApp::setLanguage(const QString &language)
         loadTranslation(language);
         emit languageChanged();
     }
+}
+
+
+QSize CSailApp::windowSize() const
+{
+    return QSize(prefs.mainWindowWidth, prefs.mainWindowHeight);
+}
+
+
+void CSailApp::setWindowSize(const QSize &size)
+{
+    prefs.mainWindowHeight = size.height();
+    prefs.mainWindowWidth = size.width();
 }
 
 

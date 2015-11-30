@@ -36,10 +36,15 @@ class CSailApp : public QApplication
 public:
     CSailApp(int &argc, char** argv);
 
-    static QUrl findHandbook(const QString locale);
+    QUrl findHandbook() const;
     void readPrefs();
     void writePrefs();
+
+    QString language() const;
     void setLanguage(const QString &language);
+
+    QSize windowSize() const;
+    void setWindowSize(const QSize &size);
 
     /** the user's preferences */
     CPrefs prefs;
