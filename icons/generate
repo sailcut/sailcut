@@ -1,0 +1,34 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import os
+import subprocess
+
+def inkscape(input_svg, output_png, size):
+    subprocess.check_call(['inkscape', '-z',
+        '--file=' + input_svg,
+        '--export-png=' + output_png,
+        '--export-width=%d' % size,
+        '--export-height=%d' % size])
+
+def generate_ico(input_svg, output_path):
+    pngs = []
+    for size in [256, 48, 32, 16]:
+        output_png = output_path + ('.%d' % size)
+        inkscape(input_svg, output_png, size)
+        pngs.append(output_png)
+    subprocess.check_call(['icotool', '-c', '-o', output_path] + pngs)
+    subprocess.check_call(['rm', '-f'] + pngs)
+
+def generate_icns(input_svg, output_path):
+    pngs = []
+    for size in [512, 256, 128, 32, 16]:
+        output_png = output_path + ('.%d' % size)
+        inkscape(input_svg, output_png, size)
+        pngs.append(output_png)
+    subprocess.check_call(['png2icns', output_path] + pngs)
+    subprocess.check_call(['rm', '-f'] + pngs)
+
+generate_ico('sailcut.svg', 'sailcut.ico')
+generate_ico('sailcut-file.svg', 'sailcut-file.ico')
+generate_icns('sailcut.svg', 'sailcut.icns')
