@@ -59,8 +59,17 @@ void CFormPanelGroup::languageChange()
 
 bool CFormPanelGroup::open(const QString &newfile)
 {
-
+    CPanelGroupXmlWriter writer;
+    try {
+        setDef(writer.read(newfile));
+        filename = newfile;
+        return true;
+    } catch (read_error e) {
+        writer.readErrorMessage();
+    }
+    return false;
 }
+
 
 /**
  * Replaces the current sail definition.
