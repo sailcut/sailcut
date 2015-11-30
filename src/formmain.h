@@ -22,9 +22,9 @@
 
 #include <QMainWindow>
 #include <QMessageBox>
-#include <QMenu>
 #include <QUrl>
-#include "formdocument.h"
+
+#include "sailviewer-tabs.h"
 
 // forward definitions
 class QAction;
@@ -42,33 +42,30 @@ class CFormMain : public QMainWindow
     Q_OBJECT
 
 public:
-    // construction, destruction
     CFormMain(QWidget *parent = 0);
-    virtual bool read(const QString &filename) = 0;
-    virtual bool write(const QString &filename) = 0;
+    bool load(const QString &filename);
 
 protected:
+    virtual QString getSaveFileName(const QString &filename) = 0;
+    virtual bool read(const QString &filename) = 0;
+    virtual bool write(const QString &filename) = 0;
     void addFileMenu(QMenu *menu);
     void addViewAction(QAction *action);
-    void closeEvent( QCloseEvent * e);
-
-private:
-    void setupMenuBar();
-
-protected slots:
-    virtual void slotAbout();
-    virtual void slotAboutQt();
-
-    virtual void slotOpen();
-    virtual void slotOpenRecent();
-    virtual void slotSave();
-    virtual void slotSaveAs();
-
-    virtual void slotHandbook();
-
-    virtual void slotLanguage();
+    void closeEvent(QCloseEvent *e);
 
 private slots:
+    void slotAbout();
+    void slotAboutQt();
+
+    void slotOpen();
+    void slotOpenRecent();
+    void slotSave();
+    void slotSaveAs();
+
+    void slotHandbook();
+
+    void slotLanguage();
+
     void languageChange();
     void recentDocumentsChanged();
 
@@ -76,6 +73,8 @@ protected:
     CSailViewerTabs *tabs;
 
 private:
+    void setupMenuBar();
+
     /** The application */
     CSailApp *app;
 

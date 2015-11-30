@@ -176,10 +176,10 @@ void CFormBoat::setupMenuBar()
 void CFormBoat::slotAdd()
 {
     QString filter = "Sailcut CAD files (";
-    filter += QString("*") + CSailDefXmlWriter().getExtension();
-    filter += QString(" *") + CHullDefXmlWriter().getExtension();
-    filter += QString(" *") + CRigDefXmlWriter().getExtension();
-    filter += QString(" *") + CPanelGroupXmlWriter().getExtension();
+    filter += QString("*") + CSailDefXmlWriter().fileExtension();
+    filter += QString(" *") + CHullDefXmlWriter().fileExtension();
+    filter += QString(" *") + CRigDefXmlWriter().fileExtension();
+    filter += QString(" *") + CPanelGroupXmlWriter().fileExtension();
     filter += ")";
 
     QString newfile = QFileDialog::getOpenFileName(0, tr("Open"), "", filter);

@@ -40,9 +40,8 @@ HEADERS += \
     boatdef-panel.h \
     filewriter.h \
     formboat.h \
-    formdocument.h \
-    formhulldef.h \
     formhull.h \
+    formhulldef.h \
     formmain.h \
     formmould.h \
     formpanelgroup.h \

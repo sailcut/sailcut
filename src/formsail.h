@@ -21,7 +21,6 @@
 #define FORMSAIL_H
 
 #include "formmain.h"
-#include "sailviewer-tabs.h"
 #include "sailwriter-xml.h"
 
 
@@ -35,34 +34,35 @@ class CFormSail : public CFormMain
 
 public:
     CFormSail(QWidget *parent = 0);
+
+protected:
+    QString getSaveFileName(const QString &filename)
+    { return writer.getSaveFileName(filename); };
     bool read(const QString &filename);
     bool write(const QString &filename);
 
-protected slots:
-    virtual void slotDef();
-    virtual void slotExportDXF();
-    virtual void slotExportDXFSplit();
-    virtual void slotExportSVG();
-    virtual void slotExportTXT();
-    virtual void slotExportXML();
-    virtual void slotExportFlatCarlson();
-    virtual void slotExportFlatDXF();
-    virtual void slotExportFlatDXFSplit();
-    virtual void slotExportFlatDXFBlocks();
-    virtual void slotExportFlatHand();
-    virtual void slotExportFlatSVG();
-    virtual void slotExportFlatTXT();
-    virtual void slotExportFlatXML();
-    virtual void slotMould();
-
-    virtual void slotPrintData();
-    virtual void slotPrintDwg();
-    virtual void slotPrintDev();
-
 private slots:
-    void languageChange();
+    void slotDef();
+    void slotExportDXF();
+    void slotExportDXFSplit();
+    void slotExportSVG();
+    void slotExportTXT();
+    void slotExportXML();
+    void slotExportFlatCarlson();
+    void slotExportFlatDXF();
+    void slotExportFlatDXFSplit();
+    void slotExportFlatDXFBlocks();
+    void slotExportFlatHand();
+    void slotExportFlatSVG();
+    void slotExportFlatTXT();
+    void slotExportFlatXML();
+    void slotMould();
 
-    // member variables
+    void slotPrintData();
+    void slotPrintDwg();
+    void slotPrintDev();
+
+    void languageChange();
 
 private:
     void setDef(const CSailDef& newdef);

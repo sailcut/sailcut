@@ -207,15 +207,10 @@ void CSailApp::open(const QString &filename)
         return;
     }
 
-    if (wnd->read(filename)) {
-        addRecentDocument(filename);
-        //statusbar->showMessage(tr("loaded '%1'").arg(filename));
+    if (wnd->load(filename))
         wnd->show();
-    } else {
-        removeRecentDocument(filename);
-        //statusbar->showMessage( tr("error loading '%1'").arg(filename) );
+    else
         wnd->deleteLater();
-    }
 }
 
 

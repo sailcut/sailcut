@@ -34,6 +34,10 @@ class CFormPanelGroup : public CFormMain
 
 public:
     CFormPanelGroup(QWidget *parent = 0);
+
+protected:
+    QString getSaveFileName(const QString &filename)
+    { return writer.getSaveFileName(filename); };
     bool read(const QString &filename);
     bool write(const QString &filename);
 

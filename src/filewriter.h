@@ -64,10 +64,30 @@ public:
      * @param ext the file extension
      * @param desc description of the file type
      */
-    CFileWriter(const QString &ext, const QString &desc) : _ext(ext), _desc(desc)
-    {}
-    ;
+    CFileWriter(const QString &ext, const QString &desc)
+        : _ext(ext)
+        , _desc(desc)
+    {};
 
+    /** Return the file extension associated with this CFileWriter.
+     */
+    QString fileExtension() const
+    {
+        return _ext;
+    };
+
+    QString getOpenFileName(const QString &filename) const
+    {
+        return QFileDialog::getOpenFileName(0, tr("Open"), QFileInfo(filename).absolutePath(), _desc + " (*" + _ext + ")");
+    };
+
+    QString getSaveFileName(const QString &filename) const
+    {
+        QString newfilename = QFileDialog::getSaveFileName(0, tr("Save"), filename, _desc + " (*" + _ext + ")");
+        if (!newfilename.isNull() && newfilename.right(_ext.length()).toLower() != _ext)
+            newfilename += _ext;
+        return newfilename;
+    };
 
     /** Perform the actual reading operation, may be overriden
      *  to provide this functionality.
@@ -85,16 +105,11 @@ public:
      */
     QString readDialog(objtype &dest, const QString &filename = "") const
     {
-        QString newfilename = QFileDialog::getOpenFileName(0, tr("Open"), QFileInfo(filename).absolutePath(), _desc + " (*" + _ext + ")");
-
-        if (!newfilename.isNull())
-        {
-            try
-            {
+        const QString newfilename = getOpenFileName(filename);
+        if (!newfilename.isNull()) {
+            try {
                 dest = read(newfilename);
-            }
-            catch (read_error e)
-            {
+            } catch (read_error e) {
                 readErrorMessage();
                 newfilename = QString::null;
             }
@@ -124,21 +139,14 @@ public:
      */
     QString writeDialog(const objtype &obj, const QString &filename = QString::null) const
     {
-        QString newfilename = QFileDialog::getSaveFileName(0, tr("Save"), filename, _desc + " (*" + _ext + ")");
-        if (newfilename.isNull())
-            return newfilename;
-
-        if (newfilename.right(_ext.length()).toLower() != _ext)
-            newfilename += _ext;
-
-        try
-        {
-            write(obj, newfilename);
-        }
-        catch (write_error e)
-        {
-            writeErrorMessage();
-            newfilename = QString::null;
+        const QString newfilename = getSaveFileName(filename);
+        if (!newfilename.isNull()) {
+            try {
+                write(obj, newfilename);
+            } catch (write_error e) {
+                writeErrorMessage();
+                return QString::null;
+            }
         }
         return newfilename;
     };
@@ -151,13 +159,6 @@ public:
         QMessageBox::information(0, tr("error"), tr("There was an error writing to the selected file."));
     };
 
-
-    /** Return the file extension associated with this CFileWriter.
-     */
-    QString getExtension() const
-    {
-        return _ext;
-    };
 
     /**
      * Returns whether the given file is associated with this CFileWriter.

@@ -31,6 +31,10 @@ class CFormHull : public CFormMain
 
 public:
     CFormHull(QWidget *parent = 0);
+
+protected:
+    QString getSaveFileName(const QString &filename)
+    { return writer.getSaveFileName(filename); };
     bool read(const QString &filename);
     bool write(const QString &filename);
 

@@ -33,7 +33,10 @@ class CFormBoat : public CFormMain
 
 public:
     CFormBoat(QWidget *parent = 0);
-    void add(const QString &newfile);
+
+protected:
+    QString getSaveFileName(const QString &filename)
+    { return writer.getSaveFileName(filename); };
     bool read(const QString &filename);
     bool write(const QString &filename);
 
@@ -43,6 +46,7 @@ private slots:
     void slotUpdate(const CBoatDef& newdef);
 
 private:
+    void add(const QString &newfile);
     void setDef(const CBoatDef &newdef);
     void setupMainWidget();
     void setupMenuBar();
