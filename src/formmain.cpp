@@ -72,6 +72,12 @@ CFormMain::CFormMain(QWidget *parent)
 }
 
 
+void CFormMain::addViewAction(QAction *action)
+{
+    menuView->insertAction(menuLanguage->menuAction(), action);
+}
+
+
 /**
  * This event is received when the user closes the dialog.
  */

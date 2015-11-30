@@ -170,16 +170,16 @@ void CFormSail::setupMenuBar()
 
     actionViewDef = new QAction(this);
     connect( actionViewDef, SIGNAL( triggered() ), this, SLOT( slotDef() ) );
-    extraViewActions.push_back(actionViewDef);
+    addViewAction(actionViewDef);
 
     actionViewMould = new QAction(this);
     connect( actionViewMould, SIGNAL( triggered() ), this, SLOT ( slotMould() ) );
-    extraViewActions.push_back(actionViewMould);
+    addViewAction(actionViewMould);
 
     // TODO : enable the following action when the patch viewer is ready
     actionViewPatch = new QAction(this);
     actionViewPatch->setEnabled(false);
-    extraViewActions.push_back(actionViewPatch);
+    addViewAction(actionViewPatch);
 }
 
 

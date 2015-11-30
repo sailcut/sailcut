@@ -48,6 +48,7 @@ public:
     virtual bool open(const QString &filename) = 0;
 
 protected:
+    void addViewAction(QAction *action);
     void closeEvent( QCloseEvent * e);
 
 private:
@@ -143,8 +144,6 @@ protected:
     CSailViewerTabs *tabs;
     /** Extra submenus for the File menu */
     vector<QMenu*> extraFileMenus;
-    /** Extra actions for the View menu */
-    vector<QAction*> extraViewActions;
     /** The current filename. */
     QString filename;
 };

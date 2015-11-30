@@ -91,7 +91,7 @@ void CFormHull::setupMenuBar()
     // view actions
     actionViewDef = new QAction(this);
     connect( actionViewDef, SIGNAL( triggered() ), this, SLOT( slotDef() ) );
-    extraViewActions.push_back(actionViewDef);
+    addViewAction(actionViewDef);
 }
 
 
