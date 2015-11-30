@@ -111,7 +111,7 @@ public:
                 dest = read(newfilename);
             } catch (read_error e) {
                 readErrorMessage();
-                newfilename = QString::null;
+                return QString::null;
             }
         }
         return newfilename;
