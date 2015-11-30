@@ -34,7 +34,8 @@ class CFormBoat : public CFormMain
 public:
     CFormBoat(QWidget *parent = 0);
     void add(const QString &newfile);
-    bool read(const QString &newfile);
+    bool read(const QString &filename);
+    bool write(const QString &filename);
 
 private slots:
     void languageChange();
@@ -47,6 +48,8 @@ private:
     void setupMenuBar();
 
     CBoatDef def;
+    CBoatDefXmlWriter writer;
+
     /** A panel with one tab per element in the current boat.  */
     CBoatDefPanel *defpanel;
     /** The Add menu. */

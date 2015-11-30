@@ -34,7 +34,8 @@ class CFormPanelGroup : public CFormMain
 
 public:
     CFormPanelGroup(QWidget *parent = 0);
-    bool read(const QString &newfile);
+    bool read(const QString &filename);
+    bool write(const QString &filename);
 
 private slots:
     void languageChange();
@@ -44,6 +45,8 @@ private:
     void setupMainWidget();
 
     CPanelGroup def;
+    CPanelGroupXmlWriter writer;
+
     /** the tree view */
     QTreeView *treeview;
 };

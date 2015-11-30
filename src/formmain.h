@@ -45,6 +45,7 @@ public:
     // construction, destruction
     CFormMain(QWidget *parent = 0);
     virtual bool read(const QString &filename) = 0;
+    virtual bool write(const QString &filename) = 0;
 
 protected:
     void addFileMenu(QMenu *menu);
@@ -73,12 +74,13 @@ private slots:
 
 protected:
     CSailViewerTabs *tabs;
-    /** The current filename. */
-    QString filename;
 
 private:
     /** The application */
     CSailApp *app;
+
+    /** The current filename. */
+    QString filename;
 
     /** The status bar */
     QStatusBar* statusbar;
@@ -135,7 +137,6 @@ private:
     QAction *actionWindowSep;
     /** Quit */
     QAction *actionQuit;
-
 };
 
 #endif

@@ -57,17 +57,25 @@ void CFormHull::languageChange()
 }
 
 
-bool CFormHull::read(const QString &newfile)
+bool CFormHull::read(const QString &filename)
 {
-    CHullDefXmlWriter writer;
     try {
-        setDef(writer.read(newfile));
-        filename = newfile;
+        setDef(writer.read(filename));
         return true;
     } catch (read_error e) {
-        writer.readErrorMessage();
+        return false;
     }
-    return false;
+}
+
+
+bool CFormHull::write(const QString &filename)
+{
+    try {
+        writer.write(def, filename);
+        return true;
+    } catch (read_error e) {
+        return false;
+    }
 }
 
 

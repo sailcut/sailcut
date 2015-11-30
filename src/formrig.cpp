@@ -59,17 +59,25 @@ void CFormRig::languageChange()
 }
 
 
-bool CFormRig::read(const QString &newfile)
+bool CFormRig::read(const QString &filename)
 {
-    CRigDefXmlWriter writer;
     try {
-        setDef(writer.read(newfile));
-        filename = newfile;
+        setDef(writer.read(filename));
         return true;
     } catch (read_error e) {
-        writer.readErrorMessage();
+        return false;
     }
-    return false;
+}
+
+
+bool CFormRig::write(const QString &filename)
+{
+    try {
+        writer.write(def, filename);
+        return true;
+    } catch (read_error e) {
+        return false;
+    }
 }
 
 

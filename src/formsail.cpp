@@ -104,17 +104,25 @@ void CFormSail::languageChange()
 }
 
 
-bool CFormSail::read(const QString &newfile)
+bool CFormSail::read(const QString &filename)
 {
-    CSailDefXmlWriter writer;
     try {
-        setDef(writer.read(newfile));
-        filename = newfile;
+        setDef(writer.read(filename));
         return true;
     } catch (read_error e) {
-        writer.readErrorMessage();
+        return false;
     }
-    return false;
+}
+
+
+bool CFormSail::write(const QString &filename)
+{
+    try {
+        writer.write(def, filename);
+        return true;
+    } catch (read_error e) {
+        return false;
+    }
 }
 
 

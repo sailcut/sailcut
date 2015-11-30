@@ -107,17 +107,26 @@ void CFormBoat::languageChange()
     actionAddFile->setText( tr("file") );
 }
 
-bool CFormBoat::read(const QString &newfile)
+
+bool CFormBoat::read(const QString &filename)
 {
-    CBoatDefXmlWriter writer;
     try {
-        setDef(writer.read(newfile));
-        filename = newfile;
+        setDef(writer.read(filename));
         return true;
     } catch (read_error e) {
-        writer.readErrorMessage();
+        return false;
     }
-    return false;
+}
+
+
+bool CFormBoat::write(const QString &filename)
+{
+    try {
+        writer.write(def, filename);
+        return true;
+    } catch (read_error e) {
+        return false;
+    }
 }
 
 

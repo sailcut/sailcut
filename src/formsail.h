@@ -35,7 +35,8 @@ class CFormSail : public CFormMain
 
 public:
     CFormSail(QWidget *parent = 0);
-    bool read(const QString &newfile);
+    bool read(const QString &filename);
+    bool write(const QString &filename);
 
 protected slots:
     virtual void slotDef();
@@ -69,6 +70,8 @@ private:
     void setupMainWidget();
 
     CSailDef def;
+    CSailDefXmlWriter writer;
+
     /** The sail */
     CPanelGroup sail;
     /** The developed sail */

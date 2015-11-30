@@ -284,15 +284,12 @@ void CFormMain::slotOpenRecent()
  */
 void CFormMain::slotSave()
 {
-#if 0
-    CFormDocument* child = activeChild();
-    if (child->save())
-    {
-        QString filename = child->filename;
+    if (write(filename)) {
         statusbar->showMessage(tr("wrote '%1'").arg(filename));
         app->addRecentDocument(filename);
+    } else {
+        QMessageBox::information(0, tr("error"), tr("There was an error writing to the selected file."));
     }
-#endif
 }
 
 
@@ -301,13 +298,21 @@ void CFormMain::slotSave()
  */
 void CFormMain::slotSaveAs()
 {
-#if 0
-    CFormDocument* child = activeChild();
-    if (child->saveAs())
-    {
-        QString filename = child->filename;
+    // FIXME: remove hard-coded!
+    QString _ext = ".saildef";
+    QString _desc = "sail";
+    QString newfilename = QFileDialog::getSaveFileName(0, tr("Save"), filename, _desc + " (*" + _ext + ")");
+    if (newfilename.isNull())
+        return;
+
+    if (newfilename.right(_ext.length()).toLower() != _ext)
+        newfilename += _ext;
+
+    if (write(newfilename)) {
+        filename = newfilename;
         statusbar->showMessage(tr("wrote '%1'").arg(filename));
         app->addRecentDocument(filename);
+    } else {
+        QMessageBox::information(0, tr("error"), tr("There was an error writing to the selected file."));
     }
-#endif
 }

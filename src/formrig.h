@@ -31,7 +31,8 @@ class CFormRig : public CFormMain
 
 public:
     CFormRig(QWidget *parent = 0);
-    bool read(const QString &newfile);
+    bool read(const QString &filename);
+    bool write(const QString &filename);
 
 private slots:
     void languageChange();
@@ -42,6 +43,8 @@ private:
     void setupMenuBar();
 
     CRigDef def;
+    CRigDefXmlWriter writer;
+
     /** view hull definition */
     QAction *actionViewDef;
 };
