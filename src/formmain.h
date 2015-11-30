@@ -45,7 +45,7 @@ class CFormMain : public QMainWindow
 public:
     // construction, destruction
     CFormMain(QWidget *parent = 0);
-    bool open(const QString &filename);
+    virtual bool open(const QString &filename) = 0;
 
 protected:
     void closeEvent( QCloseEvent * e);
@@ -56,7 +56,6 @@ private:
     void setupMainWidget();
 
 protected slots:
-
     virtual void slotAbout();
     virtual void slotAboutQt();
 

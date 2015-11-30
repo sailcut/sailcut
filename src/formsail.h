@@ -35,14 +35,8 @@ class CFormSail : public CFormMain
 
 public:
     CFormSail(QWidget *parent = 0);
+    bool open(const QString &newfile);
 
-protected:
-    T_KEYPRESS
-    void setDef(const CSailDef& newdef);
-    void setupMenuBar();
-    void setupMainWidget();
-
-    // slots
 protected slots:
     virtual void slotDef();
     virtual void slotExportDXF();
@@ -68,7 +62,13 @@ private slots:
     void languageChange();
 
     // member variables
-protected:
+
+private:
+    void setDef(const CSailDef& newdef);
+    void setupMenuBar();
+    void setupMainWidget();
+
+    CSailDef def;
     /** The sail */
     CPanelGroup sail;
     /** The developed sail */
@@ -122,9 +122,6 @@ protected:
     QAction *actionViewMould;
     /** View sail definition */
     QAction *actionViewPatch;
-
-private:
-    CSailDef def;
 };
 
 #endif

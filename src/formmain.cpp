@@ -133,32 +133,6 @@ void CFormMain::makeMenuMru()
 
 
 /**
- * Opens the specified document.
- *
- * @param filename
- */
-bool CFormMain::open(const QString &filename)
-{
-    return true;
-#if 0
-    if (wnd->open(filename))
-    {
-        addChild(wnd);
-        app->prefs.mruDocuments.touchEntry(filename);
-        statusbar->showMessage(tr("loaded '%1'").arg(filename));
-    }
-    else
-    {
-        app->prefs.mruDocuments.removeEntry(filename);
-        statusbar->showMessage( tr("error loading '%1'").arg(filename) );
-        wnd->deleteLater();
-    }
-    makeMenuMru();
-#endif
-}
-
-
-/**
  * Creates the menu bar
  */
 void CFormMain::setupMenuBar()

@@ -57,6 +57,11 @@ void CFormPanelGroup::languageChange()
 }
 
 
+bool CFormPanelGroup::open(const QString &newfile)
+{
+
+}
+
 /**
  * Replaces the current sail definition.
  *

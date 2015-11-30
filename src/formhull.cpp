@@ -57,6 +57,20 @@ void CFormHull::languageChange()
 }
 
 
+bool CFormHull::open(const QString &newfile)
+{
+    CHullDefXmlWriter writer;
+    try {
+        setDef(writer.read(newfile));
+        filename = newfile;
+        return true;
+    } catch (read_error e) {
+        writer.readErrorMessage();
+    }
+    return false;
+}
+
+
 /**
  * Replaces the current sail definition.
  *

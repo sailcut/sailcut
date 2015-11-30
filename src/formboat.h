@@ -34,20 +34,18 @@ class CFormBoat : public CFormMain
 public:
     CFormBoat(QWidget *parent = 0);
     void add(const QString &newfile);
+    bool open(const QString &newfile);
 
-protected:
+private slots:
+    void languageChange();
+    void slotAdd();
+    void slotUpdate(const CBoatDef& newdef);
+
+private:
     void setDef(const CBoatDef &newdef);
     void setupMainWidget();
     void setupMenuBar();
 
-protected slots:
-    virtual void slotAdd();
-    virtual void slotUpdate(const CBoatDef& newdef);
-
-private slots:
-    void languageChange();
-
-private:
     CBoatDef def;
     /** A panel with one tab per element in the current boat.  */
     CBoatDefPanel *defpanel;

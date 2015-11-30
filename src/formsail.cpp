@@ -104,6 +104,20 @@ void CFormSail::languageChange()
 }
 
 
+bool CFormSail::open(const QString &newfile)
+{
+    CSailDefXmlWriter writer;
+    try {
+        setDef(writer.read(newfile));
+        filename = newfile;
+        return true;
+    } catch (read_error e) {
+        writer.readErrorMessage();
+    }
+    return false;
+}
+
+
 /**
  * Replaces the current sail definition.
  *

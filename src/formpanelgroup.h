@@ -34,6 +34,7 @@ class CFormPanelGroup : public CFormMain
 
 public:
     CFormPanelGroup(QWidget *parent = 0);
+    bool open(const QString &newfile);
 
 private slots:
     void languageChange();

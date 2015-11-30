@@ -107,6 +107,19 @@ void CFormBoat::languageChange()
     actionAddFile->setText( tr("file") );
 }
 
+bool CFormBoat::open(const QString &newfile)
+{
+    CBoatDefXmlWriter writer;
+    try {
+        setDef(writer.read(newfile));
+        filename = newfile;
+        return true;
+    } catch (read_error e) {
+        writer.readErrorMessage();
+    }
+    return false;
+}
+
 
 /**
  * We got a new boat definition, update widgets.
