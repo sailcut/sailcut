@@ -158,7 +158,7 @@ void CFormBoat::setupMenuBar()
 {
     menuAdd = new QMenu(this);
     actionAddFile = menuAdd->addAction( "", this, SLOT( slotAdd() ) );
-    extraFileMenus.push_back(menuAdd);
+    addFileMenu(menuAdd);
 }
 
 /**

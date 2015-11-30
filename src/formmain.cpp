@@ -59,16 +59,19 @@ CFormMain::CFormMain(QWidget *parent)
             this, SLOT(languageChange()));
     languageChange();
 
-    // update document-specific menus
-    slotUpdateDocumentMenus();
-
-    // load preferences
+    // set recent documents
     connect(qApp, SIGNAL(recentDocumentsChanged()),
             this, SLOT(recentDocumentsChanged()));
     recentDocumentsChanged();
 
     // resize to preferred size
     resize(app->windowSize().expandedTo(minimumSizeHint()));
+}
+
+
+void CFormMain::addFileMenu(QMenu *menu)
+{
+    menuFile->insertMenu(actionFileSep, menu);
 }
 
 
@@ -305,50 +308,6 @@ void CFormMain::slotSaveAs()
         QString filename = child->filename;
         statusbar->showMessage(tr("wrote '%1'").arg(filename));
         app->addRecentDocument(filename);
-    }
-#endif
-}
-
-
-/**
- * Refresh the document-specific menus.
- */
-void CFormMain::slotUpdateDocumentMenus()
-{
-#if 0
-    bool hasChild = (activeChild() != 0);
-    actionSave->setEnabled(hasChild);
-    actionSaveAs->setEnabled(hasChild);
-
-    // remove old extra menu entries
-    unsigned int i;
-    for (i = 0; i < childFileActions.size(); i++)
-        menuFile->removeAction(childFileActions[i]);
-    childFileActions.clear();
-    for (i = 0; i < childViewActions.size(); i++)
-        menuView->removeAction(childViewActions[i]);
-    childViewActions.clear();
-
-    // add new extra menu entries
-    if (hasChild)
-    {
-        vector<QMenu*> menus = activeChild()->extraFileMenus;
-        if (menus.size() > 0)
-        {
-            childFileActions.push_back(menuFile->insertSeparator(actionFileSep));
-            for (i = 0; i < menus.size(); i++)
-                childFileActions.push_back(menuFile->insertMenu(actionFileSep, menus[i]));
-        }
-        vector<QAction*> actions = activeChild()->extraViewActions;
-        if (actions.size() > 0)
-        {
-            for (i = 0; i < actions.size(); i++)
-            {
-                childViewActions.push_back(actions[i]);
-                menuView->insertAction(menuLanguage->menuAction(), actions[i]);
-            }
-            childViewActions.push_back(menuView->insertSeparator(menuLanguage->menuAction()));
-        }
     }
 #endif
 }

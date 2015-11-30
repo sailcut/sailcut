@@ -31,7 +31,6 @@ class QAction;
 class QMenu;
 class QMenuBar;
 class QStatusBar;
-class QSignalMapper;
 
 class CSailApp;
 
@@ -48,6 +47,7 @@ public:
     virtual bool open(const QString &filename) = 0;
 
 protected:
+    void addFileMenu(QMenu *menu);
     void addViewAction(QAction *action);
     void closeEvent( QCloseEvent * e);
 
@@ -67,16 +67,17 @@ protected slots:
     virtual void slotHandbook();
 
     virtual void slotLanguage();
-    virtual void slotUpdateDocumentMenus();
 
 private slots:
     void languageChange();
     void recentDocumentsChanged();
 
 protected:
-    /** The signal mapper */
-    QSignalMapper *windowMapper;
+    CSailViewerTabs *tabs;
+    /** The current filename. */
+    QString filename;
 
+private:
     /** The application */
     CSailApp *app;
 
@@ -136,16 +137,6 @@ protected:
     /** Quit */
     QAction *actionQuit;
 
-    /** Extra actions for the file menu */
-    vector<QAction*> childFileActions;
-    /** Extra actions for the view menu */
-    vector<QAction*> childViewActions;
-
-    CSailViewerTabs *tabs;
-    /** Extra submenus for the File menu */
-    vector<QMenu*> extraFileMenus;
-    /** The current filename. */
-    QString filename;
 };
 
 #endif

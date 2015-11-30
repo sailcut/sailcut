@@ -143,7 +143,7 @@ void CFormSail::setupMenuBar()
     actionPrintData = menuPrint->addAction("", this, SLOT( slotPrintData() ));
     actionPrintDwg = menuPrint->addAction("", this, SLOT( slotPrintDwg() ));
     actionPrintDev = menuPrint->addAction("", this, SLOT( slotPrintDev() ));
-    extraFileMenus.push_back(menuPrint);
+    addFileMenu(menuPrint);
 
     // export 3d submenu
     menuExport3d = new QMenu(this);
@@ -152,7 +152,7 @@ void CFormSail::setupMenuBar()
     actionExport3dSVG = menuExport3d->addAction("", this, SLOT( slotExportSVG() ) );
     actionExport3dTXT = menuExport3d->addAction("", this, SLOT( slotExportTXT() ) );
     actionExport3dXML = menuExport3d->addAction("", this, SLOT( slotExportXML() ) );
-    extraFileMenus.push_back(menuExport3d);
+    addFileMenu(menuExport3d);
 
     // export flat submenu
     menuExportFlat = new QMenu(this); //menuFile->addMenu("");
@@ -164,7 +164,7 @@ void CFormSail::setupMenuBar()
     actionExportFlatSVG = menuExportFlat->addAction("", this, SLOT( slotExportFlatSVG() ) );
     actionExportFlatTXT = menuExportFlat->addAction("", this, SLOT( slotExportFlatTXT() ) );
     actionExportFlatXML = menuExportFlat->addAction("", this, SLOT( slotExportFlatXML() ) );
-    extraFileMenus.push_back(menuExportFlat);
+    addFileMenu(menuExportFlat);
 
     // View actions
 
