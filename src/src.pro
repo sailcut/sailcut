@@ -38,7 +38,6 @@ HEADERS += \
     sailcpp/saildef.h \
     sailcpp/sailmould.h \
     sailcpp/sailworker.h \
-    boatdef-panel.h \
     app.h \
     boatdef-panel.h \
     filewriter.h \
