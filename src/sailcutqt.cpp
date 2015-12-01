@@ -164,8 +164,11 @@ QSize CSailApp::windowSize() const
  */
 void CSailApp::setWindowSize(const QSize &size)
 {
-    prefs.mainWindowHeight = size.height();
-    prefs.mainWindowWidth = size.width();
+    if (size != windowSize()) {
+        prefs.mainWindowHeight = size.height();
+        prefs.mainWindowWidth = size.width();
+        emit windowSizeChanged();
+    }
 }
 
 

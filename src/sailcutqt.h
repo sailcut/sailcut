@@ -32,6 +32,9 @@ class QUrl;
 class CSailApp : public QApplication
 {
     Q_OBJECT
+    Q_PROPERTY(QString language READ language WRITE setLanguage NOTIFY languageChanged)
+    Q_PROPERTY(QStringList recentDocuments READ recentDocuments NOTIFY recentDocumentsChanged)
+    Q_PROPERTY(QSize windowSize READ windowSize WRITE setWindowSize NOTIFY windowSizeChanged)
 
 public:
     CSailApp(int &argc, char** argv);
@@ -60,6 +63,7 @@ public slots:
 signals:
     void languageChanged();
     void recentDocumentsChanged();
+    void windowSizeChanged();
 
 private:
     void loadTranslation(const QString locale);
