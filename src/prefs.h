@@ -36,11 +36,6 @@ public:
     /** The most recently used documents. */
     vector<QString> mruDocuments;
 
-    /** The width of the help window */
-    int helpWindowWidth;
-    /** The height of the help window */
-    int helpWindowHeight;
-
     /** The width of the main window */
     int mainWindowWidth;
     /** The height of the main window */

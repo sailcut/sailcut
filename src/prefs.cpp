@@ -23,8 +23,8 @@
 /**
  * Constructs a class holding the user's preferences.
  */
-CPrefs::CPrefs() :
-        helpWindowWidth(800), helpWindowHeight(600),
-        mainWindowWidth(800), mainWindowHeight(600)
-{}
-
+CPrefs::CPrefs()
+    : mainWindowWidth(800)
+    , mainWindowHeight(600)
+{
+}

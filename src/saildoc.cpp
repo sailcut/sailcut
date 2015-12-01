@@ -611,8 +611,6 @@ void CSailDoc::get
     {
         get(e, p.language, "language");
         get_vector(e, p.mruDocuments, "mruDocuments");
-        get(e, p.helpWindowHeight, "helpWindowHeight");
-        get(e, p.helpWindowWidth, "helpWindowWidth");
         get(e, p.mainWindowHeight, "mainWindowHeight");
         get(e, p.mainWindowWidth, "mainWindowWidth");
     }
@@ -1066,8 +1064,6 @@ void CSailDoc::put(QDomNode &parent, const CPrefs& p, const QString& name)
 
     put(e, p.language, "language");
     put_vector(e, p.mruDocuments, "mruDocuments");
-    put(e, p.helpWindowHeight, "helpWindowHeight");
-    put(e, p.helpWindowWidth, "helpWindowWidth");
     put(e, p.mainWindowHeight, "mainWindowHeight");
     put(e, p.mainWindowWidth, "mainWindowWidth");
 }
