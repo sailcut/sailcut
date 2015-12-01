@@ -128,12 +128,18 @@ QUrl CSailApp::findHandbook() const
 }
 
 
+/**
+ * Returns the preferred language.
+ */
 QString CSailApp::language() const
 {
     return prefs.language;
 }
 
 
+/**
+ * Sets the preferred language.
+ */
 void CSailApp::setLanguage(const QString &language)
 {
     if (language != prefs.language) {
@@ -144,12 +150,18 @@ void CSailApp::setLanguage(const QString &language)
 }
 
 
+/**
+ * Returns the preferred window size.
+ */
 QSize CSailApp::windowSize() const
 {
     return QSize(prefs.mainWindowWidth, prefs.mainWindowHeight);
 }
 
 
+/**
+ * Sets the preferred window size.
+ */
 void CSailApp::setWindowSize(const QSize &size)
 {
     prefs.mainWindowHeight = size.height();
@@ -190,6 +202,9 @@ void CSailApp::loadTranslation(const QString locale)
 }
 
 
+/**
+ * Opens the specified file in a new window.
+ */
 void CSailApp::open(const QString &filename)
 {
     CFormMain *wnd;
@@ -227,7 +242,7 @@ QStringList CSailApp::recentDocuments() const
 /**
  * Puts an entry at the top of the Most Recently Used files.
  *
- * @param newEntry The entry to be added
+ * @param filename The entry to be added
  */
 void CSailApp::addRecentDocument(const QString &filename)
 {
@@ -239,7 +254,7 @@ void CSailApp::addRecentDocument(const QString &filename)
 /**
  * Removes an entry from the Most Recently Used files.
  *
- * @param oldEntry The entry to be removed
+ * @param filename The entry to be removed
  */
 void CSailApp::removeRecentDocument(const QString &filename)
 {
