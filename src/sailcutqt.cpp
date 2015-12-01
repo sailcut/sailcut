@@ -21,6 +21,7 @@
 #include <QDir>
 #include <QDebug>
 #include <QFile>
+#include <QLibraryInfo>
 #include <QTranslator>
 #include <QUrl>
 
@@ -165,7 +166,7 @@ void CSailApp::loadTranslation(const QString locale)
 
     // translation file for Qt
     removeTranslator(transQt);
-    transQt->load( QString( "qt_" ) + locale, "." );
+    transQt->load(QString("qt_") + locale, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
     installTranslator(transQt);
 
     // translation file for application strings
