@@ -31,14 +31,7 @@ Section "Sailcut CAD" SecSailcut
   SetOutPath "$INSTDIR"
   WriteRegStr HKCU "${PRODUCT_DIR_REGKEY}" "" $INSTDIR
 
-  #File sailcut.exe
-  #File *.dll
-  #File ChangeLog
-  #File COPYING
-  #File README
   File /r bin
-  #File /r data
-  #File /r icons
 
   WriteUninstaller "$INSTDIR\uninstall.exe"
 SectionEnd
@@ -49,7 +42,7 @@ SectionEnd
 
 Section "Start Menu Shortcuts" SecShortcut
   CreateDirectory "$SMPROGRAMS\${PRODUCT_NAME}"
-  CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\Sailcut CAD.lnk" "$INSTDIR\sailcut.exe" "" "$INSTDIR\icons\sailcut.ico"
+  CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\Sailcut CAD.lnk" "$INSTDIR\bin\sailcut.exe"
   CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\Uninstall.lnk" "$INSTDIR\uninstall.exe"
 SectionEnd
 
