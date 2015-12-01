@@ -21,6 +21,7 @@
 
 #include <QDir>
 #include <QDebug>
+#include <QDesktopServices>
 #include <QFile>
 #include <QLibraryInfo>
 #include <QTranslator>
@@ -94,38 +95,28 @@ void CSailApp::createSail() const
 
 
 /**
- * Tries to locate the Sailcut Handbook.
+ * Shows the Sailcut CAD Handbook.
  */
-QUrl CSailApp::findHandbook() const
+void CSailApp::showHandbook() const
 {
+    QDir appDir(applicationDirPath());
+
     const QString locale = prefs.language;
-
-    QStringList docdirs;
-    QString handbook;
-
     QStringList locales(locale);
     if (locale != "en")
         locales.append("en");
 
-    // when run from the build location
-    docdirs.append("../doc");
-
-    // when run from the installed location
-    docdirs.append(SAILCUT_DOC_PATH);
-
-    // look for handbook in different languages
-    QDir appDir(applicationDirPath());
-    for (int i = 0; i < locales.size(); i++)
-    {
-        for (int d = 0; d < docdirs.size(); d++)
-        {
-            handbook = appDir.absoluteFilePath(docdirs.at(d) + QDir::separator() + locales.at(i) + QDir::separator() + "index.html");
-            if (QFile::exists(handbook))
-                return QUrl::fromLocalFile(QFileInfo(handbook).absoluteFilePath());
+    // look for local documentation or fall back to online documentation
+    QUrl url("http://www.sailcut.com/handbook/en/");
+    for (int i = 0; i < locales.size(); i++) {
+        const QString handbook = appDir.absoluteFilePath(QString(SAILCUT_DOC_PATH) + QDir::separator() + locales.at(i) + QDir::separator() + "index.html");
+        if (QFile::exists(handbook)) {
+            url = QUrl::fromLocalFile(handbook);
+            break;
         }
     }
 
-    return QUrl();
+    QDesktopServices::openUrl(url);
 }
 
 

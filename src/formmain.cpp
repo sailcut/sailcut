@@ -27,11 +27,8 @@
 
 #include "sailcut.xpm"
 
-#include <QDebug>
 #include <QMenuBar>
 #include <QStatusBar>
-#include <QSignalMapper>
-#include <QDesktopServices>
 
 
 /**
@@ -191,7 +188,7 @@ void CFormMain::setupMenuBar()
     // Help menu
     menuHelp = menuBar()->addMenu("");
 
-    actionHandbook = menuHelp->addAction( "", this, SLOT( slotHandbook() ) );
+    actionHandbook = menuHelp->addAction( "", app, SLOT( showHandbook() ) );
     actionAboutQt = menuHelp->addAction( "", this, SLOT( slotAboutQt() ) );
     actionAbout = menuHelp->addAction( "", this, SLOT( slotAbout() ) );
 
@@ -238,17 +235,6 @@ void CFormMain::slotAbout()
 void CFormMain::slotAboutQt()
 {
     QMessageBox::aboutQt( this );
-}
-
-
-/**
- * Display the Sailcut handbook.
- */
-void CFormMain::slotHandbook()
-{
-    const QUrl handbook = app->findHandbook();
-    if (!handbook.isEmpty())
-        QDesktopServices::openUrl(handbook);
 }
 
 

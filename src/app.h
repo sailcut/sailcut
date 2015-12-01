@@ -39,7 +39,6 @@ class CSailApp : public QApplication
 public:
     CSailApp(int &argc, char** argv);
 
-    QUrl findHandbook() const;
     void readPrefs();
     void writePrefs();
 
@@ -59,6 +58,7 @@ public slots:
     void createRig() const;
     void createSail() const;
     void open(const QString &filename);
+    void showHandbook() const;
 
 signals:
     void languageChanged();

@@ -62,8 +62,6 @@ private slots:
     void slotSave();
     void slotSaveAs();
 
-    void slotHandbook();
-
     void slotLanguage();
 
     void languageChange();

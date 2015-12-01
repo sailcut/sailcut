@@ -11,3 +11,4 @@ BUILD_APP_PATH = $$SAILCUT_BUILD_TREE/bin
 BUILD_DATA_PATH = $$SAILCUT_BUILD_TREE/share/sailcut
 
 SAILCUT_DATA_PATH = ../share/sailcut
+SAILCUT_DOC_PATH = ../share/doc/sailcut/html
