@@ -1,6 +1,7 @@
 Sailcut CAD 1.4.0
- * improved - Fully port to Qt 5.
  * improved - Switch to a Single Document Interface.
+ * improved - Open online Sailcut CAD Handbook if it does not exist locally.
+ * improved - Fully port to Qt 5.
  * improved - Make it easy to compile Sailcut from Qt Creator.
 
 Sailcut CAD 1.3.6
