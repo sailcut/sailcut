@@ -286,8 +286,13 @@ void CSailApp::readPrefs()
     try
     {
         if (QFile(prefsfile).exists()) {
-            prefs = CPrefsXmlWriter().read(prefsfile);
-            loadTranslation(prefs.language);
+            CPrefs newPrefs = CPrefsXmlWriter().read(prefsfile);
+            setLanguage(newPrefs.language);
+            if (newPrefs.mruDocuments != prefs.mruDocuments) {
+                prefs.mruDocuments = newPrefs.mruDocuments;
+                emit recentDocumentsChanged();
+            }
+            setWindowSize(QSize(newPrefs.mainWindowWidth, newPrefs.mainWindowHeight));
         }
     }
     catch (read_error e)
