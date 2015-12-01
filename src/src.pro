@@ -5,7 +5,7 @@ QT += opengl printsupport svg xml
 INCLUDEPATH += ../icons
 
 TARGET = sailcut
-DESTDIR = $$SAILCUT_APP_PATH
+DESTDIR = $$BUILD_APP_PATH
 VERSION = $$SAILCUT_VERSION
 DEFINES += SAILCUT_VERSION=\\\"$${SAILCUT_VERSION}\\\"
 DEFINES += SAILCUT_DATA_PATH=\\\"$${SAILCUT_DATA_PATH}\\\"
@@ -136,7 +136,7 @@ win32:QMAKE_LRELEASE = $$[QT_INSTALL_BINS]\lrelease.exe
 else:QMAKE_LRELEASE = $$[QT_INSTALL_BINS]/lrelease
 
 updateqm.input = TRANSLATIONS
-updateqm.output = $$OUT_PWD/$$TARGET_DIR/ts/${QMAKE_FILE_BASE}.qm
+updateqm.output = $$BUILD_DATA_PATH/${QMAKE_FILE_BASE}.qm
 isEmpty(vcproj):updateqm.variable_out = PRE_TARGETDEPS
 updateqm.commands = $$QMAKE_LRELEASE ${QMAKE_FILE_IN} -qm ${QMAKE_FILE_OUT}
 updateqm.CONFIG += no_link

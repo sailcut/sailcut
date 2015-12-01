@@ -7,4 +7,5 @@ isEmpty(SAILCUT_BUILD_TREE) {
     SAILCUT_BUILD_TREE = $$clean_path($$OUT_PWD)
     SAILCUT_BUILD_TREE ~= s,$$re_escape($$sub_dir)$,,
 }
-SAILCUT_APP_PATH = $$SAILCUT_BUILD_TREE/bin
+BUILD_APP_PATH = $$SAILCUT_BUILD_TREE/bin
+BUILD_DATA_PATH = $$SAILCUT_BUILD_TREE/share/sailcut

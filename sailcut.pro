@@ -10,9 +10,9 @@ mac {
     package.output = sailcut-$$SAILCUT_VERSION-mac.dmg
     package.commands =  \
         rm -f $$package.output; \
-        ln -s /Applications $$SAILCUT_APP_PATH/Applications; \
-        hdiutil create $$package.output -srcdir $$SAILCUT_APP_PATH -format UDBZ -volname \"Sailcut CAD $$SAILCUT_VERSION\"; \
-        rm -f $$SAILCUT_APP_PATH/Applications
+        ln -s /Applications $$BUILD_APP_PATH/Applications; \
+        hdiutil create $$package.output -srcdir $$BUILD_APP_PATH -format UDBZ -volname \"Sailcut CAD $$SAILCUT_VERSION\"; \
+        rm -f $$BUILD_APP_PATH/Applications
     QMAKE_EXTRA_TARGETS = package
 } else:win32 {
     package.depends = first

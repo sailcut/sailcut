@@ -32,6 +32,7 @@ Section "Sailcut CAD" SecSailcut
   WriteRegStr HKCU "${PRODUCT_DIR_REGKEY}" "" $INSTDIR
 
   File /r bin
+  File /r share
 
   WriteUninstaller "$INSTDIR\uninstall.exe"
 SectionEnd
