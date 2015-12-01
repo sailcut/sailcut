@@ -178,7 +178,7 @@ void CSailApp::setWindowSize(const QSize &size)
  */
 void CSailApp::loadTranslation(const QString locale)
 {
-    QStringList datadirs;
+    QDir appDir(applicationDirPath());
 
     // translation file for Qt
     removeTranslator(transQt);
@@ -187,21 +187,7 @@ void CSailApp::loadTranslation(const QString locale)
 
     // translation file for application strings
     removeTranslator(transApp);
-    QString qm = QString("sailcut_") + locale;
-
-    // when run from the build location
-    datadirs.append("ts");
-
-    // when run from the installed location
-    datadirs.append(SAILCUT_DATA_PATH);
-
-    int d = 0;
-    QDir appDir(applicationDirPath());
-    while ((d < datadirs.size()) &&
-            (!transApp->load(qm, appDir.absoluteFilePath(datadirs.at(d)))))
-    {
-        d++;
-    }
+    transApp->load(QString("sailcut_") + locale, appDir.absoluteFilePath(SAILCUT_DATA_PATH));
     installTranslator(transApp);
 }
 

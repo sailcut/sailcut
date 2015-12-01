@@ -9,3 +9,5 @@ isEmpty(SAILCUT_BUILD_TREE) {
 }
 BUILD_APP_PATH = $$SAILCUT_BUILD_TREE/bin
 BUILD_DATA_PATH = $$SAILCUT_BUILD_TREE/share/sailcut
+
+SAILCUT_DATA_PATH = ../share/sailcut
