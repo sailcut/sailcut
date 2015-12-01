@@ -17,14 +17,13 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+#include "app.h"
 #include "formmain.h"
 #include "formsail.h"
 #include "formhull.h"
 #include "formrig.h"
 #include "formpanelgroup.h"
 #include "formboat.h"
-
-#include "sailcutqt.h"
 
 #include "sailcut.xpm"
 

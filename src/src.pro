@@ -39,10 +39,12 @@ HEADERS += \
     sailcpp/sailmould.h \
     sailcpp/sailworker.h \
     boatdef-panel.h \
+    app.h \
+    boatdef-panel.h \
     filewriter.h \
     formboat.h \
-    formhull.h \
     formhulldef.h \
+    formhull.h \
     formmain.h \
     formmould.h \
     formpanelgroup.h \
@@ -52,7 +54,6 @@ HEADERS += \
     formsaildef.h \
     formsail.h \
     prefs.h \
-    sailcutqt.h \
     saildispgl.h \
     saildisp.h \
     saildisplabel.h \
@@ -88,6 +89,7 @@ SOURCES += \
     sailcpp/saildef.cpp \
     sailcpp/sailmould.cpp \
     sailcpp/sailworker.cpp \
+    app.cpp \
     boatdef-panel.cpp \
     formboat.cpp \
     formhull.cpp \
@@ -102,7 +104,6 @@ SOURCES += \
     formsaildef.cpp \
     main.cpp \
     prefs.cpp \
-    sailcutqt.cpp \
     saildisp.cpp \
     saildispgl.cpp \
     saildisplabel.cpp \

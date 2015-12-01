@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#include "sailcutqt.h"
+#include "app.h"
 
 /** @mainpage
  * This is the documentation for Sailcut CAD's code.
