@@ -37,10 +37,6 @@ Section "Sailcut CAD" SecSailcut
   WriteUninstaller "$INSTDIR\uninstall.exe"
 SectionEnd
 
-Section "Documentation" SecHandbook
-  File /r doc
-SectionEnd
-
 Section "Start Menu Shortcuts" SecShortcut
   CreateDirectory "$SMPROGRAMS\${PRODUCT_NAME}"
   CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\Sailcut CAD.lnk" "$INSTDIR\bin\sailcut.exe"
@@ -56,7 +52,6 @@ SectionEnd
 
 !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
   !insertmacro MUI_DESCRIPTION_TEXT ${SecSailcut} "Installs Sailcut CAD."
-  !insertmacro MUI_DESCRIPTION_TEXT ${SecHandbook} "Installs the Sailcut CAD HandBook."
   !insertmacro MUI_DESCRIPTION_TEXT ${SecShortcut} "Adds icons to your start menu for easy access."
   !insertmacro MUI_DESCRIPTION_TEXT ${SecFileType} "Register Sailcut CAD file types."
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
@@ -66,16 +61,10 @@ Section "Uninstall"
   DeleteRegKey HKCR ".saildef"
   DeleteRegKey HKCU "${PRODUCT_DIR_REGKEY}"
 
+  ;Remove shortcuts
   RMDir /r "$SMPROGRAMS\${PRODUCT_NAME}"
 
-  Delete "$INSTDIR\sailcut.exe"
-  Delete "$INSTDIR\*.dll"
-  Delete "$INSTDIR\ChangeLog"
-  Delete "$INSTDIR\COPYING"
-  Delete "$INSTDIR\README"
-  RMDir /r "$INSTDIR\data"
-  RMDir /r "$INSTDIR\icons"
-  RMDir /r "$INSTDIR\doc"
+  ;Remove files
   Delete "$INSTDIR\uninstall.exe"
-  RMDir "$INSTDIR"
+  RMDir /r "$INSTDIR"
 SectionEnd
