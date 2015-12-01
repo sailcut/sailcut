@@ -26,21 +26,6 @@
 using namespace std;
 
 /**
- * A list of most recently used (MRU) files.
- */
-class CPrefsMru : public vector<QString>
-{
-public:
-    /** Construct a new list of Most Recently Used (MRU) files. */
-    CPrefsMru()
-    {}
-    ;
-    void touchEntry(const QString& newentry);
-    void removeEntry(const QString& oldentry);
-};
-
-
-/**
  * A class used to store a user's preferences.
  */
 class CPrefs
@@ -49,7 +34,7 @@ public:
     CPrefs();
 
     /** The most recently used documents. */
-    CPrefsMru mruDocuments;
+    vector<QString> mruDocuments;
 
     /** The width of the help window */
     int helpWindowWidth;

@@ -21,35 +21,6 @@
 
 
 /**
- * Removes an entry from the Most Recently Used files.
- *
- * @param oldEntry The entry to be removed
- */
-void CPrefsMru::removeEntry( const QString& oldEntry )
-{
-    for (unsigned int i = 0; i < size(); i++)
-        if ( at(i) == oldEntry )
-            erase(begin()+i);
-}
-
-
-/**
- * Puts an entry at the top of the Most Recently Used files.
- *
- * @param newEntry The entry to be added
- */
-void CPrefsMru::touchEntry( const QString &newEntry )
-{
-    removeEntry(newEntry);
-    insert(begin(),newEntry);
-
-    // limit the number of entries
-    if (size() > 9)
-        resize(9);
-}
-
-
-/**
  * Constructs a class holding the user's preferences.
  */
 CPrefs::CPrefs() :

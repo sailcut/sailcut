@@ -246,7 +246,14 @@ QStringList CSailApp::recentDocuments() const
  */
 void CSailApp::addRecentDocument(const QString &filename)
 {
-    prefs.mruDocuments.touchEntry(filename);
+    vector<QString> &mru = prefs.mruDocuments;
+    removeRecentDocument(filename);
+    mru.insert(mru.begin(), filename);
+
+    // limit the number of entries
+    if (mru.size() > 9)
+        mru.resize(9);
+
     emit recentDocumentsChanged();
 }
 
@@ -258,8 +265,12 @@ void CSailApp::addRecentDocument(const QString &filename)
  */
 void CSailApp::removeRecentDocument(const QString &filename)
 {
-    prefs.mruDocuments.removeEntry(filename);
-    emit recentDocumentsChanged();
+    vector<QString> &mru = prefs.mruDocuments;
+    std::vector<QString>::iterator it = std::find(mru.begin(), mru.end(), filename);
+    if (it != mru.end()) {
+        mru.erase(it);
+        emit recentDocumentsChanged();
+    }
 }
 
 
