@@ -154,7 +154,7 @@ mac {
     QMAKE_POST_LINK += $$[QT_INSTALL_BINS]/windeployqt $$shell_quote($$DESTDIR/$${TARGET}.exe)
 } else:unix {
     target.path = $$PREFIX/bin
-    translations.files = ../share/sailcut/*.qm
-    translations.path = $$PREFIX/share/sailcut
+    translations.files = $$BUILD_DATA_PATH
+    translations.path = $$PREFIX/share
     INSTALLS += target translations
 }
