@@ -66,9 +66,7 @@ Section "Sailcut CAD" SecSailcut
 SectionEnd
 
 Section "Start Menu Shortcuts" SecShortcut
-  CreateDirectory "$SMPROGRAMS\${PRODUCT_NAME}"
-  CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\Sailcut CAD.lnk" "$INSTDIR\bin\sailcut.exe"
-  CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\Uninstall.lnk" "$INSTDIR\uninstall.exe"
+  CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}.lnk" "$INSTDIR\bin\sailcut.exe"
 SectionEnd
 
 Section "Register File Types" SecFileType
@@ -90,7 +88,7 @@ Section "Uninstall"
   DeleteRegKey HKCU "${PRODUCT_DIR_REGKEY}"
 
   ;Remove shortcuts
-  RMDir /r "$SMPROGRAMS\${PRODUCT_NAME}"
+  RMDir /r "$SMPROGRAMS\${PRODUCT_NAME}.lnk"
 
   ;Remove the uninstaller itself.
   Delete "$INSTDIR\uninstall.exe"
