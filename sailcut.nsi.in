@@ -25,6 +25,19 @@ InstallDirRegKey HKCU "${PRODUCT_DIR_REGKEY}" ""
   
 !insertmacro MUI_LANGUAGE "English"
 
+RequestExecutionLevel admin
+
+Function ConditionalAddToRegisty
+  Pop $0
+  Pop $1
+  StrCmp "$0" "" ConditionalAddToRegisty_EmptyString
+    WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Sailcut CAD" \
+    "$1" "$0"
+    ;MessageBox MB_OK "Set Registry: '$1' to '$0'"
+    DetailPrint "Set install registry entry: '$1' to '$0'"
+  ConditionalAddToRegisty_EmptyString:
+FunctionEnd
+
 Section "Sailcut CAD" SecSailcut
   SectionIn RO
 
@@ -35,6 +48,21 @@ Section "Sailcut CAD" SecSailcut
   File /r share
 
   WriteUninstaller "$INSTDIR\uninstall.exe"
+  Push "DisplayIcon"
+  Push "$INSTDIR\bin\sailcut.exe"
+  Call ConditionalAddToRegisty
+  Push "DisplayName"
+  Push "${PRODUCT_NAME}"
+  Call ConditionalAddToRegisty
+  Push "DisplayVersion"
+  Push "${PRODUCT_VERSION}"
+  Call ConditionalAddToRegisty
+  Push "UninstallString"
+  Push "$INSTDIR\uninstall.exe"
+  Call ConditionalAddToRegisty
+  Push "NoRepair"
+  Push "1"
+  Call ConditionalAddToRegisty
 SectionEnd
 
 Section "Start Menu Shortcuts" SecShortcut
@@ -64,7 +92,10 @@ Section "Uninstall"
   ;Remove shortcuts
   RMDir /r "$SMPROGRAMS\${PRODUCT_NAME}"
 
-  ;Remove files
+  ;Remove the uninstaller itself.
   Delete "$INSTDIR\uninstall.exe"
+  DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Sailcut CAD"
+
+  ;Remove files
   RMDir /r "$INSTDIR"
 SectionEnd
