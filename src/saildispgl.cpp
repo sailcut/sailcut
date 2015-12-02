@@ -34,14 +34,6 @@ CSailDispGL::CSailDispGL( QWidget * parent )
 }
 
 
-/** Clear the display.
- */
-void CSailDispGL::clear()
-{
-    glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-}
-
-
 /** Draw a panel of a sail.
  *
  * @param panel
@@ -167,7 +159,7 @@ void CSailDispGL::mousePressEvent ( QMouseEvent *event )
  */
 void CSailDispGL::paintGL()
 {
-    clear();
+    glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
     if ( wasResized )
     {

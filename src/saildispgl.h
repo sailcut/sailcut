@@ -36,7 +36,6 @@ public:
     void redraw();
 
 protected:
-    void clear();
     void draw( const CPanel &panel );
     void draw( const CPanelGroup &sail );
     void initializeGL();
