@@ -66,6 +66,9 @@ Section "Sailcut CAD" SecSailcut
 SectionEnd
 
 Section "Start Menu Shortcuts" SecShortcut
+  ;Remove old shortcut folder
+  RMDir /r "$SMPROGRAMS\${PRODUCT_NAME}"
+
   CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}.lnk" "$INSTDIR\bin\sailcut.exe"
 SectionEnd
 
