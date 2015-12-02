@@ -157,4 +157,13 @@ mac {
     translations.files = $$BUILD_DATA_PATH
     translations.path = $$PREFIX/share
     INSTALLS += target translations
+
+    # Generating documentation requires some extra tools
+    system(which fig2dev && which xsltproc) {
+        docs.commands = $$SAILCUT_SOURCE_TREE/doc/makedocs $$BUILD_DOC_PATH
+        docs.files = $$BUILD_DOC_PATH
+        docs.path = $$PREFIX/share/doc/sailcut
+        QMAKE_EXTRA_TARGETS += docs
+        INSTALLS += docs
+    }
 }
