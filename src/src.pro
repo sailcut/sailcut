@@ -152,4 +152,9 @@ mac {
 } else:win32 {
     RC_ICONS = ../icons/sailcut.ico
     QMAKE_POST_LINK += $$[QT_INSTALL_BINS]/windeployqt $$shell_quote($$DESTDIR/$${TARGET}.exe)
+} else:unix {
+    target.path = $$PREFIX/bin
+    translations.files = ../share/sailcut/*.qm
+    translations.path = $$PREFIX/share/sailcut
+    INSTALLS += target translations
 }
