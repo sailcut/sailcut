@@ -1,10 +1,11 @@
 #!/bin/sh
 FIGURES="coordinates_system sailplan sail_seams sail_edges develop_panel_drawing head_gores_definition rigplan"
 SRC=`dirname $0`
+DST=$1
 
 for lang in en es fr; do
-    /usr/bin/xsltproc -o $lang/index.html $SRC/sailcut-html.xsl $SRC/$lang/index.docbook
+    /usr/bin/xsltproc -o $DST/$lang/index.html $SRC/sailcut-html.xsl $SRC/$lang/index.docbook
     for fig in $FIGURES; do
-        /usr/bin/fig2dev -L png -S2 $SRC/$lang/$fig.fig $lang/$fig.png
+        /usr/bin/fig2dev -L png -S2 $SRC/$lang/$fig.fig $DST/$lang/$fig.png
     done
 done

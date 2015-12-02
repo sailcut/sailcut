@@ -27,4 +27,12 @@ mac {
     write_file($$SAILCUT_BUILD_TREE/sailcut.nsi, NSI_HEADER)
     write_file($$SAILCUT_BUILD_TREE/sailcut.nsi, NSI_BODY, append)
     QMAKE_CLEAN += sailcut.nsi
+} else:unix {
+    system(which fig2dev && which xsltproc) {
+        docs.commands = $$PWD/doc/makedocs $$BUILD_DOC_PATH
+        docs.files = $$BUILD_DOC_PATH
+        docs.path = $$PREFIX/share/doc/sailcut
+        QMAKE_EXTRA_TARGETS += docs
+        INSTALLS += docs
+    }
 }
