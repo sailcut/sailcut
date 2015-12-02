@@ -1,5 +1,0 @@
-#!/bin/sh
-set -e
-
-echo "Refreshing translations"
-lupdate src/*.cpp src/*.h src/*.ui -ts src/ts/*.ts
