@@ -63,51 +63,48 @@ void CSailDispGL::putPoint(GLfloat **vertex, const CPoint3d &pt) const
 void CSailDispGL::draw( const CPanel &panel )
 {
     unsigned int i;
-    GLfloat *vertexArray;
+    QVector<GLfloat> vertexArray;
     GLfloat *vertex;
     int vertexCount;
     const int vertexSize = 3;
 
     // main
     vertexCount = panel.top.size() * 2;
-    vertexArray = new GLfloat[vertexCount * vertexSize];
-    vertex = vertexArray;
+    vertexArray.resize(vertexCount * vertexSize);
+    vertex = &vertexArray[0];
     for (i = 0; i < panel.top.size(); i++) {
         putPoint(&vertex, panel.top[i]);
         putPoint(&vertex, panel.bottom[i]);
     }
     program->setUniformValue(colAttr, color);
     program->enableAttributeArray(posAttr);
-    program->setAttributeArray(posAttr, vertexArray, vertexSize);
+    program->setAttributeArray(posAttr, &vertexArray[0], vertexSize);
     glDrawArrays(GL_TRIANGLE_STRIP, 0, vertexCount);
     program->disableAttributeArray(posAttr);
-    delete[] vertexArray;
 
     // left side
     vertexCount = panel.left.size() + 1;
-    vertexArray = new GLfloat[vertexCount * vertexSize];
-    vertex = vertexArray;
+    vertexArray.resize(vertexCount * vertexSize);
+    vertex = &vertexArray[0];
     putPoint(&vertex, (panel.left[0]+panel.left[panel.left.size()-1])*0.5);
     for (i = 0; i < panel.left.size(); i++)
         putPoint(&vertex, panel.left[i]);
     program->enableAttributeArray(posAttr);
-    program->setAttributeArray(posAttr, vertexArray, vertexSize);
+    program->setAttributeArray(posAttr, &vertexArray[0], vertexSize);
     glDrawArrays(GL_TRIANGLE_FAN, 0, vertexCount);
     program->disableAttributeArray(posAttr);
-    delete[] vertexArray;
 
     // right side
     vertexCount = panel.right.size() + 1;
-    vertexArray = new GLfloat[vertexCount * vertexSize];
-    vertex = vertexArray;
+    vertexArray.resize(vertexCount * vertexSize);
+    vertex = &vertexArray[0];
     putPoint(&vertex, (panel.right[0]+panel.right[panel.right.size()-1])*0.5);
     for (i =0; i < panel.right.size(); i++)
         putPoint(&vertex, panel.right[i]);
     program->enableAttributeArray(posAttr);
-    program->setAttributeArray(posAttr, vertexArray, vertexSize);
+    program->setAttributeArray(posAttr, &vertexArray[0], vertexSize);
     glDrawArrays(GL_TRIANGLE_FAN, 0, vertexCount);
     program->disableAttributeArray(posAttr);
-    delete[] vertexArray;
 }
 
 
