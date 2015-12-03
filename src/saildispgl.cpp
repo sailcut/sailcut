@@ -20,8 +20,23 @@
 #include <cmath>
 
 #include <QMouseEvent>
+#include <QOpenGLShaderProgram>
 
 #include "saildispgl.h"
+
+static const char* vertexShader =
+      "attribute vec4 posAttr;\n"
+      "void main()\n"
+      "{\n"
+      "   gl_Position = posAttr;\n"
+      "}\n";
+
+static const char* fragmentShader =
+    "uniform vec4 colAttr;\n"
+    "void main()\n"
+    "{\n"
+    "     gl_FragColor = colAttr;\n"
+    "}\n";
 
 
 /** Construct an OpenGL view area.
@@ -34,11 +49,11 @@ CSailDispGL::CSailDispGL(QWidget * parent)
 {
 }
 
-static void putPoint(GLfloat **vertex, const CPoint3d &pt)
+void CSailDispGL::putPoint(GLfloat **vertex, const CPoint3d &pt) const
 {
-    *((*vertex)++) = pt.x();
-    *((*vertex)++) = pt.y();
-    *((*vertex)++) = pt.z();
+    *((*vertex)++) = (pt.x() - center.x()) * scale.x();
+    *((*vertex)++) = (pt.y() - center.y()) * scale.y();
+    *((*vertex)++) = (pt.z() - center.z()) * scale.z();
 }
 
 /** Draw a panel of a sail.
@@ -61,10 +76,11 @@ void CSailDispGL::draw( const CPanel &panel )
         putPoint(&vertex, panel.top[i]);
         putPoint(&vertex, panel.bottom[i]);
     }
-    glEnableClientState(GL_VERTEX_ARRAY);
-    glVertexPointer(vertexSize, GL_FLOAT, 0, vertexArray);
+    program->setUniformValue(colAttr, color);
+    program->enableAttributeArray(posAttr);
+    program->setAttributeArray(posAttr, vertexArray, vertexSize);
     glDrawArrays(GL_TRIANGLE_STRIP, 0, vertexCount);
-    glDisableClientState(GL_VERTEX_ARRAY);
+    program->disableAttributeArray(posAttr);
     delete[] vertexArray;
 
     // left side
@@ -74,10 +90,10 @@ void CSailDispGL::draw( const CPanel &panel )
     putPoint(&vertex, (panel.left[0]+panel.left[panel.left.size()-1])*0.5);
     for (i = 0; i < panel.left.size(); i++)
         putPoint(&vertex, panel.left[i]);
-    glEnableClientState(GL_VERTEX_ARRAY);
-    glVertexPointer(vertexSize, GL_FLOAT, 0, vertexArray);
+    program->enableAttributeArray(posAttr);
+    program->setAttributeArray(posAttr, vertexArray, vertexSize);
     glDrawArrays(GL_TRIANGLE_FAN, 0, vertexCount);
-    glDisableClientState(GL_VERTEX_ARRAY);
+    program->disableAttributeArray(posAttr);
     delete[] vertexArray;
 
     // right side
@@ -87,10 +103,10 @@ void CSailDispGL::draw( const CPanel &panel )
     putPoint(&vertex, (panel.right[0]+panel.right[panel.right.size()-1])*0.5);
     for (i =0; i < panel.right.size(); i++)
         putPoint(&vertex, panel.right[i]);
-    glEnableClientState(GL_VERTEX_ARRAY);
-    glVertexPointer(vertexSize, GL_FLOAT, 0, vertexArray);
+    program->enableAttributeArray(posAttr);
+    program->setAttributeArray(posAttr, vertexArray, vertexSize);
     glDrawArrays(GL_TRIANGLE_FAN, 0, vertexCount);
-    glDisableClientState(GL_VERTEX_ARRAY);
+    program->disableAttributeArray(posAttr);
     delete[] vertexArray;
 }
 
@@ -102,28 +118,21 @@ void CSailDispGL::draw( const CPanel &panel )
 void CSailDispGL::draw( const CPanelGroup &sail )
 {
     unsigned int i;
-    for (i = 0; i < sail.size(); i++)
-    {
-        if ( sail.type == HULL )
-        {
-            /**  Hull GL color dark green (.1, .3, .2)
-                 color lighter green  (.1, .5, .2) */
-            glColor3f(.1, .5, .2);
+    for (i = 0; i < sail.size(); i++) {
+        if (sail.type == HULL) {
+            // Hull color (green)
+            color = QColor(26, 128, 51);
+        } else if ( sail.type == RIG) {
+            // Rig color (dark red)
+            color = QColor(128, 26, 26);
+        } else {
+            // Sail color (alternate dark yellow / yellow / white)
+            color = QColor(204, 179 + 12 * (i % 3), 102 + 51 * (i % 3));
         }
-        else if ( sail.type == RIG )
-        {
-            /**  Rig GL color dark red (.5, .1, .1) */
-            glColor3f(.5, .1, .1);
-        }
-        else
-        {
-            /** Sail GL color alternate dark yellow / yellow panels / white */
-            glColor3f( .8, .7 + 0.05*(i % 3), 0.4 + 0.2*(i % 3));
-        }
-        draw( sail[i] );
+        draw(sail[i]);
     }
     for (i = 0; i < sail.child.size(); i++)
-        draw( sail.child[i] );
+        draw(sail.child[i]);
 }
 
 
@@ -141,25 +150,16 @@ void CSailDispGL::initializeGL()
 {
     initializeOpenGLFunctions();
 
-    // Set up the rendering context, define display lists etc.:
-    glClearColor( 0.0f, 0.0f, 0.0f, 0.5f );
-    glEnable(GL_DEPTH_TEST);
-    glDepthFunc(GL_LEQUAL);
-    glEnable(GL_COLOR_MATERIAL);
-    glEnable(GL_LIGHTING);
-    glClearDepth(1.0f);
-    // lighting
-    GLfloat LightAmbient[]= { 0.1f, 0.1f, 0.1f, 1.0f };
-    GLfloat LightDiffuse[]= { 0.00015f, 0.00015f, 0.00015f, 1.0f };
-    GLfloat LightPosition[]= { 1.0f, 1.0f, 1.0f, 1.0f };
+    program = new QOpenGLShaderProgram(this);
+    if (!program->addShaderFromSourceCode(QOpenGLShader::Vertex, vertexShader))
+        qWarning("could not load vertex shader");
+    if (!program->addShaderFromSourceCode(QOpenGLShader::Fragment, fragmentShader))
+        qWarning("could not load fragment shader");
+    program->link();
+    program->bind();
 
-    // Setup the ambient & diffuse lamps
-    glLightfv(GL_LIGHT1, GL_AMBIENT, LightAmbient);
-    glLightfv(GL_LIGHT1, GL_DIFFUSE, LightDiffuse);
-    glLightfv(GL_LIGHT1, GL_POSITION,LightPosition);
-
-    // Enable lighting
-    glEnable(GL_LIGHT1);
+    colAttr = program->uniformLocation("colAttr");
+    posAttr = program->attributeLocation("posAttr");
 }
 
 
@@ -181,23 +181,22 @@ void CSailDispGL::mousePressEvent ( QMouseEvent *event )
  */
 void CSailDispGL::paintGL()
 {
-    glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    if ( wasResized )
-    {
-        glViewport( 0, 0, (GLint)resizeW, (GLint)resizeH );
-        setViewRect( CRect3d(CPoint3d(0,0,0), CPoint3d(resizeW,resizeH,0)) );
+    if (wasResized) {
+        glViewport(0, 0, (GLint)resizeW, (GLint)resizeH);
+        setViewRect(CRect3d(CPoint3d(0, 0, 0), CPoint3d(resizeW, resizeH, 0)));
         wasResized = 0;
     }
 
     // set coordinate system to match the logical viewport
-    glLoadIdentity();
-    CRect3d lRect = getLogicalRect();
-    real zs = real(2) / sqrt(lRect.width()*lRect.width() + lRect.height()*lRect.height());
-    glScaled(real(2) / lRect.width(),real(2) / lRect.height(),zs);
-    glTranslated(-center.x(),-center.y(),-center.z());
+    const CRect3d lRect = getLogicalRect();
+    scale = CVector3d(
+        real(2) / lRect.width(),
+        real(2) / lRect.height(),
+        real(2) / sqrt(lRect.width()*lRect.width() + lRect.height()*lRect.height()));
 
-    draw( dispObject );
+    draw(dispObject);
 }
 
 

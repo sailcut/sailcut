@@ -25,6 +25,8 @@
 #include <QOpenGLFunctions>
 #include <QOpenGLWidget>
 
+class QOpenGLShaderProgram;
+
 
 /** An OpenGL display area for a sail. This is only used if Sailcut is
  * compiled with OpenGL support enabled.
@@ -48,12 +50,21 @@ protected:
     void wheelEvent( QWheelEvent *event);
 
 private:
+    void putPoint(GLfloat **vertex, const CPoint3d &pt) const;
+
     /** Has the area been resized since last redraw */
     bool wasResized;
     /** width of last resize event */
     int resizeW;
     /** height of last resize event */
     int resizeH;
+
+    QOpenGLShaderProgram *program;
+    int posAttr;
+    int colAttr;
+
+    QColor color;
+    CVector3d scale;
 };
 
 

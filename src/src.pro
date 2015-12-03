@@ -12,8 +12,6 @@ DEFINES += SAILCUT_DATA_PATH=\\\"$${SAILCUT_DATA_PATH}\\\"
 DEFINES += SAILCUT_DOC_PATH=\\\"$${SAILCUT_DOC_PATH}\\\"
 mac {
     TARGET = "Sailcut CAD"
-} else:win32 {
-    LIBS += -lopengl32 -lglu32
 }
 
 FORMS += \
