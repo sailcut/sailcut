@@ -63,7 +63,6 @@ private:
     int posAttr;
     int colAttr;
 
-    QColor color;
     CVector3d scale;
 };
 

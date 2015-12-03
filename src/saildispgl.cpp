@@ -63,47 +63,43 @@ void CSailDispGL::putPoint(GLfloat **vertex, const CPoint3d &pt) const
 void CSailDispGL::draw( const CPanel &panel )
 {
     unsigned int i;
-    QVector<GLfloat> vertexArray;
-    GLfloat *vertex;
-    int vertexCount;
+    const int mainCount = panel.top.size() * 2;
+    const int leftCount = panel.left.size() + 1;
+    const int rightCount = panel.right.size() + 1;
+    const int maxCount = qMax(mainCount, qMax(leftCount, rightCount));
     const int vertexSize = 3;
+    GLfloat vertexArray[maxCount * vertexSize];
+    GLfloat *vertex;
 
     // main
-    vertexCount = panel.top.size() * 2;
-    vertexArray.resize(vertexCount * vertexSize);
-    vertex = &vertexArray[0];
+    vertex = vertexArray;
     for (i = 0; i < panel.top.size(); i++) {
         putPoint(&vertex, panel.top[i]);
         putPoint(&vertex, panel.bottom[i]);
     }
-    program->setUniformValue(colAttr, color);
     program->enableAttributeArray(posAttr);
-    program->setAttributeArray(posAttr, &vertexArray[0], vertexSize);
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, vertexCount);
+    program->setAttributeArray(posAttr, vertexArray, vertexSize);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, mainCount);
     program->disableAttributeArray(posAttr);
 
     // left side
-    vertexCount = panel.left.size() + 1;
-    vertexArray.resize(vertexCount * vertexSize);
-    vertex = &vertexArray[0];
+    vertex = vertexArray;
     putPoint(&vertex, (panel.left[0]+panel.left[panel.left.size()-1])*0.5);
     for (i = 0; i < panel.left.size(); i++)
         putPoint(&vertex, panel.left[i]);
     program->enableAttributeArray(posAttr);
     program->setAttributeArray(posAttr, &vertexArray[0], vertexSize);
-    glDrawArrays(GL_TRIANGLE_FAN, 0, vertexCount);
+    glDrawArrays(GL_TRIANGLE_FAN, 0, leftCount);
     program->disableAttributeArray(posAttr);
 
     // right side
-    vertexCount = panel.right.size() + 1;
-    vertexArray.resize(vertexCount * vertexSize);
-    vertex = &vertexArray[0];
+    vertex = vertexArray;
     putPoint(&vertex, (panel.right[0]+panel.right[panel.right.size()-1])*0.5);
     for (i =0; i < panel.right.size(); i++)
         putPoint(&vertex, panel.right[i]);
     program->enableAttributeArray(posAttr);
     program->setAttributeArray(posAttr, &vertexArray[0], vertexSize);
-    glDrawArrays(GL_TRIANGLE_FAN, 0, vertexCount);
+    glDrawArrays(GL_TRIANGLE_FAN, 0, rightCount);
     program->disableAttributeArray(posAttr);
 }
 
@@ -118,13 +114,13 @@ void CSailDispGL::draw( const CPanelGroup &sail )
     for (i = 0; i < sail.size(); i++) {
         if (sail.type == HULL) {
             // Hull color (green)
-            color = QColor(26, 128, 51);
+            program->setUniformValue(colAttr, QColor(26, 128, 51));
         } else if ( sail.type == RIG) {
             // Rig color (dark red)
-            color = QColor(128, 26, 26);
+            program->setUniformValue(colAttr, QColor(128, 26, 26));
         } else {
             // Sail color (alternate dark yellow / yellow / white)
-            color = QColor(204, 179 + 12 * (i % 3), 102 + 51 * (i % 3));
+            program->setUniformValue(colAttr, QColor(204, 179 + 12 * (i % 3), 102 + 51 * (i % 3)));
         }
         draw(sail[i]);
     }
