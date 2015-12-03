@@ -21,14 +21,17 @@
 #define SAILDISPGL_H
 
 #include "saildisp.h"
-#include <QGLWidget>
+
+#include <QOpenGLFunctions>
+#include <QOpenGLWidget>
+
 
 /** An OpenGL display area for a sail. This is only used if Sailcut is
  * compiled with OpenGL support enabled.
  *
  * @see CSailDispLabel
  */
-class CSailDispGL : public QGLWidget, public CSailDisp
+class CSailDispGL : public QOpenGLWidget, public QOpenGLFunctions, public CSailDisp
 {
 public:
     CSailDispGL( QWidget *parent );

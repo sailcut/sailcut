@@ -18,7 +18,9 @@
  */
 
 #include <cmath>
+
 #include <QMouseEvent>
+
 #include "saildispgl.h"
 
 
@@ -26,13 +28,18 @@
  *
  * @param parent the parent widget
  */
-CSailDispGL::CSailDispGL( QWidget * parent )
-        :  QGLWidget( parent ), wasResized(true)
+CSailDispGL::CSailDispGL(QWidget * parent)
+    : QOpenGLWidget(parent)
+    , wasResized(true)
 {
-    if ( !QGLFormat::hasOpenGL() )
-        throw runtime_error("This system has no OpenGL support.");
 }
 
+static void putPoint(GLfloat **vertex, const CPoint3d &pt)
+{
+    *((*vertex)++) = pt.x();
+    *((*vertex)++) = pt.y();
+    *((*vertex)++) = pt.z();
+}
 
 /** Draw a panel of a sail.
  *
@@ -40,38 +47,51 @@ CSailDispGL::CSailDispGL( QWidget * parent )
  */
 void CSailDispGL::draw( const CPanel &panel )
 {
-    CPoint3d pt;
     unsigned int i;
+    GLfloat *vertexArray;
+    GLfloat *vertex;
+    int vertexCount;
+    const int vertexSize = 3;
 
-    glBegin(GL_TRIANGLE_STRIP);
-    for (i =0; i < panel.top.size(); i++)
-    {
-        pt = panel.top[i];
-        glVertex3d(pt.x(),pt.y(),pt.z());
-        pt = panel.bottom[i];
-        glVertex3d(pt.x(),pt.y(),pt.z());
+    // main
+    vertexCount = panel.top.size() * 2;
+    vertexArray = new GLfloat[vertexCount * vertexSize];
+    vertex = vertexArray;
+    for (i = 0; i < panel.top.size(); i++) {
+        putPoint(&vertex, panel.top[i]);
+        putPoint(&vertex, panel.bottom[i]);
     }
-    glEnd();
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glVertexPointer(vertexSize, GL_FLOAT, 0, vertexArray);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, vertexCount);
+    glDisableClientState(GL_VERTEX_ARRAY);
+    delete[] vertexArray;
 
-    glBegin(GL_TRIANGLE_FAN);
-    pt = (panel.left[0]+panel.left[panel.left.size()-1])*0.5;
-    glVertex3d(pt.x(),pt.y(),pt.z());
-    for (i =0; i < panel.left.size(); i++)
-    {
-        pt = panel.left[i];
-        glVertex3d(pt.x(),pt.y(),pt.z());
-    }
-    glEnd();
+    // left side
+    vertexCount = panel.left.size() + 1;
+    vertexArray = new GLfloat[vertexCount * vertexSize];
+    vertex = vertexArray;
+    putPoint(&vertex, (panel.left[0]+panel.left[panel.left.size()-1])*0.5);
+    for (i = 0; i < panel.left.size(); i++)
+        putPoint(&vertex, panel.left[i]);
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glVertexPointer(vertexSize, GL_FLOAT, 0, vertexArray);
+    glDrawArrays(GL_TRIANGLE_FAN, 0, vertexCount);
+    glDisableClientState(GL_VERTEX_ARRAY);
+    delete[] vertexArray;
 
-    glBegin(GL_TRIANGLE_FAN);
-    pt = (panel.right[0]+panel.right[panel.right.size()-1])*0.5;
-    glVertex3d(pt.x(),pt.y(),pt.z());
+    // right side
+    vertexCount = panel.right.size() + 1;
+    vertexArray = new GLfloat[vertexCount * vertexSize];
+    vertex = vertexArray;
+    putPoint(&vertex, (panel.right[0]+panel.right[panel.right.size()-1])*0.5);
     for (i =0; i < panel.right.size(); i++)
-    {
-        pt = panel.right[i];
-        glVertex3d(pt.x(),pt.y(),pt.z());
-    }
-    glEnd();
+        putPoint(&vertex, panel.right[i]);
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glVertexPointer(vertexSize, GL_FLOAT, 0, vertexArray);
+    glDrawArrays(GL_TRIANGLE_FAN, 0, vertexCount);
+    glDisableClientState(GL_VERTEX_ARRAY);
+    delete[] vertexArray;
 }
 
 
@@ -111,7 +131,7 @@ void CSailDispGL::draw( const CPanelGroup &sail )
  */
 void CSailDispGL::redraw()
 {
-    updateGL();
+    update();
 }
 
 
@@ -119,6 +139,8 @@ void CSailDispGL::redraw()
  */
 void CSailDispGL::initializeGL()
 {
+    initializeOpenGLFunctions();
+
     // Set up the rendering context, define display lists etc.:
     glClearColor( 0.0f, 0.0f, 0.0f, 0.5f );
     glEnable(GL_DEPTH_TEST);
