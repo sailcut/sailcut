@@ -83,7 +83,7 @@ void CSailDisp::setAngle( real azimuth, real elevation )
  *
  * @param newCenter the new center
  */
-void CSailDisp::setCenter( CPoint3d newCenter )
+void CSailDisp::setCenter( const CPoint3d &newCenter )
 {
     center = newCenter;
     logicalRect = calcLRect(viewRect, baseRect, center, zoom);
