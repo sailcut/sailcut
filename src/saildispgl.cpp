@@ -83,21 +83,21 @@ void CSailDispGL::draw( const CPanel &panel )
 
     // left side
     vertex = vertexArray;
-    putPoint(&vertex, (panel.left[0]+panel.left[panel.left.size()-1])*0.5);
+    putPoint(&vertex, (panel.left.front() + panel.left.back()) * 0.5);
     for (i = 0; i < panel.left.size(); i++)
         putPoint(&vertex, panel.left[i]);
     program->enableAttributeArray(posAttr);
-    program->setAttributeArray(posAttr, &vertexArray[0], vertexSize);
+    program->setAttributeArray(posAttr, vertexArray, vertexSize);
     glDrawArrays(GL_TRIANGLE_FAN, 0, leftCount);
     program->disableAttributeArray(posAttr);
 
     // right side
     vertex = vertexArray;
-    putPoint(&vertex, (panel.right[0]+panel.right[panel.right.size()-1])*0.5);
+    putPoint(&vertex, (panel.right.front() + panel.right.back()) * 0.5);
     for (i =0; i < panel.right.size(); i++)
         putPoint(&vertex, panel.right[i]);
     program->enableAttributeArray(posAttr);
-    program->setAttributeArray(posAttr, &vertexArray[0], vertexSize);
+    program->setAttributeArray(posAttr, vertexArray, vertexSize);
     glDrawArrays(GL_TRIANGLE_FAN, 0, rightCount);
     program->disableAttributeArray(posAttr);
 }
