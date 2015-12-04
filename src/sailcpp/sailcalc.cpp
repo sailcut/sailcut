@@ -139,7 +139,7 @@ real Distance3d(const CPoint3d &pta, const CPoint3d &ptb, const CPoint3d &ptc)
 {
     real d;
     CVector3d Va = CVector3d( pta - ptb );
-    CVector3d Vb = CVector3d( ptc - ptb).unit();
+    CVector3d Vb = CVector3d( ptc - ptb).normalized();
     CVector3d Vd = Vb.cross(Va);
     d = Vd.length();
     if ( Vd.z() < 0 )

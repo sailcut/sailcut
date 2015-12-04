@@ -494,7 +494,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
         throw panel_error("CPanel::add6Hems : bottom panel edges v5 and v6 too small");
 
     if (v5.length() < minSize ) {   // bottom side too small copy top
-        v5 = v7.unit();
+        v5 = v7.normalized();
         v6 = v5;
     }
     else {   // reset v5 to bottom left point
@@ -502,7 +502,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
     }
 
     if (v7.length() < minSize ) {   // top side too small copy bottom
-        v7 = v5.unit();
+        v7 = v5.normalized();
         v8 = v7;
     }
     else {   // reset v7 to top left point
@@ -522,7 +522,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
             if ( v.length() <= EPS )
                 v = v5;
 
-            cutBottom[i] = bottom[i] + CMatrix::rot3d(2,-PI/2) * v.unit() *botW;
+            cutBottom[i] = bottom[i] + CMatrix::rot3d(2,-PI/2) * v.normalized() *botW;
         }
     }
 
@@ -537,7 +537,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
             if ( v.length() <= minSize )
                 v = v7;
 
-            cutTop[i] = top[i] + CMatrix::rot3d(2,PI/2) * v.unit() *topW;
+            cutTop[i] = top[i] + CMatrix::rot3d(2,PI/2) * v.normalized() *topW;
         }
     }
 
@@ -549,7 +549,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
             else
                 v = CVector3d( left[i] - left[i-1] );
 
-            cutLeft[i] = left[i] + CMatrix::rot3d( 2 , PI/2) * v.unit() * lolW;
+            cutLeft[i] = left[i] + CMatrix::rot3d( 2 , PI/2) * v.normalized() * lolW;
         }
 
         v0 = CVector3d( left[npl/2] - left[npl/2 -1] );
@@ -558,7 +558,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
         if ( v2.length() >= minSize ) {  // upper left side is not a point
             for (i = npl/2 +1 ; i < npl ; i++) {
                 v2 = CVector3d( left[i] - left[i-1] );
-                cutLeft[i] = left[i] + CMatrix::rot3d( 2 , PI/2) * v2.unit() * hilW;
+                cutLeft[i] = left[i] + CMatrix::rot3d( 2 , PI/2) * v2.normalized() * hilW;
 
                 if ( i == npl/2 +1 ) {   // compute mid side break point
                     Line2 = CSubSpace3d::line( cutLeft[i] , v2 );
@@ -574,7 +574,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
                         cutLeft[npl/2 +1] = cutLeft[npl/2 +2];
                 }
                 else {   // compute other uppr lft points
-                    cutLeft[i] = left[i] + CMatrix::rot3d( 2 , PI/2) * v2.unit() * hilW;
+                    cutLeft[i] = left[i] + CMatrix::rot3d( 2 , PI/2) * v2.normalized() * hilW;
                     // check position relative to mid side point
                     if ( (CVector3d(cutLeft[i] - cutLeft[npl/2]) * v0) <= 0 )
                         cutLeft[npl/2 +1] = cutLeft[npl/2];
@@ -584,19 +584,19 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
         else {  // upper left side is a point but not lower side
             v2 = CVector3d( left[npl/2] - left[npl/2 -1] );
             for (i = npl/2 +1 ; i < npl ; i++)
-                cutLeft[i] = left[i] + CMatrix::rot3d( 2 , PI/2) * v2.unit() * hilW;
+                cutLeft[i] = left[i] + CMatrix::rot3d( 2 , PI/2) * v2.normalized() * hilW;
         }
     }
     else if ( v2.length() >= minSize ) {
         // only lower left side is a point
         v1 = CVector3d( left[npl/2 +1] - left[npl/2] );
         for (i = 0 ; i < npl/2  ; i++)
-            cutLeft[i] = left[i] + CMatrix::rot3d( 2 , PI/2) * v1.unit() * lolW;
+            cutLeft[i] = left[i] + CMatrix::rot3d( 2 , PI/2) * v1.normalized() * lolW;
 
         for (i = npl/2 +1 ; i < npl -1 ; i++)
         {
             v2 = CVector3d( left[i] - left[i-1] );
-            cutLeft[i] = left[i] + CMatrix::rot3d( 2 , PI/2) * v2.unit() * hilW;
+            cutLeft[i] = left[i] + CMatrix::rot3d( 2 , PI/2) * v2.normalized() * hilW;
         }
     }
     else {
@@ -604,13 +604,13 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
         if ( botW == 0 )
             v = -v5; // extend the bottom edge
         else
-            v = -( v5.unit() + v7.unit() ); // extend in bissectrice top-bottom
+            v = -( v5.normalized() + v7.normalized() ); // extend in bissectrice top-bottom
 
         for (i = 0 ; i< npl ; i++)
-            cutLeft[i] = left[i] + v.unit() * lolW;
+            cutLeft[i] = left[i] + v.normalized() * lolW;
 
         // if (v.length() == 0) cout << "CPanel::add6Hems 10 v=0 v5="<< v5.length()<< " v7="<< v7.length()<< endl;
-        v1 = CMatrix::rot3d(2,-PI/2) * v.unit();
+        v1 = CMatrix::rot3d(2,-PI/2) * v.normalized();
         v2 = v1;
     }
 
@@ -635,7 +635,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
                 else if ( right[i+2] != right[i] )
                     v = CVector3d( right[i+2] - right[i] );
             }
-            cutRight[i] = right[i] + CMatrix::rot3d( 2 , -PI/2) * v.unit() * lorW;
+            cutRight[i] = right[i] + CMatrix::rot3d( 2 , -PI/2) * v.normalized() * lorW;
         }
 
         v0 = CVector3d( right[npl/2] - right[npl/2 -1] );
@@ -644,7 +644,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
         if ( v4.length() >= minSize ) {  // upper right side is not a point
             for (i = npl/2 +1 ; i < npl ; i++) {
                 v4 = CVector3d( right[i] - right[i-1] );
-                cutRight[i] = right[i] + CMatrix::rot3d( 2 , -PI/2) * v4.unit() * hirW;
+                cutRight[i] = right[i] + CMatrix::rot3d( 2 , -PI/2) * v4.normalized() * hirW;
                 if ( i == npl/2 +1 ) {   // compute mid side break point
                     Line2 = CSubSpace3d::line( cutRight[i] , v4 );
 
@@ -659,7 +659,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
                         cutRight[npl/2 +1] = cutRight[npl/2 +2];
                 }
                 else {   // compute other points
-                    cutRight[i] = right[i] + CMatrix::rot3d( 2 , -PI/2) * v4.unit() * hirW;
+                    cutRight[i] = right[i] + CMatrix::rot3d( 2 , -PI/2) * v4.normalized() * hirW;
                 }
             }
         }
@@ -667,7 +667,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
             v4 = CVector3d( right[npl-1] - right[npl-2] );
 
             for (i = npl/2 +1 ; i < npl ; i++)
-                cutRight[i] = right[i] + CMatrix::rot3d( 2 , -PI/2) * v4.unit() * hirW;
+                cutRight[i] = right[i] + CMatrix::rot3d( 2 , -PI/2) * v4.normalized() * hirW;
         }
     }
     else if ( v4.length() >= minSize ) {   // only lower right side is a point
@@ -681,10 +681,10 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
                 }
         */
         for (i = 0 ; i < npl/2  ; i++)
-            cutRight[i] = right[i] + CMatrix::rot3d( 2 , -PI/2) * v4.unit() * lorW;
+            cutRight[i] = right[i] + CMatrix::rot3d( 2 , -PI/2) * v4.normalized() * lorW;
 
         for (i = npl/2 +1 ; i < npl ; i++) {
-            cutRight[i] = right[i] + CMatrix::rot3d( 2 , -PI/2) * v4.unit() * hirW;
+            cutRight[i] = right[i] + CMatrix::rot3d( 2 , -PI/2) * v4.normalized() * hirW;
         }
         v4 = CVector3d( right[npl-1] - right[npl-2] );
         //    if (v4.length() == 0) cout << "AddHems v4=0 about to crash 13" << endl;
@@ -698,9 +698,9 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
         if (v.length() == 0) cout << "CPanel::add6Hems v=v6=0 or v=v6+v8=0 about to crash 14" << endl;
 
         for (i = 0 ; i< npl ; i++)
-            cutRight[i] = right[i] + v.unit() * lorW;
+            cutRight[i] = right[i] + v.normalized() * lorW;
 
-        v3 = CMatrix::rot3d(2 , PI/2) * v.unit();
+        v3 = CMatrix::rot3d(2 , PI/2) * v.normalized();
         v4 = v3;
     }
 

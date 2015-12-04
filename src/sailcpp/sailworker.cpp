@@ -90,16 +90,16 @@ CSailWorker::CSailWorker(const CSailDef &s) : CSailDef(s)
     luffV = CVector3d( head - tack );
 
     /** Define mitre vector bisecting foot-leech angle. */
-    mitreV = CVector3d( tack - clew ).unit() + leechV.unit();
+    mitreV = CVector3d( tack - clew ).normalized() + leechV.normalized();
 
     /** Define the unitary vectors perpendicular to foot edge, rotated anti-clockwise. */
-    footVP = CMatrix::rot3d(2, PI/2) * footV.unit();
+    footVP = CMatrix::rot3d(2, PI/2) * footV.normalized();
     /** Define the unitary vectors perpendicular to gaff edge, rotated anti-clockwise. */
-    gaffVP = CMatrix::rot3d(2, PI/2) * gaffV.unit();
+    gaffVP = CMatrix::rot3d(2, PI/2) * gaffV.normalized();
     /** Define the unitary vectors perpendicular to leech edge, rotated anti-clockwise. */
-    leechVP = CMatrix::rot3d(2, PI/2) * leechV.unit();
+    leechVP = CMatrix::rot3d(2, PI/2) * leechV.normalized();
     /** Define the unitary vectors perpendicular to luff edge, rotated anti-clockwise. */
-    luffVP = CMatrix::rot3d(2, PI/2) * luffV.unit();
+    luffVP = CMatrix::rot3d(2, PI/2) * luffV.normalized();
 
     /** Define useful straight lines of edges and mitre. */
     footLine = CSubSpace3d::line(tack , footV);
@@ -265,7 +265,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
         do  /* Loop for optimising the seam position to fit cloth width */
         {
             cnt++;
-            p2[npanel] = p2[npanel-1] + (clothW - seamW - exb) * leechV.unit();
+            p2[npanel] = p2[npanel-1] + (clothW - seamW - exb) * leechV.normalized();
             t2[npanel] = 4; // type2 = 4 = leech intersection for all horizontally cut panels
             seamL = CSubSpace3d::line( p2[npanel] , seamV );
 
@@ -464,7 +464,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
             *   except if this is the top panel
             */
             if ( flag == false ) {
-                vb= CMatrix::rot3d(2,PI/2) * CVector3d(dev[npanel-1].top[npb-1] - dev[npanel-1].top[0]).unit();
+                vb= CMatrix::rot3d(2,PI/2) * CVector3d(dev[npanel-1].top[npb-1] - dev[npanel-1].top[0]).normalized();
                 for (k = 1 ; k < npb -1 ; k ++)
                 {
                     vk= CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
@@ -635,7 +635,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
         do
         {
             cnt++;
-            p2[npanel] = p2[npanel-1] + leechV.unit() * (clothW - seamW - exb);
+            p2[npanel] = p2[npanel-1] + leechV.normalized() * (clothW - seamW - exb);
             t2[npanel] = 4; // type2=4=leech intersection for all horizontally cut panels
             seamL = CSubSpace3d::line( p2[npanel] , seamV );
 
@@ -686,11 +686,11 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
                     ip = seamL.intersect(luffLine).getp();
                 else throw layout_error("CSailWorker::LayoutTwist -1 : twist intersection of seam and luff is not a point!");
 
-                if ( CVector3d( (ip - luffV.unit() * (seamW + clothW/5) ) - p1[npanel-1] ) * luffV < 0 )
+                if ( CVector3d( (ip - luffV.normalized() * (seamW + clothW/5) ) - p1[npanel-1] ) * luffV < 0 )
                 {   // seam intersects luff below previous panel luff point + 1/5 clothW
-                    p1[npanel] = p1[npanel-1] + luffV.unit() * (seamW + clothW/5);
+                    p1[npanel] = p1[npanel-1] + luffV.normalized() * (seamW + clothW/5);
                     t1[npanel] = 2;  // 2=luff type of intersection
-                    seamVT = CVector3d( p1[npanel] - p2[npanel] ).unit();
+                    seamVT = CVector3d( p1[npanel] - p2[npanel] ).normalized();
                     seamLT = CSubSpace3d::line(p2[npanel] , seamVT);
                     ip = seamLT.intersect(luffLine).getp();
 #ifdef DEBUG
@@ -798,7 +798,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
              *  and straighten this top edge Except if this is the top panel. */
             if (flag == false)
             {
-                vb= CMatrix::rot3d(2,PI/2) * CVector3d(dev[npanel-1].top[npb-1] - dev[npanel-1].top[0]).unit();
+                vb= CMatrix::rot3d(2,PI/2) * CVector3d(dev[npanel-1].top[npb-1] - dev[npanel-1].top[0]).normalized();
                 for (k = 1 ; k < npb-1 ; k++)
                 {
                     vk= CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
@@ -930,7 +930,7 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
     CPoint3d ip;
 
     /* define seamV as the vector parrallel to the leech vector (peak-clew)*/
-    CVector3d seamV = leechV.unit();
+    CVector3d seamV = leechV.normalized();
     CSubSpace seamL; // seam Line
 
     /* create variables for the development and edge corrections */
@@ -1066,7 +1066,7 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
             *   and straighten this top edge except if this is the top panel */
             if ( flag == false )
             {
-                vb = CMatrix::rot3d(2 , PI/2)*CVector3d(dev[npanel-1].top[npb-1] -dev[npanel-1].top[0]).unit();
+                vb = CMatrix::rot3d(2 , PI/2)*CVector3d(dev[npanel-1].top[npb-1] -dev[npanel-1].top[0]).normalized();
                 for (k = 1; k < npb-1; k ++)
                 {
                     vk = CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
@@ -1217,7 +1217,7 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
     /** Position the seams starting from the centre of the wing (foot) */
     for (npanel = 1; npanel < MAX_PANELS-1; npanel++)
     {
-        p2[npanel] = p2[npanel-1] + (clothW-seamW)/(seamV*leechVP) * leechV.unit();
+        p2[npanel] = p2[npanel-1] + (clothW-seamW)/(seamV*leechVP) * leechV.normalized();
         t2[npanel] = 4; // type2=4=leech intersection for all horizontally cut panels
         seamL = CSubSpace3d::line(p2[npanel], seamV);
 
@@ -1414,7 +1414,7 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
         */
         if ( flag == false )
         {
-            vb= CMatrix::rot3d(2,PI/2)*CVector3d(dev[npanel-1].top[npb-1] -dev[npanel-1].top[0]).unit();
+            vb= CMatrix::rot3d(2,PI/2)*CVector3d(dev[npanel-1].top[npb-1] -dev[npanel-1].top[0]).normalized();
             for (k = 1; k < npb-1; k ++)
             {
                 vk= CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
@@ -2557,7 +2557,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
         {
             cnt++;
             // move base point along the foot
-            pt = p1[npanel-1] - (clothW - seamW - exb) * footV.unit();
+            pt = p1[npanel-1] - (clothW - seamW - exb) * footV.normalized();
             seamL = CSubSpace3d::line( pt , footVP );
             p1[npanel] = seamL.intersect(footLine).getp();
             t1[npanel] = 1; // type 1=foot intersection
@@ -2644,7 +2644,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
              *   and straighten this top edge except if this is the top panel flag==true */
             if ( flag == false )
             {
-                vb= CMatrix::rot3d(2,PI/2)*CVector3d(dev[npanel-1].top[npb-1] -dev[npanel-1].top[0]).unit();
+                vb= CMatrix::rot3d(2,PI/2)*CVector3d(dev[npanel-1].top[npb-1] -dev[npanel-1].top[0]).normalized();
                 for (k = 1 ; k < npb-1 ; k++)
                 {
                     vk = CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
@@ -2709,7 +2709,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
         do
         {
             cnt++;
-            p2[npanel] = p2[npanel-1] + (clothW -seamW -exb) * leechV.unit();
+            p2[npanel] = p2[npanel-1] + (clothW -seamW -exb) * leechV.normalized();
             t2[npanel] = 4; // type2=4=leech intersection for all horizontally cut panels
             seamL = CSubSpace3d::line(p2[npanel] , leechVP);
 
@@ -2861,7 +2861,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
              *   and straighten this top edge except if this is the top panel */
             if ( flag == false )
             {
-                vb = CMatrix::rot3d(2,PI/2)*CVector3d(dev[npanel-1].top[npb-1] -dev[npanel-1].top[0]).unit();
+                vb = CMatrix::rot3d(2,PI/2)*CVector3d(dev[npanel-1].top[npb-1] -dev[npanel-1].top[0]).normalized();
                 for (k = 1 ; k < npb -1 ; k++)
                 {
                     vk = CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
@@ -3024,7 +3024,7 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
         do {
             cnt++;
             // move base point perpendicular to foot
-            pt = p1[npanel-1] + (clothW -seamW -exb) * footVP.unit();
+            pt = p1[npanel-1] + (clothW -seamW -exb) * footVP.normalized();
             seamL = CSubSpace3d::line( pt, footV );
 
             // find intersection on luff and mitre
@@ -3088,7 +3088,7 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
             *   and straighten this top edge except if this is the top panel
             */
             if ( flag == false ) {
-                vb = CMatrix::rot3d(2, PI/2) * CVector3d(dev[npanel-1].top[npb-1] -dev[npanel-1].top[0]).unit();
+                vb = CMatrix::rot3d(2, PI/2) * CVector3d(dev[npanel-1].top[npb-1] -dev[npanel-1].top[0]).normalized();
                 for( k = 1; k < npb-1; k ++) {
                     vk= CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
                     v = vb * -(vk*vb);
@@ -3150,7 +3150,7 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
         do {
             cnt++;
             /* Determine width of Panel Perpendicular to Leech side. */
-            pt = p1[npanel-1] + (clothW -seamW -exb) * leechVP.unit();
+            pt = p1[npanel-1] + (clothW -seamW -exb) * leechVP.normalized();
             seamL = CSubSpace3d::line(pt, leechV);
 
 	    // find intersection on mitre
@@ -3253,7 +3253,7 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
             /* Now we compute the deviation of top edge of developed panel
             *  and straighten this top edge except if this is the top panel */
             if ( flag == false ) {
-                vb = CMatrix::rot3d(2,PI/2) * CVector3d(dev[npanel-1].top[npb-1] -dev[npanel-1].top[0]).unit();
+                vb = CMatrix::rot3d(2,PI/2) * CVector3d(dev[npanel-1].top[npb-1] -dev[npanel-1].top[0]).normalized();
                 for( k = 1; k < npb-1; k++ )
                 {
                     vk = CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
@@ -3677,7 +3677,7 @@ CPoint3d CSailWorker::EdgeIntersect( const enumEdgeType &Edge, const CPoint3d &p
         EdgeR = luffR;
         EdgeRP = luffRP;
         vEdge = CVector3d( pEnd2 - pEnd1 );
-        vpEdge = CMatrix::rot3d(2 , PI/2) * vEdge.unit();
+        vpEdge = CMatrix::rot3d(2 , PI/2) * vEdge.normalized();
         break;
 
     case GAFF_EDGE:
@@ -3686,7 +3686,7 @@ CPoint3d CSailWorker::EdgeIntersect( const enumEdgeType &Edge, const CPoint3d &p
         EdgeR = gaffR;
         EdgeRP = gaffRP;
         vEdge = CVector3d( pEnd2 - pEnd1 );
-        vpEdge = CMatrix::rot3d(2 , PI/2) * vEdge.unit();
+        vpEdge = CMatrix::rot3d(2 , PI/2) * vEdge.normalized();
         break;
 
     case FOOT_EDGE:
@@ -3695,7 +3695,7 @@ CPoint3d CSailWorker::EdgeIntersect( const enumEdgeType &Edge, const CPoint3d &p
         EdgeR = footR;
         EdgeRP = footRP;
         vEdge = CVector3d( pEnd2 - pEnd1 );
-        vpEdge = CMatrix::rot3d(2 , -PI/2) * vEdge.unit();
+        vpEdge = CMatrix::rot3d(2 , -PI/2) * vEdge.normalized();
         break;
 
     case LEECH_EDGE:
@@ -3704,7 +3704,7 @@ CPoint3d CSailWorker::EdgeIntersect( const enumEdgeType &Edge, const CPoint3d &p
         EdgeR = leechR;
         EdgeRP = leechRP;
         vEdge = CVector3d( pEnd2 - pEnd1 );
-        vpEdge = CMatrix::rot3d(2 , -PI/2) * vEdge.unit();
+        vpEdge = CMatrix::rot3d(2 , -PI/2) * vEdge.normalized();
         break;
     }
 

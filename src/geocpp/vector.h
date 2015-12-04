@@ -57,7 +57,7 @@ public:
     /** Returns corresponding unit length vector for non-zero vectors
      * and zero vector otherwise.
      */
-    CVector unit(void) const
+    CVector normalized(void) const
     {
         const real n = length();
         if (n<EPS)
