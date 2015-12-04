@@ -45,7 +45,6 @@ static const char* fragmentShader =
  */
 CSailDispGL::CSailDispGL(QWidget * parent)
     : QOpenGLWidget(parent)
-    , wasResized(true)
 {
 }
 
@@ -176,19 +175,6 @@ void CSailDispGL::paintGL()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    if (wasResized) {
-        glViewport(0, 0, (GLint)resizeW, (GLint)resizeH);
-        setViewRect(CRect3d(CPoint3d(0, 0, 0), CPoint3d(resizeW, resizeH, 0)));
-        wasResized = 0;
-    }
-
-    // set coordinate system to match the logical viewport
-    const CRect3d lRect = getLogicalRect();
-    scale = CVector3d(
-        real(2) / lRect.width(),
-        real(2) / lRect.height(),
-        real(2) / sqrt(lRect.width()*lRect.width() + lRect.height()*lRect.height()));
-
     draw(dispObject);
 }
 
@@ -200,9 +186,15 @@ void CSailDispGL::paintGL()
  */
 void CSailDispGL::resizeGL( int w, int h )
 {
-    resizeW = w;
-    resizeH = h;
-    wasResized = 1;
+    glViewport(0, 0, (GLint)w, (GLint)h);
+    setViewRect(CRect3d(CPoint3d(0, 0, 0), CPoint3d(w, h, 0)));
+
+    // set coordinate system to match the logical viewport
+    const CRect3d lRect = getLogicalRect();
+    scale = CVector3d(
+        real(2) / lRect.width(),
+        real(2) / lRect.height(),
+        real(2) / sqrt(lRect.width()*lRect.width() + lRect.height()*lRect.height()));
 }
 
 
