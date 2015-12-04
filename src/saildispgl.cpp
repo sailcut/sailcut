@@ -19,6 +19,7 @@
 
 #include <cmath>
 
+#include <QMatrix4x4>
 #include <QMouseEvent>
 #include <QOpenGLShaderProgram>
 
@@ -26,18 +27,17 @@
 
 static const char* vertexShader =
     "attribute vec4 posAttr;\n"
-    "uniform vec4 centerAttr;\n"
-    "uniform vec4 scaleAttr;\n"
+    "uniform mat4 matrixAttr;\n"
     "void main()\n"
     "{\n"
-    "   gl_Position = (posAttr - centerAttr) * scaleAttr;\n"
+    "   gl_Position = matrixAttr * posAttr;\n"
     "}\n";
 
 static const char* fragmentShader =
-    "uniform vec4 colAttr;\n"
+    "uniform vec4 colorAttr;\n"
     "void main()\n"
     "{\n"
-    "     gl_FragColor = colAttr;\n"
+    "     gl_FragColor = colorAttr;\n"
     "}\n";
 
 
@@ -115,13 +115,13 @@ void CSailDispGL::draw( const CPanelGroup &sail )
     for (i = 0; i < sail.size(); i++) {
         if (sail.type == HULL) {
             // Hull color (green)
-            program->setUniformValue(colAttr, QColor(26, 128, 51));
+            program->setUniformValue(colorAttr, QColor(26, 128, 51));
         } else if ( sail.type == RIG) {
             // Rig color (dark red)
-            program->setUniformValue(colAttr, QColor(128, 26, 26));
+            program->setUniformValue(colorAttr, QColor(128, 26, 26));
         } else {
             // Sail color (alternate dark yellow / yellow / white)
-            program->setUniformValue(colAttr, QColor(204, 179 + 12 * (i % 3), 102 + 51 * (i % 3)));
+            program->setUniformValue(colorAttr, QColor(204, 179 + 12 * (i % 3), 102 + 51 * (i % 3)));
         }
         draw(sail[i]);
     }
@@ -152,10 +152,9 @@ void CSailDispGL::initializeGL()
     program->link();
     program->bind();
 
-    centerAttr = program->uniformLocation("centerAttr");
-    colAttr = program->uniformLocation("colAttr");
+    colorAttr = program->uniformLocation("colorAttr");
+    matrixAttr = program->uniformLocation("matrixAttr");
     posAttr = program->attributeLocation("posAttr");
-    scaleAttr = program->uniformLocation("scaleAttr");
 }
 
 
@@ -179,8 +178,16 @@ void CSailDispGL::paintGL()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    program->setUniformValue(centerAttr, QVector4D(center.x(), center.y(), center.z(), 0));
-    program->setUniformValue(scaleAttr, scale);
+    // set transform
+    const CRect3d lRect = getLogicalRect();
+    QMatrix4x4 matrix;
+    matrix.setToIdentity();
+    matrix.scale(
+        real(2) / lRect.width(),
+        real(2) / lRect.height(),
+        real(2) / sqrt(lRect.width() * lRect.width() + lRect.height() * lRect.height()));
+    matrix.translate(-center.x(), -center.y(), -center.z());
+    program->setUniformValue(matrixAttr, matrix);
 
     draw(dispObject);
 }
@@ -195,14 +202,6 @@ void CSailDispGL::resizeGL( int w, int h )
 {
     glViewport(0, 0, (GLint)w, (GLint)h);
     setViewRect(CRect3d(CPoint3d(0, 0, 0), CPoint3d(w, h, 0)));
-
-    // set coordinate system to match the logical viewport
-    const CRect3d lRect = getLogicalRect();
-    scale = QVector4D(
-        real(2) / lRect.width(),
-        real(2) / lRect.height(),
-        real(2) / sqrt(lRect.width()*lRect.width() + lRect.height()*lRect.height()),
-        1);
 }
 
 

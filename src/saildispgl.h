@@ -24,7 +24,6 @@
 
 #include <QOpenGLFunctions>
 #include <QOpenGLWidget>
-#include <QVector4D>
 
 
 class QOpenGLShaderProgram;
@@ -55,12 +54,9 @@ private:
     void putPoint(GLfloat **vertex, const CPoint3d &pt) const;
 
     QOpenGLShaderProgram *program;
-    int centerAttr;
-    int colAttr;
+    int colorAttr;
+    int matrixAttr;
     int posAttr;
-    int scaleAttr;
-
-    QVector4D scale;
 };
 
 
