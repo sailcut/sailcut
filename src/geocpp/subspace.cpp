@@ -75,7 +75,7 @@ bool CSubSpace::contains(const CVector &point) const
 {
     CVector prod = m*(point-p);
 
-    return ( prod.norm() < EPS );
+    return ( prod.length() < EPS );
 }
 
 

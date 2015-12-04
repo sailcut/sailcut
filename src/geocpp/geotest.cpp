@@ -48,7 +48,7 @@ void test_point(void)
     //cin >> r3;
     cout << "r3\t " << r3 << endl;
     cout << "p3 - q3\t " << p3-q3 << endl;
-    cout << "|p3,q3|\t " << CVector3d(q3 - p3).norm() << endl;
+    cout << "|p3,q3|\t " << CVector3d(q3 - p3).length() << endl;
     cout << "p2 - q2\t " << p2-q2 << endl;
     cout << " " << endl;
 }

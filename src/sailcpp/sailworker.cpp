@@ -70,7 +70,7 @@ CSailWorker::CSailWorker(const CSailDef &s) : CSailDef(s)
     /* Compute triangle tack-peak-clew. */
     real aa, b, bb;
     bb = atan2( peak.y() - tack.y() , peak.x() - tack.x() );
-    b = CVector3d(peak - tack).norm();
+    b = CVector3d(peak - tack).length();
     aa = Atriangle( leechL , b , footL );
 
     v1 = CVector3d( footL, 0, 0 );  // initial foot vector set on horizontal
@@ -1811,7 +1811,7 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
             // luff side lower central
             pt0 = ( luffCatenary[nbSections] + leechCatenary[nbSections] ) * 0.5;
             ptFoot = EdgeIntersect( FOOT_EDGE,  ptCentre , CVector3d(ptCentre - pt0) );
-            a = int( (CVector3d (ptFoot - ptCentre).norm()) / (clothW) );
+            a = int( (CVector3d (ptFoot - ptCentre).length()) / (clothW) );
             if (a < 2)
                 a = 2;
 
@@ -2277,7 +2277,7 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
             // luff side lower central
             pt0=(luffCatenary[nbSections]+leechCatenary[nbSections])*0.5;
             ptFoot = EdgeIntersect( FOOT_EDGE,  ptCentre , CVector3d(ptCentre-pt0) );
-            a = int( (CVector3d(ptFoot-ptCentre).norm()) / (clothW) );
+            a = int( (CVector3d(ptFoot-ptCentre).length()) / (clothW) );
             if (a < 2)
                 a = 2;
 
@@ -3371,8 +3371,8 @@ CPoint3d CSailWorker::AftIntersect( const CPoint3d& pt1 ) const
  */
 real CSailWorker::Area()
 {
-    real surface = luffV.cross(footV).norm() / 2;
-    surface = surface + leechV.cross(gaffV).norm() / 2;
+    real surface = luffV.cross(footV).length() / 2;
+    surface = surface + leechV.cross(gaffV).length() / 2;
     surface = surface + .75*(luffL*luffR + footL*footR + leechL*leechR + gaffL*gaffR);
 
     return ( .01 * floor(surface /10000) );
@@ -3386,7 +3386,7 @@ real CSailWorker::Area()
  */
 real CSailWorker::Diagonal()
 {
-    return floor( CVector3d(head-clew).norm() );
+    return floor( CVector3d(head-clew).length() );
 }
 
 
@@ -3436,7 +3436,7 @@ real CSailWorker::IRCwidth( const real &HL )
     {
         h1 = real(i) / imax;
         p = Zpoint(p1 +CVector3d(p2 - p1) * h1);
-        w = w + CVector3d(p - p3).norm();
+        w = w + CVector3d(p - p3).length();
         p3 = p;
     }
 
@@ -3512,7 +3512,7 @@ real CSailWorker::SailWidth( const  real  &HL )
     {
         h1 = real(i) / imax;
         p = Zpoint( p1 + CVector3d(p2 - p1) * h1 );
-        w = w + CVector3d(p - p3).norm();
+        w = w + CVector3d(p - p3).length();
         p3 = p;
     }
     return ( w );
@@ -3543,7 +3543,7 @@ real CSailWorker::SailLP( )
         p =  p1 + v * h1 ;
         p.z() = 0;
         p3 = Zpoint( p );
-        w = w + CVector3d(p3 - p2).norm();
+        w = w + CVector3d(p3 - p2).length();
         p2 = p3;
     }
     //
@@ -3570,7 +3570,7 @@ real CSailWorker::LeechLength( const real &h )
         h1= real(i) / imax;
         p2 = clew + leechV * (h * h1);
         p3 = Zpoint( EdgeIntersect( LEECH_EDGE, p2 , leechVP) );
-        l = l + CVector3d(p3 - p1).norm();
+        l = l + CVector3d(p3 - p1).length();
         // printf ("step = %f - p2.y = %f - leech length = %f \n", h1, p2.y(), l);
         p1 = p3;
     }
@@ -3595,7 +3595,7 @@ real CSailWorker::LuffLength( const real &h )
         h1= real(i) / imax;
         p2 = tack + luffV * (h * h1);
         p3 = Zpoint( EdgeIntersect( LUFF_EDGE, p2 , luffVP ) );
-        l = l + CVector3d(p3 - p1).norm();
+        l = l + CVector3d(p3 - p1).length();
         p1 = p3;
     }
     return ( l );
@@ -3653,7 +3653,7 @@ CPoint3d CSailWorker::FwdIntersect( const CPoint3d &pt1 ) const
  */
 CPoint3d CSailWorker::EdgeIntersect( const enumEdgeType &Edge, const CPoint3d &pt1, const CVector3d &v1 ) const
 {
-    if ( v1.norm() <= EPS )
+    if ( v1.length() <= EPS )
         throw layout_error("CSailWorker::EdgeIntersect : input vector is nul");
 
     // Input line
@@ -3727,7 +3727,7 @@ CPoint3d CSailWorker::EdgeIntersect( const enumEdgeType &Edge, const CPoint3d &p
     else if ( CVector3d(p0 - pEnd2) * vEdge >= 0 )
         p2 = pEnd2;  // intersection right of edge
     else if ( fabs(EdgeR) > 1 ) {   // intersection is on curved edge
-        h1 = CVector3d(p0 - pEnd1).norm() / (vEdge.norm() + EPS); // relative height
+        h1 = CVector3d(p0 - pEnd1).length() / (vEdge.length() + EPS); // relative height
         d1 = EdgeR * RoundP(h1 , EdgeRP); // local depth of edge curve
         p1 = p0 + vpEdge * d1;
 
@@ -3739,7 +3739,7 @@ CPoint3d CSailWorker::EdgeIntersect( const enumEdgeType &Edge, const CPoint3d &p
 
         v = CVector3d( p2 - p1);
 
-        if ( v.norm() >= EPS ) {
+        if ( v.length() >= EPS ) {
             // translate point0 on straight edge
             p3 = p0 + v;
 
@@ -3749,14 +3749,14 @@ CPoint3d CSailWorker::EdgeIntersect( const enumEdgeType &Edge, const CPoint3d &p
             else if ( CVector3d(p3 - pEnd2) * vEdge >= 0 ) // p3 outside right of edge end
                 p2 = pEnd2;
             else {   // point is on edge curve
-                h2 = CVector3d(p3 - pEnd1).norm() / (vEdge.norm() + EPS);
+                h2 = CVector3d(p3 - pEnd1).length() / (vEdge.length() + EPS);
                 d2 = EdgeR * RoundP( h2 , EdgeRP ); // local depth of edge curve
                 p2 = p3 + vpEdge * d2;
             }
 
             v = CVector3d ( p2 - p1 );
 
-            if ( v.norm() <= EPS )
+            if ( v.length() <= EPS )
                 // keep p1 which is strictly on input line
                 p2 = p1;
             else {   // displaced point 2 and p1 are used for Line2
@@ -3780,7 +3780,7 @@ CPoint3d CSailWorker::EdgeIntersect( const enumEdgeType &Edge, const CPoint3d &p
  */
 CPoint3d CSailWorker::MitreIntersect( const CPoint3d &pt1, const CVector3d &v1 ) const
 {
-    if ( v1.norm() <= EPS )
+    if ( v1.length() <= EPS )
         throw layout_error("CSailWorker::MitreIntersect : input vector is nul");
     // real x=0, y=0, z=0; // for debugging only
 
@@ -3789,7 +3789,7 @@ CPoint3d CSailWorker::MitreIntersect( const CPoint3d &pt1, const CVector3d &v1 )
 
     CPoint3d p2 = pt1;
 
-    if ( CVector3d(p2 - clew).norm() <= EPS )
+    if ( CVector3d(p2 - clew).length() <= EPS )
         p2 = clew;
     else {
         /* point at intersection of input vector and mitre
@@ -3818,7 +3818,7 @@ CPoint3d CSailWorker::Zpoint( const CPoint3d &p1 ) const
     CPoint3d pAft = AftIntersect( p1 );    // rear end of the cord
 
     /* computing local cord of the profile */
-    cord = CVector3d( pAft - pFwd ).norm();
+    cord = CVector3d( pAft - pFwd ).length();
 
     /* computing Z from normalised position on profile */
     if ( cord < 1 )   // to avoid division by cord = zero
@@ -3828,7 +3828,7 @@ CPoint3d CSailWorker::Zpoint( const CPoint3d &p1 ) const
     }
     else   // position on profile
     {
-        pos = ( CVector3d( p1 - pFwd ).norm() ) / cord;
+        pos = ( CVector3d( p1 - pFwd ).length() ) / cord;
 
         /* computing the relative height on the sail */
         real h1 = (p1.y() - tack.y()) / (peak.y() - tack.y());  // for mould

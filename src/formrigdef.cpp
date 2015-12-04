@@ -437,7 +437,7 @@ bool CFormRigDef::check()
     lbl_MS_TackX->setText( QString::number( int(round(rigdef->MStack.x()) ) ) );
     lbl_MS_TackY->setText( QString::number( int(rigdef->MStack.y()) ));
 
-    lbl_MS_LuffL->setText( QString::number( int(round(MSluff.norm()) ) ) );
+    lbl_MS_LuffL->setText( QString::number( int(round(MSluff.length()) ) ) );
     lbl_MS_Rake->setText( QString::number( int(round(MSluff.x()) ) ) );
 
     lbl_MS_LuffR->setText( QString::number( round(rd1) ) );

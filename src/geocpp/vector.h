@@ -44,9 +44,9 @@ public:
     CVector(size_t size) : vector<real>(size) {};
     CVector(const CVector &v) : vector<real>(v) {};
 
-    /** Returns the vector's norm ("length")
+    /** Returns the vector's length.
      */
-    real norm(void) const
+    real length() const
     {
         real tot = 0;
         for (size_t i = 0; i < size(); i++)
@@ -59,7 +59,7 @@ public:
      */
     CVector unit(void) const
     {
-        real n = norm();
+        const real n = length();
         if (n<EPS)
             return CVector(size());
         else

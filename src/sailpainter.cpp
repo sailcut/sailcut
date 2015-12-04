@@ -240,7 +240,7 @@ void CSailPainter::drawMarkers(const CPanel &currentPanel)
 
     // top  middle
     npt = int ( (currentPanel.top.size() -1) /2 );
-    if ( CVector3d(currentPanel.top[npt] - currentPanel.top.front()).norm() > MIN_DISTANCE )
+    if ( CVector3d(currentPanel.top[npt] - currentPanel.top.front()).length() > MIN_DISTANCE )
     {
         dx = CVector3d( currentPanel.top[npt] - currentPanel.top.front() ) * CVector3d( currentPanel.top.back() - currentPanel.top.front() ).unit();
         dy = Distance3d(currentPanel.top[npt] , currentPanel.top.front() , currentPanel.top.back() );
@@ -248,7 +248,7 @@ void CSailPainter::drawMarkers(const CPanel &currentPanel)
     }
 
     // top aft corner
-    if ( CVector3d(currentPanel.top.back() - currentPanel.top.front()).norm() > MIN_DISTANCE )
+    if ( CVector3d(currentPanel.top.back() - currentPanel.top.front()).length() > MIN_DISTANCE )
         drawCoord(currentPanel.top.back(), .25*PI);
 
     // right middle
@@ -256,7 +256,7 @@ void CSailPainter::drawMarkers(const CPanel &currentPanel)
     drawCoord(currentPanel.right[npt], 0.05*PI);
 
     // left side
-    if ( CVector3d(currentPanel.left.back() - currentPanel.left.front()).norm() > MIN_DISTANCE )
+    if ( CVector3d(currentPanel.left.back() - currentPanel.left.front()).length() > MIN_DISTANCE )
     {
         // left bottom
         drawCoord(currentPanel.left.front(), -.7*PI);
@@ -264,13 +264,13 @@ void CSailPainter::drawMarkers(const CPanel &currentPanel)
         npt = (currentPanel.left.size() -1)/2;
         drawCoord(currentPanel.left[npt], .95*PI);
         // left upper middle
-        if ( CVector3d(currentPanel.left[npt+1] - currentPanel.left[npt]).norm() > MIN_DISTANCE )
+        if ( CVector3d(currentPanel.left[npt+1] - currentPanel.left[npt]).length() > MIN_DISTANCE )
             drawCoord(currentPanel.left[npt+1], .8*PI);
     }
 
     // bottom intermediate fwd
     npt = int ( (currentPanel.bottom.size() -1) /5 );
-    if ( CVector3d(currentPanel.bottom[npt] - currentPanel.bottom.front()).norm() > MIN_DISTANCE )
+    if ( CVector3d(currentPanel.bottom[npt] - currentPanel.bottom.front()).length() > MIN_DISTANCE )
     {
         dx = CVector3d(  currentPanel.bottom[npt] -  currentPanel.bottom.front() ) * CVector3d(  currentPanel.bottom.back() -  currentPanel.bottom.front() ).unit();
         dy = Distance3d( currentPanel.bottom[npt] ,  currentPanel.bottom.front() ,  currentPanel.bottom.back() );
@@ -284,7 +284,7 @@ void CSailPainter::drawMarkers(const CPanel &currentPanel)
 
     // bottom intermediate aft
     npt = int ( (currentPanel.bottom.size() -1) *4/5 );
-    if ( CVector3d(currentPanel.bottom[npt] - currentPanel.bottom.back()).norm() > MIN_DISTANCE )
+    if ( CVector3d(currentPanel.bottom[npt] - currentPanel.bottom.back()).length() > MIN_DISTANCE )
     {
         dx = CVector3d(  currentPanel.bottom[npt] -  currentPanel.bottom.front() ) * CVector3d(  currentPanel.bottom.back() -  currentPanel.bottom.front() ).unit();
         dy = Distance3d( currentPanel.bottom[npt] ,  currentPanel.bottom.front(),  currentPanel.bottom.back() );

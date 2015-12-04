@@ -119,7 +119,7 @@ CRect3d CRect3d::join(const CRect3d& rect) const
  */
 CSubSpace CSubSpace2d::line(const CPoint2d &p, const CVector2d &v)
 {
-    if (!v.norm())
+    if (!v.length())
     {
         cout << "CSubSpace2d::line : Crash point = " << p << endl;
         throw invalid_argument("CSubSpace2d::line : Input vector cannot be zero");
@@ -135,7 +135,7 @@ CSubSpace CSubSpace2d::line(const CPoint2d &p, const CVector2d &v)
  */
 CSubSpace CSubSpace3d::line(const CPoint3d &p, const CVector3d &v)
 {
-    if (!v.norm())
+    if (!v.length())
     {
         cout << "CSubSpace3d::line : Crash point = " << p << endl;
         throw invalid_argument("CSubSpace3d::line : Input vector cannot be zero point ");
@@ -152,7 +152,7 @@ CSubSpace CSubSpace3d::line(const CPoint3d &p, const CVector3d &v)
  */
 CSubSpace CSubSpace3d::plane(const CPoint3d &p, const CVector3d &v1, const CVector3d& v2)
 {
-    if (!v1.cross(v2).norm())
+    if (!v1.cross(v2).length())
     {
         cout << "CSubSpace3d::plane : Crash point = " << p << endl;
         throw invalid_argument("CSubSpace3d::plane : 2 Vectors cannot be colinear");
