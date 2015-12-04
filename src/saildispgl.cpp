@@ -26,10 +26,11 @@
 
 static const char* vertexShader =
     "attribute vec4 posAttr;\n"
+    "uniform vec4 centerAttr;\n"
     "uniform vec4 scaleAttr;\n"
     "void main()\n"
     "{\n"
-    "   gl_Position = posAttr * scaleAttr;\n"
+    "   gl_Position = (posAttr - centerAttr) * scaleAttr;\n"
     "}\n";
 
 static const char* fragmentShader =
@@ -51,9 +52,9 @@ CSailDispGL::CSailDispGL(QWidget * parent)
 
 void CSailDispGL::putPoint(GLfloat **vertex, const CPoint3d &pt) const
 {
-    *((*vertex)++) = (pt.x() - center.x());
-    *((*vertex)++) = (pt.y() - center.y());
-    *((*vertex)++) = (pt.z() - center.z());
+    *((*vertex)++) = pt.x();
+    *((*vertex)++) = pt.y();
+    *((*vertex)++) = pt.z();
 }
 
 /** Draw a panel of a sail.
@@ -151,6 +152,7 @@ void CSailDispGL::initializeGL()
     program->link();
     program->bind();
 
+    centerAttr = program->uniformLocation("centerAttr");
     colAttr = program->uniformLocation("colAttr");
     posAttr = program->attributeLocation("posAttr");
     scaleAttr = program->uniformLocation("scaleAttr");
@@ -177,7 +179,9 @@ void CSailDispGL::paintGL()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+    program->setUniformValue(centerAttr, QVector4D(center.x(), center.y(), center.z(), 0));
     program->setUniformValue(scaleAttr, scale);
+
     draw(dispObject);
 }
 

@@ -55,6 +55,7 @@ private:
     void putPoint(GLfloat **vertex, const CPoint3d &pt) const;
 
     QOpenGLShaderProgram *program;
+    int centerAttr;
     int colAttr;
     int posAttr;
     int scaleAttr;
