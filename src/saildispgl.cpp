@@ -25,11 +25,12 @@
 #include "saildispgl.h"
 
 static const char* vertexShader =
-      "attribute vec4 posAttr;\n"
-      "void main()\n"
-      "{\n"
-      "   gl_Position = posAttr;\n"
-      "}\n";
+    "attribute vec4 posAttr;\n"
+    "uniform vec4 scaleAttr;\n"
+    "void main()\n"
+    "{\n"
+    "   gl_Position = posAttr * scaleAttr;\n"
+    "}\n";
 
 static const char* fragmentShader =
     "uniform vec4 colAttr;\n"
@@ -50,9 +51,9 @@ CSailDispGL::CSailDispGL(QWidget * parent)
 
 void CSailDispGL::putPoint(GLfloat **vertex, const CPoint3d &pt) const
 {
-    *((*vertex)++) = (pt.x() - center.x()) * scale.x();
-    *((*vertex)++) = (pt.y() - center.y()) * scale.y();
-    *((*vertex)++) = (pt.z() - center.z()) * scale.z();
+    *((*vertex)++) = (pt.x() - center.x());
+    *((*vertex)++) = (pt.y() - center.y());
+    *((*vertex)++) = (pt.z() - center.z());
 }
 
 /** Draw a panel of a sail.
@@ -152,6 +153,7 @@ void CSailDispGL::initializeGL()
 
     colAttr = program->uniformLocation("colAttr");
     posAttr = program->attributeLocation("posAttr");
+    scaleAttr = program->uniformLocation("scaleAttr");
 }
 
 
@@ -175,6 +177,7 @@ void CSailDispGL::paintGL()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+    program->setUniformValue(scaleAttr, scale);
     draw(dispObject);
 }
 
@@ -191,10 +194,11 @@ void CSailDispGL::resizeGL( int w, int h )
 
     // set coordinate system to match the logical viewport
     const CRect3d lRect = getLogicalRect();
-    scale = CVector3d(
+    scale = QVector4D(
         real(2) / lRect.width(),
         real(2) / lRect.height(),
-        real(2) / sqrt(lRect.width()*lRect.width() + lRect.height()*lRect.height()));
+        real(2) / sqrt(lRect.width()*lRect.width() + lRect.height()*lRect.height()),
+        1);
 }
 
 
