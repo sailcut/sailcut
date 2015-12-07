@@ -100,6 +100,10 @@ public:
         return ret;
     }
 
+    /** Dot (real) product.
+    */
+    static real dotProduct(const CVector3d &v1, const CVector3d &v2);
+
     /** Assignment. */
     CVector3d &operator=(const CVector3d &v)
     {

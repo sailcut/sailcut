@@ -21,6 +21,14 @@
 #include <geocpp/matrix.h>
 #include <geocpp/subspace.h>
 
+real CVector3d::dotProduct(const CVector3d &v1, const CVector3d &v2)
+{
+    real ret = 0;
+    for (size_t i = 0; i < 3; i++)
+        ret += v1[i] * v2[i];
+    return ret;
+}
+
 /***************************************
 
                  3D box

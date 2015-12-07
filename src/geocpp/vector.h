@@ -134,20 +134,6 @@ public:
             ret[i] *= lambda;
         return ret;
     };
-
-    /** Dot (real) product.
-    */
-    real operator*(const CVector &v2) const
-    {
-#ifdef CHECK_DIMENSIONS
-        if (size() != v2.size())
-            throw invalid_argument("CVector::operator*: dimension mismatch!");
-#endif
-        real ret = 0;
-        for (size_t i = 0; i < size(); i++)
-            ret += (*this)[i] * v2[i];
-        return ret;
-    };
 };
 
 /** Outputs a CVector to a stream.

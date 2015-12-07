@@ -269,7 +269,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
             t2[npanel] = 4; // type2 = 4 = leech intersection for all horizontally cut panels
             seamL = CSubSpace3d::line( p2[npanel] , seamV );
 
-            if ( CVector3d( p2[npanel] - peak ) * leechV > 0 )
+            if (CVector3d::dotProduct(p2[npanel] - peak, leechV) > 0)
             {   // we are above peak, stop this is last panel
                 flag = true;
                 p2[npanel] = peak;
@@ -325,7 +325,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
                     ip = seamL.intersect(luffLine).getp();
                 else throw layout_error("CSailWorker::Layout0 -1 : intersection of seam and luff is not a point!");
 
-                if ( CVector3d( ip - tack ) * luffV <= 0 )
+                if (CVector3d::dotProduct(ip - tack, luffV) <= 0)
                 {   // seam intersects foot
                     if ( seamL.intersect(footLine).getdim() == 0 )
                         p1[npanel] = seamL.intersect(footLine).getp();
@@ -339,7 +339,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
                         t1[0] = 1;
                     }
                 }
-                else if ( CVector3d(ip- head) * luffV > 0 )
+                else if (CVector3d::dotProduct(ip - head, luffV) > 0)
                 {   // seam intersects gaff
                     if ( seamL.intersect(gaffLine).getdim() == 0 )
                         p1[npanel] = seamL.intersect(gaffLine).getp();
@@ -402,7 +402,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
                 *  which are all on the leech for a crosscut layout.
                 */
                 // first check if upper point is not below lower point
-                if ( CVector3d( p2[npanel] - p2[npanel-1] ) * leechV < 0)
+                if (CVector3d::dotProduct(p2[npanel] - p2[npanel-1], leechV) < 0)
                     p2[npanel] = p2[npanel-1];
 
                 lay[npanel-1].right.fill(p2[npanel-1] , p2[npanel]);
@@ -467,8 +467,8 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
                 vb= CMatrix::rot3d(2,PI/2) * CVector3d(dev[npanel-1].top[npb-1] - dev[npanel-1].top[0]).normalized();
                 for (k = 1 ; k < npb -1 ; k ++)
                 {
-                    vk= CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
-                    v= vb * -(vk*vb);
+                    vk = CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
+                    v = vb * -CVector3d::dotProduct(vk, vb);
                     deviation[k] = v;
                     dev[npanel-1].top[k] = dev[npanel-1].top[k] + deviation[k];
                 }
@@ -639,7 +639,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
             t2[npanel] = 4; // type2=4=leech intersection for all horizontally cut panels
             seamL = CSubSpace3d::line( p2[npanel] , seamV );
 
-            if ( CVector3d(p2[npanel]-peak) * leechV > 0 )
+            if (CVector3d::dotProduct(p2[npanel] - peak, leechV) > 0)
             {  // we are above peak, stop this is last panel
                 flag=true;
                 p2[npanel] = peak;
@@ -686,7 +686,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
                     ip = seamL.intersect(luffLine).getp();
                 else throw layout_error("CSailWorker::LayoutTwist -1 : twist intersection of seam and luff is not a point!");
 
-                if ( CVector3d( (ip - luffV.normalized() * (seamW + clothW/5) ) - p1[npanel-1] ) * luffV < 0 )
+                if (CVector3d::dotProduct(( ip - luffV.normalized() * (seamW + clothW/5) ) - p1[npanel-1], luffV) < 0)
                 {   // seam intersects luff below previous panel luff point + 1/5 clothW
                     p1[npanel] = p1[npanel-1] + luffV.normalized() * (seamW + clothW/5);
                     t1[npanel] = 2;  // 2=luff type of intersection
@@ -702,7 +702,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
                     cout << "--- " << endl;
 #endif
                 }
-                else if (CVector3d(ip - head) * luffV > 0)
+                else if (CVector3d::dotProduct(ip - head, luffV) > 0)
                 {   // seam intersects gaff
                     if ( seamL.intersect(gaffLine).getdim() == 0 )
                         p1[npanel] = seamL.intersect(gaffLine).getp();
@@ -749,7 +749,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
                  *  which are all on the leech for a twist cut layout.
                  */
                 // first check if upper point is not below lower point
-                if ( CVector3d( p2[npanel] - p2[npanel-1] ) * leechV < 0 )
+                if (CVector3d::dotProduct(p2[npanel] - p2[npanel-1], leechV) < 0)
                     p2[npanel] = p2[npanel-1];
 
                 lay[npanel-1].right.fill(p2[npanel-1] , p2[npanel]);
@@ -801,8 +801,8 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
                 vb= CMatrix::rot3d(2,PI/2) * CVector3d(dev[npanel-1].top[npb-1] - dev[npanel-1].top[0]).normalized();
                 for (k = 1 ; k < npb-1 ; k++)
                 {
-                    vk= CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
-                    v= vb * -(vk * vb);
+                    vk = CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
+                    v = vb * -CVector3d::dotProduct(vk, vb);
                     deviation[k] = v;
                     dev[npanel-1].top[k] = dev[npanel-1].top[k] + deviation[k];
                 }
@@ -992,7 +992,7 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
                     p2[npanel] = seamL.intersect(gaffLine).getp();
                 else throw layout_error("CSailWorker::LayoutVertical -2 : intersection of seam and gaff is not a point!");
 
-                if ( CVector3d(p2[npanel]-head) * gaffV > 0 )
+                if (CVector3d::dotProduct(p2[npanel] - head, gaffV) > 0)
                     t2[npanel] = 3;
                 else
                 {
@@ -1070,7 +1070,7 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
                 for (k = 1; k < npb-1; k ++)
                 {
                     vk = CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
-                    v = vb * -(vk*vb);
+                    v = vb * -CVector3d::dotProduct(vk, vb);
                     deviation[k] = v;
                     dev[npanel-1].top[k] = dev[npanel-1].top[k] + deviation[k];
                 }
@@ -1217,11 +1217,11 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
     /** Position the seams starting from the centre of the wing (foot) */
     for (npanel = 1; npanel < MAX_PANELS-1; npanel++)
     {
-        p2[npanel] = p2[npanel-1] + (clothW-seamW)/(seamV*leechVP) * leechV.normalized();
+        p2[npanel] = p2[npanel-1] + (clothW-seamW)/CVector3d::dotProduct(seamV, leechVP) * leechV.normalized();
         t2[npanel] = 4; // type2=4=leech intersection for all horizontally cut panels
         seamL = CSubSpace3d::line(p2[npanel], seamV);
 
-        if (CVector3d(p2[npanel]-peak)*leechV > 0)  // we are above peak, stop last panel
+        if (CVector3d::dotProduct(p2[npanel] - peak, leechV) > 0)  // we are above peak, stop last panel
         {
             flag = true;
             p2[npanel] = peak;
@@ -1277,7 +1277,7 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
                 ip = seamL.intersect(luffLine).getp();
             else throw layout_error("CSailWorker::LayoutWing -1 : intersection of seam and luff is not a point!");
 
-            if ( CVector3d( ip - tack ) * luffV <= 0 )
+            if (CVector3d::dotProduct(ip - tack, luffV) <= 0)
             {   // seam intersects foot
                 if ( seamL.intersect(footLine).getdim() == 0 )
                     p1[npanel] = seamL.intersect(footLine).getp();
@@ -1291,7 +1291,7 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
                     t1[0] = 1;
                 }
             }
-            else if ( CVector3d(ip - head) * luffV > 0 )
+            else if (CVector3d::dotProduct(ip - head, luffV) > 0)
             {   // seam intersects gaff
                 if ( seamL.intersect(gaffLine).getdim() == 0 )
                     p1[npanel] = seamL.intersect(gaffLine).getp();
@@ -1417,8 +1417,8 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
             vb= CMatrix::rot3d(2,PI/2)*CVector3d(dev[npanel-1].top[npb-1] -dev[npanel-1].top[0]).normalized();
             for (k = 1; k < npb-1; k ++)
             {
-                vk= CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
-                v= vb * -(vk*vb);
+                vk = CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
+                v = vb * -CVector3d::dotProduct(vk, vb);
                 deviation[k] = v;
                 dev[npanel-1].top[k] = dev[npanel-1].top[k] + deviation[k];
             }
@@ -2580,7 +2580,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
             else
             { // normal panel
                 p2[npanel] = seamL.intersect(mitreLine).getp();
-                if ( CVector3d(p2[npanel] - mitreLuffPt) * mitreV > EPS )
+                if (CVector3d::dotProduct(p2[npanel] - mitreLuffPt, mitreV) > EPS)
                 {
                     t2[npanel] = 2;
                     p2[npanel] = seamL.intersect(luffLine).getp();
@@ -2648,7 +2648,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
                 for (k = 1 ; k < npb-1 ; k++)
                 {
                     vk = CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
-                    v = vb * -(vk * vb);
+                    v = vb * -CVector3d::dotProduct(vk, vb);
                     deviation[k] = v;
                     dev[npanel-1].top[k] = dev[npanel-1].top[k] + deviation[k];
                 }
@@ -2713,7 +2713,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
             t2[npanel] = 4; // type2=4=leech intersection for all horizontally cut panels
             seamL = CSubSpace3d::line(p2[npanel] , leechVP);
 
-            if (CVector3d(p2[npanel]-peak) * leechV >= 0)
+            if (CVector3d::dotProduct(p2[npanel] - peak, leechV) >= 0)
             { // we are above peak, stop last panel
                 flag = true;
                 p2[npanel] = peak;
@@ -2771,7 +2771,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
                     ip = seamL.intersect(mitreLine).getp();
                 else throw layout_error("CSailWorker::LayoutMitre leech-2 : intersection of seam and mitre is not a point!");
 
-                if ( CVector3d(ip - mitreLuffPt) * mitreV <= 0 )
+                if (CVector3d::dotProduct(ip - mitreLuffPt, mitreV) <= 0)
                 { // seam intersects mitre
                     p1[npanel] = ip;
                     t1[npanel] = 5;  // mitre intersection
@@ -2780,7 +2780,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
                 {
                     ip = seamL.intersect(luffLine).getp();
 
-                    if ( CVector3d( ip - head) * luffV > 0 )
+                    if (CVector3d::dotProduct(ip - head, luffV) > 0)
                     { // seam intersects gaff
                         p1[npanel] = seamL.intersect(gaffLine).getp();
                         t1[npanel] = 3;  // gaff type of intersection
@@ -2865,7 +2865,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
                 for (k = 1 ; k < npb -1 ; k++)
                 {
                     vk = CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
-                    v = vb * -(vk * vb);
+                    v = vb * -CVector3d::dotProduct(vk, vb);
                     deviation[k] = v;
                     dev[npanel-1].top[k] = dev[npanel-1].top[k] + deviation[k];
                 }
@@ -3041,7 +3041,7 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
                 throw layout_error("CSailWorker::LayoutMitre2 foot-b : intersection of seam and mitre is not a point!"); // the case when the intersection is not a point needs to be handled
 
             // check if top seam is past luff mitre point
-            if ( CVector3d(p2[npanel] - mitreLuffPt) * mitreV > EPS ) {
+            if (CVector3d::dotProduct(p2[npanel] - mitreLuffPt, mitreV) > EPS) {
                 // last foot panel is meeting Mitre luff point
                 p1[npanel] = mitreLuffPt;
                 p2[npanel] = p2[npanel-1]; // new top edge on mitre
@@ -3090,8 +3090,8 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
             if ( flag == false ) {
                 vb = CMatrix::rot3d(2, PI/2) * CVector3d(dev[npanel-1].top[npb-1] -dev[npanel-1].top[0]).normalized();
                 for( k = 1; k < npb-1; k ++) {
-                    vk= CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
-                    v = vb * -(vk*vb);
+                    vk = CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
+                    v = vb * -CVector3d::dotProduct(vk, vb);
                     deviation[k] = v;
                     dev[npanel-1].top[k] = dev[npanel-1].top[k] + deviation[k];
                 }
@@ -3164,7 +3164,7 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
                throw layout_error("CSailWorker::LayoutMitre2 leech -c : intersection of seam and mitre is not a point!"); // the case when the intersection is not a point needs to be handled
 
             // check if top seam is passed luff mitre point
-            if ( CVector3d(p1[npanel] - mitreLuffPt) * mitreV > EPS) {
+            if (CVector3d::dotProduct(p1[npanel] - mitreLuffPt, mitreV) > EPS) {
 		// last leech panel
                 p1[npanel] = p1[npanel-1]; // new top edge on mitre
 		// old code  p1[npanel] = mitreLuffPt;
@@ -3181,7 +3181,7 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
 		    throw layout_error("CSailWorker::LayoutMitre2 leech -d : intersection of seam and gaff is not a point!");
                     /* the case when the intersection is not a point needs to be handled */
 
-                if ( CVector3d(p2[npanel]-head)*gaffV > EPS )
+                if (CVector3d::dotProduct(p2[npanel] - head, gaffV) > EPS)
                     t2[npanel] = 3;   // Intersect is on the Gaff.
                 else {
                     if ( seamL.intersect(luffLine).getdim() == 0 )
@@ -3257,7 +3257,7 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
                 for( k = 1; k < npb-1; k++ )
                 {
                     vk = CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
-                    v = vb * -(vk*vb);
+                    v = vb * -CVector3d::dotProduct(vk, vb);
                     deviation[k] = v;
                     dev[npanel-1].top[k] = dev[npanel-1].top[k] + deviation[k];
                 }
@@ -3722,9 +3722,9 @@ CPoint3d CSailWorker::EdgeIntersect( const enumEdgeType &Edge, const CPoint3d &p
     }
     else throw layout_error("CSailWorker::EdgeIntersect -1 : intersection with edge is not a point!");
 
-    if ( CVector3d(p0 - pEnd1) * vEdge <= 0 )
+    if (CVector3d::dotProduct(p0 - pEnd1, vEdge) <= 0)
         p2 = pEnd1;  // intersection left of edge
-    else if ( CVector3d(p0 - pEnd2) * vEdge >= 0 )
+    else if (CVector3d::dotProduct(p0 - pEnd2, vEdge) >= 0)
         p2 = pEnd2;  // intersection right of edge
     else if ( fabs(EdgeR) > 1 ) {   // intersection is on curved edge
         h1 = CVector3d(p0 - pEnd1).length() / (vEdge.length() + EPS); // relative height
@@ -3744,9 +3744,9 @@ CPoint3d CSailWorker::EdgeIntersect( const enumEdgeType &Edge, const CPoint3d &p
             p3 = p0 + v;
 
             // check if p3 is inside edge
-            if ( CVector3d(p3 - pEnd1) * vEdge <= 0 ) // p3 outside left of edge end
+            if (CVector3d::dotProduct(p3 - pEnd1, vEdge) <= 0) // p3 outside left of edge end
                 p2 = pEnd1;
-            else if ( CVector3d(p3 - pEnd2) * vEdge >= 0 ) // p3 outside right of edge end
+            else if (CVector3d::dotProduct(p3 - pEnd2, vEdge) >= 0) // p3 outside right of edge end
                 p2 = pEnd2;
             else {   // point is on edge curve
                 h2 = CVector3d(p3 - pEnd1).length() / (vEdge.length() + EPS);

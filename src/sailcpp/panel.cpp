@@ -568,15 +568,15 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
                     // else cout << "CPanel::add6Hems = no mid left side intersection point" << endl;
 
                     // check adjacent points relative to mid side point
-                    if ( (CVector3d(cutLeft[npl/2] - cutLeft[npl/2 -1]) * v0) <= 0 )
+                    if (CVector3d::dotProduct(cutLeft[npl/2] - cutLeft[npl/2 -1], v0) <= 0)
                         cutLeft[npl/2 -1] = cutLeft[npl/2 -2];
-                    if ( (CVector3d(cutLeft[npl/2 +1] - cutLeft[npl/2]) * v0) <= 0 )
+                    if (CVector3d::dotProduct(cutLeft[npl/2 +1] - cutLeft[npl/2], v0) <= 0)
                         cutLeft[npl/2 +1] = cutLeft[npl/2 +2];
                 }
                 else {   // compute other uppr lft points
                     cutLeft[i] = left[i] + CMatrix::rot3d( 2 , PI/2) * v2.normalized() * hilW;
                     // check position relative to mid side point
-                    if ( (CVector3d(cutLeft[i] - cutLeft[npl/2]) * v0) <= 0 )
+                    if (CVector3d::dotProduct(cutLeft[i] - cutLeft[npl/2], v0) <= 0)
                         cutLeft[npl/2 +1] = cutLeft[npl/2];
                 }
             }
@@ -653,9 +653,9 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
                     // else cout << "CPanel::add6Hems = no mid right side intersection point" << endl;
 
                     // check adjacent points relative to mid side point
-                    if ( (CVector3d(cutRight[npl/2] - cutRight[npl/2 -1]) * v0) <= 0 )
+                    if (CVector3d::dotProduct(cutRight[npl/2] - cutRight[npl/2 -1], v0) <= 0)
                         cutRight[npl/2 -1] = cutRight[npl/2 -2];
-                    if ( (CVector3d(cutRight[npl/2 +1] - cutRight[npl/2]) * v0) <= 0 )
+                    if (CVector3d::dotProduct(cutRight[npl/2 +1] - cutRight[npl/2], v0) <= 0)
                         cutRight[npl/2 +1] = cutRight[npl/2 +2];
                 }
                 else {   // compute other points
@@ -727,10 +727,10 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
      * that they are not on the wrong side of the point pt
      */
     for (i = 0 ; i < npl/2 ; i++) {
-        if ( (CVector3d( cutLeft[i] - pt) * v1 ) <= 0 )
+        if (CVector3d::dotProduct(cutLeft[i] - pt, v1) <= 0)
             cutLeft[i] = pt;
 
-        if ( (CVector3d( cutBottom[i] - pt) * v5 ) <= 0 )
+        if (CVector3d::dotProduct(cutBottom[i] - pt, v5) <= 0)
             cutBottom[i] = pt;
     }
 
@@ -750,9 +750,9 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
      * that they are not on the wrong side of the point pt
      */
     for (i = 1 ; i < npl/2 ; i++) {
-        if ( (CVector3d( cutRight[i] - pt) * v3 ) <= 0 )
+        if (CVector3d::dotProduct(cutRight[i] - pt, v3) <= 0)
             cutRight[i] = pt;
-        if ( (CVector3d( cutBottom[npb-1-i] - pt) * v6 ) >= 0 )
+        if (CVector3d::dotProduct(cutBottom[npb-1-i] - pt, v6) >= 0)
             cutBottom[npb-1-i] = pt;
     }
 
@@ -772,9 +772,9 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
      * that they are not on the wrong side of the intersect point pt
      */
     for (i = 0 ; i < npl/2 ; i++) {
-        if ( (CVector3d( cutLeft[npl -1 -i] - pt) * v2 ) >= 0 )
+        if (CVector3d::dotProduct(cutLeft[npl -1 -i] - pt, v2) >= 0)
             cutLeft[npl-1-i] = pt;
-        if ( (CVector3d( cutTop[i] - pt) * v7 ) <= 0 )
+        if (CVector3d::dotProduct(cutTop[i] - pt, v7) <= 0)
             cutTop[i] = pt;
     }
 
@@ -795,10 +795,10 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
      */
     // cout << "CPanel::add6Hems scan for overlap " << endl;
     for (i = 1 ; i < npl/2 ; i++) {
-        if ( (CVector3d( cutRight[npl-1-i] - pt) * v4 ) >= 0 )
+        if (CVector3d::dotProduct(cutRight[npl-1-i] - pt, v4) >= 0)
             cutRight[npl-1-i] = pt;
 
-        if ( (CVector3d(cutTop[npb-1-i] - pt) * v6) >= 0 )
+        if (CVector3d::dotProduct(cutTop[npb-1-i] - pt, v6) >= 0)
             cutTop[npb-1-i] = pt;
     }
     // cout << "End CPanel::add6Hems" << endl << endl;
