@@ -174,4 +174,14 @@ public:
 };
 
 
+/** Outputs a CVector3d to a stream.
+ */
+inline
+ostream& operator<<(ostream &o, const CVector3d &v)
+{
+    for (int i = 0; i < 3; i++)
+        o << (i > 0 ? "\t" : "") << v[i];
+    return o;
+}
+
 #endif

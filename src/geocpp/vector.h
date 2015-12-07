@@ -136,16 +136,6 @@ public:
     };
 };
 
-/** Outputs a CVector to a stream.
- */
-inline
-ostream& operator<<(ostream &o, const CVector &v)
-{
-    for (size_t i = 0; i < v.size(); i++)
-        o << (i > 0 ? "\t" : "") << v[i];
-    return o;
-}
-
 /** Binary '*' (multiply a scalar by a vector)
  */
 inline
