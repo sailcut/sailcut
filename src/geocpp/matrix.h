@@ -114,13 +114,7 @@ public:
     CMatrix   crop(const size_t& nr, const size_t& nc, const size_t& nrz=0, const size_t& ncz=0) const;
     real      determinant() const;
     CMatrix   dev(const size_t&, const size_t&) const;
-    /** Diagonalises matrix. Currently this is implemented as
-     * a full pivot Gauss-Jordan diagonalisation.
-     */
-    CMatrix diag() const
-    {
-        return gaussjordan();
-    };
+
     /** Accessor for the number of columns. */
     size_t columns() const
     {
@@ -131,8 +125,6 @@ public:
     {
         return m_nrow;
     }
-    CMatrix   img() const;
-    CMatrix   inv() const;
     /** Is the matrixan empty (0x0) matrix? */
     bool empty() const
     {

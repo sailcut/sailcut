@@ -385,36 +385,6 @@ CMatrix CMatrix::gaussjordan(bool *is_inv, CMatrix *inv, soltype_t * soltype, CV
 }
 
 
-/** Returns the image space of the linear application
- *  associated with the matrix.
- */
-CMatrix CMatrix::img() const
-{
-    return transposed().diag().transposed();
-}
-
-
-/** Inverts matrix by Gauss-Jordan method with full pivoting.
- */
-CMatrix CMatrix::inv() const
-{
-    if (m_nrow != m_ncol)
-        throw invalid_argument("CMatrix:: inv : matrix is not square !");
-
-    // if matrix is empty, return empy matrix
-    if (empty())
-        return CMatrix();
-
-    CMatrix ret;
-    bool is_inv;
-    gaussjordan(&is_inv,&ret);
-    if (is_inv == false)
-        throw invalid_argument("CMatrix::diag : matrix is singular !");
-
-    return ret;
-}
-
-
 /** Returns the kernel of the linear application.
  *  associated with the matrix.
  */
