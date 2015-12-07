@@ -114,6 +114,13 @@ CSubSpace CSubSpace::intersect(const CSubSpace &h2) const
     return  mm.solve(bb);
 }
 
+CVector CSubSpace::intersectionPoint(const CSubSpace &h2, const char*) const
+{
+    CSubSpace i = intersect(h2);
+    if (i.getdim() != 0)
+        throw runtime_error("CSubSpace::intersectionPoint : intersection is not a point");
+    return i.getp();
+}
 
 /*******************************************************
 

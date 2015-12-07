@@ -43,6 +43,8 @@ public:
     {}
     ;
     CSubSpace intersect(const CSubSpace &) const;
+    CVector intersectionPoint(const CSubSpace &, const char *name) const;
+
     bool contains(const CVector &) const;
 
     /** Return the subspace's dimension. */
