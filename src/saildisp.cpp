@@ -102,7 +102,7 @@ void CSailDisp::setObject( const CPanelGroup &obj )
     if (baseRect.height() == 0)
         baseRect.max.setY(baseRect.max.y() + 1);
     if (baseRect.width() == 0)
-        baseRect.max.x() += 1;
+        baseRect.max.setX(baseRect.max.x() + 1);
     center = baseRect.center();
 
     calcDispObject();

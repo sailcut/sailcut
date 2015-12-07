@@ -223,7 +223,7 @@ CPanel CPanel::develop(enumDevelopAlign align) const
     c = CVector3d( p2 - p3 ).length();
     CC = Atriangle( a , b , c );      // angle of bottom left corner = opposite to side a
 
-    d3.x() =  b;   // set base of first triangle on X axis
+    d3.setX(b);   // set base of first triangle on X axis
     flatpanel.bottom[1] = d3;
 
     // set point at top of baseline

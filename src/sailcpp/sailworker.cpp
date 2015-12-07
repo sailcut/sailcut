@@ -543,7 +543,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
 
         // translation v to align panel bottom edge origin to previous panel upper edge origin
         v = CVector3d ( top - CPoint3d(0,0,0) );
-        v.x() = v.x() - bot.x();
+        v.setX(v.x() - bot.x());
         v.setY(v.y() + 2 * seamW +20); // adding offset to separate panels vertically
 
         dispsail[j] = dispsail[j] + v;
@@ -881,7 +881,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
 
         // translation v to align panel bottom edge origin to previous panel upper edge origin
         v = top;
-        v.x() -= bot.x();
+        v.setX(v.x() - bot.x());
         v.setY(v.y() + 2 * seamW + 20); // adding offset to separate panels vertically
 
         dispsail[j] = dispsail[j] + v;
@@ -1133,7 +1133,7 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
 
         // translation v to align panel bottom edge origin to previous panel upper edge origin
         v = top;
-        v.x() -= bot.x();
+        v.setX(v.x() - bot.x());
         v.setY(v.y() + 2 * seamW + 10); // adding offset to separate panels vertically
 
         dispsail[j] = dispsail[j] + v;
@@ -1502,7 +1502,7 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
 
         // translation v to align panel bottom edge origin to previous panel upper edge origin
         v = CVector3d ( top - CPoint3d(0,0,0) );
-        v.x() = v.x() - bot.x();
+        v.setX(v.x() - bot.x());
         v.setY(v.y() + 2 * seamW + 25);  // adding offset to separate panels vertically
 
         dispsail[j] = dispsail[j] + v;
@@ -1994,7 +1994,7 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
             h--;
             k = 0;
             xp = xm + 2*seamW +20; // offset for next section
-            v.x() = xp;
+            v.setX(xp);
             v.setY(0);
         }
 
@@ -2453,7 +2453,7 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
             h--;
             k = 0;
             xp = xm + 2*seamW +20; // offset for next section
-            v.x() = xp;
+            v.setX(xp);
             v.setY(0);
         }
 
@@ -2926,7 +2926,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
 
         // translation v to align panel bottom edge origin to previous panel upper edge origin
         v = top;
-        v.x() -= bot.x();
+        v.setX(v.x() - bot.x());
         v.setY(v.y() + 2 * seamW + 10); // adding offset to separate panels vertically
 
         dispsail[j] = dispsail[j] + v;
@@ -3318,7 +3318,7 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
 
         // translation v to align panel bottom edge origin to previous panel upper edge origin
         v = top;
-        v.x() -= bot.x();
+        v.setX(v.x() - bot.x());
         v.setY(v.y() + 2 * seamW + 10); // adding offset to separate panels vertically
 
         dispsail[j] = dispsail[j] + v;
@@ -3346,11 +3346,11 @@ CPoint3d CSailWorker::AftIntersect( const CPoint3d& pt1 ) const
 
     if ( pt1.y() >= peak.y() )
     {   // rear point above the peak, set output on vertical above peak
-        pAft.x() = peak.x();
+        pAft.setX(peak.x());
     }
     else if ( pt1.y() <= clew.y() )
     {   // rear point on or below the clew, set output on vertical below clew
-        pAft.x() = clew.x();
+        pAft.setX(clew.x());
     }
     else
     {   // move point on leech which is not straight
@@ -3616,7 +3616,7 @@ CPoint3d CSailWorker::FwdIntersect( const CPoint3d &pt1 ) const
 
     if ( pt1.y() <= tack.y() )  // point is at or below tack
     {
-        pFwd.x() = tack.x();  // set forward point on vertical below tack
+        pFwd.setX(tack.x());  // set forward point on vertical below tack
         // pFwd.setZ(tack.z());
     }
     else if ( pt1.y() < head.y() ) // forward point is on luff curve
@@ -3625,7 +3625,7 @@ CPoint3d CSailWorker::FwdIntersect( const CPoint3d &pt1 ) const
     }
     else if ( pt1.y() == head.y() )  // point exactly at head height
     {
-        pFwd.x() = head.x();
+        pFwd.setX(head.x());
         // pFwd.setZ(head.z());
     }
     else if ( pt1.y() < peak.y() )
@@ -3634,7 +3634,7 @@ CPoint3d CSailWorker::FwdIntersect( const CPoint3d &pt1 ) const
     }
     else
     { // point is above peak
-        pFwd.x() = peak.x(); // set forward point on vertical above peak
+        pFwd.setX(peak.x()); // set forward point on vertical above peak
         //pFwd.setZ(peak.z()); //
     }
     // Ensure Z = 0
@@ -3863,7 +3863,7 @@ CPoint3d CSailWorker::Zpoint( const CPoint3d &p1 ) const
     x = p1.x() - pivotX;
 
     /* applying the twist by rotating the profile around pivotX */
-    p2.x() = pivotX + x * cos(twist) - z * sin(twist);
+    p2.setX(pivotX + x * cos(twist) - z * sin(twist));
     p2.setZ(x * sin(twist) + z * cos(twist));
 
     return p2;

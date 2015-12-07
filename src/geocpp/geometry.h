@@ -52,10 +52,6 @@ public:
 
     // access to coords
     /** Returns the first coordinate. */
-    real &x(void)
-    {
-        return (*this)[0];
-    }
     real x(void) const
     {
         return (*this)[0];

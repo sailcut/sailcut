@@ -367,7 +367,7 @@ CVector3d CSailPainter::textSize(const QStringList &lst)
     {
         real lineWidth = fontMetrics().width(lst.at(i));
         if (lineWidth > v.x())
-            v.x() = lineWidth;
+            v.setX(lineWidth);
         v.setY(v.y() + fontMetrics().height());
     }
 
