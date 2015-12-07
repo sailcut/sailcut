@@ -26,62 +26,6 @@ class CMatrix;
 class CSubSpace;
 
 
-/** Generic two dimensional real-valued vector.
- */
-class CVector2d : public CVector
-{
-public:
-    /** Constructor. */
-    CVector2d(const real &x = 0, const real &y = 0)
-        : CVector(2)
-    {
-        (*this)[0] = x;
-        (*this)[1] = y;
-    }
-
-    /** Copy constructor.
-     */
-    CVector2d(const CVector &v)
-        : CVector(v)
-    {
-        resize(2);
-    };
-
-    /** Returns the first coordinate. */
-    real &x(void)
-    {
-        return (*this)[0];
-    }
-
-    /** Sets the first coordinate. */
-    void setX(real x)
-    {
-        (*this)[0] = x;
-    }
-
-    /** Returns the second coordinate. */
-    real &y(void)
-    {
-        return (*this)[1];
-    }
-
-    /** Sets the second coordinate. */
-    void setY(real y)
-    {
-        (*this)[1] = y;
-    }
-
-    /** Assignment operator. */
-    CVector2d &operator=(const CVector2d &v)
-    {
-        (*this)[0] = v[0];
-        (*this)[1] = v[1];
-        return *this;
-    }
-
-};
-
-
 /** Generic three dimensional real-valued vector.
  *
  * @ingroup GeoCpp
@@ -179,11 +123,6 @@ public:
 };
 
 
-/** 2d real-valued point
- */
-typedef CVector2d CPoint2d;
-
-
 /** 3d real-valued point
  *
  * @ingroup GeoCpp
@@ -244,15 +183,6 @@ public:
     /** top-right corner */
     CPoint3d max;
 
-};
-
-
-/** Helper class to create 2D lines.
- */
-class CSubSpace2d
-{
-public:
-    static CSubSpace line(const CPoint2d& p, const CVector2d& v);
 };
 
 

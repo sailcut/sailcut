@@ -108,25 +108,9 @@ CRect3d CRect3d::join(const CRect3d& rect) const
 
 /***************************************
 
-                 2D/3D subspaces
+                 3D subspaces
 
 ***************************************/
-
-/** Create a CSubSpace representing a 2D line from a point and a vector.
- *
- * @param p a point of the line
- * @param v a vector along the line
- */
-CSubSpace CSubSpace2d::line(const CPoint2d &p, const CVector2d &v)
-{
-    if (!v.length())
-    {
-        cout << "CSubSpace2d::line : Crash point = " << p << endl;
-        throw invalid_argument("CSubSpace2d::line : Input vector cannot be zero");
-    }
-    return CSubSpace(p, v, GEOCPP_FROM_BASE);
-}
-
 
 /** Create a CSubSpace representing a 3D line from a point and a vector.
  *

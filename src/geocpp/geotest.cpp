@@ -39,7 +39,6 @@ template<class T> void test_contain(const char *name, const CSubSpace &s, const 
 void test_point(void)
 {
     CPoint3d p3(1,0,0), q3(0,1,0);
-    CPoint2d p2(1,0), q2(0,1);
     CPoint3d r3;
 
     cout << "----- Point operations -----" << endl;
@@ -49,7 +48,6 @@ void test_point(void)
     cout << "r3\t " << r3 << endl;
     cout << "p3 - q3\t " << p3-q3 << endl;
     cout << "|p3,q3|\t " << CVector3d(q3 - p3).length() << endl;
-    cout << "p2 - q2\t " << p2-q2 << endl;
     cout << " " << endl;
 }
 
@@ -76,8 +74,6 @@ void test_vect(void)
 {
     cout << "----- Vector operations -----" << endl;
     CVector3d u3(1,2,3),v3(5,8,9);
-    //CVector2d w;
-    //w=u;
     cout << "u3\t " << u3 << endl;
     cout << "u3.x()\t " << u3.x() << endl;
     u3.x()=5;
@@ -171,20 +167,6 @@ void test_matrix(void)
     cout << " " << endl;
 }
 
-void test_space2d(void)
-{
-    cout << "----- 2D Subspace operations -----" << endl;
-    CSubSpace L2 = CSubSpace2d::line(CPoint2d(0,0), CVector2d(1,1));
-    CPoint2d p2(2,2),q2(2,1);
-
-    cout << "== L2 ==" << endl << L2 << endl;
-    test_contain<CPoint2d>("L2", L2, p2, true);
-    test_contain<CPoint2d>("L2", L2, q2, false);
-    cout << endl;
-
-    cout << " " << endl;
-}
-
 void test_space3d(void)
 {
     cout << "----- 3D Subspace operations -----" << endl;
@@ -262,7 +244,6 @@ int main()
     test_point();
     test_vect();
     test_matrix();
-    test_space2d();
     test_space3d();
 
     cout << "----- " << endl;
