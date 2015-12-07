@@ -144,6 +144,10 @@ void CSailDispGL::initializeGL()
 {
     initializeOpenGLFunctions();
 
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LEQUAL);
+    glClearDepthf(1.0f);
+
     program = new QOpenGLShaderProgram(this);
     if (!program->addShaderFromSourceCode(QOpenGLShader::Vertex, vertexShader))
         qWarning("could not load vertex shader");
@@ -185,7 +189,7 @@ void CSailDispGL::paintGL()
     matrix.scale(
         real(2) / lRect.width(),
         real(2) / lRect.height(),
-        real(2) / sqrt(lRect.width() * lRect.width() + lRect.height() * lRect.height()));
+        - real(2) / sqrt(lRect.width() * lRect.width() + lRect.height() * lRect.height()));
     matrix.translate(-center.x(), -center.y(), -center.z());
     program->setUniformValue(matrixAttr, matrix);
 
