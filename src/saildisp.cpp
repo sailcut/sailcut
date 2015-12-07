@@ -100,7 +100,7 @@ void CSailDisp::setObject( const CPanelGroup &obj )
 
     // handle case where the bounding rectangle is flat
     if (baseRect.height() == 0)
-        baseRect.max.y() += 1;
+        baseRect.max.setY(baseRect.max.y() + 1);
     if (baseRect.width() == 0)
         baseRect.max.x() += 1;
     center = baseRect.center();

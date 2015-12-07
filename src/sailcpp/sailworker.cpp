@@ -65,7 +65,7 @@ CSailWorker::CSailWorker(const CSailDef &s) : CSailDef(s)
     peak = head + CMatrix::rot3d( 2 , (-asin(rake / luffL) - gaffDeg * PI / 180) ) * v;
 
     if ( fabs(peak.y() - head.y()) < 1 )
-        peak.y() = head.y() + 1; // to avoid case with gaff horizontal
+        peak.setY(head.y() + 1); // to avoid case with gaff horizontal
 
     /* Compute triangle tack-peak-clew. */
     real aa, b, bb;
@@ -544,7 +544,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
         // translation v to align panel bottom edge origin to previous panel upper edge origin
         v = CVector3d ( top - CPoint3d(0,0,0) );
         v.x() = v.x() - bot.x();
-        v.y() = v.y() + 2 * seamW +20; // adding offset to separate panels vertically
+        v.setY(v.y() + 2 * seamW +20); // adding offset to separate panels vertically
 
         dispsail[j] = dispsail[j] + v;
     }
@@ -882,7 +882,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
         // translation v to align panel bottom edge origin to previous panel upper edge origin
         v = top;
         v.x() -= bot.x();
-        v.y() += 2 * seamW +20; // adding offset to separate panels vertically
+        v.setY(v.y() + 2 * seamW + 20); // adding offset to separate panels vertically
 
         dispsail[j] = dispsail[j] + v;
     }
@@ -1134,7 +1134,7 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
         // translation v to align panel bottom edge origin to previous panel upper edge origin
         v = top;
         v.x() -= bot.x();
-        v.y() += 2 * seamW +10; // adding offset to separate panels vertically
+        v.setY(v.y() + 2 * seamW + 10); // adding offset to separate panels vertically
 
         dispsail[j] = dispsail[j] + v;
     }
@@ -1389,10 +1389,10 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
         if ( npanel == 1 )
         {
             for (k=0; k < npb-1; k++)
-                lay[0].bottom[k].y() = tack.y();
+                lay[0].bottom[k].setY(tack.y());
 
-            lay[0].left[0].y() = tack.y();
-            lay[0].right[0].y() = tack.y();
+            lay[0].left[0].setY(tack.y());
+            lay[0].right[0].setY(tack.y());
         }
 
         /* Develop the current panel */
@@ -1462,13 +1462,13 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
 
         for (k = 0 ; k < npb ; k++)
         {
-            lay[npanel].top[k].y() = -lay[npanel].top[k].y();
-            lay[npanel].bottom[k].y() = -lay[npanel].bottom[k].y();
+            lay[npanel].top[k].setY(-lay[npanel].top[k].y());
+            lay[npanel].bottom[k].setY(-lay[npanel].bottom[k].y());
         }
         for (k = 0 ; k < npl ; k++)
         {
-            lay[npanel].left[k].y() = -lay[npanel].left[k].y();
-            lay[npanel].right[k].y() = -lay[npanel].right[k].y();
+            lay[npanel].left[k].setY(-lay[npanel].left[k].y());
+            lay[npanel].right[k].setY(-lay[npanel].right[k].y());
         }
     }
 
@@ -1503,7 +1503,7 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
         // translation v to align panel bottom edge origin to previous panel upper edge origin
         v = CVector3d ( top - CPoint3d(0,0,0) );
         v.x() = v.x() - bot.x();
-        v.y() = v.y() + 2*seamW + 25;  // adding offset to separate panels vertically
+        v.setY(v.y() + 2 * seamW + 25);  // adding offset to separate panels vertically
 
         dispsail[j] = dispsail[j] + v;
     }
@@ -1995,7 +1995,7 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
             k = 0;
             xp = xm + 2*seamW +20; // offset for next section
             v.x() = xp;
-            v.y() = 0;
+            v.setY(0);
         }
 
         // translation v to stack panel above previous panel
@@ -2003,7 +2003,7 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
 
         CRect3d pRect = dispsail[j].boundingRect();
         ym = pRect.height();
-        v.y() += ym + 2*seamW +20; // adding offset to separate next panel vertically
+        v.setY(v.y() + ym + 2 * seamW + 20); // adding offset to separate next panel vertically
 
         x = pRect.max.x();
         if ( x > xm )
@@ -2454,7 +2454,7 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
             k = 0;
             xp = xm + 2*seamW +20; // offset for next section
             v.x() = xp;
-            v.y() = 0;
+            v.setY(0);
         }
 
         // translation v to stack panel above previous panel
@@ -2462,7 +2462,7 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
 
         CRect3d pRect = dispsail[j].boundingRect();
         ym = pRect.height();
-        v.y() += ym+ 2*seamW +20; // adding offset to separate next panel vertically
+        v.setY(v.y() + ym + 2 * seamW + 20); // adding offset to separate next panel vertically
 
         x = pRect.max.x();
         if (x > xm)
@@ -2927,7 +2927,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
         // translation v to align panel bottom edge origin to previous panel upper edge origin
         v = top;
         v.x() -= bot.x();
-        v.y() += 2 * seamW +10; // adding offset to separate panels vertically
+        v.setY(v.y() + 2 * seamW + 10); // adding offset to separate panels vertically
 
         dispsail[j] = dispsail[j] + v;
     }
@@ -3319,7 +3319,7 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
         // translation v to align panel bottom edge origin to previous panel upper edge origin
         v = top;
         v.x() -= bot.x();
-        v.y() += 2*seamW +10; // adding offset to separate panels vertically
+        v.setY(v.y() + 2 * seamW + 10); // adding offset to separate panels vertically
 
         dispsail[j] = dispsail[j] + v;
     }

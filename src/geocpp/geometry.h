@@ -68,10 +68,6 @@ public:
     }
 
     /** Returns the second coordinate. */
-    real &y(void)
-    {
-        return (*this)[1];
-    }
     real y(void) const
     {
         return (*this)[1];
