@@ -64,16 +64,11 @@ CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
 
     // compute intersection line between lower chine plane and transom
     CSubSpace Line1 = planeLowChine.intersect(planeTransom);
+    if (Line1.getdim() != 1)
+        throw "ERROR in hullworker constructor = intersection chine plane and transom is not a line";
 
     // compute intersection point of line1 with central plane located at aft width
-    if (Line1.getdim() == 1)
-    {
-        CSubSpace Intersection2 = Line1.intersect(planeCentral);
-        if (Intersection2.getdim() == 0)
-            ptCentreChine = Intersection2.getp();
-        else throw "ERROR in hullworker constructor = no low chine aft  point";
-    }
-    else throw "ERROR in hullworker constructor = intersection chine plane and transom is not a line";
+    ptCentreChine = Line1.intersectionPoint(planeCentral, "low chine aft");
 
     /** lay lower chine plane decking panel */
     unsigned int j;
@@ -119,15 +114,7 @@ CPoint3d CHullWorker::ptLowChine( const real &x )
     CPoint3d pt = CPoint3d ( x , y , z );
 
     /* compute y by projecting pt vertically on the chine plane */
-
-    CSubSpace Intersection1 = planeLowChine.intersect(CSubSpace3d::line(pt, CVector3d(0, 1, 0) ) );
-
-    if (Intersection1.getdim() == 0 )
-        pt = Intersection1.getp();
-    else
-        throw "ERROR in CHullWorker::ptLowChine intersection is not a point";
-
-    return pt;
+    return planeLowChine.intersectionPoint(CSubSpace3d::line(pt, CVector3d(0, 1, 0)), "low chine");
 }
 
 
@@ -148,15 +135,7 @@ CPoint3d CHullWorker::ptKeel( const real &x )
 
     /* Project pt on central plane, get intersection
        with the ruling line passing through point pt. */
-    CSubSpace Intersection1 = planeCentral.intersect(
-        CSubSpace3d::line(pt, v1));
-
-    if (Intersection1.getdim() == 0 )
-        pt = Intersection1.getp();
-    else
-        throw "ERROR in CHullWorker::ptKeel intersection is not a point";
-
-    return pt;
+    return planeCentral.intersectionPoint(CSubSpace3d::line(pt, v1), "keel");
 }
 
 
@@ -218,14 +197,9 @@ CPanelGroup CHullWorker::makeHull() //const
     for (j = 0 ; j < npb ; j++)
     {
         plank1.bottom[j] =  chine.bottom[j];
-        CSubSpace Intersection1 = planeDeck.intersect(
-            CSubSpace3d::line(plank1.bottom[j], v1));
-        if (Intersection1.getdim() == 0)
-        {   // compute the vector vg which generate the side surface
-            p1 = Intersection1.getp();
-            vg = CVector3d(p1 - pt);
-        }
-        else throw "ERROR in CHullWorker::makeHull() Intersection 1 top side is not a point" ;
+        p1 = planeDeck.intersectionPoint(CSubSpace3d::line(plank1.bottom[j], v1), "top side");
+        // compute the vector vg which generate the side surface
+        vg = CVector3d(p1 - pt);
         plank1.top[j] = p1;
     }
     plank1.left.fill( plank1.bottom[0] , plank1.top[0] );

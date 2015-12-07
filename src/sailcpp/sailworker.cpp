@@ -321,17 +321,12 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
             else   // normal panel below peak //////
             {
                 /* find position of luff/seam intersection relative to tack and head */
-                if ( seamL.intersect(luffLine).getdim() == 0 )
-                    ip = seamL.intersect(luffLine).getp();
-                else throw layout_error("CSailWorker::Layout0 -1 : intersection of seam and luff is not a point!");
+                ip = seamL.intersectionPoint(luffLine, "seam and luff");
 
                 if (CVector3d::dotProduct(ip - tack, luffV) <= 0)
                 {   // seam intersects foot
-                    if ( seamL.intersect(footLine).getdim() == 0 )
-                        p1[npanel] = seamL.intersect(footLine).getp();
-                    else throw layout_error("CSailWorker::Layout0 -2 : intersection of seam and foot is not a point!");
-
-                    t1[npanel] =1;  // type1=1 = foot type of intersection
+                    p1[npanel] = seamL.intersectionPoint(footLine, "seam and foot");
+                    t1[npanel] = 1;  // type1=1 = foot type of intersection
 
                     if ( npanel == 1 )
                     {   // set lower edge to start at same point p1
@@ -341,10 +336,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
                 }
                 else if (CVector3d::dotProduct(ip - head, luffV) > 0)
                 {   // seam intersects gaff
-                    if ( seamL.intersect(gaffLine).getdim() == 0 )
-                        p1[npanel] = seamL.intersect(gaffLine).getp();
-                    else throw layout_error("CSailWorker::Layout0 -3 : intersection of seam and foot is not a point!");
-
+                    p1[npanel] = seamL.intersectionPoint(gaffLine, "seam and gaff");
                     t1[npanel] = 3;  // 3 = gaff type of intersection
                 }
                 else
@@ -682,9 +674,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
             else // normal panel
             {
                 /* find nominal position of luff/seam intersection relative to tack and head */
-                if ( seamL.intersect(luffLine).getdim() == 0 )
-                    ip = seamL.intersect(luffLine).getp();
-                else throw layout_error("CSailWorker::LayoutTwist -1 : twist intersection of seam and luff is not a point!");
+                ip = seamL.intersectionPoint(luffLine, "seam and luff");
 
                 if (CVector3d::dotProduct(( ip - luffV.normalized() * (seamW + clothW/5) ) - p1[npanel-1], luffV) < 0)
                 {   // seam intersects luff below previous panel luff point + 1/5 clothW
@@ -704,10 +694,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
                 }
                 else if (CVector3d::dotProduct(ip - head, luffV) > 0)
                 {   // seam intersects gaff
-                    if ( seamL.intersect(gaffLine).getdim() == 0 )
-                        p1[npanel] = seamL.intersect(gaffLine).getp();
-                    else throw layout_error("CSailWorker::LayoutTwist -2 : intersection of seam and foot is not a point!");
-
+                    p1[npanel] = seamL.intersectionPoint(gaffLine, "seam and gaff");
                     t1[npanel] = 3;  // 3=gaff type of intersection
                     seamVT = seamV;
                 }
@@ -972,9 +959,7 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
             cnt++;
             pt = p1[npanel-1] + (clothW -seamW -exb) * leechVP;
             seamL = CSubSpace3d::line(pt, seamV);
-            if ( seamL.intersect(footLine).getdim() == 0 )
-                p1[npanel] = seamL.intersect(footLine).getp();
-            else throw layout_error("CSailWorker::LayoutVertical -1 : intersection of seam and foot is not a point!");
+            p1[npanel] = seamL.intersectionPoint(footLine, "seam and foot");
 
             t1[npanel] = 1; // type1=1= foot intersection vertically cut panels
 
@@ -988,18 +973,13 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
             }
             else
             {   // normal panel
-                if ( seamL.intersect(gaffLine).getdim() == 0 )
-                    p2[npanel] = seamL.intersect(gaffLine).getp();
-                else throw layout_error("CSailWorker::LayoutVertical -2 : intersection of seam and gaff is not a point!");
+                p2[npanel] = seamL.intersectionPoint(gaffLine, "seam and gaff");
 
                 if (CVector3d::dotProduct(p2[npanel] - head, gaffV) > 0)
                     t2[npanel] = 3;
                 else
                 {
-                    if ( seamL.intersect(luffLine).getdim() == 0 )
-                        p2[npanel] = seamL.intersect(luffLine).getp();
-                    else throw layout_error("LayoutVertical -3 : intersection of seam and luff is not a point!");
-
+                    p2[npanel] = seamL.intersectionPoint(luffLine, "seam and luff");
                     t2[npanel] = 2;
                 }
             }
@@ -1273,16 +1253,11 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
         else // normal panel
         {
             /* find position of luff/seam intersection relative to tack and head */
-            if ( seamL.intersect(luffLine).getdim() == 0 )
-                ip = seamL.intersect(luffLine).getp();
-            else throw layout_error("CSailWorker::LayoutWing -1 : intersection of seam and luff is not a point!");
+            ip = seamL.intersectionPoint(luffLine, "seam and luff");
 
             if (CVector3d::dotProduct(ip - tack, luffV) <= 0)
             {   // seam intersects foot
-                if ( seamL.intersect(footLine).getdim() == 0 )
-                    p1[npanel] = seamL.intersect(footLine).getp();
-                else throw layout_error("CSailWorker::LayoutWing -2 : intersection of seam and foot is not a point!");
-
+                p1[npanel] = seamL.intersectionPoint(footLine, "seam and foot");
                 t1[npanel] = 1;  // 1=foot type of intersection
 
                 if ( npanel == 1 )
@@ -1293,10 +1268,7 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
             }
             else if (CVector3d::dotProduct(ip - head, luffV) > 0)
             {   // seam intersects gaff
-                if ( seamL.intersect(gaffLine).getdim() == 0 )
-                    p1[npanel] = seamL.intersect(gaffLine).getp();
-                else throw layout_error("CSailWorker::LayoutWing -3 : intersection of seam and foot is not a point!");
-
+                p1[npanel] = seamL.intersectionPoint(gaffLine, "seam and gaff");
                 t1[npanel] = 3;  // 3=gaff type of intersection
             }
             else
@@ -2767,9 +2739,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
             {
                 /* find position of luff/seam intersection relative to tack and head
                  * the case when the intersection is not a point needs to be handled */
-                if ( seamL.intersect(mitreLine).getdim() == 0 )
-                    ip = seamL.intersect(mitreLine).getp();
-                else throw layout_error("CSailWorker::LayoutMitre leech-2 : intersection of seam and mitre is not a point!");
+                ip = seamL.intersectionPoint(mitreLine, "seam and mitre");
 
                 if (CVector3d::dotProduct(ip - mitreLuffPt, mitreV) <= 0)
                 { // seam intersects mitre
@@ -3028,17 +2998,11 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
             seamL = CSubSpace3d::line( pt, footV );
 
             // find intersection on luff and mitre
-            if ( seamL.intersect(luffLine).getdim() == 0 ) {
-                p1[npanel] = seamL.intersect(luffLine).getp();
-                t1[npanel] = 2;
-            } else
-                throw layout_error("CSailWorker::LayoutMitre2 foot-a : intersection of seam and luff is not a point!"); // the case when the intersection is not a point needs to be handled
+            p1[npanel] = seamL.intersectionPoint(luffLine, "seam and luff");
+            t1[npanel] = 2;
 
-            if ( seamL.intersect(mitreLine).getdim() == 0 ) {
-                p2[npanel] = seamL.intersect(mitreLine).getp();
-                t1[npanel] = 5;
-            } else
-                throw layout_error("CSailWorker::LayoutMitre2 foot-b : intersection of seam and mitre is not a point!"); // the case when the intersection is not a point needs to be handled
+            p2[npanel] = seamL.intersectionPoint(mitreLine, "seam and mitre");
+            t1[npanel] = 5;
 
             // check if top seam is past luff mitre point
             if (CVector3d::dotProduct(p2[npanel] - mitreLuffPt, mitreV) > EPS) {
@@ -3154,14 +3118,10 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
             seamL = CSubSpace3d::line(pt, leechV);
 
 	    // find intersection on mitre
-            if ( seamL.intersect(mitreLine).getdim() == 0 ) {
-		p1[npanel] = seamL.intersect(mitreLine).getp();
-                if ( p1[npanel].x() >= clew.x() ) // point beyong clew
-                    p1[npanel] = clew;
-                t1[npanel] = 5; // type1=5= mitre intersection vertically cut panels
-            }
-            else
-               throw layout_error("CSailWorker::LayoutMitre2 leech -c : intersection of seam and mitre is not a point!"); // the case when the intersection is not a point needs to be handled
+            p1[npanel] = seamL.intersectionPoint(mitreLine, "seam and mitre");
+            if ( p1[npanel].x() >= clew.x() ) // point beyong clew
+                p1[npanel] = clew;
+            t1[npanel] = 5; // type1=5= mitre intersection vertically cut panels
 
             // check if top seam is passed luff mitre point
             if (CVector3d::dotProduct(p1[npanel] - mitreLuffPt, mitreV) > EPS) {
@@ -3175,20 +3135,12 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
             }
             else {
                 // printf ("normal panel \n");
-                 if ( seamL.intersect(gaffLine).getdim() == 0 )
-                    p2[npanel] = seamL.intersect(gaffLine).getp();
-                else
-		    throw layout_error("CSailWorker::LayoutMitre2 leech -d : intersection of seam and gaff is not a point!");
-                    /* the case when the intersection is not a point needs to be handled */
+                p2[npanel] = seamL.intersectionPoint(gaffLine, "seam and gaff");
 
                 if (CVector3d::dotProduct(p2[npanel] - head, gaffV) > EPS)
                     t2[npanel] = 3;   // Intersect is on the Gaff.
                 else {
-                    if ( seamL.intersect(luffLine).getdim() == 0 )
-                        p2[npanel] = seamL.intersect(luffLine).getp();
-                    else
-			throw layout_error ("CSailWorker::LayoutMitre2 leech -e : intersection of seam and luff is not a point!");
-                    /* the case when the intersection is not a point needs to be handled */
+                    p2[npanel] = seamL.intersectionPoint(luffLine, "seam and luff");
                     t2[npanel] = 2;  // Intersect is on the Luff
                 }
             }
@@ -3716,11 +3668,8 @@ CPoint3d CSailWorker::EdgeIntersect( const enumEdgeType &Edge, const CPoint3d &p
     CVector3d v;
 
     // find point p0 at intersection of straight edge with input line
-    if ( InputLine.intersect( Line2 ).getdim() == 0 ) {
-        p0 = InputLine.intersect( Line2 ).getp();
-        p2 = p0;    // default output
-    }
-    else throw layout_error("CSailWorker::EdgeIntersect -1 : intersection with edge is not a point!");
+    p0 = InputLine.intersectionPoint(Line2, "with edge");
+    p2 = p0;    // default output
 
     if (CVector3d::dotProduct(p0 - pEnd1, vEdge) <= 0)
         p2 = pEnd1;  // intersection left of edge
@@ -3794,10 +3743,7 @@ CPoint3d CSailWorker::MitreIntersect( const CPoint3d &pt1, const CVector3d &v1 )
     else {
         /* point at intersection of input vector and mitre
            ckecking if it is inside segment or not is in LayoutMitre */
-        if ( ptv1.intersect(mitreLine).getdim() == 0 )
-            p2 = ptv1.intersect(mitreLine).getp();
-        else
-            throw layout_error("CSailWorker::MitreIntersect -1 : intersection with mitre is not a point!");
+        p2 = ptv1.intersectionPoint(mitreLine, "with mitre");
     }
     return p2;
 }
