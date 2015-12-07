@@ -61,7 +61,7 @@ CSubSpace::CSubSpace(const CVector &pi, const CMatrix &mi, subspaceflags_t creat
         if ( (mi.columns() > 0) && (mi.rows() != pi.size()) )
             throw invalid_argument("CSubSpace::CSubSpace(p,m,GEOCPP_FROM_BASE) : dimension mismatch between p and m");
 
-        m = mi.transp().kern(pi.size()).transp();
+        m = mi.transposed().kern(pi.size()).transposed();
         break;
     default:
         throw invalid_argument("CSubSpace::CSubspace(p,m,createflags) : unknown creation flags");

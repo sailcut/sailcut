@@ -112,7 +112,7 @@ public:
     // member functions
     CVector col(const size_t&) const;
     CMatrix   crop(const size_t& nr, const size_t& nc, const size_t& nrz=0, const size_t& ncz=0) const;
-    real      det(void) const;
+    real      determinant() const;
     CMatrix   dev(const size_t&, const size_t&) const;
     /** Diagonalises matrix. Currently this is implemented as
      * a full pivot Gauss-Jordan diagonalisation.
@@ -131,8 +131,8 @@ public:
     {
         return m_nrow;
     }
-    CMatrix   img(void) const;
-    CMatrix   inv(void) const;
+    CMatrix   img() const;
+    CMatrix   inv() const;
     /** Is the matrixan empty (0x0) matrix? */
     bool empty() const
     {
@@ -143,7 +143,7 @@ public:
     CSubSpace solve(const CVector &) const;
     void      swap_row(const size_t&, const size_t&);
     void      swap_col(const size_t&, const size_t&);
-    CMatrix   transp(void) const;
+    CMatrix   transposed() const;
 
     // operators
     real& operator() ( const size_t& row, const size_t& col );

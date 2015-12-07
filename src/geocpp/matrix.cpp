@@ -137,7 +137,7 @@ CMatrix CMatrix::crop(const size_t& nr,
 
 /** Returns the determinant of a CMatrix. The matrix must be square!
  */
-real CMatrix::det(void) const
+real CMatrix::determinant() const
 {
     if (m_nrow != m_ncol)
         throw invalid_argument("CMatrix::det : matrix is not square!");
@@ -151,9 +151,9 @@ real CMatrix::det(void) const
     for (size_t j=0; j < m_ncol; j++)
     {
         if (j%2)
-            ret -= (*this)(0,j) * dev(0,j).det();
+            ret -= (*this)(0,j) * dev(0,j).determinant();
         else
-            ret += (*this)(0,j) * dev(0,j).det();
+            ret += (*this)(0,j) * dev(0,j).determinant();
     }
     return ret;
 }
@@ -388,15 +388,15 @@ CMatrix CMatrix::gaussjordan(bool *is_inv, CMatrix *inv, soltype_t * soltype, CV
 /** Returns the image space of the linear application
  *  associated with the matrix.
  */
-CMatrix CMatrix::img(void) const
+CMatrix CMatrix::img() const
 {
-    return transp().diag().transp();
+    return transposed().diag().transposed();
 }
 
 
 /** Inverts matrix by Gauss-Jordan method with full pivoting.
  */
-CMatrix CMatrix::inv(void) const
+CMatrix CMatrix::inv() const
 {
     if (m_nrow != m_ncol)
         throw invalid_argument("CMatrix:: inv : matrix is not square !");
@@ -530,7 +530,7 @@ void CMatrix::swap_col(const size_t& j1, const size_t& j2)
 
 /** Transposes ('tilts') matrix
  */
-CMatrix CMatrix::transp(void) const
+CMatrix CMatrix::transposed() const
 {
     CMatrix ret(m_ncol,m_nrow);
 
