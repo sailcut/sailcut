@@ -682,7 +682,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
                     t1[npanel] = 2;  // 2=luff type of intersection
                     seamVT = CVector3d( p1[npanel] - p2[npanel] ).normalized();
                     seamLT = CSubSpace3d::line(p2[npanel] , seamVT);
-                    ip = seamLT.intersect(luffLine).getp();
+                    ip = seamLT.intersectionPoint(luffLine, "seamLT and luff");
 #ifdef DEBUG
                     cout << "CSailWorker::LayoutTwist Seam 1 LUFF CORRECTION DO LOOP = " << cnt << endl;
                     cout << " ip = " << ip << endl;
@@ -1587,11 +1587,11 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
     {
         pt0 = tack + footV*(real(h) / real(nbSections))*(real(ngLuff) / real(nbGores));
         seamL = CSubSpace3d::line(luffCatenary[h+1], CVector3d(pt0 - luffCatenary[h+1]));
-        luffCatenary[h] = seamH[h].intersect(seamL).getp();
+        luffCatenary[h] = seamH[h].intersectionPoint(seamL, "luffCatenary");
 
         pt0 = clew - footV*(real(h) / real(nbSections))*(real(nbGores-ngLuff) / real(nbGores));
         seamL = CSubSpace3d::line(leechCatenary[h+1], CVector3d(pt0 - leechCatenary[h+1]));
-        leechCatenary[h] = seamH[h].intersect(seamL).getp();
+        leechCatenary[h] = seamH[h].intersectionPoint(seamL, "leechCatenary");
     }
 
     h = 0;
@@ -2076,11 +2076,11 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
     {
         pt0 = tack + footV*(real(h) / real(2* nbSections));
         seamL = CSubSpace3d::line(luffCatenary[h+1], CVector3d(pt0 - luffCatenary[h+1]));
-        luffCatenary[h] = seamH[h].intersect(seamL).getp();
+        luffCatenary[h] = seamH[h].intersectionPoint(seamL, "luffCatenary");
 
         pt0 = clew - footV*(real(h) / real(2* nbSections));
         seamL = CSubSpace3d::line(leechCatenary[h+1], CVector3d(pt0 - leechCatenary[h+1]));
-        leechCatenary[h] = seamH[h].intersect(seamL).getp();
+        leechCatenary[h] = seamH[h].intersectionPoint(seamL, "leechCatenary");
     }
 
     h = 0;
@@ -2531,7 +2531,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
             // move base point along the foot
             pt = p1[npanel-1] - (clothW - seamW - exb) * footV.normalized();
             seamL = CSubSpace3d::line( pt , footVP );
-            p1[npanel] = seamL.intersect(footLine).getp();
+            p1[npanel] = seamL.intersectionPoint(footLine, "seam and foot");
             t1[npanel] = 1; // type 1=foot intersection
 
             if ( p1[npanel].x() <= tack.x() )
@@ -2551,11 +2551,11 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
             }
             else
             { // normal panel
-                p2[npanel] = seamL.intersect(mitreLine).getp();
+                p2[npanel] = seamL.intersectionPoint(mitreLine, "seam and mitre");
                 if (CVector3d::dotProduct(p2[npanel] - mitreLuffPt, mitreV) > EPS)
                 {
                     t2[npanel] = 2;
-                    p2[npanel] = seamL.intersect(luffLine).getp();
+                    p2[npanel] = seamL.intersectionPoint(luffLine, "seam and luff");
                 }
                 else
                 {
@@ -2748,11 +2748,11 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
                 }
                 else
                 {
-                    ip = seamL.intersect(luffLine).getp();
+                    ip = seamL.intersectionPoint(luffLine, "seam and luff");
 
                     if (CVector3d::dotProduct(ip - head, luffV) > 0)
                     { // seam intersects gaff
-                        p1[npanel] = seamL.intersect(gaffLine).getp();
+                        p1[npanel] = seamL.intersectionPoint(gaffLine, "seam and gaff");
                         t1[npanel] = 3;  // gaff type of intersection
                     }
                     else
@@ -3684,7 +3684,7 @@ CPoint3d CSailWorker::EdgeIntersect( const enumEdgeType &Edge, const CPoint3d &p
         Line2 = CSubSpace3d::line( p1 , vEdge );
 
         // point2 at intersection of input line with parrallel to edge is always valid
-        p2 = InputLine.intersect( Line2 ).getp();
+        p2 = InputLine.intersectionPoint(Line2, "with parallel to edge");
 
         v = CVector3d( p2 - p1);
 
@@ -3711,7 +3711,7 @@ CPoint3d CSailWorker::EdgeIntersect( const enumEdgeType &Edge, const CPoint3d &p
             else {   // displaced point 2 and p1 are used for Line2
                 Line2 = CSubSpace3d::line( p1 , v );
                 // compute final intersection point p2
-                p2 = InputLine.intersect( Line2 ).getp();
+                p2 = InputLine.intersectionPoint(Line2, "with ?");
             }
         }
     }

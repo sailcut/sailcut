@@ -715,9 +715,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
         cout << "CPanel::add6Hems v6=0 about to crash 16" << endl;
     Line2 = CSubSpace3d::line( cutLeft[0] , v1 );
 
-    if (Line1.intersect(Line2).getdim() == 0)
-        pt = Line1.intersect(Line2).getp();
-    else throw panel_error("CPanel::add6Hems = in rejoining lower corner, no left intersection point");
+    pt = Line1.intersectionPoint(Line2, "lower left corner");
 
     /* Adjust the lower left point [0] to be at intersection */
     cutBottom[0] = pt;
@@ -738,9 +736,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
     Line1 = CSubSpace3d::line( cutBottom[npb-1] , v6 );
     Line2 = CSubSpace3d::line( cutRight[0] , v3 );
 
-    if (Line1.intersect(Line2).getdim() == 0)
-        pt = Line1.intersect(Line2).getp();
-    else throw panel_error("CPanel::add6Hems = in rejoining lower corner, no right intersection point");
+    pt = Line1.intersectionPoint(Line2, "lower right corner");
 
     /* Adjust the lower left point [0] to be at intersection */
     cutBottom[npb-1] = pt;
@@ -760,9 +756,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
     Line1 = CSubSpace3d::line( cutTop[0] , v7 );
     Line2 = CSubSpace3d::line( cutLeft[npl-1] , v2 );
 
-    if (Line1.intersect(Line2).getdim() == 0)
-        pt = Line1.intersect(Line2).getp();
-    else throw panel_error("Cpanel.add6Hems = in rejoining upper corner, no left intersection point");
+    pt = Line1.intersectionPoint(Line2, "upper left corner");
 
     /* Adjust the upper left point to be at intersection */
     cutTop[0] = pt;
@@ -782,9 +776,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
     Line1 = CSubSpace3d::line( cutTop[npb-1] , v8 );
     Line2 = CSubSpace3d::line( cutRight[npl-1] , v4 );
 
-    if (Line1.intersect(Line2).getdim() == 0)
-        pt = Line1.intersect(Line2).getp();
-    else throw panel_error ("Cpanel.add6Hems = in rejoining upper corner, no right intersection point");
+    pt = Line1.intersectionPoint(Line2, "upper right corner");
 
     /* Adjust the upper right point to be at intersection */
     cutTop[npb-1] = pt;
