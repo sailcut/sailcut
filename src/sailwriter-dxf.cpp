@@ -101,7 +101,7 @@ void CSailDxfWriter::writeEnd(ofstream &out) const
 void CSailDxfWriter::writeFace(ofstream &out, CPoint3d p0, CPoint3d p1, CPoint3d p2, unsigned int layer) const
 {
     // skip empty face
-    real area = CVector3d(p1 -p0).cross(p2 - p0).length();
+    real area = CVector3d::crossProduct(p1 - p0, p2 - p0).length();
     //cout << "area : " << area << endl;
     if ( area < EPS )
     {

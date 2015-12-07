@@ -3371,8 +3371,8 @@ CPoint3d CSailWorker::AftIntersect( const CPoint3d& pt1 ) const
  */
 real CSailWorker::Area()
 {
-    real surface = luffV.cross(footV).length() / 2;
-    surface = surface + leechV.cross(gaffV).length() / 2;
+    real surface = CVector3d::crossProduct(luffV, footV).length() / 2;
+    surface = surface + CVector3d::crossProduct(leechV, gaffV).length() / 2;
     surface = surface + .75*(luffL*luffR + footL*footR + leechL*leechR + gaffL*gaffR);
 
     return ( .01 * floor(surface /10000) );

@@ -21,6 +21,18 @@
 #include <geocpp/matrix.h>
 #include <geocpp/subspace.h>
 
+/** Cross product. Produces a vector orthogonal to the two original vectors.
+ */
+CVector3d CVector3d::crossProduct(const CVector3d &v1, const CVector3d &v2)
+{
+    CVector3d ret;
+    for (int i = 0; i < 3; i++)
+        ret[i] = v1[(i+1)%3] * v2[(i+2)%3] - v1[(i+2)%3] * v2[(i+1)%3];
+    return ret;
+}
+
+/** Dot (real) product.
+ */
 real CVector3d::dotProduct(const CVector3d &v1, const CVector3d &v2)
 {
     real ret = 0;
@@ -144,7 +156,7 @@ CSubSpace CSubSpace3d::line(const CPoint3d &p, const CVector3d &v)
  */
 CSubSpace CSubSpace3d::plane(const CPoint3d &p, const CVector3d &v1, const CVector3d& v2)
 {
-    if (!v1.cross(v2).length())
+    if (!CVector3d::crossProduct(v1, v2).length())
     {
         cout << "CSubSpace3d::plane : Crash point = " << p << endl;
         throw invalid_argument("CSubSpace3d::plane : 2 Vectors cannot be colinear");

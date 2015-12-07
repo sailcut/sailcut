@@ -87,21 +87,7 @@ public:
         (*this)[2] = z;
     }
 
-    // 3D only!
-
-    /** Cross product. Produces a vector orthogonal
-    *  to the two original vectors.
-    */
-    CVector3d cross(const CVector3d &v) const
-    {
-        CVector3d ret;
-        for (int i=0; i<3; i++)
-            ret[i] = (*this)[(i+1)%3] * v[(i+2)%3] - (*this)[(i+2)%3] * v[(i+1)%3];
-        return ret;
-    }
-
-    /** Dot (real) product.
-    */
+    static CVector3d crossProduct(const CVector3d &v1, const CVector3d &v2);
     static real dotProduct(const CVector3d &v1, const CVector3d &v2);
 
     /** Assignment. */
