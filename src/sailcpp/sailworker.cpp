@@ -3357,7 +3357,7 @@ CPoint3d CSailWorker::AftIntersect( const CPoint3d& pt1 ) const
         pAft = EdgeIntersect( LEECH_EDGE, pt1, vH );
     }
     // ensure that Z=0
-    pAft.z() = 0;
+    pAft.setZ(0);
     //
     return pAft;
 }
@@ -3541,7 +3541,7 @@ real CSailWorker::SailLP( )
     {
         h1 = real(i) / imax;
         p =  p1 + v * h1 ;
-        p.z() = 0;
+        p.setZ(0);
         p3 = Zpoint( p );
         w = w + CVector3d(p3 - p2).length();
         p2 = p3;
@@ -3617,7 +3617,7 @@ CPoint3d CSailWorker::FwdIntersect( const CPoint3d &pt1 ) const
     if ( pt1.y() <= tack.y() )  // point is at or below tack
     {
         pFwd.x() = tack.x();  // set forward point on vertical below tack
-        // pFwd.z() = tack.z();
+        // pFwd.setZ(tack.z());
     }
     else if ( pt1.y() < head.y() ) // forward point is on luff curve
     {
@@ -3626,7 +3626,7 @@ CPoint3d CSailWorker::FwdIntersect( const CPoint3d &pt1 ) const
     else if ( pt1.y() == head.y() )  // point exactly at head height
     {
         pFwd.x() = head.x();
-        // pFwd.z() = head.z();
+        // pFwd.setZ(head.z());
     }
     else if ( pt1.y() < peak.y() )
     {   // forward point is on gaff
@@ -3635,10 +3635,10 @@ CPoint3d CSailWorker::FwdIntersect( const CPoint3d &pt1 ) const
     else
     { // point is above peak
         pFwd.x() = peak.x(); // set forward point on vertical above peak
-        //pFwd.z() = peak.z(); //
+        //pFwd.setZ(peak.z()); //
     }
     // Ensure Z = 0
-    pFwd.z() = 0;
+    pFwd.setZ(0);
     //
     return pFwd;
 } /*  end FwdIntersect //////////////// */
@@ -3864,7 +3864,7 @@ CPoint3d CSailWorker::Zpoint( const CPoint3d &p1 ) const
 
     /* applying the twist by rotating the profile around pivotX */
     p2.x() = pivotX + x * cos(twist) - z * sin(twist);
-    p2.z() = x * sin(twist) + z * cos(twist);
+    p2.setZ(x * sin(twist) + z * cos(twist));
 
     return p2;
 } /*  end  Zpoint ///////////////// */

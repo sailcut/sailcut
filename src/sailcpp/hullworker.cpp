@@ -200,13 +200,13 @@ CPanelGroup CHullWorker::makeHull() //const
     plank2 = plank1;
     for (j = 0 ; j < npb ; j++)
     {   // mirror points
-        plank2.top[j].z() = -plank1.top[j].z();
-        plank2.bottom[j].z() = -plank1.bottom[j].z();
+        plank2.top[j].setZ(-plank1.top[j].z());
+        plank2.bottom[j].setZ(-plank1.bottom[j].z());
     }
     for (j = 0 ; j < npl ; j++)
     {   // mirror points
-        plank2.left[j].z() = -plank1.left[j].z();
-        plank2.right[j].z() = -plank1.right[j].z();
+        plank2.left[j].setZ(-plank1.left[j].z());
+        plank2.right[j].setZ(-plank1.right[j].z());
     }
     // add the bottom planks to the hull
     hull.push_back(plank1);
@@ -234,13 +234,13 @@ CPanelGroup CHullWorker::makeHull() //const
     plank2 = plank1;
     for (j = 0 ; j < npb ; j++)
     {   // mirror points
-        plank2.top[j].z() = -plank1.top[j].z();
-        plank2.bottom[j].z() = -plank1.bottom[j].z();
+        plank2.top[j].setZ(-plank1.top[j].z());
+        plank2.bottom[j].setZ(-plank1.bottom[j].z());
     }
     for (j = 0 ; j < npl ; j++)
     {   // mirror points
-        plank2.left[j].z() = -plank1.left[j].z();
-        plank2.right[j].z() = -plank1.right[j].z();
+        plank2.left[j].setZ(-plank1.left[j].z());
+        plank2.right[j].setZ(-plank1.right[j].z());
     }
     // add the top side planks to the hull
     hull.push_back(plank1);
@@ -251,13 +251,13 @@ CPanelGroup CHullWorker::makeHull() //const
     {
         deck1.bottom[j] = plank1.top[j];
         deck1.top[j] = deck1.bottom[j];
-        deck1.top[j].z() = 0;
+        deck1.top[j].setZ(0);
         deck1.left.fill(deck1.bottom[0] , deck1.top[0]);
         deck1.right.fill(deck1.bottom[npb-1] , deck1.top[npb-1]);
 
         deck2.bottom[j] = plank2.top[j];
         deck2.top[j] = deck2.bottom[j];
-        deck2.top[j].z() = 0;
+        deck2.top[j].setZ(0);
         deck2.left.fill(deck2.bottom[0] , deck2.top[0]);
         deck2.right.fill(deck2.bottom[npb-1] , deck2.top[npb-1]);
     }

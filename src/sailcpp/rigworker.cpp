@@ -59,7 +59,7 @@ CPanelGroup CRigWorker::makeRig() const
     for (j = 0 ; j < npb ; j++)
     {
         v1 = CVector3d(cos(PI * real(j) /(npb-1)), 0, sin(PI * real(j) /(npb-1) ) );
-        v1.z() = v1.z() * MWidth / MCord;
+        v1.setZ(v1.z() * MWidth / MCord);
         mast1.top[j] = p0 + cord * v1;
         mast2.top[j] = p0 - cord *v1;
     }
@@ -74,7 +74,7 @@ CPanelGroup CRigWorker::makeRig() const
         for (j = 0 ; j < npb ; j++)
         {
             v1 = CVector3d(cos(PI * real(j) /(npb-1)), 0, sin(PI * real(j) /(npb-1) ) );
-            v1.z() = v1.z() * MWidth / MCord;
+            v1.setZ(v1.z() * MWidth / MCord);
             mast1.bottom[j] = mast1.top[j];
             mast2.bottom[j] = mast2.top[j];
             mast1.top[j] = p2 + cord *v1;

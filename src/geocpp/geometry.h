@@ -84,10 +84,6 @@ public:
     }
 
     /** Returns the third coordinate. */
-    real &z(void)
-    {
-        return (*this)[2];
-    }
     real z(void) const
     {
         return (*this)[2];

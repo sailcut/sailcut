@@ -213,11 +213,11 @@ void CSailDoc::get
 {
     QDomElement e = findElement( parent, "CPoint3d", name);
     get
-    (e, p.x(), "x");
+    (e, p[0], "x");
     get
-    (e, p.y(), "y");
+    (e, p[1], "y");
     get
-    (e, p.z(), "z");
+    (e, p[2], "z");
 }
 
 
