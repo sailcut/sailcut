@@ -72,15 +72,15 @@ CRect3d CRect3d::expandToRatio(const real ratio) const
     {
         const real extrah = 0.5 * h * (objAspect/ratio - 1);
         // we are limited by the width of the window, grow logical viewport's height
-        lRect.min.y() -= extrah;
-        lRect.max.y() += extrah;
+        lRect.min.setY(lRect.min.y() - extrah);
+        lRect.max.setY(lRect.max.y() + extrah);
     }
     else
     {
         real extraw = 0.5 * w * (ratio/objAspect - 1);
         // we are limited by the height of the window, grow logical viewport's width
-        lRect.min.x() -= extraw;
-        lRect.max.x() += extraw;
+        lRect.min.setX(lRect.min.x() - extraw);
+        lRect.max.setX(lRect.max.x() + extraw);
     }
 
     return lRect;

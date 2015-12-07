@@ -52,10 +52,23 @@ public:
     {
         return (*this)[0];
     }
+
+    /** Sets the first coordinate. */
+    void setX(real x)
+    {
+        (*this)[0] = x;
+    }
+
     /** Returns the second coordinate. */
     real &y(void)
     {
         return (*this)[1];
+    }
+
+    /** Sets the second coordinate. */
+    void setY(real y)
+    {
+        (*this)[1] = y;
     }
 
     /** Assignment operator. */
@@ -104,6 +117,12 @@ public:
         return (*this)[0];
     }
 
+    /** Sets the first coordinate. */
+    void setX(real x)
+    {
+        (*this)[0] = x;
+    }
+
     /** Returns the second coordinate. */
     real &y(void)
     {
@@ -114,6 +133,12 @@ public:
         return (*this)[1];
     }
 
+    /** Sets the second coordinate. */
+    void setY(real y)
+    {
+        (*this)[1] = y;
+    }
+
     /** Returns the third coordinate. */
     real &z(void)
     {
@@ -122,6 +147,12 @@ public:
     real z(void) const
     {
         return (*this)[2];
+    }
+
+    /** Sets the third coordinate. */
+    void setZ(real z)
+    {
+        (*this)[2] = z;
     }
 
     // 3D only!
