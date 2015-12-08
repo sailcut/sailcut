@@ -112,6 +112,16 @@ public:
     static CVector3d crossProduct(const CVector3d &v1, const CVector3d &v2);
     static real dotProduct(const CVector3d &v1, const CVector3d &v2);
 
+    /** Binary '+' operator (addition)
+    */
+    CVector3d operator+(const CVector3d& v2) const
+    {
+        return CVector3d(
+            x() + v2.x(),
+            y() + v2.y(),
+            z() + v2.z());
+    };
+
     /** Unary '-' operator (return opposite)
      */
     CVector3d operator- () const
@@ -129,6 +139,16 @@ public:
             z() - v2.z());
     };
 
+    /** Binary '* (multiply a vector by a real)
+    */
+    CVector3d operator*(const real& lambda) const
+    {
+        return CVector3d(
+            x() * lambda,
+            y() * lambda,
+            z() * lambda);
+    };
+
     /** Assignment. */
     CVector3d &operator=(const CVector3d &v)
     {
@@ -139,6 +159,13 @@ public:
     }
 };
 
+/** Binary '*' (multiply a scalar by a vector)
+ */
+inline
+CVector3d operator*(const real& lambda, const CVector3d &v)
+{
+    return v * lambda;
+}
 
 /** 3d real-valued point
  *

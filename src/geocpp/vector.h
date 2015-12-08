@@ -65,44 +65,6 @@ public:
         return !(*this == v);
     };
 
-    /** Binary '+' operator (addition)
-    */
-    CVector operator+(const CVector& v2) const
-    {
-#ifdef CHECK_DIMENSIONS
-        if (size() != v2.size())
-            throw invalid_argument("CVector::operator+ : dimension mismatch!");
-#endif
-        CVector ret(*this);
-        for (size_t i = 0; i < size(); i++)
-            ret[i] += v2[i];
-        return ret;
-    };
-
-    /** Unary '-' operator (return opposite)
-     */
-    CVector operator- () const
-    {
-        CVector ret(size());
-        for (size_t i = 0; i < size(); i++)
-            ret[i] = - (*this)[i];
-        return ret;
-    };
-
-    /** Binary '-' operator (return difference)
-    */
-    CVector operator- (const CVector &v2) const
-    {
-#ifdef CHECK_DIMENSIONS
-        if (size() != v2.size())
-            throw invalid_argument("CVector::operator- : dimension mismatch!");
-#endif
-        CVector ret(*this);
-        for (size_t i = 0; i < size(); i++)
-            ret[i] -= v2[i];
-        return ret;
-    };
-
     /** Binary '* (multiply a vector by a real)
     */
     CVector operator*(const real& lambda) const
