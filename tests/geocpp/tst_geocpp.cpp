@@ -17,6 +17,9 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+#include <QObject>
+#include <QtTest>
+
 #include <geocpp/geometry.h>
 #include <geocpp/subspace.h>
 
@@ -27,6 +30,59 @@
 #include <mcheck.h>
 #endif
 
+/** Outputs a CMatrix to a stream.
+ */
+ostream& operator<< (ostream &o, const CMatrix &m)
+{
+    o << "[";
+    for (size_t i = 0 ; i < m.rows() ; i++)
+    {
+        o << m.row(i);
+        if ( i != m.rows() - 1 )
+            o << endl;
+    }
+    o << "]";
+    return o;
+}
+
+/** Outputs the definition of a CSubSpace to a stream.
+ */
+ostream& operator<< (ostream &o, const CSubSpace &h)
+{
+    o << "--------------------------------" << endl;
+    o << "     subspace : ";
+    switch (h.getdim())
+    {
+    case -1:
+        o << "empty" << endl;
+        break;
+    case 0:
+        o << "point" << endl;
+        break;
+    case 1:
+        o << "line" << endl;
+        break;
+    case 2:
+        o << "plane" << endl;
+        break;
+    default:
+        o << "dim=" << h.getdim() << endl;
+    }
+    o << "--------------------------------" << endl;
+    if ( h.getdim() >= 0 )
+    {
+        o << "point:" << endl << h.getp() << endl;
+        if (h.getdim()>0)
+        {
+            o << "------" << endl;
+            o << "base vectors (in columns): " << endl << h.getm().kern(h.getp().size()) << endl << "------" << endl;
+            o << "equations (coeffs in lines): " << endl << h.getm() << endl;
+        }
+        o << "--------------------------------" << endl;
+    }
+    return o;
+}
+
 template<class T> void test_contain(const char *name, const CSubSpace &s, const T &p, bool expected)
 {
     bool res = s.contains(p);
@@ -36,16 +92,25 @@ template<class T> void test_contain(const char *name, const CSubSpace &s, const 
 }
 
 
-void test_point(void)
+class tst_GeoCpp : public QObject
+{
+    Q_OBJECT
+
+private slots:
+    void testPoint();
+};
+
+
+void tst_GeoCpp::testPoint(void)
 {
     CPoint3d p3(1,0,0), q3(0,1,0);
     CPoint3d r3;
 
-    cout << "----- Point operations -----" << endl;
-    cout << "p3\t " << p3 << endl;
-    cout << "q3\t " << q3  << endl;
-    //cin >> r3;
-    cout << "r3\t " << r3 << endl;
+    QCOMPARE(p3, CPoint3d(1, 0, 0));
+    QCOMPARE(q3, CPoint3d(0, 1, 0));
+    QCOMPARE(r3, CPoint3d(0, 0, 0));
+
+    QCOMPARE(p3 - q3, CPoint3d(1, -1, 0));
     cout << "p3 - q3\t " << p3-q3 << endl;
     cout << "|p3,q3|\t " << CVector3d(q3 - p3).length() << endl;
     cout << " " << endl;
@@ -76,7 +141,7 @@ void test_vect(void)
     CVector3d u3(1,2,3),v3(5,8,9);
     cout << "u3\t " << u3 << endl;
     cout << "u3.x()\t " << u3.x() << endl;
-    u3.x()=5;
+    u3.setX(5);
     cout << "u3\t " << u3 << endl;
     cout << "v3\t " << v3 << endl;
     cout << "-v3\t " << -v3 << endl;
@@ -86,7 +151,7 @@ void test_vect(void)
     cout << "2 * u3\t " << real(2)*u3 << endl;
     u3[2] = 456;
     cout << "u3[2]\t " << u3[2] << endl;
-    cout << "u3*v3\t " << u3*v3 << endl;
+    //cout << "u3*v3\t " << u3*v3 << endl;
     cout << " " << endl;
 }
 
@@ -106,12 +171,14 @@ void test_matrix(void)
     q(2,1) = -1;
 
     cout << "q" << endl << q << endl;
+
+#if 0
     CSubSpace h = q.solve(v1);
     cout << "q.solve(v1)" << endl << h << endl;
     if (h.getdim() != 0)
         throw runtime_error("intersection is not a point");
-
     cout << "q * q.solve(v1).getp()" << endl << q * h.getp() << endl;
+#endif
 
     // Singular 3x3 matrix
     CMatrix s(3,3);
@@ -126,12 +193,13 @@ void test_matrix(void)
     s(2,2) = 2;
 
     cout << "s" << endl << s << endl;
-    cout << "s.diag()" << endl << s.diag() << endl;
-    cout << "s.img()" << endl << s.img() << endl;
+    //cout << "s.diag()" << endl << s.diag() << endl;
+    //cout << "s.img()" << endl << s.img() << endl;
     cout << "s.kern(3)" << endl << s.kern(3) << endl;
     cout << "s*s.kern(3)" << endl << s*s.kern(3) << endl;
     cout << "s*v1" << endl << s*v1 << endl;
 
+#if 0
     CSubSpace h2 = s.solve(v1);
     cout << "s.solve(v1)" << endl << h2 << endl;
     if (h2.getdim() != 1)
@@ -141,6 +209,7 @@ void test_matrix(void)
     cout << "s.solve(v2)" << endl << h3 << endl;
     if (h3.getdim() != -1)
         throw runtime_error("intersection is not empty");
+#endif
 
     // 3x4 matrix
     CMatrix t(3,4);
@@ -158,7 +227,7 @@ void test_matrix(void)
     t(2,3) = 7;
 
     cout << "t" << endl << t << endl;
-    cout << "t.diag()" << endl << t.diag() << endl;
+    //cout << "t.diag()" << endl << t.diag() << endl;
     //cout << "t.img()" << endl << t.img() << endl;
     cout << "t.kern(4)" << endl << t.kern(4) << endl;
     //cout << "t.diag()*t.kern()" << endl << t.diag()*t.kern() << endl;
@@ -176,7 +245,7 @@ void test_space3d(void)
     const CSubSpace P3B = CSubSpace3d::plane(CPoint3d(4,-5,1), CVector3d(-3,0,1), CVector3d(0,1,0));
     const CPoint3d p3(2,2,2),q3(2,1,2),r3(4,5,7),s3(2,2,1);
 
-    CSubSpace h(3);
+    CSubSpace h;
 
     cout << "== L3A ==" << endl << L3A << endl;
     test_contain<CPoint3d>("L3A", L3A, p3, false);
@@ -229,6 +298,7 @@ void test_space3d(void)
     cout << " " << endl;
 }
 
+#if 0
 int main()
 {
 #ifdef DEBUG
@@ -241,7 +311,6 @@ int main()
     cout << " " << endl;
 
     test_rect();
-    test_point();
     test_vect();
     test_matrix();
     test_space3d();
@@ -250,5 +319,7 @@ int main()
 
     return 0;
 }
+#endif
 
-
+QTEST_MAIN(tst_GeoCpp)
+#include "tst_geocpp.moc"

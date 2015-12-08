@@ -90,6 +90,23 @@ public:
     static CVector3d crossProduct(const CVector3d &v1, const CVector3d &v2);
     static real dotProduct(const CVector3d &v1, const CVector3d &v2);
 
+    /** Unary '-' operator (return opposite)
+     */
+    CVector3d operator- () const
+    {
+        return CVector3d(-x(), -y(), -z());
+    };
+
+    /** Binary '-' operator (return difference)
+    */
+    CVector3d operator- (const CVector3d &v2) const
+    {
+        return CVector3d(
+            x() - v2.x(),
+            y() - v2.y(),
+            z() - v2.z());
+    };
+
     /** Assignment. */
     CVector3d &operator=(const CVector3d &v)
     {
