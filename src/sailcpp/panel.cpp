@@ -63,6 +63,21 @@ CPanelLabel CPanelLabel::rotate( const CPoint3d &p , const CMatrix &m ) const
     return lb;
 }
 
+/** Transforms a label.
+ */
+CPanelLabel CPanelLabel::transformed(const QMatrix4x4 &m) const
+{
+    CPanelLabel lb;
+
+    lb.name = name;
+    lb.height = height;
+    lb.color = color;
+    lb.origin = m * origin;
+    lb.direction = m * direction;
+
+    return lb;
+}
+
 // operators
 
 /** Performs a 3D translation of a label by a given vector.
@@ -828,6 +843,30 @@ CPanel CPanel::rotate( const CPoint3d &p, const CMatrix &m ) const
     return panel;
 }
 
+
+/** Transform a panel.
+ */
+CPanel CPanel::transformed(const QMatrix4x4 &m) const
+{
+    CPanel panel;
+    panel.hasHems = hasHems;
+
+    panel.label = label.transformed(m);
+
+    panel.left = left.transformed(m);
+    panel.right = right.transformed(m);
+    panel.top = top.transformed(m);
+    panel.bottom = bottom.transformed(m);
+
+    panel.cutLeft = cutLeft.transformed(m);
+    panel.cutRight = cutRight.transformed(m);
+    panel.cutTop = cutTop.transformed(m);
+    panel.cutBottom = cutBottom.transformed(m);
+
+    return panel;
+}
+
+
 // operators
 
 /** Performs a 3D translation of the panel by a given vector.
@@ -946,6 +985,19 @@ CSide CSide::rotate( const CPoint3d &p, const CMatrix &m ) const
 
     for (unsigned int i = 0 ; i < size() ; i++)
         s[i] = p + m * (at(i) - p);
+
+    return s;
+}
+
+
+/** Transform a CSide.
+ */
+CSide CSide::transformed(const QMatrix4x4 &m) const
+{
+    CSide s( size() );
+
+    for (unsigned int i = 0 ; i < size() ; i++)
+        s[i] = m * at(i);
 
     return s;
 }

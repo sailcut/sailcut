@@ -28,6 +28,8 @@
 /** Constructs a generic view area for a sail.
  */
 CSailDisp::CSailDisp()
+    : m_azimuth(0)
+    , m_elevation(0)
 {
     // initialise data
     m = CMatrix::id(3);
@@ -40,7 +42,17 @@ CSailDisp::CSailDisp()
  */
 void CSailDisp::calcDispObject()
 {
-    dispObject = baseObject.rotate( baseRect.center(), m );
+    const CVector3d c = baseRect.center();
+    QVector3D center(c.x(), c.y(), c.z());
+
+    QMatrix4x4 matrix;
+    matrix.setToIdentity();
+    matrix.translate(center);
+    matrix.rotate(m_elevation, QVector3D(1, 0, 0));
+    matrix.rotate(m_azimuth, QVector3D(0, 1, 0));
+    matrix.translate(-center);
+
+    dispObject = baseObject.transformed(matrix);
 }
 
 
@@ -74,7 +86,8 @@ CPoint3d CSailDisp::screenToLogical( const int x, const int y ) const
  */
 void CSailDisp::setAngle( real azimuth, real elevation )
 {
-    m = CMatrix::rot3d(0, PI/180*elevation) * CMatrix::rot3d(1, PI/180*azimuth);
+    m_azimuth = azimuth;
+    m_elevation = m_elevation;
     calcDispObject();
 }
 

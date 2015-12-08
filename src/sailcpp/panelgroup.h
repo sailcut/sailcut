@@ -57,6 +57,7 @@ public:
 
     /** function for rotating all panels */
     CPanelGroup rotate( const CPoint3d &, const CMatrix & ) const;
+    CPanelGroup transformed(const QMatrix4x4 &m) const;
 
     // operators
     CPanelGroup& operator=( const CPanelGroup &);

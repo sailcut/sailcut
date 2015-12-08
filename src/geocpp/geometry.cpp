@@ -34,6 +34,12 @@ bool qFuzzyCompare(const CVector3d &v1, const CVector3d &v2)
     return true;
 }
 
+CVector3d operator*(const QMatrix4x4 &m, const CVector3d &v)
+{
+    QVector3D o = m * QVector3D(v.x(), v.y(), v.z());
+    return CVector3d(o.x(), o.y(), o.z());
+}
+
 
 /** Cross product. Produces a vector orthogonal to the two original vectors.
  */

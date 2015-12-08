@@ -20,6 +20,8 @@
 #ifndef GEOCPP_GEOMETRY_H
 #define GEOCPP_GEOMETRY_H
 
+#include <QMatrix4x4>
+#include <QVector3D>
 #include <geocpp/vector.h>
 
 class CMatrix;
@@ -175,6 +177,8 @@ private:
 
 
 bool qFuzzyCompare(const CVector3d &v1, const CVector3d &v2);
+
+CVector3d operator*(const QMatrix4x4 &m, const CVector3d &v);
 
 
 /** Binary '*' (multiply a scalar by a vector)

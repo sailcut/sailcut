@@ -20,6 +20,7 @@
 #ifndef PANEL_H
 #define PANEL_H
 
+#include <QMatrix4x4>
 #include <vector>
 #include <string>
 
@@ -68,6 +69,7 @@ public:
 
     /** function for rotating a label. */
     CPanelLabel rotate( const CPoint3d &, const CMatrix & ) const;
+    CPanelLabel transformed(const QMatrix4x4 &m) const;
 
     /** operator to translate a label */
     CPanelLabel operator+ (const CVector3d &) const;
@@ -100,6 +102,7 @@ public:
 
     /** function for rotating a side. */
     CSide rotate( const CPoint3d &, const CMatrix &) const;
+    CSide transformed(const QMatrix4x4 &m) const;
 
     // operators
     CSide operator+ (const CVector3d &) const;
@@ -180,6 +183,7 @@ public:
     void placeLabel();   //  place a label at the center of a panel
     CPanel reframe(enumAlign align) const;
     CPanel rotate( const CPoint3d &, const CMatrix &) const;
+    CPanel transformed(const QMatrix4x4 &m) const;
     CPanel operator+ (const CVector3d &) const;
     CPanel& operator= (const CPanel &);
 
