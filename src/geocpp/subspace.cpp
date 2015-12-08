@@ -80,7 +80,7 @@ bool CSubSpace::contains(const CVector &point) const
 CSubSpace CSubSpace::intersect(const CSubSpace &h2) const
 {
     if ( (getdim() < 0) || (h2.getdim() < 0) )
-        return CSubSpace(0 , 0);
+        return CSubSpace();
 
     if ( p.size() != h2.p.size() )
         throw invalid_argument("CSubSpace::intersect : dimension mismatch on points");

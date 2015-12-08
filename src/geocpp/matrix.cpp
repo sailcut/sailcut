@@ -433,7 +433,7 @@ CSubSpace CMatrix::solve(const CVector &b) const
     soltype_t soltype=NONE;
     CVector s = b;
     CMatrix k;
-    CSubSpace h(CVector(0),CMatrix());
+    CSubSpace h;
 
     gaussjordan(NULL,NULL,&soltype,&s,&k);
     switch (soltype)
@@ -443,11 +443,11 @@ CSubSpace CMatrix::solve(const CVector &b) const
         break;
     case ONE:
         //cout << "CMatrix::solve : system has unique solution" << endl;
-        h = CSubSpace(s,CMatrix::id(s.size()));
+        h = CSubSpace(s, CMatrix::id(s.size()), GEOCPP_FROM_EQS);
         break;
     case INF:
         //cout << "CMatrix::solve : system has an infinity of solutions" << endl;
-        h = CSubSpace(s,k,GEOCPP_FROM_BASE);
+        h = CSubSpace(s, k, GEOCPP_FROM_BASE);
         break;
     }
     return h;
