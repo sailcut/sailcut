@@ -64,25 +64,6 @@ public:
     {
         return !(*this == v);
     };
-
-    /** Binary '* (multiply a vector by a real)
-    */
-    CVector operator*(const real& lambda) const
-    {
-        CVector ret(*this);
-        for (size_t i = 0; i < size(); i++)
-            ret[i] *= lambda;
-        return ret;
-    };
 };
-
-/** Binary '*' (multiply a scalar by a vector)
- */
-inline
-CVector operator*(const real& lambda, const CVector &v)
-{
-    return v * lambda;
-}
-
 
 #endif

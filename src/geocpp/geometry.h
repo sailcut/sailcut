@@ -112,6 +112,16 @@ public:
     static CVector3d crossProduct(const CVector3d &v1, const CVector3d &v2);
     static real dotProduct(const CVector3d &v1, const CVector3d &v2);
 
+    real &operator[](size_t idx)
+    {
+        return CVector::operator[](idx);
+    };
+
+    real operator[](size_t idx) const
+    {
+        return CVector::operator[](idx);
+    };
+
     /** Binary '+' operator (addition)
     */
     CVector3d operator+(const CVector3d& v2) const
@@ -226,7 +236,6 @@ public:
     CPoint3d min;
     /** top-right corner */
     CPoint3d max;
-
 };
 
 

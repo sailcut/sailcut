@@ -17,6 +17,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+#define SIZE 3
+
 #include <geocpp/subspace.h>
 
 /*******************************************************
@@ -48,17 +50,17 @@ CSubSpace::CSubSpace(const CVector3d &pi, const CMatrix &mi, subspaceflags_t cre
     {
     case GEOCPP_FROM_EQS:
         // equations are given in lines
-        if ( (mi.rows() > 0) && (mi.columns() != pi.size()) )
+        if ( (mi.rows() > 0) && (mi.columns() != SIZE) )
             throw invalid_argument("CSubSpace::CSubSpace(p,m,GEOCPP_FROM_EQS) : dimension mismatch between p and m");
 
         m = mi;
         break;
     case GEOCPP_FROM_BASE:
         // base is given in column format
-        if ( (mi.columns() > 0) && (mi.rows() != pi.size()) )
+        if ( (mi.columns() > 0) && (mi.rows() != SIZE) )
             throw invalid_argument("CSubSpace::CSubSpace(p,m,GEOCPP_FROM_BASE) : dimension mismatch between p and m");
 
-        m = mi.transposed().kern(pi.size()).transposed();
+        m = mi.transposed().kern(SIZE).transposed();
         break;
     default:
         throw invalid_argument("CSubSpace::CSubspace(p,m,createflags) : unknown creation flags");
@@ -91,7 +93,7 @@ int CSubSpace::getdim() const
     if (isEmpty)
         return -1;
     else
-        return 3 - m.rows();
+        return SIZE - m.rows();
 }
 
 
@@ -102,10 +104,10 @@ CSubSpace CSubSpace::intersect(const CSubSpace &h2) const
     if (isEmpty || h2.isEmpty)
         return CSubSpace();
 
-    CVector b1 = m*p;
-    CVector b2 = h2.m*h2.p;
+    CVector3d b1 = m*p;
+    CVector3d b2 = h2.m*h2.p;
     CVector bb( m.rows() + h2.m.rows() );
-    CMatrix mm( m.rows() + h2.m.rows(), 3 );
+    CMatrix mm( m.rows() + h2.m.rows(), SIZE );
     for (size_t i = 0 ; i < mm.rows() ; i++)
     {
         if ( i < m.rows() )
@@ -133,7 +135,7 @@ CSubSpace CSubSpace::intersect(const CSubSpace &h2) const
     {
     case ONE:
         //cout << "CMatrix::solve : system has unique solution" << endl;
-        return CSubSpace(s, CMatrix::id(s.size()), GEOCPP_FROM_EQS);
+        return CSubSpace(s, CMatrix::id(SIZE), GEOCPP_FROM_EQS);
     case INF:
         //cout << "CMatrix::solve : system has an infinity of solutions" << endl;
         return CSubSpace(s, k, GEOCPP_FROM_BASE);
