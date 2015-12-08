@@ -412,44 +412,6 @@ CVector CMatrix::row(size_t index) const
 }
 
 
-/** Solves the linear equations system formed by the current matrix
- * and a given right-hand side vector.
- *
- * @param b the right-hand side values in the equation
- */
-CSubSpace CMatrix::solve(const CVector &b) const
-{
-    if (m_nrow != b.size())
-        throw invalid_argument("CMatrix::solve : dimension mismatch");
-
-    //cout << "[[ solver ]]" << endl;
-    //cout << "m" << endl << *this << endl;
-    //cout << "b" << endl << b << endl;
-
-    soltype_t soltype=NONE;
-    CVector s = b;
-    CMatrix k;
-    CSubSpace h;
-
-    gaussjordan(NULL,NULL,&soltype,&s,&k);
-    switch (soltype)
-    {
-    case NONE:
-        //cout << "CMatrix::solve : system has no solution" << endl;
-        break;
-    case ONE:
-        //cout << "CMatrix::solve : system has unique solution" << endl;
-        h = CSubSpace(s, CMatrix::id(s.size()), GEOCPP_FROM_EQS);
-        break;
-    case INF:
-        //cout << "CMatrix::solve : system has an infinity of solutions" << endl;
-        h = CSubSpace(s, k, GEOCPP_FROM_BASE);
-        break;
-    }
-    return h;
-}
-
-
 /** Swaps two rows of a matrix.
  */
 void CMatrix::swap_row(const size_t& i1, const size_t& i2)

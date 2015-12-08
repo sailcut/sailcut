@@ -124,7 +124,24 @@ CSubSpace CSubSpace::intersect(const CSubSpace &h2) const
     //cout << "mm" << endl << mm << endl;
     //cout << "bb" << endl << bb << endl;
 
-    return  mm.solve(bb);
+    soltype_t soltype = NONE;
+    CVector s = bb;
+    CMatrix k;
+
+    mm.gaussjordan(NULL,NULL,&soltype,&s,&k);
+    switch (soltype)
+    {
+    case ONE:
+        //cout << "CMatrix::solve : system has unique solution" << endl;
+        return CSubSpace(s, CMatrix::id(s.size()), GEOCPP_FROM_EQS);
+    case INF:
+        //cout << "CMatrix::solve : system has an infinity of solutions" << endl;
+        return CSubSpace(s, k, GEOCPP_FROM_BASE);
+    case NONE:
+        //cout << "CMatrix::solve : system has no solution" << endl;
+        break;
+    }
+    return CSubSpace();
 }
 
 CVector3d CSubSpace::intersectionPoint(const CSubSpace &h2, const char*) const

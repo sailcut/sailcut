@@ -27,7 +27,6 @@
 
 enum soltype_t { NONE, ONE, INF };
 
-class CSubSpace;
 
 /** Class for describing matrices.
  *
@@ -35,14 +34,6 @@ class CSubSpace;
  */
 class CMatrix
 {
-protected:
-    /** the matrix's data */
-    real* m_data;
-    /** number of rows */
-    size_t m_nrow;
-    /** number of columns */
-    size_t m_ncol;
-
 public:
 
     /** Constructs a CMatrix with the given number of rows and columns.
@@ -86,7 +77,6 @@ public:
             delete [] m_data;
     };
 
-public:
     // static functions
     static CMatrix id(const size_t&);
     static CMatrix rnd(const size_t&, const size_t&);
@@ -113,9 +103,10 @@ public:
     {
         return ! (m_ncol && m_nrow);
     }
+
+    CMatrix gaussjordan(bool *is_inv=NULL, CMatrix *inv=NULL, soltype_t *soltype=NULL, CVector *bb=NULL, CMatrix *tkern=NULL) const;
     CMatrix   kern(const size_t& vsize) const;
     CVector row(size_t) const;
-    CSubSpace solve(const CVector &) const;
     void      swap_row(const size_t&, const size_t&);
     void      swap_col(const size_t&, const size_t&);
     CMatrix   transposed() const;
@@ -130,8 +121,13 @@ public:
     CMatrix   operator*(const CMatrix &) const;
     CVector operator*(const CVector &) const;
 
-protected:
-    CMatrix gaussjordan(bool *is_inv=NULL, CMatrix *inv=NULL, soltype_t *soltype=NULL, CVector *bb=NULL, CMatrix *tkern=NULL) const;
+private:
+    /** the matrix's data */
+    real* m_data;
+    /** number of rows */
+    size_t m_nrow;
+    /** number of columns */
+    size_t m_ncol;
 };
 
 
