@@ -180,7 +180,7 @@ CPoint3d CPanel::centroid() const
         for (unsigned int i = 0 ; i < sarray[s]->size() ; i++)
         {
             p = (*sarray[s])[i];
-            if (( nbDiffPoints == 0) || ( p != prev ) )
+            if (( nbDiffPoints == 0) || !qFuzzyCompare(p, prev) )
             {
                 // count only distinct points
                 prev = p;
@@ -625,21 +625,21 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
     if ( v3.length() >= minSize ) {  // lower right side is not a point
         for (i = 0 ; i < npl/2 ; i++) {
             if ( i == 0 ) {
-                if ( right[i+1] != right[i] )
+                if (!qFuzzyCompare(right[i+1], right[i]))
                     v = CVector3d( right[i+1] - right[i] );
-                else if ( right[i+2] != right[i] )
+                else if (!qFuzzyCompare(right[i+2], right[i]))
                     v = CVector3d( right[i+2] - right[i] );
-                else if ( right[i+3] != right[i] )
+                else if (!qFuzzyCompare(right[i+3], right[i]))
                     v = CVector3d( right[i+3] - right[i] );
-                else if ( right[i+4] != right[i] )
+                else if (!qFuzzyCompare(right[i+4], right[i]))
                     v = CVector3d( right[i+4] - right[i] );
             }
             else {
-                if ( right[i] != right[i-1] )
+                if (!qFuzzyCompare(right[i], right[i-1]))
                     v = CVector3d( right[i] - right[i-1] );
-                else if ( right[i+1] != right[i] )
+                else if (!qFuzzyCompare(right[i+1], right[i]))
                     v = CVector3d( right[i+1] - right[i] );
-                else if ( right[i+2] != right[i] )
+                else if (!qFuzzyCompare(right[i+2], right[i]))
                     v = CVector3d( right[i+2] - right[i] );
             }
             cutRight[i] = right[i] + rotateNormalized(-PI/2, v) * lorW;

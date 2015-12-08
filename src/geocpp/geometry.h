@@ -168,23 +168,14 @@ public:
         return *this;
     };
 
-    /** Tests vectors for equality.
-    */
-    bool operator==(const CVector3d &v) const
-    {
-        for (size_t i = 0; i < 3; i++)
-            if (fabs((*this)[i] - v[i]) > EPS)
-                return false;
-        return true;
-    };
-
-    /** Tests vectors for non-equality.
-     */
-    bool operator!=(const CVector3d &v) const
-    {
-        return !(*this == v);
-    };
+private:
+    bool operator==(const CVector3d &v) const;
+    bool operator!=(const CVector3d &v) const;
 };
+
+
+bool qFuzzyCompare(const CVector3d &v1, const CVector3d &v2);
+
 
 /** Binary '*' (multiply a scalar by a vector)
  */

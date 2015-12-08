@@ -21,6 +21,20 @@
 #include <geocpp/matrix.h>
 #include <geocpp/subspace.h>
 
+
+/**
+ * Returns true if v1 and v2 are equal, allowing for a small fuzziness factor
+ * for floating-point comparisons; false otherwise.
+ */
+bool qFuzzyCompare(const CVector3d &v1, const CVector3d &v2)
+{
+    for (size_t i = 0; i < 3; i++)
+        if (fabs(v1[i] - v2[i]) > EPS)
+            return false;
+    return true;
+}
+
+
 /** Cross product. Produces a vector orthogonal to the two original vectors.
  */
 CVector3d CVector3d::crossProduct(const CVector3d &v1, const CVector3d &v2)
