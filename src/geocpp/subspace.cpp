@@ -104,8 +104,8 @@ CSubSpace CSubSpace::intersect(const CSubSpace &h2) const
     if (isEmpty || h2.isEmpty)
         return CSubSpace();
 
-    CVector3d b1 = m*p;
-    CVector3d b2 = h2.m*h2.p;
+    CVector b1 = m * p;
+    CVector b2 = h2.m * h2.p;
     CVector bb( m.rows() + h2.m.rows() );
     CMatrix mm( m.rows() + h2.m.rows(), SIZE );
     for (size_t i = 0 ; i < mm.rows() ; i++)

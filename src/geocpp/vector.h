@@ -36,34 +36,6 @@ typedef double real;
 const real EPS = 1E-14;
 const real PI = 3.14159265358979323846;
 
-/** Real-valued vector
- */
-class CVector : public vector<real>
-{
-public:
-    CVector(size_t size) : vector<real>(size) {};
-    CVector(const CVector &v) : vector<real>(v) {};
-
-    /** Tests vectors for equality.
-    */
-    bool operator==(const CVector &v) const
-    {
-#ifdef CHECK_DIMENSIONS
-        if (size() != v.size())
-            throw invalid_argument("CVector::operator== : dimension mismatch!");
-#endif
-        for (size_t i = 0; i < size(); i++)
-            if (fabs((*this)[i] - v[i]) > EPS)
-                return false;
-        return true;
-    };
-
-    /** Tests vectors for non-equality.
-     */
-    bool operator!=(const CVector &v) const
-    {
-        return !(*this == v);
-    };
-};
+typedef vector<real> CVector;
 
 #endif

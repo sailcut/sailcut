@@ -45,45 +45,6 @@ ostream& operator<< (ostream &o, const CMatrix &m)
     return o;
 }
 
-/** Outputs the definition of a CSubSpace to a stream.
- */
-ostream& operator<< (ostream &o, const CSubSpace &h)
-{
-    o << "--------------------------------" << endl;
-    o << "     subspace : ";
-    switch (h.getdim())
-    {
-    case -1:
-        o << "empty" << endl;
-        break;
-    case 0:
-        o << "point" << endl;
-        break;
-    case 1:
-        o << "line" << endl;
-        break;
-    case 2:
-        o << "plane" << endl;
-        break;
-    default:
-        o << "dim=" << h.getdim() << endl;
-    }
-    o << "--------------------------------" << endl;
-    if ( h.getdim() >= 0 )
-    {
-        o << "point:" << endl << h.getp() << endl;
-        if (h.getdim()>0)
-        {
-            o << "------" << endl;
-            o << "base vectors (in columns): " << endl << h.getm().kern(h.getp().size()) << endl << "------" << endl;
-            o << "equations (coeffs in lines): " << endl << h.getm() << endl;
-        }
-        o << "--------------------------------" << endl;
-    }
-    return o;
-}
-
-
 class tst_GeoCpp : public QObject
 {
     Q_OBJECT

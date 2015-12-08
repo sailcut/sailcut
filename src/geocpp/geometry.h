@@ -166,7 +166,24 @@ public:
         (*this)[1] = v[1];
         (*this)[2] = v[2];
         return *this;
-    }
+    };
+
+    /** Tests vectors for equality.
+    */
+    bool operator==(const CVector3d &v) const
+    {
+        for (size_t i = 0; i < 3; i++)
+            if (fabs((*this)[i] - v[i]) > EPS)
+                return false;
+        return true;
+    };
+
+    /** Tests vectors for non-equality.
+     */
+    bool operator!=(const CVector3d &v) const
+    {
+        return !(*this == v);
+    };
 };
 
 /** Binary '*' (multiply a scalar by a vector)
@@ -176,6 +193,7 @@ CVector3d operator*(const real& lambda, const CVector3d &v)
 {
     return v * lambda;
 }
+
 
 /** 3d real-valued point
  *
