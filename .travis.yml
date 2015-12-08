@@ -1,0 +1,9 @@
+language: cpp
+cache: apt
+install:
+  - sudo add-apt-repository -y ppa:ubuntu-sdk-team/ppa
+  - sudo apt-get update
+  - sudo apt-get install qtbase5-dev
+script:
+  - qmake
+  - make
