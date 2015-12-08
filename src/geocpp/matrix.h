@@ -78,23 +78,6 @@ public:
         }
     };
 
-    /** Returns the matrix corresponding to a vector
-    */
-    CMatrix(const CVector &v)
-        : m_nrow(v.size()), m_ncol(1)
-    {
-        if (m_nrow > 0)
-        {
-            m_data = new real[m_nrow];
-            for (size_t j = 0; j < m_nrow; j++)
-                m_data[j] = v[j];
-        }
-        else
-        {
-            m_data = NULL;
-        }
-    };
-
     /** The destructor.
      */
     ~CMatrix()
@@ -151,9 +134,6 @@ protected:
     CMatrix gaussjordan(bool *is_inv=NULL, CMatrix *inv=NULL, soltype_t *soltype=NULL, CVector *bb=NULL, CMatrix *tkern=NULL) const;
 };
 
-
-// global functions
-ostream& operator<< (ostream &, const CMatrix &);
 
 // inlines
 

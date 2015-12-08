@@ -205,17 +205,13 @@ CMatrix CMatrix::dev(const size_t& i, const size_t& j) const
 CMatrix CMatrix::gaussjordan(bool *is_inv, CMatrix *inv, soltype_t * soltype, CVector *bb, CMatrix *tkern) const
 {
     // check dimensions
-    CMatrix b;
-    if (bb!=NULL)
-    {
+    CMatrix b(m_nrow, 1);
+    if (bb != NULL) {
         if (bb->size() != m_nrow)
             throw invalid_argument("CMatrix::solve : matrix <=> right-hand side dimensions incompatible");
 
-        b = *bb;
-    }
-    else
-    {
-        b = CMatrix(m_nrow, 1);
+        for (size_t i = 0; i < m_nrow; ++i)
+            b(i, 0) = (*bb)[i];
     }
     //cout << "b" << endl<< b << endl;
     //cout << "m" << endl<< *this << endl;

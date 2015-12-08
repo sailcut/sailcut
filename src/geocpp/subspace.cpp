@@ -118,6 +118,7 @@ CVector CSubSpace::intersectionPoint(const CSubSpace &h2, const char*) const
     return i.getp();
 }
 
+#if 0
 /*******************************************************
 
                       Other functions
@@ -177,4 +178,4 @@ ostream& operator<< (ostream &o, const CSubSpace &h)
     }
     return o;
 }
-
+#endif
