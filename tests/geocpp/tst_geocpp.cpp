@@ -83,79 +83,67 @@ ostream& operator<< (ostream &o, const CSubSpace &h)
     return o;
 }
 
-template<class T> void test_contain(const char *name, const CSubSpace &s, const T &p, bool expected)
-{
-    bool res = s.contains(p);
-    cout << "does " << name << " contain (" << p << ") : " << s.contains(p) << endl;
-    if (res != expected)
-        throw runtime_error("test failed");
-}
-
 
 class tst_GeoCpp : public QObject
 {
     Q_OBJECT
 
 private slots:
-    void testPoint();
+    void testVector();
+    void testRect();
+    void testMatrix();
+    void testSubSpace();
 };
 
 
-void tst_GeoCpp::testPoint(void)
+void tst_GeoCpp::testVector()
 {
-    CPoint3d p3(1,0,0), q3(0,1,0);
-    CPoint3d r3;
+    CVector3d u3(1, 2, 3);
+    CVector3d v3(5, 8, 9);
+    QCOMPARE(u3, CVector3d(1, 2, 3));
+    //QCOMPARE(u3.length(), 3.74166);
+    QCOMPARE(u3.x(), 1.0);
+    QCOMPARE(u3.y(), 2.0);
+    QCOMPARE(u3.z(), 3.0);
 
-    QCOMPARE(p3, CPoint3d(1, 0, 0));
-    QCOMPARE(q3, CPoint3d(0, 1, 0));
-    QCOMPARE(r3, CPoint3d(0, 0, 0));
+    u3.setX(5);
+    QCOMPARE(u3, CVector3d(5, 2, 3));
+    QCOMPARE(u3.x(), 5.0);
+    QCOMPARE(u3.y(), 2.0);
+    QCOMPARE(u3.z(), 3.0);
 
-    QCOMPARE(p3 - q3, CPoint3d(1, -1, 0));
-    cout << "p3 - q3\t " << p3-q3 << endl;
-    cout << "|p3,q3|\t " << CVector3d(q3 - p3).length() << endl;
-    cout << " " << endl;
+    QCOMPARE(v3, CVector3d(5, 8, 9));
+    QCOMPARE(-v3, CVector3d(-5, -8, -9));
+    QCOMPARE(u3 + v3, CVector3d(10, 10, 12));
+    QCOMPARE(u3 - v3, CVector3d(0, -6, -6));
+    QCOMPARE(u3 * 2, CVector3d(10, 4, 6));
+    QCOMPARE(2 * u3, CVector3d(10, 4, 6));
+
+    u3[2] = 456;
+    QCOMPARE(u3, CVector3d(5, 2, 456));
+    QCOMPARE(u3.x(), 5.0);
+    QCOMPARE(u3.y(), 2.0);
+    QCOMPARE(u3.z(), 456.0);
 }
 
-
-void test_rect(void)
+void tst_GeoCpp::testRect()
 {
     CRect3d r(CPoint3d(-2, -2, -2), CPoint3d(1, 1, 1));
-    cout << "r.min\t " << r.min << endl;
-    cout << "r.max\t " << r.max << endl;
-    cout << "r.center()\t" << r.center() << endl;
-    cout << "r2 = r * 3" << endl;
+    QCOMPARE(r.min, CPoint3d(-2, -2, -2));
+    QCOMPARE(r.max, CPoint3d(1, 1, 1));
+    QCOMPARE(r.center(), CPoint3d(-0.5, -0.5, -0.5));
+    QCOMPARE(r.height(), 3.0);
+    QCOMPARE(r.width(), 3.0);
+
     CRect3d r2 = r * 3;
-    cout << "r2.min\t " << r2.min << endl;
-    cout << "r2.max\t " << r2.max << endl;
-    cout << "r2.center()\t" << r2.center() << endl;
-    if (r.center() != r2.center())
-    {
-        cout << "ERROR : r.center() != r2.center()" << endl;
-    }
+    QCOMPARE(r2.min, CPoint3d(-5, -5, -5));
+    QCOMPARE(r2.max, CPoint3d(4, 4, 4));
+    QCOMPARE(r2.center(), CPoint3d(-0.5, -0.5, -0.5));
+    QCOMPARE(r2.height(), 9.0);
+    QCOMPARE(r2.width(), 9.0);
 }
 
-
-void test_vect(void)
-{
-    cout << "----- Vector operations -----" << endl;
-    CVector3d u3(1,2,3),v3(5,8,9);
-    cout << "u3\t " << u3 << endl;
-    cout << "u3.x()\t " << u3.x() << endl;
-    u3.setX(5);
-    cout << "u3\t " << u3 << endl;
-    cout << "v3\t " << v3 << endl;
-    cout << "-v3\t " << -v3 << endl;
-    cout << "u3 + v3\t " << u3+v3 << endl;
-    cout << "u3 - v3\t " << u3-v3 << endl;
-    cout << "u3 * 2\t " << u3*real(2) << endl;
-    cout << "2 * u3\t " << real(2)*u3 << endl;
-    u3[2] = 456;
-    cout << "u3[2]\t " << u3[2] << endl;
-    //cout << "u3*v3\t " << u3*v3 << endl;
-    cout << " " << endl;
-}
-
-void test_matrix(void)
+void tst_GeoCpp::testMatrix()
 {
     CVector3d v1(1,2,1),v2(4,7,9);
 
@@ -171,14 +159,6 @@ void test_matrix(void)
     q(2,1) = -1;
 
     cout << "q" << endl << q << endl;
-
-#if 0
-    CSubSpace h = q.solve(v1);
-    cout << "q.solve(v1)" << endl << h << endl;
-    if (h.getdim() != 0)
-        throw runtime_error("intersection is not a point");
-    cout << "q * q.solve(v1).getp()" << endl << q * h.getp() << endl;
-#endif
 
     // Singular 3x3 matrix
     CMatrix s(3,3);
@@ -198,18 +178,6 @@ void test_matrix(void)
     cout << "s.kern(3)" << endl << s.kern(3) << endl;
     cout << "s*s.kern(3)" << endl << s*s.kern(3) << endl;
     cout << "s*v1" << endl << s*v1 << endl;
-
-#if 0
-    CSubSpace h2 = s.solve(v1);
-    cout << "s.solve(v1)" << endl << h2 << endl;
-    if (h2.getdim() != 1)
-        throw runtime_error("intersection is not a line");
-
-    CSubSpace h3 = s.solve(v2);
-    cout << "s.solve(v2)" << endl << h3 << endl;
-    if (h3.getdim() != -1)
-        throw runtime_error("intersection is not empty");
-#endif
 
     // 3x4 matrix
     CMatrix t(3,4);
@@ -236,9 +204,8 @@ void test_matrix(void)
     cout << " " << endl;
 }
 
-void test_space3d(void)
+void tst_GeoCpp::testSubSpace(void)
 {
-    cout << "----- 3D Subspace operations -----" << endl;
     const CSubSpace L3A = CSubSpace3d::line(CPoint3d(0,0,1), CVector3d(1,1,0));
     const CSubSpace L3B = CSubSpace3d::line(CPoint3d(0,0,0), CVector3d(1,1,1));
     const CSubSpace P3A = CSubSpace3d::plane(CPoint3d(2,3,7), CVector3d(1,0,5), CVector3d(0,1,0));
@@ -247,79 +214,44 @@ void test_space3d(void)
 
     CSubSpace h;
 
-    cout << "== L3A ==" << endl << L3A << endl;
-    test_contain<CPoint3d>("L3A", L3A, p3, false);
-    test_contain<CPoint3d>("L3A", L3A, s3, true);
-    cout << endl;
+    // lines
+    QCOMPARE(L3A.contains(p3), false);
+    QCOMPARE(L3A.contains(s3), true);
 
-    cout << "== L3B ==" << endl << L3B << endl;
-    test_contain<CPoint3d>("L3B", L3B, p3, true);
-    test_contain<CPoint3d>("L3B", L3B, q3, false);
-    cout << endl;
+    QCOMPARE(L3B.contains(p3), true);
+    QCOMPARE(L3B.contains(q3), false);
 
-    cout << "== L3A.intersect(L3B) ==" << endl << (h=L3A.intersect(L3B)) << endl;
-    if (h.getdim() != 0)
-        throw runtime_error("intersection is not a point");
-    test_contain<CPoint3d>("L3A", L3A, h.getp(), true);
-    test_contain<CPoint3d>("L3B", L3B, h.getp(), true);
-    cout << endl;
+    // planes
+    QCOMPARE(P3A.contains(p3), false);
+    QCOMPARE(P3A.contains(r3), false);
 
-    cout << "== P3A ==" << endl << P3A << endl;
-    test_contain<CPoint3d>("P3A", P3A, p3, false);
-    test_contain<CPoint3d>("P3A", P3A, r3, false);
-    cout << endl;
+    QCOMPARE(P3B.contains(p3), false);
+    QCOMPARE(P3B.contains(r3), false);
 
-    cout << "== P3B ==" << endl << P3B << endl;
-    test_contain<CPoint3d>("P3B", P3B, p3, false);
-    test_contain<CPoint3d>("P3B", P3B, r3, false);
-    cout << endl;
+    // line / line intersection
+    h = L3A.intersect(L3B);
+    QCOMPARE(h.getdim(), 0);
+    QCOMPARE(L3A.contains(h.getp()), true);
+    QCOMPARE(L3B.contains(h.getp()), true);
 
-    cout << "== P3A.intersect(P3B) ==" << endl << (h=P3A.intersect(P3B)) << endl;
-    if (h.getdim() != 1)
-        throw runtime_error("intersection is not a line");
-    test_contain<CPoint3d>("P3A", P3A, h.getp(), true);
-    test_contain<CPoint3d>("P3B", P3B, h.getp(), true);
-    cout << endl;
+    // plane / plane intersection
+    h = P3A.intersect(P3B);
+    QCOMPARE(h.getdim(), 1);
+    QCOMPARE(P3A.contains(h.getp()), true);
+    QCOMPARE(P3B.contains(h.getp()), true);
 
-    cout << "== P3A.intersect(L3A) ==" << endl << (h=P3A.intersect(L3A)) << endl;
-    if (h.getdim() != 0)
-        throw runtime_error("intersection is not a point");
-    test_contain<CPoint3d>("P3A", P3A, h.getp(), true);
-    test_contain<CPoint3d>("L3A", L3A, h.getp(), true);
-    cout << endl;
+    // plane / line intersection
+    h = P3A.intersect(L3A);
+    QCOMPARE(h.getdim(), 0);
+    QCOMPARE(P3A.contains(h.getp()), true);
+    QCOMPARE(L3A.contains(h.getp()), true);
 
-    cout << "== L3A.intersect(P3A) ==" << endl << (h=L3A.intersect(P3A)) << endl;
-    if (h.getdim() != 0)
-        throw runtime_error("intersection is not a point");
-    test_contain<CPoint3d>("P3A", P3A, h.getp(), true);
-    test_contain<CPoint3d>("L3A", L3A, h.getp(), true);
-    cout << endl;
-
-    cout << " " << endl;
+    // line / plane intersection
+    h = L3A.intersect(P3A);
+    QCOMPARE(h.getdim(), 0);
+    QCOMPARE(P3A.contains(h.getp()), true);
+    QCOMPARE(L3A.contains(h.getp()), true);
 }
-
-#if 0
-int main()
-{
-#ifdef DEBUG
-    mcheck(0);
-#endif
-    srand ( time(NULL) );
-
-    cout << "---   Using GeoCpp library by Jeremy Laine   ---" << endl;
-    cout << "(see AUTHORS file for full list of contributors)" << endl;
-    cout << " " << endl;
-
-    test_rect();
-    test_vect();
-    test_matrix();
-    test_space3d();
-
-    cout << "----- " << endl;
-
-    return 0;
-}
-#endif
 
 QTEST_MAIN(tst_GeoCpp)
 #include "tst_geocpp.moc"
