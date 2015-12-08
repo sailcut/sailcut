@@ -92,7 +92,7 @@ CMatrix CMatrix::rot3d(const size_t& axis, const real& angle)
  *
  * @param index the index of the column to return
  */
-CVector CMatrix::col(const size_t& index) const
+CVector CMatrix::col(size_t index) const
 {
     if (index >= m_ncol)
         throw range_error("CMatrix::col : index out of bounds!");
@@ -414,7 +414,7 @@ CVector CMatrix::row(size_t index) const
 
 /** Swaps two rows of a matrix.
  */
-void CMatrix::swap_row(const size_t& i1, const size_t& i2)
+void CMatrix::swap_row(size_t i1, size_t i2)
 {
     if ((i1>=m_nrow)||(i2>=m_nrow))
         throw range_error("CMatrix:swap_row : index out of bounds");
@@ -436,7 +436,7 @@ void CMatrix::swap_row(const size_t& i1, const size_t& i2)
 
 /** Swap two columns of a matrix.
  */
-void CMatrix::swap_col(const size_t& j1, const size_t& j2)
+void CMatrix::swap_col(size_t j1, size_t j2)
 {
     if ((j1>=m_ncol)||(j2>=m_ncol))
         throw range_error("CMatrix:swap_col : index out of bounds");

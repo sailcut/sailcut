@@ -83,7 +83,6 @@ public:
     static CMatrix rot3d(const size_t&, const real&);
 
     // member functions
-    CVector col(const size_t&) const;
     CMatrix   crop(const size_t& nr, const size_t& nc, const size_t& nrz=0, const size_t& ncz=0) const;
     real      determinant() const;
     CMatrix   dev(const size_t&, const size_t&) const;
@@ -106,9 +105,6 @@ public:
 
     CMatrix gaussjordan(bool *is_inv=NULL, CMatrix *inv=NULL, soltype_t *soltype=NULL, CVector *bb=NULL, CMatrix *tkern=NULL) const;
     CMatrix   kern(const size_t& vsize) const;
-    CVector row(size_t) const;
-    void      swap_row(const size_t&, const size_t&);
-    void      swap_col(const size_t&, const size_t&);
     CMatrix   transposed() const;
 
     // operators
@@ -122,6 +118,11 @@ public:
     CVector operator*(const CVector &) const;
 
 private:
+    CVector col(size_t) const;
+    CVector row(size_t) const;
+    void swap_row(size_t, size_t);
+    void swap_col(size_t, size_t);
+
     /** the matrix's data */
     real* m_data;
     /** number of rows */
