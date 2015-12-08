@@ -25,15 +25,11 @@
 
 ********************************************************/
 
-/** Constructs a CSubSpace of the specified dimension.
- *
- * @param dim_space dimension of the Euclidian vector space we are working in
- * @param dim_sub dimension of the subspace to be created
+/** Constructs an empty CSubSpace.
  */
-CSubSpace::CSubSpace(size_t dim_space, size_t dim_sub)
-        : p(dim_space)
+CSubSpace::CSubSpace()
+    : p(0)
 {
-    m = CMatrix( dim_sub , p.size() );
 }
 
 
@@ -45,7 +41,7 @@ CSubSpace::CSubSpace(size_t dim_space, size_t dim_sub)
  * @param createflags specifies whether we were given the equations or the base of the subspace
  */
 CSubSpace::CSubSpace(const CVector &pi, const CMatrix &mi, subspaceflags_t createflags)
-        : p(pi)
+    : p(pi)
 {
     switch ( createflags )
     {

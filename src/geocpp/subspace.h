@@ -35,7 +35,7 @@ private:
     CMatrix m;
     CVector p;
 public:
-    CSubSpace(size_t dim_space = 3, size_t dim_sub = 0);
+    CSubSpace();
     CSubSpace(const CVector &pi, const CMatrix &mi, subspaceflags_t createflags = GEOCPP_FROM_EQS);
 
     /** Copy constructor */
