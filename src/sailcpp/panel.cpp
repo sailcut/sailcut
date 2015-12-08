@@ -24,7 +24,7 @@
 
 /** Normalize the given vector then rotate it about the Z axis.
  */
-static CVector3d rotateNormalized(real angle, const CVector3d &v)
+CVector3d rotateNormalized(real angle, const CVector3d &v)
 {
     return CMatrix::rot3d(2, angle) * v.normalized();
 }

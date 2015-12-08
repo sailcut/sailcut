@@ -235,7 +235,7 @@ CPoint3d CRigWorker::mastCenter( const real &HM ) const
     p1 = p0 + HM * vm.normalized();
 
     // displace center point of section by round
-    p1 = p1 + CMatrix::rot3d( 2, PI/2 ) * vm.normalized() * round;
+    p1 = p1 + rotateNormalized(PI/2, vm) * round;
     //
     return p1;
 }

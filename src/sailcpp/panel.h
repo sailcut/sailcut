@@ -191,4 +191,6 @@ ostream& operator<< (ostream &, const CPanel &);
 ostream& operator<< (ostream &, const CSide &);
 ostream& operator<< (ostream &, const CPanelLabel &);
 
+CVector3d rotateNormalized(real angle, const CVector3d &v);
+
 #endif
