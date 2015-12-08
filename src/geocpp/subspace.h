@@ -20,6 +20,7 @@
 #ifndef GEOCPP_SUBSPACE_H
 #define GEOCPP_SUBSPACE_H
 
+#include <geocpp/geometry.h>
 #include <geocpp/matrix.h>
 
 enum subspaceflags_t { GEOCPP_FROM_BASE, GEOCPP_FROM_EQS };
@@ -31,30 +32,16 @@ enum subspaceflags_t { GEOCPP_FROM_BASE, GEOCPP_FROM_EQS };
  */
 class CSubSpace
 {
-private:
-    CMatrix m;
-    CVector p;
 public:
     CSubSpace();
-    CSubSpace(const CVector &pi, const CMatrix &mi, subspaceflags_t createflags);
+    CSubSpace(const CVector3d &pi, const CMatrix &mi, subspaceflags_t createflags);
+    CSubSpace(const CSubSpace &s);
 
-    /** Copy constructor */
-    CSubSpace(const CSubSpace &s) : m(s.m) , p(s.p)
-    {}
-    ;
     CSubSpace intersect(const CSubSpace &) const;
-    CVector intersectionPoint(const CSubSpace &, const char *name) const;
+    CVector3d intersectionPoint(const CSubSpace &, const char *name) const;
 
-    bool contains(const CVector &) const;
-
-    /** Return the subspace's dimension. */
-    int getdim() const
-    {
-        if (p.size() > 0)
-            return p.size() - m.rows();
-        else
-            return -1;
-    }
+    bool contains(const CVector3d &) const;
+    int getdim() const;
 
     /** Accessor for the matrix. */
     const CMatrix& getm() const
@@ -63,10 +50,15 @@ public:
     }
 
     /** Accessor for the point. */
-    const CVector& getp() const
+    const CVector3d& getp() const
     {
         return p;
     }
+
+private:
+    bool isEmpty;
+    CMatrix m;
+    CVector3d p;
 };
 
 // global functions

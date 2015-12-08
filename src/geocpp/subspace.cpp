@@ -28,7 +28,7 @@
 /** Constructs an empty CSubSpace.
  */
 CSubSpace::CSubSpace()
-    : p(0)
+    : isEmpty(true)
 {
 }
 
@@ -40,8 +40,9 @@ CSubSpace::CSubSpace()
  * @param mi a matrix containing the equations or the base of the subspace
  * @param createflags specifies whether we were given the equations or the base of the subspace
  */
-CSubSpace::CSubSpace(const CVector &pi, const CMatrix &mi, subspaceflags_t createflags)
-    : p(pi)
+CSubSpace::CSubSpace(const CVector3d &pi, const CMatrix &mi, subspaceflags_t createflags)
+    : isEmpty(false)
+    , p(pi)
 {
     switch ( createflags )
     {
@@ -65,13 +66,32 @@ CSubSpace::CSubSpace(const CVector &pi, const CMatrix &mi, subspaceflags_t creat
 }
 
 
+/** Copy constructor */
+CSubSpace::CSubSpace(const CSubSpace &s)
+    : isEmpty(s.isEmpty)
+    , m(s.m)
+    , p(s.p)
+{
+}
+
+
 /** Test whether the CSubSpace contains a given point.
  */
-bool CSubSpace::contains(const CVector &point) const
+bool CSubSpace::contains(const CVector3d &point) const
 {
-    CVector prod = m*(point-p);
+    CVector prod = m * (point-p);
 
     return ( prod.length() < EPS );
+}
+
+
+/** Return the subspace's dimension. */
+int CSubSpace::getdim() const
+{
+    if (isEmpty)
+        return -1;
+    else
+        return 3 - m.rows();
 }
 
 
@@ -79,16 +99,13 @@ bool CSubSpace::contains(const CVector &point) const
  */
 CSubSpace CSubSpace::intersect(const CSubSpace &h2) const
 {
-    if ( (getdim() < 0) || (h2.getdim() < 0) )
+    if (isEmpty || h2.isEmpty)
         return CSubSpace();
-
-    if ( p.size() != h2.p.size() )
-        throw invalid_argument("CSubSpace::intersect : dimension mismatch on points");
 
     CVector b1 = m*p;
     CVector b2 = h2.m*h2.p;
     CVector bb( m.rows() + h2.m.rows() );
-    CMatrix mm( m.rows() + h2.m.rows(), p.size() );
+    CMatrix mm( m.rows() + h2.m.rows(), 3 );
     for (size_t i = 0 ; i < mm.rows() ; i++)
     {
         if ( i < m.rows() )
@@ -110,7 +127,7 @@ CSubSpace CSubSpace::intersect(const CSubSpace &h2) const
     return  mm.solve(bb);
 }
 
-CVector CSubSpace::intersectionPoint(const CSubSpace &h2, const char*) const
+CVector3d CSubSpace::intersectionPoint(const CSubSpace &h2, const char*) const
 {
     CSubSpace i = intersect(h2);
     if (i.getdim() != 0)
