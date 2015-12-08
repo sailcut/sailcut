@@ -61,8 +61,4 @@ private:
     CVector3d p;
 };
 
-// global functions
-ostream& operator<< (ostream &, const CMatrix &);
-ostream& operator<< (ostream &, const CSubSpace &);
-
 #endif
