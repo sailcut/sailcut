@@ -79,7 +79,7 @@ CSubSpace::CSubSpace(const CSubSpace &s)
  */
 bool CSubSpace::contains(const CVector3d &point) const
 {
-    CVector prod = m * (point-p);
+    CVector3d prod = m * (point-p);
 
     return ( prod.length() < EPS );
 }

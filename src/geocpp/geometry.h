@@ -87,6 +87,28 @@ public:
         (*this)[2] = z;
     }
 
+    /** Returns the vector's length.
+     */
+    real length() const
+    {
+        real tot = 0;
+        for (size_t i = 0; i < size(); i++)
+            tot += (*this)[i]*(*this)[i];
+        return real(sqrt(tot));
+    };
+
+    /** Returns corresponding unit length vector for non-zero vectors
+     * and zero vector otherwise.
+     */
+    CVector3d normalized() const
+    {
+        const real n = length();
+        if (n<EPS)
+            return CVector3d();
+        else
+            return *this*(1/n);
+    };
+
     static CVector3d crossProduct(const CVector3d &v1, const CVector3d &v2);
     static real dotProduct(const CVector3d &v1, const CVector3d &v2);
 
