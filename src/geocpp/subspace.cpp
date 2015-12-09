@@ -125,10 +125,14 @@ CSubSpace CSubSpace::intersect(const CSubSpace &h2) const
     //cout << "bb" << endl << bb << endl;
 
     soltype_t soltype = NONE;
-    CVector s = bb;
     CMatrix k;
 
-    mm.gaussjordan(NULL,NULL,&soltype,&s,&k);
+    mm.gaussjordan(NULL, NULL, &soltype, &bb, &k);
+
+    CVector3d s;
+    for (size_t i = 0; i < qMin(size_t(3), bb.size()); ++i)
+        s[i] = bb[i];
+
     switch (soltype)
     {
     case ONE:

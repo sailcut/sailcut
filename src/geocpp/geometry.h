@@ -24,176 +24,19 @@
 #include <QVector3D>
 #include <geocpp/vector.h>
 
-class CSubSpace;
 
-
-/** Generic three dimensional real-valued vector.
+/** 3d real-valued vector.
  *
  * @ingroup GeoCpp
  */
-class CVector3d : private CVector
-{
-public:
-    /** Constructor. */
-    CVector3d(const real &x = 0, const real &y = 0, const real &z = 0)
-        : CVector(3)
-    {
-        (*this)[0] = x;
-        (*this)[1] = y;
-        (*this)[2] = z;
-    }
-
-    /** Copy constructor.
-    */
-    CVector3d(const CVector &v)
-        : CVector(v)
-    {
-        resize(3);
-    };
-
-    // access to coords
-    /** Returns the first coordinate. */
-    real x(void) const
-    {
-        return (*this)[0];
-    }
-
-    /** Sets the first coordinate. */
-    void setX(real x)
-    {
-        (*this)[0] = x;
-    }
-
-    /** Returns the second coordinate. */
-    real y(void) const
-    {
-        return (*this)[1];
-    }
-
-    /** Sets the second coordinate. */
-    void setY(real y)
-    {
-        (*this)[1] = y;
-    }
-
-    /** Returns the third coordinate. */
-    real z(void) const
-    {
-        return (*this)[2];
-    }
-
-    /** Sets the third coordinate. */
-    void setZ(real z)
-    {
-        (*this)[2] = z;
-    }
-
-    /** Returns the vector's length.
-     */
-    real length() const
-    {
-        real tot = 0;
-        for (size_t i = 0; i < size(); i++)
-            tot += (*this)[i]*(*this)[i];
-        return real(sqrt(tot));
-    };
-
-    /** Returns corresponding unit length vector for non-zero vectors
-     * and zero vector otherwise.
-     */
-    CVector3d normalized() const
-    {
-        const real n = length();
-        if (n<EPS)
-            return CVector3d();
-        else
-            return *this*(1/n);
-    };
-
-    static CVector3d crossProduct(const CVector3d &v1, const CVector3d &v2);
-    static real dotProduct(const CVector3d &v1, const CVector3d &v2);
-
-    real &operator[](size_t idx)
-    {
-        return CVector::operator[](idx);
-    };
-
-    real operator[](size_t idx) const
-    {
-        return CVector::operator[](idx);
-    };
-
-    /** Binary '+' operator (addition)
-    */
-    CVector3d operator+(const CVector3d& v2) const
-    {
-        return CVector3d(
-            x() + v2.x(),
-            y() + v2.y(),
-            z() + v2.z());
-    };
-
-    /** Unary '-' operator (return opposite)
-     */
-    CVector3d operator- () const
-    {
-        return CVector3d(-x(), -y(), -z());
-    };
-
-    /** Binary '-' operator (return difference)
-    */
-    CVector3d operator- (const CVector3d &v2) const
-    {
-        return CVector3d(
-            x() - v2.x(),
-            y() - v2.y(),
-            z() - v2.z());
-    };
-
-    /** Binary '* (multiply a vector by a real)
-    */
-    CVector3d operator*(const real& lambda) const
-    {
-        return CVector3d(
-            x() * lambda,
-            y() * lambda,
-            z() * lambda);
-    };
-
-    /** Assignment. */
-    CVector3d &operator=(const CVector3d &v)
-    {
-        (*this)[0] = v[0];
-        (*this)[1] = v[1];
-        (*this)[2] = v[2];
-        return *this;
-    };
-
-private:
-    bool operator==(const CVector3d &v) const;
-    bool operator!=(const CVector3d &v) const;
-};
-
-
-bool qFuzzyCompare(const CVector3d &v1, const CVector3d &v2);
-
-CVector3d operator*(const QMatrix4x4 &m, const CVector3d &v);
-
-
-/** Binary '*' (multiply a scalar by a vector)
- */
-inline
-CVector3d operator*(const real& lambda, const CVector3d &v)
-{
-    return v * lambda;
-}
+typedef QVector3D CVector3d;
 
 
 /** 3d real-valued point
  *
  * @ingroup GeoCpp
  */
-typedef CVector3d CPoint3d;
+typedef QVector3D CPoint3d;
 
 
 /** Three dimensional box.
