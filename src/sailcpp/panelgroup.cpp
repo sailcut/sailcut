@@ -114,20 +114,6 @@ void CPanelGroup::plotLabels()
 }
 
 
-/** Rotates a sail around a point.
- */
-CPanelGroup CPanelGroup::rotate( const CPoint3d &p, const CMatrix &m ) const
-{
-    unsigned int i;
-    CPanelGroup ret = *this;
-    for (i = 0; i < size(); i++)
-        ret[i] = at(i).rotate(p,m);
-    for (i = 0; i < child.size(); i++)
-        ret.child[i] = child[i].rotate(p,m);
-    return ret;
-}
-
-
 /** Transform a sail.
  */
 CPanelGroup CPanelGroup::transformed(const QMatrix4x4 &m) const

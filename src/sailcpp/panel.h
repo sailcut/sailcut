@@ -67,8 +67,6 @@ public:
     /** direction for writing the label */
     CVector3d direction;
 
-    /** function for rotating a label. */
-    CPanelLabel rotate( const CPoint3d &, const CMatrix & ) const;
     CPanelLabel transformed(const QMatrix4x4 &m) const;
 
     /** operator to translate a label */
@@ -100,8 +98,6 @@ public:
     void fill( const CPoint3d &, const CPoint3d & );
     void fill( const CPoint3d &, const CPoint3d &, const CPoint3d & );
 
-    /** function for rotating a side. */
-    CSide rotate( const CPoint3d &, const CMatrix &) const;
     CSide transformed(const QMatrix4x4 &m) const;
 
     // operators
@@ -182,7 +178,6 @@ public:
 
     void placeLabel();   //  place a label at the center of a panel
     CPanel reframe(enumAlign align) const;
-    CPanel rotate( const CPoint3d &, const CMatrix &) const;
     CPanel rotated(const CPoint3d &, qreal angle, Qt::Axis axis) const;
     CPanel transformed(const QMatrix4x4 &m) const;
     CPanel operator+ (const CVector3d &) const;

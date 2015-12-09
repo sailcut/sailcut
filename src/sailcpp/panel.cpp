@@ -48,21 +48,6 @@ CPanelLabel::CPanelLabel( const CPanelLabel &lb )
 {}
 
 
-/** Rotates a label around a point.
- */
-CPanelLabel CPanelLabel::rotate( const CPoint3d &p , const CMatrix &m ) const
-{
-    CPanelLabel lb;
-
-    lb.name = name;
-    lb.height = height;
-    lb.color = color;
-    lb.origin = p + m*(origin-p);
-    lb.direction = m*direction;
-
-    return lb;
-}
-
 /** Transforms a label.
  */
 CPanelLabel CPanelLabel::transformed(const QMatrix4x4 &m) const
@@ -73,7 +58,7 @@ CPanelLabel CPanelLabel::transformed(const QMatrix4x4 &m) const
     lb.height = height;
     lb.color = color;
     lb.origin = m * origin;
-    lb.direction = m * direction;
+    lb.direction = m * direction - m * CVector3d(0, 0, 0);
 
     return lb;
 }
@@ -820,31 +805,6 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
 
 
 /** Rotates a panel around a point.
- *  p = centre of rotation
- *  m = rotation matrix
- */
-CPanel CPanel::rotate( const CPoint3d &p, const CMatrix &m ) const
-{
-    CPanel panel;
-    panel.hasHems = hasHems;
-
-    panel.label = label.rotate( p , m );
-
-    panel.left = left.rotate( p , m );
-    panel.right = right.rotate( p , m );
-    panel.top = top.rotate( p , m );
-    panel.bottom = bottom.rotate( p , m );
-
-    panel.cutLeft = cutLeft.rotate( p , m );
-    panel.cutRight = cutRight.rotate( p , m );
-    panel.cutTop = cutTop.rotate( p , m );
-    panel.cutBottom = cutBottom.rotate( p , m );
-
-    return panel;
-}
-
-
-/** Rotates a panel around a point.
  *
  *  p = centre of rotation
  *  angle = angle in radians
@@ -852,7 +812,18 @@ CPanel CPanel::rotate( const CPoint3d &p, const CMatrix &m ) const
  */
 CPanel CPanel::rotated(const CPoint3d &p, qreal angle, Qt::Axis axis) const
 {
-    return rotate(p, CMatrix::rot3d(axis, angle));
+    QVector3D center(p.x(), p.y(), p.z());
+
+    QVector3D v;
+    v[axis] = 1;
+
+    QMatrix4x4 matrix;
+    matrix.setToIdentity();
+    matrix.translate(center);
+    matrix.rotate(angle * 180 / PI, v);
+    matrix.translate(-center);
+
+    return transformed(matrix);
 }
 
 
@@ -986,19 +957,6 @@ void CSide::fill( const CPoint3d &p1 , const CPoint3d &p2 , const CPoint3d &p3 )
         else
             at(i) = p2 + (p3 - p2) * (real(i - n1) / (size() -n1 -1) );
     }
-}
-
-
-/** Rotates a CSide around a point.
- */
-CSide CSide::rotate( const CPoint3d &p, const CMatrix &m ) const
-{
-    CSide s( size() );
-
-    for (unsigned int i = 0 ; i < size() ; i++)
-        s[i] = p + m * (at(i) - p);
-
-    return s;
 }
 
 
