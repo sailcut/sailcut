@@ -575,7 +575,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
         }
 
         v0 = CVector3d( left[npl/2] - left[npl/2 -1] );
-        Line1 = CSubSpace3d::line( cutLeft[npl/2 -1] , v0 );
+        Line1 = CSubSpace::line( cutLeft[npl/2 -1] , v0 );
 
         if ( v2.length() >= minSize ) {  // upper left side is not a point
             for (i = npl/2 +1 ; i < npl ; i++) {
@@ -583,7 +583,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
                 cutLeft[i] = left[i] + rotateNormalized(PI/2, v2) * hilW;
 
                 if ( i == npl/2 +1 ) {   // compute mid side break point
-                    Line2 = CSubSpace3d::line( cutLeft[i] , v2 );
+                    Line2 = CSubSpace::line( cutLeft[i] , v2 );
 
                     if ( Line1.intersect(Line2).getdim() == 0 )
                         cutLeft[npl/2] = Line1.intersect(Line2).getp();
@@ -661,14 +661,14 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
         }
 
         v0 = CVector3d( right[npl/2] - right[npl/2 -1] );
-        Line1 = CSubSpace3d::line( cutRight[npl/2 -1] , v0 );
+        Line1 = CSubSpace::line( cutRight[npl/2 -1] , v0 );
 
         if ( v4.length() >= minSize ) {  // upper right side is not a point
             for (i = npl/2 +1 ; i < npl ; i++) {
                 v4 = CVector3d( right[i] - right[i-1] );
                 cutRight[i] = right[i] + rotateNormalized(-PI/2, v4) * hirW;
                 if ( i == npl/2 +1 ) {   // compute mid side break point
-                    Line2 = CSubSpace3d::line( cutRight[i] , v4 );
+                    Line2 = CSubSpace::line( cutRight[i] , v4 );
 
                     if (Line1.intersect(Line2).getdim() == 0)
                         cutRight[npl/2] = Line1.intersect(Line2).getp();
@@ -731,11 +731,11 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
     /// lower left
     if (v5.length() == 0)
         cout << "CPanel::add6Hems v5=0 about to crash 15" << endl;
-    Line1 = CSubSpace3d::line( cutBottom[0] , v5 );
+    Line1 = CSubSpace::line( cutBottom[0] , v5 );
 
     if (v6.length() == 0)
         cout << "CPanel::add6Hems v6=0 about to crash 16" << endl;
-    Line2 = CSubSpace3d::line( cutLeft[0] , v1 );
+    Line2 = CSubSpace::line( cutLeft[0] , v1 );
 
     pt = Line1.intersectionPoint(Line2, "lower left corner");
 
@@ -755,8 +755,8 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
     }
 
     /// lower right
-    Line1 = CSubSpace3d::line( cutBottom[npb-1] , v6 );
-    Line2 = CSubSpace3d::line( cutRight[0] , v3 );
+    Line1 = CSubSpace::line( cutBottom[npb-1] , v6 );
+    Line2 = CSubSpace::line( cutRight[0] , v3 );
 
     pt = Line1.intersectionPoint(Line2, "lower right corner");
 
@@ -775,8 +775,8 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
     }
 
     /// upper left
-    Line1 = CSubSpace3d::line( cutTop[0] , v7 );
-    Line2 = CSubSpace3d::line( cutLeft[npl-1] , v2 );
+    Line1 = CSubSpace::line( cutTop[0] , v7 );
+    Line2 = CSubSpace::line( cutLeft[npl-1] , v2 );
 
     pt = Line1.intersectionPoint(Line2, "upper left corner");
 
@@ -795,8 +795,8 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
     }
 
     /// upper right
-    Line1 = CSubSpace3d::line( cutTop[npb-1] , v8 );
-    Line2 = CSubSpace3d::line( cutRight[npl-1] , v4 );
+    Line1 = CSubSpace::line( cutTop[npb-1] , v8 );
+    Line2 = CSubSpace::line( cutRight[npl-1] , v4 );
 
     pt = Line1.intersectionPoint(Line2, "upper right corner");
 

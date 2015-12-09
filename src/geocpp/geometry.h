@@ -251,17 +251,6 @@ public:
     CPoint3d max;
 };
 
-
-/** Helper class to create 3D subspaces (lines and planes)
- */
-class CSubSpace3d
-{
-public:
-    static CSubSpace line(const CPoint3d& p, const CVector3d& v);
-    static CSubSpace plane(const CPoint3d& p, const CVector3d& v1, const CVector3d& v2);
-};
-
-
 /** Outputs a CVector3d to a stream.
  */
 inline
@@ -271,5 +260,6 @@ ostream& operator<<(ostream &o, const CVector3d &v)
         o << (i > 0 ? "\t" : "") << v[i];
     return o;
 }
+
 
 #endif

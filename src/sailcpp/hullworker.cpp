@@ -39,28 +39,28 @@ CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
     /** compute the vertical central plane */
     CVector3d v1 = CVector3d( 1 , 0 , 0 );
     CVector3d v2 = CVector3d( 0 , 1 , 0 );
-    planeCentral = CSubSpace3d::plane( ptFwdChine , v1 , v2 );
+    planeCentral = CSubSpace::plane( ptFwdChine , v1 , v2 );
 
     /** compute the lower Chine plane */
     // vector v1 is sideway tilt of chine
     v1 = CVector3d( 0 , -sin(real(BSlopeA)*PI/180) , cos(real(BSlopeA)*PI/180) );
     // vector v2 is fore-aft slope of chine
     v2 = CVector3d( ptAftChine - ptFwdChine );
-    planeLowChine = CSubSpace3d::plane( ptFwdChine , v1 , v2 );
+    planeLowChine = CSubSpace::plane( ptFwdChine , v1 , v2 );
 
     /** compute the Deck plane */
     // vector v1 is sideway tilt of deck
     v1 = CVector3d( 0 , -sin(real(DSlopeA)*PI/180) , cos(real(DSlopeA)*PI/180) );
     // vector v2 is fore-aft slope of deck
     v2 = CVector3d( BLWL , DaftHeight-DfwdHeight , 0 );
-    planeDeck = CSubSpace3d::plane( ptFwdDeck , v1 , v2 );
+    planeDeck = CSubSpace::plane( ptFwdDeck , v1 , v2 );
 
     /** compute the transom plane */
     // vector v1 is parallel to Z axis = perpendicular to central plane
     v1 = CVector3d( 0 , 0 , 1 );
     // vector v2 is in inclined transom plane
     v2 = CVector3d( cos(real(TransomA) * PI/180) , sin(real(TransomA) * PI/180) , 0 );
-    planeTransom = CSubSpace3d::plane( ptAftChine , v1 , v2 );
+    planeTransom = CSubSpace::plane( ptAftChine , v1 , v2 );
 
     // compute intersection line between lower chine plane and transom
     CSubSpace Line1 = planeLowChine.intersect(planeTransom);
@@ -114,7 +114,7 @@ CPoint3d CHullWorker::ptLowChine( const real &x )
     CPoint3d pt = CPoint3d ( x , y , z );
 
     /* compute y by projecting pt vertically on the chine plane */
-    return planeLowChine.intersectionPoint(CSubSpace3d::line(pt, CVector3d(0, 1, 0)), "low chine");
+    return planeLowChine.intersectionPoint(CSubSpace::line(pt, CVector3d(0, 1, 0)), "low chine");
 }
 
 
@@ -135,7 +135,7 @@ CPoint3d CHullWorker::ptKeel( const real &x )
 
     /* Project pt on central plane, get intersection
        with the ruling line passing through point pt. */
-    return planeCentral.intersectionPoint(CSubSpace3d::line(pt, v1), "keel");
+    return planeCentral.intersectionPoint(CSubSpace::line(pt, v1), "keel");
 }
 
 
@@ -197,7 +197,7 @@ CPanelGroup CHullWorker::makeHull() //const
     for (j = 0 ; j < npb ; j++)
     {
         plank1.bottom[j] =  chine.bottom[j];
-        p1 = planeDeck.intersectionPoint(CSubSpace3d::line(plank1.bottom[j], v1), "top side");
+        p1 = planeDeck.intersectionPoint(CSubSpace::line(plank1.bottom[j], v1), "top side");
         // compute the vector vg which generate the side surface
         vg = CVector3d(p1 - pt);
         plank1.top[j] = p1;

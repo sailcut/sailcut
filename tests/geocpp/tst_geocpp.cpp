@@ -167,10 +167,10 @@ void tst_GeoCpp::testMatrix()
 
 void tst_GeoCpp::testSubSpace(void)
 {
-    const CSubSpace L3A = CSubSpace3d::line(CPoint3d(0,0,1), CVector3d(1,1,0));
-    const CSubSpace L3B = CSubSpace3d::line(CPoint3d(0,0,0), CVector3d(1,1,1));
-    const CSubSpace P3A = CSubSpace3d::plane(CPoint3d(2,3,7), CVector3d(1,0,5), CVector3d(0,1,0));
-    const CSubSpace P3B = CSubSpace3d::plane(CPoint3d(4,-5,1), CVector3d(-3,0,1), CVector3d(0,1,0));
+    const CSubSpace L3A = CSubSpace::line(CPoint3d(0,0,1), CVector3d(1,1,0));
+    const CSubSpace L3B = CSubSpace::line(CPoint3d(0,0,0), CVector3d(1,1,1));
+    const CSubSpace P3A = CSubSpace::plane(CPoint3d(2,3,7), CVector3d(1,0,5), CVector3d(0,1,0));
+    const CSubSpace P3B = CSubSpace::plane(CPoint3d(4,-5,1), CVector3d(-3,0,1), CVector3d(0,1,0));
     const CPoint3d p3(2,2,2),q3(2,1,2),r3(4,5,7),s3(2,2,1);
 
     CSubSpace h;

@@ -102,11 +102,11 @@ CSailWorker::CSailWorker(const CSailDef &s) : CSailDef(s)
     luffVP = rotateNormalized(PI/2, luffV);
 
     /** Define useful straight lines of edges and mitre. */
-    footLine = CSubSpace3d::line(tack , footV);
-    gaffLine = CSubSpace3d::line(head , gaffV);
-    leechLine = CSubSpace3d::line(clew , leechV);
-    luffLine = CSubSpace3d::line(tack , luffV);
-    mitreLine = CSubSpace3d::line(clew , mitreV);
+    footLine = CSubSpace::line(tack , footV);
+    gaffLine = CSubSpace::line(head , gaffV);
+    leechLine = CSubSpace::line(clew , leechV);
+    luffLine = CSubSpace::line(tack , luffV);
+    mitreLine = CSubSpace::line(clew , mitreV);
 
     /** Define point at intersection of mitre and luff. */
     mitreLuffPt = EdgeIntersect( LUFF_EDGE, clew , mitreV );
@@ -267,7 +267,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
             cnt++;
             p2[npanel] = p2[npanel-1] + (clothW - seamW - exb) * leechV.normalized();
             t2[npanel] = 4; // type2 = 4 = leech intersection for all horizontally cut panels
-            seamL = CSubSpace3d::line( p2[npanel] , seamV );
+            seamL = CSubSpace::line( p2[npanel] , seamV );
 
             if (CVector3d::dotProduct(p2[npanel] - peak, leechV) > 0)
             {   // we are above peak, stop this is last panel
@@ -629,7 +629,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
             cnt++;
             p2[npanel] = p2[npanel-1] + leechV.normalized() * (clothW - seamW - exb);
             t2[npanel] = 4; // type2=4=leech intersection for all horizontally cut panels
-            seamL = CSubSpace3d::line( p2[npanel] , seamV );
+            seamL = CSubSpace::line( p2[npanel] , seamV );
 
             if (CVector3d::dotProduct(p2[npanel] - peak, leechV) > 0)
             {  // we are above peak, stop this is last panel
@@ -681,7 +681,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
                     p1[npanel] = p1[npanel-1] + luffV.normalized() * (seamW + clothW/5);
                     t1[npanel] = 2;  // 2=luff type of intersection
                     seamVT = CVector3d( p1[npanel] - p2[npanel] ).normalized();
-                    seamLT = CSubSpace3d::line(p2[npanel] , seamVT);
+                    seamLT = CSubSpace::line(p2[npanel] , seamVT);
                     ip = seamLT.intersectionPoint(luffLine, "seamLT and luff");
 #ifdef DEBUG
                     cout << "CSailWorker::LayoutTwist Seam 1 LUFF CORRECTION DO LOOP = " << cnt << endl;
@@ -958,7 +958,7 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
         {
             cnt++;
             pt = p1[npanel-1] + (clothW -seamW -exb) * leechVP;
-            seamL = CSubSpace3d::line(pt, seamV);
+            seamL = CSubSpace::line(pt, seamV);
             p1[npanel] = seamL.intersectionPoint(footLine, "seam and foot");
 
             t1[npanel] = 1; // type1=1= foot intersection vertically cut panels
@@ -1199,7 +1199,7 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
     {
         p2[npanel] = p2[npanel-1] + (clothW-seamW)/CVector3d::dotProduct(seamV, leechVP) * leechV.normalized();
         t2[npanel] = 4; // type2=4=leech intersection for all horizontally cut panels
-        seamL = CSubSpace3d::line(p2[npanel], seamV);
+        seamL = CSubSpace::line(p2[npanel], seamV);
 
         if (CVector3d::dotProduct(p2[npanel] - peak, leechV) > 0)  // we are above peak, stop last panel
         {
@@ -1555,7 +1555,7 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
         pt2 = clew + leechV * (real(h) / nbSections );
         luffH[h] = EdgeIntersect( LUFF_EDGE,  pt1, CVector3d( pt1 - pt2 ) );
         leechH[h] = EdgeIntersect( LEECH_EDGE,  pt2, CVector3d( pt2 - pt1) );
-        seamH[h] = CSubSpace3d::line(luffH[h], CVector3d( leechH[h] - luffH[h] ));
+        seamH[h] = CSubSpace::line(luffH[h], CVector3d( leechH[h] - luffH[h] ));
     }
 
     h = nbSections; // one more horizontal line than nbSections
@@ -1586,11 +1586,11 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
     for (h = nbSections-1 ; h > 0 ; h--)
     {
         pt0 = tack + footV*(real(h) / real(nbSections))*(real(ngLuff) / real(nbGores));
-        seamL = CSubSpace3d::line(luffCatenary[h+1], CVector3d(pt0 - luffCatenary[h+1]));
+        seamL = CSubSpace::line(luffCatenary[h+1], CVector3d(pt0 - luffCatenary[h+1]));
         luffCatenary[h] = seamH[h].intersectionPoint(seamL, "luffCatenary");
 
         pt0 = clew - footV*(real(h) / real(nbSections))*(real(nbGores-ngLuff) / real(nbGores));
-        seamL = CSubSpace3d::line(leechCatenary[h+1], CVector3d(pt0 - leechCatenary[h+1]));
+        seamL = CSubSpace::line(leechCatenary[h+1], CVector3d(pt0 - leechCatenary[h+1]));
         leechCatenary[h] = seamH[h].intersectionPoint(seamL, "leechCatenary");
     }
 
@@ -2048,7 +2048,7 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
         pt2 = clew + leechV * (real(h) / nbSections );
         luffH[h] = EdgeIntersect( LUFF_EDGE,  pt1, CVector3d(pt1-pt2) );
         leechH[h] = EdgeIntersect( LEECH_EDGE,  pt2, CVector3d(pt2-pt1) );
-        seamH[h] = CSubSpace3d::line(luffH[h], CVector3d(leechH[h] - luffH[h]));
+        seamH[h] = CSubSpace::line(luffH[h], CVector3d(leechH[h] - luffH[h]));
     }
 
     h= nbSections;
@@ -2075,11 +2075,11 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
     for (h = nbSections-1; h > 0; h--)
     {
         pt0 = tack + footV*(real(h) / real(2* nbSections));
-        seamL = CSubSpace3d::line(luffCatenary[h+1], CVector3d(pt0 - luffCatenary[h+1]));
+        seamL = CSubSpace::line(luffCatenary[h+1], CVector3d(pt0 - luffCatenary[h+1]));
         luffCatenary[h] = seamH[h].intersectionPoint(seamL, "luffCatenary");
 
         pt0 = clew - footV*(real(h) / real(2* nbSections));
-        seamL = CSubSpace3d::line(leechCatenary[h+1], CVector3d(pt0 - leechCatenary[h+1]));
+        seamL = CSubSpace::line(leechCatenary[h+1], CVector3d(pt0 - leechCatenary[h+1]));
         leechCatenary[h] = seamH[h].intersectionPoint(seamL, "leechCatenary");
     }
 
@@ -2530,7 +2530,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
             cnt++;
             // move base point along the foot
             pt = p1[npanel-1] - (clothW - seamW - exb) * footV.normalized();
-            seamL = CSubSpace3d::line( pt , footVP );
+            seamL = CSubSpace::line( pt , footVP );
             p1[npanel] = seamL.intersectionPoint(footLine, "seam and foot");
             t1[npanel] = 1; // type 1=foot intersection
 
@@ -2683,7 +2683,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
             cnt++;
             p2[npanel] = p2[npanel-1] + (clothW -seamW -exb) * leechV.normalized();
             t2[npanel] = 4; // type2=4=leech intersection for all horizontally cut panels
-            seamL = CSubSpace3d::line(p2[npanel] , leechVP);
+            seamL = CSubSpace::line(p2[npanel] , leechVP);
 
             if (CVector3d::dotProduct(p2[npanel] - peak, leechV) >= 0)
             { // we are above peak, stop last panel
@@ -2995,7 +2995,7 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
             cnt++;
             // move base point perpendicular to foot
             pt = p1[npanel-1] + (clothW -seamW -exb) * footVP.normalized();
-            seamL = CSubSpace3d::line( pt, footV );
+            seamL = CSubSpace::line( pt, footV );
 
             // find intersection on luff and mitre
             p1[npanel] = seamL.intersectionPoint(luffLine, "seam and luff");
@@ -3115,7 +3115,7 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
             cnt++;
             /* Determine width of Panel Perpendicular to Leech side. */
             pt = p1[npanel-1] + (clothW -seamW -exb) * leechVP.normalized();
-            seamL = CSubSpace3d::line(pt, leechV);
+            seamL = CSubSpace::line(pt, leechV);
 
 	    // find intersection on mitre
             p1[npanel] = seamL.intersectionPoint(mitreLine, "seam and mitre");
@@ -3609,7 +3609,7 @@ CPoint3d CSailWorker::EdgeIntersect( const enumEdgeType &Edge, const CPoint3d &p
         throw layout_error("CSailWorker::EdgeIntersect : input vector is nul");
 
     // Input line
-    CSubSpace InputLine = CSubSpace3d::line( pt1 , v1 );
+    CSubSpace InputLine = CSubSpace::line( pt1 , v1 );
     // Edge end points
     CPoint3d pEnd1, pEnd2;
     // Edge Vector
@@ -3661,7 +3661,7 @@ CPoint3d CSailWorker::EdgeIntersect( const enumEdgeType &Edge, const CPoint3d &p
     }
 
     // Edge line
-    CSubSpace Line2 = CSubSpace3d::line( pEnd1, vEdge );
+    CSubSpace Line2 = CSubSpace::line( pEnd1, vEdge );
 
     real h1=0, h2=0, d1=0, d2=0;
     CPoint3d p0 , p1 , p2 , p3;
@@ -3681,7 +3681,7 @@ CPoint3d CSailWorker::EdgeIntersect( const enumEdgeType &Edge, const CPoint3d &p
         p1 = p0 + vpEdge * d1;
 
         // define a line parrallel to edge at distance d1
-        Line2 = CSubSpace3d::line( p1 , vEdge );
+        Line2 = CSubSpace::line( p1 , vEdge );
 
         // point2 at intersection of input line with parrallel to edge is always valid
         p2 = InputLine.intersectionPoint(Line2, "with parallel to edge");
@@ -3709,7 +3709,7 @@ CPoint3d CSailWorker::EdgeIntersect( const enumEdgeType &Edge, const CPoint3d &p
                 // keep p1 which is strictly on input line
                 p2 = p1;
             else {   // displaced point 2 and p1 are used for Line2
-                Line2 = CSubSpace3d::line( p1 , v );
+                Line2 = CSubSpace::line( p1 , v );
                 // compute final intersection point p2
                 p2 = InputLine.intersectionPoint(Line2, "with ?");
             }
@@ -3734,7 +3734,7 @@ CPoint3d CSailWorker::MitreIntersect( const CPoint3d &pt1, const CVector3d &v1 )
     // real x=0, y=0, z=0; // for debugging only
 
     /* straight line passing through input point */
-    CSubSpace ptv1 = CSubSpace3d::line(pt1 , v1);
+    CSubSpace ptv1 = CSubSpace::line(pt1 , v1);
 
     CPoint3d p2 = pt1;
 

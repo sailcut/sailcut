@@ -146,6 +146,7 @@ CSubSpace CSubSpace::intersect(const CSubSpace &h2) const
     return CSubSpace();
 }
 
+
 CVector3d CSubSpace::intersectionPoint(const CSubSpace &h2, const char*) const
 {
     CSubSpace i = intersect(h2);
@@ -153,6 +154,49 @@ CVector3d CSubSpace::intersectionPoint(const CSubSpace &h2, const char*) const
         throw runtime_error("CSubSpace::intersectionPoint : intersection is not a point");
     return i.getp();
 }
+
+
+/** Create a CSubSpace representing a 3D line from a point and a vector.
+ *
+ * @param p a point of the line
+ * @param v a vector along the line
+ */
+CSubSpace CSubSpace::line(const CPoint3d &p, const CVector3d &v)
+{
+    if (!v.length())
+    {
+        cout << "CSubSpace::line : Crash point = " << p << endl;
+        throw invalid_argument("CSubSpace::line : Input vector cannot be zero point ");
+    }
+    CMatrix m(3, 1);
+    for (int i = 0; i < 3; ++i)
+        m(i, 0) = v[i];
+    return CSubSpace(p, m, GEOCPP_FROM_BASE);
+}
+
+
+/** Create a CSubSpace representing a 3D plane from a point and two vectors.
+ *
+ * @param p a point of the plane
+ * @param v1 a vector in the plane
+ * @param v2 a second vector in the plane, not colinear with v1
+ */
+CSubSpace CSubSpace::plane(const CPoint3d &p, const CVector3d &v1, const CVector3d& v2)
+{
+    if (!CVector3d::crossProduct(v1, v2).length())
+    {
+        cout << "CSubSpace::plane : Crash point = " << p << endl;
+        throw invalid_argument("CSubSpace::plane : 2 Vectors cannot be colinear");
+    }
+    CMatrix m(3,2);
+    for (int i = 0; i < 3; i++)
+    {
+        m(i, 0) = v1[i];
+        m(i, 1) = v2[i];
+    }
+    return CSubSpace(p, m, GEOCPP_FROM_BASE);
+}
+
 
 #if 0
 /*******************************************************
@@ -215,3 +259,4 @@ ostream& operator<< (ostream &o, const CSubSpace &h)
     return o;
 }
 #endif
+

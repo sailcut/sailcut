@@ -55,6 +55,9 @@ public:
         return p;
     }
 
+    static CSubSpace line(const CPoint3d& p, const CVector3d& v);
+    static CSubSpace plane(const CPoint3d& p, const CVector3d& v1, const CVector3d& v2);
+
 private:
     bool isEmpty;
     CMatrix m;
