@@ -343,7 +343,7 @@ CPanel CPanel::develop(enumDevelopAlign align) const
         CC = atan2( (p2.y()-p1.y()) , (p2.x()-p1.x()) );
     }
     // align panel
-    flatpanel = flatpanel.rotate(CPoint3d(0,0,0), CMatrix::rot3d(2,-CC) );
+    flatpanel = flatpanel.rotated(CPoint3d(0,0,0), -CC, Qt::ZAxis);
 
     flatpanel.hasHems = false;
 
@@ -841,6 +841,18 @@ CPanel CPanel::rotate( const CPoint3d &p, const CMatrix &m ) const
     panel.cutBottom = cutBottom.rotate( p , m );
 
     return panel;
+}
+
+
+/** Rotates a panel around a point.
+ *
+ *  p = centre of rotation
+ *  angle = angle in radians
+ *  axis = the axis around which to rotate
+ */
+CPanel CPanel::rotated(const CPoint3d &p, qreal angle, Qt::Axis axis) const
+{
+    return rotate(p, CMatrix::rot3d(axis, angle));
 }
 
 

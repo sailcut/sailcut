@@ -110,7 +110,7 @@ CPanelGroup CRigWorker::makeRig() const
         rig.push_back(mast1);
 
         // make symetrical by rotation
-        mast1 = mast1.rotate(p2 , CMatrix::rot3d(2, PI) );
+        mast1 = mast1.rotated(p2, PI, Qt::ZAxis);
 
         rig.push_back(mast1);
     }

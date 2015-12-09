@@ -24,7 +24,6 @@
 #include <QVector3D>
 #include <geocpp/vector.h>
 
-class CMatrix;
 class CSubSpace;
 
 

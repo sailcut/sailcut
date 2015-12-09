@@ -531,7 +531,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
         x = dispsail[j-1].top[npb-1].x() - top.x();
         y = dispsail[j-1].top[npb-1].y() - top.y();
         CC = atan2(y , x);
-        dispsail[j] = dispsail[j].rotate(bot,CMatrix::rot3d(2,CC));
+        dispsail[j] = dispsail[j].rotated(bot, CC, Qt::ZAxis);
 
         // translation v to align panel bottom edge origin to previous panel upper edge origin
         v = CVector3d ( top - CPoint3d(0,0,0) );
@@ -864,7 +864,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
         x = dispsail[j-1].top[npb-1].x() - top.x();
         y = dispsail[j-1].top[npb-1].y() - top.y();
         CC = atan2(y,x);
-        dispsail[j] = dispsail[j].rotate(bot,CMatrix::rot3d(2,CC));
+        dispsail[j] = dispsail[j].rotated(bot, CC, Qt::ZAxis);
 
         // translation v to align panel bottom edge origin to previous panel upper edge origin
         v = top;
@@ -1355,7 +1355,7 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
         lay[npanel-1] = Zpanel(lay[npanel-1]);
 
         /* Rotate the panel by the dihedral angle */
-        lay[npanel-1] = lay[npanel-1].rotate(tack , CMatrix::rot3d(0 , alfa) );
+        lay[npanel-1] = lay[npanel-1].rotated(tack, alfa, Qt::XAxis);
 
         /* If it is the first panel, then cut the foot to tack level */
         if ( npanel == 1 )
@@ -1470,7 +1470,7 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
         x = dispsail[j-1].top[npb-1].x()-top.x();
         y = dispsail[j-1].top[npb-1].y()-top.y();
         CC= atan2(y,x);
-        dispsail[j] = dispsail[j].rotate(bot,CMatrix::rot3d(2,CC));
+        dispsail[j] = dispsail[j].rotated(bot, CC, Qt::ZAxis);
 
         // translation v to align panel bottom edge origin to previous panel upper edge origin
         v = CVector3d ( top - CPoint3d(0,0,0) );
