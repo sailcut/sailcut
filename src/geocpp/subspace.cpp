@@ -77,16 +77,6 @@ CSubSpace::CSubSpace(const CSubSpace &s)
 }
 
 
-/** Test whether the CSubSpace contains a given point.
- */
-bool CSubSpace::contains(const CVector3d &point) const
-{
-    CVector3d prod = m * (point-p);
-
-    return ( prod.length() < EPS );
-}
-
-
 /** Return the subspace's dimension. */
 int CSubSpace::getdim() const
 {
