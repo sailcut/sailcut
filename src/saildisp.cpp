@@ -32,7 +32,6 @@ CSailDisp::CSailDisp()
     , m_elevation(0)
 {
     // initialise data
-    m = CMatrix::id(3);
     drawLabels = false;
     zoom = 0.8;
 }

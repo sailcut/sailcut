@@ -79,8 +79,6 @@ private:
     real m_azimuth;
     real m_elevation;
 
-    /** Rotation matrix for the view */
-    CMatrix m;
     /** Viewport rectangle, in logical coordinates */
     CRect3d logicalRect;
     /** Viewport rectangle, in device coordinates */
