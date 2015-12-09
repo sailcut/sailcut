@@ -59,12 +59,12 @@ void CLabelProfileVert::paintEvent( QPaintEvent *)
     painter.eraseRect(vRect);
 
     CRect3d objRect;
-    objRect.max = CPoint3d(0.22, 1);
+    objRect.max = CPoint3d(0.22, 1, 0);
 
     if ( wasResized )
     {
         CRect3d viewRect;
-        viewRect.max = CPoint3d(vRect.width(), vRect.height());
+        viewRect.max = CPoint3d(vRect.width(), vRect.height(), 0);
 
         m_lRect = calcLRect(viewRect, objRect, objRect.center(), 0.8);
         wasResized = 0;
