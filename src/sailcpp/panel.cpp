@@ -814,15 +814,13 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
  */
 CPanel CPanel::rotated(const CPoint3d &p, qreal angle, Qt::Axis axis) const
 {
-    QVector3D center(p.x(), p.y(), p.z());
-
     QVector3D v;
     v[axis] = 1;
 
     QMatrix4x4 matrix;
-    matrix.translate(center);
+    matrix.translate(p);
     matrix.rotate(angle * 180 / PI, v);
-    matrix.translate(-center);
+    matrix.translate(-p);
 
     return transformed(matrix);
 }

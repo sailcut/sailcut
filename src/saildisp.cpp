@@ -41,8 +41,7 @@ CSailDisp::CSailDisp()
  */
 void CSailDisp::calcDispObject()
 {
-    const CVector3d c = baseRect.center();
-    QVector3D center(c.x(), c.y(), c.z());
+    const CVector3d center = baseRect.center();
 
     QMatrix4x4 matrix;
     matrix.translate(center);
