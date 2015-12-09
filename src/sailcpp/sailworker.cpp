@@ -35,7 +35,7 @@
 CSailWorker::CSailWorker(const CSailDef &s) : CSailDef(s)
 {
     /* First compute the coordinates of the corner of the sail */
-    CVector3d v, v1;
+    CVector3d v1;
     real x = 0, headstay = 0;
 
     /* Then Compute the coordinates of the 4 corners of the sail */
@@ -60,9 +60,9 @@ CSailWorker::CSailWorker(const CSailDef &s) : CSailDef(s)
     real stupid_hack = sqrt(luffL*luffL - rake*rake);
     head = tack + CVector3d(rake, stupid_hack, 0);
 
-    v = CVector3d(0, gaffL, 0);  // initial vector gaff set on vertical
-
-    peak = head + CMatrix::rot3d( 2 , (-asin(rake / luffL) - gaffDeg * PI / 180) ) * v;
+    // initial vector gaff set on vertical
+    const CVector3d vertical(0, 1, 0);
+    peak = head + rotateNormalized(-asin(rake / luffL) - gaffDeg * PI / 180, vertical) * gaffL;
 
     if ( fabs(peak.y() - head.y()) < 1 )
         peak.setY(head.y() + 1); // to avoid case with gaff horizontal
@@ -77,7 +77,7 @@ CSailWorker::CSailWorker(const CSailDef &s) : CSailDef(s)
     if (sailType == WING)
         clew = tack + v1;
     else
-        clew = tack + CMatrix::rot3d( 2 , bb-aa ) * v1;
+        clew = tack + rotateNormalized(bb - aa, v1) * footL;
     /* end of computation of corners of the sail */
 
     /** Define foot vector of sail edge. */
