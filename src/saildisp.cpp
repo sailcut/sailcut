@@ -45,7 +45,6 @@ void CSailDisp::calcDispObject()
     QVector3D center(c.x(), c.y(), c.z());
 
     QMatrix4x4 matrix;
-    matrix.setToIdentity();
     matrix.translate(center);
     matrix.rotate(m_elevation, QVector3D(1, 0, 0));
     matrix.rotate(m_azimuth, QVector3D(0, 1, 0));

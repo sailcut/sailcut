@@ -86,6 +86,14 @@ int CSubSpace::getdim() const
         return SIZE - m.rows();
 }
 
+static CVector toVector(const CVector3d &v)
+{
+    CVector vv(3);
+    vv[0] = v.x();
+    vv[1] = v.y();
+    vv[2] = v.z();
+    return vv;
+}
 
 /** Performs the intersection of two CSubSpace objects.
  */
@@ -94,8 +102,8 @@ CSubSpace CSubSpace::intersect(const CSubSpace &h2) const
     if (isEmpty || h2.isEmpty)
         return CSubSpace();
 
-    CVector b1 = m * p;
-    CVector b2 = h2.m * h2.p;
+    CVector b1 = m * toVector(p);
+    CVector b2 = h2.m * toVector(h2.p);
     CVector bb( m.rows() + h2.m.rows() );
     CMatrix mm( m.rows() + h2.m.rows(), SIZE );
     for (size_t i = 0 ; i < mm.rows() ; i++)

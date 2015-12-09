@@ -185,7 +185,6 @@ void CSailDispGL::paintGL()
     // set transform
     const CRect3d lRect = getLogicalRect();
     QMatrix4x4 matrix;
-    matrix.setToIdentity();
     matrix.scale(
         real(2) / lRect.width(),
         real(2) / lRect.height(),

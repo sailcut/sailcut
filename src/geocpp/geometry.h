@@ -31,7 +31,7 @@ class CSubSpace;
  *
  * @ingroup GeoCpp
  */
-class CVector3d : public CVector
+class CVector3d : private CVector
 {
 public:
     /** Constructor. */

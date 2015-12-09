@@ -26,7 +26,9 @@
  */
 CVector3d rotateNormalized(real angle, const CVector3d &v)
 {
-    return CMatrix::rot3d(2, angle) * v.normalized();
+    QMatrix4x4 matrix;
+    matrix.rotate(angle * 180 / PI, QVector3D(0, 0, 1));
+    return matrix * v.normalized();
 }
 
 /*****************************************************************************
@@ -818,7 +820,6 @@ CPanel CPanel::rotated(const CPoint3d &p, qreal angle, Qt::Axis axis) const
     v[axis] = 1;
 
     QMatrix4x4 matrix;
-    matrix.setToIdentity();
     matrix.translate(center);
     matrix.rotate(angle * 180 / PI, v);
     matrix.translate(-center);
