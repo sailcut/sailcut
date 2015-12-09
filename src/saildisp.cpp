@@ -87,7 +87,7 @@ CPoint3d CSailDisp::screenToLogical( const int x, const int y ) const
 void CSailDisp::setAngle( real azimuth, real elevation )
 {
     m_azimuth = azimuth;
-    m_elevation = m_elevation;
+    m_elevation = elevation;
     calcDispObject();
 }
 
