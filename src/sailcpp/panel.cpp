@@ -227,9 +227,9 @@ CPanel CPanel::develop(enumDevelopAlign align) const
     p1= bottom[1];
     p2 = top[1];
     p3 = bottom[0];
-    a = CVector3d( p2 - p1 ).length(); // vertical side at point 1
-    b = CVector3d( p3 - p1 ).length(); // lower side of triangle
-    c = CVector3d( p2 - p3 ).length();
+    a = ( p2 - p1 ).length(); // vertical side at point 1
+    b = ( p3 - p1 ).length(); // lower side of triangle
+    c = ( p2 - p3 ).length();
     CC = Atriangle( a , b , c );      // angle of bottom left corner = opposite to side a
 
     d3.setX(b);   // set base of first triangle on X axis
@@ -240,14 +240,14 @@ CPanel CPanel::develop(enumDevelopAlign align) const
     flatpanel.top[1] = d3;
 
     // set baseline vector
-    v = CVector3d( flatpanel.bottom[1] - flatpanel.top[1] );
+    v = flatpanel.bottom[1] - flatpanel.top[1];
 
     /** develop left side of panel by triangulation */
     for (i = 0 ; i < npl ; i++)
     {
         p3 = left[i];
-        b = CVector3d( p3 - p1 ).length(); // lower side of triangle
-        c = CVector3d( p3 - p2 ).length(); // upper side of triangle
+        b = ( p3 - p1 ).length(); // lower side of triangle
+        c = ( p3 - p2 ).length(); // upper side of triangle
         CC = Atriangle( c , a , b );      // angle of bottom corner = opposite to upper side
         // transpose corner of triangle in development plane
         d3 = flatpanel.bottom[1] + rotateNormalized(-PI + CC, v) * b;
@@ -261,7 +261,7 @@ CPanel CPanel::develop(enumDevelopAlign align) const
 
     /** develop body of panel by zig-zag triangulation */
     // reset baseline vector for lower right point
-    v = CVector3d( flatpanel.bottom[1] - flatpanel.top[1] );
+    v = flatpanel.bottom[1] - flatpanel.top[1];
     c = v.length();
 
     for (i = 1 ; i < npb-2 ; i++)
@@ -274,27 +274,27 @@ CPanel CPanel::develop(enumDevelopAlign align) const
 
         // first triangle = lower right p1-p2-p3
         a = c;
-        b = CVector3d( p3 - p1 ).length();
-        c = CVector3d( p3 - p2 ).length();
+        b = ( p3 - p1 ).length();
+        c = ( p3 - p2 ).length();
         CC = Atriangle( c , b , a );
         // transpose corner of triangle in development plane
         d3 = flatpanel.bottom[i] + rotateNormalized(PI - CC, v) * b;
         flatpanel.bottom[i+1] = d3;
 
         // set baseline vector for upper right point
-        v = CVector3d( flatpanel.top[i] - flatpanel.bottom[i+1] );
+        v = flatpanel.top[i] - flatpanel.bottom[i+1];
 
         // second triangle = upper right
         a = c;
-        b = CVector3d( p4 - p2 ).length();
-        c = CVector3d( p4 - p3 ).length();
+        b = ( p4 - p2 ).length();
+        c = ( p4 - p3 ).length();
         CC = Atriangle( c, b, a );
         // transpose corner of triangle in development plane
         d3 = flatpanel.top[i] + rotateNormalized(-PI + CC, v) * b;
         flatpanel.top[i+1] = d3;
 
         // set next baseline vector
-        v = CVector3d( flatpanel.bottom[i+1] - flatpanel.top[i+1] );
+        v = flatpanel.bottom[i+1] - flatpanel.top[i+1];
     }
 
     /** develop right side of panel */
@@ -467,21 +467,21 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
     unsigned int npl = left.size(), npb = bottom.size();
 
     ///* compute basic edges vectors */
-    CVector3d v1 = CVector3d( left[npl/2] - left[0] );
+    CVector3d v1 = left[npl/2] - left[0];
     //  if ( v1.length() == 0 ) cout << "CPanel::add6Hems v1=0 " << endl;
-    CVector3d v2 = CVector3d( left[npl-1] - left[npl/2] );
+    CVector3d v2 = left[npl-1] - left[npl/2];
     //  if ( v2.length() == 0 ) cout << "CPanel::add6Hems v2=0 " << endl;
-    CVector3d v3 = CVector3d( right[npl/2] - right[0] );
+    CVector3d v3 = right[npl/2] - right[0];
     //  if ( v3.length() == 0 ) cout << "CPanel::add6Hems v3=0 " << endl;
-    CVector3d v4 = CVector3d( right[npl-1] - right[npl/2] );
+    CVector3d v4 = right[npl-1] - right[npl/2];
     //  if ( v4.length() == 0 ) cout << "CPanel::add6Hems v4=0 " << endl;
-    CVector3d v5 = CVector3d( bottom[npb-1] - bottom[0] );
+    CVector3d v5 = bottom[npb-1] - bottom[0];
     //  if ( v5.length() == 0 ) cout << "CPanel::add6Hems v5=0 " << endl;
-    CVector3d v6 = CVector3d( bottom[npb-1] - bottom[npb-2] );
+    CVector3d v6 = bottom[npb-1] - bottom[npb-2];
     //  if ( v6.length() == 0 ) cout << "CPanel::add6Hems v6=0 " << endl;
-    CVector3d v7 = CVector3d( top[npb-1] - top[0] );
+    CVector3d v7 = top[npb-1] - top[0];
     //  if ( v7.length() == 0 ) cout << "CPanel::add6Hems v7=0 " << endl;
-    CVector3d v8 = CVector3d( top[npb-1] - top[npb-2] );
+    CVector3d v8 = top[npb-1] - top[npb-2];
     //  if ( v8.length() == 0 ) cout << "CPanel::add6Hems v8=0 " << endl <<endl;
 
     //cout << "CPanel::add6Hems start" << endl;
@@ -507,7 +507,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
         v6 = v5;
     }
     else {   // reset v5 to bottom left point
-        v5 = CVector3d( bottom[1] - bottom[0] );
+        v5 = bottom[1] - bottom[0];
     }
 
     if (v7.length() < minSize ) {   // top side too small copy bottom
@@ -515,7 +515,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
         v8 = v7;
     }
     else {   // reset v7 to top left point
-        v7 = CVector3d( top[1] - top[0] );
+        v7 = top[1] - top[0];
     }
 
     ///* Move the basic bottom edge points to the cut line */
@@ -524,9 +524,9 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
     if ( botW >= EPS ) { // width of material is not too small
         for (i = 0 ; i < npb ; i++) {
             if ( i == 0 )
-                v = CVector3d( bottom[1] - bottom[0] );
+                v = bottom[1] - bottom[0];
             else
-                v = CVector3d( bottom[i] - bottom[i-1] );
+                v = bottom[i] - bottom[i-1];
 
             if ( v.length() <= EPS )
                 v = v5;
@@ -539,9 +539,9 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
     if ( topW >= EPS ) { // width of material is not too small
         for (i = 0 ; i < npb ; i++) {
             if ( i == 0 )
-                v = CVector3d( top[1] - top[0] );
+                v = top[1] - top[0];
             else
-                v = CVector3d( top[i] - top[i-1] );
+                v = top[i] - top[i-1];
 
             if ( v.length() <= minSize )
                 v = v7;
@@ -554,19 +554,19 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
     if ( v1.length() >= minSize ) {  // lower left side is not a point
         for (i = 0 ; i < npl/2 ; i++) {
             if ( i == 0 )
-                v = CVector3d( left[1] - left[0] );
+                v = left[1] - left[0];
             else
-                v = CVector3d( left[i] - left[i-1] );
+                v = left[i] - left[i-1];
 
             cutLeft[i] = left[i] + rotateNormalized(PI/2, v) * lolW;
         }
 
-        v0 = CVector3d( left[npl/2] - left[npl/2 -1] );
+        v0 = left[npl/2] - left[npl/2 -1];
         Line1 = CSubSpace::line( cutLeft[npl/2 -1] , v0 );
 
         if ( v2.length() >= minSize ) {  // upper left side is not a point
             for (i = npl/2 +1 ; i < npl ; i++) {
-                v2 = CVector3d( left[i] - left[i-1] );
+                v2 = left[i] - left[i-1];
                 cutLeft[i] = left[i] + rotateNormalized(PI/2, v2) * hilW;
 
                 if ( i == npl/2 +1 ) {   // compute mid side break point
@@ -591,20 +591,20 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
             }
         }
         else {  // upper left side is a point but not lower side
-            v2 = CVector3d( left[npl/2] - left[npl/2 -1] );
+            v2 = left[npl/2] - left[npl/2 -1];
             for (i = npl/2 +1 ; i < npl ; i++)
                 cutLeft[i] = left[i] + rotateNormalized(PI/2, v2) * hilW;
         }
     }
     else if ( v2.length() >= minSize ) {
         // only lower left side is a point
-        v1 = CVector3d( left[npl/2 +1] - left[npl/2] );
+        v1 = left[npl/2 +1] - left[npl/2];
         for (i = 0 ; i < npl/2  ; i++)
             cutLeft[i] = left[i] + rotateNormalized(PI/2, v1) * lolW;
 
         for (i = npl/2 +1 ; i < npl -1 ; i++)
         {
-            v2 = CVector3d( left[i] - left[i-1] );
+            v2 = left[i] - left[i-1];
             cutLeft[i] = left[i] + rotateNormalized(PI/2, v2) * hilW;
         }
     }
@@ -628,31 +628,31 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
         for (i = 0 ; i < npl/2 ; i++) {
             if ( i == 0 ) {
                 if (!qFuzzyCompare(right[i+1], right[i]))
-                    v = CVector3d( right[i+1] - right[i] );
+                    v = right[i+1] - right[i];
                 else if (!qFuzzyCompare(right[i+2], right[i]))
-                    v = CVector3d( right[i+2] - right[i] );
+                    v = right[i+2] - right[i];
                 else if (!qFuzzyCompare(right[i+3], right[i]))
-                    v = CVector3d( right[i+3] - right[i] );
+                    v = right[i+3] - right[i];
                 else if (!qFuzzyCompare(right[i+4], right[i]))
-                    v = CVector3d( right[i+4] - right[i] );
+                    v = right[i+4] - right[i];
             }
             else {
                 if (!qFuzzyCompare(right[i], right[i-1]))
-                    v = CVector3d( right[i] - right[i-1] );
+                    v = right[i] - right[i-1];
                 else if (!qFuzzyCompare(right[i+1], right[i]))
-                    v = CVector3d( right[i+1] - right[i] );
+                    v = right[i+1] - right[i];
                 else if (!qFuzzyCompare(right[i+2], right[i]))
-                    v = CVector3d( right[i+2] - right[i] );
+                    v = right[i+2] - right[i];
             }
             cutRight[i] = right[i] + rotateNormalized(-PI/2, v) * lorW;
         }
 
-        v0 = CVector3d( right[npl/2] - right[npl/2 -1] );
+        v0 = right[npl/2] - right[npl/2 -1];
         Line1 = CSubSpace::line( cutRight[npl/2 -1] , v0 );
 
         if ( v4.length() >= minSize ) {  // upper right side is not a point
             for (i = npl/2 +1 ; i < npl ; i++) {
-                v4 = CVector3d( right[i] - right[i-1] );
+                v4 = right[i] - right[i-1];
                 cutRight[i] = right[i] + rotateNormalized(-PI/2, v4) * hirW;
                 if ( i == npl/2 +1 ) {   // compute mid side break point
                     Line2 = CSubSpace::line( cutRight[i] , v4 );
@@ -673,7 +673,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
             }
         }
         else { // upper right side is a point but not lower side
-            v4 = CVector3d( right[npl-1] - right[npl-2] );
+            v4 = right[npl-1] - right[npl-2];
 
             for (i = npl/2 +1 ; i < npl ; i++)
                 cutRight[i] = right[i] + rotateNormalized(-PI/2, v4) * hirW;
@@ -681,7 +681,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
     }
     else if ( v4.length() >= minSize ) {   // only lower right side is a point
         v3 = v4;
-        //v3 = CVector3d( right[npl-2] - right[npl/2] );
+        //v3 = right[npl-2] - right[npl/2];
         /*        if (v3.length() == 0)
                 {
                         cout << "AddHems v3=0 : about to crash 13" << endl;
@@ -695,7 +695,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
         for (i = npl/2 +1 ; i < npl ; i++)
             cutRight[i] = right[i] + rotateNormalized(-PI/2, v4) * hirW;
 
-        v4 = CVector3d( right[npl-1] - right[npl-2] );
+        v4 = right[npl-1] - right[npl-2];
         //    if (v4.length() == 0) cout << "AddHems v4=0 about to crash 13" << endl;
     }
     else {  // complete right side is a point
