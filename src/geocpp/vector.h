@@ -33,9 +33,9 @@ using namespace std;
 
 
 // types and constants
-typedef double real;
+typedef float real;
 
-const real EPS = 1E-14;
+const real EPS = 0.00001;
 
 /** 3d real-valued vector.
  *
