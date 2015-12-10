@@ -337,7 +337,7 @@ bool CFormRigDef::check()
     txt_MRkM->setText(QString::number(rigdef->MRakeM));
 
     /// computing mast rake in degree
-    rigdef->MRakeD = atan2(rigdef->MRakeM ,rigdef->MHeight) * (180 / PI);
+    rigdef->MRakeD = qRadiansToDegrees(atan2(rigdef->MRakeM ,rigdef->MHeight));
     lbl_MRkD->setText(QString::number(rigdef->MRakeD));
 
     /// computing mast base distance to stem

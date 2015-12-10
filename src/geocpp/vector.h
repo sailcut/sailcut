@@ -24,13 +24,10 @@
 #include <iostream>
 #include <vector>
 
-#ifdef CHECK_DIMENSIONS
-#include <stdexcept>
-#endif
-
+#include <QtMath>
 #include <QMatrix4x4>
 #include <QVector3D>
-#include <geocpp/vector.h>
+
 
 using namespace std;
 
@@ -58,6 +55,12 @@ typedef QVector3D CPoint3d;
 
 
 ostream& operator<<(ostream &o, const CVector3d &v);
+
+inline
+real qDegreesToRadians(int degrees)
+{
+    return qDegreesToRadians(real(degrees));
+};
 
 
 #endif

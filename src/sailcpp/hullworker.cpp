@@ -43,14 +43,14 @@ CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
 
     /** compute the lower Chine plane */
     // vector v1 is sideway tilt of chine
-    v1 = CVector3d( 0 , -sin(real(BSlopeA)*PI/180) , cos(real(BSlopeA)*PI/180) );
+    v1 = CVector3d( 0 , -sin(qDegreesToRadians(BSlopeA)) , cos(qDegreesToRadians(BSlopeA)) );
     // vector v2 is fore-aft slope of chine
     v2 = CVector3d( ptAftChine - ptFwdChine );
     planeLowChine = CSubSpace::plane( ptFwdChine , v1 , v2 );
 
     /** compute the Deck plane */
     // vector v1 is sideway tilt of deck
-    v1 = CVector3d( 0 , -sin(real(DSlopeA)*PI/180) , cos(real(DSlopeA)*PI/180) );
+    v1 = CVector3d( 0 , -sin(qDegreesToRadians(DSlopeA)) , cos(qDegreesToRadians(DSlopeA)) );
     // vector v2 is fore-aft slope of deck
     v2 = CVector3d( BLWL , DaftHeight-DfwdHeight , 0 );
     planeDeck = CSubSpace::plane( ptFwdDeck , v1 , v2 );
@@ -59,7 +59,7 @@ CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
     // vector v1 is parallel to Z axis = perpendicular to central plane
     v1 = CVector3d( 0 , 0 , 1 );
     // vector v2 is in inclined transom plane
-    v2 = CVector3d( cos(real(TransomA) * PI/180) , sin(real(TransomA) * PI/180) , 0 );
+    v2 = CVector3d( cos(qDegreesToRadians(TransomA)) , sin(qDegreesToRadians(TransomA)) , 0 );
     planeTransom = CSubSpace::plane( ptAftChine , v1 , v2 );
 
     // compute intersection line between lower chine plane and transom
@@ -131,7 +131,7 @@ CPoint3d CHullWorker::ptKeel( const real &x )
     pt = ptLowChine ( x );
 
     /* Ruling vector with deadrise and sweep. */
-    v1 = CVector3d( tan( real(BSweepA) * PI/180) , tan( real(BDeadriseA) * PI/180) , 1 );
+    v1 = CVector3d( tan(qDegreesToRadians(BSweepA)) , tan(qDegreesToRadians(BDeadriseA)) , 1 );
 
     /* Project pt on central plane, get intersection
        with the ruling line passing through point pt. */
@@ -192,7 +192,7 @@ CPanelGroup CHullWorker::makeHull() //const
     hull.push_back(plank2);
 
     /** Lay a single top side plank on each side with bottom at chine */
-    v1 = CVector3d( -cos(real(StemA) * PI/180) , sin(real(TopPlankA) * PI/180) , cos(real(TopPlankA) * PI/180) );
+    v1 = CVector3d( -cos(qDegreesToRadians(StemA)) , sin(qDegreesToRadians(TopPlankA)) , cos(qDegreesToRadians(TopPlankA)) );
 
     for (j = 0 ; j < npb ; j++)
     {

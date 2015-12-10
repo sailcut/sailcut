@@ -49,7 +49,7 @@ CSailWorker::CSailWorker(const CSailDef &s) : CSailDef(s)
         //gaffL = 1;
         gaffR = 0;
         gaffRP = 50;   // imposed value for short gaff
-        gaffDeg = atan2( foreI , foreJ ) * 180/PI - 10;
+        gaffDeg = qRadiansToDegrees(atan2(foreI, foreJ)) - 10;
         break;
     default:
         tack = CPoint3d( tackX, tackY, 0 );
@@ -62,7 +62,7 @@ CSailWorker::CSailWorker(const CSailDef &s) : CSailDef(s)
 
     // initial vector gaff set on vertical
     const CVector3d vertical(0, 1, 0);
-    peak = head + rotateNormalized(-asin(rake / luffL) - gaffDeg * PI / 180, vertical) * gaffL;
+    peak = head + rotateNormalized(-asin(rake / luffL) - qDegreesToRadians(gaffDeg), vertical) * gaffL;
 
     if ( fabs(peak.y() - head.y()) < 1 )
         peak.setY(head.y() + 1); // to avoid case with gaff horizontal
@@ -1147,7 +1147,7 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
     unsigned int npb= lay[0].bottom.size(); // number of bottom/top points
 
     /* Angle of the half wing from X-Y plane */
-    real alfa = (180 - dihedralDeg) * PI/360;
+    real alfa = qDegreesToRadians((180 - dihedralDeg) / 2);
 
     unsigned int j=0, k=0;
     bool flag=false;  // to check if top of sail is reached
@@ -3797,7 +3797,7 @@ CPoint3d CSailWorker::Zpoint( const CPoint3d &p1 ) const
     else if ( h2 <= 0 )   // below clew
         h2 = 0;
 
-    twist = ( h2 * twistDeg  + sheetDeg ) * PI / 180;
+    twist = qDegreesToRadians(h2 * twistDeg  + sheetDeg);
 
     if ( p1.y() >= head.y() )   // on gaff
         pivotX = head.x();
