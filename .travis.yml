@@ -8,4 +8,3 @@ install:
 script:
   - qmake
   - make
-  - make check
