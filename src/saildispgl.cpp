@@ -183,7 +183,7 @@ void CSailDispGL::paintGL()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     // set transform
-    const CRect3d lRect = getLogicalRect();
+    const CRect3d lRect = logicalRect();
     QMatrix4x4 matrix;
     matrix.scale(
         real(2) / lRect.width(),
@@ -192,7 +192,7 @@ void CSailDispGL::paintGL()
     matrix.translate(-center.x(), -center.y(), -center.z());
     program->setUniformValue(matrixAttr, matrix);
 
-    draw(dispObject);
+    draw(dispObject());
 }
 
 

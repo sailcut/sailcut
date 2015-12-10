@@ -37,9 +37,9 @@ CSailDisp::CSailDisp()
 }
 
 
-/** Rotates local copy of the object by a given azimuth and elevation.
+/** Returns a rotated copy of the object by a given azimuth and elevation.
  */
-void CSailDisp::calcDispObject()
+CPanelGroup CSailDisp::dispObject() const
 {
     const CVector3d center = baseRect.center();
 
@@ -49,7 +49,16 @@ void CSailDisp::calcDispObject()
     matrix.rotate(m_azimuth, QVector3D(0, 1, 0));
     matrix.translate(-center);
 
-    dispObject = baseObject.transformed(matrix);
+    return baseObject.transformed(matrix);
+}
+
+
+/**
+ * Accessor for the logical viewport rectangle.
+ */
+CRect3d CSailDisp::logicalRect() const
+{
+    return calcLRect(viewRect, baseRect, center, zoom);
 }
 
 
@@ -59,7 +68,6 @@ void CSailDisp::resetZoomCenter()
 {
     center = baseRect.center();
     zoom = 0.8;
-    logicalRect = calcLRect(viewRect, baseRect, center, zoom);
 }
 
 
@@ -71,6 +79,7 @@ CPoint3d CSailDisp::screenToLogical( const int x, const int y ) const
     if ((viewRect.width()==0)||(viewRect.height()==0))
         return center;
 
+    const CRect3d logicalRect = this->logicalRect();
     return center + CVector3d( logicalRect.width() * ( real(x) / viewRect.width() - 0.5 ),
                                logicalRect.height() * ( 0.5 - real(y) / viewRect.height() ), 0);
 }
@@ -85,7 +94,6 @@ void CSailDisp::setAngle( real azimuth, real elevation )
 {
     m_azimuth = azimuth;
     m_elevation = elevation;
-    calcDispObject();
 }
 
 
@@ -96,7 +104,6 @@ void CSailDisp::setAngle( real azimuth, real elevation )
 void CSailDisp::setCenter( const CPoint3d &newCenter )
 {
     center = newCenter;
-    logicalRect = calcLRect(viewRect, baseRect, center, zoom);
 }
 
 
@@ -114,9 +121,6 @@ void CSailDisp::setObject( const CPanelGroup &obj )
     if (baseRect.width() == 0)
         baseRect.max.setX(baseRect.max.x() + 1);
     center = baseRect.center();
-
-    calcDispObject();
-    logicalRect = calcLRect(viewRect, baseRect, center, zoom);
 }
 
 
@@ -125,7 +129,6 @@ void CSailDisp::setObject( const CPanelGroup &obj )
 void CSailDisp::setViewRect( const CRect3d &rect )
 {
     viewRect = rect;
-    logicalRect = calcLRect(viewRect, baseRect, center, zoom);
 }
 
 
@@ -136,7 +139,6 @@ void CSailDisp::setViewRect( const CRect3d &rect )
 void CSailDisp::setZoom(real newZoom)
 {
     zoom = newZoom;
-    logicalRect = calcLRect(viewRect, baseRect, center, zoom);
 }
 
 

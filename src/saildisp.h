@@ -40,10 +40,6 @@ public:
     ;
 
     /** Acessor for the logical viewport rectangle */
-    virtual const CRect3d& getLogicalRect() const
-    {
-        return logicalRect;
-    };
 
     /** Redraw the view. */
     virtual void redraw()
@@ -62,12 +58,9 @@ public:
     /** Should labels be drawn ? */
     bool drawLabels;
 
-private:
-    void calcDispObject();
-
 protected:
-    /** Rotated copy of the objects */
-    CPanelGroup dispObject;
+    CPanelGroup dispObject() const;
+    CRect3d logicalRect() const;
 
     /** The center of the viewing area, in logical coordinates */
     CPoint3d center;
@@ -79,8 +72,6 @@ private:
     real m_azimuth;
     real m_elevation;
 
-    /** Viewport rectangle, in logical coordinates */
-    CRect3d logicalRect;
     /** Viewport rectangle, in device coordinates */
     CRect3d viewRect;
     /** Bounding rectangle of the unrotated object */
