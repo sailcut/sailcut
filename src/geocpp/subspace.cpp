@@ -19,7 +19,7 @@
 
 #define SIZE 3
 
-#include <geocpp/subspace.h>
+#include "subspace.h"
 
 
 static CVector toVector(const CVector3d &v)

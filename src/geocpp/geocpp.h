@@ -27,8 +27,8 @@
  *
  * @relates SailCpp
  */
-#include <geocpp/geometry.h>
 #include <geocpp/matrix.h>
+#include <geocpp/rect.h>
 #include <geocpp/subspace.h>
 
 #endif

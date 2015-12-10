@@ -21,8 +21,8 @@ FORMS += \
 
 HEADERS += \
     geocpp/geocpp.h \
-    geocpp/geometry.h \
     geocpp/matrix.h \
+    geocpp/rect.h \
     geocpp/subspace.h \
     geocpp/vector.h \
     sailcpp/boatdef.h \
@@ -72,9 +72,10 @@ HEADERS += \
     widgetprofilevert.h
 
 SOURCES += \
-    geocpp/geometry.cpp \
     geocpp/matrix.cpp \
+    geocpp/rect.cpp \
     geocpp/subspace.cpp \
+    geocpp/vector.cpp \
     sailcpp/boatdef.cpp \
     sailcpp/hulldef.cpp \
     sailcpp/hullworker.cpp \

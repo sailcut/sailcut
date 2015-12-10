@@ -20,7 +20,6 @@
 #ifndef GEOCPP_SUBSPACE_H
 #define GEOCPP_SUBSPACE_H
 
-#include <geocpp/geometry.h>
 #include <geocpp/matrix.h>
 
 enum subspaceflags_t { GEOCPP_FROM_BASE, GEOCPP_FROM_EQS };

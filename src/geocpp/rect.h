@@ -17,26 +17,10 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef GEOCPP_GEOMETRY_H
-#define GEOCPP_GEOMETRY_H
+#ifndef GEOCPP_RECT_H
+#define GEOCPP_RECT_H
 
-#include <QMatrix4x4>
-#include <QVector3D>
 #include <geocpp/vector.h>
-
-
-/** 3d real-valued vector.
- *
- * @ingroup GeoCpp
- */
-typedef QVector3D CVector3d;
-
-
-/** 3d real-valued point
- *
- * @ingroup GeoCpp
- */
-typedef QVector3D CPoint3d;
 
 
 /** Three dimensional box.
@@ -92,16 +76,5 @@ public:
     /** top-right corner */
     CPoint3d max;
 };
-
-/** Outputs a CVector3d to a stream.
- */
-inline
-ostream& operator<<(ostream &o, const CVector3d &v)
-{
-    for (int i = 0; i < 3; i++)
-        o << (i > 0 ? "\t" : "") << v[i];
-    return o;
-}
-
 
 #endif

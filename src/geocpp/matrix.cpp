@@ -18,7 +18,6 @@
  */
 
 #include <geocpp/matrix.h>
-#include <geocpp/subspace.h>
 
 #include <climits>
 #include <cmath>

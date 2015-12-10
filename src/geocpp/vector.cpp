@@ -17,47 +17,14 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef GEOCPP_VECTOR_H
-#define GEOCPP_VECTOR_H
-
-#include <cmath>
-#include <iostream>
-#include <vector>
-
-#ifdef CHECK_DIMENSIONS
-#include <stdexcept>
-#endif
-
-#include <QMatrix4x4>
-#include <QVector3D>
 #include <geocpp/vector.h>
 
-using namespace std;
 
-
-// types and constants
-typedef double real;
-
-const real EPS = 1E-14;
-const real PI = 3.14159265358979323846;
-
-typedef vector<real> CVector;
-
-/** 3d real-valued vector.
- *
- * @ingroup GeoCpp
+/** Outputs a CVector3d to a stream.
  */
-typedef QVector3D CVector3d;
-
-
-/** 3d real-valued point
- *
- * @ingroup GeoCpp
- */
-typedef QVector3D CPoint3d;
-
-
-ostream& operator<<(ostream &o, const CVector3d &v);
-
-
-#endif
+ostream& operator<<(ostream &o, const CVector3d &v)
+{
+    for (int i = 0; i < 3; i++)
+        o << (i > 0 ? "\t" : "") << v[i];
+    return o;
+}
