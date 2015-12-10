@@ -192,7 +192,7 @@ void CSailDevelPrinter::print(CTextPainter *painter, int page, real scale, real 
     painter->setPenColor(Qt::green);
     CRect3d rp = sail[page].boundingRect();
     painter->drawCross(rp.min, painter->fontMetrics().height() );
-    painter->drawCoord(rp.min, PI );
+    painter->drawCoord(rp.min, M_PI );
     painter->setPen(oldPen);
 
     /* NOTE scale factor on preview screen is not same value as in spinbox

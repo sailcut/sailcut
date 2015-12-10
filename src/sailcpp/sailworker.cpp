@@ -93,13 +93,13 @@ CSailWorker::CSailWorker(const CSailDef &s) : CSailDef(s)
     mitreV = CVector3d( tack - clew ).normalized() + leechV.normalized();
 
     /** Define the unitary vectors perpendicular to foot edge, rotated anti-clockwise. */
-    footVP = rotateNormalized(PI/2, footV);
+    footVP = rotateNormalized(M_PI/2, footV);
     /** Define the unitary vectors perpendicular to gaff edge, rotated anti-clockwise. */
-    gaffVP = rotateNormalized(PI/2, gaffV);
+    gaffVP = rotateNormalized(M_PI/2, gaffV);
     /** Define the unitary vectors perpendicular to leech edge, rotated anti-clockwise. */
-    leechVP = rotateNormalized(PI/2, leechV);
+    leechVP = rotateNormalized(M_PI/2, leechV);
     /** Define the unitary vectors perpendicular to luff edge, rotated anti-clockwise. */
-    luffVP = rotateNormalized(PI/2, luffV);
+    luffVP = rotateNormalized(M_PI/2, luffV);
 
     /** Define useful straight lines of edges and mitre. */
     footLine = CSubSpace::line(tack , footV);
@@ -456,7 +456,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
             *   except if this is the top panel
             */
             if ( flag == false ) {
-                vb= rotateNormalized(PI/2, dev[npanel-1].top[npb-1] - dev[npanel-1].top[0]);
+                vb= rotateNormalized(M_PI/2, dev[npanel-1].top[npb-1] - dev[npanel-1].top[0]);
                 for (k = 1 ; k < npb -1 ; k ++)
                 {
                     vk = CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
@@ -785,7 +785,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
              *  and straighten this top edge Except if this is the top panel. */
             if (flag == false)
             {
-                vb= rotateNormalized(PI/2, dev[npanel-1].top[npb-1] - dev[npanel-1].top[0]);
+                vb= rotateNormalized(M_PI/2, dev[npanel-1].top[npb-1] - dev[npanel-1].top[0]);
                 for (k = 1 ; k < npb-1 ; k++)
                 {
                     vk = CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
@@ -1046,7 +1046,7 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
             *   and straighten this top edge except if this is the top panel */
             if ( flag == false )
             {
-                vb = rotateNormalized(PI/2, dev[npanel-1].top[npb-1] - dev[npanel-1].top[0]);
+                vb = rotateNormalized(M_PI/2, dev[npanel-1].top[npb-1] - dev[npanel-1].top[0]);
                 for (k = 1; k < npb-1; k ++)
                 {
                     vk = CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
@@ -1386,7 +1386,7 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
         */
         if ( flag == false )
         {
-            vb= rotateNormalized(PI/2, dev[npanel-1].top[npb-1] -dev[npanel-1].top[0]);
+            vb= rotateNormalized(M_PI/2, dev[npanel-1].top[npb-1] -dev[npanel-1].top[0]);
             for (k = 1; k < npb-1; k ++)
             {
                 vk = CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
@@ -2616,7 +2616,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
              *   and straighten this top edge except if this is the top panel flag==true */
             if ( flag == false )
             {
-                vb= rotateNormalized(PI/2, dev[npanel-1].top[npb-1] - dev[npanel-1].top[0]);
+                vb= rotateNormalized(M_PI/2, dev[npanel-1].top[npb-1] - dev[npanel-1].top[0]);
                 for (k = 1 ; k < npb-1 ; k++)
                 {
                     vk = CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
@@ -2831,7 +2831,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
              *   and straighten this top edge except if this is the top panel */
             if ( flag == false )
             {
-                vb = rotateNormalized(PI/2, dev[npanel-1].top[npb-1] - dev[npanel-1].top[0]);
+                vb = rotateNormalized(M_PI/2, dev[npanel-1].top[npb-1] - dev[npanel-1].top[0]);
                 for (k = 1 ; k < npb -1 ; k++)
                 {
                     vk = CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
@@ -3052,7 +3052,7 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
             *   and straighten this top edge except if this is the top panel
             */
             if ( flag == false ) {
-                vb = rotateNormalized(PI/2, dev[npanel-1].top[npb-1] - dev[npanel-1].top[0]);
+                vb = rotateNormalized(M_PI/2, dev[npanel-1].top[npb-1] - dev[npanel-1].top[0]);
                 for( k = 1; k < npb-1; k ++) {
                     vk = CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
                     v = vb * -CVector3d::dotProduct(vk, vb);
@@ -3205,7 +3205,7 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
             /* Now we compute the deviation of top edge of developed panel
             *  and straighten this top edge except if this is the top panel */
             if ( flag == false ) {
-                vb = rotateNormalized(PI/2, dev[npanel-1].top[npb-1] - dev[npanel-1].top[0]);
+                vb = rotateNormalized(M_PI/2, dev[npanel-1].top[npb-1] - dev[npanel-1].top[0]);
                 for( k = 1; k < npb-1; k++ )
                 {
                     vk = CVector3d (dev[npanel-1].top[k] - dev[npanel-1].top[0]);
@@ -3629,7 +3629,7 @@ CPoint3d CSailWorker::EdgeIntersect( const enumEdgeType &Edge, const CPoint3d &p
         EdgeR = luffR;
         EdgeRP = luffRP;
         vEdge = CVector3d( pEnd2 - pEnd1 );
-        vpEdge = rotateNormalized(PI/2, vEdge);
+        vpEdge = rotateNormalized(M_PI/2, vEdge);
         break;
 
     case GAFF_EDGE:
@@ -3638,7 +3638,7 @@ CPoint3d CSailWorker::EdgeIntersect( const enumEdgeType &Edge, const CPoint3d &p
         EdgeR = gaffR;
         EdgeRP = gaffRP;
         vEdge = CVector3d( pEnd2 - pEnd1 );
-        vpEdge = rotateNormalized(PI/2, vEdge);
+        vpEdge = rotateNormalized(M_PI/2, vEdge);
         break;
 
     case FOOT_EDGE:
@@ -3647,7 +3647,7 @@ CPoint3d CSailWorker::EdgeIntersect( const enumEdgeType &Edge, const CPoint3d &p
         EdgeR = footR;
         EdgeRP = footRP;
         vEdge = CVector3d( pEnd2 - pEnd1 );
-        vpEdge = rotateNormalized(-PI/2, vEdge);
+        vpEdge = rotateNormalized(-M_PI/2, vEdge);
         break;
 
     case LEECH_EDGE:
@@ -3656,7 +3656,7 @@ CPoint3d CSailWorker::EdgeIntersect( const enumEdgeType &Edge, const CPoint3d &p
         EdgeR = leechR;
         EdgeRP = leechRP;
         vEdge = CVector3d( pEnd2 - pEnd1 );
-        vpEdge = rotateNormalized(-PI/2, vEdge);
+        vpEdge = rotateNormalized(-M_PI/2, vEdge);
         break;
     }
 

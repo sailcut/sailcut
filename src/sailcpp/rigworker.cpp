@@ -58,7 +58,7 @@ CPanelGroup CRigWorker::makeRig() const
     p0 = mastCenter ( h );
     for (j = 0 ; j < npb ; j++)
     {
-        v1 = CVector3d(cos(PI * real(j) /(npb-1)), 0, sin(PI * real(j) /(npb-1) ) );
+        v1 = CVector3d(cos(M_PI * real(j) /(npb-1)), 0, sin(M_PI * real(j) /(npb-1) ) );
         v1.setZ(v1.z() * MWidth / MCord);
         mast1.top[j] = p0 + cord * v1;
         mast2.top[j] = p0 - cord *v1;
@@ -73,7 +73,7 @@ CPanelGroup CRigWorker::makeRig() const
 
         for (j = 0 ; j < npb ; j++)
         {
-            v1 = CVector3d(cos(PI * real(j) /(npb-1)), 0, sin(PI * real(j) /(npb-1) ) );
+            v1 = CVector3d(cos(M_PI * real(j) /(npb-1)), 0, sin(M_PI * real(j) /(npb-1) ) );
             v1.setZ(v1.z() * MWidth / MCord);
             mast1.bottom[j] = mast1.top[j];
             mast2.bottom[j] = mast2.top[j];
@@ -98,7 +98,7 @@ CPanelGroup CRigWorker::makeRig() const
         //printf ("P2 x= %f, y= %f \n", p2.x(), p2.y());
         for (j = 0 ; j < npb ; j++)
         {
-            v1 = CVector3d(cos(PI * real(j) /(npb-1)), sin(PI * real(j) /(npb-1) ), 0 );
+            v1 = CVector3d(cos(M_PI * real(j) /(npb-1)), sin(M_PI * real(j) /(npb-1) ), 0 );
             v1.setY(v1.y() / 2);
             mast1.bottom[j] = p2 + cord * v1;
             mast1.bottom[j] = mast1.bottom[j] + CVector3d(0 , 0 , -SPW[i]);
@@ -110,7 +110,7 @@ CPanelGroup CRigWorker::makeRig() const
         rig.push_back(mast1);
 
         // make symetrical by rotation
-        mast1 = mast1.rotated(p2, PI, Qt::ZAxis);
+        mast1 = mast1.rotated(p2, M_PI, Qt::ZAxis);
 
         rig.push_back(mast1);
     }
@@ -235,7 +235,7 @@ CPoint3d CRigWorker::mastCenter( const real &HM ) const
     p1 = p0 + HM * vm.normalized();
 
     // displace center point of section by round
-    p1 = p1 + rotateNormalized(PI/2, vm) * round;
+    p1 = p1 + rotateNormalized(M_PI/2, vm) * round;
     //
     return p1;
 }

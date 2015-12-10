@@ -250,7 +250,7 @@ CPanel CPanel::develop(enumDevelopAlign align) const
         c = ( p3 - p2 ).length(); // upper side of triangle
         CC = Atriangle( c , a , b );      // angle of bottom corner = opposite to upper side
         // transpose corner of triangle in development plane
-        d3 = flatpanel.bottom[1] + rotateNormalized(-PI + CC, v) * b;
+        d3 = flatpanel.bottom[1] + rotateNormalized(-M_PI + CC, v) * b;
         flatpanel.left[i] = d3;
     }
 
@@ -278,7 +278,7 @@ CPanel CPanel::develop(enumDevelopAlign align) const
         c = ( p3 - p2 ).length();
         CC = Atriangle( c , b , a );
         // transpose corner of triangle in development plane
-        d3 = flatpanel.bottom[i] + rotateNormalized(PI - CC, v) * b;
+        d3 = flatpanel.bottom[i] + rotateNormalized(M_PI - CC, v) * b;
         flatpanel.bottom[i+1] = d3;
 
         // set baseline vector for upper right point
@@ -290,7 +290,7 @@ CPanel CPanel::develop(enumDevelopAlign align) const
         c = ( p4 - p3 ).length();
         CC = Atriangle( c, b, a );
         // transpose corner of triangle in development plane
-        d3 = flatpanel.top[i] + rotateNormalized(-PI + CC, v) * b;
+        d3 = flatpanel.top[i] + rotateNormalized(-M_PI + CC, v) * b;
         flatpanel.top[i+1] = d3;
 
         // set next baseline vector
@@ -306,7 +306,7 @@ CPanel CPanel::develop(enumDevelopAlign align) const
         c = CVector3d(p4-p1).length(); // upper side of triangle
         CC = Atriangle(c,a,b);      // angle of bottom corner = opposite to upper side
         // transpose corner of triangle in development plane
-        d3 = flatpanel.bottom[npb-2] + rotateNormalized(PI - CC, v) * b;
+        d3 = flatpanel.bottom[npb-2] + rotateNormalized(M_PI - CC, v) * b;
         flatpanel.right[i]= d3;
     }
 
@@ -531,7 +531,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
             if ( v.length() <= EPS )
                 v = v5;
 
-            cutBottom[i] = bottom[i] + rotateNormalized(-PI / 2, v) * botW;
+            cutBottom[i] = bottom[i] + rotateNormalized(-M_PI / 2, v) * botW;
         }
     }
 
@@ -546,7 +546,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
             if ( v.length() <= minSize )
                 v = v7;
 
-            cutTop[i] = top[i] + rotateNormalized(PI / 2, v) * topW;
+            cutTop[i] = top[i] + rotateNormalized(M_PI / 2, v) * topW;
         }
     }
 
@@ -558,7 +558,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
             else
                 v = left[i] - left[i-1];
 
-            cutLeft[i] = left[i] + rotateNormalized(PI/2, v) * lolW;
+            cutLeft[i] = left[i] + rotateNormalized(M_PI/2, v) * lolW;
         }
 
         v0 = left[npl/2] - left[npl/2 -1];
@@ -567,7 +567,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
         if ( v2.length() >= minSize ) {  // upper left side is not a point
             for (i = npl/2 +1 ; i < npl ; i++) {
                 v2 = left[i] - left[i-1];
-                cutLeft[i] = left[i] + rotateNormalized(PI/2, v2) * hilW;
+                cutLeft[i] = left[i] + rotateNormalized(M_PI/2, v2) * hilW;
 
                 if ( i == npl/2 +1 ) {   // compute mid side break point
                     Line2 = CSubSpace::line( cutLeft[i] , v2 );
@@ -583,7 +583,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
                         cutLeft[npl/2 +1] = cutLeft[npl/2 +2];
                 }
                 else {   // compute other uppr lft points
-                    cutLeft[i] = left[i] + rotateNormalized(PI/2, v2) * hilW;
+                    cutLeft[i] = left[i] + rotateNormalized(M_PI/2, v2) * hilW;
                     // check position relative to mid side point
                     if (CVector3d::dotProduct(cutLeft[i] - cutLeft[npl/2], v0) <= 0)
                         cutLeft[npl/2 +1] = cutLeft[npl/2];
@@ -593,19 +593,19 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
         else {  // upper left side is a point but not lower side
             v2 = left[npl/2] - left[npl/2 -1];
             for (i = npl/2 +1 ; i < npl ; i++)
-                cutLeft[i] = left[i] + rotateNormalized(PI/2, v2) * hilW;
+                cutLeft[i] = left[i] + rotateNormalized(M_PI/2, v2) * hilW;
         }
     }
     else if ( v2.length() >= minSize ) {
         // only lower left side is a point
         v1 = left[npl/2 +1] - left[npl/2];
         for (i = 0 ; i < npl/2  ; i++)
-            cutLeft[i] = left[i] + rotateNormalized(PI/2, v1) * lolW;
+            cutLeft[i] = left[i] + rotateNormalized(M_PI/2, v1) * lolW;
 
         for (i = npl/2 +1 ; i < npl -1 ; i++)
         {
             v2 = left[i] - left[i-1];
-            cutLeft[i] = left[i] + rotateNormalized(PI/2, v2) * hilW;
+            cutLeft[i] = left[i] + rotateNormalized(M_PI/2, v2) * hilW;
         }
     }
     else {
@@ -619,7 +619,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
             cutLeft[i] = left[i] + v.normalized() * lolW;
 
         // if (v.length() == 0) cout << "CPanel::add6Hems 10 v=0 v5="<< v5.length()<< " v7="<< v7.length()<< endl;
-        v1 = rotateNormalized(-PI/2, v);
+        v1 = rotateNormalized(-M_PI/2, v);
         v2 = v1;
     }
 
@@ -644,7 +644,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
                 else if (!qFuzzyCompare(right[i+2], right[i]))
                     v = right[i+2] - right[i];
             }
-            cutRight[i] = right[i] + rotateNormalized(-PI/2, v) * lorW;
+            cutRight[i] = right[i] + rotateNormalized(-M_PI/2, v) * lorW;
         }
 
         v0 = right[npl/2] - right[npl/2 -1];
@@ -653,7 +653,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
         if ( v4.length() >= minSize ) {  // upper right side is not a point
             for (i = npl/2 +1 ; i < npl ; i++) {
                 v4 = right[i] - right[i-1];
-                cutRight[i] = right[i] + rotateNormalized(-PI/2, v4) * hirW;
+                cutRight[i] = right[i] + rotateNormalized(-M_PI/2, v4) * hirW;
                 if ( i == npl/2 +1 ) {   // compute mid side break point
                     Line2 = CSubSpace::line( cutRight[i] , v4 );
 
@@ -668,7 +668,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
                         cutRight[npl/2 +1] = cutRight[npl/2 +2];
                 }
                 else {   // compute other points
-                    cutRight[i] = right[i] + rotateNormalized(-PI/2, v4) * hirW;
+                    cutRight[i] = right[i] + rotateNormalized(-M_PI/2, v4) * hirW;
                 }
             }
         }
@@ -676,7 +676,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
             v4 = right[npl-1] - right[npl-2];
 
             for (i = npl/2 +1 ; i < npl ; i++)
-                cutRight[i] = right[i] + rotateNormalized(-PI/2, v4) * hirW;
+                cutRight[i] = right[i] + rotateNormalized(-M_PI/2, v4) * hirW;
         }
     }
     else if ( v4.length() >= minSize ) {   // only lower right side is a point
@@ -690,10 +690,10 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
                 }
         */
         for (i = 0 ; i < npl/2  ; i++)
-            cutRight[i] = right[i] + rotateNormalized(-PI/2, v4) * lorW;
+            cutRight[i] = right[i] + rotateNormalized(-M_PI/2, v4) * lorW;
 
         for (i = npl/2 +1 ; i < npl ; i++)
-            cutRight[i] = right[i] + rotateNormalized(-PI/2, v4) * hirW;
+            cutRight[i] = right[i] + rotateNormalized(-M_PI/2, v4) * hirW;
 
         v4 = right[npl-1] - right[npl-2];
         //    if (v4.length() == 0) cout << "AddHems v4=0 about to crash 13" << endl;
@@ -709,7 +709,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
         for (i = 0 ; i< npl ; i++)
             cutRight[i] = right[i] + v.normalized() * lorW;
 
-        v3 = rotateNormalized(PI/2, v);
+        v3 = rotateNormalized(M_PI/2, v);
         v4 = v3;
     }
 

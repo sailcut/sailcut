@@ -36,7 +36,6 @@ using namespace std;
 typedef double real;
 
 const real EPS = 1E-14;
-const real PI = 3.14159265358979323846;
 
 typedef vector<real> CVector;
 

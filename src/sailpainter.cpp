@@ -119,12 +119,12 @@ void CSailPainter::drawArrowLabel(const CPoint3d &pDisp, const QStringList &lst,
     CPoint3d arrowEnd;
 
     CVector3d v = rotateNormalized(angle, CVector3d(1, 0, 0));
-    if (fabs(angle) > .1*PI)
+    if (fabs(angle) > .1*M_PI)
         arrowEnd = pDisp + real( 2 * fontMetrics().height()) * v;
     else
         arrowEnd = pDisp + real( 1.3 * fontMetrics().height()) * v;
 
-    CVector3d v1 = rotateNormalized(PI/6, v);
+    CVector3d v1 = rotateNormalized(M_PI/6, v);
     arrowStart = pDisp + real(.3 * fontMetrics().height()) * v1;
 
     // the distance from the arrow end to the center of the text box
@@ -236,7 +236,7 @@ void CSailPainter::drawMarkers(const CPanel &currentPanel)
     real dx=0, dy=0;
 
     // top fwd corners
-    drawCoord(currentPanel.top.front(), .6*PI);
+    drawCoord(currentPanel.top.front(), .6*M_PI);
 
     // top  middle
     npt = int ( (currentPanel.top.size() -1) /2 );
@@ -245,28 +245,28 @@ void CSailPainter::drawMarkers(const CPanel &currentPanel)
         dx = CVector3d::dotProduct(currentPanel.top[npt] - currentPanel.top.front(),
                                    CVector3d(currentPanel.top.back() - currentPanel.top.front() ).normalized());
         dy = Distance3d(currentPanel.top[npt] , currentPanel.top.front() , currentPanel.top.back() );
-        drawDelta(currentPanel.top[npt], CVector3d(dx, dy, 0), .45*PI);
+        drawDelta(currentPanel.top[npt], CVector3d(dx, dy, 0), .45*M_PI);
     }
 
     // top aft corner
     if ( CVector3d(currentPanel.top.back() - currentPanel.top.front()).length() > MIN_DISTANCE )
-        drawCoord(currentPanel.top.back(), .25*PI);
+        drawCoord(currentPanel.top.back(), .25*M_PI);
 
     // right middle
     npt = (currentPanel.right.size() -1)/2;
-    drawCoord(currentPanel.right[npt], 0.05*PI);
+    drawCoord(currentPanel.right[npt], 0.05*M_PI);
 
     // left side
     if ( CVector3d(currentPanel.left.back() - currentPanel.left.front()).length() > MIN_DISTANCE )
     {
         // left bottom
-        drawCoord(currentPanel.left.front(), -.7*PI);
+        drawCoord(currentPanel.left.front(), -.7*M_PI);
         // left middle
         npt = (currentPanel.left.size() -1)/2;
-        drawCoord(currentPanel.left[npt], .95*PI);
+        drawCoord(currentPanel.left[npt], .95*M_PI);
         // left upper middle
         if ( CVector3d(currentPanel.left[npt+1] - currentPanel.left[npt]).length() > MIN_DISTANCE )
-            drawCoord(currentPanel.left[npt+1], .8*PI);
+            drawCoord(currentPanel.left[npt+1], .8*M_PI);
     }
 
     // bottom intermediate fwd
@@ -276,14 +276,14 @@ void CSailPainter::drawMarkers(const CPanel &currentPanel)
         dx = CVector3d::dotProduct(currentPanel.bottom[npt] -  currentPanel.bottom.front(),
                                    CVector3d(currentPanel.bottom.back() -  currentPanel.bottom.front()).normalized());
         dy = Distance3d( currentPanel.bottom[npt] ,  currentPanel.bottom.front() ,  currentPanel.bottom.back() );
-        drawDelta(currentPanel.bottom[npt], CVector3d(dx, dy, 0), -.65*PI);
+        drawDelta(currentPanel.bottom[npt], CVector3d(dx, dy, 0), -.65*M_PI);
     }
     // bottom intermediate middle
     npt = int ( (currentPanel.bottom.size() -1) /2 );
     dx = CVector3d::dotProduct(currentPanel.bottom[npt] - currentPanel.bottom.front(),
                                CVector3d(currentPanel.bottom.back() - currentPanel.bottom.front()).normalized());
     dy = Distance3d( currentPanel.bottom[npt] ,  currentPanel.bottom.front() ,  currentPanel.bottom.back() );
-    drawDelta(currentPanel.bottom[npt], CVector3d(dx, dy, 0), -.55*PI);
+    drawDelta(currentPanel.bottom[npt], CVector3d(dx, dy, 0), -.55*M_PI);
 
     // bottom intermediate aft
     npt = int ( (currentPanel.bottom.size() -1) *4/5 );
@@ -292,10 +292,10 @@ void CSailPainter::drawMarkers(const CPanel &currentPanel)
         dx = CVector3d::dotProduct(currentPanel.bottom[npt] - currentPanel.bottom.front(),
                                    CVector3d(currentPanel.bottom.back() -  currentPanel.bottom.front()).normalized());
         dy = Distance3d( currentPanel.bottom[npt] ,  currentPanel.bottom.front(),  currentPanel.bottom.back() );
-        drawDelta(currentPanel.bottom[npt], CVector3d(dx, dy, 0), -.4*PI );
+        drawDelta(currentPanel.bottom[npt], CVector3d(dx, dy, 0), -.4*M_PI );
     }
     // bottom aft corner
-    drawCoord(currentPanel.bottom.back(), -.25*PI);
+    drawCoord(currentPanel.bottom.back(), -.25*M_PI);
 }
 
 

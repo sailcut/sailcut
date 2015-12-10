@@ -80,9 +80,9 @@ real Atriangle( const real &a, real const &b, const real &c )
     per = (a + b + c) / 2;
 
     if ( per <= EPS )
-        AA = PI /3;
+        AA = M_PI /3;
     else if ( fabs(per-a) <= EPS )
-        AA = PI;
+        AA = M_PI;
     else
         AA = 2 * atan (sqrt ((per-b) * (per-c) / (per * (per-a)) ) ) ;
     //
@@ -113,9 +113,9 @@ real Atriangle3d ( const CPoint3d &pta, const CPoint3d &ptb, const CPoint3d &ptc
     per =(a + b + c)/2;
 
     if ( per <= EPS )
-        AA = PI /3;
+        AA = M_PI /3;
     else if ( fabs(per-a) <= EPS )
-        AA = PI;
+        AA = M_PI;
     else
         AA = 2 * atan (sqrt ((per-b) * (per-c) / (per * (per-a)) ) ) ;
     //
