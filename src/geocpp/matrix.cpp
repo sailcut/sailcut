@@ -260,7 +260,7 @@ CMatrix CMatrix::gaussjordan(bool *is_inv, CMatrix *inv, soltype_t * soltype, ve
             }
         }
         // if pivot is smaller than epsillon we cannot continue diagonalisation
-        if ( p_avalue < EPS )
+        if ( p_avalue <= EPS )
             break;
 
         // exchange rows k and p_i
@@ -371,7 +371,7 @@ CMatrix CMatrix::gaussjordan(bool *is_inv, CMatrix *inv, soltype_t * soltype, ve
 
     for (i = 0; i < m_nrow; i++)
         for (j = 0; j < m_ncol; j++)
-            if (fabs(m(i,j)) < EPS)
+            if (fabs(m(i,j)) <= EPS)
                 m(i,j) = 0;
 
     //  return m;

@@ -105,7 +105,7 @@ bool CSubSpace::contains(const CVector3d &point) const
     real lengthSquared = 0;
     for (size_t i = 0; i < prod.size(); ++i)
         lengthSquared += prod[i] * prod[i];
-    return sqrt(lengthSquared) < EPS;
+    return sqrt(lengthSquared) <= EPS;
 }
 
 

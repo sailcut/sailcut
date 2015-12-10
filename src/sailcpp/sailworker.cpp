@@ -3688,7 +3688,7 @@ CPoint3d CSailWorker::EdgeIntersect( const enumEdgeType &Edge, const CPoint3d &p
 
         v = CVector3d( p2 - p1);
 
-        if ( v.length() >= EPS ) {
+        if ( v.length() > EPS ) {
             // translate point0 on straight edge
             p3 = p0 + v;
 

@@ -103,7 +103,7 @@ void CSailDxfWriter::writeFace(ofstream &out, CPoint3d p0, CPoint3d p1, CPoint3d
     // skip empty face
     real area = CVector3d::crossProduct(p1 - p0, p2 - p0).length();
     //cout << "area : " << area << endl;
-    if ( area < EPS )
+    if ( area <= EPS )
     {
         cout << "CSailDxfWriter::writeFace : skipping empty face" << endl;
         return;
@@ -387,7 +387,7 @@ void CSailDxfWriter2d::writePanel(ofstream &out, const CPanel &panel, unsigned i
     for (i = 1; i < left.size(); i++)
     {
         V= left[i] - pt;
-        if (V.length()> EPS)
+        if (V.length() > EPS)
         {
             pt = left[i];
             writeVertex(out, pt, layer);
@@ -442,7 +442,7 @@ void CSailDxfWriter2d::writePanel(ofstream &out, const CPanel &panel, unsigned i
     for (i = 1; i < left.size(); i++)
     {
         V= cleft[i] - pt;
-        if (V.length()> EPS)
+        if (V.length() > EPS)
         {
             pt = cleft[i];
             writeVertex(out, pt, layer);

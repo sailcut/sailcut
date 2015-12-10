@@ -521,7 +521,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
     ///* Move the basic bottom edge points to the cut line */
     //cout << "CPanel::add6Hems move basic bottom edge" << endl;
 
-    if ( botW >= EPS ) { // width of material is not too small
+    if ( botW > EPS ) { // width of material is not too small
         for (i = 0 ; i < npb ; i++) {
             if ( i == 0 )
                 v = bottom[1] - bottom[0];
@@ -536,7 +536,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
     }
 
     ///* Move the basic top edge points to the cut line */
-    if ( topW >= EPS ) { // width of material is not too small
+    if ( topW > EPS ) { // width of material is not too small
         for (i = 0 ; i < npb ; i++) {
             if ( i == 0 )
                 v = top[1] - top[0];
