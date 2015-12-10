@@ -21,6 +21,17 @@
 
 #include <geocpp/subspace.h>
 
+
+static CVector toVector(const CVector3d &v)
+{
+    CVector vv(3);
+    vv[0] = v.x();
+    vv[1] = v.y();
+    vv[2] = v.z();
+    return vv;
+}
+
+
 /*******************************************************
 
                Construction / destruction
@@ -77,6 +88,18 @@ CSubSpace::CSubSpace(const CSubSpace &s)
 }
 
 
+/** Test whether the CSubSpace contains a given point.
+ */
+bool CSubSpace::contains(const CVector3d &point) const
+{
+    vector<real> prod = m * toVector(point-p);
+    real lengthSquared = 0;
+    for (size_t i = 0; i < prod.size(); ++i)
+        lengthSquared += prod[i] * prod[i];
+    return sqrt(lengthSquared) < EPS;
+}
+
+
 /** Return the subspace's dimension. */
 int CSubSpace::getdim() const
 {
@@ -84,15 +107,6 @@ int CSubSpace::getdim() const
         return -1;
     else
         return SIZE - m.rows();
-}
-
-static CVector toVector(const CVector3d &v)
-{
-    CVector vv(3);
-    vv[0] = v.x();
-    vv[1] = v.y();
-    vv[2] = v.z();
-    return vv;
 }
 
 /** Performs the intersection of two CSubSpace objects.

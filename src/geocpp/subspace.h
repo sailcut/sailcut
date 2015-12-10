@@ -40,6 +40,7 @@ public:
     CSubSpace intersect(const CSubSpace &) const;
     CVector3d intersectionPoint(const CSubSpace &, const char *name) const;
 
+    bool contains(const CVector3d &) const;
     int getdim() const;
 
     /** Accessor for the matrix. */
