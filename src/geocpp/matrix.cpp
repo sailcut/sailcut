@@ -91,12 +91,12 @@ CMatrix CMatrix::rot3d(const size_t& axis, const real& angle)
  *
  * @param index the index of the column to return
  */
-CVector CMatrix::col(size_t index) const
+vector<real> CMatrix::col(size_t index) const
 {
     if (index >= m_ncol)
         throw range_error("CMatrix::col : index out of bounds!");
 
-    CVector ret(m_nrow);
+    vector<real> ret(m_nrow);
     for (size_t i = 0; i < m_nrow; i++)
         ret[i] = m_data[i*m_ncol + index];
     return ret;
@@ -201,7 +201,7 @@ CMatrix CMatrix::dev(const size_t& i, const size_t& j) const
 /** Diagonalises matrix by Gauss-Jordan method with full pivoting
  * optionally returns the inverse matrix.
  */
-CMatrix CMatrix::gaussjordan(bool *is_inv, CMatrix *inv, soltype_t * soltype, CVector *bb, CMatrix *tkern) const
+CMatrix CMatrix::gaussjordan(bool *is_inv, CMatrix *inv, soltype_t * soltype, vector<real> *bb, CMatrix *tkern) const
 {
     // check dimensions
     CMatrix b(m_nrow, 1);
@@ -319,7 +319,7 @@ CMatrix CMatrix::gaussjordan(bool *is_inv, CMatrix *inv, soltype_t * soltype, CV
         if (*soltype==NONE)
         {
             // incompatible system
-            *bb = CVector(0);
+            *bb = vector<real>(0);
         }
         else
         {
@@ -399,12 +399,12 @@ CMatrix CMatrix::kern(const size_t& vsize) const
 
 /** Retrieves a row of the matrix in vector form.
  */
-CVector CMatrix::row(size_t index) const
+vector<real> CMatrix::row(size_t index) const
 {
     if (index >= m_nrow)
         throw range_error("CMatrix::row : index out of bounds!");
 
-    CVector ret(m_ncol);
+    vector<real> ret(m_ncol);
     for (size_t i = 0; i < m_ncol; i++)
         ret[i] = m_data[index*m_ncol + i];
     return ret;
@@ -562,13 +562,13 @@ CMatrix CMatrix::operator*(const CMatrix &m2) const
 
 /** Multiplies a matrix by a vector.
  */
-CVector CMatrix::operator*(const CVector &v) const
+vector<real> CMatrix::operator*(const vector<real> &v) const
 {
     if (m_ncol != v.size())
         throw invalid_argument("CMatrix::operator*: dimension mismatch!");
 
     // result is initialised to zero
-    CVector p(m_nrow);
+    vector<real> p(m_nrow);
     size_t pos = 0;
     for (size_t i = 0; i < m_nrow; i++)
     {

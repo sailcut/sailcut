@@ -22,9 +22,18 @@
 #include "subspace.h"
 
 
-static CVector toVector(const CVector3d &v)
+static CVector3d fromRealVector(const vector<real> &vv)
 {
-    CVector vv(3);
+    CVector3d v;
+    for (size_t i = 0; i < qMin(size_t(3), vv.size()); ++i)
+        v[i] = vv[i];
+    return v;
+}
+
+
+static vector<real> toRealVector(const CVector3d &v)
+{
+    vector<real> vv(3);
     vv[0] = v.x();
     vv[1] = v.y();
     vv[2] = v.z();
@@ -92,7 +101,7 @@ CSubSpace::CSubSpace(const CSubSpace &s)
  */
 bool CSubSpace::contains(const CVector3d &point) const
 {
-    vector<real> prod = m * toVector(point-p);
+    vector<real> prod = m * toRealVector(point-p);
     real lengthSquared = 0;
     for (size_t i = 0; i < prod.size(); ++i)
         lengthSquared += prod[i] * prod[i];
@@ -116,9 +125,9 @@ CSubSpace CSubSpace::intersect(const CSubSpace &h2) const
     if (isEmpty || h2.isEmpty)
         return CSubSpace();
 
-    CVector b1 = m * toVector(p);
-    CVector b2 = h2.m * toVector(h2.p);
-    CVector bb( m.rows() + h2.m.rows() );
+    vector<real> b1 = m * toRealVector(p);
+    vector<real> b2 = h2.m * toRealVector(h2.p);
+    vector<real> bb( m.rows() + h2.m.rows() );
     CMatrix mm( m.rows() + h2.m.rows(), SIZE );
     for (size_t i = 0 ; i < mm.rows() ; i++)
     {
@@ -143,10 +152,7 @@ CSubSpace CSubSpace::intersect(const CSubSpace &h2) const
 
     mm.gaussjordan(NULL, NULL, &soltype, &bb, &k);
 
-    CVector3d s;
-    for (size_t i = 0; i < qMin(size_t(3), bb.size()); ++i)
-        s[i] = bb[i];
-
+    CVector3d s = fromRealVector(bb);
     switch (soltype)
     {
     case ONE:

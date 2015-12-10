@@ -103,7 +103,7 @@ public:
         return ! (m_ncol && m_nrow);
     }
 
-    CMatrix gaussjordan(bool *is_inv=NULL, CMatrix *inv=NULL, soltype_t *soltype=NULL, CVector *bb=NULL, CMatrix *tkern=NULL) const;
+    CMatrix gaussjordan(bool *is_inv=NULL, CMatrix *inv=NULL, soltype_t *soltype=NULL, vector<real> *bb=NULL, CMatrix *tkern=NULL) const;
     CMatrix   kern(const size_t& vsize) const;
     CMatrix   transposed() const;
 
@@ -115,11 +115,11 @@ public:
     bool      operator!=(const CMatrix &) const;
     CMatrix   operator-() const;
     CMatrix   operator*(const CMatrix &) const;
-    CVector operator*(const CVector &) const;
+    vector<real> operator*(const vector<real> &) const;
 
 private:
-    CVector col(size_t) const;
-    CVector row(size_t) const;
+    vector<real> col(size_t) const;
+    vector<real> row(size_t) const;
     void swap_row(size_t, size_t);
     void swap_col(size_t, size_t);
 

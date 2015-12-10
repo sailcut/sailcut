@@ -37,8 +37,6 @@ typedef double real;
 
 const real EPS = 1E-14;
 
-typedef vector<real> CVector;
-
 /** 3d real-valued vector.
  *
  * @ingroup GeoCpp
