@@ -2,7 +2,7 @@ include(sailcut.pri)
 
 TEMPLATE = subdirs
 
-SUBDIRS = src
+SUBDIRS = src tests
 
 # Package generation
 mac {
