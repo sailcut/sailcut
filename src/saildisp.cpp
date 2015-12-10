@@ -33,7 +33,7 @@ CSailDisp::CSailDisp()
 {
     // initialise data
     drawLabels = false;
-    zoom = 0.8;
+    m_zoom = 0.8;
 }
 
 
@@ -58,7 +58,7 @@ CPanelGroup CSailDisp::dispObject() const
  */
 CRect3d CSailDisp::logicalRect() const
 {
-    return calcLRect(viewRect, baseRect, center, zoom);
+    return calcLRect(viewRect, baseRect, m_center, m_zoom);
 }
 
 
@@ -66,8 +66,8 @@ CRect3d CSailDisp::logicalRect() const
  */
 void CSailDisp::resetZoomCenter()
 {
-    center = baseRect.center();
-    zoom = 0.8;
+    m_center = baseRect.center();
+    m_zoom = 0.8;
 }
 
 
@@ -77,33 +77,48 @@ CPoint3d CSailDisp::screenToLogical( const int x, const int y ) const
 {
     // avoid division by zero
     if ((viewRect.width()==0)||(viewRect.height()==0))
-        return center;
+        return m_center;
 
     const CRect3d logicalRect = this->logicalRect();
-    return center + CVector3d( logicalRect.width() * ( real(x) / viewRect.width() - 0.5 ),
-                               logicalRect.height() * ( 0.5 - real(y) / viewRect.height() ), 0);
+    return m_center + CVector3d( logicalRect.width() * ( real(x) / viewRect.width() - 0.5 ),
+                                 logicalRect.height() * ( 0.5 - real(y) / viewRect.height() ), 0);
 }
 
 
-/** Sets the azimuth and elevation view angles.
+/** Sets the azimuth view angle.
  *
  * @param azimuth azimuth in degrees
- * @param elevation elevation in degrees
  */
-void CSailDisp::setAngle( real azimuth, real elevation )
+void CSailDisp::setAzimuth(real azimuth)
 {
     m_azimuth = azimuth;
-    m_elevation = elevation;
 }
 
 
-/** Sets the center of the display.
+/** Returns the center of the display in logical coordinates.
+ */
+CPoint3d CSailDisp::center() const
+{
+    return m_center;
+}
+
+
+/** Sets the center of the display in logical coordinates.
  *
  * @param newCenter the new center
  */
-void CSailDisp::setCenter( const CPoint3d &newCenter )
+void CSailDisp::setCenter(const CPoint3d &center)
 {
-    center = newCenter;
+    m_center = center;
+}
+
+/** Sets the elevation view angle.
+ *
+ * @param elevation elevation in degrees
+ */
+void CSailDisp::setElevation(real elevation)
+{
+    m_elevation = elevation;
 }
 
 
@@ -120,7 +135,7 @@ void CSailDisp::setObject( const CPanelGroup &obj )
         baseRect.max.setY(baseRect.max.y() + 1);
     if (baseRect.width() == 0)
         baseRect.max.setX(baseRect.max.x() + 1);
-    center = baseRect.center();
+    m_center = baseRect.center();
 }
 
 
@@ -132,13 +147,21 @@ void CSailDisp::setViewRect( const CRect3d &rect )
 }
 
 
+/** Returns the zoom factor.
+ */
+real CSailDisp::zoom() const
+{
+    return m_zoom;
+}
+
+
 /** Sets the zoom factor
  *
- * @param newZoom
+ * @param zoom
  */
-void CSailDisp::setZoom(real newZoom)
+void CSailDisp::setZoom(real zoom)
 {
-    zoom = newZoom;
+    m_zoom = zoom;
 }
 
 
@@ -146,7 +169,7 @@ void CSailDisp::setZoom(real newZoom)
  */
 void CSailDisp::zoomIn()
 {
-    setZoom(zoom * 2);
+    setZoom(m_zoom * 2);
 }
 
 
@@ -154,5 +177,5 @@ void CSailDisp::zoomIn()
  */
 void CSailDisp::zoomOut()
 {
-    setZoom(zoom / 2);
+    setZoom(m_zoom / 2);
 }

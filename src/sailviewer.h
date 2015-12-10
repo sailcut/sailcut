@@ -46,8 +46,9 @@ public:
     void keyPressEvent ( QKeyEvent * e );
 
 protected slots:
+    void slotAzimuth(int);
+    void slotElevation(int);
     void slotLabeling();
-    void slotSlider();
     void slotZoomIn();
     void slotZoomOut();
 

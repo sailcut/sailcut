@@ -170,7 +170,7 @@ void CSailDispGL::mousePressEvent ( QMouseEvent *event )
 {
     if (event->button() == Qt::LeftButton)
     {
-        setCenter(screenToLogical(event->pos().x(),event->pos().y()));
+        setCenter(screenToLogical(event->pos().x(), event->pos().y()));
         redraw();
     }
 }
@@ -189,7 +189,7 @@ void CSailDispGL::paintGL()
         real(2) / lRect.width(),
         real(2) / lRect.height(),
         - real(2) / sqrt(lRect.width() * lRect.width() + lRect.height() * lRect.height()));
-    matrix.translate(-center.x(), -center.y(), -center.z());
+    matrix.translate(-center());
     program->setUniformValue(matrixAttr, matrix);
 
     draw(dispObject());

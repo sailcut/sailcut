@@ -76,9 +76,9 @@ CSailViewer::CSailViewer( QWidget *parent, enumViewMode viewMode, bool show_slid
 
     // signals and slots connections
     if (sliderElevation)
-        connect( sliderElevation, SIGNAL( valueChanged(int) ), this, SLOT( slotSlider() ) );
+        connect( sliderElevation, SIGNAL( valueChanged(int) ), this, SLOT( slotElevation(int) ) );
     if (sliderAzimuth)
-        connect( sliderAzimuth, SIGNAL( valueChanged(int) ), this, SLOT( slotSlider() ) );
+        connect( sliderAzimuth, SIGNAL( valueChanged(int) ), this, SLOT( slotAzimuth(int) ) );
 }
 
 
@@ -112,6 +112,22 @@ void CSailViewer::setObject(const CPanelGroup &obj)
 }
 
 
+void CSailViewer::slotAzimuth(int azimuth)
+{
+    azimuthChanged(azimuth);
+    lblDraw->setAzimuth(azimuth);
+    lblDraw->redraw();
+}
+
+
+void CSailViewer::slotElevation(int elevation)
+{
+    elevationChanged(elevation);
+    lblDraw->setElevation(elevation);
+    lblDraw->redraw();
+}
+
+
 /** Draws the panel labels
  */
 void CSailViewer::slotLabeling()
@@ -131,21 +147,6 @@ void CSailViewer::slotResetView()
     if (sliderAzimuth)
         sliderAzimuth->setValue(0);
     lblDraw->resetZoomCenter();
-    lblDraw->redraw();
-}
-
-
-/** This event occurs when the user moves one of the view sliders.
- */
-void CSailViewer::slotSlider()
-{
-    real azimuth= sliderAzimuth ? sliderAzimuth->value() : 0;
-    real elevation = sliderElevation ? sliderElevation->value() : 0;
-
-    elevationChanged(elevation);
-    azimuthChanged(azimuth);
-
-    lblDraw->setAngle(azimuth, elevation);
     lblDraw->redraw();
 }
 

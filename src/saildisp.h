@@ -42,18 +42,24 @@ public:
     /** Acessor for the logical viewport rectangle */
 
     /** Redraw the view. */
-    virtual void redraw()
-    {}
-    ;
+    virtual void redraw() = 0;
     virtual void resetZoomCenter( void );
     virtual CPoint3d screenToLogical( const int x, const int y ) const;
-    virtual void setAngle( real azimuth, real elevation );
-    virtual void setCenter( const CPoint3d &newCenter );
-    virtual void setObject( const CPanelGroup &objs );
-    virtual void setViewRect( const CRect3d &rect );
-    virtual void setZoom(real newZoom);
-    virtual void zoomIn();
-    virtual void zoomOut();
+
+    void setAzimuth(real azimuth);
+    void setElevation(real elevation);
+
+    CPoint3d center() const;
+    void setCenter(const CPoint3d &newCenter);
+
+    void setObject( const CPanelGroup &objs );
+    void setViewRect( const CRect3d &rect );
+
+    real zoom() const;
+    void setZoom(real newZoom);
+
+    void zoomIn();
+    void zoomOut();
 
     /** Should labels be drawn ? */
     bool drawLabels;
@@ -62,15 +68,12 @@ protected:
     CPanelGroup dispObject() const;
     CRect3d logicalRect() const;
 
-    /** The center of the viewing area, in logical coordinates */
-    CPoint3d center;
-
-    /** The zoom factor for the view */
-    real zoom;
-
 private:
     real m_azimuth;
+    /** The center of the viewing area, in logical coordinates */
+    CPoint3d m_center;
     real m_elevation;
+    real m_zoom;
 
     /** Viewport rectangle, in device coordinates */
     CRect3d viewRect;
