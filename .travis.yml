@@ -1,7 +1,5 @@
 language: cpp
 cache: apt
-env:
-  - QT_SELECT=qt5
 install:
   - sudo add-apt-repository -y ppa:beineri/opt-qt542
   - sudo apt-get update
@@ -10,3 +8,4 @@ install:
 script:
   - qmake
   - make
+  - make check
