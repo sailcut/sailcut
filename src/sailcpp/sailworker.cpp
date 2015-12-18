@@ -27,6 +27,42 @@
 /* To enable debugging */
 // #define DEBUG 1
 
+enum DisplayOptions
+{
+    DontRotatePanels = 0,
+    RotatePanels = 1
+};
+
+/** Prepare the display version of a developed sail.
+ */
+static CPanelGroup prepareDisplaySail(const CPanelGroup &flatsail, real verticalSpacing, DisplayOptions options = DontRotatePanels)
+{
+    CPanelGroup dispsail = flatsail;
+
+    for (unsigned int j = 1; j < flatsail.size(); j++)
+    {
+        CPoint3d top = dispsail[j-1].top[0];
+        CPoint3d bot = dispsail[j].bottom[0];
+
+        // rotation to align bottom of panel to top of previous panel
+        if (options & RotatePanels) {
+            real x = dispsail[j-1].top.back().x() - top.x();
+            real y = dispsail[j-1].top.back().y() - top.y();
+            real CC = atan2(y, x);
+            dispsail[j] = dispsail[j].rotated(bot, CC, Qt::ZAxis);
+        }
+
+        // translation v to align panel bottom edge origin to previous panel upper edge origin
+        CVector3d v = top;
+        v.setX(v.x() - bot.x());
+        v.setY(v.y() + verticalSpacing); // adding offset to separate panels vertically
+
+        dispsail[j] = dispsail[j] + v;
+    }
+
+    return dispsail;
+}
+
 
 /**
  *  The constructor does some preliminary calculations to set
@@ -245,8 +281,6 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
     /* Other edge hem width */
     real luffHemW = hemsW;
     // real luffInnerHemW, footInnerHemW;
-
-    real CC = 0, x = 0, y = 0;
 
     /* seam 0 is on the foot of the sail ending at the clew */
     p1[0] = tack; // initialise seam forward end at tack point
@@ -520,26 +554,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
         flatsail[j] = dev[j];
     }
 
-    /* Re-position the developed panels in a clean stack */
-    dispsail = flatsail;
-    for (j = 1 ; j < npanel ; j++)
-    {
-        top = dispsail[j-1].top[0];
-        bot = dispsail[j].bottom[0];
-
-        // rotation to align bottom of panel to top of previous panel
-        x = dispsail[j-1].top[npb-1].x() - top.x();
-        y = dispsail[j-1].top[npb-1].y() - top.y();
-        CC = atan2(y , x);
-        dispsail[j] = dispsail[j].rotated(bot, CC, Qt::ZAxis);
-
-        // translation v to align panel bottom edge origin to previous panel upper edge origin
-        v = CVector3d ( top - CPoint3d(0,0,0) );
-        v.setX(v.x() - bot.x());
-        v.setY(v.y() + 2 * seamW +20); // adding offset to separate panels vertically
-
-        dispsail[j] = dispsail[j] + v;
-    }
+    dispsail = prepareDisplaySail(flatsail, 2 * seamW + 20, RotatePanels);
 
     return sail;
 } /* end layout0 = cross cut or horizontal //////////////// */
@@ -602,9 +617,6 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
     deviation.resize(npb);
     vector<CVector3d> deviaPrev;
     deviaPrev.resize(npb);
-
-    /* create variable to monitor excess over cloth width */
-    real CC=0, x=0, y=0;
 
     /* seam 0 is on the foot of the sail ending at the clew */
     p1[0] = tack; // initialised at tack point
@@ -852,27 +864,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
     for (j = 0; j < npanel; j++)
         flatsail[j] = dev[j];
 
-    /* Prepare the displays version of the developed sail */
-    dispsail = flatsail;
-
-    for (j = 1; j < npanel; j++)
-    {
-        top = dispsail[j-1].top[0];
-        bot = dispsail[j].bottom[0];
-
-        // rotation to align bottom of panel to top of previous panel
-        x = dispsail[j-1].top[npb-1].x() - top.x();
-        y = dispsail[j-1].top[npb-1].y() - top.y();
-        CC = atan2(y,x);
-        dispsail[j] = dispsail[j].rotated(bot, CC, Qt::ZAxis);
-
-        // translation v to align panel bottom edge origin to previous panel upper edge origin
-        v = top;
-        v.setX(v.x() - bot.x());
-        v.setY(v.y() + 2 * seamW + 20); // adding offset to separate panels vertically
-
-        dispsail[j] = dispsail[j] + v;
-    }
+    dispsail = prepareDisplaySail(flatsail, 2 * seamW + 20, RotatePanels);
 
     return sail;
 } /* end layout twist foot //////////// */
@@ -1103,21 +1095,7 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
     for (j = 0; j < npanel; j++)
         flatsail[j] = dev[j];
 
-    /* Prepare the displays version of the developed sail */
-    dispsail = flatsail;
-
-    for (j = 1; j < npanel; j++)
-    {
-        top = dispsail[j-1].top[0];
-        bot = dispsail[j].bottom[0];
-
-        // translation v to align panel bottom edge origin to previous panel upper edge origin
-        v = top;
-        v.setX(v.x() - bot.x());
-        v.setY(v.y() + 2 * seamW + 10); // adding offset to separate panels vertically
-
-        dispsail[j] = dispsail[j] + v;
-    }
+    dispsail = prepareDisplaySail(flatsail, 2 * seamW + 10);
 
     return sail;
 } /* end layout vertical cut //////// */
@@ -1184,9 +1162,6 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
     /* Other edge hem width */
     real luffHemW = hemsW;
     // real luffInnerHemW, footInnerHemW;
-
-    /* create variable to monitor excess over cloth width */
-    real CC=0, x=0, y=0;
 
     /* seam 0 is on the foot of the sail ending at the clew */
     p1[0] = tack; // initialised at tack point
@@ -1458,27 +1433,7 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
         flatsail[j] = dev[j];
     }
 
-    /** Prepare the displays version of the developed sail */
-    dispsail = flatsail;
-
-    for (j = 1; j < npanel; j++)
-    {
-        top = dispsail[j-1].top[0];
-        bot = dispsail[j].bottom[0];
-
-        // rotation to align bottom of panel to top of previous panel
-        x = dispsail[j-1].top[npb-1].x()-top.x();
-        y = dispsail[j-1].top[npb-1].y()-top.y();
-        CC= atan2(y,x);
-        dispsail[j] = dispsail[j].rotated(bot, CC, Qt::ZAxis);
-
-        // translation v to align panel bottom edge origin to previous panel upper edge origin
-        v = CVector3d ( top - CPoint3d(0,0,0) );
-        v.setX(v.x() - bot.x());
-        v.setY(v.y() + 2 * seamW + 25);  // adding offset to separate panels vertically
-
-        dispsail[j] = dispsail[j] + v;
-    }
+    dispsail = prepareDisplaySail(flatsail, 2 * seamW + 25, RotatePanels);
 
     return sail;
 } /* end layoutWing = cross cut or horizontal //////////////////// */
@@ -2886,21 +2841,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
     for (j = 0 ; j < npanel ; j++)
         flatsail[j] = dev[j];
 
-    /* Prepare the displays version of the developed sail */
-    dispsail = flatsail;
-
-    for (j = 1 ; j < npanel ; j++)
-    {
-        top = dispsail[j-1].top[0];
-        bot = dispsail[j].bottom[0];
-
-        // translation v to align panel bottom edge origin to previous panel upper edge origin
-        v = top;
-        v.setX(v.x() - bot.x());
-        v.setY(v.y() + 2 * seamW + 10); // adding offset to separate panels vertically
-
-        dispsail[j] = dispsail[j] + v;
-    }
+    dispsail = prepareDisplaySail(flatsail, 2 * seamW + 10);
 
     return sail;
 } /* end layoutMitre cut //////////////////// */
