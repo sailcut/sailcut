@@ -25,7 +25,7 @@
 static CVector3d fromRealVector(const std::vector<real> &vv)
 {
     CVector3d v;
-    for (size_t i = 0; i < qMin(size_t(3), vv.size()); ++i)
+    for (size_t i = 0; i < std::min(size_t(3), vv.size()); ++i)
         v[i] = vv[i];
     return v;
 }

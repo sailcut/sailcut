@@ -26,8 +26,8 @@
  */
 CVector3d rotateNormalized(real angle, const CVector3d &v)
 {
-    QMatrix4x4 matrix;
-    matrix.rotate(qRadiansToDegrees(angle), QVector3D(0, 0, 1));
+    CMatrix4x4 matrix;
+    matrix.rotate(angle, CVector3d(0, 0, 1));
     return matrix * v.normalized();
 }
 
@@ -52,7 +52,7 @@ CPanelLabel::CPanelLabel( const CPanelLabel &lb )
 
 /** Transforms a label.
  */
-CPanelLabel CPanelLabel::transformed(const QMatrix4x4 &m) const
+CPanelLabel CPanelLabel::transformed(const CMatrix4x4 &m) const
 {
     CPanelLabel lb;
 
@@ -812,15 +812,15 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
  *  angle = angle in radians
  *  axis = the axis around which to rotate
  */
-CPanel CPanel::rotated(const CPoint3d &p, qreal angle, Qt::Axis axis) const
+CPanel CPanel::rotated(const CPoint3d &p, real angle, Qt::Axis axis) const
 {
-    QVector3D v;
+    CVector3d v;
     v[axis] = 1;
 
-    QMatrix4x4 matrix;
-    matrix.translate(p.x(), p.y(), p.z());
-    matrix.rotate(qRadiansToDegrees(angle), v);
-    matrix.translate(-p.x(), -p.y(), -p.z());
+    CMatrix4x4 matrix;
+    matrix.translate(p);
+    matrix.rotate(angle, v);
+    matrix.translate(-p);
 
     return transformed(matrix);
 }
@@ -828,7 +828,7 @@ CPanel CPanel::rotated(const CPoint3d &p, qreal angle, Qt::Axis axis) const
 
 /** Transform a panel.
  */
-CPanel CPanel::transformed(const QMatrix4x4 &m) const
+CPanel CPanel::transformed(const CMatrix4x4 &m) const
 {
     CPanel panel;
     panel.hasHems = hasHems;
@@ -961,7 +961,7 @@ void CSide::fill( const CPoint3d &p1 , const CPoint3d &p2 , const CPoint3d &p3 )
 
 /** Transform a CSide.
  */
-CSide CSide::transformed(const QMatrix4x4 &m) const
+CSide CSide::transformed(const CMatrix4x4 &m) const
 {
     CSide s( size() );
 

@@ -43,11 +43,11 @@ CPanelGroup CSailDisp::dispObject() const
 {
     const CVector3d center = baseRect.center();
 
-    QMatrix4x4 matrix;
-    matrix.translate(center.x(), center.y(), center.z());
-    matrix.rotate(m_elevation, QVector3D(1, 0, 0));
-    matrix.rotate(m_azimuth, QVector3D(0, 1, 0));
-    matrix.translate(-center.x(), -center.y(), -center.z());
+    CMatrix4x4 matrix;
+    matrix.translate(center);
+    matrix.rotate(qDegreesToRadians(m_elevation), CVector3d(1, 0, 0));
+    matrix.rotate(qDegreesToRadians(m_azimuth), CVector3d(0, 1, 0));
+    matrix.translate(-center);
 
     return baseObject.transformed(matrix);
 }

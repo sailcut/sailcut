@@ -55,7 +55,7 @@ public:
     /** function to place the labels on a plotted panel group */
     void plotLabels();
 
-    CPanelGroup transformed(const QMatrix4x4 &m) const;
+    CPanelGroup transformed(const CMatrix4x4 &m) const;
 
     // operators
     CPanelGroup& operator=( const CPanelGroup &);

@@ -28,8 +28,11 @@
  * @relates SailCpp
  */
 #include <geocpp/matrix.h>
+#include <geocpp/matrix4x4.h>
 #include <geocpp/rect.h>
 #include <geocpp/subspace.h>
+
+#include <QtMath>
 
 using namespace std;
 

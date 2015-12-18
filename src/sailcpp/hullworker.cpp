@@ -22,6 +22,12 @@
 #include "hullworker.h"
 
 
+static real qDegreesToRadians(int degrees)
+{
+    return qDegreesToRadians(real(degrees));
+}
+
+
 /** The constructor does some preliminary calculations
  *  to set internal variables, compute chine and deck plane,
  *  and compute lower chine plane panel.

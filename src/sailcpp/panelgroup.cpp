@@ -116,7 +116,7 @@ void CPanelGroup::plotLabels()
 
 /** Transform a sail.
  */
-CPanelGroup CPanelGroup::transformed(const QMatrix4x4 &m) const
+CPanelGroup CPanelGroup::transformed(const CMatrix4x4 &m) const
 {
     unsigned int i;
     CPanelGroup ret = *this;

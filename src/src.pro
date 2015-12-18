@@ -22,6 +22,7 @@ FORMS += \
 HEADERS += \
     geocpp/geocpp.h \
     geocpp/matrix.h \
+    geocpp/matrix4x4.h \
     geocpp/rect.h \
     geocpp/subspace.h \
     geocpp/vector.h \
@@ -73,6 +74,7 @@ HEADERS += \
 
 SOURCES += \
     geocpp/matrix.cpp \
+    geocpp/matrix4x4.cpp \
     geocpp/rect.cpp \
     geocpp/subspace.cpp \
     geocpp/vector.cpp \

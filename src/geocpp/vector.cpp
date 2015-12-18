@@ -20,12 +20,6 @@
 #include <geocpp/vector.h>
 
 
-real qDegreesToRadians(int degrees)
-{
-    return qDegreesToRadians(real(degrees));
-}
-
-
 /**
  * Returns true if v1 and v2 are equal, allowing for a small fuzziness factor
  * for floating-point comparisons; false otherwise.
@@ -76,14 +70,6 @@ CVector3d CVector3d::crossProduct(const CVector3d &v1, const CVector3d &v2)
 real CVector3d::dotProduct(const CVector3d &v1, const CVector3d &v2)
 {
     return v1.m_x * v2.m_x + v1.m_y * v2.m_y + v1.m_z * v1.m_z;
-}
-
-
-CVector3d operator*(const QMatrix4x4 &m, const CVector3d &v)
-{
-    // FIXME: we lose precision here!
-    QVector3D o = m * QVector3D(v.x(), v.y(), v.z());
-    return CVector3d(o.x(), o.y(), o.z());
 }
 
 

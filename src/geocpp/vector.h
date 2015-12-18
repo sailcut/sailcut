@@ -24,10 +24,6 @@
 #include <iostream>
 #include <vector>
 
-#include <QtMath>
-#include <QMatrix4x4>
-#include <QVector3D>
-
 
 // types and constants
 typedef double real;
@@ -156,10 +152,7 @@ private:
  */
 typedef CVector3d CPoint3d;
 
-real qDegreesToRadians(int degrees);
 bool qFuzzyCompare(const CVector3d &v1, const CVector3d &v2);
-
-CVector3d operator*(const QMatrix4x4 &m, const CVector3d &v);
 
 /** Binary '*' (multiply a scalar by a vector)
  */
