@@ -70,9 +70,6 @@ public:
 
     CPanelLabel transformed(const CMatrix4x4 &m) const;
 
-    /** operator to translate a label */
-    CPanelLabel operator+ (const CVector3d &) const;
-
     /** operator to copy a label */
     CPanelLabel& operator=( const CPanelLabel &);
 
@@ -102,7 +99,6 @@ public:
     CSide transformed(const CMatrix4x4 &m) const;
 
     // operators
-    CSide operator+ (const CVector3d &) const;
     friend ostream& operator<< (ostream &, const CSide &);
 };
 

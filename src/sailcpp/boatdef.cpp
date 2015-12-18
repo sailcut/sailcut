@@ -31,8 +31,11 @@ CPanelGroup CBoatDef::makePanelGroup() const
 {
     CPanelGroup output;
 
-    for (unsigned int i = 0; i < size(); i++)
-        output.child.push_back(at(i) + at(i).origin);
+    for (unsigned int i = 0; i < size(); i++) {
+        CMatrix4x4 matrix;
+        matrix.translate(at(i).origin);
+        output.child.push_back(at(i).transformed(matrix));
+    }
 
     return output;
 }

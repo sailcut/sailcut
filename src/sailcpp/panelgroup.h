@@ -59,7 +59,6 @@ public:
 
     // operators
     CPanelGroup& operator=( const CPanelGroup &);
-    CPanelGroup operator+ (const CVector3d &) const;
     friend ostream& operator<< (ostream &, const CPanelGroup &);
 };
 

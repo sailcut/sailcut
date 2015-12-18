@@ -67,22 +67,6 @@ CPanelLabel CPanelLabel::transformed(const CMatrix4x4 &m) const
 
 // operators
 
-/** Performs a 3D translation of a label by a given vector.
- */
-CPanelLabel CPanelLabel::operator+ ( const CVector3d &transl ) const
-{
-    CPanelLabel lb;
-
-    lb.name = name;
-    lb.height = height;
-    lb.color = color;
-    lb.origin = origin + transl;
-    lb.direction = direction;
-
-    return lb;
-}
-
-
 /** Performs an assignment.
  */
 CPanelLabel& CPanelLabel::operator= (const CPanelLabel &lb)
@@ -855,22 +839,9 @@ CPanel CPanel::transformed(const CMatrix4x4 &m) const
  */
 CPanel CPanel::operator+ (const CVector3d &transl) const
 {
-    CPanel ret;
-    ret.hasHems = hasHems;
-
-    ret.label = label+transl;
-
-    ret.left = left + transl;
-    ret.right = right + transl;
-    ret.top = top + transl;
-    ret.bottom = bottom + transl;
-
-    ret.cutLeft = cutLeft + transl;
-    ret.cutRight = cutRight + transl;
-    ret.cutTop = cutTop + transl;
-    ret.cutBottom = cutBottom + transl;
-
-    return ret;
+    CMatrix4x4 matrix;
+    matrix.translate(transl);
+    return transformed(matrix);
 }
 
 
@@ -969,18 +940,6 @@ CSide CSide::transformed(const CMatrix4x4 &m) const
         s[i] = m * at(i);
 
     return s;
-}
-
-// operators
-
-/** Performs a 3D translation of the side by a given vector.
- */
-CSide CSide::operator+ (const CVector3d &transl) const
-{
-    CSide ret( size() );
-    for (unsigned int i = 0 ; i < size() ; i++)
-        ret[i] = transl + at(i);
-    return ret;
 }
 
 

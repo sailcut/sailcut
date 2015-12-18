@@ -144,20 +144,6 @@ CPanelGroup& CPanelGroup::operator=(const CPanelGroup& s)
 }
 
 
-/** Performs a 3D translation of the sail by a given vector.
- */
-CPanelGroup CPanelGroup::operator+(const CVector3d& transl) const
-{
-    unsigned int i;
-    CPanelGroup ret = *this;
-    for (i = 0; i < size(); i++)
-        ret[i] = ret[i] + transl;
-    for (i = 0; i < child.size(); i++)
-        ret.child[i] = ret.child[i] + transl;
-    return ret;
-}
-
-
 /** Outputs a CPanelGroup to a stream.
  */
 ostream& operator<<(ostream &o, const CPanelGroup &s)
