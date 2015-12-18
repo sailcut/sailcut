@@ -91,12 +91,12 @@ CMatrix CMatrix::rot3d(const size_t& axis, const real& angle)
  *
  * @param index the index of the column to return
  */
-vector<real> CMatrix::col(size_t index) const
+std::vector<real> CMatrix::col(size_t index) const
 {
     if (index >= m_ncol)
-        throw range_error("CMatrix::col : index out of bounds!");
+        throw std::range_error("CMatrix::col : index out of bounds!");
 
-    vector<real> ret(m_nrow);
+    std::vector<real> ret(m_nrow);
     for (size_t i = 0; i < m_nrow; i++)
         ret[i] = m_data[i*m_ncol + index];
     return ret;
@@ -139,7 +139,7 @@ CMatrix CMatrix::crop(const size_t& nr,
 real CMatrix::determinant() const
 {
     if (m_nrow != m_ncol)
-        throw invalid_argument("CMatrix::det : matrix is not square!");
+        throw std::invalid_argument("CMatrix::det : matrix is not square!");
 
     real ret=0;
     // if we have a scalar matrix return its only coefficient
@@ -167,10 +167,10 @@ real CMatrix::determinant() const
 CMatrix CMatrix::dev(const size_t& i, const size_t& j) const
 {
     if ((i >= m_nrow) || (j >= m_ncol))
-        throw range_error("CMatrix::dev : index out of bounds");
+        throw std::range_error("CMatrix::dev : index out of bounds");
 
     if (m_nrow != m_ncol)
-        throw invalid_argument("CMatrix::dev : matrix is not square!");
+        throw std::invalid_argument("CMatrix::dev : matrix is not square!");
 
     size_t dx=0,dy=0;
 
@@ -201,13 +201,13 @@ CMatrix CMatrix::dev(const size_t& i, const size_t& j) const
 /** Diagonalises matrix by Gauss-Jordan method with full pivoting
  * optionally returns the inverse matrix.
  */
-CMatrix CMatrix::gaussjordan(bool *is_inv, CMatrix *inv, soltype_t * soltype, vector<real> *bb, CMatrix *tkern) const
+CMatrix CMatrix::gaussjordan(bool *is_inv, CMatrix *inv, soltype_t * soltype, std::vector<real> *bb, CMatrix *tkern) const
 {
     // check dimensions
     CMatrix b(m_nrow, 1);
     if (bb != NULL) {
         if (bb->size() != m_nrow)
-            throw invalid_argument("CMatrix::solve : matrix <=> right-hand side dimensions incompatible");
+            throw std::invalid_argument("CMatrix::solve : matrix <=> right-hand side dimensions incompatible");
 
         for (size_t i = 0; i < m_nrow; ++i)
             b(i, 0) = (*bb)[i];
@@ -319,7 +319,7 @@ CMatrix CMatrix::gaussjordan(bool *is_inv, CMatrix *inv, soltype_t * soltype, ve
         if (*soltype==NONE)
         {
             // incompatible system
-            *bb = vector<real>(0);
+            *bb = std::vector<real>(0);
         }
         else
         {
@@ -387,7 +387,7 @@ CMatrix CMatrix::kern(const size_t& vsize) const
 {
     if (empty())
     {
-        cout << "REQUEST FOR KER(o)" << endl;
+        std::cout << "REQUEST FOR KER(o)" << std::endl;
         return CMatrix::id(vsize);
     }
 
@@ -399,12 +399,12 @@ CMatrix CMatrix::kern(const size_t& vsize) const
 
 /** Retrieves a row of the matrix in vector form.
  */
-vector<real> CMatrix::row(size_t index) const
+std::vector<real> CMatrix::row(size_t index) const
 {
     if (index >= m_nrow)
-        throw range_error("CMatrix::row : index out of bounds!");
+        throw std::range_error("CMatrix::row : index out of bounds!");
 
-    vector<real> ret(m_ncol);
+    std::vector<real> ret(m_ncol);
     for (size_t i = 0; i < m_ncol; i++)
         ret[i] = m_data[index*m_ncol + i];
     return ret;
@@ -416,7 +416,7 @@ vector<real> CMatrix::row(size_t index) const
 void CMatrix::swap_row(size_t i1, size_t i2)
 {
     if ((i1>=m_nrow)||(i2>=m_nrow))
-        throw range_error("CMatrix:swap_row : index out of bounds");
+        throw std::range_error("CMatrix:swap_row : index out of bounds");
 
     if (i1==i2)
         return;
@@ -438,7 +438,7 @@ void CMatrix::swap_row(size_t i1, size_t i2)
 void CMatrix::swap_col(size_t j1, size_t j2)
 {
     if ((j1>=m_ncol)||(j2>=m_ncol))
-        throw range_error("CMatrix:swap_col : index out of bounds");
+        throw std::range_error("CMatrix:swap_col : index out of bounds");
 
     if (j1==j2)
         return;
@@ -543,7 +543,7 @@ CMatrix CMatrix::operator-() const
 CMatrix CMatrix::operator*(const CMatrix &m2) const
 {
     if (m_ncol != m2.m_nrow)
-        throw invalid_argument("CMatrix::operator*: dimension mismatch!");
+        throw std::invalid_argument("CMatrix::operator*: dimension mismatch!");
 
     CMatrix p(m_nrow, m2.m_ncol);
     size_t pos = 0;
@@ -562,13 +562,13 @@ CMatrix CMatrix::operator*(const CMatrix &m2) const
 
 /** Multiplies a matrix by a vector.
  */
-vector<real> CMatrix::operator*(const vector<real> &v) const
+std::vector<real> CMatrix::operator*(const std::vector<real> &v) const
 {
     if (m_ncol != v.size())
-        throw invalid_argument("CMatrix::operator*: dimension mismatch!");
+        throw std::invalid_argument("CMatrix::operator*: dimension mismatch!");
 
     // result is initialised to zero
-    vector<real> p(m_nrow);
+    std::vector<real> p(m_nrow);
     size_t pos = 0;
     for (size_t i = 0; i < m_nrow; i++)
     {
