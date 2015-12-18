@@ -31,4 +31,6 @@
 #include <geocpp/rect.h>
 #include <geocpp/subspace.h>
 
+using namespace std;
+
 #endif

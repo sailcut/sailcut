@@ -29,9 +29,6 @@
 #include <QVector3D>
 
 
-using namespace std;
-
-
 // types and constants
 typedef double real;
 
@@ -172,6 +169,6 @@ CVector3d operator*(const real& lambda, const CVector3d &v)
     return v * lambda;
 }
 
-ostream& operator<<(ostream &o, const CVector3d &v);
+std::ostream& operator<<(std::ostream &o, const CVector3d &v);
 
 #endif

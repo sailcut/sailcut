@@ -89,7 +89,7 @@ CVector3d operator*(const QMatrix4x4 &m, const CVector3d &v)
 
 /** Outputs a CVector3d to a stream.
  */
-ostream& operator<<(ostream &o, const CVector3d &v)
+std::ostream& operator<<(std::ostream &o, const CVector3d &v)
 {
     o << v.x() << "\t" << v.y() << "\t" << v.z();
     return o;

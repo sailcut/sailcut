@@ -22,7 +22,7 @@
 #include "subspace.h"
 
 
-static CVector3d fromRealVector(const vector<real> &vv)
+static CVector3d fromRealVector(const std::vector<real> &vv)
 {
     CVector3d v;
     for (size_t i = 0; i < qMin(size_t(3), vv.size()); ++i)
@@ -31,9 +31,9 @@ static CVector3d fromRealVector(const vector<real> &vv)
 }
 
 
-static vector<real> toRealVector(const CVector3d &v)
+static std::vector<real> toRealVector(const CVector3d &v)
 {
-    vector<real> vv(3);
+    std::vector<real> vv(3);
     vv[0] = v.x();
     vv[1] = v.y();
     vv[2] = v.z();
@@ -71,19 +71,19 @@ CSubSpace::CSubSpace(const CVector3d &pi, const CMatrix &mi, subspaceflags_t cre
     case GEOCPP_FROM_EQS:
         // equations are given in lines
         if ( (mi.rows() > 0) && (mi.columns() != SIZE) )
-            throw invalid_argument("CSubSpace::CSubSpace(p,m,GEOCPP_FROM_EQS) : dimension mismatch between p and m");
+            throw std::invalid_argument("CSubSpace::CSubSpace(p,m,GEOCPP_FROM_EQS) : dimension mismatch between p and m");
 
         m = mi;
         break;
     case GEOCPP_FROM_BASE:
         // base is given in column format
         if ( (mi.columns() > 0) && (mi.rows() != SIZE) )
-            throw invalid_argument("CSubSpace::CSubSpace(p,m,GEOCPP_FROM_BASE) : dimension mismatch between p and m");
+            throw std::invalid_argument("CSubSpace::CSubSpace(p,m,GEOCPP_FROM_BASE) : dimension mismatch between p and m");
 
         m = mi.transposed().kern(SIZE).transposed();
         break;
     default:
-        throw invalid_argument("CSubSpace::CSubspace(p,m,createflags) : unknown creation flags");
+        throw std::invalid_argument("CSubSpace::CSubspace(p,m,createflags) : unknown creation flags");
     }
 }
 
@@ -101,7 +101,7 @@ CSubSpace::CSubSpace(const CSubSpace &s)
  */
 bool CSubSpace::contains(const CVector3d &point) const
 {
-    vector<real> prod = m * toRealVector(point-p);
+    std::vector<real> prod = m * toRealVector(point-p);
     real lengthSquared = 0;
     for (size_t i = 0; i < prod.size(); ++i)
         lengthSquared += prod[i] * prod[i];
@@ -125,9 +125,9 @@ CSubSpace CSubSpace::intersect(const CSubSpace &h2) const
     if (isEmpty || h2.isEmpty)
         return CSubSpace();
 
-    vector<real> b1 = m * toRealVector(p);
-    vector<real> b2 = h2.m * toRealVector(h2.p);
-    vector<real> bb( m.rows() + h2.m.rows() );
+    std::vector<real> b1 = m * toRealVector(p);
+    std::vector<real> b2 = h2.m * toRealVector(h2.p);
+    std::vector<real> bb( m.rows() + h2.m.rows() );
     CMatrix mm( m.rows() + h2.m.rows(), SIZE );
     for (size_t i = 0 ; i < mm.rows() ; i++)
     {
@@ -173,7 +173,7 @@ CVector3d CSubSpace::intersectionPoint(const CSubSpace &h2, const char*) const
 {
     CSubSpace i = intersect(h2);
     if (i.getdim() != 0)
-        throw runtime_error("CSubSpace::intersectionPoint : intersection is not a point");
+        throw std::runtime_error("CSubSpace::intersectionPoint : intersection is not a point");
     return i.getp();
 }
 
@@ -187,8 +187,8 @@ CSubSpace CSubSpace::line(const CPoint3d &p, const CVector3d &v)
 {
     if (!v.length())
     {
-        cout << "CSubSpace::line : Crash point = " << p << endl;
-        throw invalid_argument("CSubSpace::line : Input vector cannot be zero point ");
+        std::cout << "CSubSpace::line : Crash point = " << p << std::endl;
+        throw std::invalid_argument("CSubSpace::line : Input vector cannot be zero point ");
     }
     CMatrix m(3, 1);
     for (int i = 0; i < 3; ++i)
@@ -207,8 +207,8 @@ CSubSpace CSubSpace::plane(const CPoint3d &p, const CVector3d &v1, const CVector
 {
     if (!CVector3d::crossProduct(v1, v2).length())
     {
-        cout << "CSubSpace::plane : Crash point = " << p << endl;
-        throw invalid_argument("CSubSpace::plane : 2 Vectors cannot be colinear");
+        std::cout << "CSubSpace::plane : Crash point = " << p << std::endl;
+        throw std::invalid_argument("CSubSpace::plane : 2 Vectors cannot be colinear");
     }
     CMatrix m(3,2);
     for (int i = 0; i < 3; i++)
