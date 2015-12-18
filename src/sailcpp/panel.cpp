@@ -818,9 +818,9 @@ CPanel CPanel::rotated(const CPoint3d &p, qreal angle, Qt::Axis axis) const
     v[axis] = 1;
 
     QMatrix4x4 matrix;
-    matrix.translate(p);
+    matrix.translate(p.x(), p.y(), p.z());
     matrix.rotate(qRadiansToDegrees(angle), v);
-    matrix.translate(-p);
+    matrix.translate(-p.x(), -p.y(), -p.z());
 
     return transformed(matrix);
 }

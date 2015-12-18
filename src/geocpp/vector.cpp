@@ -20,11 +20,77 @@
 #include <geocpp/vector.h>
 
 
+real qDegreesToRadians(int degrees)
+{
+    return qDegreesToRadians(real(degrees));
+}
+
+
+/**
+ * Returns true if v1 and v2 are equal, allowing for a small fuzziness factor
+ * for floating-point comparisons; false otherwise.
+ */
+bool qFuzzyCompare(const CVector3d &v1, const CVector3d &v2)
+{
+    for (size_t i = 0; i < 3; i++)
+        if (fabs(v1[i] - v2[i]) > EPS)
+            return false;
+    return true;
+}
+
+
+/** Returns the vector's length.
+ */
+real CVector3d::length() const
+{
+    return sqrt(m_x * m_x + m_y * m_y + m_z * m_z);
+}
+
+
+/** Returns corresponding unit length vector for non-zero vectors
+ * and zero vector otherwise.
+ */
+CVector3d CVector3d::normalized() const
+{
+    const real n = length();
+    if (n<EPS)
+        return CVector3d();
+    else
+        return *this*(1/n);
+}
+
+
+/** Cross product. Produces a vector orthogonal to the two original vectors.
+ */
+CVector3d CVector3d::crossProduct(const CVector3d &v1, const CVector3d &v2)
+{
+    CVector3d ret;
+    for (int i = 0; i < 3; i++)
+        ret[i] = v1[(i+1)%3] * v2[(i+2)%3] - v1[(i+2)%3] * v2[(i+1)%3];
+    return ret;
+}
+
+
+/** Dot (real) product.
+ */
+real CVector3d::dotProduct(const CVector3d &v1, const CVector3d &v2)
+{
+    return v1.m_x * v2.m_x + v1.m_y * v2.m_y + v1.m_z * v1.m_z;
+}
+
+
+CVector3d operator*(const QMatrix4x4 &m, const CVector3d &v)
+{
+    // FIXME: we lose precision here!
+    QVector3D o = m * QVector3D(v.x(), v.y(), v.z());
+    return CVector3d(o.x(), o.y(), o.z());
+}
+
+
 /** Outputs a CVector3d to a stream.
  */
 ostream& operator<<(ostream &o, const CVector3d &v)
 {
-    for (int i = 0; i < 3; i++)
-        o << (i > 0 ? "\t" : "") << v[i];
+    o << v.x() << "\t" << v.y() << "\t" << v.z();
     return o;
 }

@@ -189,7 +189,7 @@ void CSailDispGL::paintGL()
         real(2) / lRect.width(),
         real(2) / lRect.height(),
         - real(2) / sqrt(lRect.width() * lRect.width() + lRect.height() * lRect.height()));
-    matrix.translate(-center());
+    matrix.translate(-center().x(), -center().y(), -center().z());
     program->setUniformValue(matrixAttr, matrix);
 
     draw(dispObject());
