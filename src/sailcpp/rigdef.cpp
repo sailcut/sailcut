@@ -35,7 +35,7 @@ CRigDef::CRigDef()
     MCord = 140;
     MWidth = 70;
     MRakeM = 220;
-    MRakeD = qRadiansToDegrees(atan2(MRakeM, MHeight));
+    MRakeD = radiansToDegrees(atan2(MRakeM, MHeight));
     MBase = foreJ - MRakeM * (foreI/MHeight);
     MRnd = 110;
     MRndPos = 50;

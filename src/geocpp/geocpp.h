@@ -32,8 +32,6 @@
 #include <geocpp/rect.h>
 #include <geocpp/subspace.h>
 
-#include <QtMath>
-
 using namespace std;
 
 #endif

@@ -702,12 +702,12 @@ bool CFormSailDef::check()
 
         // check gaff angle and set it to be horizontal
         A1 = saildef->rake / saildef->luffL;
-        saildef->gaffDeg = qRadiansToDegrees(acos(A1));
+        saildef->gaffDeg = radiansToDegrees(acos(A1));
         txtGaffAngle->setText(QString::number(floor(saildef->gaffDeg)) );
 
         // adjust leech length such that foot is horizontal
         A1 = saildef->rake + saildef->gaffL - saildef->footL;
-        A2 = saildef->luffL * sin(qDegreesToRadians(saildef->gaffDeg));
+        A2 = saildef->luffL * sin(degreesToRadians(saildef->gaffDeg));
 
         saildef->leechL = floor(sqrt( A1*A1 + A2*A2 ) );
         txtLeechLen->setText(QString::number(saildef->leechL) );

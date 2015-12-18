@@ -22,12 +22,6 @@
 #include "hullworker.h"
 
 
-static real qDegreesToRadians(int degrees)
-{
-    return qDegreesToRadians(real(degrees));
-}
-
-
 /** The constructor does some preliminary calculations
  *  to set internal variables, compute chine and deck plane,
  *  and compute lower chine plane panel.
@@ -49,14 +43,14 @@ CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
 
     /** compute the lower Chine plane */
     // vector v1 is sideway tilt of chine
-    v1 = CVector3d( 0 , -sin(qDegreesToRadians(BSlopeA)) , cos(qDegreesToRadians(BSlopeA)) );
+    v1 = CVector3d( 0 , -sin(degreesToRadians(BSlopeA)) , cos(degreesToRadians(BSlopeA)) );
     // vector v2 is fore-aft slope of chine
     v2 = CVector3d( ptAftChine - ptFwdChine );
     planeLowChine = CSubSpace::plane( ptFwdChine , v1 , v2 );
 
     /** compute the Deck plane */
     // vector v1 is sideway tilt of deck
-    v1 = CVector3d( 0 , -sin(qDegreesToRadians(DSlopeA)) , cos(qDegreesToRadians(DSlopeA)) );
+    v1 = CVector3d( 0 , -sin(degreesToRadians(DSlopeA)) , cos(degreesToRadians(DSlopeA)) );
     // vector v2 is fore-aft slope of deck
     v2 = CVector3d( BLWL , DaftHeight-DfwdHeight , 0 );
     planeDeck = CSubSpace::plane( ptFwdDeck , v1 , v2 );
@@ -65,7 +59,7 @@ CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
     // vector v1 is parallel to Z axis = perpendicular to central plane
     v1 = CVector3d( 0 , 0 , 1 );
     // vector v2 is in inclined transom plane
-    v2 = CVector3d( cos(qDegreesToRadians(TransomA)) , sin(qDegreesToRadians(TransomA)) , 0 );
+    v2 = CVector3d( cos(degreesToRadians(TransomA)) , sin(degreesToRadians(TransomA)) , 0 );
     planeTransom = CSubSpace::plane( ptAftChine , v1 , v2 );
 
     // compute intersection line between lower chine plane and transom
@@ -137,7 +131,7 @@ CPoint3d CHullWorker::ptKeel( const real &x )
     pt = ptLowChine ( x );
 
     /* Ruling vector with deadrise and sweep. */
-    v1 = CVector3d( tan(qDegreesToRadians(BSweepA)) , tan(qDegreesToRadians(BDeadriseA)) , 1 );
+    v1 = CVector3d( tan(degreesToRadians(BSweepA)) , tan(degreesToRadians(BDeadriseA)) , 1 );
 
     /* Project pt on central plane, get intersection
        with the ruling line passing through point pt. */
@@ -198,7 +192,7 @@ CPanelGroup CHullWorker::makeHull() //const
     hull.push_back(plank2);
 
     /** Lay a single top side plank on each side with bottom at chine */
-    v1 = CVector3d( -cos(qDegreesToRadians(StemA)) , sin(qDegreesToRadians(TopPlankA)) , cos(qDegreesToRadians(TopPlankA)) );
+    v1 = CVector3d( -cos(degreesToRadians(StemA)) , sin(degreesToRadians(TopPlankA)) , cos(degreesToRadians(TopPlankA)) );
 
     for (j = 0 ; j < npb ; j++)
     {

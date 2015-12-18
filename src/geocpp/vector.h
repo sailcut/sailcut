@@ -152,15 +152,29 @@ private:
  */
 typedef CVector3d CPoint3d;
 
+
+inline real degreesToRadians(real degrees)
+{
+    return degrees * (M_PI / 180);
+}
+
+
+inline real radiansToDegrees(real radians)
+{
+    return radians * (180 / M_PI);
+}
+
+
 bool qFuzzyCompare(const CVector3d &v1, const CVector3d &v2);
+
 
 /** Binary '*' (multiply a scalar by a vector)
  */
-inline
-CVector3d operator*(const real& lambda, const CVector3d &v)
+inline CVector3d operator*(const real& lambda, const CVector3d &v)
 {
     return v * lambda;
 }
+
 
 std::ostream& operator<<(std::ostream &o, const CVector3d &v);
 

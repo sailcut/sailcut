@@ -45,8 +45,8 @@ CPanelGroup CSailDisp::dispObject() const
 
     CMatrix4x4 matrix;
     matrix.translate(center);
-    matrix.rotate(qDegreesToRadians(m_elevation), CVector3d(1, 0, 0));
-    matrix.rotate(qDegreesToRadians(m_azimuth), CVector3d(0, 1, 0));
+    matrix.rotate(degreesToRadians(m_elevation), CVector3d(1, 0, 0));
+    matrix.rotate(degreesToRadians(m_azimuth), CVector3d(0, 1, 0));
     matrix.translate(-center);
 
     return baseObject.transformed(matrix);
