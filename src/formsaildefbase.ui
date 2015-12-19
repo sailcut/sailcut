@@ -730,8 +730,7 @@
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QLineEdit" name="txtDihedral">
-       </widget>
+       <widget class="QLineEdit" name="txtDihedral"/>
       </item>
      </layout>
     </widget>
@@ -778,9 +777,6 @@
           <property name="text">
            <string>Number of sections</string>
           </property>
-          <property name="margin">
-           <number>1</number>
-          </property>
          </widget>
         </item>
         <item row="2" column="3">
@@ -802,18 +798,12 @@
           <property name="text">
            <string>Number of radial gores</string>
           </property>
-          <property name="margin">
-           <number>1</number>
-          </property>
          </widget>
         </item>
         <item row="3" column="2">
          <widget class="QLabel" name="TextLabel3">
           <property name="text">
            <string>Number of luff gores</string>
-          </property>
-          <property name="margin">
-           <number>1</number>
           </property>
          </widget>
         </item>
@@ -875,7 +865,7 @@
           </property>
          </widget>
         </item>
-        <item row="5" column="2">
+        <item row="4" column="2" rowspan="2">
          <spacer>
           <property name="orientation">
            <enum>Qt::Vertical</enum>
@@ -959,9 +949,6 @@
           <property name="text">
            <string>Top depth</string>
           </property>
-          <property name="margin">
-           <number>1</number>
-          </property>
          </widget>
         </item>
         <item row="1" column="0">
@@ -969,18 +956,12 @@
           <property name="text">
            <string>Mid depth</string>
           </property>
-          <property name="margin">
-           <number>1</number>
-          </property>
          </widget>
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="lblFootDepth">
           <property name="text">
            <string>Foot depth</string>
-          </property>
-          <property name="margin">
-           <number>1</number>
           </property>
          </widget>
         </item>
@@ -1003,18 +984,12 @@
           <property name="text">
            <string>Twist angle</string>
           </property>
-          <property name="margin">
-           <number>1</number>
-          </property>
          </widget>
         </item>
         <item row="4" column="0">
          <widget class="QLabel" name="lblSheetAngle">
           <property name="text">
            <string>Sheeting angle</string>
-          </property>
-          <property name="margin">
-           <number>1</number>
           </property>
          </widget>
         </item>
@@ -1075,18 +1050,12 @@
           <property name="text">
            <string>Other hems</string>
           </property>
-          <property name="margin">
-           <number>1</number>
-          </property>
          </widget>
         </item>
         <item row="3" column="0">
          <widget class="QLabel" name="lblInnerWidth">
           <property name="text">
            <string>Foot hem</string>
-          </property>
-          <property name="margin">
-           <number>1</number>
           </property>
          </widget>
         </item>
@@ -1123,9 +1092,6 @@
           <property name="text">
            <string>Cloth width</string>
           </property>
-          <property name="margin">
-           <number>1</number>
-          </property>
          </widget>
         </item>
         <item row="2" column="0">
@@ -1133,18 +1099,12 @@
           <property name="text">
            <string>Leech hem</string>
           </property>
-          <property name="margin">
-           <number>1</number>
-          </property>
          </widget>
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="lblSeamWidth">
           <property name="text">
            <string>Seam width</string>
-          </property>
-          <property name="margin">
-           <number>1</number>
           </property>
          </widget>
         </item>
