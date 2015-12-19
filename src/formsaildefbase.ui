@@ -2,12 +2,6 @@
 <ui version="4.0">
  <class>CFormSailDefBase</class>
  <widget class="QDialog" name="CFormSailDefBase">
-  <property name="sizePolicy">
-   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-    <horstretch>0</horstretch>
-    <verstretch>0</verstretch>
-   </sizepolicy>
-  </property>
   <property name="minimumSize">
    <size>
     <width>740</width>
@@ -35,12 +29,6 @@
    </property>
    <item>
     <widget class="QGroupBox" name="GroupSailID">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
      <property name="font">
       <font>
        <weight>50</weight>
@@ -103,12 +91,6 @@
    </item>
    <item>
     <widget class="QGroupBox" name="GroupSail">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
      <property name="title">
       <string>Sail dimensions</string>
      </property>
@@ -137,18 +119,6 @@
       </item>
       <item row="3" column="0">
        <widget class="QLabel" name="lblGaffLen">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>20</height>
-         </size>
-        </property>
         <property name="text">
          <string>Gaff length</string>
         </property>
@@ -209,18 +179,6 @@
       </item>
       <item row="0" column="0">
        <widget class="QLabel" name="lblLuffLen">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>20</height>
-         </size>
-        </property>
         <property name="text">
          <string>Luff length</string>
         </property>
@@ -305,18 +263,6 @@
       </item>
       <item row="2" column="0">
        <widget class="QLabel" name="lblLeechLen">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>20</height>
-         </size>
-        </property>
         <property name="text">
          <string>Leech length</string>
         </property>
@@ -537,18 +483,6 @@
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="lblFootLen">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>20</height>
-         </size>
-        </property>
         <property name="text">
          <string>Foot length</string>
         </property>
@@ -559,12 +493,6 @@
    </item>
    <item>
     <widget class="QGroupBox" name="GroupRig">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
      <property name="title">
       <string>Rig geometry</string>
      </property>
@@ -589,12 +517,6 @@
       </property>
       <item row="1" column="0">
        <widget class="QRadioButton" name="radioWing">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
         <property name="text">
          <string>Wing</string>
         </property>
@@ -622,18 +544,6 @@
       </item>
       <item row="0" column="0">
        <widget class="QRadioButton" name="radioMainSail">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>100</width>
-          <height>0</height>
-         </size>
-        </property>
         <property name="text">
          <string>Main sail</string>
         </property>
@@ -662,18 +572,6 @@
       </item>
       <item row="0" column="1" colspan="2">
        <widget class="QRadioButton" name="radioJib">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>40</width>
-          <height>0</height>
-         </size>
-        </property>
         <property name="text">
          <string>Jib</string>
         </property>
@@ -681,18 +579,6 @@
       </item>
       <item row="2" column="4">
        <widget class="QLabel" name="lbl4">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>18</height>
-         </size>
-        </property>
         <property name="text">
          <string>Fore triangle base  J</string>
         </property>
@@ -700,18 +586,6 @@
       </item>
       <item row="0" column="4">
        <widget class="QLabel" name="lbl6">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>18</height>
-         </size>
-        </property>
         <property name="text">
          <string>Boat length LOA</string>
         </property>
@@ -850,18 +724,6 @@
       </item>
       <item row="1" column="4">
        <widget class="QLabel" name="lbl3">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>18</height>
-         </size>
-        </property>
         <property name="text">
          <string>Distance tack to stem</string>
         </property>
@@ -869,18 +731,6 @@
       </item>
       <item row="2" column="1">
        <widget class="QLineEdit" name="txtDihedral">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>35</width>
-          <height>18</height>
-         </size>
-        </property>
        </widget>
       </item>
      </layout>
@@ -911,18 +761,6 @@
         </property>
         <item row="0" column="0">
          <widget class="QRadioButton" name="radioCross">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>100</width>
-            <height>20</height>
-           </size>
-          </property>
           <property name="text">
            <string>Cross cut</string>
           </property>
@@ -930,18 +768,6 @@
         </item>
         <item row="1" column="0">
          <widget class="QRadioButton" name="radioTwist">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>100</width>
-            <height>20</height>
-           </size>
-          </property>
           <property name="text">
            <string>Twist foot</string>
           </property>
@@ -949,18 +775,6 @@
         </item>
         <item row="1" column="2">
          <widget class="QLabel" name="TextLabel1">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>100</width>
-            <height>20</height>
-           </size>
-          </property>
           <property name="text">
            <string>Number of sections</string>
           </property>
@@ -985,18 +799,6 @@
         </item>
         <item row="2" column="2">
          <widget class="QLabel" name="TextLabel2">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>20</height>
-           </size>
-          </property>
           <property name="text">
            <string>Number of radial gores</string>
           </property>
@@ -1007,18 +809,6 @@
         </item>
         <item row="3" column="2">
          <widget class="QLabel" name="TextLabel3">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>20</height>
-           </size>
-          </property>
           <property name="text">
            <string>Number of luff gores</string>
           </property>
@@ -1029,18 +819,6 @@
         </item>
         <item row="2" column="0">
          <widget class="QRadioButton" name="radioHorizontal">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>100</width>
-            <height>20</height>
-           </size>
-          </property>
           <property name="text">
            <string>Horizontal cut</string>
           </property>
@@ -1048,18 +826,6 @@
         </item>
         <item row="3" column="0">
          <widget class="QRadioButton" name="radioVertical">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>100</width>
-            <height>20</height>
-           </size>
-          </property>
           <property name="text">
            <string>Vertical cut</string>
           </property>
@@ -1083,12 +849,6 @@
         </item>
         <item row="0" column="2">
          <widget class="QRadioButton" name="radioRadial">
-          <property name="minimumSize">
-           <size>
-            <width>100</width>
-            <height>20</height>
-           </size>
-          </property>
           <property name="text">
            <string>Radial cut</string>
           </property>
@@ -1103,18 +863,6 @@
         </item>
         <item row="4" column="0">
          <widget class="QRadioButton" name="radioMitre">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>100</width>
-            <height>20</height>
-           </size>
-          </property>
           <property name="text">
            <string>Mitre cut</string>
           </property>
@@ -1122,18 +870,6 @@
         </item>
         <item row="5" column="0">
          <widget class="QRadioButton" name="radioMitre2">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>100</width>
-            <height>20</height>
-           </size>
-          </property>
           <property name="text">
            <string>Mitre cut 2</string>
           </property>
@@ -1157,12 +893,6 @@
      </item>
      <item>
       <widget class="QGroupBox" name="GroupShape">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
        <property name="title">
         <string>Sail shape</string>
        </property>
@@ -1226,18 +956,6 @@
         </item>
         <item row="0" column="0">
          <widget class="QLabel" name="lblTopDepth">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>20</height>
-           </size>
-          </property>
           <property name="text">
            <string>Top depth</string>
           </property>
@@ -1248,18 +966,6 @@
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="lblMidDepth">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>20</height>
-           </size>
-          </property>
           <property name="text">
            <string>Mid depth</string>
           </property>
@@ -1270,18 +976,6 @@
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="lblFootDepth">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>20</height>
-           </size>
-          </property>
           <property name="text">
            <string>Foot depth</string>
           </property>
@@ -1306,18 +1000,6 @@
         </item>
         <item row="3" column="0">
          <widget class="QLabel" name="lblTwistAngle">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>20</height>
-           </size>
-          </property>
           <property name="text">
            <string>Twist angle</string>
           </property>
@@ -1328,18 +1010,6 @@
         </item>
         <item row="4" column="0">
          <widget class="QLabel" name="lblSheetAngle">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>20</height>
-           </size>
-          </property>
           <property name="text">
            <string>Sheeting angle</string>
           </property>
@@ -1402,12 +1072,6 @@
         </item>
         <item row="4" column="0">
          <widget class="QLabel" name="lblHemsWidth">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
           <property name="text">
            <string>Other hems</string>
           </property>
@@ -1418,12 +1082,6 @@
         </item>
         <item row="3" column="0">
          <widget class="QLabel" name="lblInnerWidth">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
           <property name="text">
            <string>Foot hem</string>
           </property>
@@ -1462,18 +1120,6 @@
         </item>
         <item row="0" column="0">
          <widget class="QLabel" name="lblClothWidth">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>20</height>
-           </size>
-          </property>
           <property name="text">
            <string>Cloth width</string>
           </property>
@@ -1484,12 +1130,6 @@
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="lblLeechHemWidth">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
           <property name="text">
            <string>Leech hem</string>
           </property>
@@ -1500,12 +1140,6 @@
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="lblSeamWidth">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
           <property name="text">
            <string>Seam width</string>
           </property>
