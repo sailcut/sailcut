@@ -29,12 +29,6 @@
    </property>
    <item>
     <widget class="QGroupBox" name="GroupSailID">
-     <property name="font">
-      <font>
-       <weight>50</weight>
-       <bold>false</bold>
-      </font>
-     </property>
      <property name="title">
       <string>Sail identifier</string>
      </property>
@@ -1161,12 +1155,6 @@
      </item>
      <item>
       <widget class="QPushButton" name="btnCompute">
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
        <property name="text">
         <string>Compute</string>
        </property>
@@ -1174,12 +1162,6 @@
      </item>
      <item>
       <widget class="QPushButton" name="btnCancel">
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
        <property name="text">
         <string>Cancel</string>
        </property>
@@ -1187,12 +1169,6 @@
      </item>
      <item>
       <widget class="QPushButton" name="btnOK">
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
        <property name="focusPolicy">
         <enum>Qt::StrongFocus</enum>
        </property>
