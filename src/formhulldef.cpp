@@ -79,6 +79,9 @@ CFormHullDef::CFormHullDef( QWidget* parent, CHullDef * hullptr )
     connect( btnCheck, SIGNAL( clicked() ), this, SLOT( slotCheck() ) );
     connect( btnOK, SIGNAL( clicked() ), this, SLOT( accept() ) );
     connect( btnCancel, SIGNAL( clicked() ), this, SLOT( reject() ) );
+
+    // resize
+    resize(minimumSizeHint());
 }
 
 

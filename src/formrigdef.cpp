@@ -92,6 +92,8 @@ CFormRigDef::CFormRigDef( QWidget* parent, CRigDef * rigptr )
     txt_HAD->setText(QString::number(rigdef->HAD) );
     txt_BAD->setText(QString::number(rigdef->BAD) );
 
+    // resize
+    resize(minimumSizeHint());
 }
 
 

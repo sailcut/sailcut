@@ -198,7 +198,7 @@ CFormPrint::CFormPrint(const CPrinter *engine, enum QPrinter::Orientation orient
     label->setPage(0);
 
     // resize
-    resize( QSize(minimumSizeHint()) );
+    resize(minimumSizeHint());
 }
 
 

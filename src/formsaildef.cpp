@@ -42,11 +42,11 @@ CFormSailDef::CFormSailDef( QWidget* parent, CSailDef * sailptr )
     setupUi(this);
     setModal(true);
 
-    /* we store the pointer to the CSailDef so we can update it when
-       the user clicks OK */
+    // we store the pointer to the CSailDef so we can update it when
+    // the user clicks OK
     saildef = sailptr;
 
-    /** Write all the sail data to the screen dimensions of sail. */
+    // Write all the sail data to the screen dimensions of sail.
     setSailCut( saildef->sailCut );
     setSailType( saildef->sailType );
 
@@ -94,13 +94,13 @@ CFormSailDef::CFormSailDef( QWidget* parent, CSailDef * sailptr )
 
     txtDihedral->setText ( QString::number( saildef->dihedralDeg ) );
 
-    /** Create button group for sail type. */
+    // Create button group for sail type.
     QButtonGroup *bgrpSailType = new QButtonGroup( this );
     bgrpSailType->addButton( radioMainSail );
     bgrpSailType->addButton( radioJib );
     bgrpSailType->addButton( radioWing );
 
-    /** Create button group for sail cut. */
+    // Create button group for sail cut.
     QButtonGroup *bgrpSailCut = new QButtonGroup( this );
     bgrpSailCut->addButton( radioCross );
     bgrpSailCut->addButton( radioTwist );
@@ -110,15 +110,18 @@ CFormSailDef::CFormSailDef( QWidget* parent, CSailDef * sailptr )
     bgrpSailCut->addButton( radioMitre2 );
     bgrpSailCut->addButton( radioRadial );
 
-    /** Set signals and slots connections */
+    // Set signals and slots connections
     connect( btnOK, SIGNAL( clicked() ), this, SLOT( accept() ) );
     connect( btnCancel, SIGNAL( clicked() ), this, SLOT( reject() ) );
     connect( btnCompute, SIGNAL( pressed() ), this, SLOT( slotCompute() ) );
     connect( bgrpSailType, SIGNAL( buttonClicked(QAbstractButton *) ), this, SLOT( slotSailType() ) );
     connect( bgrpSailCut, SIGNAL( buttonClicked(QAbstractButton *) ), this, SLOT( slotSailCut() ) );
 
-    /** Activate "compute" to calculate sail area and diagonal and display them. */
+    // Activate "compute" to calculate sail area and diagonal and display them.
     compute();
+
+    // resize
+    resize(minimumSizeHint());
 }
 
 
