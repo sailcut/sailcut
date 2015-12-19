@@ -971,18 +971,6 @@
         </item>
         <item row="2" column="3">
          <widget class="QLineEdit" name="txtGores">
-          <property name="minimumSize">
-           <size>
-            <width>28</width>
-            <height>18</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>25</height>
-           </size>
-          </property>
           <property name="alignment">
            <set>Qt::AlignHCenter</set>
           </property>
@@ -990,18 +978,6 @@
         </item>
         <item row="3" column="3">
          <widget class="QLineEdit" name="txtLuffGores">
-          <property name="minimumSize">
-           <size>
-            <width>28</width>
-            <height>18</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>25</height>
-           </size>
-          </property>
           <property name="alignment">
            <set>Qt::AlignHCenter</set>
           </property>
@@ -1120,18 +1096,6 @@
         </item>
         <item row="1" column="3">
          <widget class="QLineEdit" name="txtSections">
-          <property name="minimumSize">
-           <size>
-            <width>28</width>
-            <height>18</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>25</height>
-           </size>
-          </property>
           <property name="alignment">
            <set>Qt::AlignHCenter</set>
           </property>
@@ -1234,18 +1198,6 @@
         </item>
         <item row="0" column="1">
          <widget class="QLineEdit" name="txtTopDepth">
-          <property name="minimumSize">
-           <size>
-            <width>28</width>
-            <height>18</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>25</height>
-           </size>
-          </property>
           <property name="alignment">
            <set>Qt::AlignHCenter</set>
           </property>
@@ -1253,18 +1205,6 @@
         </item>
         <item row="1" column="1">
          <widget class="QLineEdit" name="txtMidDepth">
-          <property name="minimumSize">
-           <size>
-            <width>28</width>
-            <height>18</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>25</height>
-           </size>
-          </property>
           <property name="alignment">
            <set>Qt::AlignHCenter</set>
           </property>
@@ -1279,18 +1219,6 @@
         </item>
         <item row="2" column="1">
          <widget class="QLineEdit" name="txtFootDepth">
-          <property name="minimumSize">
-           <size>
-            <width>28</width>
-            <height>18</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>25</height>
-           </size>
-          </property>
           <property name="alignment">
            <set>Qt::AlignHCenter</set>
           </property>
@@ -1364,18 +1292,6 @@
         </item>
         <item row="3" column="1">
          <widget class="QLineEdit" name="txtTwistAngle">
-          <property name="minimumSize">
-           <size>
-            <width>28</width>
-            <height>18</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>25</height>
-           </size>
-          </property>
           <property name="alignment">
            <set>Qt::AlignHCenter</set>
           </property>
@@ -1383,18 +1299,6 @@
         </item>
         <item row="4" column="1">
          <widget class="QLineEdit" name="txtSheetAngle">
-          <property name="minimumSize">
-           <size>
-            <width>28</width>
-            <height>18</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>25</height>
-           </size>
-          </property>
           <property name="alignment">
            <set>Qt::AlignHCenter</set>
           </property>
@@ -1484,18 +1388,6 @@
         </property>
         <item row="3" column="1">
          <widget class="QLineEdit" name="txtFootHemWidth">
-          <property name="minimumSize">
-           <size>
-            <width>60</width>
-            <height>18</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>80</width>
-            <height>25</height>
-           </size>
-          </property>
           <property name="alignment">
            <set>Qt::AlignHCenter</set>
           </property>
@@ -1503,18 +1395,6 @@
         </item>
         <item row="4" column="1">
          <widget class="QLineEdit" name="txtHemsWidth">
-          <property name="minimumSize">
-           <size>
-            <width>60</width>
-            <height>18</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>80</width>
-            <height>25</height>
-           </size>
-          </property>
           <property name="alignment">
            <set>Qt::AlignHCenter</set>
           </property>
@@ -1575,18 +1455,6 @@
         </item>
         <item row="2" column="1">
          <widget class="QLineEdit" name="txtLeechHemWidth">
-          <property name="minimumSize">
-           <size>
-            <width>60</width>
-            <height>18</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>80</width>
-            <height>25</height>
-           </size>
-          </property>
           <property name="alignment">
            <set>Qt::AlignHCenter</set>
           </property>
@@ -1648,18 +1516,6 @@
         </item>
         <item row="1" column="1">
          <widget class="QLineEdit" name="txtSeamWidth">
-          <property name="minimumSize">
-           <size>
-            <width>60</width>
-            <height>18</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>80</width>
-            <height>25</height>
-           </size>
-          </property>
           <property name="alignment">
            <set>Qt::AlignHCenter</set>
           </property>
@@ -1667,18 +1523,6 @@
         </item>
         <item row="0" column="1">
          <widget class="QLineEdit" name="txtClothWidth">
-          <property name="minimumSize">
-           <size>
-            <width>60</width>
-            <height>18</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>80</width>
-            <height>25</height>
-           </size>
-          </property>
           <property name="alignment">
            <set>Qt::AlignHCenter</set>
           </property>
