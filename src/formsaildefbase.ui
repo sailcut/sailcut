@@ -35,6 +35,35 @@
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
      </property>
+     <layout class="QHBoxLayout">
+      <item>
+       <widget class="QLabel" name="lblSailID">
+        <property name="text">
+         <string>Sail name</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="txtSailID">
+        <property name="alignment">
+         <set>Qt::AlignLeading</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="GroupRig">
+     <property name="title">
+      <string>Rig geometry</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading</set>
+     </property>
      <layout class="QGridLayout">
       <property name="leftMargin">
        <number>4</number>
@@ -51,34 +80,198 @@
       <property name="spacing">
        <number>5</number>
       </property>
-      <item row="0" column="1">
-       <widget class="QLineEdit" name="txtSailID">
-        <property name="minimumSize">
-         <size>
-          <width>360</width>
-          <height>18</height>
-         </size>
+      <item row="1" column="0">
+       <widget class="QRadioButton" name="radioWing">
+        <property name="text">
+         <string>Wing</string>
         </property>
+       </widget>
+      </item>
+      <item row="1" column="5">
+       <widget class="QLineEdit" name="txtTackDist">
         <property name="alignment">
-         <set>Qt::AlignLeading</set>
+         <set>Qt::AlignHCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="9">
+       <widget class="QLineEdit" name="txtTriangHoist">
+        <property name="alignment">
+         <set>Qt::AlignHCenter</set>
         </property>
        </widget>
       </item>
       <item row="0" column="0">
-       <widget class="QLabel" name="lblSailID">
-        <property name="minimumSize">
+       <widget class="QRadioButton" name="radioMainSail">
+        <property name="text">
+         <string>Main sail</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QLabel" name="lbdeg_2_2">
+        <property name="text">
+         <string>deg</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="8">
+       <widget class="QLabel" name="lbl5">
+        <property name="text">
+         <string>Fore triangle hoist  I</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="lbl8">
+        <property name="text">
+         <string>Dihedral angle</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" colspan="2">
+       <widget class="QRadioButton" name="radioJib">
+        <property name="text">
+         <string>Jib</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="4">
+       <widget class="QLabel" name="lbl4">
+        <property name="text">
+         <string>Fore triangle base  J</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="4">
+       <widget class="QLabel" name="lbl6">
+        <property name="text">
+         <string>Boat length LOA</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="8">
+       <widget class="QLabel" name="lblTackHeight">
+        <property name="text">
+         <string>Tack height</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="8">
+       <widget class="QLabel" name="lbl1">
+        <property name="text">
+         <string>Luff rake</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="6">
+       <widget class="QLabel" name="lbmm_15">
+        <property name="text">
+         <string>mm</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="5">
+       <widget class="QLineEdit" name="txtLOA">
+        <property name="alignment">
+         <set>Qt::AlignHCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="6">
+       <widget class="QLabel" name="lbmm_2">
+        <property name="text">
+         <string>mm</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="6">
+       <widget class="QLabel" name="lbmm">
+        <property name="text">
+         <string>mm</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="9">
+       <widget class="QLineEdit" name="txtTackHeight">
+        <property name="alignment">
+         <set>Qt::AlignHCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="5">
+       <widget class="QLineEdit" name="txtTriangBase">
+        <property name="alignment">
+         <set>Qt::AlignHCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="10">
+       <widget class="QLabel" name="lbmm_4">
+        <property name="text">
+         <string>mm</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="7">
+       <spacer>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::MinimumExpanding</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
          <size>
-          <width>60</width>
+          <width>20</width>
           <height>20</height>
          </size>
         </property>
-        <property name="text">
-         <string>Sail name</string>
-        </property>
+       </spacer>
+      </item>
+      <item row="0" column="9">
+       <widget class="QLineEdit" name="txtRake">
         <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         <set>Qt::AlignHCenter</set>
         </property>
        </widget>
+      </item>
+      <item row="0" column="10">
+       <widget class="QLabel" name="lbmm_16">
+        <property name="text">
+         <string>mm</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3" rowspan="3">
+       <widget class="Line" name="Line3">
+        <property name="frameShape">
+         <enum>QFrame::VLine</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Sunken</enum>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="10">
+       <widget class="QLabel" name="lbmm_3">
+        <property name="text">
+         <string>mm</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="4">
+       <widget class="QLabel" name="lbl3">
+        <property name="text">
+         <string>Distance tack to stem</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="txtDihedral"/>
       </item>
      </layout>
     </widget>
@@ -208,12 +401,6 @@
       </item>
       <item row="2" column="1">
        <widget class="QLineEdit" name="txtLeechLen">
-        <property name="minimumSize">
-         <size>
-          <width>60</width>
-          <height>18</height>
-         </size>
-        </property>
         <property name="alignment">
          <set>Qt::AlignHCenter</set>
         </property>
@@ -221,12 +408,6 @@
       </item>
       <item row="5" column="1">
        <widget class="QLabel" name="lblDiagonal">
-        <property name="minimumSize">
-         <size>
-          <width>60</width>
-          <height>18</height>
-         </size>
-        </property>
         <property name="frameShape">
          <enum>QFrame::Box</enum>
         </property>
@@ -299,12 +480,6 @@
       </item>
       <item row="3" column="1">
        <widget class="QLineEdit" name="txtGaffLen">
-        <property name="minimumSize">
-         <size>
-          <width>60</width>
-          <height>18</height>
-         </size>
-        </property>
         <property name="alignment">
          <set>Qt::AlignHCenter</set>
         </property>
@@ -312,12 +487,6 @@
       </item>
       <item row="5" column="0">
        <widget class="QLabel" name="lbl46">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>20</height>
-         </size>
-        </property>
         <property name="text">
          <string>Diagonal</string>
         </property>
@@ -423,12 +592,6 @@
       </item>
       <item row="1" column="1">
        <widget class="QLineEdit" name="txtFootLen">
-        <property name="minimumSize">
-         <size>
-          <width>60</width>
-          <height>18</height>
-         </size>
-        </property>
         <property name="alignment">
          <set>Qt::AlignHCenter</set>
         </property>
@@ -436,12 +599,6 @@
       </item>
       <item row="0" column="1">
        <widget class="QLineEdit" name="txtLuffLen">
-        <property name="minimumSize">
-         <size>
-          <width>60</width>
-          <height>18</height>
-         </size>
-        </property>
         <property name="alignment">
          <set>Qt::AlignHCenter</set>
         </property>
@@ -481,250 +638,6 @@
          <string>Foot length</string>
         </property>
        </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
-    <widget class="QGroupBox" name="GroupRig">
-     <property name="title">
-      <string>Rig geometry</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignLeading</set>
-     </property>
-     <layout class="QGridLayout">
-      <property name="leftMargin">
-       <number>4</number>
-      </property>
-      <property name="topMargin">
-       <number>4</number>
-      </property>
-      <property name="rightMargin">
-       <number>4</number>
-      </property>
-      <property name="bottomMargin">
-       <number>4</number>
-      </property>
-      <property name="spacing">
-       <number>5</number>
-      </property>
-      <item row="1" column="0">
-       <widget class="QRadioButton" name="radioWing">
-        <property name="text">
-         <string>Wing</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="5">
-       <widget class="QLineEdit" name="txtTackDist">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignHCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="9">
-       <widget class="QLineEdit" name="txtTriangHoist">
-        <property name="alignment">
-         <set>Qt::AlignHCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <widget class="QRadioButton" name="radioMainSail">
-        <property name="text">
-         <string>Main sail</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2">
-       <widget class="QLabel" name="lbdeg_2_2">
-        <property name="text">
-         <string>deg</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="8">
-       <widget class="QLabel" name="lbl5">
-        <property name="text">
-         <string>Fore triangle hoist  I</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="lbl8">
-        <property name="text">
-         <string>Dihedral angle</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1" colspan="2">
-       <widget class="QRadioButton" name="radioJib">
-        <property name="text">
-         <string>Jib</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="4">
-       <widget class="QLabel" name="lbl4">
-        <property name="text">
-         <string>Fore triangle base  J</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="4">
-       <widget class="QLabel" name="lbl6">
-        <property name="text">
-         <string>Boat length LOA</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="8">
-       <widget class="QLabel" name="lblTackHeight">
-        <property name="text">
-         <string>Tack height</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="8">
-       <widget class="QLabel" name="lbl1">
-        <property name="text">
-         <string>Luff rake</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="6">
-       <widget class="QLabel" name="lbmm_15">
-        <property name="text">
-         <string>mm</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="5">
-       <widget class="QLineEdit" name="txtLOA">
-        <property name="minimumSize">
-         <size>
-          <width>60</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignHCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="6">
-       <widget class="QLabel" name="lbmm_2">
-        <property name="text">
-         <string>mm</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="6">
-       <widget class="QLabel" name="lbmm">
-        <property name="text">
-         <string>mm</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="9">
-       <widget class="QLineEdit" name="txtTackHeight">
-        <property name="alignment">
-         <set>Qt::AlignHCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="5">
-       <widget class="QLineEdit" name="txtTriangBase">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignHCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="10">
-       <widget class="QLabel" name="lbmm_4">
-        <property name="text">
-         <string>mm</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="7">
-       <spacer>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::MinimumExpanding</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="0" column="9">
-       <widget class="QLineEdit" name="txtRake">
-        <property name="minimumSize">
-         <size>
-          <width>60</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignHCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="10">
-       <widget class="QLabel" name="lbmm_16">
-        <property name="text">
-         <string>mm</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="3" rowspan="3">
-       <widget class="Line" name="Line3">
-        <property name="frameShape">
-         <enum>QFrame::VLine</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Sunken</enum>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="10">
-       <widget class="QLabel" name="lbmm_3">
-        <property name="text">
-         <string>mm</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="4">
-       <widget class="QLabel" name="lbl3">
-        <property name="text">
-         <string>Distance tack to stem</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QLineEdit" name="txtDihedral"/>
       </item>
      </layout>
     </widget>
@@ -1147,8 +1060,8 @@
        </property>
        <property name="sizeHint" stdset="0">
         <size>
-         <width>441</width>
-         <height>27</height>
+         <width>20</width>
+         <height>20</height>
         </size>
        </property>
       </spacer>
