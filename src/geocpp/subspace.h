@@ -37,7 +37,7 @@ public:
     CSubSpace(const CSubSpace &s);
 
     CSubSpace intersect(const CSubSpace &) const;
-    CVector3d intersectionPoint(const CSubSpace &, const char *name) const;
+    CVector3d intersectionPoint(const CSubSpace &, const std::string &name) const;
 
     bool contains(const CVector3d &) const;
     int getdim() const;
