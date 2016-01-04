@@ -1142,7 +1142,6 @@ void CFormSailDef::slotSailCut()
 }
 
 
-
 /**
  *  Saves the parameters entered by the user in the CSailDef.
  *  compute and display ancillary sail data
