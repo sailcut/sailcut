@@ -328,7 +328,7 @@ bool CFormSailDef::check()
     /** Create four palettes for levels of warning. */
     QPalette palStd, palHi, palLo, palRel;
     palStd = txtLuffLen->palette();
-    palLo = palHi = palRel = palStd;
+    palLo = palHi = palRel = palStd;   // normal value
     palLo.setColor( QPalette::Text, Qt::magenta); // too low value
     palHi.setColor( QPalette::Text, Qt::red );    // too high value
     palRel.setColor( QPalette::Text, Qt::blue );  // related value to be checked
@@ -478,7 +478,7 @@ bool CFormSailDef::check()
     saildef->footR  = txtFootRound->text().toDouble();
     saildef->footRP = 50; // imposed value
 
-    /** Check  rake. */
+    /** Check luff rake. */
     saildef->rake   = txtRake->text().toDouble();
 
     switch (saildef->sailType )
@@ -529,12 +529,13 @@ bool CFormSailDef::check()
         break;
     }
 
-    /** Check luff length and round, gaff length. */
+    /** Check luff length and round, gaff length */
     L1 = (long)(saildef->LOA);
 
     switch (saildef->sailType )
     {
     case MAINSAIL:
+        /** Check luff against fore triangle */
         L1 = (long) (saildef->foreI);
         if (saildef->luffL > 3*L1)
         {
@@ -557,6 +558,7 @@ bool CFormSailDef::check()
         }
         txtLuffLen->setText(QString::number(saildef->luffL));
 
+        /** check luff round against luff length */
         L2 =(long) ((saildef->luffL ) / 10); // luff round limit
 
         if (saildef->luffR > L2)
@@ -590,7 +592,7 @@ bool CFormSailDef::check()
         else if (saildef->gaffL > L2)
         {
             txtGaffLen->setPalette(palHi);
-            saildef->gaffL= L2;
+            saildef->gaffL= L2-1;
             flag = false;
         }
         else
@@ -623,6 +625,7 @@ bool CFormSailDef::check()
         break;
 
     case JIB:
+        /** check luff against fore triangle */
         L1 =( long) (sqrt(((saildef->foreI - saildef->tackY) * (saildef->foreI - saildef->tackY)) + (saildef->foreJ * saildef->foreJ ))-1);
         if (saildef->luffL > L1)
         {
@@ -647,20 +650,20 @@ bool CFormSailDef::check()
         txtLuffLen->setText(QString::number(saildef->luffL) );
 
         L2 = (long) ((saildef->luffL )/ 10); // round limit
-        /** To acommodate code zero jib
+        /** To accommodate code zero jib
             the positive luff round limit is twice negative round limit
         */
         if (saildef->luffR > 2*L2)
         {
             flag=false;
             txtLuffRound->setPalette(palHi);
-            saildef->luffR = 2*L2;
+            saildef->luffR = 2*L2-1;
         }
         else if (saildef->luffR <-L2)
         {
             flag=false;
             txtLuffRound->setPalette(palLo);
-            saildef->luffR = -L2;
+            saildef->luffR = -L2+1;
         }
         else
         {
@@ -739,16 +742,28 @@ bool CFormSailDef::check()
     }
 
     /** Check leech length. */
-    L1 = (long) saildef->luffL;
-    L1 = L1 + (long) saildef->gaffL;
+    L1 = (long) saildef->luffL + (long) saildef->gaffL;
+    L2 = (long) (0.7 * saildef->footL);
 
-    if (saildef->leechL > 1.5*L1)
+    if (saildef->leechL > L1+L2)
+    {
+        flag = false;
+        txtLuffLen->setPalette(palLo);
+        txtGaffLen->setPalette(palLo);
+        txtFootLen->setPalette(palLo);
+        txtLeechLen->setPalette(palHi);
+        saildef->leechL = L1+0.6*L2;
+    }
+    /** leech old check
+    else if (saildef->leechL > 1.5*L1)
     {
         flag = false;
         txtLuffLen->setPalette(palRel);
         txtLeechLen->setPalette(palHi);
         saildef->leechL = 1.5*L1 -1;
     }
+    */
+
     else if (saildef->leechL < 0.5*L1)
     {
         flag = false;
@@ -786,36 +801,38 @@ bool CFormSailDef::check()
     case MAINSAIL:
         L2 = (long)(saildef->luffL + saildef->gaffL - saildef->leechL);
         if (L2 < (long)(0.1*(saildef->luffL)))
-            L2=(long)(0.1*(saildef->luffL));
+            L2=(long)(1+ 0.1*(saildef->luffL));
         break;
     case JIB:
         L2 = (long)(saildef->luffL  - saildef->leechL);
         if (L2 < (long)(0.1*(saildef->luffL)))
-            L2=(long)(0.1*(saildef->luffL));
+            L2=(long)(1 +0.1*(saildef->luffL));
         break;
     case WING:
         L2 = (long)(saildef->luffL  - saildef->leechL);
         if (L2 < (long)(0.1*(saildef->luffL)))
-            L2=(long)(0.1*(saildef->luffL));
+            L2=(long)(1+0.1*(saildef->luffL));
         break;
     }
 
-    if (saildef->footL > 1.5*(saildef->leechL) )
+    if (saildef->footL > saildef->leechL)
     {
         flag=false;
         txtLeechLen->setPalette( palRel );
         txtFootLen->setPalette( palHi );
-        saildef->footL = 1.5*(saildef->leechL) -1;
+        saildef->footL = (saildef->leechL) -1;
     }
     else if (saildef->footL < L2)
     {
         flag=false;
-        txtLeechLen->setPalette( palRel );
+        txtLuffLen->setPalette( palRel );
+        txtLeechLen->setPalette( palHi );
         txtFootLen->setPalette( palLo );
         saildef->footL = L2 +1;
     }
     else
     {
+        txtLuffLen->setPalette( palStd );
         txtLeechLen->setPalette( palStd );
         txtFootLen->setPalette( palStd );
     }
@@ -863,14 +880,14 @@ bool CFormSailDef::check()
     saildef->footHemW = txtFootHemWidth->text().toDouble();
     saildef->hemsW = txtHemsWidth->text().toDouble();
 
-    /** Check cloth width. */
-    if (saildef->clothW < saildef->leechL /100)
+    /** Check cloth width against Leech length to ensure min/max number of panels. */
+    if (saildef->clothW < saildef->leechL /100) // max 100 panels
     {
         saildef->clothW = saildef->leechL /100 +1;
         flag = false;
         txtClothWidth->setPalette(palLo);
     }
-    else if (saildef->clothW > saildef->leechL /3)
+    else if (saildef->clothW > saildef->leechL /3) // min 3 panels
     {
         saildef->clothW = saildef->leechL /3;
         flag = false;
@@ -1135,7 +1152,7 @@ void CFormSailDef::slotSailCut()
 void CFormSailDef::slotCompute()
 {
     // ckeck data
-    check();
+    flag = check();
     // calculate sail area and diagonal
     compute();
 
@@ -1144,6 +1161,11 @@ void CFormSailDef::slotCompute()
     QString txta, txtb, txtc, txtd, txte;
 
     CSailWorker worker(*saildef);
+    // warning if flag returned from check is NOK
+    if flag = false
+            txte= "\n SOME DIMENSIONS ARE OUT OF LIMITS, PLEASE FIX THEM"
+    else
+            txte= "\n Dimensions OK"
 
     txta = tr("Sail corners coordinates");
     txta = txta+"\n  "+tr("tack")+" \t x = "+QString::number(int(worker.tack.x())) +"\n\t y = "+QString::number(int(worker.tack.y())) +" mm" ;
