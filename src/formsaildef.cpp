@@ -1150,21 +1150,19 @@ void CFormSailDef::slotSailCut()
  */
 void CFormSailDef::slotCompute()
 {
-    // ckeck data
-    flag = check();
-    // calculate sail area and diagonal
-    compute();
-
-    // display ancillary data
     real h=0, w=0, w1=0;
     QString txta, txtb, txtc, txtd, txte;
 
-    CSailWorker worker(*saildef);
     // warning if flag returned from check is NOK
-    if flag = false
-            txte= "\n SOME DIMENSIONS ARE OUT OF LIMITS, PLEASE FIX THEM"
+    if (check())
+        txte = "\n Dimensions OK";
     else
-            txte= "\n Dimensions OK"
+        txte = "\n SOME DIMENSIONS ARE OUT OF LIMITS, PLEASE FIX THEM";
+
+    // calculate sail area and diagonal
+    compute();
+
+    CSailWorker worker(*saildef);
 
     txta = tr("Sail corners coordinates");
     txta = txta+"\n  "+tr("tack")+" \t x = "+QString::number(int(worker.tack.x())) +"\n\t y = "+QString::number(int(worker.tack.y())) +" mm" ;
