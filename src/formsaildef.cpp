@@ -579,9 +579,29 @@ bool CFormSailDef::check()
         }
         txtLuffRound->setText(QString::number(saildef->luffR) );
 
-        /** Check main sail gaff length. */
+        /** check main sail foot length against Luff*/
+        L2 = (long)(saildef->luffL);
+        if (saildef->footL > L2)
+        {
+            flag = false;
+            saildef->footL = L2;
+            txtFootLen->setPalette(palHi);
+        }
+        else if (saildef->footL < int(L2/10))
+        {
+            flag = false;
+            saildef->footL = 1+ int(L2/10);
+            txtFootLen->setPalette(palLo);
+        }
+        else
+        {
+            txtFootLen->setPalette(palStd);
+        }
+        txtFootLen->setText(QString::number(saildef->footL));
+
+        /** Check main sail gaff length against foot */
         L1 =(long) (5);
-        L2 =(long) (6 * saildef->luffL);
+        L2 =(long) (saildef->footL);
 
         if (saildef->gaffL < L1)
         {
@@ -592,7 +612,7 @@ bool CFormSailDef::check()
         else if (saildef->gaffL > L2)
         {
             txtGaffLen->setPalette(palHi);
-            saildef->gaffL= L2-1;
+            saildef->gaffL= L2;
             flag = false;
         }
         else
@@ -743,7 +763,7 @@ bool CFormSailDef::check()
 
     /** Check leech length. */
     L1 = (long) saildef->luffL + (long) saildef->gaffL;
-    L2 = (long) (0.7 * saildef->footL);
+    L2 = (long) (int(0.5 * saildef->footL));
 
     if (saildef->leechL > L1+L2)
     {
@@ -752,7 +772,7 @@ bool CFormSailDef::check()
         txtGaffLen->setPalette(palLo);
         txtFootLen->setPalette(palLo);
         txtLeechLen->setPalette(palHi);
-        saildef->leechL = L1+0.6*L2;
+        saildef->leechL = L1+L2;
     }
     /** leech old check
     else if (saildef->leechL > 1.5*L1)
@@ -764,12 +784,12 @@ bool CFormSailDef::check()
     }
     */
 
-    else if (saildef->leechL < 0.5*L1)
+    else if (saildef->leechL < int(0.5*L1))
     {
         flag = false;
         txtLuffLen->setPalette(palRel);
         txtLeechLen->setPalette(palLo);
-        saildef->leechL = 0.5*L1 +1;
+        saildef->leechL = 1+ int(0.5*L1);
     }
     else
     {
@@ -779,14 +799,22 @@ bool CFormSailDef::check()
     txtLeechLen->setText(QString::number(saildef->leechL));
 
     /** Check leech round. */
-    L1 = (long) (saildef->leechL / 10);
+    L1 = (long) int(saildef->leechL / 10);
+    L2 = (long) int(saildef->footL /5);
     if (saildef->leechR > 3*L1)
     {
         flag = false;
         txtLeechRound->setPalette(palHi);
         txtLeechRound->setText(QString::number(3*L1) );
     }
-    else if (saildef->leechR <-L1)
+    else if (saildef->leechR <-L2)
+    {
+        flag = false;
+        txtLeechRound->setPalette(palLo);
+        txtLeechRound->setText(QString::number(1-L2) );
+    }
+
+    if (saildef->leechR <-L1)
     {
         flag = false;
         txtLeechRound->setPalette(palLo);
@@ -883,20 +911,23 @@ bool CFormSailDef::check()
     /** Check cloth width against Leech length to ensure min/max number of panels. */
     if (saildef->clothW < saildef->leechL /100) // max 100 panels
     {
-        saildef->clothW = saildef->leechL /100 +1;
+        saildef->clothW = 1+ int(saildef->leechL /100);
         flag = false;
         txtClothWidth->setPalette(palLo);
     }
     else if (saildef->clothW > saildef->leechL /3) // min 3 panels
     {
-        saildef->clothW = saildef->leechL /3;
+        saildef->clothW = int(saildef->leechL /3 -1);
         flag = false;
         txtClothWidth->setPalette(palHi);
     }
-
+    else
+    {
+        txtClothWidth->setPalette(palStd);
+    }
     txtClothWidth->setText( QString::number(saildef->clothW));
 
-    L1 = (long)(5+ saildef->clothW / 10);
+    L1 = (long)(5+ int(saildef->clothW / 10));
 
     /** Check seams width function of cloth width. */
     if (saildef->seamW > L1)
@@ -1165,10 +1196,10 @@ void CFormSailDef::slotCompute()
     CSailWorker worker(*saildef);
 
     txta = tr("Sail corners coordinates");
-    txta = txta+"\n  "+tr("tack")+" \t x = "+QString::number(int(worker.tack.x())) +"\n\t y = "+QString::number(int(worker.tack.y())) +" mm" ;
+    txta = txta+"\n  "+tr("tack")+" \t x = "+QString::number(int(worker.tack.x())) +"\n\t y = "+QString::number(int(worker.tack.y())) +" mm";
     txta = txta+"\n  "+tr("clew")+" \t x = "+QString::number(int(worker.clew.x())) +"\n\t y = "+QString::number(int(worker.clew.y())) +" mm";
     txta = txta+"\n  "+tr("head")+" \t x = "+QString::number(int(worker.head.x())) +"\n\t y = "+QString::number(int(worker.head.y())) +" mm";
-    txta = txta+"\n  "+tr("peak")+" \t x = "+QString::number(int(worker.peak.x())) +"\n\t y = "+QString::number(int(worker.peak.y())) +" mm ";
+    txta = txta+"\n  "+tr("peak")+" \t x = "+QString::number(int(worker.peak.x())) +"\n\t y = "+QString::number(int(worker.peak.y())) +" mm";
 
     w = worker.SailLP();
     txtb = "\nLP = " +QString::number(int(w)) +" mm ";
