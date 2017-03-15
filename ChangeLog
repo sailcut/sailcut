@@ -1,3 +1,7 @@
+
+Sailcut CAD 1.4.1
+ * improved - Computed area is displayed with 2 more digits to show down to cm2
+ 
 Sailcut CAD 1.4.0
  * improved - Switch to a Single Document Interface.
  * improved - Open online Sailcut CAD Handbook if it does not exist locally.

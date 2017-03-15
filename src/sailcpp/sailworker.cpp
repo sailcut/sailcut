@@ -3267,8 +3267,8 @@ real CSailWorker::Area()
     real surface = CVector3d::crossProduct(luffV, footV).length() / 2;
     surface = surface + CVector3d::crossProduct(leechV, gaffV).length() / 2;
     surface = surface + .75*(luffL*luffR + footL*footR + leechL*leechR + gaffL*gaffR);
-
-    return ( .01 * floor(surface /10000) );
+    /// round down the sail area to cm2 and return it in m2
+    return ( .0001 * floor(surface/100) );
 }
 
 
