@@ -1,3 +1,4 @@
+QT -= gui
 QT += testlib
 CONFIG -= app_bundle
 CONFIG += testcase
