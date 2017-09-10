@@ -145,7 +145,7 @@ QMAKE_EXTRA_COMPILERS += updateqm
 
 # Installation
 QMAKE_TARGET_BUNDLE_PREFIX="com.sailcut"
-QMAKE_TARGET_COPYRIGHT="Copyright (c) 1993-2015 Robert & Jeremy Laine"
+QMAKE_TARGET_COPYRIGHT="Copyright (c) 1993-2017 Robert & Jeremy Laine"
 QMAKE_TARGET_PRODUCT="Sailcut CAD"
 mac {
     ICON = ../icons/sailcut.icns
