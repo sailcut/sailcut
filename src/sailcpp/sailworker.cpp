@@ -3077,13 +3077,10 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
 
             // fill left side points which are all on the mitre
             lay[npanel-1].left.fill(p1[npanel-1], p1[npanel]);
-            if (qFuzzyCompare(p1[npanel-1], p1[npanel])) { // clew limit
-                for ( k = 0; k < npl; k++ )
-                    lay[npanel-1].left[k] = lay[npanel-1].left[k];
-            }
-            else
+            if (!qFuzzyCompare(p1[npanel-1], p1[npanel])) { // clew limit
                 for ( k = 0; k < npl; k++ )
                     lay[npanel-1].left[k] = MitreIntersect(lay[npanel-1].left[k], leechV);
+            }
 
             // fill bottom points
             lay[npanel-1].bottom.fill(lay[npanel-1].left[0], lay[npanel-1].right[0]);
