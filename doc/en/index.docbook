@@ -33,7 +33,7 @@
 <sect2>
 <title> How to obtain Sailcut CAD? </title>
 
-<para>You can download the latest version of Sailcut CAD from the project&apos;s home page at <ulink url="http://www.sailcut.com/"/>.</para>
+<para>You can download the latest version of Sailcut CAD from the project's home page at <ulink url="http://www.sailcut.com/"/>.</para>
 
 </sect2>
 
@@ -203,11 +203,11 @@
 </listitem>
 
 <listitem>
-<para>The <guilabel>Vertical cut</guilabel> layout places the panels parrallel to the straight line joining the peak to the clew of the sail. This is the favorite layout for the old timer&apos;s main sail. </para>
+<para>The <guilabel>Vertical cut</guilabel> layout places the panels parrallel to the straight line joining the peak to the clew of the sail. This is the favorite layout for the old timer's main sail. </para>
 </listitem>
 
 <listitem>
-<para>The <guilabel>Mitre cut</guilabel> layout is the favorite for the old timer&apos;s genoa. The sail is divided in two parts by a line joining the clew to the mid point on the luff and the panels organised to be perpendicular to the foot in the lower part of the sail and perpendicular to the leech in its upper part. </para>
+<para>The <guilabel>Mitre cut</guilabel> layout is the favorite for the old timer's genoa. The sail is divided in two parts by a line joining the clew to the mid point on the luff and the panels organised to be perpendicular to the foot in the lower part of the sail and perpendicular to the leech in its upper part. </para>
 </listitem>
 
 <listitem>
@@ -268,7 +268,7 @@
 
 <para>You can access the mould dialog from the <guimenuitem>Mould</guimenuitem> entry of the <guimenu>View</guimenu> menu. </para>
 
-<para>The depth and the shape of the sail can be entered at three levels located at the bottom (foot) the middle (sail&apos;s maximum depth height can be adjusted) and at the top of the sail. </para>
+<para>The depth and the shape of the sail can be entered at three levels located at the bottom (foot) the middle (sail's maximum depth height can be adjusted) and at the top of the sail. </para>
 
 <para>The position of the point of maximum depth of a profile is shown under the depth value. This position which depend of the luff and leech shape factors is expressed in relation to the cord of the profile. For exemple: 0.34 means that the point of maximum depth is at 34% of the local cord counting from the luff end of the profile. </para>
 
@@ -276,7 +276,7 @@
 
 <para>Under the luff shape factor, the corresponding value of the angle of entry of the profile is provided in degree. The angle under the leech shape factor is the exit angle of the profile. These angles are refered to the local cord and if you want to know for exemple the real entry angle of a profile with respect to the axis of the boat you have to add to the entry angle the twist at the level of the profile plus the sheeting angle. </para>
 
-<para>The vertical position of the sail&apos;s maximum depth profile is controled by the vertical slide bar to the right of the left vertical frame. </para>
+<para>The vertical position of the sail's maximum depth profile is controled by the vertical slide bar to the right of the left vertical frame. </para>
 
 <para>In order to avoid that the leech makes a hook in the upper part of the sail when the wind increases, it is recommended that the Top profile luff shape value be higher than that of the middle profile and that the leech shape value at the top be lower than the middle value. </para>
 
@@ -307,7 +307,7 @@
 <sect2>
 <title> Sail panels development </title>
 
-<para>The developed sail is display by clicking on the <guilabel>Development</guilabel> tab from Sailcut CAD&apos;s main window. This presents you with a view of the developed (flat) panels of the sail. The view controls are the same as those of the main window. The blue line represents the edge of the finished panel (draw line) and the red line represents the outer edge taking into account the seam and hems width allowance (cut line). </para>
+<para>The developed sail is display by clicking on the <guilabel>Development</guilabel> tab from Sailcut CAD's main window. This presents you with a view of the developed (flat) panels of the sail. The view controls are the same as those of the main window. The blue line represents the edge of the finished panel (draw line) and the red line represents the outer edge taking into account the seam and hems width allowance (cut line). </para>
 
 <para>You can export the points which define the edges of the developed panels with the draw line and the cut line to the following file formats from the <guisubmenu>Export development</guisubmenu> submenu of the <guimenu>File</guimenu> menu: </para>
 
@@ -341,7 +341,7 @@
 
 <para>Once you have customised your sail, you can save it to a file by using the <guimenuitem>Save</guimenuitem> or <guimenuitem>Save As</guimenuitem> entries in the <guimenu>File</guimenu>. You can reload it by using the <guimenuitem>Open</guimenuitem> entry of the <guimenu>File</guimenu> next time you want to work on it. </para>
 
-<para>Both the sail&apos;s dimensions and the parameters of the mould are saved simultanously. This feature allows you to reload a sail and reuse its mould even if you change the dimensions of the sail to fit a new rig. </para>
+<para>Both the sail's dimensions and the parameters of the mould are saved simultanously. This feature allows you to reload a sail and reuse its mould even if you change the dimensions of the sail to fit a new rig. </para>
 
 <para>Sailcut CAD uses XML files to store the sail data. These files are plain text so they can easily be viewed using your favourite text editor.</para>
 
@@ -350,7 +350,7 @@
 <sect2>
 <title> Exporting 3D sails </title>
 
-<para>In addition to Sailcut CAD&apos;s native file format, it is possible to export all the 3D points located on the edges and seams of the panels that make up a sail. You can export the three dimensional sail to the following file formats from the <guisubmenu>Export 3D sail</guisubmenu> submenu of the <guimenu>File</guimenu> menu:</para>
+<para>In addition to Sailcut CAD's native file format, it is possible to export all the 3D points located on the edges and seams of the panels that make up a sail. You can export the three dimensional sail to the following file formats from the <guisubmenu>Export 3D sail</guisubmenu> submenu of the <guimenu>File</guimenu> menu:</para>
 
 <itemizedlist>
 
@@ -706,14 +706,14 @@
 
 <para>The following equation is used to describe the second derivative of the profile function of X: </para>
 
-<programlisting>Z&apos;&apos;= K*[-A*(1-X)^AV - AR*X]</programlisting> <para>After a first integration it gives the slope of the profile: </para>
+<programlisting>Z''= K*[-A*(1-X)^AV - AR*X]</programlisting> <para>After a first integration it gives the slope of the profile: </para>
 
-<programlisting>Z&apos;= K*[A*(1 - X)^(AV + 1) / (AV+1) - AR/2*X^2 + C]</programlisting> <para>Finally after a second integration the equation giving the depth at any point is: </para>
+<programlisting>Z'= K*[A*(1 - X)^(AV + 1) / (AV+1) - AR/2*X^2 + C]</programlisting> <para>Finally after a second integration the equation giving the depth at any point is: </para>
 
 <programlisting>Z = K*[-A*(1-X)^(AV+2) / (( AV+2)*(AV+1)) - AR/6*X^3 + C*X + B]</programlisting> <para>To meet the profile end conditions (X=0, Z=0) and (X=1, Z=0) the constants B and C are: </para>
 
 <programlisting>B = A / ((AV + 2) * (AV + 1))
-C = AR / 6 - B</programlisting> <para>The maximum depth is obtained when the slope Z&apos; is equal to zero, this allow to calculate K such that the depth at that point is the one desired.</para>
+C = AR / 6 - B</programlisting> <para>The maximum depth is obtained when the slope Z' is equal to zero, this allow to calculate K such that the depth at that point is the one desired.</para>
 
 <para>The factors AV and AR give a measure of the camber at the leading edge (AV) and trailing edge (AR). Together with the maximum depth value these factors are sufficient to describe the profile of the sail at any height. </para>
 
@@ -727,7 +727,7 @@ K = 2.94
 A = 2.250
 B = 0.054
 C =-0.050
-curvature = z&quot; / (1+ z&apos;*z&apos;)^3/2 
+curvature = z&quot; / (1+ z'*z')^3/2 
 </programlisting> 
 
 <para>
@@ -737,7 +737,7 @@ curvature = z&quot; / (1+ z&apos;*z&apos;)^3/2
 
 <colspec align="center" colname="col0"/> <colspec align="center" colname="col1"/> <colspec align="center" colname="col2"/> <colspec align="center" colname="col3"/> <colspec align="center" colname="col4"/> <tbody>
 
-<row><entry align="center" valign="top"><para>x</para></entry><entry align="center" valign="top"><para>z&quot;</para></entry> <entry align="center" valign="top"><para>z&apos;</para></entry> <entry align="center" valign="top"><para>z</para></entry> <entry align="center" valign="top"><para>curvature</para></entry></row>
+<row><entry align="center" valign="top"><para>x</para></entry><entry align="center" valign="top"><para>z&quot;</para></entry> <entry align="center" valign="top"><para>z'</para></entry> <entry align="center" valign="top"><para>z</para></entry> <entry align="center" valign="top"><para>curvature</para></entry></row>
 
 <row><entry align="center" valign="top"><para>0.0</para></entry> <entry align="center" valign="top"><para>-6.615</para></entry> <entry align="center" valign="top"><para>0.955</para></entry> <entry align="center" valign="top"><para>0.00</para></entry> <entry align="center" valign="top"><para>-2.503</para></entry></row>
 
@@ -795,7 +795,7 @@ curvature = z&quot; / (1+ z&apos;*z&apos;)^3/2
 <sect2>
 <title>I think I found a bug, what should I do?</title>
 
-<para>Sailcut CAD is constantly under development and feedback from users is very welcome! If you think you found bug, visit Sailcut&apos;s homepage , you will find instructions in the &quot;Reporting a Bug&quot; section. </para>
+<para>Sailcut CAD is constantly under development and feedback from users is very welcome! If you think you found bug, visit Sailcut's homepage , you will find instructions in the &quot;Reporting a Bug&quot; section. </para>
 
 </sect2>
 

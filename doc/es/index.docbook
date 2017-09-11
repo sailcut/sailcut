@@ -324,14 +324,14 @@ by CFD tools.</para>
 <para>The &quot;Vertical cut&quot; layout places the panels 
 parrallel to the straight line joining the peak to the clew 
 of the sail. This is the favorite layout for the old 
-timer&apos;s main sail.</para>
+timer's main sail.</para>
 
 </listitem>
 
 <listitem>
 
 <para>The &quot;Mitre cut&quot; layout is the favorite for 
-the old timer&apos;s genoa. The sail is divided in two 
+the old timer's genoa. The sail is divided in two 
 parts by a line joining the clew to the mid point on the 
 luff and the panels organised to be perpendicular to the 
 foot in the lower part of the sail and perpendicular to the 
@@ -534,7 +534,7 @@ and out.</para>
 <title>Sail panels development</title>
 
 <para>The developed sail is display by clicking on the 
-&quot;Development&quot; tab from Sailcut CAD&apos;s main window. 
+&quot;Development&quot; tab from Sailcut CAD's main window. 
 This presents you with a view of the developed (flat) panels of 
 the sail. The view controls are the same as those of the main 
 window. The blue line represents the edge of the finished panel 
@@ -590,7 +590,7 @@ details)</para>
 <para>Once you have customised you sail, you can save it to a 
 file (File-&gt;Save or File-&gt;Save As) and load it 
 (File-&gt;Open) next time you want to work on it. Both the 
-sail&apos;s dimensions and the parameters of the mould are 
+sail's dimensions and the parameters of the mould are 
 saved.</para>
 
 <para>Sailcut CAD uses XML files to store the sail data. These 
@@ -603,7 +603,7 @@ favourite text editor.</para>
 
 <title>Exporting 3D sails</title>
 
-<para>In addition to Sailcut CAD&apos;s native file format, it is possible to export all the 3D points located on the edges and seams of the panels that make up a sail. You can export the three dimensional sail to the following file formats from the <guisubmenu>Export 3D sail</guisubmenu> submenu of the <guimenu>File</guimenu> menu:</para>
+<para>In addition to Sailcut CAD's native file format, it is possible to export all the 3D points located on the edges and seams of the panels that make up a sail. You can export the three dimensional sail to the following file formats from the <guisubmenu>Export 3D sail</guisubmenu> submenu of the <guimenu>File</guimenu> menu:</para>
 
 <itemizedlist>
 
