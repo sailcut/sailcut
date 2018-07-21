@@ -148,7 +148,7 @@ CWidgetProfile::CWidgetProfile( QWidget *parent, CProfile *ptr,
 
     spinLuff = new QSpinBox( grpProfile );
     spinLuff->setMaximum( 18 );
-    spinLuff->setMinimum( 1 );
+    spinLuff->setMinimum( 0 );
     spinLuff->setValue( 1 );
     spinBoxesLayout->addWidget( spinLuff );
     QSpacerItem* spacer = new QSpacerItem( 20, 20, QSizePolicy::MinimumExpanding, QSizePolicy::Minimum );
@@ -160,7 +160,7 @@ CWidgetProfile::CWidgetProfile( QWidget *parent, CProfile *ptr,
     spinBoxesLayout->addWidget( lblDepth );
 
     spinDepth = new QSpinBox( grpProfile );
-    spinDepth->setMaximum( 22 );
+    spinDepth->setMaximum( 40 );
     spinDepth->setMinimum( 1 );
     spinDepth->setValue( 10 );
     spinBoxesLayout->addWidget( spinDepth );

@@ -1063,29 +1063,11 @@ bool CFormSailDef::check()
         txtSheetAngle->setPalette( palHi);
         saildef->sheetDeg = 45;
     }
-    else
-    {
-        txtSheetAngle->setPalette( palStd);
-    }
-
-    switch (saildef->sailType ) // set lower limit for sheeting main or jib
-    {
-    case MAINSAIL:
-        L2 = 0;
-        break;
-    case JIB:
-        L2 = 5;
-        break;
-    case WING:
-        L2 = 0;
-        break;
-    }
-
-    if (saildef->sheetDeg < L2)
+    else if (saildef->sheetDeg < 0)
     {
         flag=false;
         txtSheetAngle->setPalette( palLo);
-        saildef->sheetDeg = L2;
+        saildef->sheetDeg = 0;
     }
     else
     {
