@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 1993-2017 Robert & Jeremy Laine
+ * Copyright (C) 1993-2018 Robert & Jeremy Laine
  * See AUTHORS file for a full list of contributors.
  *
  * This program is free software; you can redistribute it and/or modify
