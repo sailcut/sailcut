@@ -21,6 +21,8 @@
 #include "formhulldef.h"
 #include "sailcpp/hullworker.h"
 
+#include <QAction>
+
 /**
  * Constructs a window to display a hull.
  *

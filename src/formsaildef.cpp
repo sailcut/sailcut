@@ -19,6 +19,7 @@
 
 #include <cmath>
 
+#include <QButtonGroup>
 #include <QLabel>
 #include <QMessageBox>
 #include <QRadioButton>

@@ -21,6 +21,7 @@
 #include "formrigdef.h"
 #include "sailcpp/rigworker.h"
 
+#include <QAction>
 #include <QLayout>
 
 /**
