@@ -5,16 +5,17 @@ import os
 import subprocess
 
 def inkscape(input_svg, output_png, size):
-    subprocess.check_call(['inkscape', '-z',
-        '--file=' + input_svg,
-        '--export-png=' + output_png,
+    subprocess.check_call(['inkscape',
+        '--batch-process',
+        '--export-filename=' + output_png,
         '--export-width=%d' % size,
-        '--export-height=%d' % size])
+        '--export-height=%d' % size,
+        input_svg])
 
 def generate_ico(input_svg, output_path):
     pngs = []
     for size in [256, 48, 32, 16]:
-        output_png = output_path + ('.%d' % size)
+        output_png = output_path + ('.%d.png' % size)
         inkscape(input_svg, output_png, size)
         pngs.append(output_png)
     subprocess.check_call(['icotool', '-c', '-o', output_path] + pngs)
@@ -23,7 +24,7 @@ def generate_ico(input_svg, output_path):
 def generate_icns(input_svg, output_path):
     pngs = []
     for size in [512, 256, 128, 32, 16]:
-        output_png = output_path + ('.%d' % size)
+        output_png = output_path + ('.%d.png' % size)
         inkscape(input_svg, output_png, size)
         pngs.append(output_png)
     subprocess.check_call(['png2icns', output_path] + pngs)
