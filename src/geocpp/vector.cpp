@@ -69,7 +69,7 @@ CVector3d CVector3d::crossProduct(const CVector3d &v1, const CVector3d &v2)
  */
 real CVector3d::dotProduct(const CVector3d &v1, const CVector3d &v2)
 {
-    return v1.m_x * v2.m_x + v1.m_y * v2.m_y + v1.m_z * v1.m_z;
+    return v1.m_x * v2.m_x + v1.m_y * v2.m_y + v1.m_z * v2.m_z;
 }
 
 
