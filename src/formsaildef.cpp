@@ -580,7 +580,7 @@ bool CFormSailDef::check()
         txtLuffRound->setText(QString::number(saildef->luffR) );
 
         /** check main sail foot length against Luff*/
-        L2 = (long)(saildef->luffL);
+        L2 = (long)(saildef->luffL) * 1.5;
         if (saildef->footL > L2)
         {
             flag = false;
