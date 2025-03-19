@@ -194,7 +194,7 @@ void CBoatElementWidget::slotReload()
         }
         signalUpdate(element);
     }
-    catch (read_error e)
+    catch (read_error const&)
     {
         CSailDefXmlWriter::readErrorMessage();
     }

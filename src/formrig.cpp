@@ -65,7 +65,7 @@ bool CFormRig::read(const QString &filename)
     try {
         setDef(writer.read(filename));
         return true;
-    } catch (read_error e) {
+    } catch (read_error const&) {
         return false;
     }
 }
@@ -76,7 +76,7 @@ bool CFormRig::write(const QString &filename)
     try {
         writer.write(def, filename);
         return true;
-    } catch (write_error e) {
+    } catch (write_error const&) {
         return false;
     }
 }

@@ -109,7 +109,7 @@ public:
         if (!newfilename.isNull()) {
             try {
                 dest = read(newfilename);
-            } catch (read_error e) {
+            } catch (read_error const&) {
                 readErrorMessage();
                 return QString();
             }
@@ -143,7 +143,7 @@ public:
         if (!newfilename.isNull()) {
             try {
                 write(obj, newfilename);
-            } catch (write_error e) {
+            } catch (write_error const&) {
                 writeErrorMessage();
                 return QString();
             }
