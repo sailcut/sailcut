@@ -369,7 +369,7 @@ CVector3d CSailPainter::textSize(const QStringList &lst)
     // calculate text height and width by scanning the list of lines
     for (i = 0; i < lst.size(); i++)
     {
-        real lineWidth = fontMetrics().width(lst.at(i));
+        real lineWidth = fontMetrics().boundingRect(lst.at(i)).width();
         if (lineWidth > v.x())
             v.setX(lineWidth);
         v.setY(v.y() + fontMetrics().height());
@@ -399,9 +399,8 @@ CTextPainter::CTextPainter(QPaintDevice *pd)
  */
 void CTextPainter::printReset()
 {
-    QFontMetrics fm(font());
-    xPos = fm.width("X") * 4;
-    yPos = fm.height() * 2;
+    xPos = fontMetrics().maxWidth() * 4;
+    yPos = fontMetrics().height() * 2;
 }
 
 /** Print a header banner (used at the top of a for example).
@@ -410,14 +409,14 @@ void CTextPainter::printReset()
  */
 void CTextPainter::printHeader(const QString title)
 {
-    QFontMetrics fm(font());
     QString btitle = "  " + title + "  ";
     drawText(int(xPos), int(yPos), btitle);
 
     // draw box around header
-    drawRect(int(xPos), int(yPos - fm.height()), fm.width(btitle), int(1.5*fm.height()));
+    const QRect textBox = fontMetrics().boundingRect(btitle);
+    drawRect(xPos, yPos - textBox.height(), textBox.width(), 1.5 * textBox.height());
 
-    yPos += 1.5 * fm.height();
+    yPos += 1.5 * textBox.height();
 }
 
 
@@ -427,11 +426,10 @@ void CTextPainter::printHeader(const QString title)
  */
 void CTextPainter::printDataSection(const QString title)
 {
-    QFontMetrics fm(font());
-    yPos += 0.5 * fm.height();
+    yPos += 0.5 * fontMetrics().height();
     drawText(int(xPos), int(yPos), title);
 
-    yPos += 1 * fm.height();
+    yPos += fontMetrics().height();
 }
 
 
@@ -444,19 +442,17 @@ void CTextPainter::printDataSection(const QString title)
  */
 void CTextPainter::printDataLine(const QString title, const QString data0, const QString data1, const QString data2)
 {
-    QFontMetrics fm(font());
-
-    unsigned int x1 = int(xPos + 2  * fm.width("X"));
-    unsigned int x2 = int(x1   + 26 * fm.width("X"));
-    unsigned int x3 = int(x2   + 13 * fm.width("X"));
-    unsigned int x4 = int(x3   + 13 * fm.width("X"));
+    unsigned int x1 = int(xPos + 2  * fontMetrics().maxWidth());
+    unsigned int x2 = int(x1   + 26 * fontMetrics().maxWidth());
+    unsigned int x3 = int(x2   + 13 * fontMetrics().maxWidth());
+    unsigned int x4 = int(x3   + 13 * fontMetrics().maxWidth());
 
     drawText(x1, int(yPos), title);
     drawText(x2, int(yPos), data0);
     drawText(x3, int(yPos), data1);
     drawText(x4, int(yPos), data2);
 
-    yPos += .8 * fm.height();
+    yPos += .8 * fontMetrics().height();
 }
 
 

@@ -59,8 +59,6 @@ CPrintLabel::CPrintLabel(CFormPrint *frm)
  */
 void CPrintLabel::paintEvent(QPaintEvent *)
 {
-    form->printDevice.pageRect();
-
     // erase viewport
     CTextPainter painter(this);
     QRect rect = painter.viewport();
@@ -76,7 +74,7 @@ void CPrintLabel::paintEvent(QPaintEvent *)
  */
 void CPrintLabel::resizeEvent (QResizeEvent *)
 {
-    QRect print = form->printDevice.pageRect();
+    QRectF print = form->printDevice.pageRect(QPrinter::Millimeter);
     if (resizing || !print.width() || !print.height() || !widthMM() || !heightMM())
         return;
 
