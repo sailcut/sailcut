@@ -19,6 +19,10 @@
 
 #include "saildisp.h"
 
+const real ZOOM_FACTOR = 2;
+const real ZOOM_MIN = 0.8;
+const real ZOOM_MAX = pow(ZOOM_FACTOR, 8) * ZOOM_MIN;
+
 /*****************************************************************************
 
                           CSailDisp class
@@ -30,10 +34,10 @@
 CSailDisp::CSailDisp()
     : m_azimuth(0)
     , m_elevation(0)
+    , m_zoom(ZOOM_MIN)
 {
     // initialise data
     drawLabels = false;
-    m_zoom = 0.8;
 }
 
 
@@ -67,7 +71,7 @@ CRect3d CSailDisp::logicalRect() const
 void CSailDisp::resetZoomCenter()
 {
     m_center = baseRect.center();
-    m_zoom = 0.8;
+    m_zoom = ZOOM_MIN;
 }
 
 
@@ -155,27 +159,27 @@ real CSailDisp::zoom() const
 }
 
 
-/** Sets the zoom factor
+/** Sets the zoom factor.
  *
  * @param zoom
  */
 void CSailDisp::setZoom(real zoom)
 {
-    m_zoom = zoom;
+    m_zoom = max(ZOOM_MIN, min(zoom, ZOOM_MAX));
 }
 
 
-/** Zooms IN by a factor 2.
+/** Zooms IN by a factor ZOOM_FACTOR.
  */
 void CSailDisp::zoomIn()
 {
-    setZoom(m_zoom * 2);
+    setZoom(m_zoom * ZOOM_FACTOR);
 }
 
 
-/** Zooms OUT by a factor 2.
+/** Zooms OUT by a factor ZOOM_FACTOR.
  */
 void CSailDisp::zoomOut()
 {
-    setZoom(m_zoom / 2);
+    setZoom(m_zoom / ZOOM_FACTOR);
 }
