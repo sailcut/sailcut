@@ -34,7 +34,6 @@ class CSubSpace
 public:
     CSubSpace();
     CSubSpace(const CVector3d &pi, const CMatrix &mi, subspaceflags_t createflags);
-    CSubSpace(const CSubSpace &s);
 
     CSubSpace intersect(const CSubSpace &) const;
     CVector3d intersectionPoint(const CSubSpace &, const std::string &name) const;
