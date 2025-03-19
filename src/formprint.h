@@ -22,6 +22,7 @@
 
 #include <QDialog>
 #include <QLabel>
+#include <QPageLayout>
 #include <QPrinter>
 
 class CFormPrint;
@@ -75,7 +76,7 @@ class CFormPrint : public QDialog
     Q_OBJECT
 
 public:
-    CFormPrint(const CPrinter *printer, enum QPrinter::Orientation orientation);
+    CFormPrint(const CPrinter *printer, QPageLayout::Orientation orientation);
 
 public slots:
     void slotPrint();

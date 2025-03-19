@@ -360,7 +360,7 @@ void CFormSail::slotMould()
 void CFormSail::slotPrintData()
 {
     CSailDataPrinter prt(def);
-    CFormPrint(&prt, QPrinter::Portrait).exec();
+    CFormPrint(&prt, QPageLayout::Portrait).exec();
 }
 
 
@@ -371,7 +371,7 @@ void CFormSail::slotPrintData()
 void CFormSail::slotPrintDev()
 {
     CSailDevelPrinter prt(flatsail);
-    CFormPrint(&prt, QPrinter::Landscape).exec();
+    CFormPrint(&prt, QPageLayout::Landscape).exec();
 }
 
 
@@ -381,7 +381,7 @@ void CFormSail::slotPrintDev()
 void CFormSail::slotPrintDwg()
 {
     CSailDrawingPrinter prt(sail);
-    CFormPrint(&prt, QPrinter::Portrait).exec();
+    CFormPrint(&prt, QPageLayout::Portrait).exec();
 }
 
 

@@ -44,9 +44,7 @@ CPrintLabel::CPrintLabel(CFormPrint *frm)
     setPalette( pal );
 
     // set the initial size
-    QRect print = form->printDevice.pageRect();
-    real rprint = real(print.width()) / real(print.height());
-    if (rprint > 1)
+    if (form->printDevice.pageLayout().orientation() == QPageLayout::Landscape)
     {
         setMinimumSize( QSize( 375, 250 ) );
     }
@@ -143,11 +141,11 @@ void CPrintLabel::slotScale(double value)
  * @param engine
  * @param orientation
  */
-CFormPrint::CFormPrint(const CPrinter *engine, enum QPrinter::Orientation orientation)
+CFormPrint::CFormPrint(const CPrinter *engine, QPageLayout::Orientation orientation)
         : printEngine(engine), printFontSize(10)
 {
     // initialise printer
-    printDevice.setOrientation(orientation);
+    printDevice.setPageOrientation(orientation);
     printDevice.setFullPage(false);
 
     QVBoxLayout *layout = new QVBoxLayout(this);
