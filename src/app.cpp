@@ -272,7 +272,7 @@ void CSailApp::readPrefs()
             setWindowSize(QSize(newPrefs.mainWindowWidth, newPrefs.mainWindowHeight));
         }
     }
-    catch (read_error e)
+    catch (read_error const&)
     {
         cout << "CSailApp::readPrefs : could not read preferences" << endl;
     }
@@ -288,7 +288,7 @@ void CSailApp::writePrefs()
     {
         CPrefsXmlWriter().write(prefs, prefsfile);
     }
-    catch (write_error e)
+    catch (write_error const&)
     {
         cout << "CSailApp::writePrefs : could not write preferences" << endl;
     }

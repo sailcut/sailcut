@@ -452,7 +452,7 @@ void CSailDoc::get
         get(e, d.footHemW, "footHemW");
 
     }
-    catch (doc_element_error e)
+    catch (doc_element_error const&)
     {
         /** catch read error to avoid killing the program */
     }
@@ -524,7 +524,7 @@ void CSailDoc::get
     {
         get(e, g.type, "type");
     }
-    catch (doc_element_error e)
+    catch (doc_element_error const&)
     {
         // to avoid killing the program
     }
@@ -613,7 +613,7 @@ void CSailDoc::get
         get(e, p.mainWindowHeight, "mainWindowHeight");
         get(e, p.mainWindowWidth, "mainWindowWidth");
     }
-    catch (doc_element_error e)
+    catch (doc_element_error const&)
     {
         // we do not let this kill the program
     }
