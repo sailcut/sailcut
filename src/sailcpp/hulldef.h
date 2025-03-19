@@ -35,8 +35,6 @@ class CHullDef
 public:
     CHullDef();
 
-    CHullDef & operator=( const CHullDef & );
-
     /** hull ID name */
     string hullID;
 
@@ -93,7 +91,6 @@ public:
     int TopPlankA;
     /** lower plank angle in degree from horizontal */
     int LowPlankA;
-        //
 };
 
 #endif
