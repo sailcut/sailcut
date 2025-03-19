@@ -42,8 +42,6 @@ class CSailDef
 public:
     CSailDef();
 
-    CSailDef & operator=( const CSailDef & );
-
     // member variables
     /** The Sail ID name */
     string sailID;
