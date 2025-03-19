@@ -105,9 +105,10 @@ void CSailDispLabel::resizeEvent( QResizeEvent * )
  */
 void CSailDispLabel::wheelEvent( QWheelEvent *event)
 {
-    if (event->delta()>0)
+    const int delta = event->pixelDelta().y();
+    if (delta > 0)
         zoomIn();
-    else
+    else if (delta < 0)
         zoomOut();
     redraw();
 }
