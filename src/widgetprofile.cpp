@@ -47,7 +47,7 @@ CLabelProfile::CLabelProfile( QWidget *parent, CProfile *ptr)
 {
     // set the background to white
     QPalette pal = palette();
-    pal.setColor( QPalette::Background, Qt::white );
+    pal.setColor( QPalette::Window, Qt::white );
     setPalette( pal );
     setMinimumSize( QSize( 300, 100 ) );
 }

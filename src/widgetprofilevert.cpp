@@ -42,7 +42,7 @@ CLabelProfileVert::CLabelProfileVert( QWidget *parent, CSailMould *ptr)
 {
     // set the background to white
     QPalette pal = palette();
-    pal.setColor( QPalette::Background, Qt::white );
+    pal.setColor( QPalette::Window, Qt::white );
     setPalette( pal );
 
     setMinimumSize( QSize( 120, 400 ) );
