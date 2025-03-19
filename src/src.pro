@@ -1,6 +1,6 @@
 include(../sailcut.pri)
 
-QT += opengl printsupport svg xml
+QT += openglwidgets printsupport svg xml
 
 INCLUDEPATH += ../icons
 
