@@ -44,28 +44,6 @@ CProfile::CProfile( real rDepth, real rLeech, real rLuff)
     calcMax();
 }
 
-/**************************************************************************
-
-                               operators
-
-**************************************************************************/
-
-/** Assignment operator.
- */
-CProfile& CProfile::operator=( const CProfile &copy )
-{
-    if (&copy == this)
-        return *this;
-
-    depth = copy.depth;
-    kleech = copy.kleech;
-    kluff = copy.kluff;
-    xmax = copy.xmax;
-    zmax = copy.zmax;
-
-    return *this;
-}
-
 
 /**************************************************************************
 
@@ -76,7 +54,7 @@ CProfile& CProfile::operator=( const CProfile &copy )
 /** Compute the depth of the profile at a point located at dX along the cord
  @author Robert Laine
  */
-real CProfile::z( real dX )
+real CProfile::z( real dX ) const
 {
     /*
        dX = absiss 0 to 1 along the cord of the profile
@@ -115,7 +93,7 @@ real CProfile::z( real dX )
 /** Compute the slope of the profile at a point located at dX along the cord
  @author Robert Laine
  */
-real CProfile::slope( real dX )
+real CProfile::slope( real dX ) const
 {
     /*
        dX = absiss 0 to 1 along the cord of the profile
@@ -154,7 +132,7 @@ real CProfile::slope( real dX )
 /** Compute the camber of the profile at a point located at dX along the cord
  @author Robert Laine
  */
-real CProfile::camber( real dX )
+real CProfile::camber( real dX ) const
 {
     /*
        dX = absiss 0 to 1 along the cord of the profile
@@ -265,26 +243,6 @@ CSailMould::CSailMould()
     profile[0] = CProfile( 0.02, 0.00, 0 );
     profile[1] = CProfile( 0.08, 0.04, 3 );
     profile[2] = CProfile( 0.06, 0.03, 5 );
-}
-
-
-/**************************************************************************
-
-                               operators
-
-**************************************************************************/
-
-/** Assignment operator.
- */
-CSailMould & CSailMould::operator=( const CSailMould &copy )
-{
-    if (&copy == this)
-        return *this;
-
-    profile = copy.profile;
-    vertpos = copy.vertpos;
-
-    return *this;
 }
 
 

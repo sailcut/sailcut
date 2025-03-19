@@ -35,10 +35,9 @@ class CProfile
 public:
     CProfile( real rDepth=0.05, real rLeech=0.02, real rLuff=1 );
 
-    CProfile& operator=( const CProfile & );
-    real z( real dX );
-    real slope( real dX );
-    real camber( real dX );
+    real z( real dX ) const;
+    real slope( real dX ) const;
+    real camber( real dX ) const;
 
     /** Accessor for the depth */
     real getDepth() const
@@ -69,17 +68,20 @@ public:
     /** Set the depth */
     void setDepth( real ndepth )
     {
-        *this=CProfile( ndepth, kleech, kluff );
+        depth = ndepth;
+        calcMax();
     }
     /** Set the leech */
     void setLeech( real nkleech )
     {
-        *this=CProfile( depth, nkleech, kluff );
+        kleech = nkleech;
+        calcMax();
     }
     /** Set the luff */
     void setLuff( real nkluff )
     {
-        *this=CProfile( depth, kleech, nkluff );
+        kluff = nkluff;
+        calcMax();
     }
 
 protected:
@@ -108,7 +110,6 @@ class CSailMould
 public:
     CSailMould();
 
-    CSailMould & operator=( const CSailMould & );
     CProfile interpol( const real h ) const;
 
     /** the mould's profiles ( top, middle, bottom ) */
