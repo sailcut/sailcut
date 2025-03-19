@@ -103,7 +103,7 @@ public:
      * @param dest the object we read to
      * @param filename initial file name
      */
-    QString readDialog(objtype &dest, const QString &filename = "") const
+    QString readDialog(objtype &dest, const QString &filename = QString()) const
     {
         const QString newfilename = getOpenFileName(filename);
         if (!newfilename.isNull()) {
@@ -111,7 +111,7 @@ public:
                 dest = read(newfilename);
             } catch (read_error e) {
                 readErrorMessage();
-                return QString::null;
+                return QString();
             }
         }
         return newfilename;
@@ -137,7 +137,7 @@ public:
      *  @param obj The object to write.
      *  @param filename The filename to start off with (default = "")
      */
-    QString writeDialog(const objtype &obj, const QString &filename = QString::null) const
+    QString writeDialog(const objtype &obj, const QString &filename = QString()) const
     {
         const QString newfilename = getSaveFileName(filename);
         if (!newfilename.isNull()) {
@@ -145,7 +145,7 @@ public:
                 write(obj, newfilename);
             } catch (write_error e) {
                 writeErrorMessage();
-                return QString::null;
+                return QString();
             }
         }
         return newfilename;
