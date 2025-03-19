@@ -20,6 +20,8 @@
 #ifndef SAILPRINTER_H
 #define SAILPRINTER_H
 
+#include <QObject>
+
 #include "sailcpp/saildef.h"
 #include "sailcpp/panelgroup.h"
 #include "sailpainter.h"
