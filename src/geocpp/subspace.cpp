@@ -88,15 +88,6 @@ CSubSpace::CSubSpace(const CVector3d &pi, const CMatrix &mi, subspaceflags_t cre
 }
 
 
-/** Copy constructor */
-CSubSpace::CSubSpace(const CSubSpace &s)
-    : isEmpty(s.isEmpty)
-    , m(s.m)
-    , p(s.p)
-{
-}
-
-
 /** Test whether the CSubSpace contains a given point.
  */
 bool CSubSpace::contains(const CVector3d &point) const
