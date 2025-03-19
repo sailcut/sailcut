@@ -17,8 +17,6 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#include <cstdio>
-
 #include "panelgroup.h"
 
 /** Constructs a panel group with the specified number of panels.
@@ -87,9 +85,7 @@ void CPanelGroup::placeLabels()
 {
     for (unsigned int i = 0; i < size(); i++)
     {
-        char buffer[32];
-        sprintf(buffer, "%i", i);
-        at(i).label.name = buffer;
+        at(i).label.name = std::to_string(i);
         at(i).placeLabel();
     }
 }
@@ -102,10 +98,7 @@ void CPanelGroup::plotLabels()
 {
     for (unsigned int i = 0; i < size(); i++)
     {
-        char buffer[32];
-        sprintf(buffer, "%i", i);
-        at(i).label.name = buffer;
-
+        at(i).label.name = std::to_string(i);
         at(i).label.height = 5;
         // position the label and orientate it
         at(i).label.origin = at(i).bottom[2];
