@@ -11,9 +11,10 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest]
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v1
-      - uses: jurplel/install-qt-action@v2
+      - uses: actions/checkout@v4
+      - uses: jurplel/install-qt-action@v4
+        with:
+          version: 5.15.*
       - name: Compile
         run: |
           qmake
