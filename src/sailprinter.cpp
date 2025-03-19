@@ -46,6 +46,7 @@ void CSailDataPrinter::print(CTextPainter *painter, int, real scale, real fontsi
 
     QString text2=" ", text3=" ";
     painter->setFontSize(fontsize, 1);
+    painter->setPenColor(Qt::black);
     painter->printReset();
 
     // text of page header
@@ -179,6 +180,7 @@ void CSailDevelPrinter::print(CTextPainter *painter, int page, real scale, real 
     // set coordinate system to match the logical viewport
     painter->setWindow(logicalRect);
     painter->setFontSize(fontsize, 1);
+    painter->setPenColor(Qt::black);
     painter->setPenWidth();
 
     painter->draw(sail[page]);
@@ -221,6 +223,7 @@ void CSailDrawingPrinter::print(CTextPainter *painter, int, real scale, real fon
     // set coordinate system to match the logical viewport
     painter->setWindow(logicalRect);
     painter->setFontSize(fontsize, 1);
+    painter->setPenColor(Qt::black);
     painter->setPenWidth();
 
     painter->draw(sail);

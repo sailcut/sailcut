@@ -58,6 +58,11 @@ CLabelProfile::CLabelProfile( QWidget *parent, CProfile *ptr)
 void CLabelProfile::paintEvent( QPaintEvent *)
 {
     QPainter painter( this );
+    QPen pen = painter.pen();
+    pen.setColor(Qt::black);
+    pen.setWidth(0);
+    painter.setPen(pen);
+
     QRect vRect = painter.viewport();
     painter.eraseRect(vRect);
 

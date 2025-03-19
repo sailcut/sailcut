@@ -54,6 +54,10 @@ CLabelProfileVert::CLabelProfileVert( QWidget *parent, CSailMould *ptr)
 void CLabelProfileVert::paintEvent( QPaintEvent *)
 {
     QPainter painter( this );
+    QPen pen = painter.pen();
+    pen.setColor(Qt::black);
+    pen.setWidth(0);
+    painter.setPen(pen);
 
     QRect vRect = painter.viewport();
     painter.eraseRect(vRect);
