@@ -35,8 +35,6 @@ class CRigDef
 public:
     CRigDef();
 
-    CRigDef & operator=( const CRigDef & );
-
     /** rig ID name */
     string rigID;
     /** fore triangle hoist*/
@@ -84,7 +82,6 @@ public:
     real SPH[4];
     /** spreader width */
     real SPW[4];
-
 };
 
 #endif
