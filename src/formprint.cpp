@@ -40,7 +40,7 @@ CPrintLabel::CPrintLabel(CFormPrint *frm)
         : form(frm), resizing(false)
 {
     QPalette pal = palette();
-    pal.setColor( QPalette::Background, Qt::white );
+    pal.setColor( QPalette::Window, Qt::white );
     setPalette( pal );
 
     // set the initial size
