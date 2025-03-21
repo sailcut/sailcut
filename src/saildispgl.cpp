@@ -26,15 +26,15 @@
 #include "saildispgl.h"
 
 static const char* vertexShader =
-    "attribute vec4 posAttr;\n"
-    "uniform mat4 matrixAttr;\n"
+    "attribute mediump vec4 posAttr;\n"
+    "uniform mediump mat4 matrixAttr;\n"
     "void main()\n"
     "{\n"
     "   gl_Position = matrixAttr * posAttr;\n"
     "}\n";
 
 static const char* fragmentShader =
-    "uniform vec4 colorAttr;\n"
+    "uniform mediump vec4 colorAttr;\n"
     "void main()\n"
     "{\n"
     "     gl_FragColor = colorAttr;\n"
@@ -146,6 +146,7 @@ void CSailDispGL::initializeGL()
 
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClearDepthf(1.0f);
 
     program = new QOpenGLShaderProgram(this);
@@ -154,7 +155,6 @@ void CSailDispGL::initializeGL()
     if (!program->addShaderFromSourceCode(QOpenGLShader::Fragment, fragmentShader))
         qWarning("could not load fragment shader");
     program->link();
-    program->bind();
 
     colorAttr = program->uniformLocation("colorAttr");
     matrixAttr = program->uniformLocation("matrixAttr");
@@ -190,9 +190,11 @@ void CSailDispGL::paintGL()
         real(2) / lRect.height(),
         - real(2) / sqrt(lRect.width() * lRect.width() + lRect.height() * lRect.height()));
     matrix.translate(-center().x(), -center().y(), -center().z());
-    program->setUniformValue(matrixAttr, matrix);
 
+    program->bind();
+    program->setUniformValue(matrixAttr, matrix);
     draw(dispObject());
+    program->release();
 }
 
 
