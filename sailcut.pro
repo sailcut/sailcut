@@ -21,7 +21,7 @@ mac {
     QMAKE_EXTRA_TARGETS = package
 
     NSI_HEADER = "!define PRODUCT_VERSION \"$$SAILCUT_VERSION\""
-    NSI_HEADER += "!define PRODUCT_LICENSE \"$$system_path($$SAILCUT_SOURCE_TREE/COPYING)\""
+    NSI_HEADER += "!define PRODUCT_LICENSE \"$$system_path($$SAILCUT_SOURCE_TREE/LICENSE)\""
     NSI_HEADER += "!define PRODUCT_OUTPUT \"$$system_path($$package.output)\""
     NSI_BODY = $$cat($$SAILCUT_SOURCE_TREE/sailcut.nsi.in, blob)
     write_file($$SAILCUT_BUILD_TREE/sailcut.nsi, NSI_HEADER)
