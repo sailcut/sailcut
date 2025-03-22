@@ -1,2 +1,2 @@
 TEMPLATE = subdirs
-SUBDIRS = geocpp
+SUBDIRS = geocpp sailcpp

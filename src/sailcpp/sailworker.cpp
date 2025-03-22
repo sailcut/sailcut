@@ -531,7 +531,7 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
         /** Reposition the developed panel such that the
         *  lowest point is Y=0 AND most left point is X=0.
         */
-        dev[npanel-1] = dev[npanel-1].reframe(LOW_LEFT);
+        dev[npanel-1].reframe();
 
         /* check if peak has been reached to break off */
         if ( flag == true )
@@ -843,7 +843,7 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
 
         /* Now we reposition the developed panel such that
          *  bottom minimum is Y=0 AND most left point is X=0 */
-        dev[npanel-1] = dev[npanel-1].reframe(LOW_LEFT);
+        dev[npanel-1].reframe();
 
         /* check if peak has been reached to break off */
         if ( flag == true )
@@ -1069,7 +1069,7 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
         deviaPrev = deviation;
 
         /* Now we reposition the developed panel such that bottom left is X=0 Y=0 */
-        dev[npanel-1] = dev[npanel-1].reframe(LOW_LEFT);
+        dev[npanel-1].reframe();
 
         /* check if peak has been reached to break off */
         if ( flag == true )
@@ -1381,7 +1381,7 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
         /* Reposition the developed panel such that
         *  bottom minimum is Y=0 AND most left is X=0
         */
-        dev[npanel-1] = dev[npanel-1].reframe(LOW_LEFT);
+        dev[npanel-1].reframe();
 
         /* check if peak has been reached to break off */
         if ( flag == true )
@@ -2574,7 +2574,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
         deviaPrev = deviation;
 
         /* Now we reposition the developed panel such that bottom left is X=0 Y=0 */
-        dev[npanel-1] = dev[npanel-1].reframe(LOW_LEFT);
+        dev[npanel-1].reframe();
 
         /* check if peak has been reached to break off */
         if ( flag == true )
@@ -2789,7 +2789,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
             deviaPrev[k] = deviation[k];
 
         /* Now we reposition the developed panel such that bottom left is X=0 Y=0 */
-        dev[npanel-1] = dev[npanel-1].reframe(LOW_LEFT);
+        dev[npanel-1].reframe();
 
         /* check if peak has been reached to break off */
         if ( flag == true )
@@ -2987,7 +2987,7 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
          deviaPrev = deviation;
 
         /* Reposition the developed panel such that bottom left is X=0 Y=0 */
-        dev[npanel-1] = dev[npanel-1].reframe(LOW_LEFT);
+        dev[npanel-1].reframe();
 
         /* Check if peak has been reached to break off */
         if ( flag == true )
@@ -3140,7 +3140,7 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
         deviaPrev = deviation;
 
         /* Now we reposition the developed panel such that bottom left is X=0 Y=0 */
-        dev[npanel-1] = dev[npanel-1].reframe(LOW_LEFT);
+        dev[npanel-1].reframe();
 
         /* check if peak has been reached to break off */
         if ( flag == true )

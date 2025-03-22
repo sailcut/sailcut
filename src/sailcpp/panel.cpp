@@ -319,7 +319,7 @@ CPanel CPanel::develop(enumDevelopAlign align) const
     flatpanel.hasHems = false;
 
     /** frame the developed panel to be X>0 and Y>0 */
-    flatpanel = flatpanel.reframe(LOW_LEFT);
+    flatpanel.reframe();
 
     return flatpanel;
 }
@@ -331,87 +331,19 @@ void CPanel::placeLabel()
 }
 
 
-/** Reframe a panel such that the most left/right/top/bottom
- *  point is at coordinate X or Y =0
+/** Translate the panel so that the most left / bottom points
+ *  are at coordinates X=0, Y =0.
  */
-CPanel CPanel::reframe(enumAlign align) const
+void CPanel::reframe()
 {
-    unsigned int npl = left.size();   // number of right/left points
-    unsigned int npb = bottom.size();  // number of top/bottom points
-    unsigned int i;
-    real xm=11111, ym=11111;
-
-    switch ( align )
-    {
-    case LEFT:
-        if ( hasHems == true )
-        {
-            for (i = 0 ; i < npl ; i++)
-            {
-                if ( cutRight[i].x() > xm )
-                    xm = cutRight[i].x();
-            }
-        }
-        else
-        {
-            for (i = 0 ; i < npl ; i++)
-            {
-                if ( right[i].x() > xm )
-                    xm = right[i].x();
-            }
-        }
-
-    case BOTTOM:
-        if ( hasHems == true )
-        {
-            for (i = 0 ; i < npb ; i++)
-            {
-                if ( cutBottom[i].y() < ym )
-                    ym = cutBottom[i].y();
-            }
-        }
-        else
-        {
-            for (i = 0; i < npb; i++)
-            {
-                if ( bottom[i].y() < ym )
-                    ym = bottom[i].y();
-            }
-        }
-
-    case LOW_LEFT:
-        if ( hasHems ==  true )
-        {
-            for (i = 0; i < npl; i++)
-            {
-                if ( cutLeft[i].x() < xm )
-                    xm = cutLeft[i].x();
-            }
-
-            for (i = 0; i < npb; i++)
-            {
-                if ( cutBottom[i].y() < ym )
-                    ym = cutBottom[i].y();
-            }
-        }
-        else
-        {
-            for (i = 0; i < npl; i++)
-            {
-                if ( left[i].x() < xm )
-                    xm = left[i].x();
-            }
-
-            for (i = 0; i < npb; i++)
-            {
-                if ( bottom[i].y() < ym )
-                    ym = bottom[i].y();
-            }
-        }
+    if (hasHems) {
+        *this = *this + CVector3d(-cutLeft.left(), -cutBottom.bottom(), 0);
+    } else {
+        *this = *this + CVector3d(-left.left(), -bottom.bottom(), 0);
     }
-
-    return (*this + CVector3d( -xm , -ym , 0 ));
 }
+
+
 /** Add the cloth for stitching to the 4 edges of the panel.
  *  This create the panel to be cut (outside the basic panel)
  *   lw = width to be added on left side
@@ -926,6 +858,38 @@ void CSide::fill( const CPoint3d &p1 , const CPoint3d &p2 , const CPoint3d &p3 )
             at(i) = p1 + (p2 - p1) * (real(i) / n1);
         else
             at(i) = p2 + (p3 - p2) * (real(i - n1) / (size() -n1 -1) );
+    }
+}
+
+
+/** Returns the y-coordinate of the bottom-most point.
+ */
+ real CSide::bottom() const
+ {
+     if (size()) {
+         real y = at(0).y();
+         for (unsigned int i = 1; i < size(); i++) {
+             y = std::min(y, at(i).y());
+         }
+         return y;
+     } else {
+         return 0;
+     }
+}
+
+
+/** Returns the x-coordinate of the left-most point.
+ */
+real CSide::left() const
+{
+    if (size()) {
+        real x = at(0).x();
+        for (unsigned int i = 1; i < size(); i++) {
+            x = std::min(x, at(i).x());
+        }
+        return x;
+    } else {
+        return 0;
     }
 }
 
