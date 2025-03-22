@@ -22,8 +22,6 @@
 
 #include "sailmould.h"
 
-using namespace std;
-
 /**************************************************************************
                              CProfile class
 ***************************************************************************
@@ -258,7 +256,7 @@ CSailMould::CSailMould()
 CProfile CSailMould::interpol ( const real h ) const
 {
     if ( profile.size() < 3)
-        cout << "profile < 3 !!" << endl;
+        std::cout << "profile < 3 !!" << std::endl;
 
     CProfile p;
     real pv = real(vertpos) / 100;

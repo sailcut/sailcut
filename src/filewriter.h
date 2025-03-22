@@ -20,35 +20,28 @@
 #ifndef FILEWRITER_H
 #define FILEWRITER_H
 
-#ifdef WIN32
-#define CRLF   endl
-#else
-#define CRLF "\r\n"
-#endif
-
 #include <iostream>
 #include <stdexcept>
 
 #include <QFileDialog>
 #include <QMessageBox>
 
-using namespace std;
 
-class read_error : public runtime_error
+class read_error : public std::runtime_error
 {
 public:
-    read_error(const string &message) : runtime_error(message)
+    read_error(const std::string &message) : std::runtime_error(message)
     {
-        cout << what() << endl;
+        std::cout << what() << std::endl;
     }
 };
 
-class write_error : public runtime_error
+class write_error : public std::runtime_error
 {
 public:
-    write_error(const string &message) : runtime_error(message)
+    write_error(const std::string &message) : std::runtime_error(message)
     {
-        cout << what() << endl;
+        std::cout << what() << std::endl;
     }
 };
 
@@ -94,7 +87,7 @@ public:
      */
     virtual const objtype read(const QString &) const
     {
-        throw logic_error("Reading is not supported for this file type.");
+        throw std::logic_error("Reading is not supported for this file type.");
     };
 
 

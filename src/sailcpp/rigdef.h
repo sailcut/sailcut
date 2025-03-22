@@ -36,7 +36,7 @@ public:
     CRigDef();
 
     /** rig ID name */
-    string rigID;
+    std::string rigID;
     /** fore triangle hoist*/
     real foreI;
     /** fore triangle base*/

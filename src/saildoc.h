@@ -30,12 +30,12 @@
 #include "prefs.h"
 
 
-class doc_element_error : public runtime_error
+class doc_element_error : public std::runtime_error
 {
 public:
-    doc_element_error(const string &message) : runtime_error(message)
+    doc_element_error(const std::string &message) : std::runtime_error(message)
     {
-        cout << what() << endl;
+        std::cout << what() << std::endl;
     }
 };
 
@@ -69,7 +69,7 @@ public:
     void get
     (const QDomNode &parent, real &r, const QString &name );
     void get
-    (const QDomNode &parent, string &s, const QString &name );
+    (const QDomNode &parent, std::string &s, const QString &name );
     void get
     (const QDomNode &parent, QString &s, const QString &name );
     void get
@@ -109,7 +109,7 @@ public:
     void put(QDomNode &parent, const int &i, const QString &name ="" );
     void put(QDomNode &parent, const unsigned int &i, const QString &name ="" );
     void put(QDomNode &parent, const real &r, const QString &name ="" );
-    void put(QDomNode &parent, const string &s, const QString &name="" );
+    void put(QDomNode &parent, const std::string &s, const QString &name="" );
     void put(QDomNode &parent, const QString &s, const QString &name="" );
     void put(QDomNode &parent, const CPoint3d &p, const QString &name="" );
     void put(QDomNode &parent, const enumBoatElementType &t, const QString &name="");
@@ -142,7 +142,7 @@ protected:
      */
     template<class myType>
     void get_vector
-    (QDomNode &parent, vector<myType>& v, const QString &name="")
+    (QDomNode &parent, std::vector<myType>& v, const QString &name="")
     {
         QDomElement e = findElement( parent, "vector", name);
         if ( e.isNull() )
@@ -165,7 +165,7 @@ protected:
      * @param name the name of the vector
      */
     template<class myType>
-    void put_vector(QDomNode &parent, const vector<myType>& v, const QString &name="")
+    void put_vector(QDomNode &parent, const std::vector<myType>& v, const QString &name="")
     {
         QDomElement e = createElement("vector",name);
         e.setAttribute("size", (unsigned int)v.size());

@@ -165,7 +165,7 @@ real CSailDisp::zoom() const
  */
 void CSailDisp::setZoom(real zoom)
 {
-    m_zoom = max(ZOOM_MIN, min(zoom, ZOOM_MAX));
+    m_zoom = std::max(ZOOM_MIN, std::min(zoom, ZOOM_MAX));
 }
 
 

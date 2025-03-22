@@ -452,25 +452,25 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
 
     ///* compute basic edges vectors */
     CVector3d v1 = left[npl/2] - left[0];
-    //  if ( v1.length() == 0 ) cout << "CPanel::add6Hems v1=0 " << endl;
+    //  if ( v1.length() == 0 ) std::cout << "CPanel::add6Hems v1=0 " << std::endl;
     CVector3d v2 = left[npl-1] - left[npl/2];
-    //  if ( v2.length() == 0 ) cout << "CPanel::add6Hems v2=0 " << endl;
+    //  if ( v2.length() == 0 ) std::cout << "CPanel::add6Hems v2=0 " << std::endl;
     CVector3d v3 = right[npl/2] - right[0];
-    //  if ( v3.length() == 0 ) cout << "CPanel::add6Hems v3=0 " << endl;
+    //  if ( v3.length() == 0 ) std::cout << "CPanel::add6Hems v3=0 " << std::endl;
     CVector3d v4 = right[npl-1] - right[npl/2];
-    //  if ( v4.length() == 0 ) cout << "CPanel::add6Hems v4=0 " << endl;
+    //  if ( v4.length() == 0 ) std::cout << "CPanel::add6Hems v4=0 " << std::endl;
     CVector3d v5 = bottom[npb-1] - bottom[0];
-    //  if ( v5.length() == 0 ) cout << "CPanel::add6Hems v5=0 " << endl;
+    //  if ( v5.length() == 0 ) std::cout << "CPanel::add6Hems v5=0 " << std::endl;
     CVector3d v6 = bottom[npb-1] - bottom[npb-2];
-    //  if ( v6.length() == 0 ) cout << "CPanel::add6Hems v6=0 " << endl;
+    //  if ( v6.length() == 0 ) std::cout << "CPanel::add6Hems v6=0 " << std::endl;
     CVector3d v7 = top[npb-1] - top[0];
-    //  if ( v7.length() == 0 ) cout << "CPanel::add6Hems v7=0 " << endl;
+    //  if ( v7.length() == 0 ) std::cout << "CPanel::add6Hems v7=0 " << std::endl;
     CVector3d v8 = top[npb-1] - top[npb-2];
-    //  if ( v8.length() == 0 ) cout << "CPanel::add6Hems v8=0 " << endl <<endl;
+    //  if ( v8.length() == 0 ) std::cout << "CPanel::add6Hems v8=0 " << std::endl <<std::endl;
 
-    //cout << "CPanel::add6Hems start" << endl;
-    //cout << "   lolW=" << lolW << " hilW=" << hilW << "   topW =" << topW <<  endl;
-    //cout << "   lorW=" << lorW << " hirW=" << hirW << "   botW=" << botW << endl;
+    //std::cout << "CPanel::add6Hems start" << std::endl;
+    //std::cout << "   lolW=" << lolW << " hilW=" << hilW << "   topW =" << topW <<  std::endl;
+    //std::cout << "   lorW=" << lorW << " hirW=" << hirW << "   botW=" << botW << std::endl;
 
     ///* copy the basic panel edge points to cut points as default */
     for (i = 0 ; i < npl ; i++) {
@@ -503,7 +503,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
     }
 
     ///* Move the basic bottom edge points to the cut line */
-    //cout << "CPanel::add6Hems move basic bottom edge" << endl;
+    //std::cout << "CPanel::add6Hems move basic bottom edge" << std::endl;
 
     if ( botW > EPS ) { // width of material is not too small
         for (i = 0 ; i < npb ; i++) {
@@ -558,7 +558,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
 
                     if ( Line1.intersect(Line2).getdim() == 0 )
                         cutLeft[npl/2] = Line1.intersect(Line2).getp();
-                    // else cout << "CPanel::add6Hems = no mid left side intersection point" << endl;
+                    // else std::cout << "CPanel::add6Hems = no mid left side intersection point" << std::endl;
 
                     // check adjacent points relative to mid side point
                     if (CVector3d::dotProduct(cutLeft[npl/2] - cutLeft[npl/2 -1], v0) <= 0)
@@ -602,7 +602,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
         for (i = 0 ; i< npl ; i++)
             cutLeft[i] = left[i] + v.normalized() * lolW;
 
-        // if (v.length() == 0) cout << "CPanel::add6Hems 10 v=0 v5="<< v5.length()<< " v7="<< v7.length()<< endl;
+        // if (v.length() == 0) std::cout << "CPanel::add6Hems 10 v=0 v5="<< v5.length()<< " v7="<< v7.length()<< std::endl;
         v1 = rotateNormalized(-M_PI/2, v);
         v2 = v1;
     }
@@ -643,7 +643,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
 
                     if (Line1.intersect(Line2).getdim() == 0)
                         cutRight[npl/2] = Line1.intersect(Line2).getp();
-                    // else cout << "CPanel::add6Hems = no mid right side intersection point" << endl;
+                    // else std::cout << "CPanel::add6Hems = no mid right side intersection point" << std::endl;
 
                     // check adjacent points relative to mid side point
                     if (CVector3d::dotProduct(cutRight[npl/2] - cutRight[npl/2 -1], v0) <= 0)
@@ -668,9 +668,9 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
         //v3 = right[npl-2] - right[npl/2];
         /*        if (v3.length() == 0)
                 {
-                        cout << "AddHems v3=0 : about to crash 13" << endl;
+                        std::cout << "AddHems v3=0 : about to crash 13" << std::endl;
                     for (i = 0 ; i < npl ; i++)
-                        cout << "pt " << i << " xyz= " << right[i] << endl;
+                        std::cout << "pt " << i << " xyz= " << right[i] << std::endl;
                 }
         */
         for (i = 0 ; i < npl/2  ; i++)
@@ -680,7 +680,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
             cutRight[i] = right[i] + rotateNormalized(-M_PI/2, v4) * hirW;
 
         v4 = right[npl-1] - right[npl-2];
-        //    if (v4.length() == 0) cout << "AddHems v4=0 about to crash 13" << endl;
+        //    if (v4.length() == 0) std::cout << "AddHems v4=0 about to crash 13" << std::endl;
     }
     else {  // complete right side is a point
         if ( botW == 0 )
@@ -688,7 +688,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
         else
             v = ( v6 + v8 );
 
-        if (v.length() == 0) cout << "CPanel::add6Hems v=v6=0 or v=v6+v8=0 about to crash 14" << endl;
+        if (v.length() == 0) std::cout << "CPanel::add6Hems v=v6=0 or v=v6+v8=0 about to crash 14" << std::endl;
 
         for (i = 0 ; i< npl ; i++)
             cutRight[i] = right[i] + v.normalized() * lorW;
@@ -698,14 +698,14 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
     }
 
     ///* Rejoining the 4 corners of the cut panel */
-    // cout << "Rejoining 4 corners" << endl;
+    // std::cout << "Rejoining 4 corners" << std::endl;
     /// lower left
     if (v5.length() == 0)
-        cout << "CPanel::add6Hems v5=0 about to crash 15" << endl;
+        std::cout << "CPanel::add6Hems v5=0 about to crash 15" << std::endl;
     Line1 = CSubSpace::line( cutBottom[0] , v5 );
 
     if (v6.length() == 0)
-        cout << "CPanel::add6Hems v6=0 about to crash 16" << endl;
+        std::cout << "CPanel::add6Hems v6=0 about to crash 16" << std::endl;
     Line2 = CSubSpace::line( cutLeft[0] , v1 );
 
     pt = Line1.intersectionPoint(Line2, "lower left corner");
@@ -778,7 +778,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
     /* Scan the first few points of the cut edges to make sure
      * that they are not on the wrong side of the intersect point pt
      */
-    // cout << "CPanel::add6Hems scan for overlap " << endl;
+    // std::cout << "CPanel::add6Hems scan for overlap " << std::endl;
     for (i = 1 ; i < npl/2 ; i++) {
         if (CVector3d::dotProduct(cutRight[npl-1-i] - pt, v4) >= 0)
             cutRight[npl-1-i] = pt;
@@ -786,7 +786,7 @@ void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, con
         if (CVector3d::dotProduct(cutTop[npb-1-i] - pt, v6) >= 0)
             cutTop[npb-1-i] = pt;
     }
-    // cout << "End CPanel::add6Hems" << endl << endl;
+    // std::cout << "End CPanel::add6Hems" << std::endl << std::endl;
 } /// end add6Hems ////////////////////////////////////////
 
 
@@ -950,47 +950,47 @@ CSide CSide::transformed(const CMatrix4x4 &m) const
  *********************************************/
 
 /** Outputs a CPanel  to a stream.
- *  exemple:  cout << panel[i];
+ *  exemple:  std::cout << panel[i];
  */
-ostream& operator<<(ostream& o , const CPanel &p)
+std::ostream& operator<<(std::ostream& o , const CPanel &p)
 {
     o << p.label;
-    o << "== CSide : left ==" << endl << p.left;
-    o << "== CSide : top ==" << endl << p.top;
-    o << "== CSide : right ==" << endl << p.right;
-    o << "== CSide : bottom ==" << endl << p.bottom;
+    o << "== CSide : left ==" << std::endl << p.left;
+    o << "== CSide : top ==" << std::endl << p.top;
+    o << "== CSide : right ==" << std::endl << p.right;
+    o << "== CSide : bottom ==" << std::endl << p.bottom;
 
     if ( p.hasHems )
     {
-        o << "== CSide : cutLeft ==" << endl << p.cutLeft;
-        o << "== CSide : cutTop ==" << endl << p.cutTop;
-        o << "== CSide : cutRight ==" << endl << p.cutRight;
-        o << "== CSide : cutBottom ==" << endl << p.cutBottom;
+        o << "== CSide : cutLeft ==" << std::endl << p.cutLeft;
+        o << "== CSide : cutTop ==" << std::endl << p.cutTop;
+        o << "== CSide : cutRight ==" << std::endl << p.cutRight;
+        o << "== CSide : cutBottom ==" << std::endl << p.cutBottom;
     }
     return o;
 }
 
 /** Outputs a CPanelLabel  to a stream.
- *  exemple:  cout << panel[i].label;
+ *  exemple:  std::cout << panel[i].label;
  */
-ostream& operator<< (ostream &o , const CPanelLabel &lb)
+std::ostream& operator<< (std::ostream &o , const CPanelLabel &lb)
 {
-    o << "== CPanelLabel : name ==" << endl << lb.name << endl;
-    o << "== CPanelLabel : height ==" << endl << lb.height << endl;
-    o << "== CPanelLabel : color ==" << endl << lb.color << endl;
-    o << "== CPanelLabel : origin ==" << endl << lb.origin << endl;
-    o << "== CPanelLabel : direction ==" << endl << lb.direction << endl;
+    o << "== CPanelLabel : name ==" << std::endl << lb.name << std::endl;
+    o << "== CPanelLabel : height ==" << std::endl << lb.height << std::endl;
+    o << "== CPanelLabel : color ==" << std::endl << lb.color << std::endl;
+    o << "== CPanelLabel : origin ==" << std::endl << lb.origin << std::endl;
+    o << "== CPanelLabel : direction ==" << std::endl << lb.direction << std::endl;
     return o;
 }
 
 /** Outputs a CSide  to a stream.
- *  exemple:  cout << panel[i].left;
+ *  exemple:  std::cout << panel[i].left;
  */
-ostream& operator<< (ostream &out, const CSide &s)
+std::ostream& operator<< (std::ostream &out, const CSide &s)
 {
     for (unsigned int i = 0 ; i < s.size() ; i++)
     {
-        out << "#" << i << "\t" << s[i] << endl;
+        out << "#" << i << "\t" << s[i] << std::endl;
     }
     return out;
 }

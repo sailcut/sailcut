@@ -22,16 +22,17 @@
 #include <iomanip>
 #include <QFile>
 
+#define CRLF "\r\n"
 
 /** Write the draw message
  *
  * @param out the output stream
  * @param ct number of points to be written
  */
-void CSailCarlsonWriter::writeDraw(ofstream &out, unsigned int ct) const
+void CSailCarlsonWriter::writeDraw(std::ofstream &out, unsigned int ct) const
 {
-    out.setf(ios::left, ios::adjustfield);
-    out<< setw(16) <<"draw"<<  ct << CRLF;
+    out.setf(std::ios::left, std::ios::adjustfield);
+    out<< std::setw(16) <<"draw"<<  ct << CRLF;
 }
 
 
@@ -40,10 +41,10 @@ void CSailCarlsonWriter::writeDraw(ofstream &out, unsigned int ct) const
  * @param out the output stream
  * @param ct number of points to be written
  */
-void CSailCarlsonWriter::writeCut(ofstream &out, unsigned int ct) const
+void CSailCarlsonWriter::writeCut(std::ofstream &out, unsigned int ct) const
 {
-    out.setf(ios::left, ios::adjustfield);
-    out<< setw(16) <<"cut"<<  ct << CRLF;
+    out.setf(std::ios::left, std::ios::adjustfield);
+    out<< std::setw(16) <<"cut"<<  ct << CRLF;
 }
 
 
@@ -52,14 +53,14 @@ void CSailCarlsonWriter::writeCut(ofstream &out, unsigned int ct) const
  * @param out the output stream
  * @param p0 3d point to be written
  */
-void CSailCarlsonWriter::writePoint(ofstream &out, CPoint3d p0) const
+void CSailCarlsonWriter::writePoint(std::ofstream &out, CPoint3d p0) const
 {
     real x=0, y=0;
     x= p0.x();
     y= p0.y();
 
-    out.setf(ios::left, ios::adjustfield);
-    out << setw(16) << x << y << CRLF;
+    out.setf(std::ios::left, std::ios::adjustfield);
+    out << std::setw(16) << x << y << CRLF;
 }
 
 
@@ -69,7 +70,7 @@ void CSailCarlsonWriter::writePoint(ofstream &out, CPoint3d p0) const
  * @param panel the number of the panel to write
  *
  */
-void CSailCarlsonWriter::writePanelHeader(ofstream &out, const CPanel &panel) const
+void CSailCarlsonWriter::writePanelHeader(std::ofstream &out, const CPanel &panel) const
 {
     //char identity;
     //identity = panel.label.name;
@@ -91,9 +92,9 @@ void CSailCarlsonWriter::writePanelHeader(ofstream &out, const CPanel &panel) co
  */
 void CSailCarlsonWriter::write(const CPanelGroup &sail, const QString &filename) const
 {
-    ofstream out;
+    std::ofstream out;
 
-    out.open(QFile::encodeName(filename),ios::out);
+    out.open(QFile::encodeName(filename), std::ios::out);
     if (!out.is_open())
         throw write_error("CSailCarlsonWriter::write : unable to write to specified file");
 
@@ -114,7 +115,7 @@ void CSailCarlsonWriter::write(const CPanelGroup &sail, const QString &filename)
  * @param panel the number of the panel to write
  *
  */
-void CSailCarlsonWriter::writePanel(ofstream &out, const CPanel &panel) const
+void CSailCarlsonWriter::writePanel(std::ofstream &out, const CPanel &panel) const
 {
     CSide top = panel.top;
     CSide btm = panel.bottom;

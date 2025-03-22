@@ -37,7 +37,7 @@ public:
     /** the type of file this element was read from (sail, hull definition or 3D panels) */
     enumBoatElementType type;
     /** the name of the file this element was read from */
-    string filename;
+    std::string filename;
     /** the origin of the element */
     CPoint3d origin;
 };
@@ -48,7 +48,7 @@ public:
  *
  * @see CBoatElement
  */
-class CBoatDef : public vector<CBoatElement>
+class CBoatDef : public std::vector<CBoatElement>
 {
 public:
     CBoatDef();

@@ -44,7 +44,7 @@ public:
 
     // member variables
     /** The Sail ID name */
-    string sailID;
+    std::string sailID;
     /** The type of cut layout */
     enumSailCut sailCut;
     /** The type of sail */

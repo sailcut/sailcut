@@ -31,7 +31,7 @@
 
 /** Outputs a CMatrix to a stream.
  */
-ostream& operator<< (ostream &o, const CMatrix &m)
+std::ostream& operator<< (std::ostream &o, const CMatrix &m)
 {
     o << "[";
     for (size_t i = 0 ; i < m.rows() ; ++i)
@@ -39,7 +39,7 @@ ostream& operator<< (ostream &o, const CMatrix &m)
         for (size_t j = 0; j < m.columns(); ++j)
             o << m(i, j);
         if ( i != m.rows() - 1 )
-            o << endl;
+            o << std::endl;
     }
     o << "]";
     return o;

@@ -23,8 +23,6 @@
 #include <geocpp/geocpp.h>
 #include <vector>
 
-using namespace std;
-
 /** Class used to work on sail profiles.
  *
  * @ingroup SailCpp
@@ -114,7 +112,7 @@ public:
 
     /** the mould's profiles ( top, middle, bottom ) */
     //  CProfile profile[3];
-    vector<CProfile> profile;
+    std::vector<CProfile> profile;
 
     /** vertical position of profile[1] in percent */
     int vertpos;

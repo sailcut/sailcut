@@ -30,32 +30,32 @@
 void CSailHandWriter::write(const CPanelGroup &sail, const QString &filename) const
 {
     // open the output file
-    ofstream myOut;
-    myOut.open(QFile::encodeName(filename), ios::out);
+    std::ofstream myOut;
+    myOut.open(QFile::encodeName(filename), std::ios::out);
     if (!myOut.is_open())
         throw write_error("CSailWriter::write : unable to write to specified file");
 
     // write the name of the sail
-    myOut << sail.title << endl;
+    myOut << sail.title << std::endl;
 
     // TODO : modify code to write actual hand output
     //
     // sail is the sail, loop over its panels
     for (unsigned int i=0; i < sail.size(); i++)
     {
-        myOut << "===== CPanel : " << i << " ====" << endl;
+        myOut << "===== CPanel : " << i << " ====" << std::endl;
         myOut << sail[i].label;
-        myOut << "== CSide : left ==" << endl << sail[i].left;
-        myOut << "== CSide : top ==" << endl << sail[i].top;
-        myOut << "== CSide : right ==" << endl << sail[i].right;
-        myOut << "== CSide : bottom ==" << endl << sail[i].bottom;
+        myOut << "== CSide : left ==" << std::endl << sail[i].left;
+        myOut << "== CSide : top ==" << std::endl << sail[i].top;
+        myOut << "== CSide : right ==" << std::endl << sail[i].right;
+        myOut << "== CSide : bottom ==" << std::endl << sail[i].bottom;
 
         if (sail[i].hasHems)
         {
-            myOut << "== CSide : cutLeft ==" << endl << sail[i].cutLeft;
-            myOut << "== CSide : cutTop ==" << endl << sail[i].cutTop;
-            myOut << "== CSide : cutRight ==" << endl << sail[i].cutRight;
-            myOut << "== CSide : cutBottom ==" << endl << sail[i].cutBottom;
+            myOut << "== CSide : cutLeft ==" << std::endl << sail[i].cutLeft;
+            myOut << "== CSide : cutTop ==" << std::endl << sail[i].cutTop;
+            myOut << "== CSide : cutRight ==" << std::endl << sail[i].cutRight;
+            myOut << "== CSide : cutBottom ==" << std::endl << sail[i].cutBottom;
         }
     }
 

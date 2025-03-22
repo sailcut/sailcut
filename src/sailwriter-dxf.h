@@ -36,14 +36,14 @@ public:
     {}
     ;
 
-    void writeBegin(ofstream &out, const QString &filename) const;
-    void writeEnd(ofstream &out) const;
+    void writeBegin(std::ofstream &out, const QString &filename) const;
+    void writeEnd(std::ofstream &out) const;
 
-    void writeAtom(ofstream &out, int code, const QString& content) const;
-    void writeFace(ofstream &out, CPoint3d p0, CPoint3d p1, CPoint3d p2, unsigned int layer) const;
-    void writeLayer(ofstream &out, unsigned int layer, const QString &color) const;
-    void writePolyline(ofstream &out, unsigned int layer, const QString &color) const;
-    void writeVertex(ofstream &out, CPoint3d p0, unsigned int layer) const;
+    void writeAtom(std::ofstream &out, int code, const QString& content) const;
+    void writeFace(std::ofstream &out, CPoint3d p0, CPoint3d p1, CPoint3d p2, unsigned int layer) const;
+    void writeLayer(std::ofstream &out, unsigned int layer, const QString &color) const;
+    void writePolyline(std::ofstream &out, unsigned int layer, const QString &color) const;
+    void writeVertex(std::ofstream &out, CPoint3d p0, unsigned int layer) const;
 };
 
 
@@ -64,7 +64,7 @@ public:
     void write(const CPanelGroup &sail, const QString &filename) const;
 
 protected:
-    void writePanel(ofstream &out, const CPanel &panel, unsigned int layer) const;
+    void writePanel(std::ofstream &out, const CPanel &panel, unsigned int layer) const;
 
     void writeNormal(const CPanelGroup &sail, const QString &filename) const;
     void writeBlocks(const CPanelGroup &sail, const QString &filename) const;
@@ -90,7 +90,7 @@ public:
     void write(const CPanelGroup &sail, const QString &filename) const;
 
 protected:
-    void writePanel(ofstream &out, const CPanel &panel, unsigned int layer) const;
+    void writePanel(std::ofstream &out, const CPanel &panel, unsigned int layer) const;
 
     void writeNormal(const CPanelGroup &sail, const QString &filename) const;
     void writeSplit(const CPanelGroup &sail, const QString &filename) const;

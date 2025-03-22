@@ -34,7 +34,7 @@ public:
     CSailTreeItem(const CPanelGroup& data, QString name, CSailTreeItem *parent = 0);
     CSailTreeItem(const CPanel& data, QString name, CSailTreeItem *parent = 0);
     CSailTreeItem(const CPoint3d& data, QString name, CSailTreeItem *parent = 0);
-    CSailTreeItem(const string& data, QString name, CSailTreeItem *parent = 0);
+    CSailTreeItem(const std::string& data, QString name, CSailTreeItem *parent = 0);
 
     /** Constructs a CSailTreeItem representing a vector of elements.
      *
@@ -43,7 +43,7 @@ public:
      * @param parent the parent node
      */
     template<class myType>
-    CSailTreeItem(const vector<myType>& v, QString name, CSailTreeItem *parent)
+    CSailTreeItem(const std::vector<myType>& v, QString name, CSailTreeItem *parent)
     {
         parentItem = parent;
         itemData << name;

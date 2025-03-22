@@ -31,7 +31,7 @@ CPanelGroup::CPanelGroup( unsigned int nbpanels /* = 0 */)
 /** Copy constructor.
  */
 CPanelGroup::CPanelGroup( const CPanelGroup& s )
-        : vector<CPanel>(s)
+        : std::vector<CPanel>(s)
 {
     title = s.title;
     child = s.child;
@@ -128,7 +128,7 @@ CPanelGroup& CPanelGroup::operator=(const CPanelGroup& s)
     if (&s == this)
         return *this;
 
-    this->vector<CPanel>::operator=(s);
+    this->std::vector<CPanel>::operator=(s);
     title = s.title;
     child = s.child;
     type = s.type;
@@ -139,18 +139,18 @@ CPanelGroup& CPanelGroup::operator=(const CPanelGroup& s)
 
 /** Outputs a CPanelGroup to a stream.
  */
-ostream& operator<<(ostream &o, const CPanelGroup &s)
+std::ostream& operator<<(std::ostream &o, const CPanelGroup &s)
 {
     unsigned int i;
     for (i = 0; i < s.size(); i++)
     {
-        o << "===== CPanel : " << i << " ====" << endl;
-        o << s[i] << endl;
+        o << "===== CPanel : " << i << " ====" << std::endl;
+        o << s[i] << std::endl;
     }
     for (i = 0; i < s.child.size(); i++)
     {
-        o << "===== child CPanelGroup : " << i << " ====" << endl;
-        o << s.child[i] << endl;
+        o << "===== child CPanelGroup : " << i << " ====" << std::endl;
+        o << s.child[i] << std::endl;
     }
     return o;
 }

@@ -31,12 +31,12 @@ enum enumPointType { LUFF, FOOT, LEECH, GAFF };
 enum enumAlign {LEFT, LOW_LEFT, BOTTOM};
 enum enumDevelopAlign {ALIGN_TOP,ALIGN_BOTTOM };
 
-class panel_error : public runtime_error
+class panel_error : public std::runtime_error
 {
 public:
-    panel_error(const string &message) : runtime_error(message)
+    panel_error(const std::string &message) : std::runtime_error(message)
     {
-        cout << "in panel: " << what()  << endl;
+        std::cout << "in panel: " << what() << std::endl;
     }
 };
 
@@ -54,7 +54,7 @@ public:
     CPanelLabel( const CPanelLabel& );
 
     /** label name of the panel */
-    string name;
+    std::string name;
 
     /** label text height (default : 5) */
     int height;
@@ -73,7 +73,7 @@ public:
     /** operator to copy a label */
     CPanelLabel& operator=( const CPanelLabel &);
 
-    friend ostream& operator<< (ostream &, const CPanelLabel &);
+    friend std::ostream& operator<< (std::ostream &, const CPanelLabel &);
 };
 
 
@@ -87,7 +87,7 @@ public:
  *
  * @ingroup SailCpp
  */
-class CSide : public vector<CPoint3d>
+class CSide : public std::vector<CPoint3d>
 {
 public:
     CSide( unsigned int = 1 );
@@ -99,7 +99,7 @@ public:
     CSide transformed(const CMatrix4x4 &m) const;
 
     // operators
-    friend ostream& operator<< (ostream &, const CSide &);
+    friend std::ostream& operator<< (std::ostream &, const CSide &);
 };
 
 
@@ -180,13 +180,13 @@ public:
     CPanel operator+ (const CVector3d &) const;
     CPanel& operator= (const CPanel &);
 
-    friend ostream& operator<< (ostream &, const CPanel &);
+    friend std::ostream& operator<< (std::ostream &, const CPanel &);
 };
 
 // global functions
-ostream& operator<< (ostream &, const CPanel &);
-ostream& operator<< (ostream &, const CSide &);
-ostream& operator<< (ostream &, const CPanelLabel &);
+std::ostream& operator<< (std::ostream &, const CPanel &);
+std::ostream& operator<< (std::ostream &, const CSide &);
+std::ostream& operator<< (std::ostream &, const CPanelLabel &);
 
 CVector3d rotateNormalized(real angle, const CVector3d &v);
 

@@ -29,7 +29,7 @@ enum enumPanelGroupType { SAIL, RIG, HULL };
  *
  * @ingroup SailCpp
  */
-class CPanelGroup : public vector<CPanel>
+class CPanelGroup : public std::vector<CPanel>
 {
 public:
     CPanelGroup( unsigned int = 0 );
@@ -37,10 +37,10 @@ public:
     CPanelGroup( const CPanel& );
 
     /** title of this panel group */
-    string title;
+    std::string title;
 
     /** children of this group */
-    vector<CPanelGroup> child;
+    std::vector<CPanelGroup> child;
 
     /** type of boat object */
     enumPanelGroupType type;
@@ -59,11 +59,11 @@ public:
 
     // operators
     CPanelGroup& operator=( const CPanelGroup &);
-    friend ostream& operator<< (ostream &, const CPanelGroup &);
+    friend std::ostream& operator<< (std::ostream &, const CPanelGroup &);
 };
 
 
 // global functions
-ostream& operator<< (ostream &, const CPanelGroup &);
+std::ostream& operator<< (std::ostream &, const CPanelGroup &);
 
 #endif
