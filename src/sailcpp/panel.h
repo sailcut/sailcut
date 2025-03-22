@@ -28,7 +28,6 @@
 #include <geocpp/geocpp.h>
 
 enum enumPointType { LUFF, FOOT, LEECH, GAFF };
-enum enumAlign {LEFT, LOW_LEFT, BOTTOM};
 enum enumDevelopAlign {ALIGN_TOP,ALIGN_BOTTOM };
 
 class panel_error : public std::runtime_error
@@ -95,6 +94,9 @@ public:
 public:
     void fill( const CPoint3d &, const CPoint3d & );
     void fill( const CPoint3d &, const CPoint3d &, const CPoint3d & );
+
+    real bottom() const;
+    real left() const;
 
     CSide transformed(const CMatrix4x4 &m) const;
 
@@ -174,7 +176,7 @@ public:
     CPanel develop(enumDevelopAlign align) const;
 
     void placeLabel();   //  place a label at the center of a panel
-    CPanel reframe(enumAlign align) const;
+    void reframe();
     CPanel rotated(const CPoint3d &, real angle, Qt::Axis axis) const;
     CPanel transformed(const CMatrix4x4 &m) const;
     CPanel operator+ (const CVector3d &) const;
