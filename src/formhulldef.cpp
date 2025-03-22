@@ -20,7 +20,6 @@
 #include <cmath>
 
 #include <QLabel>
-#include <QMessageBox>
 #include <QRadioButton>
 #include <QLineEdit>
 

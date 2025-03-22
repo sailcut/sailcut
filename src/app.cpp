@@ -171,13 +171,15 @@ void CSailApp::loadTranslation(const QString locale)
 
     // translation file for Qt
     removeTranslator(transQt);
-    transQt->load(QString("qt_") + locale, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
-    installTranslator(transQt);
+    if (transQt->load(QString("qt_") + locale, QLibraryInfo::path(QLibraryInfo::TranslationsPath))) {
+        installTranslator(transQt);
+    }
 
     // translation file for application strings
     removeTranslator(transApp);
-    transApp->load(QString("sailcut_") + locale, appDir.absoluteFilePath(SAILCUT_DATA_PATH));
-    installTranslator(transApp);
+    if (transApp->load(QString("sailcut_") + locale, appDir.absoluteFilePath(SAILCUT_DATA_PATH))) {
+        installTranslator(transApp);
+    }
 }
 
 

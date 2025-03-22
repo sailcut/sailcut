@@ -40,7 +40,6 @@ public:
 
     bool check();
     void compute();
-    void displayData(QString &txt0, QString &txt1, QString &txt2, QString &txt3, QString &txt4);
 
     enumSailCut  getSailCut();
     enumSailType getSailType();

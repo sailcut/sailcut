@@ -21,7 +21,6 @@
 #define FORMMAIN_H
 
 #include <QMainWindow>
-#include <QMessageBox>
 #include <QUrl>
 
 #include "sailviewer-tabs.h"
