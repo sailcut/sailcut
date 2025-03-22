@@ -17,6 +17,10 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+#include <QMenuBar>
+#include <QMessageBox>
+#include <QStatusBar>
+
 #include "app.h"
 #include "formmain.h"
 #include "formsail.h"
@@ -26,9 +30,6 @@
 #include "formboat.h"
 
 #include "sailcut.xpm"
-
-#include <QMenuBar>
-#include <QStatusBar>
 
 
 /**

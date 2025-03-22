@@ -21,15 +21,14 @@
 #include "sailpainter.h"
 #include "sailprinter.h"
 
-#include <QDebug>
 #include <QBoxLayout>
+#include <QDebug>
 #include <QDoubleSpinBox>
-#include <QPushButton>
-#include <QToolButton>
 #include <QPageSetupDialog>
 #include <QPrintDialog>
-#include <QMessageBox>
+#include <QPushButton>
 #include <QResizeEvent>
+#include <QToolButton>
 
 
 /** Construct a new print preview label.

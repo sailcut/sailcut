@@ -21,7 +21,6 @@
 #include <iostream>
 
 #include <QLabel>
-#include <QMessageBox>
 #include <QRadioButton>
 
 #include "formrigdef.h"

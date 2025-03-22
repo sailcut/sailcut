@@ -1210,22 +1210,8 @@ void CFormSailDef::slotCompute()
     w1 = worker.SailWidth(h);
     txtc = txtc  + "\n  h= "+QString::number(h)+"\t IRC w= "+QString::number(int(w)) +" mm \t IOR w= " +QString::number(int(w1)) +" mm";
 
-    displayData(  txta, txtb, txtc, txtd, txte );
-}
-
-
-/**
- *  Display ancillary data in a message box
- */
-void CFormSailDef::displayData(QString &txt0, QString &txt1, QString &txt2, QString &txt3, QString &txt4 )
-{
-    QMessageBox* mb = new QMessageBox();
-    mb->setIcon(QMessageBox::NoIcon);
-    mb->setWindowTitle("Sailcut");
-    mb->setText (QString(txt0+"\n" +txt1+"\n" +txt2+"\n" +txt3+"\n" +txt4));
-    mb->setButtonText (0, "OK");
-    mb->exec();
-    delete mb;
+    // Display ancillary data in a message box.
+    QMessageBox::information(this, "Sailcut", txta + "\n" + txtb + "\n" + txtc + "\n" + txtd + "\n" + txte);
 }
 
 
