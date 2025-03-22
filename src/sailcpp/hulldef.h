@@ -36,7 +36,7 @@ public:
     CHullDef();
 
     /** hull ID name */
-    string hullID;
+    std::string hullID;
 
         //deck
     /** deck Length in millimeter */

@@ -39,11 +39,11 @@ public:
     ;
 
     void write(const CPanelGroup &sail, const QString &filename) const;
-    void writePanel(ofstream &out, const CPanel &panel) const;
-    void writePanelHeader(ofstream &out, const CPanel &panel) const;
-    void writeDraw(ofstream &out, unsigned int ct) const;
-    void writeCut(ofstream &out, unsigned int ct) const;
-    void writePoint(ofstream &out, CPoint3d p0) const;
+    void writePanel(std::ofstream &out, const CPanel &panel) const;
+    void writePanelHeader(std::ofstream &out, const CPanel &panel) const;
+    void writeDraw(std::ofstream &out, unsigned int ct) const;
+    void writeCut(std::ofstream &out, unsigned int ct) const;
+    void writePoint(std::ofstream &out, CPoint3d p0) const;
 
 };
 

@@ -39,7 +39,7 @@ private slots:
 
 public:
     /** the widgets of each view */
-    vector<CSailViewerPanel *> panel;
+    std::vector<CSailViewerPanel*> panel;
 };
 
 #endif

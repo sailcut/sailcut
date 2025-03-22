@@ -135,8 +135,6 @@ CSubSpace CSubSpace::intersect(const CSubSpace &h2) const
             bb[i] = b2[i - m.rows()];
         }
     }
-    //cout << "mm" << endl << mm << endl;
-    //cout << "bb" << endl << bb << endl;
 
     soltype_t soltype = NONE;
     CMatrix k;
@@ -147,13 +145,13 @@ CSubSpace CSubSpace::intersect(const CSubSpace &h2) const
     switch (soltype)
     {
     case ONE:
-        //cout << "CMatrix::solve : system has unique solution" << endl;
+        // system has unique solution
         return CSubSpace(s, CMatrix::id(SIZE), GEOCPP_FROM_EQS);
     case INF:
-        //cout << "CMatrix::solve : system has an infinity of solutions" << endl;
+        // system has an infinity of solutions
         return CSubSpace(s, k, GEOCPP_FROM_BASE);
     case NONE:
-        //cout << "CMatrix::solve : system has no solution" << endl;
+        // system has no solution
         break;
     }
     return CSubSpace();
@@ -227,7 +225,7 @@ ostream& operator<< (ostream &o, const CMatrix &m)
     {
         o << m.row(i);
         if ( i != m.rows() - 1 )
-            o << endl;
+            o << std::endl;
     }
     o << "]";
     return o;
@@ -238,36 +236,36 @@ ostream& operator<< (ostream &o, const CMatrix &m)
  */
 ostream& operator<< (ostream &o, const CSubSpace &h)
 {
-    o << "--------------------------------" << endl;
+    o << "--------------------------------" << std::endl;
     o << "     subspace : ";
     switch (h.getdim())
     {
     case -1:
-        o << "empty" << endl;
+        o << "empty" << std::endl;
         break;
     case 0:
-        o << "point" << endl;
+        o << "point" << std::endl;
         break;
     case 1:
-        o << "line" << endl;
+        o << "line" << std::endl;
         break;
     case 2:
-        o << "plane" << endl;
+        o << "plane" << std::endl;
         break;
     default:
-        o << "dim=" << h.getdim() << endl;
+        o << "dim=" << h.getdim() << std::endl;
     }
-    o << "--------------------------------" << endl;
+    o << "--------------------------------" << std::endl;
     if ( h.getdim() >= 0 )
     {
-        o << "point:" << endl << h.getp() << endl;
+        o << "point:" << std::endl << h.getp() << std::endl;
         if (h.getdim()>0)
         {
-            o << "------" << endl;
-            o << "base vectors (in columns): " << endl << h.getm().kern(h.getp().size()) << endl << "------" << endl;
-            o << "equations (coeffs in lines): " << endl << h.getm() << endl;
+            o << "------" << std::endl;
+            o << "base vectors (in columns): " << std::endl << h.getm().kern(h.getp().size()) << std::endl << "------" << std::endl;
+            o << "equations (coeffs in lines): " << std::endl << h.getm() << std::endl;
         }
-        o << "--------------------------------" << endl;
+        o << "--------------------------------" << std::endl;
     }
     return o;
 }

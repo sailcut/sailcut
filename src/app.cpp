@@ -34,8 +34,6 @@
 #include "formsail.h"
 #include "sailwriter-xml.h"
 
-using namespace std;
-
 /**
  * Creates an new Sailcut application.
  *
@@ -227,7 +225,7 @@ QStringList CSailApp::recentDocuments() const
  */
 void CSailApp::addRecentDocument(const QString &filename)
 {
-    vector<QString> &mru = prefs.mruDocuments;
+    std::vector<QString> &mru = prefs.mruDocuments;
     removeRecentDocument(filename);
     mru.insert(mru.begin(), filename);
 
@@ -246,7 +244,7 @@ void CSailApp::addRecentDocument(const QString &filename)
  */
 void CSailApp::removeRecentDocument(const QString &filename)
 {
-    vector<QString> &mru = prefs.mruDocuments;
+    std::vector<QString> &mru = prefs.mruDocuments;
     std::vector<QString>::iterator it = std::find(mru.begin(), mru.end(), filename);
     if (it != mru.end()) {
         mru.erase(it);
@@ -274,7 +272,7 @@ void CSailApp::readPrefs()
     }
     catch (read_error const&)
     {
-        cout << "CSailApp::readPrefs : could not read preferences" << endl;
+        std::cout << "CSailApp::readPrefs : could not read preferences" << std::endl;
     }
 }
 
@@ -290,6 +288,6 @@ void CSailApp::writePrefs()
     }
     catch (write_error const&)
     {
-        cout << "CSailApp::writePrefs : could not write preferences" << endl;
+        std::cout << "CSailApp::writePrefs : could not write preferences" << std::endl;
     }
 }

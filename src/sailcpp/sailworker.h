@@ -29,12 +29,12 @@ class CSeam;
 
 enum enumEdgeType { LUFF_EDGE, GAFF_EDGE, FOOT_EDGE, LEECH_EDGE };
 
-class layout_error : public runtime_error
+class layout_error : public std::runtime_error
 {
 public:
-    layout_error(const string &message) : runtime_error(message)
+    layout_error(const std::string &message) : std::runtime_error(message)
     {
-        cout << "in sailworker:" << what()  << endl;
+        std::cout << "in sailworker:" << what() << std::endl;
     }
 };
 

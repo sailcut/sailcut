@@ -47,7 +47,7 @@ public:
 
 protected:
     /** The spin boxes. */
-    vector<QSpinBox *>spinBox;
+    std::vector<QSpinBox*> spinBox;
 
 };
 
@@ -130,7 +130,7 @@ protected:
     QTabWidget *tabs;
 
     /** the widgets for the boat element parameters */
-    vector <CBoatElementWidget*> elementwidget;
+    std::vector<CBoatElementWidget*> elementwidget;
 
     /** the boat definition we are operating one */
     CBoatDef def;

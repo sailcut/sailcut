@@ -220,7 +220,7 @@ void CFormSailDef::setSailType( enumSailType type )
     {
     case MAINSAIL:
 #ifdef DEBUG
-        cout << "setSailType( MAINSAIL )" << endl;
+        std::cout << "setSailType( MAINSAIL )" << std::endl;
 #endif
         radioMainSail->setChecked( true );
         txtTackDist->setEnabled( true );
@@ -246,7 +246,7 @@ void CFormSailDef::setSailType( enumSailType type )
 
     case JIB:
 #ifdef DEBUG
-        cout << "setSailType( JIB )" << endl;
+        std::cout << "setSailType( JIB )" << std::endl;
 #endif
         radioJib->setChecked( true );
         txtTackDist->setEnabled( false );
@@ -272,7 +272,7 @@ void CFormSailDef::setSailType( enumSailType type )
 
     case WING:
 #ifdef DEBUG
-        cout << "setSailType( WING )" << endl;
+        std::cout << "setSailType( WING )" << std::endl;
 #endif
         radioWing->setChecked( true );
         txtTackDist->setEnabled( true );

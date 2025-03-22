@@ -277,9 +277,9 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
     CVector3d vk(0, 0, 0);
 
     /* create variable for edge correction */
-    vector<CVector3d> deviation;
+    std::vector<CVector3d> deviation;
     deviation.resize(npb);
-    vector<CVector3d> deviaPrev;
+    std::vector<CVector3d> deviaPrev;
     deviaPrev.resize(npb);
 
     /* Other edge hem width */
@@ -457,9 +457,9 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
 #ifdef DEBUG
                 if ( npanel == 1 )
                 {
-                    cout << "CSailWorker::Layout0 Crosscut foot after adding curve" << endl;
+                    std::cout << "CSailWorker::Layout0 Crosscut foot after adding curve" << std::endl;
                     for (k = 0 ; k < npb ; k++)
-                        cout << "pt="<< k << " xyz=" << lay[0].bottom[k] << endl;
+                        std::cout << "pt="<< k << " xyz=" << lay[0].bottom[k] << std::endl;
                 }
 #endif
             }  /* end else normal panel */
@@ -470,11 +470,11 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
 #ifdef DEBUG
             if ( npanel == 1 )
             { // move bottom side of first panel to foot curve
-                cout << "CSailWorker::Layout0 Crosscut foot after Z " << endl;
+                std::cout << "CSailWorker::Layout0 Crosscut foot after Z " << std::endl;
                 for (k = 0 ; k < npb ; k++)
-                    cout << "pt="<< k << " xyz=" << lay[0].bottom[k] << endl;
+                    std::cout << "pt="<< k << " xyz=" << lay[0].bottom[k] << std::endl;
 
-                cout << "---end Z foot----   DO LOOP=" << cnt << endl;
+                std::cout << "---end Z foot----   DO LOOP=" << cnt << std::endl;
             }
 #endif
 
@@ -613,9 +613,9 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
     CVector3d vk(0, 0, 0);
 
     /* create variable for edge correction */
-    vector<CVector3d> deviation;
+    std::vector<CVector3d> deviation;
     deviation.resize(npb);
-    vector<CVector3d> deviaPrev;
+    std::vector<CVector3d> deviaPrev;
     deviaPrev.resize(npb);
 
     /* seam 0 is on the foot of the sail ending at the clew */
@@ -696,12 +696,12 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
                     seamLT = CSubSpace::line(p2[npanel] , seamVT);
                     ip = seamLT.intersectionPoint(luffLine, "seamLT and luff");
 #ifdef DEBUG
-                    cout << "CSailWorker::LayoutTwist Seam 1 LUFF CORRECTION DO LOOP = " << cnt << endl;
-                    cout << " ip = " << ip << endl;
-                    cout << "p1[0] " << p1[0] << "  p2[0] " << p2[0] << " type "<< t1[0] << t2[0] << endl;
-                    cout << "p1[1] " << p1[1] << "  p2[1] " << p2[1] << " type "<< t1[1] << t2[1] << endl;
-                    cout << "seam VT = " << seamVT << endl;
-                    cout << "--- " << endl;
+                    std::cout << "CSailWorker::LayoutTwist Seam 1 LUFF CORRECTION DO LOOP = " << cnt << std::endl;
+                    std::cout << " ip = " << ip << std::endl;
+                    std::cout << "p1[0] " << p1[0] << "  p2[0] " << p2[0] << " type "<< t1[0] << t2[0] << std::endl;
+                    std::cout << "p1[1] " << p1[1] << "  p2[1] " << p2[1] << " type "<< t1[1] << t2[1] << std::endl;
+                    std::cout << "seam VT = " << seamVT << std::endl;
+                    std::cout << "--- " << std::endl;
 #endif
                 }
                 else if (CVector3d::dotProduct(ip - head, luffV) > 0)
@@ -764,9 +764,9 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
 #ifdef DEBUG
                 if ( npanel == 1 )
                 {
-                    cout << "CSailWorker::LaoutTwist foot straight  - LOOP= "<< cnt << endl;
+                    std::cout << "CSailWorker::LaoutTwist foot straight  - LOOP= "<< cnt << std::endl;
                     for (k = 0 ; k < npb ; k++)
-                        cout << "pt="<< k << " Bottom xyz= " << lay[0].bottom[k] << " Top xyz= " << lay[0].top[k] << endl;
+                        std::cout << "pt="<< k << " Bottom xyz= " << lay[0].bottom[k] << " Top xyz= " << lay[0].top[k] << std::endl;
                 }
 #endif
 
@@ -822,11 +822,11 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
 #ifdef DEBUG
             if ( npanel == 1 )
             { // move bottom side of first panel to foot curve
-                cout << "CSailWorker::LayoutTwist foot after adding seams " << endl;
+                std::cout << "CSailWorker::LayoutTwist foot after adding seams " << std::endl;
                 for (k = 0 ; k < npb ; k++)
-                    cout << "pt="<< k << " xyz=" << dev[0].bottom[k] << endl;
+                    std::cout << "pt="<< k << " xyz=" << dev[0].bottom[k] << std::endl;
 
-                cout << "------END LOOP="<< cnt << endl;
+                std::cout << "------END LOOP="<< cnt << std::endl;
             }
 #endif
 
@@ -917,9 +917,9 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
     CVector3d vk(0, 0, 0);
 
     /* create variable for panel width correction */
-    vector<CVector3d> deviation;
+    std::vector<CVector3d> deviation;
     deviation.resize(npb);
-    vector<CVector3d> deviaPrev;
+    std::vector<CVector3d> deviaPrev;
     deviaPrev.resize(npb);
 
     /* Other edge hem width */
@@ -1146,9 +1146,9 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
     CVector3d vk(0, 0, 0);
 
     /* create variable for edge correction */
-    vector<CVector3d> deviation;
+    std::vector<CVector3d> deviation;
     deviation.resize(npb);
-    vector<CVector3d> deviaPrev;
+    std::vector<CVector3d> deviaPrev;
     deviaPrev.resize(npb);
 
     /* Other edge hem width */
@@ -1468,7 +1468,7 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
     CVector3d vk(0, 0, 0);
 
     /* create variable for edge correction */
-    vector<CVector3d> deviation;
+    std::vector<CVector3d> deviation;
     deviation.resize(npb);
 
     /* Other edge hem width */
@@ -1962,7 +1962,7 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
     CVector3d vk(0, 0, 0);
 
     /* create variable for edge correction */
-    vector<CVector3d> deviation;
+    std::vector<CVector3d> deviation;
     deviation.resize(npb);
 
     /* Create arrays of points at horizontal seams ends 10 maximum */
@@ -2421,9 +2421,9 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
     CVector3d vk(0, 0, 0);
 
     /* create variable for edge correction */
-    vector<CVector3d> deviation;
+    std::vector<CVector3d> deviation;
     deviation.resize(npb);
-    vector<CVector3d> deviaPrev;
+    std::vector<CVector3d> deviaPrev;
     deviaPrev.resize(npb);
 
     /** Mitre Hem Width is set at twice the Seam Width. */
@@ -2502,7 +2502,7 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
                     lay[npanel-1].right[k] = EdgeIntersect( LUFF_EDGE, lay[npanel-1].right[k], footVP);
             }
             else
-            { // cout <<  "CSailWorker::LayoutMitre full mitre" << endl;
+            { // std::cout <<  "CSailWorker::LayoutMitre full mitre" << std::endl;
                 lay[npanel-1].right.fill(p2[npanel-1], p2[npanel]);
             }
 
@@ -2865,9 +2865,9 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
     CVector3d vk(0, 0, 0);
 
     /* create variable for edge correction */
-    vector<CVector3d> deviation;
+    std::vector<CVector3d> deviation;
     deviation.resize(npb);
-    vector<CVector3d> deviaPrev;
+    std::vector<CVector3d> deviaPrev;
     deviaPrev.resize(npb);
 
     /* create variable to monitor excess over cloth width */
@@ -2890,7 +2890,7 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
 
     for ( npanel = 1; npanel < MAX_PANELS/2-1; npanel++ )
     {
-        // cout << " ----- FOR LOOP foot npanel = " << npanel << endl;
+        // std::cout << " ----- FOR LOOP foot npanel = " << npanel << std::endl;
         exb = 0;
         exc = 0;
         cnt = 0; // reset counter
@@ -2979,7 +2979,7 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
             exb = exb + (0.8 * exc) +1; // sum previous correction + 80% of current excess of width +1mm
 
             if (cnt == cntMax)
-                cout << "CSailcorker::LayoutMitre2  Foot panel " << npanel << " may be wider than cloth by " << exc << "mm." << endl;
+                std::cout << "CSailcorker::LayoutMitre2  Foot panel " << npanel << " may be wider than cloth by " << exc << "mm." << std::endl;
         }
         while ( exc > 0 && cnt < cntMax );
         /* Loop DO as long as the excess of width is positive  AND counter <9 */
@@ -3052,13 +3052,13 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
 
             // fill right side points
             if (t2[npanel-1] == LuffIntersection && t2[npanel] == LuffIntersection) {
-                 // cout << "CSailWorker::LayoutMitre2 full luff" << endl;
+                 // std::cout << "CSailWorker::LayoutMitre2 full luff" << std::endl;
                 lay[npanel-1].right.fill(p2[npanel-1], p2[npanel]);
                 for ( k = 0; k < npl; k++ )
                     lay[npanel-1].right[k]=EdgeIntersect( LUFF_EDGE, lay[npanel-1].right[k], leechV);
             }
             else if (t2[npanel-1] == GaffIntersection && t2[npanel] == LuffIntersection) {
-                // cout << "CSailWorker::LayoutMitre2 gaff-head-luff" << endl;
+                // std::cout << "CSailWorker::LayoutMitre2 gaff-head-luff" << std::endl;
                 lay[npanel-1].right.fill(p2[npanel-1], head, p2[npanel]);
 
                 for ( k = 0; k < npl/2; k++ )
@@ -3068,7 +3068,7 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
                     lay[npanel-1].right[k] = EdgeIntersect( LUFF_EDGE,lay[npanel-1].right[k], leechV);
             }
             else {
-                // cout << "CSailWorker::LayoutMitre2 full gaff << endl;
+                // std::cout << "CSailWorker::LayoutMitre2 full gaff << std::endl;
                 lay[npanel-1].right.fill(p2[npanel-1], p2[npanel]);
 
                 for ( k = 0; k < npl; k++ )
@@ -3132,7 +3132,7 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
             exb = exb + (0.8 * exc) + 1; // sum previous correction + 80% of current excess of width +1mm
 
             if (cnt == cntMax)
-                cout << "CSailWorker::LayoutMitre2  Leech panel " << npanel << " may be wider than cloth by " << exc << "mm." << endl;
+                std::cout << "CSailWorker::LayoutMitre2  Leech panel " << npanel << " may be wider than cloth by " << exc << "mm." << std::endl;
         }
         while ( exc > 0 && cnt < cntMax );
         /* loop DO as long as the excess of width is positive  AND counter <9 */

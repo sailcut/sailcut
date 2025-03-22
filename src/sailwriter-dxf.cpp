@@ -52,9 +52,9 @@
  * @param code atom code
  * @param content atom content
  */
-void CSailDxfWriter::writeAtom(ofstream &out, int code, const QString& content) const
+void CSailDxfWriter::writeAtom(std::ofstream &out, int code, const QString& content) const
 {
-    out << code << endl << string(content.toLocal8Bit()) << endl;
+    out << code << std::endl << std::string(content.toLocal8Bit()) << std::endl;
 }
 
 
@@ -63,9 +63,9 @@ void CSailDxfWriter::writeAtom(ofstream &out, int code, const QString& content) 
  * @param out the output stream
  * @param filename the output file name
  */
-void CSailDxfWriter::writeBegin(ofstream &out, const QString &filename) const
+void CSailDxfWriter::writeBegin(std::ofstream &out, const QString &filename) const
 {
-    out.open(QFile::encodeName(filename),ios::out);
+    out.open(QFile::encodeName(filename), std::ios::out);
     if (!out.is_open())
         throw write_error("CSailDxfWriter::writeBegin : unable to write to specified file");
 
@@ -83,7 +83,7 @@ void CSailDxfWriter::writeBegin(ofstream &out, const QString &filename) const
  *
  * @param out the output stream
  */
-void CSailDxfWriter::writeEnd(ofstream &out) const
+void CSailDxfWriter::writeEnd(std::ofstream &out) const
 {
     writeAtom(out, DXF_ENTITY, "EOF");
     out.close();
@@ -98,14 +98,14 @@ void CSailDxfWriter::writeEnd(ofstream &out) const
  * @param p2 third point
  * @param layer
  */
-void CSailDxfWriter::writeFace(ofstream &out, CPoint3d p0, CPoint3d p1, CPoint3d p2, unsigned int layer) const
+void CSailDxfWriter::writeFace(std::ofstream &out, CPoint3d p0, CPoint3d p1, CPoint3d p2, unsigned int layer) const
 {
     // skip empty face
     real area = CVector3d::crossProduct(p1 - p0, p2 - p0).length();
-    //cout << "area : " << area << endl;
+    //std::cout << "area : " << area << std::endl;
     if ( area <= EPS )
     {
-        cout << "CSailDxfWriter::writeFace : skipping empty face" << endl;
+        std::cout << "CSailDxfWriter::writeFace : skipping empty face" << std::endl;
         return;
     }
 
@@ -138,7 +138,7 @@ void CSailDxfWriter::writeFace(ofstream &out, CPoint3d p0, CPoint3d p1, CPoint3d
  * @param layer
  * @param color the color
  */
-void CSailDxfWriter::writeLayer(ofstream &out, unsigned int layer, const QString &color) const
+void CSailDxfWriter::writeLayer(std::ofstream &out, unsigned int layer, const QString &color) const
 {
     writeAtom(out, DXF_ENTITY, "LAYER");
     writeAtom(out, DXF_NAME, QString::number(layer));
@@ -154,7 +154,7 @@ void CSailDxfWriter::writeLayer(ofstream &out, unsigned int layer, const QString
  * @param layer
  * @param color the color
  */
-void CSailDxfWriter::writePolyline(ofstream &out, unsigned int layer, const QString &color) const
+void CSailDxfWriter::writePolyline(std::ofstream &out, unsigned int layer, const QString &color) const
 {
     writeAtom(out, DXF_ENTITY, "POLYLINE");
     // set the layer
@@ -174,7 +174,7 @@ void CSailDxfWriter::writePolyline(ofstream &out, unsigned int layer, const QStr
  * @param pt point
  * @param layer
  */
-void CSailDxfWriter::writeVertex(ofstream &out, CPoint3d pt, unsigned int layer) const
+void CSailDxfWriter::writeVertex(std::ofstream &out, CPoint3d pt, unsigned int layer) const
 {
     writeAtom(out, DXF_ENTITY, "VERTEX");
     // set the layer
@@ -224,7 +224,7 @@ void CSailDxfWriter2d::write(const CPanelGroup &sail, const QString &filename) c
  */
 void CSailDxfWriter2d::writeNormal(const CPanelGroup &sail, const QString &filename) const
 {
-    ofstream out;
+    std::ofstream out;
     unsigned int pn;
 
     // open file, write comment and header
@@ -265,7 +265,7 @@ void CSailDxfWriter2d::writeNormal(const CPanelGroup &sail, const QString &filen
  */
 void CSailDxfWriter2d::writeBlocks(const CPanelGroup &sail, const QString &filename) const
 {
-    ofstream out;
+    std::ofstream out;
     unsigned int pn;
 
     // open file, write comment and header
@@ -317,9 +317,7 @@ void CSailDxfWriter2d::writeBlocks(const CPanelGroup &sail, const QString &filen
  */
 void CSailDxfWriter2d::writeSplit(const CPanelGroup &sail, const QString &basename) const
 {
-    //cout << "Not implemented yet" << endl;
-
-    ofstream out;
+    std::ofstream out;
     unsigned int pn;
 
     for (pn = 0; pn < sail.size(); pn++)
@@ -358,7 +356,7 @@ void CSailDxfWriter2d::writeSplit(const CPanelGroup &sail, const QString &basena
  * @param panel the panel to be written
  * @param layer the layer on which the panel is written
  */
-void CSailDxfWriter2d::writePanel(ofstream &out, const CPanel &panel, unsigned int layer) const
+void CSailDxfWriter2d::writePanel(std::ofstream &out, const CPanel &panel, unsigned int layer) const
 {
     //writeAtom(out, DXF_COMMENT, panel.label.name);
 
@@ -521,7 +519,7 @@ void CSailDxfWriter3d::write(const CPanelGroup &sail, const QString &filename) c
  */
 void CSailDxfWriter3d::writeNormal(const CPanelGroup &sail, const QString &filename) const
 {
-    ofstream out;
+    std::ofstream out;
     unsigned int pn;
 
     // open file, write comment and header
@@ -556,7 +554,7 @@ void CSailDxfWriter3d::writeNormal(const CPanelGroup &sail, const QString &filen
  * @param panel the number of the panel to be written
  * @param layer the layer on which the panel is written
  */
-void CSailDxfWriter3d::writePanel(ofstream &out, const CPanel &panel, unsigned int layer) const
+void CSailDxfWriter3d::writePanel(std::ofstream &out, const CPanel &panel, unsigned int layer) const
 {
     //writeAtom(out, DXF_COMMENT, panel.label.name);
     //writeAtom(out, DXF_COMMENT, QString("panel : ") + QString::number(panel));
@@ -593,7 +591,7 @@ void CSailDxfWriter3d::writePanel(ofstream &out, const CPanel &panel, unsigned i
  */
 void CSailDxfWriter3d::writeSplit(const CPanelGroup &sail, const QString &basename) const
 {
-    ofstream out;
+    std::ofstream out;
 
     for (unsigned int pn = 0; pn < sail.size(); pn++)
     {

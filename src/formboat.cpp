@@ -88,7 +88,7 @@ void CFormBoat::add(const QString &newfile)
     }
     else
     {
-        throw invalid_argument("CFormBoat::add : unknown document type");
+        throw std::invalid_argument("CFormBoat::add : unknown document type");
     }
     element.filename = newfile.toStdString();
     def.push_back(element);

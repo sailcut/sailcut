@@ -37,7 +37,7 @@ CSailTreeItem::CSailTreeItem(const CPanelGroup &data, QString name, CSailTreeIte
     itemData << name;
     itemIcon = panelgroup_xpm;
     appendChild(new CSailTreeItem(data.title, "title", this));
-    appendChild(new CSailTreeItem((vector<CPanel>)(data), "panel", this));
+    appendChild(new CSailTreeItem(std::vector<CPanel>(data), "panel", this));
     if (data.child.size() > 0)
         appendChild(new CSailTreeItem(data.child, "child", this));
 }
@@ -60,7 +60,7 @@ CSailTreeItem::CSailTreeItem(const CPoint3d &data, QString name, CSailTreeItem *
     itemData << name << data.x() << data.y() << data.z();
 }
 
-CSailTreeItem::CSailTreeItem(const string &data, QString name, CSailTreeItem *parent)
+CSailTreeItem::CSailTreeItem(const std::string &data, QString name, CSailTreeItem *parent)
 {
     parentItem = parent;
     itemIcon = NULL;

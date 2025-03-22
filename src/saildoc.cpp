@@ -179,7 +179,7 @@ void CSailDoc::get
  * @param name the name of the string
  */
 void CSailDoc::get
-( const QDomNode &parent, string &s, const QString &name )
+( const QDomNode &parent, std::string &s, const QString &name )
 {
     QDomElement e = findElement( parent, "string", name);
     QDomNamedNodeMap attr = e.attributes();
@@ -246,7 +246,7 @@ void CSailDoc::get
     }
     else
     {
-        throw invalid_argument("CSailDoc::get : unknown panel group type");
+        throw std::invalid_argument("CSailDoc::get : unknown panel group type");
     }
 }
 
@@ -700,7 +700,7 @@ void CSailDoc::put(QDomNode &parent, const real &r, const QString &name )
 
 /** Puts a std::string value to an XML document.
  */
-void CSailDoc::put(QDomNode &parent, const string &s, const QString &name )
+void CSailDoc::put(QDomNode &parent, const std::string &s, const QString &name )
 {
     QDomElement e = createElement("string", name, QString::fromStdString(s));
     parent.appendChild(e);

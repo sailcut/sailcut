@@ -23,8 +23,6 @@
 #include <vector>
 #include <QString>
 
-using namespace std;
-
 /**
  * A class used to store a user's preferences.
  */
@@ -34,7 +32,7 @@ public:
     CPrefs();
 
     /** The most recently used documents. */
-    vector<QString> mruDocuments;
+    std::vector<QString> mruDocuments;
 
     /** The width of the main window */
     int mainWindowWidth;

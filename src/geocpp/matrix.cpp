@@ -212,8 +212,6 @@ CMatrix CMatrix::gaussjordan(bool *is_inv, CMatrix *inv, soltype_t * soltype, st
         for (size_t i = 0; i < m_nrow; ++i)
             b(i, 0) = (*bb)[i];
     }
-    //cout << "b" << endl<< b << endl;
-    //cout << "m" << endl<< *this << endl;
 
     real p_value;
     real p_avalue, avalue;
@@ -345,15 +343,6 @@ CMatrix CMatrix::gaussjordan(bool *is_inv, CMatrix *inv, soltype_t * soltype, st
     {
         if (k < m_ncol)
         {
-            /*
-                  cout << "has non-zero kernel" << endl;
-                  if ((getnrow()==k)) {
-                    // no redundant equations
-                    cout << "getnrow()==k==" << k << endl;
-                  } else {
-                    cout << "getnrow()==" << getnrow() << " k==" << k << endl;
-                  }
-            */
             CMatrix pk = - m.crop(m_ncol-k+1,m_ncol-k,0,k);
             pk = pk.crop(m_ncol,m_ncol-k);
             for (i=0; i + k < m_ncol; i++)
@@ -363,18 +352,15 @@ CMatrix CMatrix::gaussjordan(bool *is_inv, CMatrix *inv, soltype_t * soltype, st
         else
         {
             // matrix is inversible
-            //cout << "m_ncol==k" << endl;
             *tkern = CMatrix();
         }
     }
-    // clean matrix
 
+    // clean matrix
     for (i = 0; i < m_nrow; i++)
         for (j = 0; j < m_ncol; j++)
             if (fabs(m(i,j)) <= EPS)
                 m(i,j) = 0;
-
-    //  return m;
 
     return m.crop(k,m_ncol);
 }
