@@ -7,6 +7,6 @@
 
 <xsl:param name="html.stylesheet" select="'../sailcut-handbook.css'"/>
 
-<xsl:param name="graphic.default.extension" select="'png'"></xsl:param>
+<xsl:param name="graphic.default.extension" select="'svg'"></xsl:param>
 
 </xsl:stylesheet>
