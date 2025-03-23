@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 1993-2018 Robert & Jeremy Laine
+ * Copyright (C) Robert Lainé & Jeremy Lainé
  * See AUTHORS file for a full list of contributors.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -50,7 +50,6 @@ CProfile::CProfile( real rDepth, real rLeech, real rLuff)
 **************************************************************************/
 
 /** Compute the depth of the profile at a point located at dX along the cord
- @author Robert Laine
  */
 real CProfile::z( real dX ) const
 {
@@ -89,7 +88,6 @@ real CProfile::z( real dX ) const
 }
 
 /** Compute the slope of the profile at a point located at dX along the cord
- @author Robert Laine
  */
 real CProfile::slope( real dX ) const
 {
@@ -128,7 +126,6 @@ real CProfile::slope( real dX ) const
 }
 
 /** Compute the camber of the profile at a point located at dX along the cord
- @author Robert Laine
  */
 real CProfile::camber( real dX ) const
 {
@@ -171,8 +168,6 @@ real CProfile::camber( real dX ) const
 }
 
 /** Compute the absiss x of the point of maximum depth of a profile
- *
- * @author Robert Laine
  */
 void CProfile::calcMax()
 {
@@ -251,7 +246,6 @@ CSailMould::CSailMould()
 **************************************************************************/
 
 /** Interpolate the depth and coefficients of the profile at height h
-  @author Robert Laine
  */
 CProfile CSailMould::interpol ( const real h ) const
 {

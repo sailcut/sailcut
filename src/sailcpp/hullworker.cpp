@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 1993-2018 Robert & Jeremy Laine
+ * Copyright (C) Robert Lainé & Jeremy Lainé
  * See AUTHORS file for a full list of contributors.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -25,8 +25,6 @@
 /** The constructor does some preliminary calculations
  *  to set internal variables, compute chine and deck plane,
  *  and compute lower chine plane panel.
- *
- * @author Robert Laine
 */
 CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
 {
@@ -91,8 +89,6 @@ CHullWorker::CHullWorker(const CHullDef &d) : CHullDef(d)
 /** Return the 3D point at the Lower chine edge function of x
  *  x is the absisse of the point along the centre line
  *  The chine edge curve is a power curve on either side of the maximum beam point
- *
- * @author Robert Laine
  */
 CPoint3d CHullWorker::ptLowChine( const real &x )
 {
@@ -120,8 +116,6 @@ CPoint3d CHullWorker::ptLowChine( const real &x )
 
 /** Return the 3D point at the keel line function of x
  *  x is the absisse of the corresponding point on the lower chine
- *
- * @author Robert Laine
  */
 CPoint3d CHullWorker::ptKeel( const real &x )
 {
@@ -143,7 +137,6 @@ CPoint3d CHullWorker::ptKeel( const real &x )
  *  and only one top side plank.
  *
  * @return CPanelGroup
- * @author Robert Laine
  */
 CPanelGroup CHullWorker::makeHull() //const
 {

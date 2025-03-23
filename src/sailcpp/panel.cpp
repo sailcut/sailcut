@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 1993-2018 Robert & Jeremy Laine
+ * Copyright (C) Robert Lainé & Jeremy Lainé
  * See AUTHORS file for a full list of contributors.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -189,8 +189,6 @@ CPoint3d CPanel::centroid() const
 /** This routine returns the development of the panel.
  *  The developed panel will be horizontal with its upper or lower edge
  *  aligned to X axis depending on parameter "align"=ALIGN_TOP or ALIGN_BOTTOM
- *
- *  @author Robert Laine alias Sailcuter
  */
 CPanel CPanel::develop(enumDevelopAlign align) const
 {
@@ -350,8 +348,6 @@ void CPanel::reframe()
  *   tw = width to be added on top side
  *   rw = width to be added on right side
  *   bw = width to be added on bottom side
- *
- * @author Robert Laine alias Sailcuter
  */
 
 void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real &bw )
@@ -365,8 +361,6 @@ void CPanel::addHems( const real &lw, const real &tw, const real &rw, const real
  *   topW = width to be added on top side
  *   lorW, hirW = width to be added on lo-hi right side
  *   botW = width to be added on bottom side
- *
- * @author Robert Laine alias Sailcuter
  */
 
 void CPanel::add6Hems( const real &lolW, const real &hilW, const real &topW, const real &hirW, const real &lorW, const real &botW )
