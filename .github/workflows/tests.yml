@@ -20,6 +20,10 @@ jobs:
         with:
           arch: ${{ matrix.arch }}
           version: 6.5.*
+      - uses: msys2/setup-msys2@v2
+        if: matrix.os == 'windows-latest'
+        with:
+          install: mingw-w64-x86_64-nsis
       - name: Compile
         run: |
           qmake
@@ -28,3 +32,12 @@ jobs:
       - name: Test
         run: make check --keep-going
         shell: bash
+      - name: Build package
+        if: matrix.os != 'ubuntu-latest'
+        run: make package
+      - name: Upload package
+        if: matrix.os != 'ubuntu-latest'
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-${{ matrix.os }}
+          path: '*.dmg *.exe'
