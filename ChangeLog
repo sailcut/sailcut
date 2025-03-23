@@ -1,3 +1,7 @@
+Sailcut CAD 1.5.0
+ * improved - Port to Qt 6.
+ * fixed - Fix graphic glitches in the shaded 3D view.
+
 Sailcut CAD 1.4.1
  * improved - Computed area is displayed with 2 more digits to show down to cm2
 
