@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 1993-2018 Robert & Jeremy Laine
+ * Copyright (C) Robert Lainé & Jeremy Lainé
  * See AUTHORS file for a full list of contributors.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -205,11 +205,11 @@ void CFormMain::slotAbout()
 
                         "<h2>Sailcut CAD " SAILCUT_VERSION "</h2>"
                         "<p>Sailcut is a software for designing boat sails<br/>"
-                        "(C) 1993-2018 Robert & Jeremy Laine"
+                        "Copyright (C) Robert Lainé & Jeremy Lainé"
 
                         "<p>For more information, visit the project's page at <a href=\"http://www.sailcut.com/\">http://www.sailcut.com/</a>.</p>"
 
-                        "<p>Sailcut is a trademark registered by Robert Laine</p>"
+                        "<p>Sailcut is a trademark registered by Robert Lainé</p>"
 
                         "<table border=\"1\"><tr><td><small>"
                         "This program is free software; you can redistribute it and/or modify "

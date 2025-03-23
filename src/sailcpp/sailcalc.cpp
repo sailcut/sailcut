@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 1993-2018 Robert & Jeremy Laine
+ * Copyright (C) Robert Lainé & Jeremy Lainé
  * See AUTHORS file for a full list of contributors.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -27,8 +27,6 @@
  *  X is the relative position of the point along the straight edge
  *  P is the position of the maximum round in percent of the edge length
  *  The curve is a parabola on either side of the point P
- *
- * @author Robert Laine alias Sailcuter
  */
 real RoundP( const real &x, const int &p )
 {
@@ -71,8 +69,6 @@ real RoundP( const real &x, const int &p )
 /** Compute the angle of a 2D triangle from its 3 sides length
  *  a, b and c are the length of the sides of the triangle
  *  Return the angle in radian opposite to side a of the triangle
- *
- * @author Robert Laine alias Sailcuter
  */
 real Atriangle( const real &a, real const &b, const real &c )
 {
@@ -93,8 +89,6 @@ real Atriangle( const real &a, real const &b, const real &c )
 /** Compute the angle of a 3D triangle.
  *  The triangle is defined by 3d points pta, ptb, ptc
  *  Return the angle AA in radian at point pta of the triangle
- *
- * @author Robert Laine alias Sailcuter
  */
 real Atriangle3d ( const CPoint3d &pta, const CPoint3d &ptb, const CPoint3d &ptc )
 {
@@ -132,8 +126,6 @@ real Atriangle3d ( const CPoint3d &pta, const CPoint3d &ptb, const CPoint3d &ptc
  *  The sign of d is positive if the point pta
  *    is left of the line ptb=>ptc
  *  The sign of d is negative if pta is right of the line.
- *
- * @author Robert Laine alias Sailcuter
  */
 real Distance3d(const CPoint3d &pta, const CPoint3d &ptb, const CPoint3d &ptc)
 {

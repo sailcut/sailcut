@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 1993-2018 Robert & Jeremy Laine
+ * Copyright (C) Robert Lainé & Jeremy Lainé
  * See AUTHORS file for a full list of contributors.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -230,8 +230,6 @@ CPanelGroup CSailWorker::makeSail( CPanelGroup &flatsail , CPanelGroup &dispsail
  * @param dispsail the CPanelGroup object that will hold the display
  *                 version of the developed sail
  * @return CPanelGroup
- *
- * @author Robert Laine alias Sailcuter
  */
 CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail ) const
 {
@@ -570,7 +568,6 @@ CPanelGroup CSailWorker::Layout0( CPanelGroup &flatsail, CPanelGroup &dispsail )
  * @param dispsail the CPanelGroup object that will hold the display
  *                 version of the developed sail
  * @return CPanelGroup
- * @author Robert Laine alias Sailcuter
  */
 CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsail ) const
 {
@@ -876,7 +873,6 @@ CPanelGroup CSailWorker::LayoutTwist( CPanelGroup &flatsail, CPanelGroup &dispsa
  * @param dispsail the CPanelGroup object that will hold the display
  *                 version of the developed sail
  * @return CPanelGroup
- * @author Robert Laine alias Sailcuter
  */
 CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dispsail ) const
 {
@@ -1103,7 +1099,6 @@ CPanelGroup CSailWorker::LayoutVertical( CPanelGroup &flatsail, CPanelGroup &dis
  * @param dispsail the CPanelGroup object that will hold the display
  *                 version of the developed sail
  * @return CPanelGroup
- * @author Robert Laine alias Sailcuter
  */
 CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsail ) const
 {
@@ -1438,7 +1433,6 @@ CPanelGroup CSailWorker::LayoutWing( CPanelGroup &flatsail, CPanelGroup &dispsai
  * @param dispsail the CPanelGroup object that will hold the display
  *                 version of the developed sail
  * @return CPanelGroup
- * @author Robert Laine alias Sailcuter
  */
 CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &dispsail ) const
 {
@@ -1932,7 +1926,6 @@ CPanelGroup CSailWorker::LayoutRadial( CPanelGroup &flatsail, CPanelGroup &disps
  * @param dispsail the CPanelGroup object that will hold the display
  *                 version of the developed sail
  * @return CPanelGroup
- * @author Robert Laine alias Sailcuter
  */
 CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &dispsail ) const
 {
@@ -2381,7 +2374,6 @@ CPanelGroup CSailWorker::LayoutTriRadial( CPanelGroup &flatsail, CPanelGroup &di
  * @param dispsail the CPanelGroup object that will hold the display
  *                 version of the developed sail
  * @return CPanelGroup
- * @author Robert Laine alias Sailcuter
  */
 CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsail ) const
 {
@@ -2823,8 +2815,6 @@ CPanelGroup CSailWorker::LayoutMitre( CPanelGroup &flatsail, CPanelGroup &dispsa
  * @param dispsail the CPanelGroup object that will hold
  *   the display version of the developed sail
  * @return CPanelGroup
- * @author Robert Laine alias Sailcuter
- * Adapted by Peter G. Meuse
  */
 
 CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &dispsail ) const
@@ -3188,8 +3178,6 @@ CPanelGroup CSailWorker::LayoutMitre2( CPanelGroup &flatsail, CPanelGroup &disps
  *  If the point p1 is above or below the leech segment then
  *  the aft intersection is forced to be on the vertical of the
  *  corresponding peak or clew.
- *
- * @author Robert Laine alias Sailcuter
  */
 CPoint3d CSailWorker::AftIntersect( const CPoint3d& pt1 ) const
 {
@@ -3220,8 +3208,6 @@ CPoint3d CSailWorker::AftIntersect( const CPoint3d& pt1 ) const
 /**
  *  Routine for computing the area of the sail taking
  *  into account the luff and leech round.
- *
- * @author Robert Laine alias Sailcuter
  */
 real CSailWorker::Area()
 {
@@ -3235,8 +3221,6 @@ real CSailWorker::Area()
 
 /**
  *  Routine for computing the diagonal length from head to clew.
- *
- * @author Robert Laine alias Sailcuter
  */
 real CSailWorker::Diagonal()
 {
@@ -3247,8 +3231,6 @@ real CSailWorker::Diagonal()
 /**
  *  Routine for computing the width of the sail at a given
  *  relative height on the leech in accordance with IRC rule.
- *
- * @author Robert Laine alias Sailcuter
  */
 real CSailWorker::IRCwidth( const real &HL )
 {
@@ -3301,8 +3283,6 @@ real CSailWorker::IRCwidth( const real &HL )
 /**
  *  Routine for computing the width of the sail at a given
  *  relative height on the luff and the leech.
- *
- * @author Robert Laine alias Sailcuter
  */
 real CSailWorker::SailWidth( const  real  &HL )
 {
@@ -3376,8 +3356,6 @@ real CSailWorker::SailWidth( const  real  &HL )
 /**
  *  Routine for computing the perpendicular width of the sail
  *  from clew to luff, measured perpendicular to the luff.
- *
- * @author Robert Laine alias Sailcuter
  */
 real CSailWorker::SailLP( )
 {
@@ -3408,8 +3386,6 @@ real CSailWorker::SailLP( )
 /**
  *  Routine for computing the actual length of the leech edge
  *  up to a given relative heigth on straight leech line.
- *
- * @author Robert Laine alias Sailcuter
  */
 real CSailWorker::LeechLength( const real &h )
 {
@@ -3435,8 +3411,6 @@ real CSailWorker::LeechLength( const real &h )
 /**
  *  Routine for computing the actual length of the luff edge
  *  up to a given relative heigth on straight luff line.
- *
- * @author Robert Laine alias Sailcuter
  */
 real CSailWorker::LuffLength( const real &h )
 {
@@ -3460,8 +3434,6 @@ real CSailWorker::LuffLength( const real &h )
  *  Routine used for computing the forward end of the cord of the profile.
  *  Return a 3d point which is the forward intersection of
  *  the horizontal line passing by p1 with either foot, luff or gaff.
- *
- * @author Robert Laine alias Sailcuter
  */
 CPoint3d CSailWorker::FwdIntersect( const CPoint3d &pt1 ) const
 {
@@ -3502,8 +3474,6 @@ CPoint3d CSailWorker::FwdIntersect( const CPoint3d &pt1 ) const
  *  Routine used for computing the point position on a sail curved edge.
  *  Return a 3D point which is the intersection of the vector v1
  *  passing by pt1 point inside sail area with the Edge curve.
- *
- * @author Robert Laine alias Sailcuter
  */
 CPoint3d CSailWorker::EdgeIntersect( const enumEdgeType &Edge, const CPoint3d &pt1, const CVector3d &v1 ) const
 {
@@ -3626,8 +3596,6 @@ CPoint3d CSailWorker::EdgeIntersect( const enumEdgeType &Edge, const CPoint3d &p
  *  Routine used for computing the intersection with mitre line.
  *  Return a 3d point which is the intersection of the vector v1
  *  passing by pt1 point with the mitre line.
- *
- * @author: Robert Laine alias Sailcuter
  */
 CPoint3d CSailWorker::MitreIntersect( const CPoint3d &pt1, const CVector3d &v1 ) const
 {
@@ -3654,9 +3622,7 @@ CPoint3d CSailWorker::MitreIntersect( const CPoint3d &pt1, const CVector3d &v1 )
 /**
  *  Routine used for computing the Z of a point of the sail.
  *  Return a 3D point which is the input point p1 with its Z modified.
- *
- * @author Robert Laine alias Sailcuter
-*/
+ */
 CPoint3d CSailWorker::Zpoint( const CPoint3d &p1 ) const
 {
     CPoint3d p2 = p1;      // p2 will be the returned point with Z added to p1
@@ -3721,8 +3687,6 @@ CPoint3d CSailWorker::Zpoint( const CPoint3d &p1 ) const
 /**
  * Routine used for computing the Z of all the points of a panel.
  * Returns a CPanel with all its points Z's modified.
- *
- * @author Robert Laine alias Sailcuter
  */
 CPanel CSailWorker::Zpanel( const CPanel &p1 ) const
 {

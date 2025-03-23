@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 1993-2018 Robert & Jeremy Laine
+ * Copyright (C) Robert Lainé & Jeremy Lainé
  * See AUTHORS file for a full list of contributors.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -206,9 +206,7 @@ CPanelGroup CRigWorker::makeRig() const
 }
 
 /** Routine for computing the 3D point at center of mast
- *   at a given height
- *
- * @author Robert Laine
+ *  at a given height
  */
 CPoint3d CRigWorker::mastCenter( const real &HM ) const
 {
