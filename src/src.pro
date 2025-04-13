@@ -154,10 +154,21 @@ mac {
     RC_ICONS = ../icons/sailcut.ico
     QMAKE_POST_LINK += $$[QT_INSTALL_BINS]/windeployqt $$shell_quote($$DESTDIR/$${TARGET}.exe)
 } else:unix {
+    desktop.files = ../extras/sailcut.desktop
+    desktop.path = $$PREFIX/share/applications
+
+    icons.files = ../icons/sailcut.svg
+    icons.path = $$PREFIX/share/icons/hicolor/scalable
+
+    metainfo.files = ../extras/org.sailcut.cad.metainfo.xml
+    metainfo.path = $$PREFIX/share/metainfo
+
     target.path = $$PREFIX/bin
+
     translations.files = $$BUILD_DATA_PATH
     translations.path = $$PREFIX/share
-    INSTALLS += target translations
+
+    INSTALLS += desktop icons metainfo target translations
 
     # Generating documentation requires some extra tools
     system(which fig2dev && which xsltproc) {
