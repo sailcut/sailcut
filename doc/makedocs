@@ -7,5 +7,7 @@ for lang in en es fr; do
     xsltproc -o $DST/$lang/index.html $SRC/sailcut-html.xsl $SRC/$lang/index.docbook
     for fig in $FIGURES; do
         fig2dev -L svg $SRC/$lang/$fig.fig $DST/$lang/$fig.svg
+        # Strip non-deterministic output to help reproducible builds.
+        sed -i -e 's/<!-- \(Creator\|CreationDate\): .* -->//g' $DST/$lang/$fig.svg
     done
 done
