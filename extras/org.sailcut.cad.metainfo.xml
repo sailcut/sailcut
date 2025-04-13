@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>org.sailcut.cad</id>
+  <name>Sailcut CAD</name>
+  <summary>Sail Design Application</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0-or-later</project_license>
+  <url type="homepage">https://www.sailcut.org</url>
+  <url type="bugtracker">https://github.com/sailcut/sailcut/issues</url>
+  <description>
+    <p>
+      Sailcut CAD is a sail design and plotting software which allows you to design and visualise your own sails and compute the accurate development of all panels in flat sheets.  You can export the sails you create to DXF, plaintext or Carlson plotter files.
+    </p>
+    <p>
+      Sailcut CAD&apos;s user interface is available in English, French, Dutch, German, Italian, Norwegian, Portuguese, Danish and Russian.
+    </p>
+  </description>
+  <launchable type="desktop-id">sailcut.desktop</launchable>
+  <provides>
+    <binary>sailcut</binary>
+  </provides>
+</component>

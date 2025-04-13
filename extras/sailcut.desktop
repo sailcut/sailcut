@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Sailcut CAD
+GenericName=Sail Design Application
+Comment=Design and visualise your own sail
+Exec=sailcut
+Icon=sailcut
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Graphics;Engineering;Qt;
+Keywords=design;CAD;diagrams;graphics
