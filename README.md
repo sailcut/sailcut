@@ -12,7 +12,7 @@ See the [AUTHORS](AUTHORS) file for a full list of contributors.
 
 ## Documentation
 
-The Sailcut CAD Handbook is available in 3 languages at [sailcut.com](https://www.sailcut.com/handbook/en/).
+The Sailcut CAD Handbook is available in 3 languages at [www.sailcut.org](https://www.sailcut.org/handbook/en/).
 
 ## Building
 

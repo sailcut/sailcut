@@ -105,7 +105,7 @@ void CSailApp::showHandbook() const
         locales.append("en");
 
     // look for local documentation or fall back to online documentation
-    QUrl url("http://www.sailcut.com/handbook/en/");
+    QUrl url("https://www.sailcut.org/handbook/en/");
     for (int i = 0; i < locales.size(); i++) {
         const QString handbook = appDir.absoluteFilePath(QString(SAILCUT_DOC_PATH) + QDir::separator() + locales.at(i) + QDir::separator() + "index.html");
         if (QFile::exists(handbook)) {

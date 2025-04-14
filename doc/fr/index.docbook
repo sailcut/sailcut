@@ -35,7 +35,7 @@
 <sect2>
 <title> Où obtenir Sailcut CAD? </title>
 
-<para>Vous pouvez télécharger la dernière version de Sailcut CAD depuis la page du projet à <ulink url="http://www.sailcut.com/"/>.</para>
+<para>Vous pouvez télécharger la dernière version de Sailcut CAD depuis la page du projet à <ulink url="https://www.sailcut.org/"/>.</para>
 
 </sect2>
 
@@ -677,7 +677,7 @@
 
 <para>Le logiciel de coupe de voile Sailcut a été développé initialement en 1978 en Basic sur un calculateur disposant d'un écran avec une ligne de texte, une petite imprimante à 32 colonnes et seulement 1.6 ko de mémoire vive. D'où la nécessité de faire simple pour modéliser la surface des voiles que je fabriquais et utilisais sur mon ¼ ton IOR. </para>
 
-<para>Ce cycle court &quot;conception=&gt;fabrication=&gt;utilisation=&gt;correction&quot; sans contrainte commerciale d'adaptation aux habitudes de travail des voileries m'a permis de converger rapidement sur une modélisation compacte et robuste de la surface des voiles. Plus tard l'utilisation de Sailcut par des voileries a contribué à l'ajout d'interfaces graphiques au noyau Sailcut mais ceci est une autre histoire... Depuis 1993 la version Visual Basic de Sailcut est disponible sur Internet à <ulink url="http://www.sailcut.com/"/> et depuis 2003, le code source de Sailcut récrit en C++ est disponible à <ulink url="http://www.sailcut.com/"/>. Pour des raisons de protection de la propriété intellectuelle, le nom Sailcut est déposé mais l'auteur maintient l'accès libre et gratuit au logiciel Sailcut. </para>
+<para>Ce cycle court &quot;conception=&gt;fabrication=&gt;utilisation=&gt;correction&quot; sans contrainte commerciale d'adaptation aux habitudes de travail des voileries m'a permis de converger rapidement sur une modélisation compacte et robuste de la surface des voiles. Plus tard l'utilisation de Sailcut par des voileries a contribué à l'ajout d'interfaces graphiques au noyau Sailcut mais ceci est une autre histoire... Depuis 1993 la version Visual Basic de Sailcut est disponible sur Internet à <ulink url="https://www.sailcut.org/"/> et depuis 2003, le code source de Sailcut récrit en C++ est disponible à <ulink url="https://www.sailcut.org/"/>. Pour des raisons de protection de la propriété intellectuelle, le nom Sailcut est déposé mais l'auteur maintient l'accès libre et gratuit au logiciel Sailcut. </para>
 
 </sect2>
 
