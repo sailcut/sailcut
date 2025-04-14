@@ -11,3 +11,4 @@ for lang in en es fr; do
         sed -i -e 's/<!-- \(Creator\|CreationDate\): .* -->//g' $DST/$lang/$fig.svg
     done
 done
+cp $SRC/sailcut-handbook.css $DST/sailcut-handbook.css
