@@ -1,3 +1,7 @@
+Sailcut CAD 1.5.1
+ * improved - Install desktop files for Linux distributions.
+ * improved - Strip non-deterministic output from xfig-generated SVG.
+
 Sailcut CAD 1.5.0
  * improved - Port to Qt 6.
  * fixed - Fix graphic glitches in the shaded 3D view.
