@@ -827,21 +827,12 @@ curvature = z&quot; / (1+ z'*z')^3/2
 </sect1>
 
 <sect1 id="s.copyright">
-<title> Copyright </title>
+<title>Copyright</title>
 
 <para>Copyright (C) Robert Lainé &amp; Jeremy Lainé.</para>
-
-<para>Sailcut est une marque déposée par Robert Lainé. </para>
-
-<para>Ce logiciel est libre; vous pouvez le redistribuer et le modifier selon les termes de la licence GNU General Public Licence telle que publiée par la Free Software Fondation version 2 ou autre version plus récente. Voyez <ulink url="http://www.fsf.org/"/> pour les termes de cette licence. </para>
-
-<para>Ce logiciel est distribué avec l'éspoir qu'il vous soit utile mais SANS AUCUNE GARANTIE même implicite quand son utilisation. Voyez les termes de la licence GNU pour plus de détail. </para>
-
-<para>Vous devriez avoir une copie de la licence GNU General Public Licence avec ce logiciel, si ce n'est pas le cas demandez la à Free Software Fondation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA. </para>
 
 <para><emphasis>Les auteurs apprécieraient que les publications sur des voiles conçues avec Sailcut comportent une reconnaissance de leur travail. Merci par avance.</emphasis> </para>
 
 </sect1>
 
 </article>
-

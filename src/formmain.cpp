@@ -4,8 +4,7 @@
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
+ * the Free Software Foundation; version 2.
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -209,13 +208,10 @@ void CFormMain::slotAbout()
 
                         "<p>For more information, visit the project's page at <a href=\"https://www.sailcut.org/\">https://www.sailcut.org/</a>.</p>"
 
-                        "<p>Sailcut is a trademark registered by Robert Lainé</p>"
-
                         "<table border=\"1\"><tr><td><small>"
                         "This program is free software; you can redistribute it and/or modify "
                         "it under the terms of the GNU General Public License as published by "
-                        "the Free Software Foundation; either version 2 of the License, or "
-                        "(at your option) any later version.<br/><br/>"
+                        "the Free Software Foundation; version 2.<br/><br/>"
 
                         "This program is distributed in the hope that it will be useful, "
                         "but WITHOUT ANY WARRANTY; without even the implied warranty of "
