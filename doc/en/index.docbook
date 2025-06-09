@@ -675,8 +675,7 @@
 
 <para>Sailcut software was initially written in 1978 in Basic language on a computer with 1.6 KB of memory, one line text screen and a small 32 columns text printer. Hence the necessity to keep the surface formulation simple for designing the sails which I built and used on my IOR ¼ton. </para>
 
-<para>This short cycle: &quot;design =&gt; manufacturing =&gt; utilisation =&gt; modification&quot;, without commercial constraints linked to sailmakers work habits has allowed me to converge quickly on a compact and robust way of describing the sail surface. The method is valid for classical triangular sails and also for quadrangular sails used on old timers and modern rigs with very large headboard. Later on, the use of Sailcut by professional sailmakers has necessitated the addition of graphic interface to the kernel of Sailcut, but that is an other story... Since 1993 the Microsoft Visual Basic version of Sailcut is available at <ulink url="https://www.sailcut.org/"/> and since 2003, the source code of Sailcut re-written in C++ is available at <ulink url="https://www.sailcut.org/"/>. For protection of the intellectual rights, the name Sailcut is a registered trademark, but the author maintains free and unrestricted access to Sailcut. </para>
-
+<para>This short cycle: &quot;design =&gt; manufacturing =&gt; utilisation =&gt; modification&quot;, without commercial constraints linked to sailmakers work habits has allowed me to converge quickly on a compact and robust way of describing the sail surface. The method is valid for classical triangular sails and also for quadrangular sails used on old timers and modern rigs with very large headboard. Later on, the use of Sailcut by professional sailmakers has necessitated the addition of graphic interface to the kernel of Sailcut, but that is an other story... Since 1993 the Microsoft Visual Basic version of Sailcut is available at <ulink url="https://www.sailcut.org/"/> and since 2003, the source code of Sailcut re-written in C++ is available at <ulink url="https://www.sailcut.org/"/>.</para>
 </sect2>
 
 <sect2>
@@ -1049,14 +1048,6 @@ Test main sail cross cut (3D)   // name of the sail
 <title> Copyright </title>
 
 <para>Copyright (C) Robert Lainé &amp; Jeremy Lainé.</para>
-
-<para>Sailcut is a Registered Trademark of Robert Lainé.</para>
-
-<para>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version. See <ulink url="http://www.fsf.org/"/> for the licence terms and details. </para>
-
-<para>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</para>
-
-<para>You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA. </para>
 
 <para><emphasis>The authors would appreciate that publications on sails designed with Sailcut include some acknowledgement of their work.</emphasis> </para>
 
